@@ -1,0 +1,102 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Dashboard{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'users/css/dashboard.css' %}">
+</head>
+<body>
+    <!-- Market ticker -->
+    <div class="market-ticker">
+        <div class="ticker-track" id="tickerTrack">
+            {% for instrument in instruments %}
+                <a href="{% url 'instrument_detail' instrument.pk %}" class="ticker-item">
+                    <span class="name">{{ instrument.ticker }}</span>
+                    <span class="value">{{ instrument.price|default:"0.00" }}</span>
+                    <span class="change {% if instrument.change_percent < 0 %}down{% else %}up{% endif %}">
+                        {{ instrument.change_percent|default:"0.00" }}% ({{ instrument.change_value|default:"0.00" }})
+                    </span>
+                </a>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- Hamburger + Cancel -->
+    <div class="hamburger">&#9776;</div>
+    <div class="close-icon">&#10005;</div>
+
+    <!-- Dashboard layout -->
+    <div class="dashboard-layout">
+        <aside class="sidebar">
+            <div class="logo">
+                <h2>BitnetFx</h2>
+            </div>
+            <div class="user-info">
+                <p>Welcome {{ request.user.username }}!</p>
+            </div>
+            <div class="verification-status">
+                {% if request.user.is_verified %}
+                    <span class="verified">✅ Verified</span>
+                {% else %}
+                    <span class="not-verified">❌ Not Verified</span>
+                {% endif %}
+            </div>
+            <div class="kyc-status">
+                {% if request.user.userkyc.status == 'approved' %}
+                    <span class="kyc-approved">✅ KYC Approved</span>
+                {% elif request.user.userkyc.status == 'rejected' %}
+                    <span class="kyc-rejected">❌ KYC Rejected</span>
+                {% else %}
+                    <span class="kyc-pending">⏳ KYC Pending</span>
+                    <a href="{% url 'users:kyc_upload' %}" class="btn btn-link">Upload Documents</a>
+                {% endif %}
+            </div>
+
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="{% url 'users:dashboard' %}">Dashboard</a></li>
+                    <li><a href="{% url 'users:portfolio' %}">Portfolio</a></li>
+                    <li><a href="{% url 'users:investments' %}">Investments</a></li>
+                    <li><a href="{% url 'users:investment_plans' %}">Investment Plans</a></li>
+                    <li><a href="{% url 'users:wallets' %}">Wallets</a></li>
+                    <li><a href="{% url 'users:deposit' %}">Deposit</a></li>
+                    <li><a href="{% url 'users:withdraw' %}">Withdraw</a></li>
+                    <li><a href="{% url 'users:transactions' %}">Transactions</a></li>
+                    <li><a href="{% url 'users:profit_history' %}">Profit History</a></li>
+                    <li><a href="{% url 'users:referrals' %}">Referrals</a></li>
+                    <li><a href="{% url 'users:markets' %}">Markets</a></li>
+                    <li><a href="{% url 'users:news' %}">News</a></li>
+                    <li><a href="{% url 'users:support' %}">Support</a></li>
+                    <li><a href="{% url 'users:profile' %}">Profile</a></li>
+                    <li><a href="{% url 'users:security' %}">Security</a></li>
+                    <li><a href="{% url 'users:settings' %}">Settings</a></li>
+                    <li><a href="{% url 'users:ai_chat' %}"><i class="fas fa-robot"></i> AI Assistant</a></li>
+                    <li><a href="{% url 'logout' %}">Logout</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            {% block content %}{% endblock %}
+        </main>
+    </div>
+    <footer class="dashboard-footer">
+        <div class="footer-container">
+            <p>&copy; {{ year }} BitnetFx. All rights reserved.</p>
+            <nav class="footer-links">
+                <a href="{% url 'users:support' %}">Support</a> |
+                <a href="{% url 'users:security' %}">Security</a> |
+                <a href="{% url 'users:profile' %}">Profile & Settings</a>
+            </nav>
+        </div>
+    </footer>
+
+
+   
+    <script src="{% static 'users/js/dashboard.js' %}"></script>
+    <script src="{% static 'users/js/ticker.js' %}"></script>
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

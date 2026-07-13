@@ -1,0 +1,50 @@
+{% extends "crypto_base.html" %}
+{% block content %}
+<section class="analysis-page">
+  <h1>Market Analysis</h1>
+  <p>
+    Welcome to Bitnet’s Market Analysis hub. Here you’ll find expert insights, 
+    trend reports, and performance reviews across Bitcoin, Ethereum, and altcoins.
+  </p>
+  <article class="analysis-block">
+    <h2>Latest Insights</h2>
+    <p>
+      Our analysts highlight trading volumes, investor sentiment, and adoption metrics 
+      to help you make smarter investment decisions. Stay informed with weekly updates 
+      on price movements, volatility indexes, and institutional activity.
+    </p>
+  </article>
+  <article class="analysis-block">
+    <h2>Bitcoin Trends</h2>
+    <p>
+      Bitcoin continues to dominate market capitalization. We track miner activity, 
+      global regulatory developments, and macroeconomic factors influencing BTC’s performance.
+    </p>
+    <a href="{% url 'bitcoin_reports' %}" class="btn">Read Bitcoin Reports</a>
+  </article>
+  <article class="analysis-block">
+    <h2>Ethereum Insights</h2>
+    <p>
+      Ethereum’s ecosystem is evolving with DeFi, NFTs, and staking. Our reports cover 
+      gas fees, network upgrades, and developer adoption to give you a full picture.
+    </p>
+    <a href="{% url 'ethereum_analysis' %}" class="btn">Explore Ethereum Analysis</a>
+  </article>
+  <article class="analysis-block">
+    <h2>Altcoin Reports</h2>
+    <p>
+      Beyond BTC and ETH, altcoins present unique opportunities. We analyze liquidity, 
+      community growth, and project fundamentals to identify promising investments.
+    </p>
+    <a href="{% url 'altcoin_reports' %}" class="btn">View Altcoin Reports</a>
+  </article>
+  <article class="analysis-block">
+    <h2>Investor Tools</h2>
+    <p>
+      Access interactive charts, sentiment trackers, and performance dashboards. 
+      These tools help you visualize market dynamics and make data-driven decisions.
+    </p>
+    <a href="#" class="btn">Launch Tools</a>
+  </article>
+</section>
+{% endblock %}

@@ -1,0 +1,70 @@
+{% extends "crypto_base.html" %}
+{% load static %}
+{% block content %}
+
+<section class="resources-section">
+  <h1 class="resources-title">Investor Resources</h1>
+  <p class="resources-subtitle">
+    Empowering you with knowledge, insights, and tools for smarter crypto investments.
+  </p>
+
+
+  <div class="resources-block">
+    <h2>Guides</h2>
+    <ul class="resources-list">
+      <li>
+        <a href="{% url 'deposit_guide' %}" class="deposit-link">
+            How to Make a Deposit
+        </a>
+        <p class="deposit-instructions">
+            To complete your first deposit, please follow these steps:
+            <br>1. Sign up and create your investor account.
+            <br>2. Upload your wallet address securely to your profile.
+            <br>3. Navigate to the <strong>Make Deposit</strong> option in your dashboard.
+            <br>4. Select your preferred payment method (USDT, BTC, Ethereum, etc.).
+            <br>5. Confirm the transaction to finalize your deposit.
+        </p>
+      </li>
+    </ul>
+  </div>
+
+
+  <div class="resources-block market-analysis">
+    <h2>Market Analysis</h2>
+    <p>Stay updated with expert insights into crypto market trends and performance.</p>
+    <a href="{% url 'market_analysis' %}" class="btn">Read Articles</a>
+    <div class="analysis-info">
+      <p>
+        Our market analysis provides in‑depth reports on Bitcoin, Ethereum, and altcoin trends, 
+        highlighting trading volumes, investor sentiment, and global adoption metrics. 
+        Access expert commentary and data‑driven insights to make smarter investment decisions.
+      </p>
+    </div>
+  </div>
+
+
+  <div class="resources-block">
+    <h2>Crypto Glossary</h2>
+    <p>
+      A comprehensive glossary of essential crypto and blockchain terms, 
+      designed to help investors, traders, and enthusiasts understand the 
+      language of digital finance.
+    </p>
+    <div class="glossary-preview">
+      <ul class="glossary-list">
+        <li><strong>Blockchain:</strong> A decentralized digital ledger that records transactions across multiple computers securely.</li>
+        <li><strong>Bitcoin (BTC):</strong> The first and most widely recognized cryptocurrency, often referred to as digital gold.</li>
+        <li><strong>Ethereum (ETH):</strong> A blockchain platform enabling smart contracts and decentralized applications (dApps).</li>
+        <li><strong>Altcoin:</strong> Any cryptocurrency other than Bitcoin, such as Litecoin, Cardano, or Solana.</li>
+        <li><strong>DeFi:</strong> Decentralized Finance — financial services built on blockchain without traditional intermediaries.</li>
+        <li><strong>Wallet:</strong> A digital tool (software or hardware) used to store and manage cryptocurrencies securely.</li>
+        <li><strong>Mining:</strong> The process of validating transactions and securing a blockchain network, often rewarded with new coins.</li>
+        <li><strong>Stablecoin:</strong> A cryptocurrency pegged to a stable asset (like USD) to reduce volatility.</li>
+      </ul>
+    </div>
+    <a href="{% url 'crypto_glossary' %}" class="btn">Explore Glossary</a>
+  </div>
+
+</section>
+
+{% endblock %}

@@ -1,0 +1,54 @@
+{% extends "crypto_base.html" %}
+{% load static %}
+{% block content %}
+
+<section class="about-section">
+
+  <div class="about-heading">
+    <h1 class="about-title">{{ about.heading }}</h1>
+    <p class="about-tagline">Integrating AI with crypto expertise to maximize investor profits</p>
+  </div>
+
+  <div class="about-container">
+
+    <div class="guideline-card">
+      <h2>Introduction</h2>
+      <p>{{ about.intro_text }}</p>
+    </div>
+
+    <div class="guideline-card">
+      <h2>Our Mission</h2>
+      <p>{{ about.mission_text }}</p>
+    </div>
+
+    <div class="guideline-card">
+      <h2>Advantages</h2>
+      <p>{{ about.advantages_text }}</p>
+    </div>
+
+    <div class="guideline-card">
+      <h2>Guarantees</h2>
+      <p>{{ about.guarantees_text }}</p>
+    </div>
+
+    <div class="guideline-card">
+      <h2>Extra Information</h2>
+      <p>{{ about.extra_text }}</p>
+    </div>
+
+    <div class="guideline-card">
+      <h2>Withdrawal Policy</h2>
+      <p>There are no fees at all for withdrawals, ensuring investors keep 100% of their profits.</p>
+    </div>
+
+    <div class="guideline-card">
+      <h2>Learn More</h2>
+      <p>Discover our comprehensive range of innovative features and professional investment services, thoughtfully designed to provide a secure, transparent, and seamless cryptocurrency investment experience. Explore how our advanced technology, expert market insights, and dedicated customer support work together to help you achieve your financial goals with confidence.
+</p>
+      <a href="{% url 'features' %}" class="read-more-btn">Read More</a>
+    </div>
+
+  </div>
+</section>
+
+{% endblock %}

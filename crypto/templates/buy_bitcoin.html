@@ -1,0 +1,79 @@
+{% extends "crypto_base.html" %}
+{% load static %}
+{% block content %}
+
+<section class="buy-bitcoin-section">
+
+  <div class="buy-bitcoin-heading">
+    <h1 class="buy-bitcoin-title">How to Buy Bitcoin</h1>
+    <p class="buy-bitcoin-tagline">Your guide to purchasing Bitcoin safely and securely</p>
+  </div>
+
+  <div class="buy-bitcoin-container">
+
+    <div class="guideline-card">
+      <h2>Step 1: Choose an Exchange</h2>
+      <p>Select a trusted cryptocurrency exchange or broker. Popular platforms provide user-friendly interfaces, secure wallets, and compliance with regulations. Always verify the platform’s reputation before registering.</p>
+    </div>
+
+    <div class="guideline-card">
+      <h2>Step 2: Create an Account</h2>
+      <p>Sign up with your email and complete identity verification (KYC). This ensures compliance with anti-money laundering laws and protects your account from fraud.</p>
+    </div>
+
+    <div class="guideline-card">
+      <h2>Step 3: Fund Your Account</h2>
+      <p>Deposit funds using your preferred payment method: bank transfer, credit/debit card, or stablecoins. Ensure you understand transaction fees and processing times.</p>
+    </div>
+
+    <div class="guideline-card">
+      <h2>Step 4: Buy Bitcoin</h2>
+      <p>Navigate to the trading section and select Bitcoin. Enter the amount you want to purchase and confirm the transaction. You can buy fractions of Bitcoin, starting from as little as $10.</p>
+    </div>
+
+    <div class="guideline-card">
+      <h2>Step 5: Secure Your Bitcoin</h2>
+      <p>Transfer your Bitcoin to a secure wallet. Hardware wallets and cold storage are recommended for long-term holding. Avoid leaving large amounts on exchanges.</p>
+    </div>
+
+    <div class="guideline-card">
+      <h2>Payment Methods</h2>
+      <ul>
+        <li>Bank Transfer (low fees, slower)</li>
+        <li>Credit/Debit Card (fast, higher fees)</li>
+        <li>Peer-to-Peer (direct, requires caution)</li>
+        <li>Stablecoins (quick conversion, minimal fees)</li>
+      </ul>
+    </div>
+
+    <div class="guideline-card">
+      <h2>Security Tips</h2>
+      <ul>
+        <li>Enable two-factor authentication (2FA)</li>
+        <li>Use strong, unique passwords</li>
+        <li>Withdraw to personal wallets</li>
+        <li>Beware of phishing scams</li>
+      </ul>
+    </div>
+
+    <div class="guideline-card">
+      <h2>Risks</h2>
+      <ul>
+        <li>Price volatility</li>
+        <li>Exchange hacks</li>
+        <li>Regulatory changes</li>
+        <li>Irreversible transactions</li>
+      </ul>
+    </div>
+
+    <div class="guideline-card">
+      <h2>Frequently Asked Questions</h2>
+      <p><strong>Can I buy less than 1 Bitcoin?</strong> Yes, Bitcoin is divisible into satoshis, allowing fractional purchases.</p>
+      <p><strong>How long does it take?</strong> Bank transfers may take days, while card purchases are instant.</p>
+      <p><strong>Is buying Bitcoin legal?</strong> Legality depends on your country. Always check local regulations.</p>
+    </div>
+
+  </div>
+</section>
+
+{% endblock %}

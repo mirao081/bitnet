@@ -1,0 +1,131 @@
+{% extends "users/dashboard_base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="dashboard-content">
+
+    <!-- Balance Card -->
+    <div class="card balance-card">
+        <div class="card-header">
+            <img src="{% static 'images/balance.png' %}" alt="Wallet Icon"> Balance
+        </div>
+        <div class="card-body">
+            <h3>${{ balance.balance }}</h3>
+            <p class="light-text">Available Trading Balance</p>
+        </div>
+    </div>
+
+    <!-- Active Investment Card -->
+    <div class="card investment-card">
+        <div class="card-header">
+            <img src="{% static 'images/active.png' %}" alt="Investment Icon"> Active Investment
+        </div>
+        <div class="card-body">
+            {% for inv in investments %}
+                <p>{{ inv.plan_name }} - ${{ inv.amount }}</p>
+            {% empty %}
+                <p>No active investments</p>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- Referral Card -->
+    <div class="card referral-card">
+        <div class="card-header">
+            <img src="{% static 'images/referrals.png' %}" alt="Referral Icon"> Referrals
+        </div>
+        <div class="card-body">
+            <h3>{{ referral.count }}</h3>
+            <p class="light-text">People registered with your referral link</p>
+        </div>
+    </div>
+
+    <!-- Total Earned Card -->
+    <div class="card earned-card">
+        <div class="card-header">
+            <img src="{% static 'images/total.png' %}" alt="Earned Icon"> Total Earned
+        </div>
+        <div class="card-body">
+            <h3>${{ total_earned }}</h3>
+            <p class="light-text">Your cumulative earnings</p>
+        </div>
+    </div>
+
+</div>
+
+<!-- Referral Section -->
+<div class="referral-section">
+    <h3 id="copy-header">Click to copy referral link</h3>
+    <a id="referral-link" 
+       href="http://127.0.0.1:8000/?ref={{ user.username }}" 
+       target="_blank">
+       http://127.0.0.1:8000/?ref={{ user.username }}
+    </a>
+    <p id="copy-status"></p>
+</div>
+
+<div class="analytics-section">
+    <h2 class="section-title">Performance Analytics</h2>
+    <p class="section-subtitle">
+        Graphs showing growth of investments over time.<br>
+        Daily/weekly/monthly ROI trends.<br>
+        Builds confidence by visualizing progress.
+    </p>
+
+    <div class="analytics-container">
+        <div class="analytics-card">
+            <div class="card-header">📈 Growth of Investments</div>
+            <div class="card-body">
+                <canvas id="growthChart"
+                        data-growth="{{ growth_data|safe }}"
+                        data-labels="{{ growth_labels|safe }}"></canvas>
+            </div>
+        </div>
+
+        <div class="analytics-card">
+            <div class="card-header">📊 ROI Trends</div>
+            <div class="card-body">
+                <canvas id="roiChart"
+                        data-roi="{{ roi_data|safe }}"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="notifications-section">
+    <div class="section-header">
+        <h2 class="section-title">Notifications</h2>
+        <p class="section-subtitle">Alerts for deposits, withdrawals, admin messages, or promotions.</p>
+    </div>
+    <div class="notifications-container">
+        <!-- notifications loop -->
+    </div>
+</div>
+
+<div class="recent-activity-section">
+    <div class="section-header">
+        <h2 class="section-title">Recent Activity</h2>
+        <p class="section-subtitle">Timeline of your latest account actions.</p>
+    </div>
+    <ul class="activity-list">
+        <!-- activity loop -->
+    </ul>
+</div>
+
+<div class="quick-actions-section">
+    <div class="section-header">
+        <h2 class="section-title">Quick Actions</h2>
+        <p class="section-subtitle">One‑click shortcuts to manage your account.</p>
+    </div>
+    <div class="quick-actions-container">
+        <a href="{% url 'users:make_deposit' %}" class="quick-action-btn">💰 Make Deposit</a>
+        <a href="{% url 'users:request_withdrawal' %}" class="quick-action-btn">💸 Request Withdrawal</a>
+        <a href="{% url 'users:start_investment' %}" class="quick-action-btn">📈 Start Investment</a>
+    </div>
+</div>
+
+
+
+<!-- External Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="{% static 'js/dashboard.js' %}"></script>
+{% endblock %}

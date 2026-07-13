@@ -1,0 +1,83 @@
+{% extends "users/dashboard_base.html" %}
+{% block content %}
+<div class="portfolio-container">
+    <!-- Chart Card -->
+    <div class="portfolio-card">
+        <div class="card-header">📊 Portfolio Overview</div>
+        <div class="card-body">
+            <canvas id="portfolioChart"></canvas>
+        </div>
+    </div>
+
+    <!-- Investments Card -->
+    <div class="investment-card">
+        <div class="card-header">📑 Active Investments</div>
+        <div class="card-body">
+            <table class="investment-table">
+                <thead>
+                    <tr>
+                        <th>Plan/Coin</th>
+                        <th>Amount</th>
+                        <th>Start Date</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for inv in investments %}
+                    <tr>
+                        <td>{{ inv.plan_name }}</td>
+                        <td>{{ inv.amount }}</td>
+                        <td>{{ inv.start_date|date:"Y-m-d" }}</td>
+                        <td>{{ inv.status }}</td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="4" class="text-center">No active investments found.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Chart.js + Inline Script -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const ctx = document.getElementById('portfolioChart').getContext('2d');
+    const data = {{ holdings|safe }};  // ✅ valid JSON from view
+
+    new Chart(ctx, {
+        type: 'pie',
+        data: {
+            labels: Object.keys(data),
+            datasets: [{
+                data: Object.values(data),
+                backgroundColor: ['#f2a900', '#3c3c3d', '#26a17b'], // BTC gold, ETH gray, USDT green
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'bottom',
+                    labels: { color: '#fff' }
+                },
+                tooltip: {
+                    callbacks: {
+                        label: function (context) {
+                            const dataset = context.dataset;
+                            const total = dataset.data.reduce((a, b) => a + b, 0);
+                            const value = dataset.data[context.dataIndex];
+                            const percentage = ((value / total) * 100).toFixed(1);
+                            return `${context.label}: ${value} (${percentage}%)`;
+                        }
+                    }
+                }
+            }
+        }
+    });
+});
+</script>
+{% endblock %}

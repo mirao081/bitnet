@@ -1,0 +1,158 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #111;
+    color: #fff;
+    margin: 0;
+}
+
+.dashboard-header {
+    background: #f7931a;
+    padding: 20px;
+    text-align: center;
+    color: #fff;
+}
+
+.dashboard-nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    background: #222;
+    margin: 0;
+    padding: 10px;
+}
+
+.dashboard-nav li {
+    margin: 0 15px;
+}
+
+.dashboard-nav a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.dashboard-nav a:hover {
+    color: #f7931a;
+}
+
+.dashboard-main {
+    padding: 40px;
+    text-align: center;
+}
+
+.dashboard-container {
+    background: #000;
+    border: 0.6px solid #fff;
+    border-radius: 8px;
+    padding: 30px;
+    display: inline-block;
+}
+.cards-container {
+    display: flex;
+    justify-content: space-around;
+    margin: 40px auto;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.card {
+    flex: 1 1 220px;   
+    height: 150px;
+    padding: 20px;
+    border-radius: 8px;
+    color: #fff;
+    text-align: center;
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.card.green { background: #28a745; }
+.card.red { background: #dc3545; }
+.card.darkblue { background: #003366; }
+.card.yellow { background: #ffc107; color: #000;
+}
+
+@media (max-width: 992px) {
+    .cards-container {
+        justify-content: center;
+    }
+    .card {
+        flex: 1 1 45%;  
+        height: 140px;
+    }
+}
+
+@media (max-width: 600px) {
+    .cards-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    .card {
+        width: 90%;     
+        height: 120px;
+    }
+}
+
+
+
+.sidebar {
+    width: 250px;
+    background: #222;
+    height: 100vh;
+    position: fixed;
+    left: -250px;
+    top: 0;
+    transition: left 0.3s ease;
+    padding: 80px 20px 20px; 
+}
+
+.sidebar.active {
+    left: 0;
+}
+
+.sidebar h2 {
+    color: #f7931a;
+    margin-bottom: 20px;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    margin: 15px 0;
+}
+
+.sidebar ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.sidebar ul li a:hover {
+    color: #f7931a;
+}
+
+.menu-icon {
+    font-size: 24px;
+    cursor: pointer;
+    padding: 15px;
+    background: #222;
+    color: #fff;
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    z-index: 1000;
+    display: none;
+}
+
+
+@media (max-width: 768px) {
+    .menu-icon {
+        display: block;
+    }
+}

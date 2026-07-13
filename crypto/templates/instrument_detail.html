@@ -1,0 +1,26 @@
+{% load static %}
+<div class="instrument-detail">
+  <div class="instrument-header">
+    <h2 class="instrument-name">{{ instrument.ticker }}</h2>
+    <span class="instrument-symbol">{{ instrument.symbol }}</span>
+  </div>
+
+  <div class="instrument-stats">
+    <p class="instrument-value">Price: <span>{{ instrument.price }}</span></p>
+    <p class="instrument-change {% if instrument.change_percent >= 0 %}up{% else %}down{% endif %}">
+       Change: {{ instrument.change_percent }}% ({{ instrument.change_value }})
+    </p>
+  </div>
+
+  <div class="instrument-extra">
+    <p>Bid: <span>{{ instrument.bid }}</span></p>
+    <p>Ask: <span>{{ instrument.ask }}</span></p>
+    <p>High: <span>{{ instrument.high }}</span></p>
+    <p>Low: <span>{{ instrument.low }}</span></p>
+    <p>Technical rating: <span>{{ instrument.technical_rating }}</span></p>
+  </div>
+
+  <div class="instrument-description">
+    {{ instrument.description|linebreaks }}
+  </div>
+</div>
