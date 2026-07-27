@@ -73,7 +73,7 @@ window.onload = function() {
         });
     }
 
-    const size = 80; // smaller coin size
+    const size = 80; 
 
     function animateBitcoin() {
         ctx.clearRect(0, 0, btcCanvas.width, btcCanvas.height);

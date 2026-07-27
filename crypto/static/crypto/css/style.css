@@ -5846,3 +5846,582 @@ section p {
 
 }
 
+section {
+  padding: 60px 20px;
+}
+
+/* Headings & text */
+h1, h2, h3, h4 {
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #111;
+}
+
+p {
+  margin-bottom: 15px;
+  color: #555;
+}
+
+/* ---------------------------
+   HERO SECTION
+   --------------------------- */
+.custom-hero {
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  color: #fff;
+  text-align: center;
+  padding: 100px 20px;
+}
+
+.custom-title {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.custom-title span {
+  display: block;
+  font-size: 1.2em;
+  color: #ffd700;
+}
+
+.custom-subtitle {
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+}
+
+.custom-action-buttons {
+  margin-top: 30px;
+}
+
+.custom-auth-btn {
+  display: inline-block;
+  margin: 0 10px;
+  padding: 12px 24px;
+  background: #ffd700;
+  color: #111;
+  font-weight: bold;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: background 0.3s ease;
+}
+
+.custom-auth-btn:hover {
+  background: #e6c200;
+}
+
+/* ---------------------------
+   LUXURY SECTION
+   --------------------------- */
+.custom-luxury {
+  background: #fff;
+  text-align: center;
+}
+
+.custom-luxury-title {
+  font-size: 1.8rem;
+  color: #203a43;
+}
+
+.custom-luxury-subheading {
+  font-size: 1.2rem;
+  margin: 20px auto;
+  max-width: 800px;
+  color: #444;
+}
+
+.custom-luxury-description {
+  max-width: 900px;
+  margin: 0 auto;
+  font-size: 1rem;
+  color: #555;
+}
+
+/* ---------------------------
+   CARDS SECTION
+   --------------------------- */
+.custom-cards .custom-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.custom-card {
+  flex: 1 1 calc(25% - 20px); /* 4 per row on desktop */
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  padding: 20px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.custom-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+}
+
+.custom-card-image img {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 15px;
+  border-radius: 6px;
+}
+
+.custom-card-text h2 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.custom-card-text p {
+  font-size: 0.95rem;
+  color: #666;
+}
+
+/* Responsive breakpoints */
+@media (max-width: 1024px) {
+  .custom-card {
+    flex: 1 1 calc(50% - 20px); /* 2 per row on tablets */
+  }
+}
+
+@media (max-width: 600px) {
+  .custom-card {
+    flex: 1 1 100%; /* 1 per row on mobile */
+  }
+}
+/* ===========================
+   PART 2: TOKEN SALE + SWING + EXCHANGE + INVESTMENT
+   =========================== */
+
+/* ---------------------------
+   TOKEN SALE SECTION
+   --------------------------- */
+.custom-token-sale {
+  background: #f4f4f4;
+}
+
+.custom-token-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.custom-token-left {
+  flex: 1 1 45%;
+}
+
+.custom-token-right {
+  flex: 1 1 45%;
+  text-align: center;
+}
+
+.custom-token-highlight {
+  font-size: 1.5rem;
+  color: #203a43;
+}
+
+.custom-token-main {
+  font-size: 2.2rem;
+  margin: 10px 0;
+  color: #111;
+}
+
+.custom-token-subtitle {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.custom-token-btn {
+  display: inline-block;
+  padding: 12px 24px;
+  background: #203a43;
+  color: #fff;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: background 0.3s ease;
+}
+
+.custom-token-btn:hover {
+  background: #2c5364;
+}
+
+#custom-countdown {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin: 20px 0;
+}
+
+.custom-time-block {
+  background: #fff;
+  padding: 15px;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.custom-value {
+  font-size: 1.5rem;
+  font-weight: bold;
+  display: block;
+}
+
+.custom-label {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+/* ---------------------------
+   SWING SECTION
+   --------------------------- */
+.custom-swing {
+  background: #fff;
+  text-align: center;
+}
+
+.custom-highlight {
+  font-size: 1rem;
+  color: #ffd700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.custom-main-title {
+  font-size: 2rem;
+  margin: 20px 0;
+}
+
+.custom-ash {
+  color: #999;
+}
+
+.custom-text-containers {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.custom-left-side,
+.custom-right-side {
+  flex: 1 1 45%;
+}
+
+.custom-text-box {
+  background: #f9f9f9;
+  padding: 20px;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  margin-bottom: 20px;
+}
+
+.custom-text-box h1 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+/* ---------------------------
+   EXCHANGE SECTION
+   --------------------------- */
+.custom-exchange {
+  background: #f4f4f4;
+}
+
+.custom-exchange-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.custom-exchange-main-image {
+  flex: 1 1 40%;
+}
+
+.custom-exchange-main-image img {
+  max-width: 100%;
+  border-radius: 8px;
+}
+
+.custom-exchange-text {
+  flex: 1 1 40%;
+}
+
+.custom-exchange-icons {
+  flex: 1 1 100%;
+  display: flex;
+  gap: 20px;
+  margin-top: 20px;
+  justify-content: center;
+}
+
+.custom-icon-box {
+  background: #fff;
+  padding: 10px;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+/* ---------------------------
+   INVESTMENT SECTION
+   --------------------------- */
+.custom-investment {
+  background: #fff;
+  text-align: center;
+}
+
+.custom-investment-title {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.custom-investment-subtitle {
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 40px;
+}
+
+.custom-line {
+  display: inline-block;
+  width: 40px;
+  height: 2px;
+  background: #ffd700;
+  margin: 0 10px;
+}
+
+.custom-investment-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.custom-investment-card {
+  flex: 1 1 calc(25% - 20px);
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  padding: 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.custom-investment-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+}
+
+.custom-card-top {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.custom-separator {
+  height: 2px;
+  margin: 10px 0;
+}
+
+.custom-separator.black {
+  background: #111;
+}
+
+.custom-separator.yellow {
+  background: #ffd700;
+}
+
+.custom-duration,
+.custom-grey {
+  font-size: 1rem;
+  margin: 10px 0;
+}
+
+.custom-headers {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 0;
+}
+
+.custom-amount {
+  font-weight: bold;
+  color: #203a43;
+}
+
+.custom-signup-btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background: #203a43;
+  color: #fff;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: background 0.3s ease;
+}
+
+.custom-signup-btn:hover {
+  background: #2c5364;
+}
+
+/* Responsive breakpoints */
+@media (max-width: 1024px) {
+  .custom-investment-card {
+    flex: 1 1 calc(50% - 20px);
+  }
+}
+
+@media (max-width: 600px) {
+  .custom-investment-card {
+    flex: 1 1 100%;
+  }
+}
+/* ===========================
+   PART 3: BITCOIN + FEATURES
+   =========================== */
+
+/* ---------------------------
+   BITCOIN SECTION
+   --------------------------- */
+.custom-bitcoin {
+  background: #f4f4f4;
+}
+
+.custom-bitcoin-flex {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.custom-calculator-container {
+  flex: 1 1 45%;
+  background: #fff;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.custom-bitcoin-title {
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+}
+
+.custom-dark-yellow {
+  color: #ffd700;
+}
+
+.custom-white {
+  color: #111;
+}
+
+.custom-calc-row {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.custom-calc-row input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.custom-btc-box img {
+  width: 40px;
+  height: 40px;
+}
+
+.custom-equals {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.custom-result-box {
+  flex: 1;
+  padding: 10px;
+  background: #f9f9f9;
+  border-radius: 4px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.custom-calc-row select {
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+}
+
+.custom-canvas-container {
+  flex: 1 1 45%;
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+/* ---------------------------
+   FEATURES SECTION
+   --------------------------- */
+.custom-features {
+  background: #fff;
+}
+
+.custom-features-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.custom-features-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.custom-feature-card {
+  flex: 1 1 calc(25% - 20px);
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  padding: 20px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.custom-feature-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+}
+
+.custom-feature-card img {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 15px;
+  border-radius: 6px;
+}
+
+.custom-feature-card h3 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.custom-feature-card p {
+  font-size: 0.95rem;
+  color: #666;
+}
+
+/* Responsive breakpoints */
+@media (max-width: 1024px) {
+  .custom-feature-card {
+    flex: 1 1 calc(50% - 20px);
+  }
+}
+
+@media (max-width: 600px) {
+  .custom-feature-card {
+    flex: 1 1 100%;
+  }
+}

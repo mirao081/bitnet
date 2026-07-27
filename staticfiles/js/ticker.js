@@ -4,21 +4,20 @@ document.addEventListener("DOMContentLoaded", function() {
   let maxScroll = track.scrollWidth - track.parentElement.offsetWidth;
 
   function animateTicker() {
-    if (window.innerWidth <= 768) { // only mobile
-      position += 2; // speed
+    if (window.innerWidth <= 768) { 
+      position += 2; 
       if (position > maxScroll) {
-        position = 0; // reset to start
-        setTimeout(() => requestAnimationFrame(animateTicker), 3000); // pause 3s
+        position = 0; 
+        setTimeout(() => requestAnimationFrame(animateTicker), 3000); 
       } else {
         requestAnimationFrame(animateTicker);
       }
       track.style.transform = `translateX(-${position}px)`;
     } else {
-      track.style.transform = "none"; // desktop stays static
+      track.style.transform = "none"; 
     }
   }
 
-  // Function to simulate changing values
   function updateValues() {
     document.querySelectorAll(".ticker-item").forEach(function(item) {
       let valueEl = item.querySelector(".value");
@@ -26,8 +25,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
       let currentValue = parseFloat(valueEl.textContent);
       if (isNaN(currentValue)) return;
-
-      // Random delta between -5 and +5
       let delta = (Math.random() - 0.5) * 10;
       let newValue = (currentValue + delta).toFixed(2);
       let percentChange = ((delta / currentValue) * 100).toFixed(2);
@@ -43,8 +40,6 @@ document.addEventListener("DOMContentLoaded", function() {
       }
     });
   }
-
-  // Start both loops
   animateTicker();
-  setInterval(updateValues, 5000); // update numbers every 5s
+  setInterval(updateValues, 5000); 
 });

@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", function () {
-    // total seconds in 365 days
     let totalSeconds = 365 * 24 * 60 * 60;
 
     const daysEl = document.getElementById("days");
@@ -26,11 +25,10 @@ document.addEventListener("DOMContentLoaded", function () {
         minutesEl.textContent = minutes;
         secondsEl.textContent = seconds;
 
-        totalSeconds--; // decrement by one second
+        totalSeconds--; 
     }
 
-    // run immediately so you see the first tick
     updateCountdown();
-    // then run every second
+
     setInterval(updateCountdown, 1000);
 });

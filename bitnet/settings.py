@@ -25,9 +25,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-ebvp@sv(3j6b4yg-kzys3$9c*lv^wb^h9=c#7giu*!mubr%0%4'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
+ALLOWED_HOSTS = ['gloria1231.pythonanywhere.com']
 
-ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -136,7 +136,7 @@ LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = '/users/dashboard/' 
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'crypto/static')]
+# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  
 
