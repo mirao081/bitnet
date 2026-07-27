@@ -1,7 +1,31 @@
 {% extends "users/dashboard_base.html" %}
+{% load static %}
+
 {% block content %}
-<div class="card">
-    <h2>📈 Start Investment</h2>
-    <p>Choose an investment plan. (Form will go here later.)</p>
+<div class="deposit-page">
+    <h1 class="page-title">📈 Start Investment</h1>
+    <p class="page-subtitle">Budget-Friendly Plans — Choose your preferable plan</p>
+
+    <div class="deposit-cards">
+        {% for plan in plans %}
+        <div class="deposit-card">
+            <h2 class="card-title">{{ plan.name }}</h2>
+            <p class="card-description">
+                {{ plan.percentage_text }}<br>
+                {{ plan.duration_text }}<br>
+                {{ plan.maturity_text }}<br>
+                Minimum: ${{ plan.min_amount }} | Maximum: ${{ plan.max_amount }}
+            </p>
+
+            <form method="post">
+                {% csrf_token %}
+                <input type="hidden" name="plan_id" value="{{ plan.id }}">
+                <label for="amount-{{ plan.id }}" class="input-label">Amount (USD)</label>
+                <input type="number" id="amount-{{ plan.id }}" name="amount" placeholder="Enter amount" class="amount-input" min="{{ plan.min_amount }}" max="{{ plan.max_amount }}">
+                <button type="submit" class="deposit-btn">Invest in {{ plan.name }}</button>
+            </form>
+        </div>
+        {% endfor %}
+    </div>
 </div>
 {% endblock %}

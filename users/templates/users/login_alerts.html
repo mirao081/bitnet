@@ -1,0 +1,14 @@
+{% extends "users/dashboard_base.html" %}
+{% block title %}Login Alerts{% endblock %}
+{% block content %}
+<div class="security-subpage">
+    <h2>Login Alerts</h2>
+    <p>Receive notifications when your account is accessed from a new device or location.</p>
+    <form method="post">
+        {% csrf_token %}
+        <label><input type="checkbox" name="email_alerts"> Email Alerts</label><br>
+        <label><input type="checkbox" name="sms_alerts"> SMS Alerts</label><br>
+        <button type="submit" class="security-btn">Save Preferences</button>
+    </form>
+</div>
+{% endblock %}

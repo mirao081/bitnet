@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", function () {
-    // Sidebar toggle
     const sidebar = document.querySelector(".sidebar");
     const hamburger = document.querySelector(".hamburger");
     const closeIcon = document.querySelector(".close-icon");
@@ -17,8 +16,6 @@ document.addEventListener("DOMContentLoaded", function () {
             closeIcon.classList.remove("show");
         });
     }
-
-    // Referral link copy handler
     const copyHeader = document.getElementById("copy-header");
     if (copyHeader) {
         copyHeader.addEventListener("click", function () {
@@ -31,8 +28,6 @@ document.addEventListener("DOMContentLoaded", function () {
             });
         });
     }
-
-    // Growth Chart
     const growthCanvas = document.getElementById('growthChart');
     if (growthCanvas) {
         const growthData = JSON.parse(growthCanvas.getAttribute("data-growth"));
@@ -64,8 +59,6 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         });
     }
-
-    // ROI Chart
     const roiCanvas = document.getElementById('roiChart');
     if (roiCanvas) {
         const roiData = JSON.parse(roiCanvas.getAttribute("data-roi"));
@@ -93,4 +86,16 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         });
     }
+    const changeButtons = document.querySelectorAll(".btn-change");
+    changeButtons.forEach(button => {
+        button.addEventListener("click", function () {
+            const targetId = this.getAttribute("data-target");
+            const input = document.getElementById(targetId);
+            if (input && input.hasAttribute("readonly")) {
+                input.removeAttribute("readonly");
+                input.classList.add("unlocked"); 
+                input.focus();
+            }
+        });
+    });
 });

@@ -1,0 +1,174 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ settings.site_name }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="site-name">
+                <a href="/" class="brand">
+                    {% if settings.logo %}
+                        <img src="{% static 'images/bitnetlogo.png' %}" alt="Bitnet.com Logo">
+                    {% endif %}
+                    <span>{{ settings.site_name }}</span>
+                </a>
+            </div>
+
+            <div class="nav-links-container">
+                <ul class="nav-links">
+                    {% for link in nav_links %}
+                        {% if not link.parent %}
+                            <li class="{% if link.children.all %}has-submenu{% endif %}">
+                                <a href="{{ link.url }}" class="{% if request.path == link.url %}active{% endif %}">
+                                    {{ link.name }}
+                                </a>
+                                {% if link.children.all %}
+                                    <ul class="submenu">
+                                        {% for child in link.children.all %}
+                                            <li>
+                                                <a href="{{ child.url }}" class="{% if request.path == child.url %}active{% endif %}">
+                                                    {{ child.name }}
+                                                </a>
+                                            </li>
+                                        {% endfor %}
+                                    </ul>
+                                {% endif %}
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+                <div class="buy-now">
+                    <a href="{{ settings.buy_button_url }}" class="buy-button">{{ settings.buy_button_text }}</a>
+                </div>
+            </div>
+
+            <div class="nav-actions">
+                <button class="menu-toggle" id="menu-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="market-ticker">
+        <div class="ticker-track" id="tickerTrack">
+            {% for instrument in instruments %}
+                <a href="{% url 'crypto:instrument_detail' instrument.pk %}" class="ticker-item">
+                    <span class="name">{{ instrument.ticker }}</span>
+                    <span class="value">{{ instrument.price }}</span>
+                    <span class="change {% if instrument.change_percent < 0 %}down{% else %}up{% endif %}">
+                        {{ instrument.change_percent }}% ({{ instrument.change_value }})
+                    </span>
+                </a>
+            {% endfor %}
+        </div>
+    </div>
+    <canvas id="hero-canvas"></canvas>
+    <canvas id="bitcoinCanvas"></canvas>
+
+
+    <div class="page-content">
+        {% block content %}
+        {% endblock %}
+    </div>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-row">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="{% url 'crypto:home' %}">Home</a></li>
+                    <li><a href="{% url 'crypto:about' %}">About Us</a></li>
+                    <li><a href="{% url 'crypto:faqs' %}">FAQs</a></li>
+                    <li><a href="{% url 'crypto:terms' %}">Terms and Conditions</a></li>
+                    <li><a href="{% url 'crypto:contact' %}">Contact Us</a></li>
+                </ul>
+            </div>    
+            <div class="footer-row">
+                <h3>Help & Support</h3>
+                <ul>
+                    <li><a href="{% url 'crypto:bitcoin_info' %}">What is Bitcoin?</a></li>
+                    <li><a href="{% url 'crypto:buy_bitcoin' %}">Buy Bitcoin</a></li>
+                    <li><a href="{% url 'crypto:signup' %}">Register</a></li>
+                    <li><a href="{% url 'crypto:login' %}">Login</a></li>
+                </ul>
+            </div>   
+            <div class="footer-row">
+                <h3>Contact Us</h3>
+                <p>Email: <a href="mailto:support@bitnet.trade">support@Bitnet.trade</a></p>
+                <p>Availability: Mon–Sun 24/7</p>
+            </div> 
+            <div class="footer-row">
+                <h3>Office Address</h3>
+                <p>10 Downing Street<br>
+                   Westminster<br>
+                   London<br>
+                   SW1A 2AA<br>
+                   United Kingdom
+                </p>
+            </div>     
+            <div class="footer-row">
+                <h3>Supported Payment Methods</h3>
+                <div class="payment-icons">
+                    <img src="{% static 'images/btc1.png' %}" alt="Bitcoin" />
+                    <img src="{% static 'images/ethe.png' %}" alt="Ethereum" />
+                    <img src="{% static 'images/usdt.png' %}" alt="USDT" />
+                </div>
+            </div>  
+
+            <div class="footer-bottom">
+                <p>Copyright © 2018 BitnetFx. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+   
+    <button id="scrollBottomBtn" title="Go to bottom">↓</button>
+    <button id="scrollTopBtn" title="Go to top">↑</button>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="{% static 'js/bitcoin.js' %}"></script>
+    <script src="{% static 'js/menu.js' %}"></script>
+    <script src="{% static 'js/ticker.js' %}"></script>
+    <script src="{% static 'js/script.js' %}"></script>
+    <script src="{% static 'js/resources.js' %}"></script>
+
+    {% block extra_js %}{% endblock %}
+
+    <script type="text/javascript">
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    (function(){
+    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+    s1.async=true;
+    s1.src='https://embed.tawk.to/6a553ed1dbb9f41d4608dbc4/1jtefqoue';
+    s1.charset='UTF-8';
+    s1.setAttribute('crossorigin','*');
+    s0.parentNode.insertBefore(s1,s0);
+    })();
+    </script>
+  
+
+    <script type="text/javascript">
+        {% if request.user.is_authenticated %}
+            Tawk_API.onLoad = function() {
+                Tawk_API.setAttributes({
+                    'name' : '{{ request.user.username }}',
+                    'email' : '{{ request.user.email }}'
+                }, function(error){});
+            };
+        {% endif %}
+</script>
+
+</body>
+</html>

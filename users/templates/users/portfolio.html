@@ -1,83 +1,101 @@
 {% extends "users/dashboard_base.html" %}
+{% load static %}
 {% block content %}
 <div class="portfolio-container">
-    <!-- Chart Card -->
-    <div class="portfolio-card">
+    <div class="portfolio-card shiny-card">
         <div class="card-header">📊 Portfolio Overview</div>
         <div class="card-body">
-            <canvas id="portfolioChart"></canvas>
+           <canvas id="portfolioChart" data-holdings='{{ holdings|safe }}'></canvas>
         </div>
     </div>
-
-    <!-- Investments Card -->
-    <div class="investment-card">
-        <div class="card-header">📑 Active Investments</div>
+    <div class="allocation-card shiny-card">
+        <div class="card-header">📊 Asset Allocation</div>
         <div class="card-body">
-            <table class="investment-table">
+            <canvas id="allocationChart"></canvas>
+        </div>
+    </div>
+    <div class="performance-card shiny-card">
+        <div class="card-header">📈 Performance Metrics</div>
+        <div class="card-body">
+            <p><strong>Total Invested:</strong> ${{ total_invested }}</p>
+            <p><strong>Current Value:</strong> ${{ current_value }}</p>
+            <p><strong>ROI:</strong> {{ roi }}%</p>
+            <p><strong>Best Performing Asset:</strong> {{ best_asset }}</p>
+        </div>
+    </div>
+    <div class="history-card shiny-card">
+        <div class="card-header">📉 Profit & Loss History</div>
+        <div class="card-body">
+            <canvas id="historyChart"></canvas>
+        </div>
+    </div>
+    <div class="transactions-card shiny-card">
+        <div class="card-header">💸 Recent Transactions</div>
+        <div class="card-body">
+            <table class="transaction-table">
                 <thead>
                     <tr>
-                        <th>Plan/Coin</th>
+                        <th>Date</th>
+                        <th>Type</th>
+                        <th>Asset</th>
                         <th>Amount</th>
-                        <th>Start Date</th>
-                        <th>Status</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {% for inv in investments %}
+                    {% for tx in transactions %}
                     <tr>
-                        <td>{{ inv.plan_name }}</td>
-                        <td>{{ inv.amount }}</td>
-                        <td>{{ inv.start_date|date:"Y-m-d" }}</td>
-                        <td>{{ inv.status }}</td>
+                        <td>{{ tx.date|date:"Y-m-d H:i" }}</td>
+                        <td>{{ tx.type }}</td>
+                        <td>{{ tx.asset }}</td>
+                        <td>${{ tx.amount }}</td>
                     </tr>
                     {% empty %}
                     <tr>
-                        <td colspan="4" class="text-center">No active investments found.</td>
+                        <td colspan="4" class="text-center">No recent transactions.</td>
                     </tr>
                     {% endfor %}
                 </tbody>
             </table>
         </div>
     </div>
+    <div class="market-card shiny-card">
+        <div class="card-header">💹 Live Market Prices</div>
+        <div class="card-body">
+            <ul>
+                <li>BTC: ${{ btc_price }}</li>
+                <li>ETH: ${{ eth_price }}</li>
+                <li>USDT: ${{ usdt_price }}</li>
+            </ul>
+        </div>
+    </div>
+    <div class="maturities-card shiny-card">
+        <div class="card-header">⏳ Upcoming Maturities</div>
+        <div class="card-body">
+            {% for inv in upcoming_investments %}
+                <p>{{ inv.plan_name }} matures on {{ inv.end_date|date:"Y-m-d" }}</p>
+            {% empty %}
+                <p>No upcoming maturities.</p>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="alerts-card shiny-card">
+        <div class="card-header">🔔 Alerts & Notifications</div>
+        <div class="card-body">
+            <p><strong>Risk Level:</strong> {{ risk_level }}</p>
+            <p><strong>Diversification Score:</strong> {{ diversification_score }}</p>
+            <p><strong>Volatility Index:</strong> {{ volatility_index }}</p>
+        </div>
+    </div>
+    <div class="export-card shiny-card">
+        <div class="card-header">📂 Download/Export</div>
+        <div class="card-body">
+            <a href="{% url 'users:export_portfolio_csv' %}" class="btn btn-golden">Export CSV</a>
+            <a href="{% url 'users:export_portfolio_pdf' %}" class="btn btn-golden">Export PDF</a>
+
+        </div>
+    </div>
+
 </div>
-
-<!-- Chart.js + Inline Script -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-    const ctx = document.getElementById('portfolioChart').getContext('2d');
-    const data = {{ holdings|safe }};  // ✅ valid JSON from view
-
-    new Chart(ctx, {
-        type: 'pie',
-        data: {
-            labels: Object.keys(data),
-            datasets: [{
-                data: Object.values(data),
-                backgroundColor: ['#f2a900', '#3c3c3d', '#26a17b'], // BTC gold, ETH gray, USDT green
-            }]
-        },
-        options: {
-            responsive: true,
-            plugins: {
-                legend: {
-                    position: 'bottom',
-                    labels: { color: '#fff' }
-                },
-                tooltip: {
-                    callbacks: {
-                        label: function (context) {
-                            const dataset = context.dataset;
-                            const total = dataset.data.reduce((a, b) => a + b, 0);
-                            const value = dataset.data[context.dataIndex];
-                            const percentage = ((value / total) * 100).toFixed(1);
-                            return `${context.label}: ${value} (${percentage}%)`;
-                        }
-                    }
-                }
-            }
-        }
-    });
-});
-</script>
+<script src="{% static 'users/js/portfolio.js' %}"></script>
 {% endblock %}

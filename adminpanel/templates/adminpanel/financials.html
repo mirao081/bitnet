@@ -1,0 +1,166 @@
+{% extends "adminpanel/admin_base.html" %}
+{% load static %}
+
+{% block content %}
+
+<div class="transaction-dashboard">
+
+    <h2 class="transaction-dashboard-title">
+        <span class="transaction-dashboard-title-text">
+            Transaction Control Center
+        </span>
+    </h2>
+
+    <form method="get" class="transaction-search-form mb-3">
+        <input
+            type="text"
+            name="q"
+            value="{{ search_query }}"
+            placeholder="Search users..."
+            class="transaction-search-input">
+
+        <button
+            type="submit"
+            class="transaction-search-btn">
+            Search
+        </button>
+    </form>
+
+    <!-- Scrollable Table -->
+    <div class="transaction-table-container">
+
+        <table class="table table-striped transaction-data-table">
+
+            <thead>
+                <tr>
+                    <th>S/N</th>
+                    <th>User</th>
+                    <th>Type</th>
+                    <th>Amount ($)</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                {% for item in page_obj %}
+
+                <tr>
+
+                    <td>
+                        <a href="javascript:void(0)"
+                           class="transaction-expand-toggle"
+                           onclick="toggleDetails({{ forloop.counter }})">
+                            +
+                        </a>
+                    </td>
+
+                    <td>{{ item.user }}</td>
+                    <td>{{ item.type }}</td>
+                    <td>${{ item.amount }}</td>
+
+                </tr>
+
+                <!-- Hidden Details -->
+                <tr id="details-{{ forloop.counter }}"
+                    class="transaction-detail-row"
+                    style="display:none;">
+
+                    <td colspan="4">
+
+                        <div class="transaction-detail-card">
+
+                            <p>
+                                <strong>Transaction Type:</strong>
+                                {{ item.type }}
+                            </p>
+
+                            <p>
+                                <strong>Date:</strong>
+                                {{ item.date|date:"Y-m-d H:i" }}
+                            </p>
+
+                            <p>
+                                <strong>Status:</strong>
+                                {{ item.status }}
+                            </p>
+
+                            {% if item.type == "Deposit" %}
+
+                            <form method="post"
+                                  action="{% url 'adminpanel:update_deposit_status' item.id %}"
+                                  class="transaction-status-form">
+
+                                {% csrf_token %}
+
+                                <select
+                                    name="status"
+                                    class="transaction-status-select">
+
+                                    <option value="">-- Select --</option>
+                                    <option value="pending">Pending</option>
+                                    <option value="approved">Success</option>
+                                    <option value="fail">Failed</option>
+
+                                </select>
+
+                                <button
+                                    type="submit"
+                                    class="transaction-update-btn">
+
+                                    Update
+
+                                </button>
+
+                            </form>
+
+                            {% endif %}
+
+                        </div>
+
+                    </td>
+
+                </tr>
+
+                {% empty %}
+
+                <tr>
+
+                    <td colspan="4" class="transaction-empty-message">
+                        No records found.
+                    </td>
+
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+    <div class="transaction-pagination">
+
+        {% if page_obj.has_previous %}
+            <a href="?page={{ page_obj.previous_page_number }}&q={{ search_query }}">
+                Previous
+            </a>
+        {% endif %}
+
+        <span>
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+        </span>
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}&q={{ search_query }}">
+                Next
+            </a>
+        {% endif %}
+
+    </div>
+
+</div>
+
+<script src="{% static 'adminpanel/js/toggle_details.js' %}"></script>
+
+{% endblock %}

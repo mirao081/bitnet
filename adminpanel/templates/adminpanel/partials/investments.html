@@ -1,0 +1,53 @@
+<ul class="activity-list">
+
+{% for inv in recent_investments %}
+
+<li>
+
+<span class="user">{{ inv.user.username }}</span>
+
+invested
+
+<span class="amount">${{ inv.amount }}</span>
+
+in
+
+<span class="plan">{{ inv.plan_name }}</span>
+
+<span class="status">{{ inv.status }}</span>
+
+</li>
+
+{% empty %}
+
+<li class="empty">No recent investments</li>
+
+{% endfor %}
+
+</ul>
+
+<div class="pagination">
+
+{% if recent_investments.has_previous %}
+<a href="?investment_page={{ recent_investments.previous_page_number }}"
+class="ajax-page"
+data-section="investments">
+← Previous
+</a>
+{% endif %}
+
+<span>
+Page {{ recent_investments.number }}
+of
+{{ recent_investments.paginator.num_pages }}
+</span>
+
+{% if recent_investments.has_next %}
+<a href="?investment_page={{ recent_investments.next_page_number }}"
+class="ajax-page"
+data-section="investments">
+Next →
+</a>
+{% endif %}
+
+</div>

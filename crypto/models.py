@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.contrib.auth.models import User  
 # Create your models here.
 
 class SiteSetting(models.Model):
@@ -73,7 +73,7 @@ class TokenSaleSection(models.Model):
     button_url = models.CharField(max_length=200, default="/register")
 
     right_title = models.CharField(max_length=200, default="The trading platform for the future")
-    end_date = models.DateTimeField()  # when the countdown ends
+    end_date = models.DateTimeField()  
     contribution_received = models.DecimalField(max_digits=20, decimal_places=2, default=0)
     min_target = models.DecimalField(max_digits=20, decimal_places=2, default=0)
     max_target = models.DecimalField(max_digits=20, decimal_places=2, default=0)
@@ -105,9 +105,9 @@ class SwingContainer(models.Model):
 
 
 class ExchangeSection(models.Model):
-    title = models.CharField(max_length=255)   # h3 element
-    description = models.TextField()           # p element
-    main_image = models.ImageField(upload_to="exchange/")  # computer image
+    title = models.CharField(max_length=255)   
+    description = models.TextField()          
+    main_image = models.ImageField(upload_to="exchange/")  
 
     def __str__(self):
         return self.title
@@ -120,19 +120,34 @@ class ExchangeIcon(models.Model):
     def __str__(self):
         return f"Icon for {self.section.title}"
     
-    
+class InvestmentPlanSlide(models.Model):
+    title = models.CharField(max_length=200)
+    button_text = models.CharField(max_length=50, default="Sign Up")
+    order = models.PositiveIntegerField(default=0)
+
+    class Meta:
+        ordering = ["order"]
+        verbose_name = "Investment Plan Slide"
+        verbose_name_plural = "Investment Plan Slides"
+
+    def __str__(self):
+        return self.title
+
+
 class InvestmentPlan(models.Model):
-    name = models.CharField(max_length=100)              
+    name = models.CharField(max_length=100)
     percentage_text = models.CharField(max_length=100)  
+    roi_percent = models.DecimalField(max_digits=5, decimal_places=2, default=0.00)
     duration_text = models.CharField(max_length=100)    
+    duration_hours = models.PositiveIntegerField(default=24)  
     maturity_text = models.CharField(
-        max_length=200, 
+        max_length=200,
         default="Capital is returned on maturity"
     )
     min_amount = models.DecimalField(max_digits=12, decimal_places=2, default=0.00)
     max_amount = models.DecimalField(max_digits=12, decimal_places=2, default=0.00)
     button_text = models.CharField(max_length=50, default="Sign Up")
-    button_url = models.CharField(max_length=200, default="/register/")   
+    button_url = models.CharField(max_length=200, default="/signup/")
 
     class Meta:
         verbose_name = "Investment Plan"
@@ -142,19 +157,21 @@ class InvestmentPlan(models.Model):
         return self.name
 
 
-class InvestmentPlanSlide(models.Model):
-    title = models.CharField(max_length=200)
-    subtitle = models.TextField(blank=True, null=True)
-    button_text = models.CharField(max_length=50, default="Get Started")
-    button_url = models.CharField(max_length=200, blank=True, null=True)
-    order = models.PositiveIntegerField(default=0)
+class Wallet(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    plan = models.ForeignKey(InvestmentPlan, on_delete=models.SET_NULL, null=True, blank=True)
+    balance = models.DecimalField(max_digits=12, decimal_places=2, default=0.00)
+    gas_fee_paid = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
+    created_at = models.DateTimeField(auto_now_add=True)
 
-    class Meta:
-        ordering = ['order']
+    def deduct_gas_fee(self):
+        if self.plan:
+            self.gas_fee_paid += self.plan.min_amount * (self.plan.roi_percent / 100)
+            self.balance -= self.gas_fee_paid
+            self.save()
 
     def __str__(self):
-        return self.title
-    
+        return f"{self.user.username}'s Wallet"
 
 class InvestmentPlanCard(models.Model):
     title = models.CharField(max_length=200)

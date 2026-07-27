@@ -1,0 +1,73 @@
+{% extends "adminpanel/admin_base.html" %}
+{% load static %}
+{% block content %}
+<div class="payment-wrapper">
+    <h1 class="payment-title">Payment Methods</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="payment-card">
+            <h3>ETH Wallet</h3>
+            {% if wallet.eth_qr %}
+                <img id="eth-qr-preview" src="{{ wallet.eth_qr.url }}" class="qr-preview" alt="ETH QR">
+            {% else %}
+                <img id="eth-qr-preview" class="qr-preview" style="display:none;" alt="ETH QR">
+            {% endif %}
+            {{ form.eth_wallet }}
+            <div class="qr-upload">
+                <button type="button" class="browse-btn" onclick="document.getElementById('id_eth_qr').click()">Browse</button>
+                <input type="file" id="id_eth_qr" name="eth_qr" style="display:none;">
+                <input type="text" id="eth-qr-placeholder" value="Choose new Address qrcode file..." readonly>
+            </div>
+            <button type="submit" class="wallet-update-btn">Update ETH Wallet</button>
+        </div>
+        <div class="payment-card">
+            <h3>BTC Wallet</h3>
+            {% if wallet.btc_qr %}
+                <img id="btc-qr-preview" src="{{ wallet.btc_qr.url }}" class="qr-preview" alt="BTC QR">
+            {% else %}
+                <img id="btc-qr-preview" class="qr-preview" style="display:none;" alt="BTC QR">
+            {% endif %}
+            {{ form.btc_wallet }}
+            <div class="qr-upload">
+                <button type="button" class="browse-btn" onclick="document.getElementById('id_btc_qr').click()">Browse</button>
+                <input type="file" id="id_btc_qr" name="btc_qr" style="display:none;">
+                <input type="text" id="btc-qr-placeholder" value="Choose new Address qrcode file..." readonly>
+            </div>
+            <button type="submit" class="wallet-update-btn">Update BTC Wallet</button>
+        </div>
+        <div class="payment-card">
+            <h3>USDT ERC20 Wallet</h3>
+            {% if wallet.usdt_erc20_qr %}
+                <img id="erc20-qr-preview" src="{{ wallet.usdt_erc20_qr.url }}" class="qr-preview" alt="ERC20 QR">
+            {% else %}
+                <img id="erc20-qr-preview" class="qr-preview" style="display:none;" alt="ERC20 QR">
+            {% endif %}
+            {{ form.usdt_erc20_wallet }}
+            <div class="qr-upload">
+                <button type="button" class="browse-btn" onclick="document.getElementById('id_usdt_erc20_qr').click()">Browse</button>
+                <input type="file" id="id_usdt_erc20_qr" name="usdt_erc20_qr" style="display:none;">
+                <input type="text" id="erc20-qr-placeholder" value="Choose new Address qrcode file..." readonly>
+            </div>
+            <button type="submit" class="wallet-update-btn">Update USDT ERC20 Wallet</button>
+        </div>
+        <div class="payment-card">
+            <h3>USDT TRC20 Wallet</h3>
+            {% if wallet.usdt_trc20_qr %}
+                <img id="trc20-qr-preview" src="{{ wallet.usdt_trc20_qr.url }}" class="qr-preview" alt="TRC20 QR">
+            {% else %}
+                <img id="trc20-qr-preview" class="qr-preview" style="display:none;" alt="TRC20 QR">
+            {% endif %}
+            {{ form.usdt_trc20_wallet }}
+            <div class="qr-upload">
+                <button type="button" class="browse-btn" onclick="document.getElementById('id_usdt_trc20_qr').click()">Browse</button>
+                <input type="file" id="id_usdt_trc20_qr" name="usdt_trc20_qr" style="display:none;">
+                <input type="text" id="trc20-qr-placeholder" value="Choose new Address qrcode file..." readonly>
+            </div>
+            <button type="submit" class="wallet-update-btn">Update USDT TRC20 Wallet</button>
+        </div>
+    </form>
+</div>
+
+<link rel="stylesheet" href="{% static 'adminpanel/css/payment_methods.css' %}">
+<script src="{% static 'adminpanel/js/payment_methods.js' %}"></script>
+{% endblock %}

@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 
 from pathlib import Path
 import os
+from django.urls import reverse_lazy
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -40,7 +41,14 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'crypto',
     "users",
+    'adminpanel',
+    'django.contrib.humanize',
+    'django_recaptcha',
+
 ]
+RECAPTCHA_PUBLIC_KEY = "6LePdGEtAAAAAOYRf55UPsgUTQLVC3rUkFM_lTZO"
+RECAPTCHA_PRIVATE_KEY = "6LePdGEtAAAAAJSE9so-55j80i6S75_-jxYTXdqm"
+RECAPTCHA_USE_SSL = True
    
 
 
@@ -122,6 +130,10 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
+
+
+LOGIN_URL = '/login/'
+LOGIN_REDIRECT_URL = '/users/dashboard/' 
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'crypto/static')]

@@ -1,0 +1,14 @@
+{% extends "users/dashboard_base.html" %}
+{% block title %}Transaction Receipt{% endblock %}
+
+{% block content %}
+<div class="receipt-container">
+    <h1>Transaction Receipt</h1>
+    <p>ID: {{ transaction.id }}</p>
+    <p>Date: {{ transaction.date|date:"Y-m-d H:i" }}</p>
+    <p>Type: {{ transaction.get_type_display }}</p>
+    <p>Asset: {{ transaction.asset }}</p>
+    <p>Amount: {{ transaction.amount }}</p>
+    <p>Status: {{ transaction.status|title }}</p>
+</div>
+{% endblock %}

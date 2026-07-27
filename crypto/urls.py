@@ -2,6 +2,9 @@ from django.urls import path
 from . import views
 from .views import contact_view
 
+app_name = "crypto"
+
+
 urlpatterns = [
     path('', views.home, name='home'),
     path('about/', views.about, name='about'),
@@ -11,6 +14,7 @@ urlpatterns = [
     path('affiliate/', views.affiliate, name="affiliate"),
     path('signup/', views.signup_view, name="signup"),
     path('login/', views.login_view, name="login"),
+    path("twofa-verify/", views.twofa_verify, name="twofa_verify"),
     path("logout/", views.logout_view, name="logout"),
     path('teams/', views.teams, name="teams"),
     path("services/", views.services, name="services"),
@@ -33,6 +37,8 @@ urlpatterns = [
     path('ethereum-analysis/', views.ethereum_analysis, name='ethereum_analysis'),
     path('altcoin-reports/', views.altcoin_reports, name='altcoin_reports'),
     path('crypto-glossary/', views.crypto_glossary, name='crypto_glossary'),
-
-
+    path("register/", views.signup_view, name="register"),
+    path("twofa-setup/", views.twofa_setup, name="twofa_setup"),
+    path("twofa-reset/", views.twofa_reset, name="twofa_reset"),
+    path("twofa-verify/", views.twofa_verify, name="twofa_verify"),
 ]

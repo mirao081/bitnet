@@ -1,0 +1,77 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}Admin Dashboard{% endblock %}</title>
+  <link rel="stylesheet" href="{% static 'adminpanel/css/admin.css' %}">
+</head>
+<body>
+  <div class="market-ticker">
+    <div class="ticker-track" id="tickerTrack">
+      {% for instrument in instruments %}
+        <a href="{% url 'crypto:instrument_detail' instrument.pk %}" class="ticker-item">
+          <span class="name golden">{{ instrument.ticker }}</span>
+          <span class="value navy">{{ instrument.price|default:"0.00" }}</span>
+          <span class="change crimson {% if instrument.change_percent < 0 %}down{% else %}up{% endif %}">
+            {{ instrument.change_percent|default:"0.00" }}% ({{ instrument.change_value|default:"0.00" }})
+          </span>
+        </a>
+      {% endfor %}
+    </div>
+  </div>
+  <header class="mobile-header">
+    <div class="menu-toggle">
+      <span class="hamburger">&#9776;</span>
+      <span class="close-icon">&times;</span>
+    </div>
+    <div class="logo">
+      <img src="{% static 'images/bitnetlogo.png' %}" alt="BitnetFx Logo">
+    </div>
+  </header>
+  <aside class="sidebar">
+    <div class="logo">
+        <h2>
+            <span class="logo-bitnet">BitnetFx</span>
+            <span class="logo-admin">Admin</span>
+        </h2>
+    </div>
+    <nav class="sidebar-nav">
+      <ul>
+        <li><a href="{% url 'adminpanel:dashboard' %}">Dashboard</a></li>
+        <li><a href="{% url 'adminpanel:admin_investment_plans' %}">Investment Plans</a></li>
+        <li><a href="{% url 'adminpanel:investment_history' %}">Records</a></li>
+        <li><a href="{% url 'adminpanel:payment_methods' %}">Payment Methods</a></li>
+        <li class="has-submenu">
+          <a href="javascript:void(0)" class="submenu-toggle">Finance</a>
+          <ul class="submenu">
+            <a href="{% url 'adminpanel:all_financials' %}">Deposits & Investments</a>
+            <li><a href="{% url 'adminpanel:withdrawals' %}">Withdrawal Requests</a></li>
+            <li><a href="{% url 'adminpanel:all_transactions' %}">Transactions</a></li>
+          </ul>
+        </li>
+
+        <li><a href="{% url 'adminpanel:verifications' %}">User Verification (KYC)</a></li>
+        <li><a href="{% url 'adminpanel:admin_wallets' %}">User Wallets</a></li>
+        <li><a href="{% url 'adminpanel:logout' %}">Logout</a></li>
+      </ul>
+    </nav>
+  </aside>
+  <main class="main-content">
+    {% block content %}
+  
+    {% endblock %}
+  </main>
+  <footer class="dashboard-footer">
+    <div class="footer-container">
+      <p>&copy; {{ year }} BitnetFx. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="{% static 'adminpanel/js/market_scroll.js' %}"></script>
+  <script src="{% static 'adminpanel/js/sidebar_toggle.js' %}"></script>
+  <script src="{% static 'adminpanel/js/update_plan.js' %}"></script>
+
+</body>
+</html>

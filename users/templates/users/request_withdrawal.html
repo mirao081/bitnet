@@ -1,7 +1,99 @@
 {% extends "users/dashboard_base.html" %}
 {% block content %}
-<div class="card">
-    <h2>💸 Request Withdrawal</h2>
-    <p>Withdraw funds from your account. (Form will go here later.)</p>
+
+<div class="withdraw-request-container">
+    <h1 class="withdraw-request-title">Withdraw Funds</h1>
+    <p class="withdraw-request-subtitle">
+        Withdraw your earnings to your saved crypto wallet.
+    </p>
+
+    <div class="withdraw-request-card">
+
+        <form method="post" action="{% url 'users:request_withdrawal' %}">
+            {% csrf_token %}
+
+            <!-- Select Asset -->
+            <label for="currency" class="withdraw-request-label">
+                Select Asset
+            </label>
+
+            <select id="currency" name="currency" class="withdraw-request-select" required>
+                <option value="BTC">Bitcoin (BTC)</option>
+                <option value="ETH">Ethereum (ETH)</option>
+                <option value="USDT_ERC20">USDT ERC20</option>
+                <option value="USDT_TRC20">USDT TRC20</option>
+            </select>
+
+            <!-- Amount -->
+            <label for="amount" class="withdraw-request-label">
+                Amount (USD)
+            </label>
+
+            <input
+                type="number"
+                id="amount"
+                name="amount"
+                placeholder="Enter withdrawal amount"
+                min="200"
+                required
+            >
+
+            <p class="withdraw-request-note">
+                Minimum withdrawal is $200.
+            </p>
+
+            <!-- Wallet Address -->
+            <label for="wallet_address" class="withdraw-request-label">
+                Destination Wallet Address
+            </label>
+
+            <input
+                type="text"
+                id="wallet_address"
+                name="wallet_address"
+                readonly
+                required
+            >
+
+            <div class="withdraw-request-warning">
+                <p>
+                    The selected asset will be withdrawn to the wallet address shown above.
+                </p>
+            </div>
+
+            <button type="submit" class="withdraw-request-btn">
+                Submit Withdrawal
+            </button>
+
+        </form>
+
+    </div>
 </div>
+
+<!-- Pass Django wallet data to JavaScript -->
+{{ wallets|json_script:"wallet-data" }}
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const wallets = JSON.parse(
+        document.getElementById("wallet-data").textContent
+    );
+
+    const currencySelect = document.getElementById("currency");
+    const walletInput = document.getElementById("wallet_address");
+
+    function updateWallet() {
+        walletInput.value = wallets[currencySelect.value] || "";
+    }
+
+    // Load wallet on page load
+    updateWallet();
+
+    // Update wallet when asset changes
+    currencySelect.addEventListener("change", updateWallet);
+
+});
+</script>
+
 {% endblock %}

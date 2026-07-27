@@ -1,8 +1,103 @@
 {% extends "users/dashboard_base.html" %}
-
 {% block title %}Support{% endblock %}
-
 {% block content %}
-<h1>Support</h1>
-<p>Support content goes here.</p>
+<div class="support-center-container">
+
+    <h1 class="support-center-title">Customer Support</h1>
+
+    <p class="support-center-subtitle">
+        Welcome to BitnetFX Support. Find answers to common questions or contact our support team anytime.
+    </p>
+    <div class="support-center-grid">
+
+        {% for article in articles %}
+        <div class="support-center-card">
+
+            <h2 class="support-center-card-title">
+                {{ article.title }}
+            </h2>
+
+            <p class="support-center-card-text">
+                {{ article.content }}
+            </p>
+
+            <span class="support-center-category">
+                {{ article.get_category_display }}
+            </span>
+
+        </div>
+        {% empty %}
+
+        <div class="support-center-card">
+
+            <h2 class="support-center-card-title">
+                No Articles Yet
+            </h2>
+
+            <p class="support-center-card-text">
+                We're currently preparing helpful guides and frequently asked questions. Please check back soon.
+            </p>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+    <div class="support-center-grid">
+
+        <div class="support-center-card">
+
+            <h2 class="support-center-card-title">
+                Email Support
+            </h2>
+
+            <p class="support-center-card-text">
+                Reach our support team at any time through email.
+            </p>
+
+            <div class="support-center-contact">
+                📧 support@bitnetfx.com
+            </div>
+
+        </div>
+
+
+        <div class="support-center-card">
+
+            <h2 class="support-center-card-title">
+                Phone Support
+            </h2>
+
+            <p class="support-center-card-text">
+                Speak directly with our representatives.
+            </p>
+
+            <div class="support-center-contact">
+                📞 +234-800-123-4567
+            </div>
+
+        </div>
+
+
+        <div class="support-center-card">
+
+            <h2 class="support-center-card-title">
+                Live Chat
+            </h2>
+
+            <p class="support-center-card-text">
+                Get instant assistance from within your dashboard.
+            </p>
+
+            <div class="support-center-contact">
+                💬 Available 24/7
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
 {% endblock %}

@@ -1,0 +1,40 @@
+{% extends "crypto/crypto_base.html" %}
+
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/page.css' %}">
+
+<div class="legals-page">
+    <h1>Legals</h1>
+
+    <div class="legals-cards">
+      
+        <div class="legal-card">
+            <h2><a href="{% url 'crypto:terms' %}">Terms and Conditions</a></h2>
+            <p class="section-intro">
+                Our Terms and Conditions outline the rules, responsibilities, and agreements you accept when using BitnetFX.
+                They ensure transparency and protect both you and our platform.
+            </p>
+            <div class="section-content">
+                {% include "crypto/terms_content.html" %}
+            </div>
+            <div>
+                {% include "crypto/faqs_content.html" %}
+            </div>
+        </div>
+
+      
+        <div class="legal-card">
+            <h2><a href="{% url 'crypto:faqs' %}">FAQs</a></h2>
+            <p class="section-intro">
+                Our Frequently Asked Questions provide quick answers to common queries about accounts, deposits, trading, and security.
+                Explore them here or visit the full FAQ page for more details.
+            </p>
+            <div class="section-content">
+               {% include "crypto/terms_content.html" %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,146 @@
+{% extends "adminpanel/admin_base.html" %}
+{% load static %}
+
+{% block title %}Admin Dashboard{% endblock %}
+
+{% block content %}
+
+<h1 class="admin-page-title">Admin Dashboard</h1>
+<div class="stats-grid">
+    <div class="stat-card"><h2>Total Users</h2><p>{{ total_users }}</p></div>
+    <div class="stat-card"><h2>Total Deposits</h2><p>${{ total_deposits }}</p></div>
+    <div class="stat-card"><h2>Total Investments</h2><p>${{ total_investments }}</p></div>
+    <div class="stat-card"><h2>Active Investments</h2><p>{{ active_investments }}</p></div>
+    <div class="stat-card"><h2>Total Withdrawals</h2><p>${{ total_withdrawals }}</p></div>
+</div>
+<div class="activity-grid">
+
+    <div class="activity-card">
+        <h2>Recent Investments</h2>
+        <div id="investments-container">
+            {% include "adminpanel/partials/investments.html" %}
+        </div>
+    </div>
+
+    <div class="activity-card">
+        <h2>Recent Users</h2>
+        <div id="users-container">
+            {% include "adminpanel/partials/users.html" %}
+        </div>
+    </div>
+
+</div>
+<div class="activity-card" id="all-users">
+    <h2>({{ total_users }} Users)</h2>
+    <div class="users-toolbar">
+        <button id="copy-btn">Copy</button>
+        <button id="excel-btn">Excel</button>
+        <button id="pdf-btn">PDF</button>
+        <button id="colvis-btn">Column Visibility</button>
+        <input type="text" id="search-input" placeholder="Search user...">
+    </div>
+    <div class="users-table-container">
+        <table class="users-table" id="users-table">
+            <thead>
+                <tr>
+                    <th>S/N</th>
+                    <th>Username</th>
+                    <th>Email</th>
+                    <th>Balance</th>
+                    <th>Referrer</th>
+                    <th>Status</th>
+                    <th>Date Joined</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in all_users %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>
+                        <a href="{% url 'adminpanel:user_detail' user.id %}" class="toggle-link">+</a>
+                        {{ user.username }}
+                    </td>
+                    <td>{{ user.email }}</td>
+                    <td>${{ user.userprofile.usd_balance|default:"0.00" }}</td>
+                    <td>
+                        {% if user.userprofile.referrer %}
+                            {{ user.userprofile.referrer.username }}
+                        {% else %}
+                            -
+                        {% endif %}
+                    </td>
+                    <td>{{ user.userprofile.verification_status|default:"pending" }}</td>
+                    <td>{{ user.date_joined }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div class="pagination">
+        <button id="prev-btn">Previous</button>
+        <span id="page-number">{{ all_users.number }}</span>
+        <button id="next-btn">Next</button>
+    </div>
+</div>
+<div class="activity-card" id="referrals">
+    <h2>Referral Performance</h2>
+
+    <!-- Search form -->
+    <form method="get" action="" class="referral-search">
+        <input type="text" name="q" placeholder="Search usernames..." value="{{ query }}">
+        <button type="submit">Search</button>
+    </form>
+
+    <!-- Scrollable table -->
+    <div class="referrals-table-container">
+        <table class="referrals-table" id="referrals-table">
+            <thead>
+                <tr>
+                    <th>S/N</th>
+                    <th>User</th>
+                    <th>Referrer</th>
+                    <th>Referral Count</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for referral in referrals %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ referral.user.username }}</td>
+                    <td>{{ referral.referrer.username|default:"-" }}</td>
+                    <td>{{ referral.referrer.referrals.count }}</td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="4">No referrals found.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Pagination controls -->
+    <div class="referrals-pagination">
+        {% if referrals.has_previous %}
+            <a href="?page={{ referrals.previous_page_number }}{% if query %}&q={{ query }}{% endif %}">
+                <button id="ref-prev">Previous</button>
+            </a>
+        {% endif %}
+
+        <span id="ref-page">Page {{ referrals.number }} of {{ referrals.paginator.num_pages }}</span>
+
+        {% if referrals.has_next %}
+            <a href="?page={{ referrals.next_page_number }}{% if query %}&q={{ query }}{% endif %}">
+                <button id="ref-next">Next</button>
+            </a>
+        {% endif %}
+    </div>
+</div>
+
+</div>
+
+<script src="{% static 'adminpanel/js/dashboard_pagination.js' %}"></script>
+<script src="{% static 'adminpanel/js/all_users_table.js' %}"></script>
+
+{% endblock %}

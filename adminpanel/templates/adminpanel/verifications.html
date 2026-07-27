@@ -1,0 +1,131 @@
+{% extends "adminpanel/admin_base.html" %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'adminpanel/css/kyc.css' %}">
+{% endblock %}
+{% block content %}
+
+<div class="verification-wrapper">
+    <div class="page-header">
+        <div>
+            <h1 class="page-title">KYC Verification Center</h1>
+            <p class="page-subtitle">
+                Review customer identity documents and securely approve or reject
+                verification requests submitted by platform users.
+            </p>
+        </div>
+        <div class="verification-count">
+            {{ page_obj.paginator.count }}
+            Verification{{ page_obj.paginator.count|pluralize }}
+        </div>
+    </div>
+    {% if messages %}
+    <div class="feedback-messages">
+        {% for message in messages %}
+        <div class="alert {{ message.tags }}">{{ message }}</div>
+        {% endfor %}
+    </div>
+    {% endif %}
+    <div class="table-card">
+        <table class="verification-table">
+            <thead>
+                <tr>
+                    <th>User</th>
+                    <th>Email</th>
+                    <th>Document</th>
+                    <th>Status</th>
+                    <th>Submitted</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for kyc in page_obj %}
+            <tr>
+                <td>
+                    <div class="user-info">
+                        <div class="avatar">{{ kyc.user.username|first|upper }}</div>
+                        <div>
+                            <div class="user-name">{{ kyc.user.username }}</div>
+                            <div class="user-id">User #{{ kyc.user.id }}</div>
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    {% if kyc.user.email %}
+                        <span class="email">{{ kyc.user.email }}</span>
+                    {% else %}
+                        <span class="no-doc">No email</span>
+                    {% endif %}
+                </td>
+                <td>
+                    {% if kyc.document %}
+                        <a href="{{ kyc.document.url }}" target="_blank" class="doc-link">📄 View Document</a>
+                    {% else %}
+                        <div class="document-empty"><span>📁</span><span>No document uploaded</span></div>
+                    {% endif %}
+                </td>
+                <td>
+                    {% if kyc.status == "approved" %}
+                        <span class="status status-approved">✔ Approved</span>
+                    {% elif kyc.status == "rejected" %}
+                        <span class="status status-rejected">✖ Rejected</span>
+                    {% else %}
+                        <span class="status status-pending">⏳ Pending</span>
+                    {% endif %}
+                </td>
+                <td>
+                    <div class="submitted-date">
+                        {{ kyc.submitted_at|date:"M d, Y" }}
+                        <small>{{ kyc.submitted_at|date:"H:i" }}</small>
+                    </div>
+                </td>
+                <td>
+                    <div class="action-buttons">
+                        {% if kyc.status != "approved" %}
+                        <form method="post" action="{% url 'adminpanel:approve_kyc' kyc.id %}">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-success">✔ Approve</button>
+                        </form>
+                        {% endif %}
+                        {% if kyc.status != "rejected" %}
+                        <form method="post" action="{% url 'adminpanel:reject_kyc' kyc.id %}">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-danger">✖ Reject</button>
+                        </form>
+                        {% endif %}
+                    </div>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="6" class="empty-row">
+                    <div class="empty-state">
+                        <div class="empty-icon">📂</div>
+                        <h3>No Verification Requests</h3>
+                        <p>There are currently no KYC submissions awaiting review.</p>
+                    </div>
+                </td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div id="pagination" class="pagination">
+        {% if page_obj.has_previous %}
+            <a href="?page={{ page_obj.previous_page_number }}#pagination" class="btn btn-link">← Previous</a>
+        {% endif %}
+
+        <span class="page-info">
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+        </span>
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}#pagination" class="btn btn-link">Next →</a>
+        {% endif %}
+    </div>
+
+</div>
+
+{% endblock %}

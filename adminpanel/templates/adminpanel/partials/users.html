@@ -1,0 +1,54 @@
+<ul class="activity-list">
+
+{% for u in recent_users %}
+
+<li>
+
+<span class="user">{{ u.username }}</span>
+
+<span class="joined">
+
+Joined {{ u.date_joined|date:"Y-m-d H:i" }}
+
+</span>
+
+</li>
+
+{% empty %}
+
+<li class="empty">No new users</li>
+
+{% endfor %}
+
+</ul>
+
+<div class="pagination">
+
+{% if recent_users.has_previous %}
+<a href="?user_page={{ recent_users.previous_page_number }}"
+class="ajax-page"
+data-section="users">
+← Previous
+</a>
+{% endif %}
+
+<span>
+
+Page {{ recent_users.number }}
+
+of
+
+{{ recent_users.paginator.num_pages }}
+
+</span>
+
+{% if recent_users.has_next %}
+<a href="?user_page={{ recent_users.next_page_number }}"
+class="ajax-page"
+data-section="users">
+Next →
+
+</a>
+{% endif %}
+
+</div>

@@ -1,0 +1,11 @@
+{% extends "users/dashboard_base.html" %}
+{% block title %}2FA Verification{% endblock %}
+{% block content %}
+<h2>Two-Factor Authentication</h2>
+<p>Enter the 6-digit code from your authenticator app.</p>
+<form method="post">
+    {% csrf_token %}
+    <input type="text" name="otp" placeholder="Enter 6-digit code" required>
+    <button type="submit">Verify</button>
+</form>
+{% endblock %}

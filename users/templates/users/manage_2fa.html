@@ -1,0 +1,22 @@
+{% extends "users/dashboard_base.html" %}
+{% block title %}Manage 2FA{% endblock %}
+{% block content %}
+<div class="security-subpage">
+    <h2>Two-Factor Authentication (2FA)</h2>
+    <p>Secure your account by enabling 2FA. Scan the QR code with your authenticator app and enter the code below.</p>
+
+    <div class="qr-box">
+        {% if qr_b64 %}
+            <img src="data:image/png;base64,{{ qr_b64 }}" alt="QR Code">
+        {% else %}
+            <p>No QR code generated yet.</p>
+        {% endif %}
+    </div>
+
+    <form method="post" class="security-form">
+        {% csrf_token %}
+        <input type="text" name="otp" placeholder="Enter 6-digit code" required>
+        <button type="submit" class="security-btn">Verify & Enable</button>
+    </form>
+</div>
+{% endblock %}

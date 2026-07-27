@@ -1,0 +1,166 @@
+{% extends "adminpanel/admin_base.html" %}
+{% load static %}
+{% block title %}User Detail{% endblock %}
+{% block content %}
+<div class="user-detail-container">
+    {% if messages %}
+    <div class="messages">
+    {% for message in messages %}
+        <div class="alert {{ message.tags }}">
+        {{ message }}
+        </div>
+    {% endfor %}
+    </div>
+    {% endif %}
+
+    <h1 class="page-title user-detail">User Detail: <span>{{ user.username }}</span></h1>
+
+    <div class="user-info-card">
+        <p><strong>Email:</strong> {{ user.email }}</p>
+        <p><strong>Balance:</strong> ${{ profile.usd_balance|default:"0.00" }}</p>
+        <p><strong>Referrer:</strong> {{ profile.referrer|default:"-" }}</p>
+        <p><strong>Status:</strong> {{ profile.verification_status|default:"pending" }}</p>
+    </div>
+
+    <div class="update-section">
+        <div class="update-card">
+            <h3>✉️ Send Email</h3>
+            <form method="post" action="{% url 'adminpanel:update_user' user.id %}">
+                {% csrf_token %}
+                <input type="hidden" name="action" value="send_email">
+                <label>Subject</label>
+                <input type="text" name="subject" class="form-input" required>
+                <label>Message</label>
+                <textarea name="message" class="form-textarea" required></textarea>
+                <button type="submit" class="btn-primary">Send Email</button>
+            </form>
+        </div>
+
+        <div class="update-card">
+            <h3>💰 Fund Account</h3>
+            <p class="balance">Current Balance: ${{ profile.usd_balance|default:"0.00" }}</p>
+            <form method="post" action="{% url 'adminpanel:update_user' user.id %}">
+                {% csrf_token %}
+                <input type="hidden" name="action" value="fund_account">
+                <input type="number" step="0.01" name="amount" class="form-input" placeholder="Enter amount">
+                <button type="submit" class="btn-success">Fund Account</button>
+            </form>
+        </div>
+
+        <div class="update-card">
+            <h3>💳 Debit Account</h3>
+            <form method="post" action="{% url 'adminpanel:update_user' user.id %}">
+                {% csrf_token %}
+                <input type="hidden" name="action" value="debit_account">
+                <input type="number" step="0.01" name="amount" class="form-input" placeholder="Enter amount">
+                <button type="submit" class="btn-danger">Debit Account</button>
+            </form>
+        </div>
+
+        <div class="update-card">
+            <h3>📈 Add to Investment</h3>
+            <form method="post" action="{% url 'adminpanel:update_user' user.id %}">
+                {% csrf_token %}
+                <input type="hidden" name="action" value="add_investment">
+                <input type="number" step="0.01" name="amount" class="form-input">
+                <button type="submit" class="btn-primary">Add Investment</button>
+            </form>
+        </div>
+
+        <div class="update-card">
+            <h3>📉 Remove from Investment</h3>
+            <form method="post" action="{% url 'adminpanel:update_user' user.id %}">
+                {% csrf_token %}
+                <input type="hidden" name="action" value="remove_investment">
+                <input type="number" step="0.01" name="amount" class="form-input">
+                <button type="submit" class="btn-danger">Remove Investment</button>
+            </form>
+        </div>
+
+        <div class="update-card">
+            <h3>💵 Add Profit</h3>
+            <form method="post" action="{% url 'adminpanel:update_user' user.id %}">
+                {% csrf_token %}
+                <input type="hidden" name="action" value="add_profit">
+                <input type="number" step="0.01" name="amount" class="form-input">
+                <button type="submit" class="btn-success">Add Profit</button>
+            </form>
+        </div>
+
+        <div class="update-card">
+            <h3>📉 Remove Profit</h3>
+            <form method="post" action="{% url 'adminpanel:update_user' user.id %}">
+                {% csrf_token %}
+                <input type="hidden" name="action" value="remove_profit">
+                <input type="number" step="0.01" name="amount" class="form-input">
+                <button type="submit" class="btn-danger">Remove Profit</button>
+            </form>
+        </div>
+
+        <div class="update-card">
+            <h3>🎁 Add Bonus</h3>
+            <form method="post" action="{% url 'adminpanel:update_user' user.id %}">
+                {% csrf_token %}
+                <input type="hidden" name="action" value="add_bonus">
+                <input type="number" step="0.01" name="amount" class="form-input">
+                <button type="submit" class="btn-success">Add Bonus</button>
+            </form>
+        </div>
+
+        <div class="update-card">
+            <h3>🔒 Account Status</h3>
+            <form method="post" action="{% url 'adminpanel:update_user' user.id %}">
+                {% csrf_token %}
+                <input type="hidden" name="action" value="verify_account">
+                <select name="status" class="form-select">
+                    <option value="pending">Pending</option>
+                    <option value="request_document">Request Document</option>
+                    <option value="verified">Verified</option>
+                    <option value="update_billing">Update Billing</option>
+                </select>
+                <button type="submit" class="btn-primary">Update Status</button>
+            </form>
+        </div>
+
+        <div class="update-card">
+            <h3>👥 Referral Bonus</h3>
+            <form method="post" action="{% url 'adminpanel:update_user' user.id %}">
+                {% csrf_token %}
+                <input type="hidden" name="action" value="referral_bonus">
+                <input type="number" step="0.01" name="amount" class="form-input">
+                <button type="submit" class="btn-success">Add Referral Bonus</button>
+            </form>
+        </div>
+
+        <div class="update-card">
+            <h3>🔑 Change Password</h3>
+            <form method="post" action="{% url 'adminpanel:update_user' user.id %}">
+                {% csrf_token %}
+                <input type="hidden" name="action" value="change_password">
+                <input type="password" name="new_password" class="form-input" placeholder="New Password">
+                <button type="submit" class="btn-primary">Change Password</button>
+            </form>
+        </div>
+
+        <div class="update-card">
+            <h3>🚪 Log in as User</h3>
+            <form method="post" action="{% url 'adminpanel:update_user' user.id %}">
+                {% csrf_token %}
+                <input type="hidden" name="action" value="login_as_user">
+                <button type="submit" class="btn-warning">Log in as User</button>
+            </form>
+        </div>
+
+        <div class="update-card">
+            <h3>❌ Delete User</h3>
+            <form method="post" action="{% url 'adminpanel:update_user' user.id %}">
+                {% csrf_token %}
+                <input type="hidden" name="action" value="delete_user">
+                <button type="submit" class="btn-danger">Delete User</button>
+            </form>
+        </div>
+    </div>
+
+    <a href="{% url 'adminpanel:dashboard' %}" class="btn-back">← Back to Dashboard</a>
+</div>
+{% endblock %}

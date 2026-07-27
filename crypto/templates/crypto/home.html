@@ -1,0 +1,284 @@
+{% extends "crypto/crypto_base.html" %}
+
+{% load static %}
+
+{% block content %}
+<section class="hero-section">
+    <div class="bitnet-hero-content">
+
+        <span class="bitnet-badge">
+            ✦ Built on Web3. Powered by You
+        </span>
+
+        <h1 class="bitnet-title">
+            The Future
+            <span>of Leverage Is Here</span>
+        </h1>
+
+        <p class="bitnet-subtitle">
+            {{ page.subtitle }}
+        </p>
+
+        <div class="bitnet-description">
+            {{ page.body|safe }}
+        </div>
+
+    </div>
+    <div class="hero-action-buttons">
+        <a href="{% url 'crypto:login' %}" class="auth-button">Sign In</a>
+        <a href="{% url 'crypto:signup' %}" class="auth-button">Get Started</a>
+    </div>
+</section>
+
+<section class="luxury-section">
+
+    <div class="luxury-container">
+
+        <div class="luxury-title-box">
+            <span class="luxury-title">
+                {{ accessible.title }}
+            </span>
+        </div>
+
+        <h2 class="luxury-subheading">
+            Trade Smarter With A Secure Investment Platform Designed For Modern Investors, Advanced Trading Strategies, Long-Term Wealth Creation, And Exceptional Financial Growth.
+        </h2>
+
+        <p class="luxury-description">
+            Discover a powerful ecosystem where innovation meets reliability. Our platform combines intelligent investment tools, secure blockchain technology, real-time analytics, and world-class customer support to help you confidently grow your portfolio. Whether you're beginning your investment journey or managing professional assets, every feature has been carefully crafted to deliver speed, transparency, security, and an outstanding trading experience.
+        </p>
+
+    </div>
+
+</section>
+<section class="accessible-cards-section">
+    <div class="accessible-row two-cards">
+        {% for card in accessible_cards|slice:":2" %}
+        <div class="accessible-card side-card">
+            <div class="card-image swing-hover">
+                <img src="{{ card.image.url }}" alt="{{ card.title }}">
+            </div>
+            <div class="card-text">
+                <h2>{{ card.title }}</h2>
+                <p>{{ card.description }}</p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="accessible-row three-cards">
+        {% for card in accessible_cards|slice:"2:5" %}
+        <div class="accessible-card top-card">
+            <div class="card-image swing-hover">
+                <img src="{{ card.image.url }}" alt="{{ card.title }}">
+            </div>
+            <div class="card-text">
+                <h2>{{ card.title }}</h2>
+                <p>{{ card.description }}</p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+<section class="token-sale-section">
+    <div class="token-sale-container">
+        <div class="token-sale-left">
+            <h2 class="token-sale-highlight">{{ token_sale.left_title }}</h2>
+            <h1 class="token-sale-main">{{ token_sale.right_title }}</h1>
+            <p class="token-sale-subtitle">{{ token_sale.left_subtitle }}</p>
+            <a href="{{ token_sale.button_url }}" class="token-sale-button">
+                {{ token_sale.button_text }}
+            </a>
+        </div>
+
+        <div class="token-sale-right">
+            <h1 class="token-sale-heading">
+                The trading <span class="grey-text">platform</span> for the future
+            </h1>
+            <div id="countdown">
+                <div class="time-block">
+                    <span class="value" id="days">365</span>
+                    <span class="label">Days</span>
+                </div>
+                <div class="time-block">
+                    <span class="value" id="hours">0</span>
+                    <span class="label">Hours</span>
+                </div>
+                <div class="time-block">
+                    <span class="value" id="minutes">0</span>
+                    <span class="label">Minutes</span>
+                </div>
+                <div class="time-block">
+                    <span class="value" id="seconds">0</span>
+                    <span class="label">Seconds</span>
+                </div>
+            </div>
+            <p class="contribution">
+                ${{ token_sale.contribution_received }} contribution received
+            </p>
+            <p class="targets">
+                ${{ token_sale.min_target }} – ${{ token_sale.max_target }}
+            </p>
+        </div>
+    </div>
+</section>
+
+<section class="swing-section">
+    <a href="{% url 'crypto:features' %}">
+        <h4 class="highlight">{{ swing_section.highlight_text }}</h4>
+    </a>
+    
+    <h1 class="main-title">
+        {% for word in swing_section.main_title.split %}
+            {% if forloop.counter == 5 %}
+                <span class="ash">{{ word }}</span>
+            {% else %}
+                {{ word }}
+            {% endif %}
+        {% endfor %}
+    </h1>
+
+    <div class="text-containers">
+        <div class="left-side">
+            {% for container in swing_section.containers.all|slice:":2" %}
+                <div class="text-box">
+                    <h1>{{ container.title }}</h1>
+                    <p>{{ container.content }}</p>
+                </div>
+            {% endfor %}
+        </div>
+
+        <div class="right-side">
+            {% for container in swing_section.containers.all|slice:"2:4" %}
+                <div class="text-box">
+                    <h1>{{ container.title }}</h1>
+                    <p>{{ container.content }}</p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="exchange-section">
+    <div class="exchange-container">
+        <div class="exchange-main-image">
+            <img src="{{ exchange_section.main_image.url }}" alt="Main computer image">
+        </div>
+        <div class="exchange-text">
+            <h3>{{ exchange_section.title }}</h3>
+            <p>{{ exchange_section.description }}</p>
+        </div>
+        <div class="exchange-icons">
+            {% for icon in exchange_section.icons.all %}
+                <div class="icon-box">
+                    <img src="{{ icon.image.url }}" alt="Crypto icon">
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="investment-section">
+    <h1 class="investment-title">
+        <a href="{% url 'crypto:investment_plans' %}">
+            BUDGET-FRIENDLY <span>PLANS</span>
+        </a>
+    </h1>
+    <p class="investment-subtitle">
+        <span class="line"></span>
+        CHOOSE YOUR PREFERABLE PLAN FOR INVESTMENT
+        <span class="line"></span>
+    </p>
+
+    <div class="investment-cards">
+        {% for plan in plans %}
+        <div class="investment-card">
+            <div class="card-top">
+                <h1>{{ plan.name }}</h1>
+                <h1>{{ plan.percentage_text }}</h1>
+            </div>
+            <div class="separator black"></div>
+            <h1 class="duration">{{ plan.duration_text }}</h1>
+            <div class="separator yellow"></div>
+            <h1 class="grey">{{ plan.maturity_text }}</h1>
+            <div class="headers">
+                <div class="header-left">
+                    <h2>Minimum</h2>
+                    <h2 class="amount">${{ plan.min_amount }}</h2>
+                </div>
+                <div class="header-right">
+                    <h2>Maximum</h2>
+                    <h2 class="amount">${{ plan.max_amount }}</h2>
+                </div>
+            </div>
+            <a href="{{ plan.button_url }}" class="signup-button">
+                {{ plan.button_text }}
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+<section class="bitcoin-section">
+    
+
+    <div class="bitcoin-flex">
+        <div class="calculator-container">
+            <h1 class="bitcoin-title">
+                <span class="dark-yellow">{{ calculator.title_first }}</span>
+                <span class="white">{{ calculator.title_second }}</span>
+            </h1>
+                 <p class="subtitle">{{ calculator.subtitle }}</p>
+            <div class="calc-row">
+                <input type="number" id="btcAmount" placeholder="Enter amount" />
+
+                <div class="btc-box">
+                    <img src="{% static 'images/btc1.png' %}" alt="Bitcoin">
+                </div>
+
+                <span class="equals">=</span>
+
+                <div class="result-box" id="calcResult">0</div>
+
+                <select id="currencySelect">
+                    <option>ARS</option>
+                    <option>AUD</option>
+                    <option>BRL</option>
+                    <option>CAD</option>
+                    <option>CHF</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="canvas-container">
+            <canvas id="btcCalcCanvas"></canvas>
+        </div>
+    </div>
+</section>
+<section class="features-section">
+    <div class="features-container">
+        <div class="features-grid">
+            {% for item in feature_items %}
+                <div class="feature-card">
+                    <img src="{{ item.image.url }}" alt="{{ item.title }}">
+                    <h3>{{ item.title }}</h3>
+                    <p>{{ item.description }}</p>
+                </div>
+            {% endfor %}
+        </div>
+        <canvas id="NewBitcoinCanvas" width="350" height="620"></canvas>
+    </div>
+</section>
+
+
+
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/bitcoin.js' %}"></script>
+<script src="{% static 'js/countdown.js' %}"></script>
+<script src="{% static 'js/swing.js' %}"></script>
+<script src="{% static 'js/btcCanvas.js' %}"></script>
+<script src="{% static 'js/forex.js' %}"></script>
+{% endblock %}

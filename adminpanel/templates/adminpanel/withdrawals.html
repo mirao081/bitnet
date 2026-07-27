@@ -1,0 +1,203 @@
+{% extends "adminpanel/admin_base.html" %}
+{% load static %}
+{% block content %}
+<div class="withdraw-page">
+
+    <h1 class="withdraw-title">
+        Withdrawal Requests
+    </h1>
+
+    <form method="get" class="withdraw-search-form">
+
+        <input
+            type="text"
+            name="q"
+            value="{{ search_query }}"
+            placeholder="Search by username..."
+            class="withdraw-search-input"
+        >
+
+        <button
+            type="submit"
+            class="withdraw-search-btn">
+            Search
+        </button>
+
+    </form>
+
+
+    <div class="withdraw-table-wrapper">
+
+        <table class="withdraw-table">
+
+            <thead>
+
+                <tr>
+
+                    <th></th>
+
+                    <th>Account Name</th>
+
+                    <th>Amount ($)</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+            {% for withdrawal in page_obj %}
+
+                <tr>
+
+                    <td>
+
+                        <a href="javascript:void(0)"
+                           class="withdraw-toggle"
+                           onclick="toggleDetails({{ forloop.counter }})">
+
+                            +
+
+                        </a>
+
+                    </td>
+
+                    <td>{{ withdrawal.user.username }}</td>
+
+                    <td>${{ withdrawal.amount }}</td>
+
+                </tr>
+
+                <tr
+                    id="details-{{ forloop.counter }}"
+                    class="withdraw-details-row"
+                    style="display:none;">
+
+                    <td colspan="3">
+
+                        <div class="withdraw-details-box">
+
+                            <p>
+                                <strong>Currency:</strong>
+                                {{ withdrawal.currency }}
+                            </p>
+
+                            <p>
+                                <strong>Wallet Address:</strong>
+                                {{ withdrawal.wallet_address }}
+                            </p>
+
+                            <p>
+                                <strong>Date:</strong>
+                                {{ withdrawal.created_at|date:"Y-m-d H:i" }}
+                            </p>
+
+                            <p>
+                                <strong>Status:</strong>
+                                {{ withdrawal.status }}
+                            </p>
+
+                            <form
+                                method="post"
+                                action="{% url 'adminpanel:update_withdrawal_status' withdrawal.id %}"
+                                class="withdraw-update-form">
+
+                                {% csrf_token %}
+
+                                <select
+                                    name="status"
+                                    class="withdraw-select">
+
+                                    <option value="pending"
+                                    {% if withdrawal.status == "pending" %}selected{% endif %}>
+                                        Pending
+                                    </option>
+
+                                    <option value="approved"
+                                    {% if withdrawal.status == "approved" %}selected{% endif %}>
+                                        Approved
+                                    </option>
+
+                                    <option value="failed"
+                                    {% if withdrawal.status == "failed" %}selected{% endif %}>
+                                        Failed
+                                    </option>
+
+                                </select>
+
+                                <button
+                                    type="submit"
+                                    class="withdraw-update-btn">
+
+                                    Update
+
+                                </button>
+
+                            </form>
+
+                        </div>
+
+                    </td>
+
+                </tr>
+
+            {% empty %}
+
+                <tr>
+
+                    <td colspan="3">
+
+                        No withdrawal requests found.
+
+                    </td>
+
+                </tr>
+
+            {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+
+    <div class="withdraw-pagination">
+
+        {% if page_obj.has_previous %}
+
+            <a href="?page={{ page_obj.previous_page_number }}&q={{ search_query }}">
+
+                Previous
+
+            </a>
+
+        {% endif %}
+
+        <span>
+
+            Page {{ page_obj.number }}
+
+            of
+
+            {{ page_obj.paginator.num_pages }}
+
+        </span>
+
+        {% if page_obj.has_next %}
+
+            <a href="?page={{ page_obj.next_page_number }}&q={{ search_query }}">
+
+                Next
+
+            </a>
+
+        {% endif %}
+
+    </div>
+
+</div>
+
+<script src="{% static 'adminpanel/js/toggle_details.js' %}"></script>
+
+{% endblock %}

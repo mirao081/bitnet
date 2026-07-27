@@ -4,7 +4,7 @@ from .models import (
     AccessibleSection, InvestmentPlanCard, AboutUs, AccessibleCard,
     TokenSaleSection, SwingSection, SwingContainer, ExchangeSection,
     ExchangeIcon, InvestmentPlan, BitcoinCalculator, FeatureItem,
-    MarketInstrument
+    MarketInstrument,Wallet
 )
 
 class AccessibleCardInline(admin.TabularInline):
@@ -52,9 +52,18 @@ class InvestmentPlanCardAdmin(admin.ModelAdmin):
 
 @admin.register(InvestmentPlan)
 class InvestmentPlanAdmin(admin.ModelAdmin):
-    list_display = ("name", "percentage_text", "duration_text", "min_amount", "max_amount", "button_text")
+    list_display = (
+        "name",
+        "percentage_text",
+        "duration_text",
+        "maturity_text",
+        "min_amount",
+        "max_amount",
+        "button_text",
+    )
     search_fields = ("name", "percentage_text", "duration_text")
     ordering = ("min_amount",)
+    
 
 @admin.register(AboutUs)
 class AboutUsAdmin(admin.ModelAdmin):
@@ -73,3 +82,4 @@ admin.site.register(SiteSetting)
 admin.site.register(NavigationLink)
 admin.site.register(PageContent)
 admin.site.register(MarketInstrument)
+admin.site.register(Wallet)

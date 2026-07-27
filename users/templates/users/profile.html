@@ -1,8 +1,218 @@
 {% extends "users/dashboard_base.html" %}
-
+{% load static %}
 {% block title %}Profile{% endblock %}
-
 {% block content %}
-<h1>Profile</h1>
-<p>Profile content goes here.</p>
+<div class="user-profile-page">
+    <div class="user-profile-header">
+        <h1 class="user-profile-title">Your Profile</h1>
+        <p class="user-profile-subtitle">
+            Manage your personal information, investments, security settings, and account preferences from one place.
+        </p>
+    </div>
+    <div class="user-profile-grid">
+
+        <div class="user-profile-card">
+            <h2 class="user-profile-card-title">Personal Information</h2>
+
+            <p><strong>Username:</strong> {{ request.user.username }}</p>
+            <p><strong>Email:</strong> {{ request.user.email }}</p>
+
+            {% if request.user.userprofile.phone %}
+            <p><strong>Phone:</strong> {{ request.user.userprofile.phone }}</p>
+            {% endif %}
+
+            {% if request.user.userprofile.country %}
+            <p><strong>Country:</strong> {{ request.user.userprofile.country }}</p>
+            {% endif %}
+
+            {% if request.user.userprofile.timezone %}
+            <p><strong>Timezone:</strong> {{ request.user.userprofile.timezone }}</p>
+            {% endif %}
+        </div>
+
+        <div class="user-profile-card">
+            <h2 class="user-profile-card-title">Account Balance</h2>
+
+            <p>
+                <strong>Available Balance:</strong>
+                ${{ request.user.userbalance.balance }}
+            </p>
+        </div>
+
+    </div>
+    <div class="user-profile-card">
+        <h2 class="user-profile-card-title">Investment Summary</h2>
+
+        <p><strong>Active Investments:</strong> {{ active_investments_count }}</p>
+        <p><strong>Total Invested:</strong> ${{ total_invested }}</p>
+        <p><strong>Total ROI Earned:</strong> ${{ total_roi }}</p>
+    </div>
+    <div class="user-profile-card">
+
+        <h2 class="user-profile-card-title">Recent Investments</h2>
+
+        <div class="user-profile-table-wrapper">
+
+            <table class="user-profile-table">
+
+                <thead>
+                    <tr>
+                        <th>Plan</th>
+                        <th>Amount</th>
+                        <th>Start Date</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    {% for inv in recent_investments %}
+                    <tr>
+                        <td>{{ inv.plan_name }}</td>
+                        <td>${{ inv.amount }}</td>
+                        <td>{{ inv.start_date|date:"Y-m-d H:i" }}</td>
+                        <td>{{ inv.status|title }}</td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="4">
+                            No recent investments found.
+                        </td>
+                    </tr>
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+    <div class="user-profile-card">
+
+        <h2 class="user-profile-card-title">
+            Investment Performance
+        </h2>
+
+        <canvas
+            id="roiChart"
+            data-labels='{{ chart_labels|safe }}'
+            data-data='{{ chart_data|safe }}'>
+        </canvas>
+
+    </div>
+    <div class="user-profile-grid">
+
+        <div class="user-profile-card">
+
+            <h2 class="user-profile-card-title">
+                Quick Actions
+            </h2>
+
+            <div class="user-profile-buttons">
+
+                <a href="{% url 'users:deposit' %}"
+                   class="user-profile-btn user-profile-btn-success">
+
+                    💰 Deposit Funds
+
+                </a>
+
+                <a href="{% url 'users:withdraw' %}"
+                   class="user-profile-btn user-profile-btn-danger">
+
+                    💸 Withdraw Funds
+
+                </a>
+
+            </div>
+
+        </div>
+
+        <div class="user-profile-card">
+
+            <h2 class="user-profile-card-title">
+                Security Settings
+            </h2>
+
+            <p>
+                <strong>Two-Factor Authentication:</strong>
+                {{ request.user.userprofile.two_factor_enabled|yesno:"Enabled,Disabled" }}
+            </p>
+
+            <p>
+                <strong>Last Login:</strong>
+                {{ request.user.last_login|date:"Y-m-d H:i" }}
+            </p>
+
+            <a href="{% url 'users:change_password' %}"
+               class="user-profile-btn user-profile-btn-warning">
+
+                🔑 Change Password
+
+            </a>
+
+        </div>
+
+    </div>
+    <div class="user-profile-card">
+
+        <h2 class="user-profile-card-title">
+            Referral Program
+        </h2>
+
+        <p>
+            Invite friends and earn referral commissions.
+        </p>
+
+        <p>
+            <strong>Your Referral Link:</strong><br>
+            {{ request.user.userprofile.referral_link }}
+        </p>
+
+        <p>
+            <strong>Total Referral Earnings:</strong>
+            ${{ referral_earnings }}
+        </p>
+
+    </div>
+
+    <div class="user-profile-card">
+
+        <h2 class="user-profile-card-title">
+            Account Settings
+        </h2>
+
+        <div class="user-profile-buttons">
+
+            <a href="{% url 'users:profile_settings' %}"
+               class="user-profile-btn user-profile-btn-primary">
+
+                Full Settings
+
+            </a>
+
+            <a href="{% url 'users:quick_settings' %}"
+               class="user-profile-btn user-profile-btn-secondary">
+
+                Quick Settings
+
+            </a>
+
+        </div>
+
+        <div class="user-profile-wallets">
+
+            {% include "users/_wallets_partial.html" %}
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="{% static 'js/profile_charts.js' %}"></script>
+
 {% endblock %}

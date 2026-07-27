@@ -1,0 +1,71 @@
+{% extends "adminpanel/admin_base.html" %}
+{% load static %}
+{% block content %}
+<div class="inv-history-wrapper">
+    <h1 class="inv-history-title">Investment History</h1>
+    <div class="inv-search">
+        <input type="text" id="inv-search-input" placeholder="Search investment...">
+    </div>
+    <div class="inv-table-container">
+        <table class="inv-history-table">
+            <thead>
+                <tr>
+                    <th>S/N</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for investment in investments %}
+            <tr id="inv-{{ investment.id }}">
+                <td>
+                    <button class="inv-toggle-btn">+</button>
+                </td>
+                <td>{{ investment.user.username }}</td>
+                <td>
+                    <div class="inv-plan-name">{{ investment.plan_name }}</div>
+                    <div class="inv-details-btn-wrapper">
+                        <a href="{% url 'adminpanel:investment_detail' investment.id %}" class="inv-details-btn">Click for details</a>
+                    </div>
+                </td>
+                <td>
+                    <form method="post" action="{% url 'adminpanel:update_investment_plan' investment.id %}?page={{ investments.number }}">
+                        {% csrf_token %}
+                        <button type="submit" class="inv-update-btn">Update</button>
+                    </form>
+                </td>
+            </tr>
+            <tr class="inv-expand-row" style="display:none;">
+                <td colspan="4">
+                    <strong>Capital:</strong> {{ investment.amount }} <br>
+                    <strong>Return:</strong> {{ investment.roi_percent }}% <br>
+                    <strong>Start:</strong> {{ investment.start_date }} <br>
+                    <strong>End:</strong> {{ investment.end_date }} <br>
+                    <button class="inv-delete-btn">Delete</button>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="4" style="text-align:center;">No investments found.</td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <div class="inv-pagination">
+            {% if investments.has_previous %}
+                <a href="?page={{ investments.previous_page_number }}" class="inv-page-btn">Previous</a>
+            {% endif %}
+
+            <span class="inv-page-info">
+                Page {{ investments.number }} of {{ investments.paginator.num_pages }}
+            </span>
+
+            {% if investments.has_next %}
+                <a href="?page={{ investments.next_page_number }}" class="inv-page-btn">Next</a>
+            {% endif %}
+        </div>
+    </div>
+</div>
+<script src="{% static 'adminpanel/js/investment_history.js' %}"></script>
+{% endblock %}

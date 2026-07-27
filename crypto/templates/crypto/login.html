@@ -1,0 +1,46 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login - Bitnet</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <!-- Load Google reCAPTCHA script -->
+    <script src="https://www.google.com/recaptcha/api.js?render=YOUR_SITE_KEY"></script>
+</head>
+<body class="login-body">
+    <div class="login-container">
+        <div class="login-logo">
+            <span class="site-name">BitnetFx</span>
+        </div>
+
+        <h2 class="login-title">Login to Your Account</h2>
+
+        <form method="post" class="login-form">
+            {% csrf_token %}
+            {{ form.non_field_errors }}
+
+            <!-- Render Django form fields -->
+            {{ form.username }}
+            {{ form.password }}
+
+            <!-- Hidden reCAPTCHA field -->
+            <input type="hidden" id="id_captcha" name="captcha">
+
+            <button type="submit" class="login-button">Login</button>
+        </form>
+
+        <p class="auth-switch">
+            Don’t have an account? <a href="{% url 'crypto:signup' %}">Sign up here</a>
+        </p>
+    </div>
+
+    <script>
+        grecaptcha.ready(function() {
+            grecaptcha.execute('YOUR_SITE_KEY', {action: 'submit'}).then(function(token) {
+                document.getElementById('id_captcha').value = token;
+            });
+        });
+    </script>
+</body>
+</html>

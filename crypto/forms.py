@@ -1,6 +1,8 @@
 from django import forms
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth.models import User
+from django_recaptcha.fields import ReCaptchaField
+from django_recaptcha.widgets import ReCaptchaV3
 
 class ContactForm(forms.Form):
     first_name = forms.CharField(max_length=50)
@@ -17,9 +19,11 @@ class ContactForm(forms.Form):
         ('legal', 'Legal advisory (KYC/AML, SEC etc)')
     ])
     message = forms.CharField(widget=forms.Textarea)
-
+    captcha = ReCaptchaField(widget=ReCaptchaV3)
 
 class StyledLoginForm(AuthenticationForm):
+    captcha = ReCaptchaField(widget=ReCaptchaV3)
+
     username = forms.CharField(
         widget=forms.TextInput(attrs={
             'class': 'form-control',
@@ -34,6 +38,8 @@ class StyledLoginForm(AuthenticationForm):
     )
 
 class StyledSignupForm(UserCreationForm):
+    captcha = ReCaptchaField(widget=ReCaptchaV3)
+
     email = forms.EmailField(
         required=True,
         widget=forms.EmailInput(attrs={
@@ -41,21 +47,18 @@ class StyledSignupForm(UserCreationForm):
             'placeholder': 'Email'
         })
     )
-
     username = forms.CharField(
         widget=forms.TextInput(attrs={
             'class': 'form-control',
             'placeholder': 'Username'
         })
     )
-
     password1 = forms.CharField(
         widget=forms.PasswordInput(attrs={
             'class': 'form-control',
             'placeholder': 'Password'
         })
     )
-
     password2 = forms.CharField(
         widget=forms.PasswordInput(attrs={
             'class': 'form-control',
@@ -65,4 +68,4 @@ class StyledSignupForm(UserCreationForm):
 
     class Meta:
         model = User
-        fields = ("username", "email", "password1", "password2")
+        fields = ("username", "email", "password1", "password2", "captcha")

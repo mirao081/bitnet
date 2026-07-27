@@ -1,0 +1,107 @@
+{% extends "adminpanel/admin_base.html" %}
+{% block content %}
+
+<div class="tx-wrapper">
+
+    <h1 class="tx-title">All Transactions</h1>
+    <p class="tx-subtitle">
+        Track deposits, withdrawals and active investments with their approval status.
+    </p>
+
+    <div class="tx-table-wrapper">
+        <table class="tx-table">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Account</th>
+                    <th>Type</th>
+                    <th>Currency</th>
+                    <th>Amount</th>
+                    <th>Wallet Address</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                {% for tx in page_obj %}
+                <tr>
+
+                    <td>{{ tx.date|date:"Y-m-d H:i" }}</td>
+
+                    <td>{{ tx.username }}</td>
+
+                    <td>{{ tx.type }}</td>
+
+                    <td>{{ tx.currency }}</td>
+
+                    <td class="tx-amount">
+                        ${{ tx.amount }}
+                    </td>
+
+                    <td>
+                        {{ tx.wallet_address }}
+                    </td>
+
+                    <td>
+                        {% if tx.status == "approved" %}
+                            <span class="tx-status tx-success">Approved</span>
+
+                        {% elif tx.status == "pending" %}
+                            <span class="tx-status tx-pending">Pending</span>
+
+                        {% elif tx.status == "active" %}
+                            <span class="tx-status tx-success">Active</span>
+
+                        {% elif tx.status == "completed" %}
+                            <span class="tx-status tx-completed">Completed</span>
+
+                        {% elif tx.status == "failed" %}
+                            <span class="tx-status tx-failed">Failed</span>
+
+                        {% else %}
+                            <span class="tx-status tx-failed">
+                                {{ tx.status }}
+                            </span>
+                        {% endif %}
+                    </td>
+
+                </tr>
+
+                {% empty %}
+
+                <tr>
+                    <td colspan="7" class="tx-empty">
+                        No transactions found.
+                    </td>
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+        </table>
+    </div>
+
+    <div class="tx-pagination">
+
+        {% if page_obj.has_previous %}
+            <a href="?page={{ page_obj.previous_page_number }}">
+                ← Previous
+            </a>
+        {% endif %}
+
+        <span>
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+        </span>
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">
+                Next →
+            </a>
+        {% endif %}
+
+    </div>
+
+</div>
+
+{% endblock %}

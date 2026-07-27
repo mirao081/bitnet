@@ -1,0 +1,26 @@
+{% extends "users/dashboard_base.html" %}
+{% block content %}
+<div class="twofa-page">
+    <h2>Enable Two-Factor Authentication</h2>
+    <p>Scan this QR code with Google Authenticator or Authy:</p>
+    <img src="data:image/png;base64,{{ qr_code }}" alt="QR Code">
+    <p>After scanning, enter the 6-digit code below:</p>
+    <form method="post" action="{% url 'crypto:twofa_verify' %}">
+        {% csrf_token %}
+        <input
+            type="text"
+            name="otp"
+            placeholder="Enter 6-digit code"
+            maxlength="6"
+            inputmode="numeric"
+            autocomplete="one-time-code"
+            required
+        >
+
+        <button type="submit">
+            Verify
+        </button>
+    </form>
+
+</div>
+{% endblock %}

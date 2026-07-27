@@ -1,0 +1,63 @@
+{% extends "adminpanel/admin_base.html" %}
+{% load static %}
+
+{% block content %}
+
+<div class="premium-plan-wrapper">
+
+    <h1 class="premium-plan-title">Investment Plans</h1>
+
+    <div class="premium-plan-card">
+
+        <div class="premium-plan-header">
+            <h2>Investment List <span>({{ plans.count }})</span></h2>
+        </div>
+        <div class="premium-table-container">
+            <table class="premium-plan-table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Min</th>
+                        <th>Max</th>
+                        <th>ROI (%)</th>
+                        <th>Percentage Text</th>
+                        <th>Duration Text</th>
+                        <th>Duration (Hours)</th>
+                        <th>Maturity Text</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for plan in plans %}
+                    <form method="post" action="{% url 'adminpanel:update_investment_plan' plan.id %}">
+                        {% csrf_token %}
+                        <tr id="plan-{{ plan.id }}">
+                            <td><input class="premium-input" type="text" name="name" value="{{ plan.name }}"></td>
+                            <td><input class="premium-input" type="number" step="0.01" name="min_amount" value="{{ plan.min_amount }}"></td>
+                            <td><input class="premium-input" type="number" step="0.01" name="max_amount" value="{{ plan.max_amount }}"></td>
+                            <td><input class="premium-input" type="number" step="0.01" name="roi_percent" value="{{ plan.roi_percent }}"></td>
+                            <td><input class="premium-input" type="text" name="percentage_text" value="{{ plan.percentage_text }}"></td>                         
+                            <td><input class="premium-input" type="text" name="duration_text" value="{{ plan.duration_text }}"></td>
+                            <td><input class="premium-input" type="number" name="duration_hours" value="{{ plan.duration_hours }}"></td>
+                            <td><input class="premium-input" type="text" name="maturity_text" value="{{ plan.maturity_text }}"></td>
+                            <td>
+                                <button type="submit" class="premium-update-btn">Update</button>
+                            </td>
+                        </tr>
+                    </form>
+                    {% empty %}
+                    <tr>
+                        <td colspan="9" style="text-align:center;">No investment plans found.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+</div>
+
+
+{% endblock %}

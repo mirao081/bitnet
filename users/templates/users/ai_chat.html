@@ -1,9 +1,722 @@
 {% extends "users/dashboard_base.html" %}
+{% block title %}AI Trading Assistant{% endblock %}
+{% load static %}
+
 {% block content %}
-<div class="card kyc-card">
-    <div class="card-header">🤖 AI Assistant</div>
-    <div class="card-body">
-        <p>Chat with our AI assistant here. Integration coming soon!</p>
+<div class="ai-dashboard">
+  <div class="ai-chat-section">
+    <h2>🤖 AI Trading Assistant</h2>
+    <div id="chat-box" class="ai-chat-box"></div>
+    <form id="chat-form" class="ai-chat-form" method="post" action="{% url 'users:ai_chat' %}">
+      {% csrf_token %}
+      <input id="chat-input" type="text" name="message"
+             placeholder="Ask me anything... e.g., Show my balance, Buy 0.5 ETH"
+             required>
+      <button type="submit" class="ai-btn">Send</button>
+    </form>
+  </div>
+
+  <div class="ai-wallet-section">
+    <h3>Wallet Overview</h3>
+    <div class="ai-wallet-card">
+        USD Balance:
+        <span id="wallet-balance">
+            {{ wallet.balance }}
+        </span>
     </div>
+    <div class="ai-wallet-card">Gas Fees Paid: {{ wallet.gas_fee_paid }}</div>
+    <div class="ai-wallet-card">BTC Balance: {{ wallet.userwallet.btc_balance }}</div>
+    <div class="ai-wallet-card">ETH Balance: {{ wallet.userwallet.eth_balance }}</div>
+    <div class="ai-wallet-card">USDT ERC20 Balance: {{ wallet.userwallet.usdt_erc20_wallet }}</div>
+    <div class="ai-wallet-card">USDT TRC20 Balance: {{ wallet.userwallet.usdt_trc20_wallet }}</div>
+  </div>
+
+  <div class="ai-ticker-section">
+    <h3>Live Market Prices</h3>
+    <ul class="ai-ticker-list">
+      <li>BTC: loading...</li>
+      <li>ETH: loading...</li>
+      <li>USDT (ERC20): loading...</li>
+      <li>USDT (TRC20): loading...</li>
+    </ul>
+  </div>
+
+  <div class="ai-plan-section">
+    <h3>Recommended Plan</h3>
+    {% if recommended_plan %}
+        <p>⭐ {{ recommended_plan.name }} — {{ recommended_plan.roi_percent }}% ROI, {{ recommended_plan.duration_text }}</p>
+    {% else %}
+        <p>No suitable plan found for your balance.</p>
+    {% endif %}
+
+    <button id="compare-plans" class="ai-btn">📊 Compare Plans</button>
+
+    <div id="plan-table" class="ai-plan-table" style="display:none;">
+        <table>
+        <thead>
+            <tr>
+            <th>Plan</th>
+            <th>Min</th>
+            <th>Max</th>
+            <th>ROI %</th>
+            <th>Duration</th>
+            <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for plan in plans %}
+            <tr {% if plan == recommended_plan %}class="ai-highlight"{% endif %}>
+            <td>{{ plan.name }}</td>
+            <td>${{ plan.min_amount }}</td>
+            <td>${{ plan.max_amount }}</td>
+            <td>📈 {{ plan.roi_percent }}%</td>
+            <td>⏳ {{ plan.duration_text }}</td>
+            <td>
+                <form method="post" action="{% url 'users:ai_chat' %}">
+                {% csrf_token %}
+                <input type="hidden" name="plan_id" value="{{ plan.id }}">
+                <input type="number" name="amount"
+                        min="{{ plan.min_amount }}" max="{{ plan.max_amount }}"
+                        placeholder="Amount">
+                <button type="submit" class="ai-btn">Invest</button>
+                </form>
+            </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+        </table>
+    </div>
+    </div>
+
+  <div class="ai-transactions-section">
+    <h3>Recent Transactions</h3>
+    <ul class="ai-transactions-list">
+      {% for tx in transactions %}
+        <li>{{ tx.type|capfirst }} {{ tx.amount }} {{ tx.asset }} - {{ tx.status }}</li>
+      {% empty %}
+        <li>No transactions yet.</li>
+      {% endfor %}
+    </ul>
+    <button id="export-transactions" class="ai-btn">Download CSV</button>
+  </div>
+
+  <div class="ai-portfolio-section">
+    <h3>Portfolio Insights</h3>
+    <canvas id="portfolioChart"></canvas>
+  </div>
+
+  <div class="ai-actions-section">
+    <button id="deposit-btn" class="ai-btn">Deposit</button>
+    <button id="withdraw-btn" class="ai-btn">Withdraw</button>
+  </div>
+
+  <div id="deposit-modal" class="ai-modal" style="display:none;">
+    <h3>Deposit Funds</h3>
+    <ul class="ai-tabs">
+      <li data-method="btc">BTC</li>
+      <li data-method="eth">ETH</li>
+      <li data-method="erc20">USDT ERC20</li>
+      <li data-method="trc20">USDT TRC20</li>
+    </ul>
+    <div id="deposit-content" class="deposit-content">
+
+        <div class="deposit-placeholder">
+
+            <h4>Select a deposit method</h4>
+
+            <p>
+                Choose BTC, ETH, USDT ERC20 or USDT TRC20 above
+                to view your deposit address.
+            </p>
+
+        </div>
+
+    </div>
+
+    <button id="close-deposit" class="ai-btn">Close</button>
+  </div>
+
+    <div id="withdraw-modal" class="ai-modal" style="display:none;">
+
+        <h3>Withdraw Funds</h3>
+
+        <form id="withdraw-form"
+            method="POST"
+            action="{% url 'users:request_withdrawal' %}">
+
+            {% csrf_token %}
+
+            <!-- Select Asset -->
+            <label for="currency">Select Asset</label>
+
+            <select id="currency"
+                    name="currency"
+                    required>
+
+                <option value="">Choose Asset</option>
+
+                <option value="BTC">Bitcoin (BTC)</option>
+
+                <option value="ETH">Ethereum (ETH)</option>
+
+                <option value="USDT_ERC20">USDT ERC20</option>
+
+                <option value="USDT_TRC20">USDT TRC20</option>
+
+            </select>
+
+            <label for="amount">Amount</label>
+
+            <input
+                type="number"
+                id="amount"
+                name="amount"
+                step="0.00000001"
+                min="0"
+                placeholder="Enter withdrawal amount"
+                required
+            >
+
+            <label for="wallet_address">
+                Destination Wallet Address
+            </label>
+
+            <input
+                type="text"
+                id="wallet_address"
+                name="wallet_address"
+                placeholder="Wallet address will appear automatically"
+                required
+            >
+
+
+            <input
+                type="hidden"
+                id="btc_wallet"
+                value="{{ user_wallet.btc_wallet|default:'' }}"
+            >
+
+            <input
+                type="hidden"
+                id="eth_wallet"
+                value="{{ user_wallet.eth_wallet|default:'' }}"
+            >
+
+            <input
+                type="hidden"
+                id="erc20_wallet"
+                value="{{ user_wallet.usdt_erc20_wallet|default:'' }}"
+            >
+
+            <input
+                type="hidden"
+                id="trc20_wallet"
+                value="{{ user_wallet.usdt_trc20_wallet|default:'' }}"
+            >
+
+
+            <button
+                type="submit"
+                class="ai-btn">
+
+                Submit Withdrawal
+
+            </button>
+
+        </form>
+
+        <button
+            id="close-withdraw"
+            class="ai-btn">
+
+            Close
+
+        </button>
+
+    </div>
+  <div class="ai-faq-section">
+    <h3>Support & FAQs</h3>
+    <details><summary>How do I withdraw?</summary><p>Go to your wallet, click Withdraw, and enter your address.</p></details>
+    <details><summary>What’s the minimum for Ascend?</summary><p>$500 minimum investment.</p></details>
+    <details><summary>How are fees calculated?</summary><p>Gas fees are based on ROI % and plan rules.</p></details>
+  </div>
+
 </div>
+{% endblock %}
+{% block extra_js %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const chatForm = document.getElementById("chat-form");
+    const chatBox = document.getElementById("chat-box");
+    const chatInput = document.getElementById("chat-input");
+
+    const csrfToken = document.querySelector("[name=csrfmiddlewaretoken]").value;
+
+    if (chatForm) {
+
+        chatForm.addEventListener("submit", function (e) {
+
+            e.preventDefault();
+
+            const input = chatInput.value.trim();
+
+            if (!input) return;
+
+            chatBox.innerHTML += `
+                <div class="user-msg">
+                    <strong>You:</strong> ${input}
+                </div>
+            `;
+
+            chatInput.value = "";
+
+            fetch(chatForm.action, {
+                method: "POST",
+                headers: {
+                    "X-CSRFToken": csrfToken,
+                    "Content-Type": "application/x-www-form-urlencoded"
+                },
+                body: "message=" + encodeURIComponent(input)
+            })
+            .then(response => {
+                if (!response.ok)
+                    throw new Error("Chat request failed");
+
+                return response.json();
+            })
+            .then(data => {
+
+                chatBox.innerHTML += `
+                    <div class="ai-msg">
+                        <strong>AI:</strong> ${data.response}
+                    </div>
+                `;
+
+                chatBox.scrollTop = chatBox.scrollHeight;
+
+            })
+            .catch(error => {
+                console.error("Chat error:", error);
+            });
+
+        });
+
+    }
+
+    document.querySelectorAll(".ai-plan-table form").forEach(form => {
+
+        form.addEventListener("submit", function (e) {
+
+            e.preventDefault();
+
+            const formData = new FormData(form);
+
+            fetch(form.action, {
+                method: "POST",
+                headers: {
+                    "X-CSRFToken": csrfToken
+                },
+                body: formData
+            })
+            .then(response => {
+
+                if (!response.ok)
+                    throw new Error("Investment failed.");
+
+                return response.json();
+
+            })
+            .then(data => {
+
+                chatBox.innerHTML += `
+                    <div class="ai-msg">
+                        <strong>AI:</strong> ${data.response}
+                    </div>
+                `;
+
+                chatBox.scrollTop = chatBox.scrollHeight;
+
+                updateTransactions();
+
+                updateWallet();
+
+            })
+            .catch(error => {
+                console.error("Investment error:", error);
+            });
+
+        });
+
+    });
+
+
+    function updateWallet() {
+
+        fetch("/users/wallet-data/")
+        .then(response => {
+
+            if (!response.ok)
+                return;
+
+            return response.json();
+
+        })
+        .then(data => {
+
+            if (!data) return;
+
+            const balance = document.getElementById("wallet-balance");
+
+            if (balance)
+                balance.textContent = data.balance;
+
+        })
+        .catch(error => {
+
+            console.log("Wallet endpoint not available.");
+
+        });
+
+    }
+
+    function updateTicker() {
+
+        fetch("/users/market-data/")
+        .then(response => {
+
+            if (!response.ok)
+                throw new Error("Ticker failed");
+
+            return response.json();
+
+        })
+        .then(data => {
+
+            const assets = data.assets;
+
+            document.querySelector(".ai-ticker-list").innerHTML = `
+                <li>BTC: $${assets.BTC.price.toFixed(2)} (${assets.BTC.change.toFixed(2)}%)</li>
+                <li>ETH: $${assets.ETH.price.toFixed(2)} (${assets.ETH.change.toFixed(2)}%)</li>
+                <li>USDT (ERC20): $${assets.USDT_ERC20.price.toFixed(2)} (${assets.USDT_ERC20.change.toFixed(2)}%)</li>
+                <li>USDT (TRC20): $${assets.USDT_TRC20.price.toFixed(2)} (${assets.USDT_TRC20.change.toFixed(2)}%)</li>
+            `;
+
+        })
+        .catch(error => {
+
+            console.error("Ticker error:", error);
+
+        });
+
+    }
+
+    updateTicker();
+    setInterval(updateTicker, 10000);
+
+    function updateTransactions() {
+
+        fetch("{% url 'users:recent_transactions_api' %}")
+        .then(response => {
+
+            if (!response.ok)
+                throw new Error("Transactions endpoint not found.");
+
+            return response.json();
+
+        })
+        .then(data => {
+
+            const list = document.querySelector(".ai-transactions-list");
+
+            if (!Array.isArray(data) || data.length === 0) {
+
+                list.innerHTML = "<li>No transactions yet.</li>";
+                return;
+
+            }
+
+            list.innerHTML = data.map(tx => {
+
+                const statusClass =
+                    tx.status === "completed"
+                    ? "completed"
+                    : "pending";
+
+                return `
+                    <li class="${statusClass}">
+                        ${tx.type} ${tx.amount} ${tx.asset} - ${tx.status}
+                    </li>
+                `;
+
+            }).join("");
+
+        })
+        .catch(error => {
+
+            console.error("Transactions error:", error);
+
+        });
+
+    }
+
+    updateTransactions();
+    setInterval(updateTransactions, 15000);
+
+    const compareBtn = document.getElementById("compare-plans");
+    const planTable = document.getElementById("plan-table");
+
+    if (compareBtn && planTable) {
+
+        compareBtn.addEventListener("click", function () {
+
+            if (planTable.style.display === "none") {
+
+                planTable.style.display = "block";
+                compareBtn.textContent = "Hide Plans";
+
+            } else {
+
+                planTable.style.display = "none";
+                compareBtn.textContent = "📊 Compare Plans";
+
+            }
+
+        });
+
+    }
+
+    const exportBtn = document.getElementById("export-transactions");
+
+    if (exportBtn) {
+
+        exportBtn.addEventListener("click", function () {
+
+            fetch("{% url 'users:export_transactions_csv' %}")
+            .then(response => {
+
+                if (!response.ok)
+                    throw new Error("Export failed");
+
+                return response.blob();
+
+            })
+            .then(blob => {
+
+                const url = URL.createObjectURL(blob);
+
+                const a = document.createElement("a");
+
+                a.href = url;
+                a.download = "transactions.csv";
+                a.click();
+
+                URL.revokeObjectURL(url);
+
+            });
+
+        });
+
+    }
+
+    const ctx = document.getElementById("portfolioChart");
+
+    if (ctx) {
+
+        new Chart(ctx, {
+
+            type: "pie",
+
+            data: {
+
+                labels: ["BTC", "ETH", "USDT"],
+
+                datasets: [{
+                    data: [60,30,10],
+                    backgroundColor: [
+                        "#f2a900",
+                        "#3c3c3d",
+                        "#26a17b"
+                    ]
+                }]
+
+            }
+
+        });
+
+    }
+
+const depositBtn = document.getElementById("deposit-btn");
+const depositModal = document.getElementById("deposit-modal");
+const closeDeposit = document.getElementById("close-deposit");
+const depositContent = document.getElementById("deposit-content");
+
+if (depositBtn && depositModal && closeDeposit && depositContent) {
+
+    depositBtn.addEventListener("click", () => {
+        depositModal.style.display = "block";
+    });
+
+    closeDeposit.addEventListener("click", () => {
+        depositModal.style.display = "none";
+    });
+
+    document.querySelectorAll("#deposit-modal .ai-tabs li").forEach(tab => {
+
+        tab.addEventListener("click", function () {
+
+            document
+                .querySelectorAll("#deposit-modal .ai-tabs li")
+                .forEach(item => item.classList.remove("active"));
+
+            this.classList.add("active");
+
+            const asset = this.dataset.method;
+
+            fetch(`/users/company-wallet/${asset}/`)
+                .then(response => {
+
+                    if (!response.ok) {
+                        throw new Error("Unable to load company wallet.");
+                    }
+
+                    return response.json();
+                })
+
+                .then(info => {
+
+                    depositContent.innerHTML = `
+
+                        <div class="deposit-card">
+
+                            ${info.qr ? `
+                                <img src="${info.qr}"
+                                     class="deposit-qr"
+                                     alt="${info.asset}">
+                            ` : ""}
+
+                            <div class="deposit-label">
+                                Wallet Address
+                            </div>
+
+                            <div class="deposit-address">
+                                ${info.address || "No wallet address configured."}
+                            </div>
+
+                            <button
+                                class="copy-btn"
+                                id="copy-address"
+                                ${info.address ? "" : "disabled"}>
+                                📋 Copy Address
+                            </button>
+
+                            <div class="deposit-info">
+
+                                <p><strong>Asset:</strong> ${info.asset || "-"}</p>
+
+                                <p><strong>Network:</strong> ${info.network || "-"}</p>
+
+                                <p><strong>Minimum Deposit:</strong> ${info.minimum || "-"}</p>
+
+                                <p><strong>Confirmations:</strong> ${info.confirmations || "-"}</p>
+
+                                <hr>
+
+                                <p>
+                                    ⚠ Send only
+                                    <strong>${info.asset || "this asset"}</strong>
+                                    to this address.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    `;
+
+                    const copyBtn = document.getElementById("copy-address");
+
+                    if (copyBtn && info.address) {
+
+                        copyBtn.addEventListener("click", () => {
+
+                            navigator.clipboard.writeText(info.address);
+
+                            copyBtn.textContent = "✔ Address Copied";
+
+                            setTimeout(() => {
+
+                                copyBtn.textContent = "📋 Copy Address";
+
+                            }, 2000);
+
+                        });
+
+                    }
+
+                })
+
+                .catch(error => {
+
+                    console.error(error);
+
+                    depositContent.innerHTML = `
+                        <div class="deposit-info">
+                            Unable to load the company wallet.
+                            Please contact support.
+                        </div>
+                    `;
+
+                });
+
+        });
+
+    });
+
+}
+
+    const withdrawBtn = document.getElementById("withdraw-btn");
+const withdrawModal = document.getElementById("withdraw-modal");
+const closeWithdraw = document.getElementById("close-withdraw");
+
+if (withdrawBtn && withdrawModal && closeWithdraw) {
+
+    withdrawBtn.onclick = () => withdrawModal.style.display = "block";
+
+    closeWithdraw.onclick = () => withdrawModal.style.display = "none";
+
+}
+
+const currency = document.getElementById("currency");
+const walletAddress = document.getElementById("wallet_address");
+
+if (currency && walletAddress) {
+
+    const wallets = {
+
+        BTC: document.getElementById("btc_wallet").value,
+
+        ETH: document.getElementById("eth_wallet").value,
+
+        USDT_ERC20: document.getElementById("erc20_wallet").value,
+
+        USDT_TRC20: document.getElementById("trc20_wallet").value
+
+    };
+
+    function updateWalletAddress() {
+
+        walletAddress.value = wallets[currency.value] || "";
+
+    }
+
+    currency.addEventListener("change", updateWalletAddress);
+    updateWalletAddress();
+
+}
+
+});
+</script>
 {% endblock %}

@@ -1,0 +1,38 @@
+{% extends "users/dashboard_base.html" %}
+{% block content %}
+<div class="deposit-invoice-container">
+    <h1 class="deposit-invoice-title">Invoice</h1>
+    <h3 class="deposit-invoice-subtitle">{{ currency }} Deposit</h3>
+
+    <div class="deposit-invoice-details">
+        <p class="deposit-invoice-label">Send Exact Payment To This Address:</p>
+        <p class="deposit-invoice-address">{{ wallet_address }}</p>
+
+        {% if qr_code_url %}
+        <div class="deposit-invoice-qr">
+            <img src="{{ qr_code_url }}" alt="{{ currency }} QR Code" class="deposit-invoice-qr-img">
+        </div>
+        {% endif %}
+
+        <p class="deposit-invoice-amount">Amount: <strong>${{ deposit.amount }}</strong></p>
+    </div>
+
+    <div class="deposit-invoice-instructions">
+        <h4 class="deposit-invoice-step-title">Next Steps</h4>
+        <p>
+            Once payment is done, please send a notification email to 
+            <strong>support@yourdomain.com</strong> to confirm your deposit.
+        </p>
+        <pre class="deposit-invoice-email">
+Hi Admin,
+{{ deposit.user.username }} has successfully placed a deposit request of ${{ deposit.amount }}.
+Account email: {{ deposit.user.email }}
+Thanks.
+        </pre>
+        <p>
+            After confirmation, your deposit will be reviewed by admin. 
+            Once approved, the funds will be credited into your dashboard balance.
+        </p>
+    </div>
+</div>
+{% endblock %}

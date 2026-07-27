@@ -1,0 +1,47 @@
+{% extends "users/dashboard_base.html" %}
+{% block title %}Revoke Sessions{% endblock %}
+{% block content %}
+<div class="security-subpage">
+    <h2>Active Sessions</h2>
+    <p>End sessions on devices you no longer use.</p>
+
+    <table class="sessions-table">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>IP Address</th>
+                <th>Device</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for session in active_sessions %}
+                <tr>
+                    <td>{{ session.timestamp|date:"Y-m-d H:i" }}</td>
+                    <td>{{ session.ip }}</td>
+                    <td>{{ session.device }}</td>
+                    <td>
+                        {% if session.status == "Successful" %}
+                            <span class="status-success">✅ {{ session.status }}</span>
+                        {% else %}
+                            <span class="status-failed">❌ {{ session.status }}</span>
+                        {% endif %}
+                    </td>
+                    <td>
+                        <form method="post" action="{% url 'users:revoke_sessions' %}">
+                            {% csrf_token %}
+                            <input type="hidden" name="session_id" value="{{ session.id }}">
+                            <button type="submit" class="security-btn">Revoke</button>
+                        </form>
+                    </td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="5">No active sessions found.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

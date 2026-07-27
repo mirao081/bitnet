@@ -1,8 +1,124 @@
 {% extends "users/dashboard_base.html" %}
-
-{% block title %}Security{% endblock %}
-
+{% block title %}Security Center{% endblock %}
 {% block content %}
-<h1>Security</h1>
-<p>Security content goes here.</p>
+<div class="security-center">
+    <h2>Security Center</h2>
+    <p>Manage your account protection and review security measures.</p>
+    {% if messages %}
+        <div class="feedback-messages">
+            {% for message in messages %}
+                <div class="alert {{ message.tags }}">{{ message }}</div>
+            {% endfor %}
+        </div>
+    {% endif %}
+    <div class="security-card">
+        <h3>Account Protection</h3>
+        <p>
+            Two-Factor Authentication:
+            {% if verification.is_verified %}
+                <span class="status enabled">✅ Enabled</span>
+            {% else %}
+                <span class="status disabled">❌ Disabled</span>
+            {% endif %}
+        </p>
+
+        <div class="card-actions">
+            <a href="{% url 'crypto:twofa_setup' %}" class="security-btn">Enable 2FA</a>
+            <a href="{% url 'crypto:twofa_reset' %}" class="security-btn">Disable 2FA</a>
+        </div>
+
+        {% if qr_code %}
+            <h4>Scan QR Code</h4>
+            <img src="data:image/png;base64,{{ qr_code }}" alt="QR Code">
+        {% endif %}
+
+        {% if recovery_codes %}
+            <h4>Recovery Codes</h4>
+            <p>Save these codes safely. Each can be used once if you lose your phone:</p>
+            <ul>
+                {% for code in recovery_codes %}
+                    <li>{{ code }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+        <h4>Verify 2FA</h4>
+        <form method="post" action="{% url 'crypto:twofa_verify' %}">
+            {% csrf_token %}
+            <input type="text" name="otp" placeholder="Enter 6-digit code" required>
+            <button type="submit">Verify</button>
+        </form>
+    </div>
+    <div class="security-card">
+        <h3>Compliance & Verification</h3>
+        <p>
+            KYC Status:
+            {% if kyc and kyc.status == 'approved' %}
+                <span class="status enabled">✅ Approved</span>
+            {% elif kyc and kyc.status == 'rejected' %}
+                <span class="status disabled">❌ Rejected</span>
+            {% else %}
+                <span class="status pending">⏳ Pending</span>
+            {% endif %}
+        </p>
+        <div class="card-actions">
+            <a href="{% url 'users:verify_identity' %}" class="security-btn">Verify Identity</a>
+        </div>
+    </div>
+    <div class="security-card">
+        <h3>Device & Activity</h3>
+        <p>View recent login history and active sessions.</p>
+
+        <table class="login-history-table">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>IP Address</th>
+                    <th>Device</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for login in recent_logins %}
+                    <tr>
+                        <td>{{ login.timestamp|date:"Y-m-d H:i" }}</td>
+                        <td>{{ login.ip }}</td>
+                        <td>{{ login.device }}</td>
+                        <td>
+                            {% if login.status == "Successful" %}
+                                <span class="status-success">✅ {{ login.status }}</span>
+                            {% else %}
+                                <span class="status-failed">❌ {{ login.status }}</span>
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% empty %}
+                    <tr>
+                        <td colspan="4">No recent login activity.</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <div class="card-actions">
+            <a href="{% url 'users:view_activity' %}" class="security-btn">View Activity</a>
+            <a href="{% url 'users:revoke_sessions' %}" class="security-btn">Revoke Sessions</a>
+        </div>
+    </div>
+    <div class="security-card">
+        <h3>User Controls</h3>
+        <p>Update password, recovery options, and API keys.</p>
+        <div class="card-actions">
+            <a href="{% url 'users:change_password' %}" class="security-btn">Change Password</a>
+            <a href="{% url 'users:manage_api_keys' %}" class="security-btn">Manage API Keys</a>
+        </div>
+    </div>
+    <div class="security-card">
+        <h3>Security Alerts</h3>
+        <p>Monitor suspicious login attempts or withdrawal requests.</p>
+        <div class="card-actions">
+            <a href="{% url 'users:security_alerts' %}" class="security-btn">View Alerts</a>
+        </div>
+    </div>
+</div>
 {% endblock %}

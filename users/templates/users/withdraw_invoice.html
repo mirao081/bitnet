@@ -1,0 +1,58 @@
+{% extends "users/dashboard_base.html" %}
+{% block content %}
+<div class="withdraw-invoice-container card shadow p-4">
+    <h1 class="withdraw-invoice-title">Withdrawal Invoice</h1>
+    <h3 class="withdraw-invoice-subtitle">{{ withdrawal.currency }} Withdrawal</h3>
+
+    <div class="withdraw-invoice-details mt-3">
+        <p><strong>Amount:</strong> {{ withdrawal.amount }}</p>
+        <p><strong>Destination Address:</strong> {{ withdrawal.wallet_address }}</p>
+        <p><strong>Status:</strong> {{ withdrawal.status }}</p>
+        <p><strong>Requested At:</strong> {{ withdrawal.created_at }}</p>
+
+        {% if withdrawal.txid %}
+            <p><strong>Transaction ID:</strong> {{ withdrawal.txid }}</p>
+        {% endif %}
+
+        {% if withdrawal.admin_note %}
+            <p><strong>Admin Note:</strong> {{ withdrawal.admin_note }}</p>
+        {% endif %}
+    </div>
+
+    <!-- ✅ QR Code Integration -->
+    <div class="withdraw-invoice-qr mt-4">
+        <h4>Wallet QR Code</h4>
+        {% if withdrawal.currency == "BTC" and userwallet.btc_qr %}
+            <img src="{{ userwallet.btc_qr.url }}" alt="BTC QR Code" class="qr-code-img">
+        {% elif withdrawal.currency == "ETH" and userwallet.eth_qr %}
+            <img src="{{ userwallet.eth_qr.url }}" alt="ETH QR Code" class="qr-code-img">
+        {% elif withdrawal.currency == "USDT_ERC20" and userwallet.usdt_erc20_qr %}
+            <img src="{{ userwallet.usdt_erc20_qr.url }}" alt="USDT ERC20 QR Code" class="qr-code-img">
+        {% elif withdrawal.currency == "USDT_TRC20" and userwallet.usdt_trc20_qr %}
+            <img src="{{ userwallet.usdt_trc20_qr.url }}" alt="USDT TRC20 QR Code" class="qr-code-img">
+        {% else %}
+            <p>No QR code available for this wallet.</p>
+        {% endif %}
+    </div>
+
+    <div class="withdraw-invoice-instructions mt-4">
+        <h4>Next Steps</h4>
+        {% if withdrawal.status == "pending" %}
+            <p>Your withdrawal request has been submitted and is pending admin approval.</p>
+            <p>Once approved, the funds will be transferred to your wallet and you will receive a confirmation email.</p>
+        {% elif withdrawal.status == "approved" %}
+            <p>Your withdrawal has been approved and will be processed shortly.</p>
+        {% elif withdrawal.status == "completed" %}
+            <p>Your withdrawal has been completed. Funds have been sent to your wallet.</p>
+        {% elif withdrawal.status == "rejected" %}
+            <p>Your withdrawal was rejected. Please check the admin note above for details.</p>
+        {% elif withdrawal.status == "failed" %}
+            <p>Your withdrawal failed. Please contact support for assistance.</p>
+        {% endif %}
+    </div>
+
+    <div class="withdraw-invoice-actions mt-4">
+        <button onclick="window.print()" class="btn btn-secondary">🖨 Print Invoice</button>
+    </div>
+</div>
+{% endblock %}

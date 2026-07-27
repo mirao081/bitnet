@@ -1,0 +1,32 @@
+{% extends "users/dashboard_base.html" %}
+{% block title %}Security Alerts{% endblock %}
+{% block content %}
+<div class="security-subpage">
+    <h2>Security Alerts</h2>
+    <p>Monitor suspicious login attempts and withdrawal requests.</p>
+    <table class="security-table">
+        <thead>
+            <tr><th>Date</th><th>Event</th><th>Status</th></tr>
+        </thead>
+        <tbody>
+            {% for alert in alerts %}
+                <tr>
+                    <td>{{ alert.timestamp|date:"Y-m-d H:i" }}</td>
+                    <td>{{ alert.event }}</td>
+                    <td>
+                        {% if alert.status == "Blocked" %}
+                            <span class="status-failed">❌ {{ alert.status }}</span>
+                        {% elif alert.status == "Pending" %}
+                            <span class="status-pending">⏳ {{ alert.status }}</span>
+                        {% else %}
+                            <span class="status-success">✅ {{ alert.status }}</span>
+                        {% endif %}
+                    </td>
+                </tr>
+            {% empty %}
+                <tr><td colspan="3">No security alerts found.</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

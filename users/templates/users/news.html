@@ -1,8 +1,77 @@
 {% extends "users/dashboard_base.html" %}
-
 {% block title %}News{% endblock %}
 
 {% block content %}
-<h1>News</h1>
-<p>News content goes here.</p>
+
+<div class="news-container">
+
+    <div class="news-header">
+        <h1 class="news-title">Latest Crypto News</h1>
+
+        <p class="news-subtitle">
+            Stay ahead of the market with the latest cryptocurrency news, blockchain innovations, investment insights, and global digital asset updates.
+        </p>
+    </div>
+
+    <div id="news-list" class="news-grid"></div>
+
+</div>
+
+<script>
+function updateNews(data) {
+
+    const newsList = document.getElementById("news-list");
+    newsList.innerHTML = "";
+
+    data.articles.forEach(article => {
+
+        const card = document.createElement("div");
+        card.className = "news-card";
+
+        card.innerHTML = `
+            <h3 class="news-card-title">
+                <a href="${article.url}" target="_blank">
+                    ${article.title}
+                </a>
+            </h3>
+
+            <p class="news-card-text">
+                Stay informed with the latest developments affecting cryptocurrency markets and blockchain technology.
+            </p>
+
+            <span class="published">
+                ${article.published}
+            </span>
+
+            <a href="${article.url}" target="_blank" class="news-read-btn">
+                Read Full Story →
+            </a>
+        `;
+
+        newsList.appendChild(card);
+
+    });
+
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    fetch("{% url 'users:news_data' %}")
+        .then(response => response.json())
+        .then(updateNews)
+        .catch(err => console.error(err));
+
+});
+
+setInterval(() => {
+
+    fetch("{% url 'users:news_data' %}")
+        .then(r => r.json())
+        .then(updateNews)
+        .catch(err => console.error(err));
+
+},300000);
+
+</script>
+
 {% endblock %}

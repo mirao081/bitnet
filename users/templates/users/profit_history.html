@@ -1,8 +1,82 @@
 {% extends "users/dashboard_base.html" %}
-
+{% load static %}
 {% block title %}Profit History{% endblock %}
-
 {% block content %}
-<h1>Profit History</h1>
-<p>Profit history content goes here.</p>
+<div class="profit-history-container">
+    <h1 class="profit-history-title">Profit History</h1>
+    <div class="profit-summary-section">
+        <div class="profit-summary-card profit-total-card">
+            <h3>Total Profit</h3>
+            <p>${{ total_profit|floatformat:2 }}</p>
+        </div>
+        <div class="profit-summary-card profit-month-card">
+            <h3>This Month</h3>
+            <p>${{ monthly_profit|floatformat:2 }}</p>
+        </div>
+    </div>
+    <div class="profit-chart-section">
+        <h3>Profit Trend</h3>
+        <canvas id="profitChart"></canvas>
+        <script id="chartLabels" type="application/json">{{ chart_labels|safe }}</script>
+        <script id="chartData" type="application/json">{{ chart_data|safe }}</script>
+    </div>
+    <div class="profit-table-section">
+        <h3>Detailed Records</h3>
+        <table class="profit-table">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Investment</th>
+                    <th>Profit</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for p in profits %}
+                <tr>
+                    <td>{{ p.date|date:"Y-m-d H:i" }}</td>
+                    <td>{{ p.investment_name }}</td>
+                    <td>${{ p.amount|floatformat:2 }}</td>
+                    <td>{{ p.status }}</td>
+                </tr>
+                {% empty %}
+                <tr><td colspan="4">No profit records yet.</td></tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    const labels = JSON.parse(document.getElementById('chartLabels').textContent || '[]');
+    const data = JSON.parse(document.getElementById('chartData').textContent || '[]');
+
+    const ctx = document.getElementById('profitChart').getContext('2d');
+    const profitChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: labels.length ? labels : ["No Data"],
+            datasets: [{
+                label: 'Profit',
+                data: data.length ? data : [0],
+                borderColor: '#10B981',
+                backgroundColor: 'rgba(16, 185, 129, 0.2)',
+                fill: true,
+                tension: 0.3
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: { display: false }
+            },
+            scales: {
+                x: { grid: { display: false } },
+                y: { grid: { color: '#374151' } }
+            }
+        }
+    });
+</script>
 {% endblock %}

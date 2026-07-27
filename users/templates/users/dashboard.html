@@ -1,59 +1,84 @@
 {% extends "users/dashboard_base.html" %}
 {% load static %}
-
 {% block content %}
-<div class="dashboard-content">
-
-    <!-- Balance Card -->
-    <div class="card balance-card">
-        <div class="card-header">
-            <img src="{% static 'images/balance.png' %}" alt="Wallet Icon"> Balance
+<div>
+    <h1 class="super-heading">Your Dashboard</h1>
+</div>
+<div class="dashboard-grid">
+    <div class="dashboard-card dashboard-balance">
+        <div class="dashboard-card-header">
+            <span class="dark-golden-text">Total Balance</span>
         </div>
-        <div class="card-body">
-            <h3>${{ balance.balance }}</h3>
-            <p class="light-text">Available Trading Balance</p>
+        <div class="dashboard-card-body">
+            <h3>${{ total_balance }}</h3>
+            <p class="light-text">Principal + Profit + Bonuses + Investments</p>
+            <p class="light-text">Wallet: ${{ profile.usd_balance }}</p>
         </div>
     </div>
-
-    <!-- Active Investment Card -->
-    <div class="card investment-card">
-        <div class="card-header">
-            <img src="{% static 'images/active.png' %}" alt="Investment Icon"> Active Investment
+    <div class="dashboard-card investment-balance-card">
+        <div class="dashboard-card-header">
+            <span class="dark-golden-text">Investment</span>
         </div>
-        <div class="card-body">
+        <div class="dashboard-card-body">
+            <h3>${{ investment_balance }}</h3>
+            <p class="light-text">Funds allocated to investments</p>
+        </div>
+    </div>
+    <div class="dashboard-card profit-card">
+        <div class="dashboard-card-header">
+            <span class="dark-golden-text">Profit</span>
+        </div>
+        <div class="dashboard-card-body">
+            <h3>${{ profile.profit_balance }}</h3>
+            <p class="light-text">Accumulated profits</p>
+        </div>
+    </div>
+    <div class="dashboard-card bonus-card">
+        <div class="dashboard-card-header">
+            <span class="dark-golden-text">Bonus</span>
+        </div>
+        <div class="dashboard-card-body">
+            <h3>${{ profile.bonus_balance }}</h3>
+            <p class="light-text">Admin bonuses</p>
+        </div>
+    </div>
+    <div class="dashboard-card referral-card">
+        <div class="dashboard-card-header">
+            <span class="dark-golden-text">Referrals</span>
+        </div>
+        <div class="dashboard-card-body">
+            <h3>{{ referral_count }}</h3>
+            <p class="light-text">People registered with your referral link</p>
+            <h3>${{ referral_bonus }}</h3>
+            <p class="light-text">Referral bonus earned</p>
+        </div>
+    </div>
+    <div class="dashboard-card active-investments-card">
+        <div class="dashboard-card-header">
+            <span class="dark-golden-text">Active Investments</span>
+        </div>
+        <div class="dashboard-card-body">
             {% for inv in investments %}
-                <p>{{ inv.plan_name }} - ${{ inv.amount }}</p>
+                {% if inv.status == "active" %}
+                    <p>{{ inv.plan_name }} — ${{ inv.amount }}</p>
+                {% endif %}
             {% empty %}
                 <p>No active investments</p>
             {% endfor %}
         </div>
     </div>
-
-    <!-- Referral Card -->
-    <div class="card referral-card">
-        <div class="card-header">
-            <img src="{% static 'images/referrals.png' %}" alt="Referral Icon"> Referrals
+    <div class="dashboard-card earned-card">
+        <div class="dashboard-card-header">
+            <span class="dark-golden-text">Total Earned</span>
         </div>
-        <div class="card-body">
-            <h3>{{ referral.count }}</h3>
-            <p class="light-text">People registered with your referral link</p>
-        </div>
-    </div>
-
-    <!-- Total Earned Card -->
-    <div class="card earned-card">
-        <div class="card-header">
-            <img src="{% static 'images/total.png' %}" alt="Earned Icon"> Total Earned
-        </div>
-        <div class="card-body">
-            <h3>${{ total_earned }}</h3>
-            <p class="light-text">Your cumulative earnings</p>
+        <div class="dashboard-card-body">
+            <h3>${{ total_profit }}</h3>
+            <p class="light-text">Cumulative profits from all completed investments</p>
         </div>
     </div>
 
 </div>
 
-<!-- Referral Section -->
 <div class="referral-section">
     <h3 id="copy-header">Click to copy referral link</h3>
     <a id="referral-link" 
@@ -63,7 +88,6 @@
     </a>
     <p id="copy-status"></p>
 </div>
-
 <div class="analytics-section">
     <h2 class="section-title">Performance Analytics</h2>
     <p class="section-subtitle">
@@ -81,7 +105,6 @@
                         data-labels="{{ growth_labels|safe }}"></canvas>
             </div>
         </div>
-
         <div class="analytics-card">
             <div class="card-header">📊 ROI Trends</div>
             <div class="card-body">
@@ -97,20 +120,26 @@
         <p class="section-subtitle">Alerts for deposits, withdrawals, admin messages, or promotions.</p>
     </div>
     <div class="notifications-container">
-        <!-- notifications loop -->
+        {% for note in notifications %}
+            <p>{{ note.message }}</p>
+        {% empty %}
+            <p>No notifications yet.</p>
+        {% endfor %}
     </div>
 </div>
-
 <div class="recent-activity-section">
     <div class="section-header">
         <h2 class="section-title">Recent Activity</h2>
         <p class="section-subtitle">Timeline of your latest account actions.</p>
     </div>
     <ul class="activity-list">
-        <!-- activity loop -->
+        {% for inv in investments %}
+            <li>{{ inv.plan_name }} — ${{ inv.amount }} ({{ inv.status }})</li>
+        {% empty %}
+            <li>No recent activity</li>
+        {% endfor %}
     </ul>
 </div>
-
 <div class="quick-actions-section">
     <div class="section-header">
         <h2 class="section-title">Quick Actions</h2>
@@ -123,9 +152,6 @@
     </div>
 </div>
 
-
-
-<!-- External Scripts -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="{% static 'js/dashboard.js' %}"></script>
 {% endblock %}

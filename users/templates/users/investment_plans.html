@@ -1,8 +1,95 @@
 {% extends "users/dashboard_base.html" %}
-
+{% load static %}
 {% block title %}Investment Plans{% endblock %}
-
 {% block content %}
-<h1>Investment Plans</h1>
-<p>Investment plans content goes here.</p>
+<div class="plans-page">
+    <div class="plans-header">
+        <h1 class="page-title">📈 Investment Plans</h1>
+        <p class="page-subtitle">Choose a plan that aligns with your financial goals. Compare ROI, duration, and maturity before investing.</p>
+    </div>
+
+    <!-- Deposit Cards -->
+    <div class="deposit-cards">
+        {% for plan in plans %}
+        <div class="deposit-card shiny-card">
+            <h2 class="card-title">{{ plan.name }}</h2>
+            <p class="card-description">
+                ROI: {{ plan.percentage_text }}<br>
+                Duration: {{ plan.duration_text }}<br>
+                Maturity: {{ plan.maturity_text }}<br>
+                Minimum: ${{ plan.min_amount }} | Maximum: ${{ plan.max_amount }}
+            </p>
+
+            <!-- ✅ Correct action attribute -->
+            <form method="post" action="{% url 'users:start_investment' %}">
+                {% csrf_token %}
+                <input type="hidden" name="plan_id" value="{{ plan.id }}">
+                <label for="amount-{{ plan.id }}" class="input-label">Amount (USD)</label>
+                <input type="number" id="amount-{{ plan.id }}" name="amount"
+                       placeholder="Enter amount"
+                       class="amount-input"
+                       min="{{ plan.min_amount }}" max="{{ plan.max_amount }}" required>
+                <button type="submit" class="deposit-btn">Invest in {{ plan.name }}</button>
+            </form>
+        </div>
+        {% endfor %}
+    </div>
+
+    <!-- Compare Plans Table -->
+    <div class="comparison-card shiny-card">
+        <div class="card-header">📊 Compare Plans</div>
+        <div class="card-body">
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Plan</th>
+                        <th>Min Investment</th>
+                        <th>Max Investment</th>
+                        <th>ROI %</th>
+                        <th>Duration</th>
+                        <th>Maturity</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for plan in plans %}
+                    <tr {% if plan == recommended_plan %}class="ai-highlight"{% endif %}>
+                        <td>{{ plan.name }}</td>
+                        <td>${{ plan.min_amount }}</td>
+                        <td>${{ plan.max_amount }}</td>
+                        <td>{{ plan.roi_percent }}%</td>
+                        <td>{{ plan.duration_text }}</td>
+                        <td>{{ plan.maturity_text }}</td>
+                        <td>
+                            <!-- ✅ Correct action attribute -->
+                            <form method="post" action="{% url 'users:ai_chat' %}">
+                                {% csrf_token %}
+                                <input type="hidden" name="plan_id" value="{{ plan.id }}">
+                                <input type="number" name="amount"
+                                       min="{{ plan.min_amount }}" max="{{ plan.max_amount }}"
+                                       placeholder="Amount" required>
+                                <button type="submit" class="ai-btn">Invest</button>
+                            </form>
+                        </td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="7" style="text-align:center;">No plans available.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- FAQs -->
+    <div class="faq-card shiny-card">
+        <div class="card-header">❓ Frequently Asked Questions</div>
+        <div class="card-body">
+            <p><strong>How is ROI calculated?</strong> Based on the plan’s percentage return over its duration.</p>
+            <p><strong>When do I get payouts?</strong> At maturity, unless the plan specifies periodic returns.</p>
+            <p><strong>Can I withdraw early?</strong> Early withdrawal may not be allowed or may incur penalties.</p>
+        </div>
+    </div>
+</div>
 {% endblock %}

@@ -1,0 +1,48 @@
+{% extends "users/dashboard_base.html" %}
+{% block title %}Manage API Keys{% endblock %}
+{% block content %}
+<div class="security-subpage">
+    <h2>API Keys</h2>
+    <p>Generate or revoke API keys for trading bots and integrations.</p>
+    <form method="post" action="{% url 'users:manage_api_keys' %}">
+        {% csrf_token %}
+        <button type="submit" name="action" value="generate" class="security-btn">
+            Generate New Key
+        </button>
+    </form>
+    <table class="security-table">
+        <thead>
+            <tr><th>Key</th><th>Status</th><th>Action</th></tr>
+        </thead>
+        <tbody>
+            {% for key in api_keys %}
+                <tr>
+                    <td>{{ key.value }}</td>
+                    <td>
+                        {% if key.status == "Active" %}
+                            <span class="status-success">✅ Active</span>
+                        {% else %}
+                            <span class="status-failed">❌ Revoked</span>
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if key.status == "Active" %}
+                            <form method="post" action="{% url 'users:manage_api_keys' %}">
+                                {% csrf_token %}
+                                <input type="hidden" name="key_id" value="{{ key.id }}">
+                                <button type="submit" name="action" value="revoke" class="security-btn">
+                                    Revoke
+                                </button>
+                            </form>
+                        {% else %}
+                            <span class="status-disabled">—</span>
+                        {% endif %}
+                    </td>
+                </tr>
+            {% empty %}
+                <tr><td colspan="3">No API keys found.</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

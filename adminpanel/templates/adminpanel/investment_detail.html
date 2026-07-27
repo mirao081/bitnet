@@ -1,0 +1,52 @@
+{% extends "adminpanel/admin_base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="inv-detail-wrapper">
+    <h1 class="inv-detail-title">Investment Details</h1>
+    <div class="inv-back-wrapper">
+        <a href="{% url 'adminpanel:investment_history' %}" class="inv-back-btn">← Back to Investment History</a>
+    </div>
+    <div class="inv-search">
+        <input type="text" id="inv-detail-search" placeholder="Search trade...">
+    </div>
+
+    <div class="inv-table-container">
+        <table class="inv-detail-table">
+            <thead>
+                <tr>
+                    <th>S/N</th>
+                    <th>Trade</th>
+                    <th>Amount</th>
+                    <th>Date</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>{{ investment.plan_name }}</td>
+                    <td>{{ investment.roi_percent }}%</td>
+                    <td>{{ investment.start_date }}</td>
+                    <td>
+                        <button class="inv-update-btn">Update</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="inv-pagination">
+            {% if trades.has_previous %}
+                <a href="?page={{ trades.previous_page_number }}" class="inv-page-btn">Previous</a>
+            {% endif %}
+
+            <span class="inv-page-info">
+                Page {{ trades.number }} of {{ trades.paginator.num_pages }}
+            </span>
+
+            {% if trades.has_next %}
+                <a href="?page={{ trades.next_page_number }}" class="inv-page-btn">Next</a>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

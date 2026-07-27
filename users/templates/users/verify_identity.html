@@ -1,0 +1,14 @@
+{% extends "users/dashboard_base.html" %}
+{% block title %}Verify Identity{% endblock %}
+{% block content %}
+<div class="security-subpage">
+    <h2>KYC Verification</h2>
+    <p>Upload your government-issued ID and proof of address to comply with KYC/AML regulations.</p>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label>ID Document:</label><input type="file" name="id_doc" required><br>
+        <label>Proof of Address:</label><input type="file" name="address_doc" required><br>
+        <button type="submit" class="security-btn">Submit Documents</button>
+    </form>
+</div>
+{% endblock %}

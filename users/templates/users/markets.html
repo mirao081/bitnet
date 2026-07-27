@@ -1,8 +1,134 @@
 {% extends "users/dashboard_base.html" %}
-
+{% load static %}
 {% block title %}Markets{% endblock %}
-
 {% block content %}
-<h1>Markets</h1>
-<p>Markets content goes here.</p>
+<div class="markets-container">
+    <h1 class="markets-title">Crypto Markets</h1>
+
+    <div id="markets-tickers" class="markets-tickers"></div>
+    <div class="markets-chart">
+        <h2>BTC/USDT Chart</h2>
+        <canvas id="btcChart"></canvas>
+    </div>
+    <div id="markets-overview" class="markets-overview"></div>
+    <div class="markets-movers">
+        <h2>Top Gainers & Losers</h2>
+        <table class="markets-table">
+            <thead>
+                <tr><th>Coin</th><th>Price</th><th>24h Change</th></tr>
+            </thead>
+            <tbody id="markets-movers-body"></tbody>
+        </table>
+    </div>
+
+  
+    <div class="markets-watchlist">
+        <h2>Your Watchlist</h2>
+        <ul id="markets-watchlist"></ul>
+    </div>
+
+  
+    <div class="markets-search">
+        <input type="text" placeholder="Search coin..." class="search-input" id="search-input">
+        <select class="filter-select" id="filter-select">
+            <option>All</option>
+            <option>DeFi</option>
+            <option>NFTs</option>
+            <option>Stablecoins</option>
+        </select>
+    </div>
+
+
+    <div class="markets-news">
+        <h2>Latest Crypto News</h2>
+        <ul id="markets-news"></ul>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+let btcChartInstance = null; 
+
+function updatePageWithData(data) {
+    const tickersDiv = document.getElementById("markets-tickers");
+    tickersDiv.innerHTML = "";
+    Object.entries(data.assets).forEach(([symbol, info]) => {
+        const card = document.createElement("div");
+        card.className = "ticker-card";
+        card.innerHTML = `
+            <h3>${symbol}</h3>
+            <p class="price">$${info.price.toFixed(2)}</p>
+            <p class="change ${info.change >= 0 ? 'positive' : 'negative'}">
+                ${info.change >= 0 ? '+' : ''}${info.change.toFixed(2)}%
+            </p>
+        `;
+        tickersDiv.appendChild(card);
+    });
+    const ctx = document.getElementById('btcChart').getContext('2d');
+    if (btcChartInstance) {
+        btcChartInstance.destroy();
+    }
+    btcChartInstance = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: data.chart.labels,
+            datasets: [{
+                label: 'BTC Price',
+                data: data.chart.prices,
+                borderColor: '#f59e0b',
+                backgroundColor: 'rgba(245, 158, 11, 0.2)',
+                fill: true,
+                tension: 0.3
+            }]
+        },
+        options: { responsive: true }
+    });
+    document.getElementById("markets-overview").innerHTML = `
+        <div class="overview-card">Market Cap: $${data.overview.market_cap.toLocaleString()}</div>
+        <div class="overview-card">24h Volume: $${data.overview.volume.toLocaleString()}</div>
+        <div class="overview-card">BTC Dominance: ${data.overview.btc_dominance.toFixed(2)}%</div>
+        <div class="overview-card">Trending: ${data.overview.trending.join(", ")}</div>
+    `;
+
+
+    const moversBody = document.getElementById("markets-movers-body");
+    moversBody.innerHTML = "";
+    data.movers.gainers.forEach(c => {
+        moversBody.innerHTML += `
+            <tr><td>${c.name} (${c.symbol.toUpperCase()})</td>
+            <td>$${c.price.toFixed(2)}</td>
+            <td class="positive">+${c.change.toFixed(2)}%</td></tr>
+        `;
+    });
+    data.movers.losers.forEach(c => {
+        moversBody.innerHTML += `
+            <tr><td>${c.name} (${c.symbol.toUpperCase()})</td>
+            <td>$${c.price.toFixed(2)}</td>
+            <td class="negative">${c.change.toFixed(2)}%</td></tr>
+        `;
+    });
+
+   
+    document.getElementById("markets-watchlist").innerHTML =
+        data.watchlist.length ? data.watchlist.map(a => `<li>${a}</li>`).join("") : "<li>No watchlist yet</li>";
+
+    
+    document.getElementById("markets-news").innerHTML =
+        data.news.length ? data.news.map(n => `<li><a href="${n.url}">${n.title}</a></li>`).join("") : "<li>No news available</li>";
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+    fetch("{% url 'users:market_data' %}")
+        .then(response => response.json())
+        .then(updatePageWithData)
+        .catch(err => console.error("Error loading market data:", err));
+});
+
+setInterval(() => {
+    fetch("{% url 'users:market_data' %}")
+        .then(r => r.json())
+        .then(updatePageWithData)
+        .catch(err => console.error("Auto-refresh error:", err));
+}, 60000); 
+</script>
+
 {% endblock %}
