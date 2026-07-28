@@ -2,268 +2,192 @@
 {% load static %}
 
 {% block content %}
-<section class="custom-hero">
-    <div class="custom-hero-content">
+<link rel="stylesheet" href="{% static 'crypto/css/home.css' %}">
 
-        <span class="custom-badge">
-            ✦ Built on Web3. Powered by You
-        </span>
-
-        <h1 class="custom-title">
-            The Future
-            <span>of Leverage Is Here</span>
-        </h1>
-
-        <p class="custom-subtitle">
-            {{ page.subtitle }}
-        </p>
-
-        <div class="custom-description">
-            {{ page.body|safe }}
-        </div>
-
-    </div>
-    <div class="custom-action-buttons">
-        <a href="{% url 'crypto:login' %}" class="custom-auth-btn">Sign In</a>
-        <a href="{% url 'crypto:signup' %}" class="custom-auth-btn">Get Started</a>
-    </div>
-</section>
-
-<section class="custom-luxury">
-    <div class="custom-luxury-container">
-        <div class="custom-luxury-title-box">
-            <span class="custom-luxury-title">
-                {{ accessible.title }}
-            </span>
-        </div>
-
-        <h2 class="custom-luxury-subheading">
-            Trade Smarter With A Secure Investment Platform Designed For Modern Investors...
-        </h2>
-
-        <p class="custom-luxury-description">
-            Discover a powerful ecosystem where innovation meets reliability...
-        </p>
-    </div>
-</section>
-
-<section class="custom-cards">
-    <div class="custom-row two-cards">
-        {% for card in accessible_cards|slice:":2" %}
-        <div class="custom-card side-card">
-            <div class="custom-card-image swing-hover">
-                <img src="{{ card.image.url }}" alt="{{ card.title }}">
-            </div>
-            <div class="custom-card-text">
-                <h2>{{ card.title }}</h2>
-                <p>{{ card.description }}</p>
-            </div>
-        </div>
-        {% endfor %}
-    </div>
-
-    <div class="custom-row three-cards">
-        {% for card in accessible_cards|slice:"2:5" %}
-        <div class="custom-card top-card">
-            <div class="custom-card-image swing-hover">
-                <img src="{{ card.image.url }}" alt="{{ card.title }}">
-            </div>
-            <div class="custom-card-text">
-                <h2>{{ card.title }}</h2>
-                <p>{{ card.description }}</p>
-            </div>
-        </div>
-        {% endfor %}
-    </div>
-</section>
-
-<section class="custom-token-sale">
-    <div class="custom-token-container">
-        <div class="custom-token-left">
-            <h2 class="custom-token-highlight">{{ token_sale.left_title }}</h2>
-            <h1 class="custom-token-main">{{ token_sale.right_title }}</h1>
-            <p class="custom-token-subtitle">{{ token_sale.left_subtitle }}</p>
-            <a href="{{ token_sale.button_url }}" class="custom-token-btn">
-                {{ token_sale.button_text }}
-            </a>
-        </div>
-
-        <div class="custom-token-right">
-            <h1 class="custom-token-heading">
-                The trading <span class="custom-grey">platform</span> for the future
-            </h1>
-            <div id="custom-countdown">
-                <div class="custom-time-block">
-                    <span class="custom-value" id="days">365</span>
-                    <span class="custom-label">Days</span>
-                </div>
-                <div class="custom-time-block">
-                    <span class="custom-value" id="hours">0</span>
-                    <span class="custom-label">Hours</span>
-                </div>
-                <div class="custom-time-block">
-                    <span class="custom-value" id="minutes">0</span>
-                    <span class="custom-label">Minutes</span>
-                </div>
-                <div class="custom-time-block">
-                    <span class="custom-value" id="seconds">0</span>
-                    <span class="custom-label">Seconds</span>
-                </div>
-            </div>
-            <p class="custom-contribution">
-                ${{ token_sale.contribution_received }} contribution received
-            </p>
-            <p class="custom-targets">
-                ${{ token_sale.min_target }} – ${{ token_sale.max_target }}
-            </p>
-        </div>
-    </div>
-</section>
-
-<section class="custom-swing">
-    <a href="{% url 'crypto:features' %}">
-        <h4 class="custom-highlight">{{ swing_section.highlight_text }}</h4>
-    </a>
-    
-    <h1 class="custom-main-title">
-        {% for word in swing_section.main_title.split %}
-            {% if forloop.counter == 5 %}
-                <span class="custom-ash">{{ word }}</span>
-            {% else %}
-                {{ word }}
-            {% endif %}
-        {% endfor %}
+<!-- HERO -->
+<section class="home-hero">
+  <div class="home-hero-content">
+    <span class="home-badge">✦ Built on Web3. Powered by You</span>
+    <h1 class="home-title">
+      The Future
+      <span>of Leverage Is Here</span>
     </h1>
-
-    <div class="custom-text-containers">
-        <div class="custom-left-side">
-            {% for container in swing_section.containers.all|slice:":2" %}
-                <div class="custom-text-box">
-                    <h1>{{ container.title }}</h1>
-                    <p>{{ container.content }}</p>
-                </div>
-            {% endfor %}
-        </div>
-
-        <div class="custom-right-side">
-            {% for container in swing_section.containers.all|slice:"2:4" %}
-                <div class="custom-text-box">
-                    <h1>{{ container.title }}</h1>
-                    <p>{{ container.content }}</p>
-                </div>
-            {% endfor %}
-        </div>
-    </div>
+    <p class="home-subtitle">{{ page.subtitle }}</p>
+    <div class="home-description">{{ page.body|safe }}</div>
+  </div>
+  <div class="home-action-buttons">
+    <a href="{% url 'crypto:login' %}" class="home-auth-btn">Sign In</a>
+    <a href="{% url 'crypto:signup' %}" class="home-auth-btn">Get Started</a>
+  </div>
 </section>
 
-<section class="custom-exchange">
-    <div class="custom-exchange-container">
-        <div class="custom-exchange-main-image">
-            <img src="{{ exchange_section.main_image.url }}" alt="Main computer image">
-        </div>
-        <div class="custom-exchange-text">
-            <h3>{{ exchange_section.title }}</h3>
-            <p>{{ exchange_section.description }}</p>
-        </div>
-        <div class="custom-exchange-icons">
-            {% for icon in exchange_section.icons.all %}
-                <div class="custom-icon-box">
-                    <img src="{{ icon.image.url }}" alt="Crypto icon">
-                </div>
-            {% endfor %}
-        </div>
-    </div>
-</section>
-
-<section class="custom-investment">
-    <h1 class="custom-investment-title">
-        <a href="{% url 'crypto:investment_plans' %}">
-            BUDGET-FRIENDLY <span>PLANS</span>
-        </a>
-    </h1>
-    <p class="custom-investment-subtitle">
-        <span class="custom-line"></span>
-        CHOOSE YOUR PREFERABLE PLAN FOR INVESTMENT
-        <span class="custom-line"></span>
+<!-- LUXURY -->
+<section class="home-luxury">
+  <div class="home-luxury-container">
+    <h2 class="home-luxury-title">{{ accessible.title }}</h2>
+    <p class="home-luxury-subheading">
+      Trade Smarter With A Secure Investment Platform Designed For Modern Investors...
     </p>
-
-    <div class="custom-investment-cards">
-        {% for plan in plans %}
-        <div class="custom-investment-card">
-            <div class="custom-card-top">
-                <h1>{{ plan.name }}</h1>
-                <h1>{{ plan.percentage_text }}</h1>
-            </div>
-            <div class="custom-separator black"></div>
-            <h1 class="custom-duration">{{ plan.duration_text }}</h1>
-            <div class="custom-separator yellow"></div>
-            <h1 class="custom-grey">{{ plan.maturity_text }}</h1>
-            <div class="custom-headers">
-                <div class="custom-header-left">
-                    <h2>Minimum</h2>
-                    <h2 class="custom-amount">${{ plan.min_amount }}</h2>
-                </div>
-                <div class="custom-header-right">
-                    <h2>Maximum</h2>
-                    <h2 class="custom-amount">${{ plan.max_amount }}</h2>
-                </div>
-            </div>
-            <a href="{{ plan.button_url }}" class="custom-signup-btn">
-                {{ plan.button_text }}
-            </a>
-        </div>
-        {% endfor %}
-    </div>
+    <p class="home-luxury-description">
+      Discover a powerful ecosystem where innovation meets reliability...
+    </p>
+  </div>
 </section>
 
-<section class="custom-bitcoin">
-    <div class="custom-bitcoin-flex">
-        <div class="custom-calculator-container">
-            <h1 class="custom-bitcoin-title">
-                <span class="custom-dark-yellow">{{ calculator.title_first }}</span>
-                <span class="custom-white">{{ calculator.title_second }}</span>
-            </h1>
-            <p class="custom-subtitle">{{ calculator.subtitle }}</p>
-            <div class="custom-calc-row">
-                <input type="number" id="btcAmount" placeholder="Enter amount" />
-
-                <div class="custom-btc-box">
-                    <img src="{% static 'images/btc1.png' %}" alt="Bitcoin">
-                </div>
-
-                <span class="custom-equals">=</span>
-
-                <div class="custom-result-box" id="calcResult">0</div>
-
-                <select id="currencySelect">
-                    <option>ARS</option>
-                    <option>AUD</option>
-                    <option>BRL</option>
-                    <option>CAD</option>
-                    <option>CHF</option>
-                </select>
-            </div>
-        </div>
-
-        <div class="custom-canvas-container">
-            <canvas id="btcCalcCanvas"></canvas>
-        </div>
+<!-- CARDS -->
+<section class="home-cards">
+  <div class="home-row">
+    {% for card in accessible_cards|slice:":2" %}
+    <div class="home-card">
+      <img src="{{ card.image.url }}" alt="{{ card.title }}">
+      <h3>{{ card.title }}</h3>
+      <p>{{ card.description }}</p>
     </div>
+    {% endfor %}
+  </div>
+  <div class="home-row">
+    {% for card in accessible_cards|slice:"2:5" %}
+    <div class="home-card">
+      <img src="{{ card.image.url }}" alt="{{ card.title }}">
+      <h3>{{ card.title }}</h3>
+      <p>{{ card.description }}</p>
+    </div>
+    {% endfor %}
+  </div>
 </section>
 
-<section class="custom-features">
-    <div class="custom-features-container">
-        <div class="custom-features-grid">
-            {% for item in feature_items %}
-                <div class="custom-feature-card">
-                    <img src="{{ item.image.url }}" alt="{{ item.title }}">
-                    <h3>{{ item.title }}</h3>
-                    <p>{{ item.description }}</p>
-                </div>
-            {% endfor %}
-        </div>
-        <canvas id="NewBitcoinCanvas" width="350" height="620"></canvas>
+<!-- TOKEN SALE -->
+<section class="home-token">
+  <div class="home-token-container">
+    <div class="home-token-left">
+      <h2>{{ token_sale.left_title }}</h2>
+      <h1>{{ token_sale.right_title }}</h1>
+      <p>{{ token_sale.left_subtitle }}</p>
+      <a href="{{ token_sale.button_url }}" class="home-token-btn">
+        {{ token_sale.button_text }}
+      </a>
     </div>
+    <div class="home-token-right">
+      <h1>The trading <span class="home-grey">platform</span> for the future</h1>
+      <div class="home-countdown">
+        <div><span id="days">365</span><small>Days</small></div>
+        <div><span id="hours">0</span><small>Hours</small></div>
+        <div><span id="minutes">0</span><small>Minutes</small></div>
+        <div><span id="seconds">0</span><small>Seconds</small></div>
+      </div>
+      <p>${{ token_sale.contribution_received }} contribution received</p>
+      <p>${{ token_sale.min_target }} – ${{ token_sale.max_target }}</p>
+    </div>
+  </div>
+</section>
+
+<!-- SWING -->
+<section class="home-swing">
+  <a href="{% url 'crypto:features' %}">
+    <h4>{{ swing_section.highlight_text }}</h4>
+  </a>
+  <h1 class="home-main-title">
+    {% for word in swing_section.main_title.split %}
+      {% if forloop.counter == 5 %}
+        <span class="home-ash">{{ word }}</span>
+      {% else %}
+        {{ word }}
+      {% endif %}
+    {% endfor %}
+  </h1>
+  <div class="home-text-containers">
+    <div class="home-left">
+      {% for container in swing_section.containers.all|slice:":2" %}
+      <div class="home-text-box">
+        <h2>{{ container.title }}</h2>
+        <p>{{ container.content }}</p>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="home-right">
+      {% for container in swing_section.containers.all|slice:"2:4" %}
+      <div class="home-text-box">
+        <h2>{{ container.title }}</h2>
+        <p>{{ container.content }}</p>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- EXCHANGE -->
+<section class="home-exchange">
+  <div class="home-exchange-container">
+    <div class="home-exchange-image">
+      <img src="{{ exchange_section.main_image.url }}" alt="Main computer image">
+    </div>
+    <div class="home-exchange-text">
+      <h3>{{ exchange_section.title }}</h3>
+      <p>{{ exchange_section.description }}</p>
+    </div>
+    <div class="home-exchange-icons">
+      {% for icon in exchange_section.icons.all %}
+      <div class="home-icon-box">
+        <img src="{{ icon.image.url }}" alt="Crypto icon">
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- INVESTMENT -->
+<section class="home-investment">
+  <h1>BUDGET-FRIENDLY <span>PLANS</span></h1>
+  <p>CHOOSE YOUR PREFERABLE PLAN FOR INVESTMENT</p>
+  <div class="home-investment-cards">
+    {% for plan in plans %}
+    <div class="home-investment-card">
+      <h2>{{ plan.name }}</h2>
+      <h2>{{ plan.percentage_text }}</h2>
+      <p>{{ plan.duration_text }}</p>
+      <p>{{ plan.maturity_text }}</p>
+      <p>Min: ${{ plan.min_amount }} | Max: ${{ plan.max_amount }}</p>
+      <a href="{{ plan.button_url }}" class="home-signup-btn">{{ plan.button_text }}</a>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+<!-- BITCOIN -->
+<section class="home-bitcoin">
+  <div class="home-bitcoin-flex">
+    <div class="home-calculator">
+      <h1><span class="home-yellow">{{ calculator.title_first }}</span> {{ calculator.title_second }}</h1>
+      <p>{{ calculator.subtitle }}</p>
+      <div class="home-calc-row">
+        <input type="number" id="btcAmount" placeholder="Enter amount">
+        <img src="{% static 'images/btc1.png' %}" alt="Bitcoin">
+        <span>=</span>
+        <div id="calcResult">0</div>
+        <select id="currencySelect">
+          <option>ARS</option><option>AUD</option><option>BRL</option>
+          <option>CAD</option><option>CHF</option>
+        </select>
+      </div>
+    </div>
+    <div class="home-canvas">
+      <canvas id="btcCalcCanvas"></canvas>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="home-features">
+  <div class="home-features-grid">
+    {% for item in feature_items %}
+    <div class="home-feature-card">
+      <img src="{{ item.image.url }}" alt="{{ item.title }}">
+      <h3>{{ item.title }}</h3>
+      <p>{{ item.description }}</p>
+    </div>
+    {% endfor %}
+  </div>
+  <canvas id="NewBitcoinCanvas" width="350" height="620"></canvas>
 </section>
 
 {% endblock %}
