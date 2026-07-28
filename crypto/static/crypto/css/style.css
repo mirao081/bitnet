@@ -6011,6 +6011,11 @@ p {
     flex-direction: column;
     text-align: center;
   }
+  .custom-highlight h4{
+    text-align: center;
+    font-size: 0.7rem;
+    line-height: 1.2rem;
+  }
 
   .custom-token-left,
   .custom-token-right,
