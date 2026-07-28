@@ -1,44 +1,12 @@
 from django import forms
-from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
+from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django_recaptcha.fields import ReCaptchaField
 from django_recaptcha.widgets import ReCaptchaV3
 
-class ContactForm(forms.Form):
-    first_name = forms.CharField(max_length=50)
-    last_name = forms.CharField(max_length=50)
-    email = forms.EmailField()
-    phone = forms.CharField(max_length=20)
-    service = forms.ChoiceField(choices=[
-        ('deposit', 'How to make deposit'),
-        ('benefit', 'The best way to benefit from the platform'),
-        ('withdrawals', 'Advisory on withdrawals'),
-        ('wait', 'Minimum wait before withdrawal'),
-        ('analysis', 'Crypto market analysis'),
-        ('blockchain', 'Blockchain model'),
-        ('legal', 'Legal advisory (KYC/AML, SEC etc)')
-    ])
-    message = forms.CharField(widget=forms.Textarea)
-    captcha = ReCaptchaField(widget=ReCaptchaV3)
-
-class StyledLoginForm(AuthenticationForm):
-    captcha = ReCaptchaField(widget=ReCaptchaV3)
-
-    username = forms.CharField(
-        widget=forms.TextInput(attrs={
-            'class': 'form-control',
-            'placeholder': 'Username'
-        })
-    )
-    password = forms.CharField(
-        widget=forms.PasswordInput(attrs={
-            'class': 'form-control',
-            'placeholder': 'Password'
-        })
-    )
-
 class StyledSignupForm(UserCreationForm):
-    # captcha = ReCaptchaField(widget=ReCaptchaV3)
+    # ✅ Add captcha back in
+    captcha = ReCaptchaField(widget=ReCaptchaV3)
 
     email = forms.EmailField(
         required=True,
@@ -68,5 +36,4 @@ class StyledSignupForm(UserCreationForm):
 
     class Meta:
         model = User
-        # fields = ("username", "email", "password1", "password2", "captcha")
-        fields = ("username", "email", "password1", "password2")
+        fields = ("username", "email", "password1", "password2", "captcha")
