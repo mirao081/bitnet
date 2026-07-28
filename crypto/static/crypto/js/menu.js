@@ -21,6 +21,7 @@ document.addEventListener('DOMContentLoaded', function () {
     navContainer.querySelectorAll('a').forEach(function (link) {
         link.addEventListener('click', function () {
             const parentLi = this.parentElement;
+            // Only close if it's NOT a submenu parent
             if (!parentLi.classList.contains('has-submenu')) {
                 closeMenu();
             }
@@ -38,7 +39,7 @@ document.addEventListener('DOMContentLoaded', function () {
     document.querySelectorAll('.nav-links li.has-submenu > a').forEach(function (link) {
         link.addEventListener('click', function (e) {
             if (window.innerWidth <= 750) {
-                e.preventDefault();
+                e.preventDefault(); // prevent navigation
                 this.parentElement.classList.toggle('open');
             }
         });
