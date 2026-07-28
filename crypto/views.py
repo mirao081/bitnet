@@ -20,7 +20,7 @@ from .models import (
 from .forms import ContactForm, StyledSignupForm
 from users.models import (
     ActiveInvestment, UserBalance, Referral,
-    UserVerification, SecurityAlert, LoginHistory
+    UserVerification, SecurityAlert, LoginHistory,UserProfile
 )
 import pyotp
 import base64
@@ -365,13 +365,15 @@ def signup_view(request):
         request.session["referral_code"] = ref
 
     if request.method == "POST":
-
         if form.is_valid():
-
+            # Save the User
             user = form.save()
 
-            new_referral, created = Referral.objects.get_or_create(user=user)
+            # ✅ Create a UserProfile automatically
+            UserProfile.objects.get_or_create(user=user)
 
+            # Handle referral logic
+            new_referral, created = Referral.objects.get_or_create(user=user)
             referral_code = request.session.get("referral_code")
 
             if referral_code:
@@ -385,10 +387,7 @@ def signup_view(request):
                         user.userprofile.referrer = referrer
                         user.userprofile.save()
 
-                        print(
-                            f"{user.username} was referred by "
-                            f"{referrer.username}"
-                        )
+                        print(f"{user.username} was referred by {referrer.username}")
 
                     request.session.pop("referral_code", None)
 
@@ -399,7 +398,6 @@ def signup_view(request):
                 request,
                 "Your account has been created successfully. Please log in."
             )
-
             return redirect("crypto:login")
 
         else:
@@ -414,11 +412,8 @@ def signup_view(request):
     return render(
         request,
         "crypto/signup.html",
-        {
-            "form": form,
-        }
+        {"form": form}
     )
-
 
 def faqs(request):
     return render(request, "crypto/faqs.html")
