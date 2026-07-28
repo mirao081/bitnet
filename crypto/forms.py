@@ -38,7 +38,7 @@ class StyledLoginForm(AuthenticationForm):
     )
 
 class StyledSignupForm(UserCreationForm):
-    captcha = ReCaptchaField(widget=ReCaptchaV3)
+    # captcha = ReCaptchaField(widget=ReCaptchaV3)
 
     email = forms.EmailField(
         required=True,
@@ -68,4 +68,5 @@ class StyledSignupForm(UserCreationForm):
 
     class Meta:
         model = User
-        fields = ("username", "email", "password1", "password2", "captcha")
+        # fields = ("username", "email", "password1", "password2", "captcha")
+        fields = ("username", "email", "password1", "password2")
