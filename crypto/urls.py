@@ -41,4 +41,5 @@ urlpatterns = [
     path("twofa-setup/", views.twofa_setup, name="twofa_setup"),
     path("twofa-reset/", views.twofa_reset, name="twofa_reset"),
     path("twofa-verify/", views.twofa_verify, name="twofa_verify"),
+    path('forex-table-api/', views.forex_table_api, name='forex_table_api'),
 ]

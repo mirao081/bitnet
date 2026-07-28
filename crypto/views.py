@@ -403,7 +403,9 @@ def signup_view(request):
             return redirect("crypto:login")
 
         else:
-            print(form.errors)
+            print("=" * 50)
+            print(form.errors.as_json())
+            print("=" * 50)
             messages.error(
                 request,
                 "Please correct the errors below."
@@ -466,3 +468,6 @@ def instrument_detail(request, pk):
     instrument = get_object_or_404(MarketInstrument, pk=pk)
     return render(request, 'crypto:instrument_detail.html', {'instrument': instrument})
 
+def forex_table_api(request):
+    data = {"message": "Forex API placeholder"}
+    return JsonResponse(data)

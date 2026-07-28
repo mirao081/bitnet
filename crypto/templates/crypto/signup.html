@@ -3,82 +3,88 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Sign Up - Bitnet</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - BitnetFx</title>
+
     <link rel="stylesheet" href="{% static 'crypto/css/style.css' %}">
-    <!-- Load Google reCAPTCHA script -->
-    <script src="https://www.google.com/recaptcha/api.js?render=YOUR_SITE_KEY"></script>
+
+    <!-- Google reCAPTCHA v3 -->
+    <script src="https://www.google.com/recaptcha/api.js?render=6LfYRWotAAAAADZOYTAPexRxP48RWIDrfj7sCAaj"></script>
 </head>
 <body class="register-body">
-    <div class="register-container">
-        <div class="login-logo">
-            <span class="site-name">BitnetFx</span>
-        </div>
 
-        <h2 class="register-title">Create Your Account</h2>
+<div class="register-container">
 
-        <form method="post" class="register-form">
-            {% csrf_token %}
-
-            <!-- Show non-field errors -->
-            {% if form.non_field_errors %}
-                <div class="errorlist">
-                    {{ form.non_field_errors }}
-                </div>
-            {% endif %}
-
-            <!-- Username -->
-            <div class="form-group">
-                {{ form.username.label_tag }}
-                {{ form.username }}
-                {% for error in form.username.errors %}
-                    <div class="error">{{ error }}</div>
-                {% endfor %}
-            </div>
-
-            <!-- Email -->
-            <div class="form-group">
-                {{ form.email.label_tag }}
-                {{ form.email }}
-                {% for error in form.email.errors %}
-                    <div class="error">{{ error }}</div>
-                {% endfor %}
-            </div>
-
-            <!-- Password -->
-            <div class="form-group">
-                {{ form.password1.label_tag }}
-                {{ form.password1 }}
-                {% for error in form.password1.errors %}
-                    <div class="error">{{ error }}</div>
-                {% endfor %}
-            </div>
-
-            <!-- Confirm Password -->
-            <div class="form-group">
-                {{ form.password2.label_tag }}
-                {{ form.password2 }}
-                {% for error in form.password2.errors %}
-                    <div class="error">{{ error }}</div>
-                {% endfor %}
-            </div>
-
-            <!-- Hidden reCAPTCHA field -->
-            <input type="hidden" id="id_captcha" name="captcha">
-
-            <button type="submit" class="register-button">Sign Up</button>
-        </form>
-
-        <p class="auth-switch">
-            Already have an account? <a href="{% url 'crypto:login' %}">Login here</a>
-        </p>
+    <div class="login-logo">
+        <span class="site-name">BitnetFx</span>
     </div>
 
-    <script>
-        grecaptcha.ready(function() {
-            grecaptcha.execute('YOUR_SITE_KEY', {action: 'submit'}).then(function(token) {
-                document.getElementById('id_captcha').value = token;
-            });
-        });
-    </script>
+    <h2 class="register-title">Create Your Account</h2>
+
+    <!-- Django messages -->
+    {% if messages %}
+        {% for message in messages %}
+            <div class="message {{ message.tags }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+
+    <!-- Form errors -->
+    {% if form.errors %}
+    <div style="background:#ffe6e6;border:1px solid #cc0000;padding:12px;margin-bottom:15px;border-radius:5px;color:#900;">
+        <strong>Please correct the following errors:</strong>
+        <ul style="margin-top:10px;">
+            {% for field in form %}
+                {% for error in field.errors %}
+                    <li><strong>{{ field.label }}:</strong> {{ error }}</li>
+                {% endfor %}
+            {% endfor %}
+
+            {% for error in form.non_field_errors %}
+                <li>{{ error }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+
+    <form method="post" class="register-form" novalidate>
+        {% csrf_token %}
+
+        <div class="form-group">
+            {{ form.username.label_tag }}
+            {{ form.username }}
+        </div>
+
+        <div class="form-group">
+            {{ form.email.label_tag }}
+            {{ form.email }}
+        </div>
+
+        <div class="form-group">
+            {{ form.password1.label_tag }}
+            {{ form.password1 }}
+        </div>
+
+        <div class="form-group">
+            {{ form.password2.label_tag }}
+            {{ form.password2 }}
+        </div>
+
+        <!-- reCAPTCHA -->
+        {{ form.captcha }}
+
+        <button type="submit" class="register-button">
+            Sign Up
+        </button>
+    </form>
+
+    <p class="auth-switch">
+        Already have an account?
+        <a href="{% url 'crypto:login' %}">Login here</a>
+    </p>
+
+</div>
+
 </body>
 </html>

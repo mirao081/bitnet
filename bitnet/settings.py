@@ -3,7 +3,7 @@ import os
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = 'your-secret-key'
+SECRET_KEY = '$c_0uv_w&=4$0i_28-g#a15obq1@&7s0t1z&q4yglb1-##n5=7'
 DEBUG = False
 ALLOWED_HOSTS = ['gloria1231.pythonanywhere.com']
 
@@ -83,8 +83,8 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
 # reCAPTCHA keys
-RECAPTCHA_PUBLIC_KEY = "your-site-key"
-RECAPTCHA_PRIVATE_KEY = "your-secret-key"
+RECAPTCHA_PUBLIC_KEY = "6LfYRWotAAAAADZOYTAPexRxP48RWIDrfj7sCAaj"
+RECAPTCHA_PRIVATE_KEY = "6LfYRWotAAAAAAUahZ20rCzW6f9ksHJyMfXsH9WV"
 RECAPTCHA_USE_SSL = True
 
 # Email
