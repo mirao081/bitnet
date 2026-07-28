@@ -17,9 +17,14 @@ document.addEventListener('DOMContentLoaded', function () {
         toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
     });
 
-    // Close menu when clicking any link
+    // Close menu when clicking links, except submenu parents
     navContainer.querySelectorAll('a').forEach(function (link) {
-        link.addEventListener('click', closeMenu);
+        link.addEventListener('click', function () {
+            const parentLi = this.parentElement;
+            if (!parentLi.classList.contains('has-submenu')) {
+                closeMenu();
+            }
+        });
     });
 
     // Reset menu on resize
@@ -29,7 +34,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    // ✅ Match your HTML: .submenu
+    // Submenu toggle for mobile
     document.querySelectorAll('.nav-links li.has-submenu > a').forEach(function (link) {
         link.addEventListener('click', function (e) {
             if (window.innerWidth <= 750) {
