@@ -72,7 +72,7 @@
         </div>
 
         <!-- reCAPTCHA -->
-        {% comment %} {{ form.captcha }} {% endcomment %}
+        {{ form.captcha }}
 
         <button type="submit" class="register-button">
             Sign Up
@@ -85,6 +85,24 @@
     </p>
 
 </div>
+
+
+<script>
+    grecaptcha.ready(function() {
+        document.querySelector('.register-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // stop normal submit
+            grecaptcha.execute('6LfYRWotAAAAADZOYTAPexRxP48RWIDrfj7sCAaj', {action: 'signup'}).then(function(token) {
+                // create hidden input with token
+                var input = document.createElement('input');
+                input.type = 'hidden';
+                input.name = 'g-recaptcha-response';
+                input.value = token;
+                event.target.appendChild(input);
+                event.target.submit(); // now submit with token
+            });
+        });
+    });
+</script>
 
 </body>
 </html>
