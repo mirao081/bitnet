@@ -244,27 +244,24 @@ body::-webkit-scrollbar {
 }
 
 
-.buy-now {
-    .buy-now {
-    margin-left: auto;
-}
-}
 
-.buy-button {
-    display: inline-block;
-    padding: 4px 10px;
-    background-color: transparent;
-    color: #fff;
-    text-align: center;
-    text-decoration: none;
-    border-radius: 4px;
-    font-weight: 600;
-    font-size: 9px;
-    transition: all 0.3s ease;
-    border: 0.1px solid #fff;
-    white-space: nowrap;
-}
+    .buy-button {
+        display: inline-block;
+        width: auto;
+        min-width: 90px;
+        text-align: center;
+        padding: 4px 10px;
+        font-size: 9px;
+    }
 
+
+@media (max-width: 750px) {
+    .page-content {
+        padding-top: 100px;
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+}
 
 #hero-canvas,
 #bitcoinCanvas {
@@ -6184,28 +6181,3 @@ p {
   align-items: center;
 }
 
-.buy-button {
-  background: #ffd700;
-  color: #111;
-  padding: 8px 16px;
-  border-radius: 4px;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-/* Hamburger menu */
-.menu-toggle {
-  display: none;
-  flex-direction: column;
-  gap: 4px;
-  background: none;
-  border: none;
-  cursor: pointer;
-}
-
-.menu-toggle span {
-  width: 25px;
-  height: 3px;
-  background: #fff;
-  border-radius: 2px;
-}
