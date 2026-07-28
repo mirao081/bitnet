@@ -21,7 +21,6 @@ document.addEventListener('DOMContentLoaded', function () {
     navContainer.querySelectorAll('a').forEach(function (link) {
         link.addEventListener('click', function () {
             const parentLi = this.parentElement;
-            // Only close if it's NOT a submenu parent
             if (!parentLi.classList.contains('has-submenu')) {
                 closeMenu();
             }
@@ -39,8 +38,19 @@ document.addEventListener('DOMContentLoaded', function () {
     document.querySelectorAll('.nav-links li.has-submenu > a').forEach(function (link) {
         link.addEventListener('click', function (e) {
             if (window.innerWidth <= 750) {
-                e.preventDefault(); // prevent navigation
-                this.parentElement.classList.toggle('open');
+                e.preventDefault(); // stop navigation
+                const parentLi = this.parentElement;
+                const isOpen = parentLi.classList.toggle('open');
+
+                // Optional: close other submenus so only one stays open
+                if (isOpen) {
+                    document.querySelectorAll('.nav-links li.has-submenu')
+                        .forEach(function (li) {
+                            if (li !== parentLi) {
+                                li.classList.remove('open');
+                            }
+                        });
+                }
             }
         });
     });
