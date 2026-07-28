@@ -1,0 +1,11 @@
+# Ignore Django collectstatic output
+staticfiles/
+
+# Ignore Python cache
+__pycache__/
+
+# Ignore virtual environment
+venv/
+
+# Ignore database files
+*.sqlite3
