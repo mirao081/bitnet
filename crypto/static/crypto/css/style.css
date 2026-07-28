@@ -5929,11 +5929,14 @@ p {
   border-radius: 6px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.08);
 }
+/* Investment section adjustment */
 .custom-investment {
   background: #fff;
   text-align: center;
   padding: 60px 20px;
+  margin-left: 20px;   /* ✅ pushes the whole section 20px to the right */
 }
+
 
 .custom-investment-cards {
   display: flex;
