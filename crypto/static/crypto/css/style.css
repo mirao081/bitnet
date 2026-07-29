@@ -205,6 +205,176 @@ p {
 
 }
 
+/* Base navbar */
+.crypto-navbar {
+    background-color: #111;
+    color: #fff;
+    font-family: 'Poppins', sans-serif;
+    position: relative;
+    z-index: 1000;
+}
+
+.crypto-navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 1.5rem;
+}
+
+/* Branding */
+.crypto-site-name .crypto-brand {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #ff7f00;
+    font-weight: 600;
+    font-size: 1.2rem;
+}
+
+.crypto-site-name img {
+    height: 32px;
+    margin-right: 8px;
+}
+
+/* Nav links */
+.crypto-nav-links-container {
+    display: flex;
+    align-items: center;
+}
+
+.crypto-nav-links {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+    margin: 0;
+    padding: 0;
+}
+
+.crypto-nav-links li {
+    position: relative;
+}
+
+.crypto-nav-links a {
+    text-decoration: none;
+    color: #fff;
+    padding: 0.5rem;
+    transition: color 0.3s;
+}
+
+.crypto-nav-links a.crypto-active {
+    color: #ff7f00;
+}
+
+/* Submenu */
+.crypto-submenu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: #222;
+    list-style: none;
+    padding: 0.5rem 0;
+    min-width: 180px;
+}
+
+.crypto-submenu li a {
+    display: block;
+    padding: 0.5rem 1rem;
+    color: #fff;
+}
+
+.crypto-submenu li a:hover {
+    background: #333;
+    color: #ff7f00;
+}
+
+/* Show submenu when parent is open */
+.crypto-nav-links li.crypto-has-submenu.crypto-open > .crypto-submenu {
+    display: block;
+}
+
+/* Buy button */
+.crypto-buy-now .crypto-buy-button {
+    background: #ff7f00;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    text-decoration: none;
+    margin-left: 1rem;
+    transition: background 0.3s;
+}
+
+.crypto-buy-now .crypto-buy-button:hover {
+    background: #e56f00;
+}
+
+/* Hamburger */
+.crypto-menu-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 24px;
+    height: 18px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.crypto-menu-toggle span {
+    display: block;
+    height: 3px;
+    background: #fff;
+    border-radius: 2px;
+}
+
+/* Mobile styles */
+@media (max-width: 750px) {
+    .crypto-nav-links-container {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: #111;
+        flex-direction: column;
+        align-items: flex-start;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+    }
+
+    .crypto-nav-links-container.crypto-open {
+        max-height: 500px; /* enough to show links */
+    }
+
+    .crypto-nav-links {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .crypto-nav-links li {
+        width: 100%;
+    }
+
+    .crypto-nav-links a {
+        width: 100%;
+        padding: 1rem;
+    }
+
+    .crypto-menu-toggle {
+        display: flex;
+    }
+
+    /* Submenu inside mobile */
+    .crypto-nav-links li.crypto-has-submenu.crypto-open > .crypto-submenu {
+        position: static;
+        width: 100%;
+    }
+
+    .crypto-submenu li a {
+        padding-left: 2rem;
+    }
+}
+
 /* ================= SUBTITLE ================= */
 
 .bitnet-subtitle{

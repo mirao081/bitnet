@@ -12,10 +12,10 @@
     {% block extra_css %}{% endblock %}
 </head>
 <body>
-    <nav class="navbar">
-        <div class="navbar-container">
-            <div class="site-name">
-                <a href="/" class="brand">
+    <nav class="crypto-navbar">
+        <div class="crypto-navbar-container">
+            <div class="crypto-site-name">
+                <a href="/" class="crypto-brand">
                     {% if settings.logo %}
                         <img src="{% static 'crypto/images/bitnetlogo.png' %}" alt="Bitnet.com Logo">
                     {% endif %}
@@ -23,19 +23,19 @@
                 </a>
             </div>
 
-            <div class="nav-links-container">
-                <ul class="nav-links">
+            <div class="crypto-nav-links-container">
+                <ul class="crypto-nav-links">
                     {% for link in nav_links %}
                         {% if not link.parent %}
-                            <li class="{% if link.children.all %}has-submenu{% endif %}">
-                                <a href="{{ link.url }}" class="{% if request.path == link.url %}active{% endif %}">
+                            <li class="{% if link.children.exists %}crypto-has-submenu{% endif %}">
+                                <a href="{{ link.url }}" class="{% if request.path == link.url %}crypto-active{% endif %}">
                                     {{ link.name }}
                                 </a>
-                                {% if link.children.all %}
-                                    <ul class="submenu">
+                                {% if link.children.exists %}
+                                    <ul class="crypto-submenu">
                                         {% for child in link.children.all %}
                                             <li>
-                                                <a href="{{ child.url }}" class="{% if request.path == child.url %}active{% endif %}">
+                                                <a href="{{ child.url }}" class="{% if request.path == child.url %}crypto-active{% endif %}">
                                                     {{ child.name }}
                                                 </a>
                                             </li>
@@ -46,18 +46,19 @@
                         {% endif %}
                     {% endfor %}
                 </ul>
-                <div class="buy-now">
-                    <a href="{{ settings.buy_button_url }}" class="buy-button">{{ settings.buy_button_text }}</a>
+                <div class="crypto-buy-now">
+                    <a href="{{ settings.buy_button_url }}" class="crypto-buy-button">{{ settings.buy_button_text }}</a>
                 </div>
             </div>
 
-            <div class="nav-actions">
-                <button class="menu-toggle" id="menu-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">
+            <div class="crypto-nav-actions">
+                <button class="crypto-menu-toggle" id="crypto-menu-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">
                     <span></span><span></span><span></span>
                 </button>
             </div>
         </div>
     </nav>
+
 
     <div class="market-ticker">
         <div class="ticker-track" id="tickerTrack">
