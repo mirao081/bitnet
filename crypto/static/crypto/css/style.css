@@ -366,16 +366,59 @@ p {
 
     /* Submenu inside mobile */
     .crypto-nav-links li.crypto-has-submenu.crypto-open > .crypto-submenu {
+        display: block;
         position: static;
         width: 100%;
+        background: #111;
     }
 
     .crypto-submenu li a {
         padding-left: 2rem;
+        border-top: 1px solid #222;
     }
 }
 
-/* ================= SUBTITLE ================= */
+/* Ticker bar */
+.market-ticker {
+    background: #000;
+    color: #fff;
+    overflow: hidden;
+    white-space: nowrap;
+    border-bottom: 2px solid #ff7f00;
+}
+
+.ticker-track {
+    display: flex;
+    animation: ticker-scroll 20s linear infinite;
+}
+
+.ticker-item {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.ticker-item .name {
+    font-weight: 600;
+    margin-right: 0.5rem;
+}
+
+.change.up {
+    color: #00c853;
+}
+
+.change.down {
+    color: #d50000;
+}
+
+/* Smooth scrolling animation */
+@keyframes ticker-scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
 
 .bitnet-subtitle{
     max-width:760px;

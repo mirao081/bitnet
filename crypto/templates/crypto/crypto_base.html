@@ -13,6 +13,7 @@
 </head>
 <body>
 
+    <!-- Market ticker on top -->
     <div class="market-ticker">
         <div class="ticker-track" id="tickerTrack">
             {% for instrument in instruments %}
@@ -27,8 +28,7 @@
         </div>
     </div>
 
-
-    <!-- Navbar below ticker -->
+    <!-- Navbar -->
     <nav class="crypto-navbar">
         <div class="crypto-navbar-container">
             <div class="crypto-site-name">
@@ -147,6 +147,7 @@
 
     {% block extra_js %}{% endblock %}
 
+    <!-- Tawk.to live chat -->
     <script type="text/javascript">
     var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
     (function(){
