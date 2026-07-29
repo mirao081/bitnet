@@ -516,26 +516,6 @@ h1.hero-title span {
         text-align: center;
     }
 }
-/* Ensure nav container overlays ticker */
-.crypto-nav-links-container {
-    background: #222; /* dark grey background */
-    z-index: 2000;    /* higher than ticker */
-}
-
-/* When menu is open on mobile */
-.crypto-nav-links-container.crypto-open {
-    background: #222; /* keep dark grey when expanded */
-}
-
-/* Submenu inside mobile */
-@media (max-width: 750px) {
-    .crypto-nav-links li.crypto-has-submenu.crypto-open > .crypto-submenu {
-        display: block;
-        position: static;
-        width: 100%;
-        background: #222; /* dark grey submenu background */
-    }
-}
 
 #hero-canvas,
 #bitcoinCanvas {
