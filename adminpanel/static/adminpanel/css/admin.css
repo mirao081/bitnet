@@ -1310,46 +1310,6 @@ body{
     font-style:italic;
 
 }
-@media(max-width:768px){
-
-.activity-grid{
-
-    grid-template-columns:1fr;
-
-}
-@media(max-width:768px){
-
-    .activity-grid{
-        grid-template-columns:1fr;
-        justify-items:center;   
-    }
-
-    .activity-card{
-        padding:22px;
-        width:90%;             
-        text-align:center;     
-    }
-
-    .activity-list li{
-        flex-direction:column;
-        align-items:center;     
-        text-align:center;
-    }
-}
-
-
-.activity-card{
-
-    padding:22px;
-
-}
-@media (max-width: 1024px) {
-  .activity-card {
-    width: 90%;            /* keep responsive */
-    margin: 0 auto;        /* center horizontally */
-    margin-left: 35px;     /* push slightly to the right */
-  }
-}
 
 .activity-list li{
 
@@ -1884,26 +1844,7 @@ body{
 .users-table tbody tr:hover td{
     color: #ffffff !important;
 }
-@media(max-width:768px){
 
-    .activity-grid{
-        grid-template-columns:1fr;
-        justify-items:center;  
-    }
-
-    .activity-card{
-        padding:22px;
-        max-width:420px;       
-        width:100%;             
-        text-align:center;     
-    }
-
-    .activity-list li{
-        flex-direction:column;
-        align-items:center;     
-        text-align:center;
-    }
-}
 .users-table thead th{
     color: #3073f0 !important;
 }
@@ -2243,65 +2184,101 @@ body{
     flex-direction:column;
 
 }
+/* ===== Tablet screens ===== */
+@media (max-width: 1024px) {
+    .activity-grid {
+        grid-template-columns: 1fr;
+        justify-items: center;
+    }
 
+    .activity-card {
+        width: 90%;
+        margin: 0 auto;          /* centers horizontally */
+        text-align: center;
+        padding: 22px;
+    }
+
+    .activity-list li {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .users-toolbar {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .users-toolbar button {
+        width: 100%;
+    }
+
+    #search-input {
+        width: 100%;
+        min-width: 100%;
+        margin-left: 0;
+    }
+
+    .pagination {
+        flex-direction: column;
+    }
+
+    .update-section {
+        grid-template-columns: 1fr;
+    }
 }
 
+/* ===== Mobile screens ===== */
+@media (max-width: 768px) {
+    .activity-card {
+        width: 95%;
+        margin: 0 auto;          /* centers horizontally */
+        padding: 20px;
+        text-align: center;
+    }
 
+    .activity-card h2 {
+        font-size: 20px;
+    }
 
-@media(max-width:768px){
+    .activity-list li {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
 
-.activity-card{
+    .users-table-container { max-height: 300px; }
+    .users-table th, .users-table td { font-size: 12px; padding: 8px; }
 
-    padding:20px;
+    .referrals-table-container { max-height: 300px; }
+    .referrals-table th, .referrals-table td { font-size: 12px; padding: 8px; }
+    .referrals-pagination button { width: 80px; font-size: 12px; padding: 6px; }
 
+    .page-title { font-size: 32px; }
+    .user-info-card { padding: 25px; border-radius: 18px; }
+    .update-card { padding: 22px; }
 }
 
-.activity-card h2{
+/* ===== Extra small devices ===== */
+@media (max-width: 480px) {
+    .activity-card {
+        width: 100%;
+        margin: 0 auto;
+        padding: 16px;
+        text-align: center;
+    }
 
-    font-size:24px;
+    .activity-card h2 {
+        font-size: 18px;
+    }
 
-}
+    .users-toolbar button { font-size: 13px; }
+    #search-input { font-size: 14px; }
 
-.users-table td{
-
-    padding:14px;
-
-}
-
-.users-table th{
-
-    padding:14px;
-
-}
-
-}
-
-
-
-@media(max-width:480px){
-
-.activity-card{
-
-    padding:16px;
-
-}
-
-.activity-card h2{
-
-    font-size:22px;
-
-}
-
-.users-toolbar button{
-
-    font-size:13px;
-
-}
-
-#search-input{
-
-    font-size:14px;
-
+    .page-title { font-size: 28px; }
+    .user-info-card { padding: 20px; }
+    .update-card { padding: 18px; border-radius: 18px; }
+    .update-card h3 { font-size: 19px; }
 }
 
 }
