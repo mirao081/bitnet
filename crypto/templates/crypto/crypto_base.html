@@ -28,51 +28,69 @@
         </div>
     </div>
 
-    <!-- Navbar -->
-    <nav class="crypto-navbar">
-        <div class="crypto-navbar-container">
-            <div class="crypto-site-name">
-                <a href="/" class="crypto-brand">
-                    {% if settings.logo %}
-                        <img src="{% static 'crypto/images/bitnetlogo.png' %}" alt="Bitnet.com Logo">
-                    {% endif %}
-                    <span>{{ settings.site_name }}</span>
+    <nav class="btnxnav-navbar">
+        <div class="btnxnav-container">
+
+            <div class="btnxnav-logo-area">
+                <a href="/" class="btnxnav-brand">
+                    ...
                 </a>
             </div>
 
-            <div class="crypto-nav-links-container">
-                <ul class="crypto-nav-links">
+            <div class="btnxnav-menu-wrapper">
+
+                <ul class="btnxnav-menu">
                     {% for link in nav_links %}
                         {% if not link.parent %}
-                            <li class="{% if link.children.exists %}crypto-has-submenu{% endif %}">
-                                <a href="{{ link.url }}" class="{% if request.path == link.url %}crypto-active{% endif %}">
+                            <li class="{% if link.children.exists %}btnxnav-dropdown{% endif %}">
+
+                                <a href="{{ link.url }}"
+                                class="{% if request.path == link.url %}btnxnav-active{% endif %}">
                                     {{ link.name }}
                                 </a>
+
                                 {% if link.children.exists %}
-                                    <ul class="crypto-submenu">
-                                        {% for child in link.children.all %}
-                                            <li>
-                                                <a href="{{ child.url }}" class="{% if request.path == child.url %}crypto-active{% endif %}">
-                                                    {{ child.name }}
-                                                </a>
-                                            </li>
-                                        {% endfor %}
-                                    </ul>
+                                <ul class="btnxnav-submenu">
+                                    {% for child in link.children.all %}
+                                    <li>
+                                        <a href="{{ child.url }}"
+                                        class="{% if request.path == child.url %}btnxnav-active{% endif %}">
+                                            {{ child.name }}
+                                        </a>
+                                    </li>
+                                    {% endfor %}
+                                </ul>
                                 {% endif %}
+
                             </li>
                         {% endif %}
                     {% endfor %}
                 </ul>
-                <div class="crypto-buy-now">
-                    <a href="{{ settings.buy_button_url }}" class="crypto-buy-button">{{ settings.buy_button_text }}</a>
+
+                <div class="btnxnav-buy-area">
+                    <a href="{{ settings.buy_button_url }}"
+                    class="btnxnav-buy-btn">
+                        {{ settings.buy_button_text }}
+                    </a>
                 </div>
+
             </div>
 
-            <div class="crypto-nav-actions">
-                <button class="crypto-menu-toggle" id="crypto-menu-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">
-                    <span></span><span></span><span></span>
+            <div class="btnxnav-actions">
+
+                <button
+                    class="btnxnav-toggle"
+                    id="btnxnav-toggle"
+                    type="button">
+
+                    <span></span>
+                    <span></span>
+                    <span></span>
+
                 </button>
+
             </div>
+
         </div>
     </nav>
 

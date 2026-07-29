@@ -1,57 +1,91 @@
-document.addEventListener('DOMContentLoaded', function () {
-    const toggle = document.getElementById('menu-toggle');
-    const navContainer = document.querySelector('.nav-links-container');
+document.addEventListener("DOMContentLoaded", function () {
 
-    if (!toggle || !navContainer) return;
+    const toggle = document.getElementById("btnxnav-toggle");
+    const menu = document.querySelector(".btnxnav-menu-wrapper");
+
+    if (!toggle || !menu) return;
 
     function closeMenu() {
-        navContainer.classList.remove('open');
-        toggle.classList.remove('active');
-        toggle.setAttribute('aria-expanded', 'false');
+        menu.classList.remove("show");
+        toggle.classList.remove("active");
+        toggle.setAttribute("aria-expanded", "false");
+
+        document.querySelectorAll(".btnxnav-dropdown").forEach(function (item) {
+            item.classList.remove("open");
+        });
     }
 
     // Hamburger toggle
-    toggle.addEventListener('click', function () {
-        const isOpen = navContainer.classList.toggle('open');
-        toggle.classList.toggle('active', isOpen);
-        toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    toggle.addEventListener("click", function () {
+
+        const isOpen = menu.classList.toggle("show");
+
+        toggle.classList.toggle("active", isOpen);
+        toggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+
     });
 
-    // Close menu when clicking links, except submenu parents
-    navContainer.querySelectorAll('a').forEach(function (link) {
-        link.addEventListener('click', function () {
-            const parentLi = this.parentElement;
-            if (!parentLi.classList.contains('has-submenu')) {
+    // Mobile submenu toggle
+    document.querySelectorAll(".btnxnav-dropdown > a").forEach(function (link) {
+
+        link.addEventListener("click", function (e) {
+
+            if (window.innerWidth <= 768) {
+
+                e.preventDefault();
+
+                const parent = this.parentElement;
+                const isOpen = parent.classList.toggle("open");
+
+                // Close other submenus
+                document.querySelectorAll(".btnxnav-dropdown").forEach(function (item) {
+                    if (item !== parent) {
+                        item.classList.remove("open");
+                    }
+                });
+
+            }
+
+        });
+
+    });
+
+    // Close mobile menu after clicking a normal link
+    menu.querySelectorAll("a").forEach(function (link) {
+
+        link.addEventListener("click", function () {
+
+            if (
+                window.innerWidth <= 768 &&
+                !this.parentElement.classList.contains("btnxnav-dropdown")
+            ) {
                 closeMenu();
             }
+
         });
+
     });
 
-    // Reset menu on resize
-    window.addEventListener('resize', function () {
-        if (window.innerWidth > 750) {
+    // Close menu when clicking outside
+    document.addEventListener("click", function (e) {
+
+        if (
+            window.innerWidth <= 768 &&
+            !menu.contains(e.target) &&
+            !toggle.contains(e.target)
+        ) {
             closeMenu();
         }
+
     });
 
-    // Submenu toggle for mobile
-    document.querySelectorAll('.nav-links li.has-submenu > a').forEach(function (link) {
-        link.addEventListener('click', function (e) {
-            if (window.innerWidth <= 750) {
-                e.preventDefault(); // stop navigation
-                const parentLi = this.parentElement;
-                const isOpen = parentLi.classList.toggle('open');
+    // Reset on desktop
+    window.addEventListener("resize", function () {
 
-                // Optional: close other submenus so only one stays open
-                if (isOpen) {
-                    document.querySelectorAll('.nav-links li.has-submenu')
-                        .forEach(function (li) {
-                            if (li !== parentLi) {
-                                li.classList.remove('open');
-                            }
-                        });
-                }
-            }
-        });
+        if (window.innerWidth > 768) {
+            closeMenu();
+        }
+
     });
+
 });

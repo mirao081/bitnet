@@ -516,40 +516,6 @@ h1.hero-title span {
         text-align: center;
     }
 }
-/* Submenu (desktop) */
-.crypto-submenu {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background: #f2f2f2; /* light grey background */
-    list-style: none;
-    padding: 0.5rem 0;
-    min-width: 140px; /* fixed width */
-    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-    z-index: 4000; /* higher than ticker */
-}
-
-.crypto-submenu li a {
-    display: block;
-    padding: 0.5rem 1rem;
-    color: #111; /* dark text on light background */
-}
-
-.crypto-submenu li a:hover {
-    background: #ddd;
-    color: #ff7f00;
-}
-
-/* Show submenu when parent is open */
-.crypto-nav-links li.crypto-has-submenu.crypto-open > .crypto-submenu {
-    display: block;
-}
-.crypto-nav-links-container {
-    display: flex;
-    align-items: center;
-    z-index: 3000; /* ensure menu overlays ticker */
-}
 
 #hero-canvas,
 #bitcoinCanvas {
@@ -6267,4 +6233,285 @@ p {
   height: 3px;
   background: #fff;
   border-radius: 2px;
+}
+
+/* ===========================
+   UNIQUE NAVBAR
+=========================== */
+
+.btnxnav-navbar{
+    position:relative;
+    width:100%;
+    background:#111;
+    z-index:9000;
+}
+
+.btnxnav-container{
+
+    max-width:1400px;
+
+    margin:auto;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:12px 20px;
+
+}
+
+.btnxnav-brand{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    color:#fff;
+
+    text-decoration:none;
+
+    font-weight:600;
+
+}
+
+.btnxnav-brand img{
+
+    height:40px;
+
+}
+
+.btnxnav-menu-wrapper{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:30px;
+
+}
+
+.btnxnav-menu{
+
+    display:flex;
+
+    list-style:none;
+
+    gap:28px;
+
+    margin:0;
+
+    padding:0;
+
+}
+
+.btnxnav-menu li{
+
+    position:relative;
+
+}
+
+.btnxnav-menu a{
+
+    color:#fff;
+
+    text-decoration:none;
+
+    display:block;
+
+    padding:12px 8px;
+
+}
+
+.btnxnav-active{
+
+    color:#0fb4ff;
+
+}
+
+
+/* dropdown */
+
+.btnxnav-submenu{
+
+    display:none;
+
+    position:absolute;
+
+    left:0;
+
+    top:100%;
+
+    min-width:180px;
+
+    background:#222;
+
+    list-style:none;
+
+    padding:0;
+
+    margin:0;
+
+    z-index:9000;
+
+}
+
+.btnxnav-submenu li a{
+
+    padding:12px;
+
+}
+
+.btnxnav-dropdown:hover>.btnxnav-submenu{
+
+    display:block;
+
+}
+
+.btnxnav-buy-btn{
+
+    background:#0fb4ff;
+
+    color:#fff;
+
+    padding:10px 18px;
+
+    border-radius:4px;
+
+    text-decoration:none;
+
+}
+
+.btnxnav-toggle{
+
+    display:none;
+
+    width:42px;
+
+    height:42px;
+
+    background:none;
+
+    border:none;
+
+    cursor:pointer;
+
+}
+
+.btnxnav-toggle span{
+
+    display:block;
+
+    height:3px;
+
+    margin:6px 0;
+
+    background:#fff;
+
+}
+
+
+/* ===========================
+   MOBILE
+=========================== */
+
+@media(max-width:768px){
+
+.btnxnav-toggle{
+
+display:block;
+
+}
+
+.btnxnav-menu-wrapper{
+
+display:none;
+
+position:absolute;
+
+top:100%;
+
+right:0;
+
+width:140px;
+
+background:#333;
+
+z-index:9000;
+
+flex-direction:column;
+
+align-items:stretch;
+
+padding:10px 0;
+
+}
+
+.btnxnav-menu-wrapper.show{
+
+display:flex;
+
+}
+
+.btnxnav-menu{
+
+flex-direction:column;
+
+gap:0;
+
+width:100%;
+
+}
+
+.btnxnav-menu li{
+
+width:100%;
+
+}
+
+.btnxnav-menu a{
+
+padding:12px 15px;
+
+}
+
+.btnxnav-submenu{
+
+display:none;
+
+position:static;
+
+background:#444;
+
+width:100%;
+
+}
+
+.btnxnav-dropdown.open>.btnxnav-submenu{
+
+display:block;
+
+}
+
+.btnxnav-buy-area{
+
+width:100%;
+
+padding:10px;
+
+box-sizing:border-box;
+
+}
+
+.btnxnav-buy-btn{
+
+display:block;
+
+text-align:center;
+
+}
+
 }
