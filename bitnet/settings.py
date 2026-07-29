@@ -79,6 +79,17 @@ LOGIN_REDIRECT_URL = '/users/dashboard/'
 # Static & media
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
+
+
+
+# Tell Django where to find static files in your apps
+STATICFILES_DIRS = [
+    BASE_DIR / "crypto" / "static",
+    BASE_DIR / "users" / "static",
+    BASE_DIR / "adminpanel" / "static",
+]
+
+
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 

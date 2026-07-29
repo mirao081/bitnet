@@ -13,20 +13,20 @@
 </head>
 <body>
 
-    <!-- Market ticker on top -->
-    <div class="crypto-market-ticker">
-        <div class="crypto-ticker-track" id="cryptoTickerTrack">
+    <div class="market-ticker">
+        <div class="ticker-track" id="tickerTrack">
             {% for instrument in instruments %}
-                <a href="{% url 'crypto:instrument_detail' instrument.pk %}" class="crypto-ticker-item">
-                    <span class="crypto-ticker-name">{{ instrument.ticker }}</span>
-                    <span class="crypto-ticker-value">{{ instrument.price }}</span>
-                    <span class="crypto-ticker-change {% if instrument.change_percent < 0 %}crypto-down{% else %}crypto-up{% endif %}">
+                <a href="{% url 'crypto:instrument_detail' instrument.pk %}" class="ticker-item">
+                    <span class="name">{{ instrument.ticker }}</span>
+                    <span class="value">{{ instrument.price }}</span>
+                    <span class="change {% if instrument.change_percent < 0 %}down{% else %}up{% endif %}">
                         {{ instrument.change_percent }}% ({{ instrument.change_value }})
                     </span>
                 </a>
             {% endfor %}
         </div>
     </div>
+
 
     <!-- Navbar below ticker -->
     <nav class="crypto-navbar">
