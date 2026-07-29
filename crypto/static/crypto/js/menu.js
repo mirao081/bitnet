@@ -1,20 +1,19 @@
-// crypto/static/crypto/js/menu.js
 document.addEventListener('DOMContentLoaded', function () {
-    const toggle = document.getElementById('crypto-menu-toggle');
-    const navContainer = document.querySelector('.crypto-nav-links-container');
+    const toggle = document.getElementById('menu-toggle');
+    const navContainer = document.querySelector('.nav-links-container');
 
     if (!toggle || !navContainer) return;
 
     function closeMenu() {
-        navContainer.classList.remove('crypto-open');
-        toggle.classList.remove('crypto-active');
+        navContainer.classList.remove('open');
+        toggle.classList.remove('active');
         toggle.setAttribute('aria-expanded', 'false');
     }
 
     // Hamburger toggle
     toggle.addEventListener('click', function () {
-        const isOpen = navContainer.classList.toggle('crypto-open');
-        toggle.classList.toggle('crypto-active', isOpen);
+        const isOpen = navContainer.classList.toggle('open');
+        toggle.classList.toggle('active', isOpen);
         toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
     });
 
@@ -22,7 +21,7 @@ document.addEventListener('DOMContentLoaded', function () {
     navContainer.querySelectorAll('a').forEach(function (link) {
         link.addEventListener('click', function () {
             const parentLi = this.parentElement;
-            if (!parentLi.classList.contains('crypto-has-submenu')) {
+            if (!parentLi.classList.contains('has-submenu')) {
                 closeMenu();
             }
         });
@@ -36,19 +35,19 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     // Submenu toggle for mobile
-    document.querySelectorAll('.crypto-nav-links li.crypto-has-submenu > a').forEach(function (link) {
+    document.querySelectorAll('.nav-links li.has-submenu > a').forEach(function (link) {
         link.addEventListener('click', function (e) {
             if (window.innerWidth <= 750) {
                 e.preventDefault(); // stop navigation
                 const parentLi = this.parentElement;
-                const isOpen = parentLi.classList.toggle('crypto-open');
+                const isOpen = parentLi.classList.toggle('open');
 
                 // Optional: close other submenus so only one stays open
                 if (isOpen) {
-                    document.querySelectorAll('.crypto-nav-links li.crypto-has-submenu')
+                    document.querySelectorAll('.nav-links li.has-submenu')
                         .forEach(function (li) {
                             if (li !== parentLi) {
-                                li.classList.remove('crypto-open');
+                                li.classList.remove('open');
                             }
                         });
                 }
