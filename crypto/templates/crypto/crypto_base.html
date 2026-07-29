@@ -12,6 +12,23 @@
     {% block extra_css %}{% endblock %}
 </head>
 <body>
+
+    <!-- Market ticker on top -->
+    <div class="crypto-market-ticker">
+        <div class="crypto-ticker-track" id="cryptoTickerTrack">
+            {% for instrument in instruments %}
+                <a href="{% url 'crypto:instrument_detail' instrument.pk %}" class="crypto-ticker-item">
+                    <span class="crypto-ticker-name">{{ instrument.ticker }}</span>
+                    <span class="crypto-ticker-value">{{ instrument.price }}</span>
+                    <span class="crypto-ticker-change {% if instrument.change_percent < 0 %}crypto-down{% else %}crypto-up{% endif %}">
+                        {{ instrument.change_percent }}% ({{ instrument.change_value }})
+                    </span>
+                </a>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- Navbar below ticker -->
     <nav class="crypto-navbar">
         <div class="crypto-navbar-container">
             <div class="crypto-site-name">
@@ -59,23 +76,8 @@
         </div>
     </nav>
 
-
-    <div class="market-ticker">
-        <div class="ticker-track" id="tickerTrack">
-            {% for instrument in instruments %}
-                <a href="{% url 'crypto:instrument_detail' instrument.pk %}" class="ticker-item">
-                    <span class="name">{{ instrument.ticker }}</span>
-                    <span class="value">{{ instrument.price }}</span>
-                    <span class="change {% if instrument.change_percent < 0 %}down{% else %}up{% endif %}">
-                        {{ instrument.change_percent }}% ({{ instrument.change_value }})
-                    </span>
-                </a>
-            {% endfor %}
-        </div>
-    </div>
     <canvas id="hero-canvas"></canvas>
     <canvas id="bitcoinCanvas"></canvas>
-
 
     <div class="page-content">
         {% block content %}
@@ -133,10 +135,8 @@
         </div>
     </footer>
 
-   
     <button id="scrollBottomBtn" title="Go to bottom">↓</button>
     <button id="scrollTopBtn" title="Go to top">↑</button>
-
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="{% static 'crypto/js/bitcoin.js' %}"></script>
@@ -158,7 +158,6 @@
     s0.parentNode.insertBefore(s1,s0);
     })();
     </script>
-  
 
     <script type="text/javascript">
         {% if request.user.is_authenticated %}
@@ -169,7 +168,7 @@
                 }, function(error){});
             };
         {% endif %}
-</script>
+    </script>
 
 </body>
 </html>
