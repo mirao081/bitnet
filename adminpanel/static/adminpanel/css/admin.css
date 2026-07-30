@@ -6930,3 +6930,37 @@ html{
 .referral-search button:hover {
     background-color: #0056b3;
 }
+
+
+/* Wrapper ensures horizontal scroll */
+.wallets-table-wrapper {
+  width: 100%;
+  overflow-x: auto;              /* horizontal scroll */
+  -webkit-overflow-scrolling: touch; /* smooth scroll on iOS */
+}
+
+/* Custom table class avoids inheriting old styles */
+.wallets-table-custom {
+  min-width: 700px;              /* force table wider than small screens */
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.wallets-table-custom th,
+.wallets-table-custom td {
+  padding: 8px 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  .wallets-overview-card h2 {
+    font-size: 1.2rem;
+  }
+  .wallets-table-custom th,
+  .wallets-table-custom td {
+    font-size: 0.9rem;
+    padding: 6px 8px;
+  }
+}

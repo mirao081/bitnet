@@ -1,33 +1,35 @@
 {% extends "adminpanel/admin_base.html" %}
 {% block title %}Wallets Overview{% endblock %}
 {% block content %}
-<div class="activity-card" id="wallets-admin">
+<div class="wallets-overview-card">
     <h2>All User Wallets</h2>
-    <table class="users-table">
-        <thead>
-            <tr>
-                <th>User</th>
-                <th>Plan</th>
-                <th>Balance</th>
-                <th>Gas Fee Paid</th>
-                <th>Created At</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for wallet in wallets %}
-            <tr>
-                <td>{{ wallet.user.username }}</td>
-                <td>{{ wallet.plan.name }}</td>
-                <td>${{ wallet.balance }}</td>
-                <td>${{ wallet.gas_fee_paid }}</td>
-                <td>{{ wallet.created_at }}</td>
-            </tr>
-            {% empty %}
-            <tr>
-                <td colspan="5">No wallets found.</td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+    <div class="wallets-table-wrapper">
+        <table class="wallets-table-custom">
+            <thead>
+                <tr>
+                    <th>User</th>
+                    <th>Plan</th>
+                    <th>Balance</th>
+                    <th>Gas Fee Paid</th>
+                    <th>Created At</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for wallet in wallets %}
+                <tr>
+                    <td>{{ wallet.user.username }}</td>
+                    <td>{{ wallet.plan.name }}</td>
+                    <td>${{ wallet.balance }}</td>
+                    <td>${{ wallet.gas_fee_paid }}</td>
+                    <td>{{ wallet.created_at }}</td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="5">No wallets found.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
 </div>
 {% endblock %}
