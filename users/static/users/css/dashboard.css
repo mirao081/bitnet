@@ -6099,10 +6099,12 @@ font-size:1.5rem;
     font-size: 1rem;
     display: block;
 }
+
 .wallets-partial label {
     display: block;
     margin-bottom: 4px;
     font-weight: 600;
+    color: #333;
 }
 
 .settings-page{
