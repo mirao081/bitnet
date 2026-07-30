@@ -6116,7 +6116,7 @@ font-size:1.5rem;
 }
 .wallet-field {
     margin-bottom: 24px;
-    text-align: left;
+    text-align: center;
 }
 
 .wallet-field label {
@@ -6124,18 +6124,19 @@ font-size:1.5rem;
     font-weight: 600;
     color: #ddb844; /* gold tone */
     margin-bottom: 6px;
+    text-align: center;
 }
-
 .wallet-field input[type="text"],
 .wallet-field input[type="file"] {
-    width: 95%;
+    width: 60%;
     box-sizing: border-box;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 6px;
     font-size: 1rem;
-    margin-bottom: 10px;
+    margin: 0 auto 10px auto;
     display: block;
+    text-align: center;
 }
 
 .settings-page{
