@@ -3,6 +3,7 @@ from .models import UserKYC, UserWallet, UserVerification, APIKey, UserProfile,W
 from django.contrib.auth.models import User
 from django_recaptcha.fields import ReCaptchaField
 from django_recaptcha.widgets import ReCaptchaV3
+from users.models import CompanyWallet
 
 class KYCForm(forms.ModelForm):
     captcha = ReCaptchaField(widget=ReCaptchaV3)
@@ -107,3 +108,14 @@ class WithdrawalForm(forms.ModelForm):
                 }
             ),
         }
+
+
+class CompanyWalletForm(forms.ModelForm):
+    class Meta:
+        model = CompanyWallet
+        fields = [
+            "btc_wallet", "btc_qr",
+            "eth_wallet", "eth_qr",
+            "usdt_erc20_wallet", "usdt_erc20_qr",
+            "usdt_trc20_wallet", "usdt_trc20_qr",
+        ]

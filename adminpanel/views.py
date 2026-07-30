@@ -14,6 +14,7 @@ from decimal import Decimal, InvalidOperation
 from crypto.models import InvestmentPlan,Wallet
 from users.forms import UserWalletForm
 from django.contrib.admin.views.decorators import staff_member_required
+from users.models import CompanyWallet
 
 
 
@@ -282,15 +283,21 @@ def investment_detail(request, investment_id):
 
 
 def payment_methods(request):
-    wallet, created = UserWallet.objects.get_or_create(user=request.user)
+    # Ensure there is always one company wallet record
+    wallet, created = CompanyWallet.objects.get_or_create(id=1)
+
     if request.method == "POST":
-        form = UserWalletForm(request.POST, request.FILES, instance=wallet)
+        form = CompanyWalletForm(request.POST, request.FILES, instance=wallet)
         if form.is_valid():
             form.save()
             return redirect("adminpanel:payment_methods")
     else:
-        form = UserWalletForm(instance=wallet)
-    return render(request, "adminpanel/payment_methods.html", {"form": form, "wallet": wallet})
+        form = CompanyWalletForm(instance=wallet)
+
+    return render(request, "adminpanel/payment_methods.html", {
+        "form": form,
+        "wallet": wallet,
+    })
 
 
 
