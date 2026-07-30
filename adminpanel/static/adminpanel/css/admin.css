@@ -1319,7 +1319,6 @@ body{
 
 }
 
-}
 .users-table-container {
   max-height: 400px;              /* fixed height for scroll */
   overflow-y: auto;               /* vertical scrollbar */
@@ -1359,7 +1358,8 @@ body{
 /* Mobile adjustments */
 @media (max-width: 768px) {
   .users-table-container {
-    max-height: 300px;            /* smaller scroll area */
+    max-height: 300px;
+    overflow-y: scroll;             /* smaller scroll area */
   }
 
   .users-table th,
@@ -1636,7 +1636,8 @@ body{
 /* Referral table container with vertical scroll */
 .referrals-table-container {
   max-height: 400px;          /* fixed height for scroll */
-  overflow-y: auto;           /* vertical scrollbar */
+  overflow-y: auto; 
+-webkit-overflow-scrolling: touch;         /* vertical scrollbar */
   border: 1px solid #ccc;
   border-radius: 6px;
   margin: 0 auto;             /* center horizontally */
@@ -1674,7 +1675,8 @@ body{
 /* Mobile adjustments */
 @media (max-width: 768px) {
   .referrals-table-container {
-    max-height: 300px;        /* smaller scroll area on mobile */
+    max-height: 300px;
+     overflow-y: scroll;         /* smaller scroll area on mobile */
   }
 
   .referrals-table th,
