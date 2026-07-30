@@ -1,5 +1,6 @@
 from django import forms
 from users.models import UserProfile
+from users.models import CompanyWallet
 
 
 class UserUpdateForm(forms.ModelForm):
@@ -30,3 +31,14 @@ class UserUpdateForm(forms.ModelForm):
                 "class": "form-control"
             }),
         }
+
+
+class CompanyWalletForm(forms.ModelForm):
+    class Meta:
+        model = CompanyWallet
+        fields = [
+            "btc_wallet", "btc_qr",
+            "eth_wallet", "eth_qr",
+            "usdt_erc20_wallet", "usdt_erc20_qr",
+            "usdt_trc20_wallet", "usdt_trc20_qr",
+        ]
