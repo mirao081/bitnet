@@ -1,114 +1,283 @@
 {% extends "users/dashboard_base.html" %}
 {% load static %}
+
 {% block content %}
-<div class="investments-container">
-    <div class="summary-card shiny-card" style="margin-bottom: 20px;">
-        <div class="card-header">💼 Portfolio Summary</div>
-        <div class="card-body">
+
+<div class="investment-page">
+
+    <!-- Portfolio Summary -->
+    <div class="investment-summary-card">
+
+        <div class="investment-card-header">
+            💼 Portfolio Summary
+        </div>
+
+        <div class="investment-card-body">
+
             <h2>Total Value: ${{ current_value }}</h2>
+
             <p><strong>Net ROI:</strong> {{ roi }}%</p>
+
             <p><strong>Total Invested:</strong> ${{ total_invested }}</p>
+
             <p><strong>Best Asset:</strong> {{ best_asset }}</p>
-            <div class="quick-action" style="margin-top: 15px;">
-                <a href="{% url 'users:start_investment' %}" class="btn btn-primary">
+
+            <div class="investment-quick-action">
+
+                <a href="{% url 'users:start_investment' %}"
+                   class="investment-btn investment-btn-primary">
+
                     ➕ Start New Investment
+
                 </a>
+
             </div>
-        </div>
-    </div>
-    <div class="card-row">
-        <div class="card shiny-card">
-            <div class="card-header">📑 Active Investments</div>
-            <div class="card-body">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Plan</th>
-                            <th>Amount</th>
-                            <th>Start Date</th>
-                            <th>Maturity Date</th>
-                            <th>Status</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for inv in investments %}
-                        <tr>
-                            <td>{{ inv.plan_name }}</td>
-                            <td>${{ inv.amount }}</td>
-                            <td>{{ inv.start_date|date:"Y-m-d" }}</td>
-                            <td>{{ inv.end_date|date:"Y-m-d" }}</td>
-                            <td>{{ inv.status }}</td>
-                        </tr>
-                        {% empty %}
-                        <tr><td colspan="5">No active investments.</td></tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
-            </div>
+
         </div>
 
-        <div class="card shiny-card">
-            <div class="card-header">📈 Investment Performance</div>
-            <div class="card-body">
+    </div>
+
+
+    <!-- Row 1 -->
+    <div class="investment-row">
+
+        <!-- Active Investments -->
+        <div class="investment-card">
+
+            <div class="investment-card-header">
+                📑 Active Investments
+            </div>
+
+            <div class="investment-card-body">
+
+                <div class="investment-table-wrapper">
+
+                    <table class="investment-table">
+
+                        <thead>
+
+                            <tr>
+
+                                <th>Plan</th>
+
+                                <th>Amount</th>
+
+                                <th>Start Date</th>
+
+                                <th>Maturity Date</th>
+
+                                <th>Status</th>
+
+                            </tr>
+
+                        </thead>
+
+                        <tbody>
+
+                            {% for inv in investments %}
+
+                            <tr>
+
+                                <td>{{ inv.plan_name }}</td>
+
+                                <td>${{ inv.amount }}</td>
+
+                                <td>{{ inv.start_date|date:"Y-m-d" }}</td>
+
+                                <td>{{ inv.end_date|date:"Y-m-d" }}</td>
+
+                                <td>{{ inv.status }}</td>
+
+                            </tr>
+
+                            {% empty %}
+
+                            <tr>
+
+                                <td colspan="5">
+                                    No active investments.
+                                </td>
+
+                            </tr>
+
+                            {% endfor %}
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Performance -->
+        <div class="investment-card">
+
+            <div class="investment-card-header">
+                📈 Investment Performance
+            </div>
+
+            <div class="investment-card-body">
+
                 <p><strong>Total Invested:</strong> ${{ total_invested }}</p>
+
                 <p><strong>Current Value:</strong> ${{ current_value }}</p>
+
                 <p><strong>ROI:</strong> {{ roi }}%</p>
+
                 <p><strong>Best Asset:</strong> {{ best_asset }}</p>
+
             </div>
+
         </div>
+
     </div>
-    <div class="card-row">
-        <div class="card shiny-card">
-            <div class="card-header">⏳ Upcoming Maturities</div>
-            <div class="card-body">
+
+
+
+    <!-- Row 2 -->
+
+    <div class="investment-row">
+
+        <div class="investment-card">
+
+            <div class="investment-card-header">
+                ⏳ Upcoming Maturities
+            </div>
+
+            <div class="investment-card-body">
+
                 {% for inv in upcoming_investments %}
-                    <p>{{ inv.plan_name }} matures on {{ inv.end_date|date:"Y-m-d" }}</p>
+
+                    <p>
+                        {{ inv.plan_name }} matures on
+                        {{ inv.end_date|date:"Y-m-d" }}
+                    </p>
+
                 {% empty %}
+
                     <p>No upcoming maturities.</p>
+
                 {% endfor %}
+
             </div>
+
         </div>
 
-        <div class="card shiny-card">
-            <div class="card-header">📉 Profit & Loss History</div>
-            <div class="card-body">
+
+        <div class="investment-card">
+
+            <div class="investment-card-header">
+                📉 Profit & Loss History
+            </div>
+
+            <div class="investment-card-body">
+
                 <canvas id="historyChart"></canvas>
+
             </div>
-        </div>
-    </div>
-    <div class="card-row">
-        <div class="card shiny-card">
-            <div class="card-header">📊 Asset Allocation</div>
-            <div class="card-body">
-                <canvas id="allocationChart" data-holdings='{{ holdings|safe }}'></canvas>
-            </div>
+
         </div>
 
-        <div class="card shiny-card">
-            <div class="card-header">📂 Download/Export</div>
-            <div class="card-body">
-                <a href="{% url 'users:export_portfolio_csv' %}" class="btn btn-golden">Export CSV</a>
-                <a href="{% url 'users:export_portfolio_pdf' %}" class="btn btn-golden">Export PDF</a>
-                <a href="{% url 'users:export_portfolio_excel' %}" class="btn btn-golden">Export Excel</a>
-            </div>
-        </div>
     </div>
-    <div class="card-row">
-        <div class="card shiny-card">
-            <div class="card-header">💡 Investment Tips</div>
-            <div class="card-body">
-                <ul>
-                    <li>Diversify across multiple assets to reduce risk.</li>
-                    <li>Balance short-term and long-term plans for liquidity.</li>
-                    <li>Reinvest profits to compound your growth.</li>
-                    <li>Track volatility indexes before committing large amounts.</li>
-                </ul>
+
+
+
+    <!-- Row 3 -->
+
+    <div class="investment-row">
+
+        <div class="investment-card">
+
+            <div class="investment-card-header">
+                📊 Asset Allocation
             </div>
+
+            <div class="investment-card-body">
+
+                <canvas
+                    id="allocationChart"
+                    data-holdings='{{ holdings|safe }}'>
+                </canvas>
+
+            </div>
+
         </div>
+
+
+        <div class="investment-card">
+
+            <div class="investment-card-header">
+                📂 Download / Export
+            </div>
+
+            <div class="investment-card-body">
+
+                <a href="{% url 'users:export_portfolio_csv' %}"
+                   class="investment-btn investment-btn-gold">
+
+                    Export CSV
+
+                </a>
+
+                <a href="{% url 'users:export_portfolio_pdf' %}"
+                   class="investment-btn investment-btn-gold">
+
+                    Export PDF
+
+                </a>
+
+                <a href="{% url 'users:export_portfolio_excel' %}"
+                   class="investment-btn investment-btn-gold">
+
+                    Export Excel
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- Row 4 -->
+
+    <div class="investment-row">
+
+        <div class="investment-card">
+
+            <div class="investment-card-header">
+                💡 Investment Tips
+            </div>
+
+            <div class="investment-card-body">
+
+                <ul>
+
+                    <li>Diversify across multiple assets to reduce risk.</li>
+
+                    <li>Balance short-term and long-term plans for liquidity.</li>
+
+                    <li>Reinvest profits to compound your growth.</li>
+
+                    <li>Track volatility indexes before committing large amounts.</li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
     </div>
 
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="{% static 'users/js/investments.js' %}"></script>
+
 {% endblock %}

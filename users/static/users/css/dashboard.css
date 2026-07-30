@@ -2758,48 +2758,6 @@ input.unlocked {
         text-align: center;
     }
 }
-/* Mobile responsiveness */
-@media (max-width: 768px) {
-  .investments-container {
-    padding: 10px;
-  }
-
-  .card-row {
-    flex-direction: column;   /* stack cards vertically */
-    gap: 15px;                /* spacing between stacked cards */
-  }
-
-  .card-header {
-    font-size: 1rem;          /* slightly smaller header text */
-    text-align: center;
-  }
-
-  .card-body {
-    font-size: 0.9rem;        /* reduce body text size */
-    line-height: 1.6;
-  }
-
-  /* Wrap tables in scrollable container */
-  .card-body table {
-    display: block;
-    width: 100%;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch; /* smooth scroll on iOS */
-  }
-
-  .card-body table thead,
-  .card-body table tbody {
-    min-width: 600px;         /* force table wider than small screens */
-  }
-
-  .transaction-table th,
-  .transaction-table td,
-  .investment-table th,
-  .investment-table td {
-    padding: 8px;             /* tighter padding for mobile */
-    font-size: 0.85rem;
-  }
-}
 
 
 .comparison-table {
@@ -7224,4 +7182,321 @@ body.dark-mode .btn-danger {
     border: 2px solid #d4af37;
     border-radius: 12px;
     box-shadow: 0 4px 12px rgba(0,0,0,.15);
+}
+/* ==========================================
+   INVESTMENT PAGE - PREMIUM MODERN UI
+========================================== */
+
+/* Page */
+
+.investment-page{
+    width:100%;
+    padding:20px;
+}
+
+/* Summary Card */
+
+.investment-summary-card{
+    margin-bottom:25px;
+    border-radius:20px;
+    overflow:hidden;
+    background:linear-gradient(145deg,#ffffff,#f6f9ff);
+    border:1px solid #edf2f7;
+    box-shadow:
+        0 12px 30px rgba(0,0,0,.08),
+        0 3px 10px rgba(0,0,0,.05);
+}
+
+/* Rows */
+
+.investment-row{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:24px;
+    margin-bottom:24px;
+}
+
+/* Cards */
+
+.investment-card{
+    background:#fff;
+    border-radius:20px;
+    overflow:hidden;
+    border:1px solid #edf2f7;
+    box-shadow:
+        0 10px 28px rgba(0,0,0,.07),
+        0 5px 12px rgba(0,0,0,.04);
+    transition:.3s ease;
+}
+
+.investment-card:hover{
+    transform:translateY(-4px);
+    box-shadow:
+        0 18px 40px rgba(0,0,0,.12);
+}
+
+/* Card Header */
+
+.investment-card-header{
+    padding:16px 22px;
+    background:linear-gradient(135deg,#2563eb,#4f46e5);
+    color:#fff;
+    font-size:1.05rem;
+    font-weight:700;
+    letter-spacing:.3px;
+}
+
+/* Card Body */
+
+.investment-card-body{
+    padding:22px;
+}
+
+/* Summary Title */
+
+.investment-summary-card h2{
+    margin-bottom:12px;
+    color:#1f2937;
+    font-size:1.8rem;
+    font-weight:700;
+}
+
+.investment-summary-card p{
+    margin-bottom:10px;
+    color:#4b5563;
+    line-height:1.6;
+}
+
+/* Quick Action */
+
+.investment-quick-action{
+    margin-top:18px;
+}
+
+/* ==============================
+   BUTTONS
+============================== */
+
+.investment-btn{
+    display:inline-block;
+    padding:12px 22px;
+    border-radius:10px;
+    text-decoration:none;
+    font-weight:600;
+    transition:.3s;
+    margin:5px;
+}
+
+.investment-btn-primary{
+    background:#2563eb;
+    color:#fff;
+}
+
+.investment-btn-primary:hover{
+    background:#1d4ed8;
+    transform:translateY(-2px);
+}
+
+.investment-btn-gold{
+    background:linear-gradient(135deg,#f59e0b,#fbbf24);
+    color:#fff;
+}
+
+.investment-btn-gold:hover{
+    background:linear-gradient(135deg,#d97706,#f59e0b);
+    transform:translateY(-2px);
+}
+
+/* ==============================
+   TABLE
+============================== */
+
+.investment-table-wrapper{
+    width:100%;
+    overflow-x:auto;
+    -webkit-overflow-scrolling:touch;
+    border-radius:14px;
+}
+
+/* Nice Scrollbar */
+
+.investment-table-wrapper::-webkit-scrollbar{
+    height:8px;
+}
+
+.investment-table-wrapper::-webkit-scrollbar-track{
+    background:#eef2f7;
+    border-radius:50px;
+}
+
+.investment-table-wrapper::-webkit-scrollbar-thumb{
+    background:linear-gradient(90deg,#2563eb,#4f46e5);
+    border-radius:50px;
+}
+
+.investment-table{
+    width:100%;
+    min-width:720px;
+    border-collapse:separate;
+    border-spacing:0;
+    background:#fff;
+}
+
+/* Header */
+
+.investment-table thead{
+    background:linear-gradient(135deg,#2563eb,#4f46e5);
+}
+
+.investment-table th{
+    color:#fff;
+    padding:14px 16px;
+    text-align:left;
+    font-weight:600;
+    white-space:nowrap;
+    border:none;
+}
+
+/* Cells */
+
+.investment-table td{
+    padding:14px 16px;
+    border-bottom:1px solid #edf2f7;
+    color:#374151;
+    white-space:nowrap;
+}
+
+/* Zebra */
+
+.investment-table tbody tr:nth-child(even){
+    background:#fafcff;
+}
+
+/* Hover */
+
+.investment-table tbody tr{
+    transition:.25s;
+}
+
+.investment-table tbody tr:hover{
+    background:#eef6ff;
+}
+
+/* Rounded Header */
+
+.investment-table th:first-child{
+    border-top-left-radius:12px;
+}
+
+.investment-table th:last-child{
+    border-top-right-radius:12px;
+}
+
+/* Lists */
+
+.investment-card ul{
+    margin:0;
+    padding-left:22px;
+}
+
+.investment-card li{
+    margin-bottom:10px;
+    color:#4b5563;
+}
+
+/* Charts */
+
+.investment-card canvas{
+    width:100%!important;
+    max-height:350px;
+}
+
+/* ===================================
+   TABLET
+=================================== */
+
+@media (max-width:992px){
+
+    .investment-row{
+        grid-template-columns:1fr;
+    }
+
+}
+
+/* ===================================
+   MOBILE
+=================================== */
+
+@media (max-width:768px){
+
+    .investment-page{
+        padding:15px;
+    }
+
+    .investment-summary-card{
+        border-radius:18px;
+    }
+
+    .investment-summary-card h2{
+        font-size:1.35rem;
+    }
+
+    .investment-card{
+        border-radius:18px;
+    }
+
+    .investment-card-header{
+        font-size:1rem;
+        padding:14px 18px;
+    }
+
+    .investment-card-body{
+        padding:18px;
+    }
+
+    .investment-table{
+        min-width:680px;
+    }
+
+    .investment-table th,
+    .investment-table td{
+        padding:10px;
+        font-size:.9rem;
+    }
+
+    .investment-btn{
+        width:100%;
+        margin:6px 0;
+        text-align:center;
+    }
+}
+
+/* ===================================
+   SMALL PHONES
+=================================== */
+
+@media (max-width:480px){
+
+    .investment-page{
+        padding:12px;
+    }
+
+    .investment-summary-card h2{
+        font-size:1.15rem;
+    }
+
+    .investment-card-header{
+        font-size:.95rem;
+    }
+
+    .investment-table{
+        min-width:650px;
+    }
+
+    .investment-table th,
+    .investment-table td{
+        padding:8px;
+        font-size:.82rem;
+    }
+
 }
