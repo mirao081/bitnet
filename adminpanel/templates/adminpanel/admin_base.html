@@ -67,11 +67,39 @@
     <div class="footer-container">
       <p>&copy; {{ year }} BitnetFx. All rights reserved.</p>
     </div>
+    <div class="theme-toggle">
+      <button type="button" class="btn-secondary" id="toggle-theme">
+          Toggle Dark Mode
+      </button>
+  </div>
+
   </footer>
 
   <script src="{% static 'adminpanel/js/market_scroll.js' %}"></script>
   <script src="{% static 'adminpanel/js/sidebar_toggle.js' %}"></script>
   <script src="{% static 'adminpanel/js/update_plan.js' %}"></script>
 
+<script>
+  
+  document.addEventListener("DOMContentLoaded", function () {
+    const toggleBtn = document.getElementById("toggle-theme");
+
+    if (localStorage.getItem("theme") === "dark") {
+        document.body.classList.add("dark-mode");
+    }
+
+    if (toggleBtn) {
+        toggleBtn.addEventListener("click", function () {
+            document.body.classList.toggle("dark-mode");
+
+            if (document.body.classList.contains("dark-mode")) {
+                localStorage.setItem("theme", "dark");
+            } else {
+                localStorage.setItem("theme", "light");
+            }
+        });
+    }
+});
+</script>
 </body>
 </html>
