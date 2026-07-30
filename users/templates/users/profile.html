@@ -109,15 +109,48 @@
         </div>
     </div>
 
-    <!-- ✅ Wallet Form Section -->
     <div class="user-profile-card" id="wallets">
         <h2 class="user-profile-card-title">Wallets</h2>
-        <form method="post">
+        <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
-            {{ wallet_form.as_p }}
+
+            <!-- BTC Wallet -->
+            <label for="id_btc_wallet">BTC Wallet:</label>
+            {{ wallet_form.btc_wallet }}
+            {% if request.user.userwallet.btc_qr %}
+                <img src="{{ request.user.userwallet.btc_qr.url }}" alt="BTC QR Code" class="wallet-qr">
+            {% endif %}
+            {{ wallet_form.btc_qr }} <!-- keeps upload/change option -->
+
+            <!-- ETH Wallet -->
+            <label for="id_eth_wallet">ETH Wallet:</label>
+            {{ wallet_form.eth_wallet }}
+            {% if request.user.userwallet.eth_qr %}
+                <img src="{{ request.user.userwallet.eth_qr.url }}" alt="ETH QR Code" class="wallet-qr">
+            {% endif %}
+            {{ wallet_form.eth_qr }}
+
+            <!-- USDT ERC20 Wallet -->
+            <label for="id_usdt_erc20_wallet">USDT ERC20 Wallet:</label>
+            {{ wallet_form.usdt_erc20_wallet }}
+            {% if request.user.userwallet.usdt_erc20_qr %}
+                <img src="{{ request.user.userwallet.usdt_erc20_qr.url }}" alt="USDT ERC20 QR Code" class="wallet-qr">
+            {% endif %}
+            {{ wallet_form.usdt_erc20_qr }}
+
+            <!-- USDT TRC20 Wallet -->
+            <label for="id_usdt_trc20_wallet">USDT TRC20 Wallet:</label>
+            {{ wallet_form.usdt_trc20_wallet }}
+            {% if request.user.userwallet.usdt_trc20_qr %}
+                <img src="{{ request.user.userwallet.usdt_trc20_qr.url }}" alt="USDT TRC20 QR Code" class="wallet-qr">
+            {% endif %}
+            {{ wallet_form.usdt_trc20_qr }}
+
             <button type="submit" class="user-profile-btn user-profile-btn-primary">Save Wallets</button>
         </form>
     </div>
+
+
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
