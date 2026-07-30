@@ -498,10 +498,6 @@ def export_transactions_excel(request):
     wb.save(response)
     return response
 
-@login_required
-def profit_history(request):
-    return render(request, "users/profit_history.html")
-
 
 @login_required
 def referrals(request):
