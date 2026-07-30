@@ -6089,7 +6089,7 @@ font-size:1.5rem;
     font-size: 1rem;
 }
 .wallets-partial input[type="text"] {
-    width: 90%;
+    width: 60%;
     max-width: 90%;
     box-sizing: border-box;
     padding: 10px;
@@ -6108,7 +6108,7 @@ font-size:1.5rem;
 }
 .wallet-qr {
     display: block;
-    margin: 10px 0 20px 0;
+    margin-top: 8px;
     max-width: 150px;
     height: auto;
     border: 1px solid #ccc;
@@ -6116,12 +6116,13 @@ font-size:1.5rem;
 }
 .wallet-field {
     margin-bottom: 24px;
+    text-align: left;
 }
 
 .wallet-field label {
     display: block;
     font-weight: 600;
-    color: #ddb844; /* gold tone for visibility */
+    color: #ddb844; /* gold tone */
     margin-bottom: 6px;
 }
 
