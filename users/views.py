@@ -656,7 +656,32 @@ def market_data(request):
 
 @login_required
 def news(request):
-    return render(request, "users/news.html")
+    try:
+        # Fetch BTC and ETH prices
+        btc_data = requests.get(
+            "https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd"
+        ).json()
+        eth_data = requests.get(
+            "https://api.coingecko.com/api/v3/simple/price?ids=ethereum&vs_currencies=usd"
+        ).json()
+        global_data = requests.get(
+            "https://api.coingecko.com/api/v3/global"
+        ).json()
+
+        btc_price = btc_data["bitcoin"]["usd"]
+        eth_price = eth_data["ethereum"]["usd"]
+        market_cap = global_data["data"]["total_market_cap"]["usd"]
+
+    except Exception as e:
+        logger.error(f"Market data fetch failed: {e}")
+        btc_price = eth_price = market_cap = "N/A"
+
+    return render(request, "users/news.html", {
+        "btc_price": btc_price,
+        "eth_price": eth_price,
+        "market_cap": market_cap,
+    })
+
 
 @login_required
 def news_data(request):
@@ -664,7 +689,7 @@ def news_data(request):
         feed = feedparser.parse("https://www.coindesk.com/arc/outboundfeeds/rss/")
         articles = [
             {"title": entry.title, "url": entry.link, "published": entry.published}
-            for entry in feed.entries[:10]  
+            for entry in feed.entries[:10]
         ]
     except Exception as e:
         logger.error(f"RSS feed failed: {e}")
