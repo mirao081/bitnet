@@ -94,24 +94,6 @@ body {
         0 0 15px rgba(255,215,0,.25);
     color: #fff1b8;
 }
-
-
-.main-content{
-
-    flex:1;
-
-    width:100%;
-
-    min-width:0;
-
-    padding:30px;
-
-    margin:0;
-
-    box-sizing:border-box;
-
-    overflow-x:hidden;
-}
 .hamburger, .close-icon {
     display: none;
     font-size: 24px;
@@ -7652,10 +7634,26 @@ body.dark-mode .btn-danger {
 
     transform:scale(1.003);
 }
+.main-content{
+
+    flex:1;
+
+    width:100%;
+
+    min-width:0;
+
+    padding:30px;
+
+    margin:0;
+
+    box-sizing:border-box;
+
+    overflow-x:hidden;
+}
 /* ==========================================================
    BITNET INVESTMENT DASHBOARD
    PREMIUM CSS
-   PART 1
+   PART 1A
 ========================================================== */
 
 
@@ -7667,11 +7665,11 @@ body.dark-mode .btn-danger {
 
     width:100%;
 
-    max-width:1400px;
+    max-width:1200px;
 
     margin:0 auto;
 
-    padding:30px 20px 45px;
+    padding:30px;
 
     box-sizing:border-box;
 }
@@ -7685,7 +7683,7 @@ body.dark-mode .btn-danger {
 
     display:grid;
 
-    grid-template-columns:repeat(2,minmax(340px,1fr));
+    grid-template-columns:1fr;
 
     gap:28px;
 
@@ -7809,7 +7807,9 @@ body.dark-mode .btn-danger {
 }
 
 
-/* Shine */
+/*==========================================================
+    HEADER SHINE
+==========================================================*/
 
 .investment-card-header::before{
 
@@ -7837,7 +7837,6 @@ body.dark-mode .btn-danger {
     animation:shineHeader 6s infinite;
 }
 
-
 .investment-card-header::after{
 
     content:"";
@@ -7847,16 +7846,14 @@ body.dark-mode .btn-danger {
     inset:0;
 
     box-shadow:
-
         inset 0 2px rgba(255,255,255,.18),
-
         inset 0 -2px rgba(0,0,0,.12);
 
 }
 
 
 /*==========================================================
-    HEADER ANIMATIONS
+    ANIMATIONS
 ==========================================================*/
 
 @keyframes goldHeader{
@@ -7877,7 +7874,6 @@ body.dark-mode .btn-danger {
     }
 
 }
-
 
 @keyframes shineHeader{
 
@@ -7925,7 +7921,7 @@ body.dark-mode .btn-danger {
 
 
 /*==========================================================
-    FORCE ALL TEXT TO BE VISIBLE
+    TEXT COLORS
 ==========================================================*/
 
 .investment-card-body,
@@ -7953,18 +7949,12 @@ body.dark-mode .btn-danger {
     font-weight:500;
 }
 
-
 .investment-card-body strong{
 
     color:#111827 !important;
 
     font-weight:700;
 }
-
-
-/*==========================================================
-    SUMMARY TEXT
-==========================================================*/
 
 .investment-summary-card p{
 
@@ -8018,23 +8008,11 @@ body.dark-mode .btn-danger {
 
     color:#b8860b;
 }
-
-
-/*==========================================================
-    CANVAS
-==========================================================*/
-
-.investment-card canvas{
-
-    width:100% !important;
-
-    max-height:360px;
-}
 /* ==========================================================
    BITNET INVESTMENT DASHBOARD
    PREMIUM CSS
    PART 2
-   BUTTONS • TABLE • SCROLLBAR
+   BUTTONS • TABLE • SCROLLBARS • CHARTS
 ==========================================================*/
 
 
@@ -8057,16 +8035,16 @@ body.dark-mode .btn-danger {
 
 
 /*==========================================================
-    BUTTONS
+    PREMIUM BUTTONS
 ==========================================================*/
 
 .investment-btn{
 
     display:inline-flex;
 
-    align-items:center;
-
     justify-content:center;
+
+    align-items:center;
 
     min-width:190px;
 
@@ -8086,15 +8064,15 @@ body.dark-mode .btn-danger {
 
     letter-spacing:.5px;
 
-    transition:.35s;
-
     position:relative;
 
     overflow:hidden;
+
+    transition:.35s;
 }
 
 
-/* Shine Effect */
+/* Shine */
 
 .investment-btn::before{
 
@@ -8111,20 +8089,15 @@ body.dark-mode .btn-danger {
     height:100%;
 
     background:
-
         linear-gradient(
-
-        90deg,
-
-        transparent,
-
-        rgba(255,255,255,.45),
-
-        transparent);
+            90deg,
+            transparent,
+            rgba(255,255,255,.45),
+            transparent);
 
     transform:skewX(-25deg);
 
-    transition:.7s;
+    transition:.8s;
 }
 
 .investment-btn:hover::before{
@@ -8133,26 +8106,20 @@ body.dark-mode .btn-danger {
 }
 
 
-/* PRIMARY */
+/* Primary */
 
 .investment-btn-primary{
 
     color:#fff;
 
     background:
-
         linear-gradient(
-
-        135deg,
-
-        #1d4ed8,
-
-        #2563eb,
-
-        #3b82f6);
+            135deg,
+            #1d4ed8,
+            #2563eb,
+            #3b82f6);
 
     box-shadow:
-
         0 12px 28px rgba(37,99,235,.35);
 }
 
@@ -8161,34 +8128,26 @@ body.dark-mode .btn-danger {
     transform:translateY(-4px);
 
     box-shadow:
-
-        0 22px 42px rgba(37,99,235,.42);
+        0 22px 45px rgba(37,99,235,.45);
 }
 
 
-/* GOLD */
+/* Gold */
 
 .investment-btn-gold{
 
     color:#fff;
 
     background:
-
         linear-gradient(
-
-        135deg,
-
-        #4f3400,
-
-        #7b5200,
-
-        #a97800,
-
-        #d4af37);
+            135deg,
+            #3b2500,
+            #6b4900,
+            #9b7200,
+            #c79b17);
 
     box-shadow:
-
-        0 12px 28px rgba(169,120,0,.38);
+        0 12px 28px rgba(166,115,0,.35);
 }
 
 .investment-btn-gold:hover{
@@ -8196,8 +8155,7 @@ body.dark-mode .btn-danger {
     transform:translateY(-4px);
 
     box-shadow:
-
-        0 22px 42px rgba(169,120,0,.45);
+        0 22px 45px rgba(166,115,0,.45);
 }
 
 
@@ -8225,31 +8183,25 @@ body.dark-mode .btn-danger {
 
 .investment-table-wrapper::-webkit-scrollbar{
 
-    height:9px;
+    height:8px;
 }
 
 .investment-table-wrapper::-webkit-scrollbar-track{
 
-    background:#eceff3;
+    background:#eef2f7;
 
-    border-radius:20px;
+    border-radius:30px;
 }
 
 .investment-table-wrapper::-webkit-scrollbar-thumb{
 
-    border-radius:20px;
+    border-radius:30px;
 
     background:
-
         linear-gradient(
-
-        90deg,
-
-        #5b3d00,
-
-        #a97800,
-
-        #d4af37);
+            90deg,
+            #5b3d00,
+            #b8860b);
 }
 
 
@@ -8278,23 +8230,13 @@ body.dark-mode .btn-danger {
 .investment-table thead{
 
     background:
-
         linear-gradient(
-
-        135deg,
-
-        #2d1d00,
-
-        #4f3400,
-
-        #6c4900,
-
-        #4f3400);
-
+            135deg,
+            #2d1d00,
+            #4b3200,
+            #6a4700,
+            #4b3200);
 }
-
-
-/* Header Cells */
 
 .investment-table th{
 
@@ -8315,7 +8257,6 @@ body.dark-mode .btn-danger {
     border:none;
 
     text-shadow:
-
         0 2px 5px rgba(0,0,0,.45);
 }
 
@@ -8345,15 +8286,13 @@ body.dark-mode .btn-danger {
 
     font-weight:500;
 
-    white-space:nowrap;
-
     border-bottom:1px solid #edf2f7;
+
+    white-space:nowrap;
 }
 
 
-/*==========================================================
-    ROW COLORS
-==========================================================*/
+/* Zebra */
 
 .investment-table tbody tr:nth-child(even){
 
@@ -8366,34 +8305,28 @@ body.dark-mode .btn-danger {
 }
 
 
-/*==========================================================
-    HOVER EFFECT
-==========================================================*/
+/* Hover */
 
 .investment-table tbody tr{
 
-    transition:.25s;
+    transition:.3s;
 }
 
 .investment-table tbody tr:hover{
 
     background:#fff8e8;
-
-    transform:scale(1.003);
 }
 
 
-/*==========================================================
-    EMPTY TABLE ROW
-==========================================================*/
+/* Empty Row */
 
 .investment-table tbody tr td[colspan]{
 
     text-align:center;
 
-    color:#6b7280 !important;
+    padding:38px;
 
-    padding:40px 20px;
+    color:#6b7280 !important;
 
     font-weight:600;
 }
@@ -8409,22 +8342,34 @@ body.dark-mode .btn-danger {
 
     width:100% !important;
 
-    max-height:360px;
+    height:auto !important;
+
+    max-height:430px;
 
     margin:auto;
 }
 
 
 /*==========================================================
-    SMOOTH CARD ANIMATION
+    CARD SPACING
+==========================================================*/
+
+.investment-card + .investment-card{
+
+    margin-top:6px;
+}
+
+
+/*==========================================================
+    CARD ANIMATION
 ==========================================================*/
 
 .investment-card{
 
-    animation:fadeInvestment .45s ease;
+    animation:investmentFade .45s ease;
 }
 
-@keyframes fadeInvestment{
+@keyframes investmentFade{
 
     from{
 
@@ -8461,7 +8406,6 @@ body.dark-mode .btn-danger {
         margin:0 auto;
 
         padding:24px 0 40px;
-
     }
 
     .investment-row{
@@ -8516,7 +8460,13 @@ body.dark-mode .btn-danger {
 
     .investment-btn{
 
-        min-width:240px;
+        width:100%;
+
+        max-width:340px;
+
+        min-width:unset;
+
+        margin:auto;
     }
 
 }
@@ -8535,47 +8485,30 @@ body.dark-mode .btn-danger {
         margin:auto;
 
         padding:18px 0 30px;
-
     }
 
     .investment-summary-card{
 
-        width:100%;
+        border-radius:20px;
+    }
 
-        margin:0 auto 20px;
+    .investment-card{
 
         border-radius:20px;
     }
 
     .investment-row{
 
-        grid-template-columns:1fr;
-
         gap:20px;
-
-        width:100%;
-
-        margin:0 auto 20px;
-    }
-
-    .investment-card{
-
-        width:100%;
-
-        margin:0 auto;
-
-        border-radius:20px;
     }
 
     .investment-card-header{
 
-        text-align:center;
-
         padding:15px;
 
-        font-size:.96rem;
+        text-align:center;
 
-        letter-spacing:.5px;
+        font-size:.96rem;
     }
 
     .investment-card-body{
@@ -8601,45 +8534,23 @@ body.dark-mode .btn-danger {
 
     .investment-card li{
 
-        font-size:.92rem;
-
         text-align:left;
-    }
 
-    .investment-quick-action{
-
-        justify-content:center;
+        font-size:.92rem;
     }
 
     .investment-btn{
 
         width:100%;
 
-        max-width:350px;
-
-        min-width:unset;
-
-        margin:8px auto;
+        max-width:100%;
 
         padding:15px;
-
-        border-radius:50px;
-
-        font-size:.95rem;
-    }
-
-    .investment-table-wrapper{
-
-        width:100%;
-
-        overflow-x:auto;
-
-        -webkit-overflow-scrolling:touch;
     }
 
     .investment-table{
 
-        min-width:720px;
+        min-width:700px;
     }
 
     .investment-table th{
@@ -8658,7 +8569,7 @@ body.dark-mode .btn-danger {
 
     .investment-card canvas{
 
-        max-height:280px;
+        max-height:300px;
     }
 
 }
@@ -8677,7 +8588,6 @@ body.dark-mode .btn-danger {
         margin:auto;
 
         padding:15px 0 25px;
-
     }
 
     .investment-summary-card{
@@ -8739,7 +8649,7 @@ body.dark-mode .btn-danger {
 
     .investment-table{
 
-        min-width:670px;
+        min-width:650px;
     }
 
     .investment-table th,
@@ -8753,7 +8663,7 @@ body.dark-mode .btn-danger {
 
     .investment-card canvas{
 
-        max-height:230px;
+        max-height:240px;
     }
 
 }
@@ -8767,7 +8677,7 @@ body.dark-mode .btn-danger {
 
     .investment-page{
 
-        max-width:1450px;
+        max-width:1250px;
     }
 
 }
@@ -8791,14 +8701,14 @@ body.dark-mode .btn-danger {
 
     padding:45px 20px;
 
-    color:#6b7280 !important;
+    color:#6b7280;
 }
 
 .investment-empty i{
 
     font-size:42px;
 
-    margin-bottom:15px;
+    margin-bottom:16px;
 
     color:#c79b17;
 }
@@ -8827,7 +8737,7 @@ html{
 
 
 /*==========================================================
-        BETTER SELECTION
+        TEXT SELECTION
 ==========================================================*/
 
 ::selection{
@@ -8839,7 +8749,7 @@ html{
 
 
 /*==========================================================
-        PREMIUM FOCUS
+        BUTTON FOCUS
 ==========================================================*/
 
 .investment-btn:focus{
@@ -8863,7 +8773,7 @@ html{
 
 
 /*==========================================================
-        GOLD DIVIDER
+        PREMIUM DIVIDER
 ==========================================================*/
 
 .investment-card-body hr{
@@ -8883,12 +8793,11 @@ html{
             #c79b17,
 
             transparent);
-
 }
 
 
 /*==========================================================
-        POLISHED TRANSITIONS
+        SMOOTH TRANSITIONS
 ==========================================================*/
 
 .investment-card,
