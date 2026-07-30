@@ -6077,90 +6077,32 @@ font-size:1.5rem;
     );
 
 }
-
-
-.user-profile-wallets{
-
-    margin-top:35px;
-
+.user-profile-wallets input[type="text"],
+.user-profile-wallets input[type="url"],
+.user-profile-wallets input[type="email"] {
+    width: 90%;
+    max-width: 90%;
+    box-sizing: border-box;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
 }
-
-
-@keyframes titleGlow{
-
-    0%,100%{
-
-        transform:scale(1);
-
-        filter:brightness(1);
-
-    }
-
-    50%{
-
-        transform:scale(1.02);
-
-        filter:brightness(1.18);
-
-    }
-
+.wallets-partial input[type="text"] {
+    width: 90%;
+    max-width: 90%;
+    box-sizing: border-box;
+    padding: 10px;
+    margin: 8px 0 16px 0;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+    display: block;
 }
-
-@keyframes underlinePulse{
-
-    0%,100%{
-
-        width:75%;
-
-        opacity:.85;
-
-    }
-
-    50%{
-
-        width:90%;
-
-        opacity:1;
-
-    }
-
-}
-
-@media (max-width:900px){
-
-    .user-profile-grid{
-        flex-direction:column;
-        gap:15px;
-    }
-
-    .user-profile-grid > .user-profile-card{
-        flex:1 1 100%;
-    }
-
-    .user-profile-card{
-        margin-bottom:15px;  
-        padding:24px;
-    }
-
-    .user-profile-title{
-        font-size:2.2rem;
-    }
-
-    .user-profile-buttons{
-        flex-direction: column;
-        align-items: center;   
-        gap: 12px;
-    }
-
-    .user-profile-btn{
-        width: 75%;            
-        max-width: 280px;     
-        text-align: center;
-    }
-    .user-profile-title{
-        font-size: 1.5rem;
-    }
-
+.wallets-partial label {
+    display: block;
+    margin-bottom: 4px;
+    font-weight: 600;
 }
 
 .settings-page{
