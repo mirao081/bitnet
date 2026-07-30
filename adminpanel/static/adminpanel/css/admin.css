@@ -1685,6 +1685,17 @@ body{
     padding: 8px;
   }
 }
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;             
+  -webkit-overflow-scrolling: touch; 
+}
+
+.users-table {
+  min-width: 600px;              
+  border-collapse: collapse;
+}
+
 .referrals-pagination {
   display: flex;
   justify-content: center;
