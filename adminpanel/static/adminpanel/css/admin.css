@@ -40,6 +40,7 @@ body{
     overflow-x:hidden;
 }
 
+
 .market-ticker{
     height:60px;
     overflow:hidden;
@@ -7084,4 +7085,15 @@ html{
     font-size: .82rem;
     padding: 8px;
   }
+}
+/* Admin table hover override */
+.users-table-container .users-table tbody tr:hover {
+    background-color: rgba(0, 128, 0, 0.25) !important; /* faded green */
+    color: #fff !important; /* keep text visible */
+    transition: background-color 0.3s ease;
+}
+
+.users-table-container .users-table tbody tr:hover td {
+    background-color: transparent !important;
+    color: #fff !important;
 }
