@@ -6932,35 +6932,156 @@ html{
 }
 
 
-/* Wrapper ensures horizontal scroll */
+/* ===========================================
+   Wallet Overview - Premium UI
+=========================================== */
+
+/* Wrapper */
 .wallets-table-wrapper {
   width: 100%;
-  overflow-x: auto;              /* horizontal scroll */
-  -webkit-overflow-scrolling: touch; /* smooth scroll on iOS */
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: 1rem;
+  border-radius: 18px;
+  background: linear-gradient(145deg, #ffffff, #f6f8fc);
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255,255,255,0.8);
 }
 
-/* Custom table class avoids inheriting old styles */
+/* Card */
+.wallets-overview-card {
+  background: linear-gradient(135deg, #ffffff, #f8fbff);
+  border-radius: 20px;
+  padding: 1.5rem;
+  border: 1px solid rgba(230, 235, 245, 0.8);
+  box-shadow:
+    0 15px 35px rgba(0,0,0,0.08),
+    0 5px 15px rgba(0,0,0,0.04);
+}
+
+/* Heading */
+.wallets-overview-card h2 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 1rem;
+  letter-spacing: -.3px;
+}
+
+/* Table */
 .wallets-table-custom {
-  min-width: 700px;              /* force table wider than small screens */
-  border-collapse: collapse;
   width: 100%;
+  min-width: 700px;
+  border-collapse: separate;
+  border-spacing: 0;
+  overflow: hidden;
+  border-radius: 14px;
+  background: #fff;
 }
 
-.wallets-table-custom th,
+/* Header */
+.wallets-table-custom thead {
+  background: linear-gradient(135deg, #2563eb, #4f46e5);
+}
+
+.wallets-table-custom th {
+  color: #fff;
+  font-weight: 600;
+  padding: 14px 16px;
+  border: none;
+  white-space: nowrap;
+  letter-spacing: .4px;
+}
+
+/* Body */
 .wallets-table-custom td {
-  padding: 8px 12px;
-  text-align: left;
-  border-bottom: 1px solid #ddd;
+  padding: 14px 16px;
+  color: #374151;
+  border-bottom: 1px solid #eef2f7;
+  transition: all .25s ease;
 }
 
-/* Responsive tweaks */
+/* Zebra rows */
+.wallets-table-custom tbody tr:nth-child(even) {
+  background: #fafcff;
+}
+
+/* Hover */
+.wallets-table-custom tbody tr {
+  transition: all .25s ease;
+}
+
+.wallets-table-custom tbody tr:hover {
+  background: #eef6ff;
+  transform: scale(1.003);
+}
+
+/* Rounded corners */
+.wallets-table-custom th:first-child {
+  border-top-left-radius: 14px;
+}
+
+.wallets-table-custom th:last-child {
+  border-top-right-radius: 14px;
+}
+
+.wallets-table-custom tbody tr:last-child td:first-child {
+  border-bottom-left-radius: 14px;
+}
+
+.wallets-table-custom tbody tr:last-child td:last-child {
+  border-bottom-right-radius: 14px;
+}
+
+/* Nice scrollbar */
+.wallets-table-wrapper::-webkit-scrollbar {
+  height: 8px;
+}
+
+.wallets-table-wrapper::-webkit-scrollbar-track {
+  background: #eef2f7;
+  border-radius: 50px;
+}
+
+.wallets-table-wrapper::-webkit-scrollbar-thumb {
+  background: linear-gradient(90deg, #2563eb, #4f46e5);
+  border-radius: 50px;
+}
+
+/* Responsive */
 @media (max-width: 768px) {
-  .wallets-overview-card h2 {
-    font-size: 1.2rem;
+
+  .wallets-overview-card {
+    padding: 1rem;
+    border-radius: 16px;
   }
+
+  .wallets-overview-card h2 {
+    font-size: 1.25rem;
+  }
+
+  .wallets-table-custom {
+    min-width: 650px;
+  }
+
   .wallets-table-custom th,
   .wallets-table-custom td {
-    font-size: 0.9rem;
-    padding: 6px 8px;
+    padding: 10px;
+    font-size: .9rem;
+  }
+}
+
+/* Small screens */
+@media (max-width: 480px) {
+
+  .wallets-overview-card h2 {
+    font-size: 1.1rem;
+  }
+
+  .wallets-table-custom th,
+  .wallets-table-custom td {
+    font-size: .82rem;
+    padding: 8px;
   }
 }
