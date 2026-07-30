@@ -15,6 +15,7 @@ from crypto.models import InvestmentPlan,Wallet
 from users.forms import UserWalletForm
 from django.contrib.admin.views.decorators import staff_member_required
 from users.models import CompanyWallet
+from .forms import CompanyWalletForm
 
 
 
