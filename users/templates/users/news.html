@@ -12,42 +12,52 @@
         </p>
     </div>
 
+    <!-- Market Data -->
     <section class="market-data">
         <h2>Market Data</h2>
         <ul>
-            <li>Bitcoin (BTC): ${{ btc_price }}</li>
-            <li>Ethereum (ETH): ${{ eth_price }}</li>
-            <li>Global Market Cap: ${{ market_cap }}</li>
+            <li id="btc">Bitcoin (BTC): $...</li>
+            <li id="eth">Ethereum (ETH): $...</li>
+            <li id="cap">Global Market Cap: $...</li>
         </ul>
     </section>
 
+    <!-- Top Movers -->
     <section class="top-movers">
         <h2>Top Movers</h2>
-        <p>See which assets are surging or dropping today.</p>
+        <ul id="movers-list">
+            <li>Loading...</li>
+        </ul>
     </section>
 
+    <!-- Regulatory Updates -->
     <section class="regulatory-updates">
         <h2>Regulatory Updates</h2>
         <p>Stay informed about global crypto regulations and compliance news.</p>
     </section>
 
+    <!-- News Feed -->
     <div id="news-list" class="news-grid"></div>
 
+    <!-- Investment Insights -->
     <section class="investment-insights">
         <h2>Investment Insights</h2>
         <p>Expert strategies to help you maximize ROI and manage risk.</p>
     </section>
 
+    <!-- Community Announcements -->
     <section class="community-announcements">
         <h2>Community Announcements</h2>
         <p>Join BitnetFx webinars, AMAs, and stay updated on new features.</p>
     </section>
 
+    <!-- Education Hub -->
     <section class="education-hub">
         <h2>Education Hub</h2>
         <p>Learn blockchain basics, portfolio diversification, and advanced trading techniques.</p>
     </section>
 
+    <!-- Global Impact -->
     <section class="global-impact">
         <h2>Global Economic Impact</h2>
         <p>Understand how crypto trends connect to global finance and geopolitics.</p>
@@ -56,60 +66,84 @@
 </div>
 
 <script>
-function updateNews(data) {
+// --- Market Data ---
+async function loadMarketData() {
+  try {
+    const btc = await fetch("https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd")
+      .then(r => r.json());
+    const eth = await fetch("https://api.coingecko.com/api/v3/simple/price?ids=ethereum&vs_currencies=usd")
+      .then(r => r.json());
+    const global = await fetch("https://api.coingecko.com/api/v3/global")
+      .then(r => r.json());
 
-    const newsList = document.getElementById("news-list");
-    newsList.innerHTML = "";
+    document.getElementById("btc").textContent = `Bitcoin (BTC): $${btc.bitcoin.usd}`;
+    document.getElementById("eth").textContent = `Ethereum (ETH): $${eth.ethereum.usd}`;
+    document.getElementById("cap").textContent = `Global Market Cap: $${Math.round(global.data.total_market_cap.usd).toLocaleString()}`;
+  } catch (err) {
+    console.error("Market data fetch failed", err);
+  }
+}
 
-    data.articles.forEach(article => {
+// --- Top Movers ---
+async function loadTopMovers() {
+  try {
+    const movers = await fetch("https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=5&page=1&price_change_percentage=24h")
+      .then(r => r.json());
 
-        const card = document.createElement("div");
-        card.className = "news-card";
-
-        card.innerHTML = `
-            <h3 class="news-card-title">
-                <a href="${article.url}" target="_blank">
-                    ${article.title}
-                </a>
-            </h3>
-
-            <p class="news-card-text">
-                Stay informed with the latest developments affecting cryptocurrency markets and blockchain technology.
-            </p>
-
-            <span class="published">
-                ${article.published}
-            </span>
-
-            <a href="${article.url}" target="_blank" class="news-read-btn">
-                Read Full Story →
-            </a>
-        `;
-
-        newsList.appendChild(card);
-
+    const list = document.getElementById("movers-list");
+    list.innerHTML = "";
+    movers.forEach(coin => {
+      const li = document.createElement("li");
+      li.textContent = `${coin.name} (${coin.symbol.toUpperCase()}): $${coin.current_price} (${coin.price_change_percentage_24h.toFixed(2)}% 24h)`;
+      list.appendChild(li);
     });
+  } catch (err) {
+    console.error("Top movers fetch failed", err);
+  }
+}
 
+// --- News Feed ---
+function updateNews(data) {
+  const newsList = document.getElementById("news-list");
+  newsList.innerHTML = "";
+
+  data.articles.forEach(article => {
+    const card = document.createElement("div");
+    card.className = "news-card";
+
+    card.innerHTML = `
+      <h3 class="news-card-title">
+        <a href="${article.url}" target="_blank">${article.title}</a>
+      </h3>
+      <p class="news-card-text">
+        Stay informed with the latest developments affecting cryptocurrency markets and blockchain technology.
+      </p>
+      <span class="published">${article.published}</span>
+      <a href="${article.url}" target="_blank" class="news-read-btn">Read Full Story →</a>
+    `;
+    newsList.appendChild(card);
+  });
 }
 
 document.addEventListener("DOMContentLoaded", function () {
+  loadMarketData();
+  loadTopMovers();
 
-    fetch("{% url 'users:news_data' %}")
-        .then(response => response.json())
-        .then(updateNews)
-        .catch(err => console.error(err));
-
+  fetch("{% url 'users:news_data' %}")
+    .then(response => response.json())
+    .then(updateNews)
+    .catch(err => console.error(err));
 });
 
+// Refresh every 5 minutes
 setInterval(() => {
-
-    fetch("{% url 'users:news_data' %}")
-        .then(r => r.json())
-        .then(updateNews)
-        .catch(err => console.error(err));
-
-},300000);
-
+  loadMarketData();
+  loadTopMovers();
+  fetch("{% url 'users:news_data' %}")
+    .then(r => r.json())
+    .then(updateNews)
+    .catch(err => console.error(err));
+}, 300000);
 </script>
 
 {% endblock %}
