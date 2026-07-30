@@ -6119,6 +6119,31 @@ font-size:1.5rem;
     margin-bottom: 24px;
     text-align: center;
 }
+.user-profile-btn {
+    cursor: pointer; /* ensures pointer cursor on hover */
+}
+
+.user-profile-btn-primary {
+    background: linear-gradient(
+        90deg,
+        #8c6500,
+        #d4af37,
+        #f5d76e,
+        #d4af37,
+        #8c6500
+    );
+    color: #fff;
+    font-weight: 700;
+    border-radius: 8px;
+    padding: 12px 24px;
+    transition: all .3s ease;
+}
+
+.user-profile-btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 12px rgba(255,215,0,.45);
+}
+
 
 .wallet-field label {
     display: block;
