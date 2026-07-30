@@ -6114,6 +6114,28 @@ font-size:1.5rem;
     border: 1px solid #ccc;
     border-radius: 6px;
 }
+.wallet-field {
+    margin-bottom: 24px;
+}
+
+.wallet-field label {
+    display: block;
+    font-weight: 600;
+    color: #ddb844; /* gold tone for visibility */
+    margin-bottom: 6px;
+}
+
+.wallet-field input[type="text"],
+.wallet-field input[type="file"] {
+    width: 95%;
+    box-sizing: border-box;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+    margin-bottom: 10px;
+    display: block;
+}
 
 .settings-page{
     max-width:1100px;
