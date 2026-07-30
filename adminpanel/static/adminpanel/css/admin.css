@@ -7097,3 +7097,35 @@ html{
     background-color: transparent !important;
     color: #fff !important;
 }
+/* Global dark mode background and text */
+body.dark-mode {
+    background-color: #121212;
+    color: #e0e0e0;
+}
+
+/* Sidebar and footer */
+body.dark-mode .sidebar,
+body.dark-mode .dashboard-footer {
+    background-color: #1e1e1e;
+    color: #f5f5f5;
+}
+
+/* Cards and profile sections */
+body.dark-mode .settings-card,
+body.dark-mode .user-profile-card {
+    background-color: #1e1e1e;
+    border-color: rgba(255,215,0,.35);
+    color: #f5f5f5;
+}
+
+/* Links */
+body.dark-mode a {
+    color: #ffd700;
+}
+
+/* Buttons */
+body.dark-mode .btn-primary,
+body.dark-mode .btn-secondary {
+    background: #333;
+    color: #ffd700;
+}
