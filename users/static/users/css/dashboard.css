@@ -2758,6 +2758,49 @@ input.unlocked {
         text-align: center;
     }
 }
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .investments-container {
+    padding: 10px;
+  }
+
+  .card-row {
+    flex-direction: column;   /* stack cards vertically */
+    gap: 15px;                /* spacing between stacked cards */
+  }
+
+  .card-header {
+    font-size: 1rem;          /* slightly smaller header text */
+    text-align: center;
+  }
+
+  .card-body {
+    font-size: 0.9rem;        /* reduce body text size */
+    line-height: 1.6;
+  }
+
+  /* Wrap tables in scrollable container */
+  .card-body table {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch; /* smooth scroll on iOS */
+  }
+
+  .card-body table thead,
+  .card-body table tbody {
+    min-width: 600px;         /* force table wider than small screens */
+  }
+
+  .transaction-table th,
+  .transaction-table td,
+  .investment-table th,
+  .investment-table td {
+    padding: 8px;             /* tighter padding for mobile */
+    font-size: 0.85rem;
+  }
+}
+
 
 .comparison-table {
     width: 100%;
