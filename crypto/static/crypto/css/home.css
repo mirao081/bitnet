@@ -1,1 +1,16 @@
-.home-hero { background: red !important; } 
+/* Apply to all home sections */
+.home-hero,
+.home-luxury,
+.home-cards,
+.home-token,
+.home-swing,
+.home-exchange,
+.home-investment,
+.home-bitcoin,
+.home-features {
+    max-width: 1200px;   /* keeps content centered */
+    margin: 0 auto;      /* equal gap left/right */
+    padding: 0 20px;     /* breathing room on small screens */
+    box-sizing: border-box;
+}
+
