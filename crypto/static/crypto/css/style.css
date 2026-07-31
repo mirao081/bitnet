@@ -6871,10 +6871,11 @@ p {
 .bitnet-login-body {
     font-family: 'Poppins', sans-serif;
     background: linear-gradient(135deg, #1a1a1a, #333);
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: center;   /* horizontal centering */
+    align-items: center;       /* vertical centering */
+    margin: 0;
 }
 
 .bitnet-login-container {
@@ -6886,6 +6887,7 @@ p {
     text-align: center;
     backdrop-filter: blur(10px);       
     -webkit-backdrop-filter: blur(10px);
+    margin: auto;              /* ensures centering */
 }
 
 .bitnet-login-title {
@@ -6940,6 +6942,7 @@ p {
     .bitnet-login-container {
         width: 90%;
         padding: 20px;
+
     }
 
     .bitnet-login-title {
