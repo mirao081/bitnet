@@ -2355,7 +2355,7 @@ text-shadow:
 @media (max-width: 480px) {
   .market-ticker {
     height: 65px;             /* slightly taller for small screens */
-    background: #044e9b;      /* consistent background */
+    background: #000;      /* consistent background */
     top: 0;                   /* ensure no gap */
   }
 
@@ -6466,7 +6466,7 @@ p {
 
 .cryptonav {
   position: fixed;
-  top: 73px;                /* directly below ticker (same as ticker height) */
+  top: 88px;                /* default: same as desktop ticker height */
   left: 0;
   width: 100%;
   z-index: 1000;            /* lower than ticker */
@@ -6516,6 +6516,17 @@ p {
 
     transition:.30s;
 
+}
+media (max-width: 768px) {
+  .cryptonav {
+    top: 90px;              /* match mobile ticker height */
+  }
+}
+
+@media (max-width: 480px) {
+  .cryptonav {
+    top: 65px;              /* match small-screen ticker height */
+  }
 }
 
 /* Desktop arrow animation */
