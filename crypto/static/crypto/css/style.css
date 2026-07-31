@@ -351,13 +351,17 @@ p {
     }
 }
 
-/* Ticker bar */
-.market-ticker {
-    background: #000;
-    color: #fff;
-    overflow: hidden;
-    white-space: nowrap;
-    border-bottom: 2px solid #ff7f00;
+.market-ticker{
+
+    position:fixed;
+
+    top:0;
+    left:0;
+
+    width:100%;
+
+    z-index:10000;
+
 }
 
 .ticker-track {
@@ -484,7 +488,7 @@ p {
     z-index: 0;
 }
 .page-content {
-    padding-top: 70px;          
+     padding-top:95px;        
     padding-left: 20px;
     padding-right: 20px;
     margin-bottom: 0;
@@ -498,7 +502,7 @@ p {
     overflow-x: hidden;
     position:relative;
     padding-bottom: 160px;
-    padding-bottom: 0px;
+  
    
 }
 
@@ -6426,16 +6430,18 @@ p {
 /* ==========================
    NAVBAR
 ========================== */
-
 .cryptonav{
-    position:sticky;
-    top:0;
-    z-index:9999;
+    position:fixed;
+    top:38px;              /* starts immediately below the market ticker */
+    left:0;
     width:100%;
+
+    z-index:9999;
+
     background:#111827;
     border-bottom:1px solid rgba(255,255,255,.08);
-    margin-bottom:40px;
 }
+
 
 .cryptonav-shell{
     max-width:1350px;
@@ -6636,9 +6642,9 @@ p {
     align-items:center;
     justify-content:center;
 
-    padding:8px 14px;
+    padding:6px 10px;
 
-    font-size:13px;
+    font-size:12px;
     font-weight:700;
 
     border-radius:6px;
@@ -6651,6 +6657,7 @@ p {
     transition:.3s;
 
 }
+
 .cryptonav-buy-btn:hover{
 
     background:#00b7dc;
