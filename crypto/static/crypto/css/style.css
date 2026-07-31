@@ -9,7 +9,7 @@ html, body {
     scrollbar-width: none;
     -ms-overflow-style: none;
     line-height: 1.6;
-    padding-top:115px;
+    padding-top: 0;
 
 }
 
@@ -358,8 +358,8 @@ p {
     left:0;
     width:100%;
     height:40px;
-    z-index:10000;
     background:#0b1220;
+    z-index:10000;
     overflow:hidden;
 }
 
@@ -486,23 +486,31 @@ p {
     pointer-events: none;
     z-index: 0;
 }
-.page-content {
-     padding-top:95px;        
-    padding-left: 20px;
-    padding-right: 20px;
-    margin-bottom: 0;
-    min-height: calc(100vh - 70px);
-    width: 100%;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    overflow-x: hidden;
+.page-content{
+    padding-top:30px;          /* only 30px below the navbar */
+    padding-left:20px;
+    padding-right:20px;
+    padding-bottom:160px;
+
+    margin-top:115px;          /* 40px ticker + 75px navbar */
+
+    margin-bottom:0;
+
+    min-height:calc(100vh - 70px);
+
+    width:100%;
+
+    box-sizing:border-box;
+
+    display:flex;
+    flex-direction:column;
+
+    align-items:center;
+    justify-content:flex-start;
+
+    overflow-x:hidden;
+
     position:relative;
-    padding-bottom: 160px;
-  
-   
 }
 
 .page-content > section,
@@ -6424,13 +6432,11 @@ p {
 }
 .cryptonav{
     position:fixed;
-    top:40px;          /* below ticker */
+    top:40px;
     left:0;
     width:100%;
     z-index:9999;
-
     background:#111827;
-    border-bottom:1px solid rgba(255,255,255,.08);
 }
 
 
