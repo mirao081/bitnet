@@ -1258,12 +1258,20 @@ font-size:26px;
 
 }
 
-.elite-sale-button{
+    .elite-sale-button{
 
-width:100%;
+        width:65%;
 
-text-align:center;
+        text-align:center;
 
-}
+        margin:18px auto 0;
+
+        display:flex;
+
+        justify-content:center;
+
+        align-items:center;
+
+    }
 
 }
