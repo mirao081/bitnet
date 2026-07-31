@@ -2313,11 +2313,15 @@ text-shadow:
 /* Mobile adjustments */
 @media (max-width: 768px) {
   .market-ticker {
-    height: 90px;            /* expanded height to meet navbar */
-    background: #000;     /* keep background visible */
+    height: 90px;             /* expanded height to meet navbar */
+    background: #044e9b;      /* keep background visible */
     border-bottom: 1px solid rgba(255,255,255,.08);
     box-shadow: 0 4px 12px rgba(0,0,0,0.4);
     justify-content: flex-start;
+    position: fixed;
+    top: 0;                   /* flush at very top of page */
+    left: 0;
+    z-index: 5000;            /* above page content */
   }
 
   .ticker-track {
@@ -2329,7 +2333,7 @@ text-shadow:
     flex: none;
     font-size: 0.85rem;
     padding: 4px 8px;
-    flex-direction: column;  /* stack on mobile */
+    flex-direction: column;   /* stack on mobile */
   }
 
   .ticker-item .name {
@@ -2350,7 +2354,9 @@ text-shadow:
 
 @media (max-width: 480px) {
   .market-ticker {
-    height: 65px;            /* slightly taller for small screens */
+    height: 65px;             /* slightly taller for small screens */
+    background: #044e9b;      /* consistent background */
+    top: 0;                   /* ensure no gap */
   }
 
   .ticker-item {
@@ -2358,7 +2364,6 @@ text-shadow:
     padding: 3px 6px;
   }
 }
-
 
 .features-section {
   background: #000;
