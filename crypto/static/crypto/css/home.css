@@ -114,3 +114,241 @@
         font-size: 0.85rem;
     }
 }
+
+/* ===============================
+   ELITE INVESTMENT SHOWCASE
+================================ */
+
+.elite-investment-showcase{
+
+    position:relative;
+    width:100%;
+    padding:120px 20px;
+    overflow:hidden;
+
+    background:
+    radial-gradient(circle at top left,#004aad33,transparent 40%),
+    radial-gradient(circle at bottom right,#7a00ff22,transparent 35%),
+    linear-gradient(180deg,#05070d,#0a1020);
+
+}
+
+.elite-investment-wrapper{
+
+    max-width:1300px;
+    margin:auto;
+
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:35px;
+
+}
+
+
+/* CARD */
+
+.elite-heading-box{
+
+    position:relative;
+
+    padding:45px;
+
+    border-radius:28px;
+
+    background:rgba(255,255,255,.08);
+
+    backdrop-filter:blur(22px);
+    -webkit-backdrop-filter:blur(22px);
+
+    border:1px solid rgba(255,255,255,.12);
+
+    box-shadow:
+    0 10px 40px rgba(0,0,0,.35),
+    inset 0 1px 0 rgba(255,255,255,.15);
+
+    transition:.45s ease;
+
+    overflow:hidden;
+
+}
+
+
+/* Glow Effect */
+
+.elite-heading-box::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:220px;
+    height:220px;
+
+    background:radial-gradient(circle,
+    rgba(0,132,255,.45),
+    transparent 70%);
+
+    top:-100px;
+    right:-100px;
+
+    transition:.6s ease;
+
+}
+
+
+.elite-heading-box:hover{
+
+    transform:translateY(-12px);
+
+    border-color:rgba(255,255,255,.28);
+
+    box-shadow:
+    0 25px 70px rgba(0,0,0,.45),
+    0 0 40px rgba(0,140,255,.18);
+
+}
+
+
+.elite-heading-box:hover::before{
+
+    transform:scale(1.4);
+
+}
+
+
+
+/* Title */
+
+.elite-main-title{
+
+    font-size:42px;
+    font-weight:800;
+    line-height:1.2;
+
+    color:#fff;
+
+    margin-bottom:25px;
+
+    position:relative;
+
+}
+
+
+/* Subtitle */
+
+.elite-subtitle{
+
+    font-size:20px;
+    line-height:1.9;
+
+    color:rgba(255,255,255,.93);
+
+    margin-bottom:20px;
+
+}
+
+
+/* Description */
+
+.elite-description{
+
+    font-size:17px;
+    line-height:1.9;
+
+    color:rgba(255,255,255,.70);
+
+}
+
+
+/* Smooth Fade Animation */
+
+.elite-heading-box{
+
+    animation:eliteFadeUp .9s ease both;
+
+}
+
+
+@keyframes eliteFadeUp{
+
+    from{
+
+        opacity:0;
+        transform:translateY(60px);
+
+    }
+
+    to{
+
+        opacity:1;
+        transform:translateY(0);
+
+    }
+
+}
+
+
+/* ==========================
+        TABLET
+========================== */
+
+@media(max-width:991px){
+
+.elite-investment-wrapper{
+
+grid-template-columns:1fr;
+
+}
+
+.elite-main-title{
+
+font-size:34px;
+
+}
+
+}
+
+
+/* ==========================
+        MOBILE
+========================== */
+
+@media(max-width:600px){
+
+.elite-investment-showcase{
+
+padding:70px 18px;
+
+}
+
+.elite-heading-box{
+
+padding:28px;
+
+border-radius:22px;
+
+}
+
+.elite-main-title{
+
+font-size:28px;
+
+}
+
+.elite-subtitle{
+
+font-size:17px;
+
+line-height:1.7;
+
+}
+
+.elite-description{
+
+font-size:15px;
+
+line-height:1.8;
+
+}
+
+}
