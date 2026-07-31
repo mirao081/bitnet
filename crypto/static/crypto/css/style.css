@@ -2240,48 +2240,44 @@ text-shadow:
         width: 100%;
     }
 }
-/* Ticker container */
 .market-ticker {
   width: 100%;
-  height: 73px;
+  height: 90px;              /* expanded height on mobile/desktop */
   display: flex;
-  flex-direction: row;       /* horizontal layout */
+  flex-direction: row;        /* horizontal layout */
   justify-content: flex-start;
   align-items: center;
-  background: #111827;       /* same as navbar */
+  background: #0095b3;        /* darker shade of #00d6fe */
   border-bottom: 1px solid rgba(255,255,255,.08);
   margin: 0;
   box-shadow: 0 4px 12px rgba(0,0,0,0.4);
   box-sizing: border-box;
   position: fixed;
-  top: 0;                   /* flush to top of page */
+  top: 10px;                  /* moved 10px closer to navbar */
   left: 0;
-  z-index: 5000;            /* above page content */
+  z-index: 5000;              /* above page content */
   overflow: hidden;
 }
 
-/* Track holding ticker items */
 .ticker-track {
   display: flex;
-  flex-direction: row;       /* force row layout */
+  flex-direction: row;        /* force row layout */
   width: 100%;
-  white-space: nowrap;       /* allow horizontal scrolling */
+  white-space: nowrap;        /* allow horizontal scrolling */
   transition: transform 1s linear;
   will-change: transform;
 }
 
-/* Individual ticker item */
 .ticker-item {
   flex: none;
   display: flex;
-  flex-direction: row;       /* side by side on desktop */
+  flex-direction: row;        /* side by side on desktop */
   align-items: center;
   padding: 6px 12px;
   color: #fff;
   font-family: 'Poppins', sans-serif;
   text-decoration: none;
 }
-
 .ticker-item:hover {
   transform: scale(1.05);
   background: rgba(255,255,255,0.05);
