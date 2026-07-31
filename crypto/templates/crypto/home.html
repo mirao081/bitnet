@@ -189,40 +189,65 @@
     </div>
 
 </section>
-<!-- SWING -->
-<section class="home-swing">
-  <a href="{% url 'crypto:features' %}">
-    <h4>{{ swing_section.highlight_text }}</h4>
-  </a>
-  <h1 class="home-main-title">
-    {% for word in swing_section.main_title.split %}
-      {% if forloop.counter == 5 %}
-        <span class="home-ash">{{ word }}</span>
-      {% else %}
-        {{ word }}
-      {% endif %}
-    {% endfor %}
-  </h1>
-  <div class="home-text-containers">
-    <div class="home-left">
-      {% for container in swing_section.containers.all|slice:":2" %}
-      <div class="home-text-box">
-        <h2>{{ container.title }}</h2>
-        <p>{{ container.content }}</p>
-      </div>
-      {% endfor %}
-    </div>
-    <div class="home-right">
-      {% for container in swing_section.containers.all|slice:"2:4" %}
-      <div class="home-text-box">
-        <h2>{{ container.title }}</h2>
-        <p>{{ container.content }}</p>
-      </div>
-      {% endfor %}
-    </div>
-  </div>
-</section>
+<!--====================================
+        ELITE SWING SHOWCASE
+=====================================-->
 
+<section class="elite-swing-showcase">
+
+    <div class="elite-swing-wrapper">
+
+        <a href="{% url 'crypto:features' %}" class="elite-swing-link">
+
+            <div class="elite-badge">
+                {{ swing_section.highlight_text }}
+            </div>
+
+        </a>
+
+        <h1 class="elite-swing-title">
+
+            {% for word in swing_section.main_title.split %}
+
+                {% if forloop.counter == 5 %}
+
+                    <span class="elite-swing-accent">
+                        {{ word }}
+                    </span>
+
+                {% else %}
+
+                    {{ word }}
+
+                {% endif %}
+
+            {% endfor %}
+
+        </h1>
+
+        <div class="elite-swing-grid">
+
+            {% for container in swing_section.containers.all %}
+
+            <div class="elite-swing-card">
+
+                <h2 class="elite-swing-card-title">
+                    {{ container.title }}
+                </h2>
+
+                <p class="elite-swing-card-text">
+                    {{ container.content }}
+                </p>
+
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+</section>
 <!-- EXCHANGE -->
 <section class="home-exchange">
   <div class="home-exchange-container">

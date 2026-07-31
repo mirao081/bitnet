@@ -1275,3 +1275,333 @@ font-size:26px;
     }
 
 }
+
+/*==================================================
+            ELITE SWING SHOWCASE
+==================================================*/
+
+.elite-swing-showcase{
+
+    position:relative;
+
+    width:100%;
+
+    padding:90px 0;
+
+    overflow:hidden;
+
+    background:
+    radial-gradient(circle at top left,#004aad33,transparent 40%),
+    radial-gradient(circle at bottom right,#7a00ff22,transparent 35%),
+    linear-gradient(180deg,#05070d,#0a1020);
+
+}
+
+/*=========================
+        WRAPPER
+=========================*/
+
+.elite-swing-wrapper{
+
+    width:90%;
+
+    max-width:1600px;
+
+    margin:auto;
+
+}
+
+/*=========================
+        LINK
+=========================*/
+
+.elite-swing-link{
+
+    text-decoration:none;
+
+}
+
+/*=========================
+        TITLE
+=========================*/
+
+.elite-swing-title{
+
+    margin:22px 0 45px;
+
+    font-size:44px;
+
+    font-weight:800;
+
+    line-height:1.18;
+
+    color:#fff;
+
+    letter-spacing:.5px;
+
+    text-shadow:
+
+    0 0 18px rgba(255,255,255,.10);
+
+}
+
+.elite-swing-accent{
+
+    color:#00d8ef;
+
+    text-shadow:
+
+    0 0 18px rgba(0,216,239,.45);
+
+}
+
+/*=========================
+        GRID
+=========================*/
+
+.elite-swing-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:35px;
+
+}
+
+/*=========================
+        CARD
+=========================*/
+
+.elite-swing-card{
+
+    position:relative;
+
+    padding:34px;
+
+    border-radius:30px;
+
+    overflow:hidden;
+
+    background:rgba(255,255,255,.08);
+
+    backdrop-filter:blur(24px);
+    -webkit-backdrop-filter:blur(24px);
+
+    border:1px solid rgba(255,255,255,.12);
+
+    box-shadow:
+
+    inset 0 1px 0 rgba(255,255,255,.15),
+
+    0 15px 45px rgba(0,0,0,.35);
+
+    transition:.45s ease;
+
+}
+
+.elite-swing-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:230px;
+    height:230px;
+
+    top:-120px;
+    right:-120px;
+
+    border-radius:50%;
+
+    background:
+
+    radial-gradient(circle,
+
+    rgba(0,216,239,.30),
+
+    transparent 70%);
+
+    transition:.6s;
+
+}
+
+.elite-swing-card:hover{
+
+    transform:translateY(-12px);
+
+    border-color:rgba(255,255,255,.22);
+
+    box-shadow:
+
+    0 30px 70px rgba(0,0,0,.45),
+
+    0 0 45px rgba(0,216,239,.18);
+
+}
+
+.elite-swing-card:hover::before{
+
+    transform:scale(1.4);
+
+}
+
+/*=========================
+        CARD TITLE
+=========================*/
+
+.elite-swing-card-title{
+
+    font-size:24px;
+
+    font-weight:700;
+
+    color:#fff;
+
+    margin-bottom:12px;
+
+    line-height:1.25;
+
+}
+
+/*=========================
+        CARD TEXT
+=========================*/
+
+.elite-swing-card-text{
+
+    font-size:16px;
+
+    color:rgba(255,255,255,.82);
+
+    line-height:1.6;
+
+}
+
+/*=========================
+      SHIMMER EFFECT
+=========================*/
+
+.elite-swing-card::after{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+
+    left:-180%;
+
+    width:55%;
+
+    height:100%;
+
+    transform:skewX(-25deg);
+
+    background:
+
+    linear-gradient(
+
+        90deg,
+
+        transparent,
+
+        rgba(255,255,255,.28),
+
+        transparent
+
+    );
+
+}
+
+.elite-swing-card:hover::after{
+
+    animation:eliteSwingShine .9s ease;
+
+}
+
+@keyframes eliteSwingShine{
+
+    from{
+
+        left:-180%;
+
+    }
+
+    to{
+
+        left:180%;
+
+    }
+
+}
+
+/*=========================
+        TABLET
+=========================*/
+
+@media(max-width:991px){
+
+.elite-swing-grid{
+
+grid-template-columns:1fr;
+
+}
+
+.elite-swing-title{
+
+font-size:34px;
+
+}
+
+}
+
+/*=========================
+        MOBILE
+=========================*/
+
+@media(max-width:600px){
+
+.elite-swing-showcase{
+
+padding:60px 0;
+
+}
+
+.elite-swing-wrapper{
+
+width:95%;
+
+}
+
+.elite-swing-title{
+
+font-size:26px;
+
+margin:18px 0 30px;
+
+}
+
+.elite-swing-card{
+
+padding:24px;
+
+border-radius:22px;
+
+}
+
+.elite-swing-card-title{
+
+font-size:20px;
+
+}
+
+.elite-swing-card-text{
+
+font-size:15px;
+
+line-height:1.5;
+
+}
+
+}
