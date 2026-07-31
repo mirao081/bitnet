@@ -28,60 +28,86 @@
         </div>
     </div>
 
-    <nav class="btnxnav-navbar">
-        <div class="btnxnav-container">
+    <!-- ===========================
+     COMPLETELY NEW NAVIGATION
+============================ -->
 
-            <div class="btnxnav-logo-area">
-                <a href="/" class="btnxnav-brand">
+    <nav class="cryptonav">
+
+        <div class="cryptonav-shell">
+
+            <!-- Logo -->
+            <div class="cryptonav-logo">
+
+                <a href="/" class="cryptonav-brand">
                     ...
                 </a>
+
             </div>
 
-            <div class="btnxnav-menu-wrapper">
+            <!-- Navigation -->
+            <div class="cryptonav-menu" id="cryptonavMenu">
 
-                <ul class="btnxnav-menu">
+                <ul class="cryptonav-list">
+
                     {% for link in nav_links %}
                         {% if not link.parent %}
-                            <li class="{% if link.children.exists %}btnxnav-dropdown{% endif %}">
+
+                            <li class="cryptonav-item {% if link.children.exists %}cryptonav-item--dropdown{% endif %}">
 
                                 <a href="{{ link.url }}"
-                                class="{% if request.path == link.url %}btnxnav-active{% endif %}">
+                                class="cryptonav-link {% if request.path == link.url %}cryptonav-link--active{% endif %}">
                                     {{ link.name }}
                                 </a>
 
                                 {% if link.children.exists %}
-                                <ul class="btnxnav-submenu">
-                                    {% for child in link.children.all %}
-                                    <li>
-                                        <a href="{{ child.url }}"
-                                        class="{% if request.path == child.url %}btnxnav-active{% endif %}">
-                                            {{ child.name }}
-                                        </a>
-                                    </li>
-                                    {% endfor %}
-                                </ul>
+
+                                    <ul class="cryptonav-submenu">
+
+                                        {% for child in link.children.all %}
+
+                                            <li class="cryptonav-subitem">
+
+                                                <a href="{{ child.url }}"
+                                                class="cryptonav-sublink {% if request.path == child.url %}cryptonav-sublink--active{% endif %}">
+                                                    {{ child.name }}
+                                                </a>
+
+                                            </li>
+
+                                        {% endfor %}
+
+                                    </ul>
+
                                 {% endif %}
 
                             </li>
+
                         {% endif %}
                     {% endfor %}
+
                 </ul>
 
-                <div class="btnxnav-buy-area">
+                <div class="cryptonav-buy">
+
                     <a href="{{ settings.buy_button_url }}"
-                    class="btnxnav-buy-btn">
+                    class="cryptonav-buy-btn">
                         {{ settings.buy_button_text }}
                     </a>
+
                 </div>
 
             </div>
 
-            <div class="btnxnav-actions">
+            <!-- Mobile Hamburger -->
+
+            <div class="cryptonav-mobile">
 
                 <button
-                    class="btnxnav-toggle"
-                    id="btnxnav-toggle"
-                    type="button">
+                    id="cryptonavToggle"
+                    class="cryptonav-hamburger"
+                    type="button"
+                    aria-label="Toggle Navigation">
 
                     <span></span>
                     <span></span>
@@ -92,6 +118,7 @@
             </div>
 
         </div>
+
     </nav>
 
     <canvas id="hero-canvas"></canvas>

@@ -6419,3 +6419,367 @@ p {
   background: #fff;
   border-radius: 2px;
 }
+/* ===========================
+   CRYPTONAV
+=========================== */
+
+.cryptonav{
+    position:sticky;
+    top:0;
+    z-index:9999;
+    width:100%;
+    background:#111827;
+    border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.cryptonav-shell{
+    max-width:1350px;
+    height:75px;
+    margin:auto;
+    padding:0 25px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+/* ===========================
+   LOGO
+=========================== */
+
+.cryptonav-logo{
+    display:flex;
+    align-items:center;
+}
+
+.cryptonav-brand{
+    color:#fff;
+    text-decoration:none;
+    font-size:28px;
+    font-weight:700;
+}
+
+/* ===========================
+   MENU
+=========================== */
+
+.cryptonav-menu{
+    display:flex;
+    align-items:center;
+    gap:40px;
+}
+
+.cryptonav-list{
+    display:flex;
+    align-items:center;
+    gap:28px;
+
+    margin:0;
+    padding:0;
+    list-style:none;
+}
+
+.cryptonav-item{
+    position:relative;
+}
+
+.cryptonav-link{
+    display:flex;
+    align-items:center;
+
+    color:#fff;
+    text-decoration:none;
+    font-weight:600;
+
+    padding:26px 0;
+
+    transition:.3s;
+}
+
+.cryptonav-link:hover,
+.cryptonav-link--active{
+    color:#00d4ff;
+}
+
+/* Parent active */
+
+.cryptonav-item--active > .cryptonav-link{
+    color:#00d4ff;
+}
+
+/* ===========================
+   DESKTOP SUBMENU
+=========================== */
+
+.cryptonav-submenu{
+
+    display:none;
+
+    position:absolute;
+    top:100%;
+    left:0;
+
+    width:240px;
+
+    margin:0;
+    padding:10px 0;
+
+    list-style:none;
+
+    background:#181818;
+
+    border-radius:10px;
+
+    box-shadow:0 15px 35px rgba(0,0,0,.35);
+
+}
+
+/* Desktop ONLY */
+
+@media (min-width:993px){
+
+    .cryptonav-item:hover > .cryptonav-submenu{
+
+        display:block;
+
+    }
+
+}
+
+.cryptonav-subitem{
+    width:100%;
+}
+
+.cryptonav-sublink{
+
+    display:block;
+
+    color:#fff;
+
+    text-decoration:none;
+
+    padding:12px 20px;
+
+    transition:.3s;
+
+}
+
+.cryptonav-sublink:hover,
+.cryptonav-sublink--active{
+
+    background:#222;
+
+    color:#00d4ff;
+
+}
+
+/* ===========================
+   BUY BUTTON
+=========================== */
+
+.cryptonav-buy{
+    display:flex;
+    align-items:center;
+}
+
+.cryptonav-buy-btn{
+
+    display:inline-block;
+
+    padding:12px 22px;
+
+    border-radius:8px;
+
+    background:#00d4ff;
+
+    color:#000;
+
+    text-decoration:none;
+
+    font-weight:700;
+
+    transition:.3s;
+
+}
+
+.cryptonav-buy-btn:hover{
+
+    background:#00b7dc;
+
+}
+
+/* ===========================
+   HAMBURGER
+=========================== */
+
+.cryptonav-mobile{
+    display:none;
+}
+
+.cryptonav-hamburger{
+
+    width:46px;
+    height:46px;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    gap:6px;
+
+    background:none;
+    border:none;
+    cursor:pointer;
+
+}
+
+.cryptonav-hamburger span{
+
+    width:30px;
+    height:3px;
+
+    background:#fff;
+
+    border-radius:50px;
+
+    transition:.3s;
+
+}
+
+/* ===========================
+   MOBILE
+=========================== */
+
+@media (max-width:992px){
+
+    .cryptonav-shell{
+
+        height:70px;
+
+    }
+
+    /* hide desktop */
+
+    .cryptonav-buy{
+
+        width:100%;
+
+    }
+
+    /* show hamburger */
+
+    .cryptonav-mobile{
+
+        display:flex;
+
+        align-items:center;
+
+    }
+
+    /* mobile menu */
+
+    .cryptonav-menu{
+
+        display:none;
+
+        position:absolute;
+
+        top:70px;
+
+        left:0;
+
+        width:100%;
+
+        background:#111827;
+
+        flex-direction:column;
+
+        align-items:flex-start;
+
+        padding:20px;
+
+        gap:20px;
+
+        border-top:1px solid rgba(255,255,255,.08);
+
+    }
+
+    .cryptonav-menu.active{
+
+        display:flex;
+
+    }
+
+    .cryptonav-list{
+
+        width:100%;
+
+        flex-direction:column;
+
+        align-items:flex-start;
+
+        gap:0;
+
+    }
+
+    .cryptonav-item{
+
+        width:100%;
+
+    }
+
+    .cryptonav-link{
+
+        width:100%;
+
+        padding:15px 0;
+
+    }
+
+    /*
+       IMPORTANT
+
+       As soon as the hamburger opens,
+       ALL Pages submenu links appear.
+    */
+
+    .cryptonav-submenu{
+
+        display:none;
+
+        position:static;
+
+        width:100%;
+
+        margin:0 0 15px 18px;
+
+        padding:0;
+
+        background:none;
+
+        box-shadow:none;
+
+        border-radius:0;
+
+    }
+
+    .cryptonav-menu.active .cryptonav-submenu{
+
+        display:block;
+
+    }
+
+    .cryptonav-sublink{
+
+        padding:10px 0;
+
+    }
+
+    .cryptonav-buy-btn{
+
+        width:100%;
+
+        text-align:center;
+
+    }
+
+}

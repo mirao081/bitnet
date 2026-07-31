@@ -1,76 +1,40 @@
 document.addEventListener("DOMContentLoaded", function () {
 
-    const toggle = document.getElementById("btnxnav-toggle");
-    const menu = document.querySelector(".btnxnav-menu-wrapper");
+    const toggle = document.getElementById("cryptonavToggle");
+    const menu = document.getElementById("cryptonavMenu");
 
     if (!toggle || !menu) return;
 
+    function openMenu() {
+        menu.classList.add("active");
+        toggle.classList.add("active");
+        toggle.setAttribute("aria-expanded", "true");
+    }
+
     function closeMenu() {
-        menu.classList.remove("show");
+        menu.classList.remove("active");
         toggle.classList.remove("active");
         toggle.setAttribute("aria-expanded", "false");
-
-        document.querySelectorAll(".btnxnav-dropdown").forEach(function (item) {
-            item.classList.remove("open");
-        });
     }
 
     // Hamburger toggle
-    toggle.addEventListener("click", function () {
+    toggle.addEventListener("click", function (e) {
 
-        const isOpen = menu.classList.toggle("show");
+        e.stopPropagation();
 
-        toggle.classList.toggle("active", isOpen);
-        toggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
-
-    });
-
-    // Mobile submenu toggle
-    document.querySelectorAll(".btnxnav-dropdown > a").forEach(function (link) {
-
-        link.addEventListener("click", function (e) {
-
-            if (window.innerWidth <= 768) {
-
-                e.preventDefault();
-
-                const parent = this.parentElement;
-                const isOpen = parent.classList.toggle("open");
-
-                // Close other submenus
-                document.querySelectorAll(".btnxnav-dropdown").forEach(function (item) {
-                    if (item !== parent) {
-                        item.classList.remove("open");
-                    }
-                });
-
-            }
-
-        });
+        if (menu.classList.contains("active")) {
+            closeMenu();
+        } else {
+            openMenu();
+        }
 
     });
 
-    // Close mobile menu after clicking a normal link
-    menu.querySelectorAll("a").forEach(function (link) {
-
-        link.addEventListener("click", function () {
-
-            if (
-                window.innerWidth <= 768 &&
-                !this.parentElement.classList.contains("btnxnav-dropdown")
-            ) {
-                closeMenu();
-            }
-
-        });
-
-    });
-
-    // Close menu when clicking outside
+    // Close when clicking outside
     document.addEventListener("click", function (e) {
 
         if (
-            window.innerWidth <= 768 &&
+            window.innerWidth <= 992 &&
             !menu.contains(e.target) &&
             !toggle.contains(e.target)
         ) {
@@ -79,10 +43,23 @@ document.addEventListener("DOMContentLoaded", function () {
 
     });
 
-    // Reset on desktop
+    // Close menu after clicking any navigation link
+    menu.querySelectorAll("a").forEach(function (link) {
+
+        link.addEventListener("click", function () {
+
+            if (window.innerWidth <= 992) {
+                closeMenu();
+            }
+
+        });
+
+    });
+
+    // Reset when switching back to desktop
     window.addEventListener("resize", function () {
 
-        if (window.innerWidth > 768) {
+        if (window.innerWidth > 992) {
             closeMenu();
         }
 
