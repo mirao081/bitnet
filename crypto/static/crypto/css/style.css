@@ -2247,8 +2247,8 @@ text-shadow:
   flex-direction: row;        /* horizontal layout */
   justify-content: flex-start;
   align-items: center;
-  background: #013062;        /* new darker blue background */
-  border-bottom: 1px solid rgba(255,255,255,.08);
+  background: #111828;        /* new darker blue background */
+  border: 1px solid white;
   margin: 0;
   box-shadow: 0 4px 12px rgba(0,0,0,0.4);
   box-sizing: border-box;
