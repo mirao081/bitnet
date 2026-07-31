@@ -2313,7 +2313,7 @@ text-shadow:
 /* Mobile adjustments */
 @media (max-width: 768px) {
   .market-ticker {
-    height: 70px;            /* expanded height to meet navbar */
+    height: 88px;            /* expanded height to meet navbar */
     background: #272727;     /* keep background visible */
     border-bottom: 1px solid rgba(255,255,255,.08);
     box-shadow: 0 4px 12px rgba(0,0,0,0.4);
