@@ -6438,7 +6438,7 @@ p {
 
 .cryptonav-shell{
     max-width:1350px;
-    height:75px;
+    height:110px;
     margin:auto;
     padding:0 25px;
 
@@ -6462,27 +6462,21 @@ p {
     align-items:center;
     text-decoration:none;
 }
-
 .cryptonav-logo-img{
     display:block;
-    height:55px;
+    height:105px;  
     width:auto;
 }
-
-/* ==========================
-   MENU
-========================== */
-
 .cryptonav-menu{
     display:flex;
     align-items:center;
-    gap:40px;
+    gap:50px;
 }
 
 .cryptonav-list{
     display:flex;
     align-items:center;
-    gap:28px;
+    gap:38px;
 
     margin:0;
     padding:0;
@@ -6499,7 +6493,6 @@ p {
 .cryptonav-item--active>.cryptonav-link{
     color:#00d4ff;
 }
-
 .cryptonav-link{
 
     display:flex;
@@ -6511,13 +6504,12 @@ p {
     color:#fff;
     text-decoration:none;
 
+    font-size:26px;      /* increased */
     font-weight:600;
-    font-size:15px;
 
-    transition:.30s;
+    transition:.3s;
 
 }
-
 .cryptonav-link:hover,
 .cryptonav-link--active{
 
@@ -6641,11 +6633,10 @@ p {
 .cryptonav-buy-btn{
 
     display:inline-flex;
-
     align-items:center;
     justify-content:center;
 
-    padding:12px 22px;
+    padding:10px 18px;
 
     border-radius:8px;
 
@@ -6655,12 +6646,12 @@ p {
 
     text-decoration:none;
 
+    font-size:15px;
     font-weight:700;
 
-    transition:.30s;
+    transition:.3s;
 
 }
-
 .cryptonav-buy-btn:hover{
 
     background:#00b7dc;
@@ -6693,7 +6684,7 @@ p {
 
     .cryptonav-shell{
 
-        height:70px;
+        height:90px;
 
     }
 
@@ -6775,7 +6766,7 @@ p {
 
         position:absolute;
 
-        top:70px;
+        top:90px;
         left:0;
 
         width:100%;
