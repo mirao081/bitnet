@@ -115,15 +115,15 @@
     }
 }
 
-/* ===============================
-   ELITE INVESTMENT SHOWCASE
-================================ */
+/*==================================================
+            ELITE INVESTMENT SHOWCASE
+==================================================*/
 
 .elite-investment-showcase{
 
     position:relative;
     width:100%;
-    padding:120px 20px;
+    padding:90px 0;
     overflow:hidden;
 
     background:
@@ -133,47 +133,60 @@
 
 }
 
+
+/*=========================
+        GRID
+=========================*/
+
 .elite-investment-wrapper{
 
-    max-width:1300px;
+    width:90%;
+    max-width:1600px;
+
     margin:auto;
 
     display:grid;
+
     grid-template-columns:repeat(2,1fr);
+
     gap:35px;
 
 }
 
 
-/* CARD */
+/*=========================
+        GLASS CARD
+=========================*/
 
 .elite-heading-box{
 
     position:relative;
 
-    padding:45px;
+    padding:35px;
 
-    border-radius:28px;
+    border-radius:30px;
+
+    overflow:hidden;
 
     background:rgba(255,255,255,.08);
 
-    backdrop-filter:blur(22px);
-    -webkit-backdrop-filter:blur(22px);
+    backdrop-filter:blur(24px);
+    -webkit-backdrop-filter:blur(24px);
 
     border:1px solid rgba(255,255,255,.12);
 
     box-shadow:
-    0 10px 40px rgba(0,0,0,.35),
+
+    0 15px 45px rgba(0,0,0,.35),
+
     inset 0 1px 0 rgba(255,255,255,.15);
 
     transition:.45s ease;
 
-    overflow:hidden;
-
 }
 
 
-/* Glow Effect */
+/* Floating Glow */
 
 .elite-heading-box::before{
 
@@ -181,17 +194,23 @@
 
     position:absolute;
 
-    width:220px;
-    height:220px;
+    width:240px;
+    height:240px;
 
-    background:radial-gradient(circle,
-    rgba(0,132,255,.45),
+    border-radius:50%;
+
+    background:
+
+    radial-gradient(circle,
+
+    rgba(0,216,239,.35),
+
     transparent 70%);
 
-    top:-100px;
-    right:-100px;
+    top:-120px;
+    right:-120px;
 
-    transition:.6s ease;
+    transition:.7s;
 
 }
 
@@ -200,11 +219,13 @@
 
     transform:translateY(-12px);
 
-    border-color:rgba(255,255,255,.28);
+    border-color:rgba(255,255,255,.25);
 
     box-shadow:
-    0 25px 70px rgba(0,0,0,.45),
-    0 0 40px rgba(0,140,255,.18);
+
+    0 25px 80px rgba(0,0,0,.45),
+
+    0 0 45px rgba(0,216,239,.20);
 
 }
 
@@ -216,51 +237,200 @@
 }
 
 
-
-/* Title */
-
-.elite-main-title{
-
-    font-size:42px;
-    font-weight:800;
-    line-height:1.2;
-
-    color:#fff;
-
-    margin-bottom:25px;
+.elite-badge{
 
     position:relative;
 
+    display:inline-flex;
+
+    align-items:center;
+    justify-content:center;
+
+    padding:12px 28px;
+
+    margin-bottom:12px;
+
+    border-radius:60px;
+
+    font-size:25px;
+    font-weight:800;
+    letter-spacing:1.5px;
+    text-transform:uppercase;
+
+    color:#e8fdff;
+
+    background:
+    linear-gradient(
+        135deg,
+        rgba(0,216,239,.35),
+        rgba(255,255,255,.12)
+    );
+
+    backdrop-filter:blur(22px);
+    -webkit-backdrop-filter:blur(22px);
+
+    border:1px solid rgba(255,255,255,.30);
+
+    box-shadow:
+        inset 0 1px 1px rgba(255,255,255,.45),
+        inset 0 -8px 18px rgba(0,216,239,.12),
+        0 12px 35px rgba(0,216,239,.25),
+        0 0 25px rgba(0,216,239,.18);
+
+    overflow:hidden;
+
+    animation:eliteFloat 4s ease-in-out infinite;
+
+    transition:.45s ease;
+
+}
+
+.elite-badge::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+    left:-180%;
+
+    width:70%;
+    height:100%;
+
+    transform:skewX(-25deg);
+
+    background:
+    linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,.8),
+        transparent
+    );
+
+    animation:eliteShine 4.5s linear infinite;
+
+}
+.elite-badge::after{
+
+    content:"";
+
+    position:absolute;
+
+    inset:-2px;
+
+    border-radius:inherit;
+
+    background:
+    radial-gradient(
+        circle,
+        rgba(0,216,239,.30),
+        transparent 70%
+    );
+
+    z-index:-1;
+
+    filter:blur(18px);
+
+}
+.elite-badge:hover{
+
+    transform:translateY(-6px) scale(1.04);
+
+    box-shadow:
+
+        inset 0 2px 2px rgba(255,255,255,.55),
+
+        0 20px 45px rgba(0,216,239,.40),
+
+        0 0 35px rgba(0,216,239,.35);
+
 }
 
 
-/* Subtitle */
+.elite-badge:hover::before{
+
+    left:170%;
+
+}
+
+
+/*=========================
+        TITLE
+=========================*/
+
+.elite-main-title{
+
+    font-size:25px;
+
+    font-weight:800;
+
+    line-height:1.15;
+
+    color:#ffffff;
+
+    margin-bottom:10px;
+
+    letter-spacing:.5px;
+
+    text-shadow:
+
+    0 0 10px rgba(255,255,255,.15);
+
+    transition:.35s;
+
+}
+
+
+.elite-heading-box:hover .elite-main-title{
+
+    letter-spacing:1px;
+
+}
+
+
+/*=========================
+        SUBTITLE
+=========================*/
 
 .elite-subtitle{
 
-    font-size:20px;
-    line-height:1.9;
+    font-size:18px;
 
-    color:rgba(255,255,255,.93);
+    line-height:1.55;
 
-    margin-bottom:20px;
+    color:rgba(255,255,255,.95);
+
+    margin-bottom:8px;
+
+    text-shadow:
+
+    0 0 8px rgba(255,255,255,.10);
 
 }
 
 
-/* Description */
+/*=========================
+        DESCRIPTION
+=========================*/
 
 .elite-description{
 
-    font-size:17px;
-    line-height:1.9;
+    font-size:16px;
 
-    color:rgba(255,255,255,.70);
+    line-height:1.55;
+
+    color:rgba(255,255,255,.78);
+
+    text-shadow:
+
+    0 0 6px rgba(255,255,255,.05);
 
 }
 
 
-/* Smooth Fade Animation */
+/*=========================
+      FADE ANIMATION
+=========================*/
 
 .elite-heading-box{
 
@@ -274,6 +444,7 @@
     from{
 
         opacity:0;
+
         transform:translateY(60px);
 
     }
@@ -281,65 +452,119 @@
     to{
 
         opacity:1;
+
         transform:translateY(0);
 
     }
 
 }
 
+@keyframes eliteFloat{
 
-/* ==========================
+    0%{
+
+        transform:translateY(0px);
+
+    }
+
+    50%{
+
+        transform:translateY(-6px);
+
+    }
+
+    100%{
+
+        transform:translateY(0px);
+
+    }
+
+}
+
+@keyframes eliteShine{
+
+    0%{
+
+        left:-180%;
+
+    }
+
+    100%{
+
+        left:220%;
+
+    }
+
+}
+
+/*=========================
         TABLET
-========================== */
+=========================*/
 
-@media(max-width:991px){
+@media (max-width:991px){
 
 .elite-investment-wrapper{
 
 grid-template-columns:1fr;
 
-}
-
-.elite-main-title{
-
-font-size:34px;
+width:92%;
 
 }
 
 }
 
 
-/* ==========================
+/*=========================
         MOBILE
-========================== */
+=========================*/
 
-@media(max-width:600px){
+@media (max-width:600px){
 
 .elite-investment-showcase{
 
-padding:70px 18px;
+padding:65px 0;
+
+}
+
+.elite-investment-wrapper{
+
+width:95%;
 
 }
 
 .elite-heading-box{
 
-padding:28px;
+padding:24px;
 
 border-radius:22px;
 
 }
 
+.elite-badge{
+
+font-size:17px;
+
+padding:8px 18px;
+
+margin-bottom:10px;
+
+}
+
 .elite-main-title{
 
-font-size:28px;
+font-size:22px;
+
+margin-bottom:8px;
 
 }
 
 .elite-subtitle{
 
-font-size:17px;
+font-size:16px;
 
-line-height:1.7;
+line-height:1.45;
+
+margin-bottom:6px;
 
 }
 
@@ -347,7 +572,7 @@ line-height:1.7;
 
 font-size:15px;
 
-line-height:1.8;
+line-height:1.5;
 
 }
 
