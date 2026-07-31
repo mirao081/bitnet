@@ -248,26 +248,63 @@
     </div>
 
 </section>
-<!-- EXCHANGE -->
-<section class="home-exchange">
-  <div class="home-exchange-container">
-    <div class="home-exchange-image">
-      <img src="{{ exchange_section.main_image.url }}" alt="Main computer image">
-    </div>
-    <div class="home-exchange-text">
-      <h3>{{ exchange_section.title }}</h3>
-      <p>{{ exchange_section.description }}</p>
-    </div>
-    <div class="home-exchange-icons">
-      {% for icon in exchange_section.icons.all %}
-      <div class="home-icon-box">
-        <img src="{{ icon.image.url }}" alt="Crypto icon">
-      </div>
-      {% endfor %}
-    </div>
-  </div>
-</section>
+<!--====================================
+        ELITE EXCHANGE SHOWCASE
+=====================================-->
 
+<section class="elite-exchange-showcase">
+
+    <div class="elite-exchange-wrapper">
+
+        <div class="elite-exchange-card">
+
+            <div class="elite-exchange-image">
+
+                <img
+                    src="{{ exchange_section.main_image.url }}"
+                    alt="Main computer image"
+                    class="elite-exchange-main-image">
+
+            </div>
+
+            <div class="elite-exchange-content">
+
+                <div class="elite-badge">
+                    EXCHANGE PLATFORM
+                </div>
+
+                <h2 class="elite-exchange-title">
+                    {{ exchange_section.title }}
+                </h2>
+
+                <p class="elite-exchange-description">
+                    {{ exchange_section.description }}
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="elite-exchange-icons-grid">
+
+            {% for icon in exchange_section.icons.all %}
+
+            <div class="elite-exchange-icon-card">
+
+                <img
+                    src="{{ icon.image.url }}"
+                    alt="Crypto icon"
+                    class="elite-exchange-icon-image">
+
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+</section>
 <!-- INVESTMENT -->
 <section class="home-investment">
   <h1>BUDGET-FRIENDLY <span>PLANS</span></h1>

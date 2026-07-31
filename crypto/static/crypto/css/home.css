@@ -1618,3 +1618,289 @@ line-height:1.5;
 }
 
 }
+
+/*==================================================
+            ELITE EXCHANGE SHOWCASE
+==================================================*/
+
+.elite-exchange-showcase{
+
+    width:100%;
+
+    padding:90px 0;
+
+    background:
+    radial-gradient(circle at top left,#004aad33,transparent 40%),
+    radial-gradient(circle at bottom right,#7a00ff22,transparent 35%),
+    linear-gradient(180deg,#05070d,#0a1020);
+
+}
+
+.elite-exchange-wrapper{
+
+    width:90%;
+
+    max-width:1600px;
+
+    margin:auto;
+
+}
+
+/*==============================
+        MAIN CARD
+==============================*/
+
+.elite-exchange-card{
+
+    display:grid;
+
+    grid-template-columns:1.1fr 1fr;
+
+    gap:40px;
+
+    align-items:center;
+
+    padding:35px;
+
+    border-radius:30px;
+
+    background:rgba(255,255,255,.08);
+
+    backdrop-filter:blur(24px);
+    -webkit-backdrop-filter:blur(24px);
+
+    border:1px solid rgba(255,255,255,.12);
+
+    box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.15),
+    0 18px 45px rgba(0,0,0,.35);
+
+    transition:.45s;
+
+}
+
+.elite-exchange-card:hover{
+
+    transform:translateY(-10px);
+
+    box-shadow:
+    0 30px 70px rgba(0,0,0,.45),
+    0 0 40px rgba(0,216,239,.18);
+
+}
+
+/*==============================
+        IMAGE
+==============================*/
+
+.elite-exchange-image{
+
+    display:flex;
+
+    justify-content:center;
+
+}
+
+.elite-exchange-main-image{
+
+    width:85%;
+
+    max-width:500px;
+
+    border-radius:24px;
+
+    transition:.6s ease;
+
+    filter:drop-shadow(0 20px 35px rgba(0,0,0,.35));
+
+}
+
+.elite-exchange-card:hover
+.elite-exchange-main-image{
+
+    transform:scale(1.04);
+
+}
+
+/*==============================
+        CONTENT
+==============================*/
+
+.elite-exchange-title{
+
+    margin:18px 0 12px;
+
+    font-size:34px;
+
+    font-weight:800;
+
+    color:#fff;
+
+    line-height:1.2;
+
+}
+
+.elite-exchange-description{
+
+    font-size:16px;
+
+    line-height:1.6;
+
+    color:rgba(255,255,255,.82);
+
+}
+
+/*==============================
+        ICON GRID
+==============================*/
+
+.elite-exchange-icons-grid{
+
+    margin-top:40px;
+
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:25px;
+
+}
+
+.elite-exchange-icon-card{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:24px;
+
+    border-radius:24px;
+
+    background:rgba(255,255,255,.08);
+
+    backdrop-filter:blur(20px);
+
+    border:1px solid rgba(255,255,255,.12);
+
+    transition:.45s;
+
+    box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.12),
+    0 12px 30px rgba(0,0,0,.30);
+
+}
+
+.elite-exchange-icon-card:hover{
+
+    transform:translateY(-8px) scale(1.05);
+
+    background:rgba(0,216,239,.10);
+
+    box-shadow:
+    0 20px 45px rgba(0,216,239,.18);
+
+}
+
+.elite-exchange-icon-image{
+
+    width:70px;
+
+    height:70px;
+
+    object-fit:contain;
+
+}
+
+/*==============================
+        TABLET
+==============================*/
+
+@media(max-width:991px){
+
+.elite-exchange-card{
+
+grid-template-columns:1fr;
+
+text-align:center;
+
+}
+
+.elite-exchange-icons-grid{
+
+grid-template-columns:repeat(2,1fr);
+
+}
+
+}
+
+/*==============================
+        MOBILE
+==============================*/
+
+@media(max-width:600px){
+
+.elite-exchange-showcase{
+
+padding:60px 0;
+
+}
+
+.elite-exchange-wrapper{
+
+width:95%;
+
+}
+
+.elite-exchange-card{
+
+padding:24px;
+
+gap:24px;
+
+}
+
+.elite-exchange-title{
+
+font-size:28px;
+
+}
+
+.elite-exchange-description{
+
+font-size:15px;
+
+line-height:1.55;
+
+}
+
+.elite-exchange-main-image{
+
+width:95%;
+
+}
+
+.elite-exchange-icons-grid{
+
+grid-template-columns:repeat(2,1fr);
+
+gap:18px;
+
+}
+
+.elite-exchange-icon-card{
+
+padding:18px;
+
+}
+
+.elite-exchange-icon-image{
+
+width:55px;
+
+height:55px;
+
+}
+
+}
