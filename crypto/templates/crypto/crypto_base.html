@@ -28,10 +28,6 @@
         </div>
     </div>
 
-    <!-- ===========================
-     COMPLETELY NEW NAVIGATION
-============================ -->
-
     <nav class="cryptonav">
 
         <div class="cryptonav-shell">
@@ -39,8 +35,13 @@
             <!-- Logo -->
             <div class="cryptonav-logo">
 
-                <a href="/" class="cryptonav-brand">
-                    ...
+                <a href="{% url 'crypto:home' %}" class="cryptonav-brand">
+
+                    <img
+                        src="{% static 'crypto/images/logo.png' %}"
+                        alt="{{ settings.site_name }}"
+                        class="cryptonav-logo-img">
+
                 </a>
 
             </div>
@@ -107,7 +108,8 @@
                     id="cryptonavToggle"
                     class="cryptonav-hamburger"
                     type="button"
-                    aria-label="Toggle Navigation">
+                    aria-label="Toggle Navigation"
+                    aria-expanded="false">
 
                     <span></span>
                     <span></span>
