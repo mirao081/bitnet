@@ -705,7 +705,9 @@ line-height:1.5;
 
     overflow:hidden;
 
-    height:260px;
+    height:160px;
+
+    border-radius:22px 22px 0 0;
 
 }
 
@@ -888,7 +890,7 @@ gap:25px;
 
 .elite-image-wrapper{
 
-height:220px;
+height:150px;
 
 }
 
