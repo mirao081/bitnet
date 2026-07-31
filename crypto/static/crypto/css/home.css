@@ -709,9 +709,9 @@ line-height:1.5;
 
 .elite-feature-image{
 
-    width:220px;
+    width:198px;
 
-    height:200px;
+    height:180px;
 
     object-fit:cover;
 
@@ -725,6 +725,7 @@ line-height:1.5;
         0 10px 30px rgba(0,0,0,.35);
 
 }
+
 .elite-feature-card:hover .elite-feature-image{
 
     transform:scale(1.08);
@@ -870,9 +871,9 @@ gap:25px;
 
 .elite-feature-image{
 
-    width:180px;
+    width:162px;
 
-    height:170px;
+    height:153px;
 
 }
 
