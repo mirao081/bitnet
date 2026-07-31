@@ -577,3 +577,339 @@ line-height:1.5;
 }
 
 }
+/*=====================================================
+            ELITE FEATURE GALLERY
+=====================================================*/
+
+.elite-feature-gallery{
+
+    position:relative;
+
+    width:100%;
+
+    padding:40px 0 90px;
+
+    background:
+    radial-gradient(circle at top left,#004aad33,transparent 40%),
+    radial-gradient(circle at bottom right,#7a00ff22,transparent 35%),
+    linear-gradient(180deg,#05070d,#0a1020);
+
+}
+
+
+/*==============================
+        GRID
+==============================*/
+
+.elite-feature-grid{
+
+    width:90%;
+
+    max-width:1600px;
+
+    margin:auto;
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:35px;
+
+}
+
+
+/*==============================
+        CARD
+==============================*/
+
+.elite-feature-card{
+
+    position:relative;
+
+    overflow:hidden;
+
+    border-radius:30px;
+
+    background:rgba(255,255,255,.08);
+
+    backdrop-filter:blur(24px);
+    -webkit-backdrop-filter:blur(24px);
+
+    border:1px solid rgba(255,255,255,.12);
+
+    box-shadow:
+
+        inset 0 1px 0 rgba(255,255,255,.15),
+
+        0 15px 45px rgba(0,0,0,.35);
+
+    transition:.45s ease;
+
+}
+
+
+.elite-feature-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:260px;
+    height:260px;
+
+    top:-120px;
+    right:-120px;
+
+    border-radius:50%;
+
+    background:
+
+    radial-gradient(circle,
+
+    rgba(0,216,239,.28),
+
+    transparent 72%);
+
+    transition:.6s;
+
+}
+
+
+.elite-feature-card:hover{
+
+    transform:translateY(-12px);
+
+    border-color:rgba(255,255,255,.25);
+
+    box-shadow:
+
+    0 30px 70px rgba(0,0,0,.45),
+
+    0 0 40px rgba(0,216,239,.18);
+
+}
+
+
+.elite-feature-card:hover::before{
+
+    transform:scale(1.4);
+
+}
+
+
+/*==============================
+        IMAGE
+==============================*/
+
+.elite-image-wrapper{
+
+    overflow:hidden;
+
+    height:260px;
+
+}
+
+
+.elite-feature-image{
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+
+    transition:.7s ease;
+
+}
+
+
+.elite-feature-card:hover .elite-feature-image{
+
+    transform:scale(1.08);
+
+}
+
+
+/*==============================
+        CONTENT
+==============================*/
+
+.elite-feature-content{
+
+    padding:30px;
+
+}
+
+
+.elite-feature-title{
+
+    color:white;
+
+    font-size:24px;
+
+    font-weight:700;
+
+    margin-bottom:10px;
+
+    line-height:1.2;
+
+    letter-spacing:.5px;
+
+    text-shadow:
+
+    0 0 10px rgba(255,255,255,.12);
+
+}
+
+
+.elite-feature-text{
+
+    color:rgba(255,255,255,.78);
+
+    font-size:16px;
+
+    line-height:1.6;
+
+}
+
+
+/*==============================
+        SHIMMER
+==============================*/
+
+.elite-feature-card::after{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+
+    left:-160%;
+
+    width:50%;
+
+    height:100%;
+
+    transform:skewX(-25deg);
+
+    background:
+
+    linear-gradient(
+
+    90deg,
+
+    transparent,
+
+    rgba(255,255,255,.28),
+
+    transparent);
+
+    transition:.9s;
+
+}
+
+
+.elite-feature-card:hover::after{
+
+    left:170%;
+
+}
+
+
+/*==============================
+        ANIMATION
+==============================*/
+
+.elite-feature-card{
+
+    animation:eliteCardRise .9s ease both;
+
+}
+
+
+@keyframes eliteCardRise{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(60px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+
+/*==============================
+        TABLET
+==============================*/
+
+@media (max-width:991px){
+
+.elite-feature-grid{
+
+grid-template-columns:1fr;
+
+width:92%;
+
+}
+
+}
+
+
+/*==============================
+        MOBILE
+==============================*/
+
+@media (max-width:600px){
+
+.elite-feature-gallery{
+
+padding:20px 0 60px;
+
+}
+
+.elite-feature-grid{
+
+width:95%;
+
+gap:25px;
+
+}
+
+.elite-image-wrapper{
+
+height:220px;
+
+}
+
+.elite-feature-content{
+
+padding:22px;
+
+}
+
+.elite-feature-title{
+
+font-size:21px;
+
+}
+
+.elite-feature-text{
+
+font-size:15px;
+
+line-height:1.55;
+
+}
+
+}

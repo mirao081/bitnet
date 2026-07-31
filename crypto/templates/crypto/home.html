@@ -70,26 +70,45 @@
 
 </section>
 
-<!-- CARDS -->
-<section class="home-cards">
-  <div class="home-row">
-    {% for card in accessible_cards|slice:":2" %}
-    <div class="home-card">
-      <img src="{{ card.image.url }}" alt="{{ card.title }}">
-      <h3>{{ card.title }}</h3>
-      <p>{{ card.description }}</p>
+<!--==============================
+      ELITE FEATURE CARDS
+================================-->
+
+<section class="elite-feature-gallery">
+
+    <div class="elite-feature-grid">
+
+        {% for card in accessible_cards %}
+
+        <div class="elite-feature-card">
+
+            <div class="elite-image-wrapper">
+
+                <img
+                    src="{{ card.image.url }}"
+                    alt="{{ card.title }}"
+                    class="elite-feature-image">
+
+            </div>
+
+            <div class="elite-feature-content">
+
+                <h3 class="elite-feature-title">
+                    {{ card.title }}
+                </h3>
+
+                <p class="elite-feature-text">
+                    {{ card.description }}
+                </p>
+
+            </div>
+
+        </div>
+
+        {% endfor %}
+
     </div>
-    {% endfor %}
-  </div>
-  <div class="home-row">
-    {% for card in accessible_cards|slice:"2:5" %}
-    <div class="home-card">
-      <img src="{{ card.image.url }}" alt="{{ card.title }}">
-      <h3>{{ card.title }}</h3>
-      <p>{{ card.description }}</p>
-    </div>
-    {% endfor %}
-  </div>
+
 </section>
 
 <!-- TOKEN SALE -->
