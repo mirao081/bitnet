@@ -2247,7 +2247,7 @@ text-shadow:
   flex-direction: row;        /* horizontal layout */
   justify-content: flex-start;
   align-items: center;
-  background: #272727;        /* darker background */
+  background: #044e9b;        /* new darker blue background */
   border-bottom: 1px solid rgba(255,255,255,.08);
   margin: 0;
   box-shadow: 0 4px 12px rgba(0,0,0,0.4);
@@ -2267,7 +2267,6 @@ text-shadow:
   transition: transform 1s linear;
   will-change: transform;
 }
-
 .ticker-item {
   flex: none;
   display: flex;
