@@ -741,94 +741,6 @@ h1.hero-title span {
     font-weight: bold;
 }
 
-.login-body {
-    font-family: 'Poppins', sans-serif;
-    background: linear-gradient(135deg, #1a1a1a, #333);
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.login-container {
-  background: rgba(34, 34, 34, 0.6); 
-  padding: 40px;
-  border-radius: 10px;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.5);
-  width: 350px;
-  text-align: center;
-  backdrop-filter: blur(10px);       
-  -webkit-backdrop-filter: blur(10px);
-}
-
-.login-title {
-    color: #fff;
-    margin-bottom: 20px;
-}
-
-.login-form input {
-    width: 100%;
-    padding: 12px;
-    margin: 10px 0;
-    border-radius: 6px;
-    border: 1px solid #444;
-    background: #333;
-    color: #fff;
-}
-.login-logo {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.login-logo img {
-    width: 100px;   /* fixed size */
-    height: auto;   /* keep aspect ratio */
-    display: inline-block;
-}
-
-
-.login-button {
-    width: 100%;
-    padding: 12px;
-    background: #f7931a;
-    border: none;
-    border-radius: 6px;
-    color: #fff;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background 0.3s ease;
-}
-
-.login-button:hover {
-    background: #d87f0a;
-}
-/* Mobile adjustments for login form */
-@media (max-width: 768px) {
-    .login-container {
-        width: 90%;          /* shrink to fit mobile */
-        padding: 20px;       /* reduce padding */
-    }
-
-    .login-title {
-        font-size: 1.4rem;   /* smaller heading */
-        margin-bottom: 15px;
-    }
-
-    .login-form input {
-        padding: 10px;       /* slightly smaller inputs */
-        font-size: 0.95rem;
-    }
-
-    .login-button {
-        padding: 10px;       /* reduced button size */
-        font-size: 0.95rem;
-    }
-
-    .auth-switch {
-        font-size: 0.9rem;
-    }
-}
-
 .site-name {
     font-size: 30px;            
     font-weight: 900;
@@ -6955,4 +6867,97 @@ p {
 
     }
 
+}
+.bitnet-login-body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #1a1a1a, #333);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.bitnet-login-container {
+    background: rgba(34, 34, 34, 0.6); 
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.5);
+    width: 350px;
+    text-align: center;
+    backdrop-filter: blur(10px);       
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.bitnet-login-title {
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+.bitnet-login-form input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 6px;
+    border: 1px solid #444;
+    background: #333;
+    color: #fff;
+}
+
+.bitnet-login-logo {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.bitnet-login-logo img {
+    width: 100px;
+    height: auto;
+    display: inline-block;
+}
+
+.bitnet-login-button {
+    width: 100%;
+    padding: 12px;
+    background: #f7931a;
+    border: none;
+    border-radius: 6px;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.bitnet-login-button:hover {
+    background: #d87f0a;
+}
+
+.bitnet-auth-switch {
+    color: #ccc;
+    margin-top: 15px;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    .bitnet-login-container {
+        width: 90%;
+        padding: 20px;
+    }
+
+    .bitnet-login-title {
+        font-size: 1.4rem;
+        margin-bottom: 15px;
+    }
+
+    .bitnet-login-form input {
+        padding: 10px;
+        font-size: 0.95rem;
+    }
+
+    .bitnet-login-button {
+        padding: 10px;
+        font-size: 0.95rem;
+    }
+
+    .bitnet-auth-switch {
+        font-size: 0.9rem;
+    }
 }

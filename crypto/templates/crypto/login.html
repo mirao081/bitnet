@@ -8,29 +8,27 @@
     <!-- Load Google reCAPTCHA script -->
     <script src="https://www.google.com/recaptcha/api.js?render=YOUR_SITE_KEY"></script>
 </head>
-<body class="login-body">
-    <div class="login-container">
-        <div class="login-logo">
-            <span class="site-name">BitnetFx</span>
+< class="bitnet-login-body">
+    <div class="bitnet-login-container">
+        <div class="bitnet-login-logo">
+            <span class="bitnet-site-name">BitnetFx</span>
         </div>
 
-        <h2 class="login-title">Login to Your Account</h2>
+        <h2 class="bitnet-login-title">Login to Your Account</h2>
 
-        <form method="post" class="login-form">
+        <form method="post" class="bitnet-login-form">
             {% csrf_token %}
             {{ form.non_field_errors }}
 
-            <!-- Render Django form fields -->
             {{ form.username }}
             {{ form.password }}
 
-            <!-- Hidden reCAPTCHA field -->
             <input type="hidden" id="id_captcha" name="captcha">
 
-            <button type="submit" class="login-button">Login</button>
+            <button type="submit" class="bitnet-login-button">Login</button>
         </form>
 
-        <p class="auth-switch">
+        <p class="bitnet-auth-switch">
             Don’t have an account? <a href="{% url 'crypto:signup' %}">Sign up here</a>
         </p>
     </div>
@@ -42,5 +40,5 @@
             });
         });
     </script>
-</body>
+</body>  
 </html>
