@@ -110,32 +110,85 @@
     </div>
 
 </section>
+<!--==============================
+        ELITE TOKEN SALE
+================================-->
 
-<!-- TOKEN SALE -->
-<section class="home-token">
-  <div class="home-token-container">
-    <div class="home-token-left">
-      <h2>{{ token_sale.left_title }}</h2>
-      <h1>{{ token_sale.right_title }}</h1>
-      <p>{{ token_sale.left_subtitle }}</p>
-      <a href="{{ token_sale.button_url }}" class="home-token-btn">
-        {{ token_sale.button_text }}
-      </a>
+<section class="elite-sale-showcase">
+
+    <div class="elite-sale-wrapper">
+
+        <div class="elite-sale-left">
+
+            <div class="elite-badge">
+                TOKEN SALE
+            </div>
+
+            <h2 class="elite-sale-small-title">
+                {{ token_sale.left_title }}
+            </h2>
+
+            <h1 class="elite-sale-main-title">
+                {{ token_sale.right_title }}
+            </h1>
+
+            <p class="elite-sale-description">
+                {{ token_sale.left_subtitle }}
+            </p>
+
+            <a href="{{ token_sale.button_url }}" class="elite-sale-button">
+                {{ token_sale.button_text }}
+            </a>
+
+        </div>
+
+        <div class="elite-sale-right">
+
+            <h2 class="elite-sale-platform-title">
+                The trading
+                <span class="elite-sale-highlight">
+                    platform
+                </span>
+                for the future
+            </h2>
+
+            <div class="elite-sale-countdown">
+
+                <div class="elite-sale-time-box">
+                    <span id="days">365</span>
+                    <small>Days</small>
+                </div>
+
+                <div class="elite-sale-time-box">
+                    <span id="hours">0</span>
+                    <small>Hours</small>
+                </div>
+
+                <div class="elite-sale-time-box">
+                    <span id="minutes">0</span>
+                    <small>Minutes</small>
+                </div>
+
+                <div class="elite-sale-time-box">
+                    <span id="seconds">0</span>
+                    <small>Seconds</small>
+                </div>
+
+            </div>
+
+            <p class="elite-sale-info">
+                ${{ token_sale.contribution_received }} contribution received
+            </p>
+
+            <p class="elite-sale-info">
+                ${{ token_sale.min_target }} – ${{ token_sale.max_target }}
+            </p>
+
+        </div>
+
     </div>
-    <div class="home-token-right">
-      <h1>The trading <span class="home-grey">platform</span> for the future</h1>
-      <div class="home-countdown">
-        <div><span id="days">365</span><small>Days</small></div>
-        <div><span id="hours">0</span><small>Hours</small></div>
-        <div><span id="minutes">0</span><small>Minutes</small></div>
-        <div><span id="seconds">0</span><small>Seconds</small></div>
-      </div>
-      <p>${{ token_sale.contribution_received }} contribution received</p>
-      <p>${{ token_sale.min_target }} – ${{ token_sale.max_target }}</p>
-    </div>
-  </div>
+
 </section>
-
 <!-- SWING -->
 <section class="home-swing">
   <a href="{% url 'crypto:features' %}">
