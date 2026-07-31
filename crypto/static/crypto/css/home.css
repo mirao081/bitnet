@@ -926,7 +926,7 @@ line-height:1.55;
 
     grid-template-columns:1fr 1fr;
 
-    gap:40px;
+    gap:35px;
 
 }
 
@@ -947,7 +947,7 @@ line-height:1.55;
 
     border-radius:30px;
 
-    padding:35px;
+    padding:30px;
 
     position:relative;
 
@@ -997,7 +997,7 @@ line-height:1.55;
 }
 
 .elite-sale-left:hover::before,
-.elite-sale-right:hover::before{
+.elite-sale-right:hover{
 
     transform:scale(1.4);
 
@@ -1009,23 +1009,23 @@ line-height:1.55;
 
 .elite-sale-small-title{
 
-    font-size:22px;
+    font-size:18px;
 
     color:#00d8ef;
 
-    margin:15px 0 10px;
+    margin:12px 0 8px;
 
 }
 
 .elite-sale-main-title{
 
-    font-size:42px;
+    font-size:22px;
 
     font-weight:800;
 
     line-height:1.15;
 
-    margin-bottom:15px;
+    margin-bottom:12px;
 
     color:#fff;
 
@@ -1033,13 +1033,13 @@ line-height:1.55;
 
 .elite-sale-platform-title{
 
-    font-size:36px;
+    font-size:16px;
 
     line-height:1.2;
 
     color:#fff;
 
-    margin-bottom:30px;
+    margin-bottom:22px;
 
 }
 
@@ -1054,11 +1054,14 @@ line-height:1.55;
 
     color:rgba(255,255,255,.82);
 
-    line-height:1.6;
+    line-height:1.52;
 
-    margin-bottom:15px;
+    font-size:15px;
+
+    margin-bottom:12px;
 
 }
+
 
 /*==========================
         BUTTON
@@ -1066,17 +1069,25 @@ line-height:1.55;
 
 .elite-sale-button{
 
-    display:inline-block;
+    display:inline-flex;
 
-    margin-top:20px;
+    align-items:center;
 
-    padding:14px 34px;
+    justify-content:center;
+
+    width:70%;
+
+    margin-top:18px;
+
+    padding:12px 22px;
 
     border-radius:50px;
 
     text-decoration:none;
 
     font-weight:700;
+
+    font-size:15px;
 
     color:#041826;
 
@@ -1098,6 +1109,7 @@ line-height:1.55;
 
 }
 
+
 /*==========================
         COUNTDOWN
 ==========================*/
@@ -1108,9 +1120,9 @@ line-height:1.55;
 
     grid-template-columns:repeat(4,1fr);
 
-    gap:15px;
+    gap:12px;
 
-    margin:30px 0;
+    margin:24px 0;
 
 }
 
@@ -1118,9 +1130,9 @@ line-height:1.55;
 
     text-align:center;
 
-    padding:18px 10px;
+    padding:15px 8px;
 
-    border-radius:20px;
+    border-radius:18px;
 
     background:rgba(255,255,255,.07);
 
@@ -1144,7 +1156,7 @@ line-height:1.55;
 
     display:block;
 
-    font-size:34px;
+    font-size:28px;
 
     font-weight:800;
 
@@ -1160,7 +1172,10 @@ line-height:1.55;
 
     letter-spacing:1px;
 
+    font-size:12px;
+
 }
+
 
 /*==========================
         TABLET
@@ -1175,6 +1190,7 @@ grid-template-columns:1fr;
 }
 
 }
+
 
 /*==========================
         MOBILE
@@ -1201,6 +1217,12 @@ padding:24px;
 
 }
 
+.elite-sale-small-title{
+
+font-size:18px;
+
+}
+
 .elite-sale-main-title{
 
 font-size:30px;
@@ -1210,6 +1232,15 @@ font-size:30px;
 .elite-sale-platform-title{
 
 font-size:28px;
+
+}
+
+.elite-sale-description,
+.elite-sale-info{
+
+font-size:15px;
+
+line-height:1.5;
 
 }
 
