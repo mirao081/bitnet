@@ -353,16 +353,13 @@ p {
     }
 }
 .market-ticker{
-    position:fixed;
-    top:0;
-    left:0;
     width:100%;
-    height:40px;
-    background:#0b1220;
-    z-index:10000;
+    background:#111827;
+    border-bottom:1px solid rgba(255,255,255,.08);
     overflow:hidden;
+    position:relative;
+    z-index:10;
 }
-
 .ticker-track {
     display: flex;
     animation: ticker-scroll 20s linear infinite;
@@ -487,30 +484,19 @@ p {
     z-index: 0;
 }
 .page-content{
-    padding-top:30px;          /* only 30px below the navbar */
+    margin-top:105px;
+    padding-top:30px;
+
     padding-left:20px;
     padding-right:20px;
     padding-bottom:160px;
 
-    margin-top:115px;          /* 40px ticker + 75px navbar */
-
-    margin-bottom:0;
-
-    min-height:calc(100vh - 70px);
-
     width:100%;
-
     box-sizing:border-box;
 
     display:flex;
     flex-direction:column;
-
     align-items:center;
-    justify-content:flex-start;
-
-    overflow-x:hidden;
-
-    position:relative;
 }
 
 .page-content > section,
@@ -6432,11 +6418,12 @@ p {
 }
 .cryptonav{
     position:fixed;
-    top:40px;
+    top:40px;          /* below the ticker */
     left:0;
     width:100%;
     z-index:9999;
     background:#111827;
+    border-bottom:1px solid rgba(255,255,255,.08);
 }
 
 
