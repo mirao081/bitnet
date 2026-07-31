@@ -6419,9 +6419,13 @@ p {
   background: #fff;
   border-radius: 2px;
 }
-/* ===========================
-   CRYPTONAV
-=========================== */
+/* =====================================================
+   CRYPTONAV - PART 1 (Desktop)
+===================================================== */
+
+/* ==========================
+   NAVBAR
+========================== */
 
 .cryptonav{
     position:sticky;
@@ -6443,25 +6447,31 @@ p {
     justify-content:space-between;
 }
 
-/* ===========================
+/* ==========================
    LOGO
-=========================== */
+========================== */
 
 .cryptonav-logo{
     display:flex;
     align-items:center;
+    flex-shrink:0;
 }
 
 .cryptonav-brand{
-    color:#fff;
+    display:flex;
+    align-items:center;
     text-decoration:none;
-    font-size:28px;
-    font-weight:700;
 }
 
-/* ===========================
+.cryptonav-logo-img{
+    display:block;
+    height:55px;
+    width:auto;
+}
+
+/* ==========================
    MENU
-=========================== */
+========================== */
 
 .cryptonav-menu{
     display:flex;
@@ -6476,6 +6486,7 @@ p {
 
     margin:0;
     padding:0;
+
     list-style:none;
 }
 
@@ -6483,39 +6494,76 @@ p {
     position:relative;
 }
 
+/* Highlight parent if submenu page is active */
+
+.cryptonav-item--active>.cryptonav-link{
+    color:#00d4ff;
+}
+
 .cryptonav-link{
+
     display:flex;
     align-items:center;
-
-    color:#fff;
-    text-decoration:none;
-    font-weight:600;
+    gap:6px;
 
     padding:26px 0;
 
-    transition:.3s;
+    color:#fff;
+    text-decoration:none;
+
+    font-weight:600;
+    font-size:15px;
+
+    transition:.30s;
+
 }
 
 .cryptonav-link:hover,
 .cryptonav-link--active{
+
     color:#00d4ff;
+
 }
 
-/* Parent active */
+/* ==========================
+   DROPDOWN ARROW
+========================== */
 
-.cryptonav-item--active > .cryptonav-link{
-    color:#00d4ff;
+.cryptonav-item--dropdown>.cryptonav-link::after{
+
+    content:"\f078";
+
+    font-family:"Font Awesome 6 Free";
+    font-weight:900;
+
+    font-size:11px;
+
+    transition:.30s;
+
 }
 
-/* ===========================
+/* Desktop arrow animation */
+
+@media (min-width:993px){
+
+    .cryptonav-item--dropdown:hover>.cryptonav-link::after{
+
+        transform:rotate(180deg);
+
+    }
+
+}
+
+/* ==========================
    DESKTOP SUBMENU
-=========================== */
+========================== */
 
 .cryptonav-submenu{
 
     display:none;
 
     position:absolute;
+
     top:100%;
     left:0;
 
@@ -6532,15 +6580,19 @@ p {
 
     box-shadow:0 15px 35px rgba(0,0,0,.35);
 
+    z-index:999;
+
 }
 
-/* Desktop ONLY */
+/* Desktop hover */
 
 @media (min-width:993px){
 
-    .cryptonav-item:hover > .cryptonav-submenu{
+    .cryptonav-item:hover>.cryptonav-submenu{
 
         display:block;
+
+        animation:submenuFade .25s ease;
 
     }
 
@@ -6554,13 +6606,15 @@ p {
 
     display:block;
 
+    width:100%;
+
+    padding:12px 20px;
+
     color:#fff;
 
     text-decoration:none;
 
-    padding:12px 20px;
-
-    transition:.3s;
+    transition:.30s;
 
 }
 
@@ -6573,18 +6627,23 @@ p {
 
 }
 
-/* ===========================
+/* ==========================
    BUY BUTTON
-=========================== */
+========================== */
 
 .cryptonav-buy{
+
     display:flex;
     align-items:center;
+
 }
 
 .cryptonav-buy-btn{
 
-    display:inline-block;
+    display:inline-flex;
+
+    align-items:center;
+    justify-content:center;
 
     padding:12px 22px;
 
@@ -6598,7 +6657,7 @@ p {
 
     font-weight:700;
 
-    transition:.3s;
+    transition:.30s;
 
 }
 
@@ -6607,47 +6666,28 @@ p {
     background:#00b7dc;
 
 }
+/* =====================================================
+   CRYPTONAV - PART 2 (Mobile)
+===================================================== */
 
-/* ===========================
-   HAMBURGER
-=========================== */
+/* ==========================
+   MOBILE TOGGLE
+========================== */
 
 .cryptonav-mobile{
     display:none;
 }
 
-.cryptonav-hamburger{
+/* Hide Font Awesome icons on desktop */
 
-    width:46px;
-    height:46px;
-
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    gap:6px;
-
-    background:none;
-    border:none;
-    cursor:pointer;
-
+.cryptonav-open-icon,
+.cryptonav-close-icon{
+    display:none;
 }
 
-.cryptonav-hamburger span{
-
-    width:30px;
-    height:3px;
-
-    background:#fff;
-
-    border-radius:50px;
-
-    transition:.3s;
-
-}
-
-/* ===========================
+/* ==========================
    MOBILE
-=========================== */
+========================== */
 
 @media (max-width:992px){
 
@@ -6657,25 +6697,77 @@ p {
 
     }
 
-    /* hide desktop */
-
-    .cryptonav-buy{
-
-        width:100%;
-
-    }
-
-    /* show hamburger */
+    /* Show hamburger */
 
     .cryptonav-mobile{
 
         display:flex;
-
         align-items:center;
 
     }
 
-    /* mobile menu */
+    .cryptonav-hamburger{
+
+        width:46px;
+        height:46px;
+
+        display:flex;
+        align-items:center;
+        justify-content:center;
+
+        background:none;
+        border:none;
+
+        cursor:pointer;
+
+        padding:0;
+
+    }
+
+    .cryptonav-open-icon,
+    .cryptonav-close-icon{
+
+        color:#fff;
+
+        font-size:28px;
+
+        transition:.25s ease;
+
+    }
+
+    /* Show ☰ */
+
+    .cryptonav-open-icon{
+
+        display:block;
+
+    }
+
+    /* Hide ✕ */
+
+    .cryptonav-close-icon{
+
+        display:none;
+
+    }
+
+    /* Menu opened */
+
+    .cryptonav-hamburger.active .cryptonav-open-icon{
+
+        display:none;
+
+    }
+
+    .cryptonav-hamburger.active .cryptonav-close-icon{
+
+        display:block;
+
+    }
+
+    /* ======================
+       MOBILE MENU
+    ====================== */
 
     .cryptonav-menu{
 
@@ -6684,7 +6776,6 @@ p {
         position:absolute;
 
         top:70px;
-
         left:0;
 
         width:100%;
@@ -6695,11 +6786,15 @@ p {
 
         align-items:flex-start;
 
+        gap:18px;
+
         padding:20px;
 
-        gap:20px;
+        box-sizing:border-box;
 
         border-top:1px solid rgba(255,255,255,.08);
+
+        animation:fadeMenu .25s ease;
 
     }
 
@@ -6713,9 +6808,9 @@ p {
 
         width:100%;
 
-        flex-direction:column;
+        display:flex;
 
-        align-items:flex-start;
+        flex-direction:column;
 
         gap:0;
 
@@ -6725,22 +6820,35 @@ p {
 
         width:100%;
 
+        border-bottom:1px solid rgba(255,255,255,.06);
+
     }
 
     .cryptonav-link{
 
         width:100%;
 
-        padding:15px 0;
+        display:flex;
+
+        justify-content:space-between;
+
+        align-items:center;
+
+        padding:16px 0;
 
     }
 
-    /*
-       IMPORTANT
+    /* Rotate arrow when submenu opens */
 
-       As soon as the hamburger opens,
-       ALL Pages submenu links appear.
-    */
+    .cryptonav-item.submenu-open > .cryptonav-link::after{
+
+        transform:rotate(180deg);
+
+    }
+
+    /* ======================
+       SUBMENU
+    ====================== */
 
     .cryptonav-submenu{
 
@@ -6750,9 +6858,9 @@ p {
 
         width:100%;
 
-        margin:0 0 15px 18px;
+        margin:0;
 
-        padding:0;
+        padding:0 0 10px 18px;
 
         background:none;
 
@@ -6762,15 +6870,37 @@ p {
 
     }
 
-    .cryptonav-menu.active .cryptonav-submenu{
+    .cryptonav-item.submenu-open > .cryptonav-submenu{
 
         display:block;
+
+        animation:submenuFade .25s ease;
+
+    }
+
+    .cryptonav-subitem{
+
+        width:100%;
 
     }
 
     .cryptonav-sublink{
 
+        display:block;
+
+        width:100%;
+
         padding:10px 0;
+
+    }
+
+    /* ======================
+       BUY BUTTON
+    ====================== */
+
+    .cryptonav-buy{
+
+        width:100%;
 
     }
 
@@ -6780,11 +6910,48 @@ p {
 
         text-align:center;
 
+        justify-content:center;
+
     }
 
 }
-.cryptonav-logo-img{
-    display:block;
-    height:55px;
-    width:auto;
+
+/* ==========================
+   ANIMATIONS
+========================== */
+
+@keyframes fadeMenu{
+
+    from{
+
+        opacity:0;
+        transform:translateY(-10px);
+
+    }
+
+    to{
+
+        opacity:1;
+        transform:translateY(0);
+
+    }
+
+}
+
+@keyframes submenuFade{
+
+    from{
+
+        opacity:0;
+        transform:translateY(-6px);
+
+    }
+
+    to{
+
+        opacity:1;
+        transform:translateY(0);
+
+    }
+
 }
