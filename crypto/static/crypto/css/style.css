@@ -802,6 +802,32 @@ h1.hero-title span {
 .login-button:hover {
     background: #d87f0a;
 }
+/* Mobile adjustments for login form */
+@media (max-width: 768px) {
+    .login-container {
+        width: 90%;          /* shrink to fit mobile */
+        padding: 20px;       /* reduce padding */
+    }
+
+    .login-title {
+        font-size: 1.4rem;   /* smaller heading */
+        margin-bottom: 15px;
+    }
+
+    .login-form input {
+        padding: 10px;       /* slightly smaller inputs */
+        font-size: 0.95rem;
+    }
+
+    .login-button {
+        padding: 10px;       /* reduced button size */
+        font-size: 0.95rem;
+    }
+
+    .auth-switch {
+        font-size: 0.9rem;
+    }
+}
 
 .site-name {
     font-size: 30px;            
