@@ -1700,31 +1700,39 @@ line-height:1.5;
     justify-content:center;
 
 }
+.elite-exchange-image{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:20px 20px 0;
+
+}
 
 .elite-exchange-main-image{
 
-    width:85%;
+    width:76%;
 
-    max-width:500px;
+    max-width:450px;
 
     border-radius:24px;
+
+    display:block;
 
     transition:.6s ease;
 
     filter:drop-shadow(0 20px 35px rgba(0,0,0,.35));
 
 }
-
 .elite-exchange-card:hover
 .elite-exchange-main-image{
 
     transform:scale(1.04);
 
 }
-
-/*==============================
-        CONTENT
-==============================*/
 
 .elite-exchange-title{
 
@@ -1749,10 +1757,6 @@ line-height:1.5;
     color:rgba(255,255,255,.82);
 
 }
-
-/*==============================
-        ICON GRID
-==============================*/
 
 .elite-exchange-icons-grid{
 
@@ -1877,7 +1881,9 @@ line-height:1.55;
 
 .elite-exchange-main-image{
 
-width:95%;
+    width:85%;
+
+    max-width:320px;
 
 }
 
