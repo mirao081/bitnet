@@ -1,39 +1,41 @@
 {% extends "crypto/crypto_base.html" %}
-
 {% load static %}
 
 {% block content %}
-<link rel="stylesheet" href="{% static 'css/page.css' %}">
+<link rel="stylesheet" href="{% static 'css/legals.css' %}">
 
-<div class="legals-page">
-    <h1>Legals</h1>
+<div class="legals-showcase">
+    <div class="legals-heading-container">
+        <h1 class="legals-heading-title">Legals</h1>
+        <p class="legals-heading-subtitle">Transparency • Trust • Security</p>
+    </div>
 
-    <div class="legals-cards">
+    <div class="legals-grid">
       
-        <div class="legal-card">
-            <h2><a href="{% url 'crypto:terms' %}">Terms and Conditions</a></h2>
-            <p class="section-intro">
+        <div class="legals-panel">
+            <h2 class="legals-panel-title">
+                <a href="{% url 'crypto:terms' %}">Terms and Conditions</a>
+            </h2>
+            <p class="legals-panel-description">
                 Our Terms and Conditions outline the rules, responsibilities, and agreements you accept when using BitnetFX.
-                They ensure transparency and protect both you and our platform.
             </p>
-            <div class="section-content">
+            <div class="legals-content">
                 {% include "crypto/terms_content.html" %}
             </div>
-            <div>
-                {% include "crypto/faqs_content.html" %}
-            </div>
+            <a href="{% url 'crypto:terms' %}" class="legals-read-more-btn">Read More</a>
         </div>
 
-      
-        <div class="legal-card">
-            <h2><a href="{% url 'crypto:faqs' %}">FAQs</a></h2>
-            <p class="section-intro">
-                Our Frequently Asked Questions provide quick answers to common queries about accounts, deposits, trading, and security.
-                Explore them here or visit the full FAQ page for more details.
+        <div class="legals-panel">
+            <h2 class="legals-panel-title">
+                <a href="{% url 'crypto:faqs' %}">FAQs</a>
+            </h2>
+            <p class="legals-panel-description">
+                Quick answers to common queries about accounts, deposits, trading, and security.
             </p>
-            <div class="section-content">
-               {% include "crypto/terms_content.html" %}
+            <div class="legals-content">
+               {% include "crypto/faqs_content.html" %}
             </div>
+            <a href="{% url 'crypto:faqs' %}" class="legals-read-more-btn">Explore FAQs</a>
         </div>
     </div>
 </div>
