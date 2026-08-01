@@ -2281,12 +2281,11 @@ align-items:center;
     linear-gradient(180deg,#05070d,#0a1020);
 
 }
-
 .elite-calculator-wrapper{
 
-    width:90%;
+    width:99%;
 
-    max-width:1600px;
+    max-width:1800px;
 
     margin:auto;
 
@@ -2299,10 +2298,6 @@ align-items:center;
     align-items:center;
 
 }
-
-/*==============================
-        GLASS PANELS
-==============================*/
 
 .elite-calculator-panel,
 .elite-calculator-canvas{
