@@ -456,20 +456,48 @@
     </div>
 
 </section>
-<!-- FEATURES -->
-<section class="home-features">
-  <div class="home-features-grid">
-    {% for item in feature_items %}
-    <div class="home-feature-card">
-      <img src="{{ item.image.url }}" alt="{{ item.title }}">
-      <h3>{{ item.title }}</h3>
-      <p>{{ item.description }}</p>
-    </div>
-    {% endfor %}
-  </div>
-  <canvas id="NewBitcoinCanvas" width="350" height="620"></canvas>
-</section>
+<!--====================================
+        ELITE FEATURE HIGHLIGHTS
+=====================================-->
 
+<section class="elite-feature-showcase">
+
+    <div class="elite-feature-grid-premium">
+
+        {% for item in feature_items %}
+
+        <div class="elite-feature-panel">
+
+            <div class="elite-feature-panel-image">
+
+                <img src="{{ item.image.url }}"
+                     alt="{{ item.title }}">
+
+            </div>
+
+            <h3 class="elite-feature-panel-title">
+
+                {{ item.title }}
+
+            </h3>
+
+            <p class="elite-feature-panel-description">
+
+                {{ item.description }}
+
+            </p>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+    <canvas id="NewBitcoinCanvas"
+            width="350"
+            height="620"></canvas>
+
+</section>
 {% endblock %}
 
 {% block extra_js %}
