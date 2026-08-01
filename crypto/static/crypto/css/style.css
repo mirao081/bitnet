@@ -476,6 +476,12 @@ p {
     pointer-events: none;
     z-index: 0;
 }
+
+#moveableCanvas,
+#marketChart {
+    display: block;
+    margin: 0 auto;
+}
 .page-content{
     margin-top:105px;
     padding-top:30px;
@@ -496,7 +502,7 @@ p {
 .page-content > div {
     width: 100%;
     max-width: 1200px;
-    margin: 0 auto;
+    margin: 0 auto 20px;
 }
 
 
@@ -1011,7 +1017,7 @@ text-shadow:
 .about-text p { font-size: 15px; }
 
 .charts-section {
-    margin: 40px auto 0;
+    margin: 40px auto 20px;
     width: 100%;
     max-width: 900px;
     box-sizing: border-box;
