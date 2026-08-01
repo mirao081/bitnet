@@ -2631,9 +2631,9 @@ min-height:300px;
 
 .elite-feature-showcase{
 
-    width:100%;
+     width:100%;
 
-    padding:90px 0;
+    padding:90px 0 40px;
 
     position:relative;
 
@@ -2686,6 +2686,7 @@ min-height:300px;
     0 18px 45px rgba(0,0,0,.35);
 
     transition:.45s ease;
+    margin-bottom:30px;
 
 }
 
