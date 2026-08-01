@@ -1745,20 +1745,35 @@ text-shadow:
 }
 
 
+.investment-section {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
 .investment-title {
     font-size: 2.8rem;
     font-family: 'Poppins', sans-serif;
     color: #fff;
+    text-align: center;
+    margin: 0 auto 12px;
+    display: block;
 }
 .investment-title span { color: #785103; }
 
 .investment-subtitle {
     color: grey;
-    margin: 20px 0;
+    margin: 20px auto 0;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 10px;
+    flex-wrap: wrap;
+    text-align: center;
+    max-width: 100%;
 }
 .investment-subtitle .line {
     width: 40px;
@@ -1803,6 +1818,9 @@ text-shadow:
 
 
 @media (max-width: 768px) {
+    .investment-section {
+        padding: 0 16px;
+    }
     .investment-title { font-size: 2.2rem; }
     .investment-subtitle { font-size: 0.95rem; }
     .charts-grid {
@@ -1815,6 +1833,9 @@ text-shadow:
 
 
 @media (max-width: 480px) {
+    .investment-section {
+        padding: 0 12px;
+    }
     .investment-title { font-size: 1.6rem; }
     .investment-subtitle { font-size: 0.85rem; }
     .charts-grid {
@@ -1837,6 +1858,7 @@ text-shadow:
   grid-template-columns: repeat(2, 1fr);
   gap: 25px;
   justify-items: center;
+  justify-content: center;
   margin: 40px auto;
   width: 100%;
   max-width: 1100px;
@@ -1875,6 +1897,7 @@ text-shadow:
     gap: 20px;
     max-width: 100%;
     margin: 30px auto;
+    padding: 0;
   }
 
   .investment-card {
