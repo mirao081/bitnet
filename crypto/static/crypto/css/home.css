@@ -2755,12 +2755,11 @@ min-height:300px;
     margin-bottom:20px;
 
 }
-
 .elite-feature-panel-image img{
 
-    width:170px;
+    width:136px;
 
-    height:170px;
+    height:136px;
 
     object-fit:contain;
 
@@ -2769,7 +2768,6 @@ min-height:300px;
     filter:drop-shadow(0 15px 25px rgba(0,0,0,.35));
 
 }
-
 .elite-feature-panel:hover img{
 
     transform:scale(1.08);
@@ -2807,96 +2805,119 @@ min-height:300px;
     line-height:1.6;
 
 }
+.home-canvas{
 
-/*=========================
-        CANVAS
-=========================*/
+    width:90%;
 
+    max-width:500px;
+
+    margin:45px auto 0;
+
+    padding:20px;
+
+    border-radius:28px;
+
+    background:rgba(255,255,255,.06);
+
+    backdrop-filter:blur(18px);
+
+    -webkit-backdrop-filter:blur(18px);
+
+    border:1px solid rgba(255,255,255,.10);
+
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.10),
+        0 12px 30px rgba(0,0,0,.28);
+
+}
 #NewBitcoinCanvas{
 
     display:block;
 
-    margin:70px auto 0;
+    width:100%;
 
-    max-width:100%;
+    max-width:380px;
 
-    height:auto;
+    height:360px;
 
-    position:relative;
-
-    z-index:1;
+    margin:auto;
 
 }
-
-/*=========================
-        TABLET
-=========================*/
-
 @media(max-width:991px){
 
-.elite-feature-grid-premium{
+    .elite-feature-grid-premium{
 
-grid-template-columns:repeat(2,1fr);
+    grid-template-columns:repeat(2,1fr);
+
+    }
 
 }
 
-}
-
-/*=========================
-        MOBILE
-=========================*/
 
 @media(max-width:600px){
 
-.elite-feature-showcase{
+    .elite-feature-showcase{
 
-padding:60px 0;
+    padding:60px 0;
 
-}
+    }
 
-.elite-feature-grid-premium{
+    .elite-feature-grid-premium{
 
-width:95%;
+    width:95%;
 
-grid-template-columns:1fr;
+    grid-template-columns:1fr;
 
-gap:24px;
+    gap:24px;
 
-}
+    }
 
-.elite-feature-panel{
+    .elite-feature-panel{
 
-padding:24px;
+    padding:24px;
 
-}
+    }
 
-.elite-feature-panel-image img{
+    .elite-feature-panel-image img{
 
-width:150px;
+    width:150px;
 
-height:150px;
+    height:150px;
 
-}
+    }
 
-.elite-feature-panel-title{
+    .elite-feature-panel-title{
 
-font-size:21px;
+    font-size:21px;
 
-}
+    }
 
-.elite-feature-panel-description{
+    .elite-feature-panel-description{
 
-font-size:14px;
+    font-size:14px;
 
-line-height:1.5;
+    line-height:1.5;
+
+    }
+.home-canvas{
+
+    width:92%;
+
+    max-width:320px;
+
+    padding:16px;
+
+    margin:30px auto 0;
 
 }
 
 #NewBitcoinCanvas{
 
-margin-top:40px;
+    width:100%;
 
-width:90%;
+    max-width:260px;
+
+    height:250px;
 
 }
 
