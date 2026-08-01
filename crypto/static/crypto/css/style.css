@@ -6966,3 +6966,182 @@ p {
         font-size: 0.9rem;
     }
 }
+/*==================================================
+        ELITE CAROUSEL SHOWCASE
+==================================================*/
+
+.elite-carousel-container {
+    width:100%;
+    padding:90px 0 40px;
+    position:relative;
+    overflow:hidden;
+    background:
+      radial-gradient(circle at top left,#004aad33,transparent 40%),
+      radial-gradient(circle at bottom right,#7a00ff22,transparent 35%),
+      linear-gradient(180deg,#05070d,#0a1020);
+}
+
+.elite-carousel-slide {
+    position:relative;
+    overflow:hidden;
+    text-align:center;
+    padding:35px 28px;
+    border-radius:30px;
+    background:rgba(255,255,255,.08);
+    backdrop-filter:blur(24px);
+    -webkit-backdrop-filter:blur(24px);
+    border:1px solid rgba(255,255,255,.12);
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,.15),
+      0 18px 45px rgba(0,0,0,.35);
+    transition:.45s ease;
+    margin-bottom:50px;
+}
+
+.elite-carousel-slide::before {
+    content:"";
+    position:absolute;
+    width:220px;
+    height:220px;
+    top:-120px;
+    right:-120px;
+    border-radius:50%;
+    background:radial-gradient(circle,rgba(0,216,239,.28),transparent 70%);
+    transition:.6s;
+}
+
+.elite-carousel-slide:hover {
+    transform:translateY(-12px);
+    box-shadow:
+      0 30px 70px rgba(0,0,0,.45),
+      0 0 40px rgba(0,216,239,.18);
+}
+
+.elite-carousel-slide:hover::before {
+    transform:scale(1.4);
+}
+
+/*=========================
+        TITLE & SUBTITLE
+=========================*/
+.elite-carousel-title {
+    font-size:25px;
+    font-weight:900;
+    color:#fff;
+    text-transform:uppercase;
+    letter-spacing:2px;
+    margin-bottom:15px;
+    text-shadow:
+      0 0 10px #00d8ef,
+      0 0 20px #00d8ef,
+      0 0 40px #7a00ff;
+    animation:eliteGlowPulse 3s infinite alternate;
+}
+
+.elite-carousel-subtitle {
+    font-size:18px;
+    font-weight:600;
+    background:linear-gradient(90deg,#00d8ef,#7a00ff,#ff0080);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    background-size:200% auto;
+    animation:eliteShineFlow 6s linear infinite;
+    letter-spacing:1px;
+}
+
+/*=========================
+        BUTTONS
+=========================*/
+.elite-carousel-btn {
+    display:inline-block;
+    margin:10px 8px;
+    padding:10px 22px;
+    border-radius:20px;
+    font-weight:600;
+    text-decoration:none;
+    transition:.3s;
+}
+
+.elite-carousel-btn.primary {
+    background:#00d8ef;
+    color:#05070d;
+}
+
+.elite-carousel-btn.primary:hover {
+    background:#009bb8;
+    color:#fff;
+}
+
+.elite-carousel-btn.secondary {
+    background:#7a00ff;
+    color:#fff;
+}
+
+.elite-carousel-btn.secondary:hover {
+    background:#5500b8;
+    color:#fff;
+}
+
+/*=========================
+        NAVIGATION
+=========================*/
+.elite-carousel-prev,
+.elite-carousel-next {
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+    font-size:32px;
+    color:#fff;
+    cursor:pointer;
+    padding:8px 12px;
+    border-radius:50%;
+    background:rgba(255,255,255,.08);
+    backdrop-filter:blur(12px);
+    -webkit-backdrop-filter:blur(12px);
+    box-shadow:0 0 20px rgba(0,216,239,.35);
+    transition:.3s;
+}
+
+.elite-carousel-prev:hover,
+.elite-carousel-next:hover {
+    background:rgba(0,216,239,.25);
+}
+
+.elite-carousel-prev { left:20px; }
+.elite-carousel-next { right:20px; }
+
+/*=========================
+        ANIMATIONS
+=========================*/
+@keyframes eliteGlowPulse {
+    from { text-shadow:0 0 10px #00d8ef,0 0 20px #00d8ef; }
+    to   { text-shadow:0 0 20px #7a00ff,0 0 40px #ff0080; }
+}
+
+@keyframes eliteShineFlow {
+    0%   { background-position:0% 50%; }
+    50%  { background-position:100% 50%; }
+    100% { background-position:0% 50%; }
+}
+
+/*=========================
+        RESPONSIVE
+=========================*/
+@media(max-width:600px){
+  .elite-carousel-title {
+    font-size:25px; /* stays at 25px on mobile */
+    text-shadow:
+      0 0 15px #00d8ef,
+      0 0 30px #7a00ff,
+      0 0 60px #ff0080;
+    animation:eliteGlowPulseMobile 2.5s infinite alternate;
+  }
+  .elite-carousel-subtitle {
+    font-size:16px;
+  }
+}
+
+@keyframes eliteGlowPulseMobile {
+    from { text-shadow:0 0 15px #00d8ef,0 0 30px #7a00ff; }
+    to   { text-shadow:0 0 30px #ff0080,0 0 60px #00d8ef; }
+}
