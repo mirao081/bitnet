@@ -3,8 +3,14 @@
 {% load static %}
 
 {% block content %}
-<section class="about-section investment-plans-section">
-    <div class="carousel-container">
+<section class="about-showcase investment-plans-section">
+    <div class="about-heading-container">
+        <h2 class="about-heading-title">Investment Opportunities</h2>
+        <p class="about-heading-subtitle">Premium plans, trusted analytics, and secure growth paths</p>
+    </div>
+
+    <div class="about-grid-premium">
+        <div class="about-panel carousel-container">
         {% for slide in slides %}
             <div class="carousel-slide {% if forloop.first %}active{% endif %}">
                 <h1>{{ slide.title }}</h1>
@@ -28,22 +34,22 @@
 
     <div class="cards-container">
         {% for card in cards %}
-            <div class="plan-card">
+            <div class="plan-card about-panel">
                 <i class="fa-brands fa-bitcoin card-icon"></i>
-                <h1>{{ card.title }}</h1>
-                <p>{{ card.description }}</p>
+                <h1 class="about-panel-title">{{ card.title }}</h1>
+                <p class="about-panel-description">{{ card.description }}</p>
             </div>
         {% endfor %}
     </div>
 
-    <div class="about-us-container">
-        <div class="about-market">
+    <div class="about-us-container about-grid-premium">
+        <div class="about-market about-panel">
             <iframe src="https://www.tradingview.com/widgetembed/?frameElementId=tradingview_widget"
                     width="100%" height="400" frameborder="0" allowfullscreen>
             </iframe>
         </div>
 
-        <div class="about-text">
+        <div class="about-text about-panel">
             <h1>{{ about.heading }}</h1>
             <p>{{ about.intro_text }}</p>
 
@@ -59,9 +65,11 @@
     </div>
 
     <canvas id="moveableCanvas" width="400" height="400"></canvas>
-    <div class="charts-section">
-        <h2>Market Trends</h2>
+    <div class="charts-section about-panel">
+        <h2 class="about-panel-title">Market Trends</h2>
+        <p class="about-panel-description">Live market performance and trading insights curated for investors.</p>
         <canvas id="marketChart"></canvas>
+    </div>
     </div>
 </section>
 <section class="about-section investment-section">
