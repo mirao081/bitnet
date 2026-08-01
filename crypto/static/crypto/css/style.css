@@ -6399,8 +6399,9 @@ p {
 }
 
 .cryptonav-shell{
+    position:relative;
     max-width:1350px;
-    height:90px;
+    min-height:90px;
     margin:auto;
     padding:0 25px;
 
@@ -6663,216 +6664,137 @@ p {
 @media (max-width:992px){
 
     .cryptonav-shell{
-
-        height:90px;
-
+        height:auto;
+        min-height:90px;
     }
-
-    /* Show hamburger */
 
     .cryptonav-mobile{
-
-        display:flex;
-        align-items:center;
-
-    }
-
-    .cryptonav-hamburger{
-
-        width:46px;
-        height:46px;
-
         display:flex;
         align-items:center;
         justify-content:center;
+        position:relative;
+        z-index:1300;
+        margin-left:auto;
+    }
 
-        background:none;
-        border:none;
-
+    .cryptonav-hamburger{
+        width:46px;
+        height:46px;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        background:rgba(255,255,255,.08);
+        border:1px solid rgba(255,255,255,.14);
+        border-radius:10px;
         cursor:pointer;
-
         padding:0;
-
+        color:#fff;
+        box-shadow:0 6px 14px rgba(0,0,0,.18);
     }
 
     .cryptonav-open-icon,
     .cryptonav-close-icon{
-
         color:#fff;
-
         font-size:28px;
-
         transition:.25s ease;
-
     }
-
-    /* Show ☰ */
 
     .cryptonav-open-icon{
-
         display:block;
-
     }
-
-    /* Hide ✕ */
 
     .cryptonav-close-icon{
-
         display:none;
-
     }
 
-    /* Menu opened */
-
     .cryptonav-hamburger.active .cryptonav-open-icon{
-
         display:none;
-
     }
 
     .cryptonav-hamburger.active .cryptonav-close-icon{
-
         display:block;
-
     }
 
-    /* ======================
-       MOBILE MENU
-    ====================== */
-
-    @media (max-width: 992px) {
-  .cryptonav-menu {
-      display: none;
-      position: absolute;
-      top: 90px;   /* match ticker height, no gap */
-      left: 0;
-      width: 100%;
-      background: #111827;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 18px;
-      padding: 20px;
-      box-sizing: border-box;
-      border-top: 1px solid rgba(255,255,255,.08);
-      animation: fadeMenu .25s ease;
-  }
-}
-
+    .cryptonav-menu{
+        display:none;
+        position:absolute;
+        top:100%;
+        left:0;
+        width:100%;
+        background:#111827;
+        flex-direction:column;
+        align-items:flex-start;
+        gap:18px;
+        padding:20px;
+        box-sizing:border-box;
+        border-top:1px solid rgba(255,255,255,.08);
+        box-shadow:0 18px 35px rgba(0,0,0,.35);
+        z-index:1250;
+        animation:fadeMenu .25s ease;
+    }
 
     .cryptonav-menu.active{
-
         display:flex;
-
     }
 
     .cryptonav-list{
-
         width:100%;
-
         display:flex;
-
         flex-direction:column;
-
         gap:0;
-
     }
 
     .cryptonav-item{
-
         width:100%;
-
         border-bottom:1px solid rgba(255,255,255,.06);
-
     }
 
     .cryptonav-link{
-
         width:100%;
-
         display:flex;
-
         justify-content:space-between;
-
         align-items:center;
-
         padding:16px 0;
-
     }
-
-    /* Rotate arrow when submenu opens */
 
     .cryptonav-item.submenu-open > .cryptonav-link::after{
-
         transform:rotate(180deg);
-
     }
 
-    /* ======================
-       SUBMENU
-    ====================== */
-
     .cryptonav-submenu{
-
         display:none;
-
         position:static;
-
         width:100%;
-
         margin:0;
-
         padding:0 0 10px 18px;
-
         background:none;
-
         box-shadow:none;
-
         border-radius:0;
-
     }
 
     .cryptonav-item.submenu-open > .cryptonav-submenu{
-
         display:block;
-
         animation:submenuFade .25s ease;
-
     }
 
     .cryptonav-subitem{
-
         width:100%;
-
     }
 
     .cryptonav-sublink{
-
         display:block;
-
         width:100%;
-
         padding:10px 0;
-
     }
 
-    /* ======================
-       BUY BUTTON
-    ====================== */
-
     .cryptonav-buy{
-
         width:100%;
-
     }
 
     .cryptonav-buy-btn{
-
         width:100%;
-
         text-align:center;
-
         justify-content:center;
-
     }
 
 }
