@@ -12,6 +12,7 @@ urlpatterns = [
     path('features/', views.features, name='features'),
     path('legals/', views.legals, name='legals'),
     path('affiliate/', views.affiliate, name="affiliate"),
+    path("affiliate-new/", views.affiliate_new, name="affiliate_new"),
     path('signup/', views.signup_view, name="signup"),
     path('login/', views.login_view, name="login"),
     path("twofa-verify/", views.twofa_verify, name="twofa_verify"),
