@@ -1,0 +1,71 @@
+{% extends "crypto/crypto_base.html" %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'crypto/css/page.css' %}">
+
+<div class="bt-services-page">
+    <section class="bt-services-hero">
+        <h1>Affiliate Program</h1>
+        <p>
+            Grow your network, share BitnetFx with new investors, and earn
+            recurring rewards through a transparent referral model.
+        </p>
+    </section>
+
+    <section class="bt-services-grid">
+        <article class="bt-services-card">
+            <img src="{% static 'images/partner.png' %}" alt="Easy Registration">
+            <h2>Easy Registration</h2>
+            <p>
+                Join in a few steps and receive a unique affiliate link that starts
+                your journey immediately.
+            </p>
+        </article>
+
+        <article class="bt-services-card">
+            <img src="{% static 'images/aiTrading.png' %}" alt="Share Your Link">
+            <h2>Share Your Link</h2>
+            <p>
+                Promote your referral link across your network and help more people
+                discover BitnetFx opportunities.
+            </p>
+        </article>
+
+        <article class="bt-services-card">
+            <img src="{% static 'images/portfolio.png' %}" alt="Referral Rewards">
+            <h2>Referral Rewards</h2>
+            <p>
+                Earn commission on qualified referrals and grow your income as your
+                network expands.
+            </p>
+        </article>
+
+        <article class="bt-services-card">
+            <img src="{% static 'images/security.webp' %}" alt="Transparent Tracking">
+            <h2>Transparent Tracking</h2>
+            <p>
+                Watch your referrals and rewards in real time with clarity and
+                dependable reporting.
+            </p>
+        </article>
+    </section>
+
+    <section class="bt-services-benefits">
+        <h2>Why affiliates choose BitnetFx</h2>
+        <ul>
+            <li>Simple setup with a clear referral pathway</li>
+            <li>Reliable tracking and instant visibility into performance</li>
+            <li>Flexible, long-term earning potential for growing partners</li>
+        </ul>
+    </section>
+
+    <section class="bt-services-info">
+        <h2>Grow with confidence</h2>
+        <p>
+            BitnetFx gives affiliates a dependable framework to build lasting
+            relationships and share meaningful opportunities with others.
+        </p>
+    </section>
+</div>
+{% endblock %}
