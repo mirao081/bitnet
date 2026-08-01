@@ -1,55 +1,40 @@
 {% extends "crypto/crypto_base.html" %}
+
 {% load static %}
 
 {% block content %}
-<link rel="stylesheet" href="{% static 'crypto/css/page.css' %}">
+<link rel="stylesheet" href="{% static 'css/page.css' %}">
 
-<div class="bt-services-page">
-    <section class="bt-services-hero">
-        <h1>Legals & Documentation</h1>
-        <p>
-            Review the policies, agreements, and documentation that keep every
-            BitnetFx interaction secure, transparent, and easy to understand.
-        </p>
-    </section>
+<div class="legals-page">
+    <h1>Legals</h1>
 
-    <section class="bt-services-grid">
-        <article class="bt-services-card">
-            <img src="{% static 'images/secure.webp' %}" alt="Terms and Conditions">
-            <h2>Terms & Conditions</h2>
-            <p>
-                Understand the rules, responsibilities, and investor protections
-                that define your experience with BitnetFx.
+    <div class="legals-cards">
+      
+        <div class="legal-card">
+            <h2><a href="{% url 'crypto:terms' %}">Terms and Conditions</a></h2>
+            <p class="section-intro">
+                Our Terms and Conditions outline the rules, responsibilities, and agreements you accept when using BitnetFX.
+                They ensure transparency and protect both you and our platform.
             </p>
-            <a class="bt-services-cta-button" href="{% url 'crypto:terms' %}">Open Terms</a>
-        </article>
+            <div class="section-content">
+                {% include "crypto/terms_content.html" %}
+            </div>
+            <div>
+                {% include "crypto/faqs_content.html" %}
+            </div>
+        </div>
 
-        <article class="bt-services-card">
-            <img src="{% static 'images/global.webp' %}" alt="Frequently Asked Questions">
-            <h2>Frequently Asked Questions</h2>
-            <p>
-                Get clear answers about accounts, deposits, withdrawals, security,
-                and how our platform works in practice.
+      
+        <div class="legal-card">
+            <h2><a href="{% url 'crypto:faqs' %}">FAQs</a></h2>
+            <p class="section-intro">
+                Our Frequently Asked Questions provide quick answers to common queries about accounts, deposits, trading, and security.
+                Explore them here or visit the full FAQ page for more details.
             </p>
-            <a class="bt-services-cta-button" href="{% url 'crypto:faqs' %}">Open FAQs</a>
-        </article>
-    </section>
-
-    <section class="bt-services-benefits">
-        <h2>Why these documents matter</h2>
-        <ul>
-            <li>Transparent policies that explain your rights and obligations</li>
-            <li>Clear guidance on security, compliance, and platform operations</li>
-            <li>Easy access to the information that supports confident investing</li>
-        </ul>
-    </section>
-
-    <section class="bt-services-info">
-        <h2>Built for clarity</h2>
-        <p>
-            BitnetFx is committed to keeping important information accessible,
-            organized, and easy to review whenever you need it.
-        </p>
-    </section>
+            <div class="section-content">
+               {% include "crypto/terms_content.html" %}
+            </div>
+        </div>
+    </div>
 </div>
 {% endblock %}
