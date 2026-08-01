@@ -1000,17 +1000,22 @@ text-shadow:
     width: 100%;
     max-width: 1100px;
     box-sizing: border-box;
+    align-items: center;
+    justify-content: center;
 }
 .about-market, .about-text {
     flex: 1;
+    max-width: 520px;
 }
 .about-text h1 { font-size: 26px; }
 .about-text p { font-size: 15px; }
 
 .charts-section {
-    margin-top: 40px;
+    margin: 40px auto 0;
     width: 100%;
     max-width: 900px;
+    box-sizing: border-box;
+    text-align: center;
 }
 .charts-section h2 {
     text-align: center;
@@ -1039,6 +1044,7 @@ text-shadow:
         padding: 0 20px;
         max-width: 100%;
         margin: 30px auto 0;
+        align-items: center;
     }
     .about-market iframe {
         width: 100%;           
@@ -1225,8 +1231,7 @@ text-shadow:
         align-items: center;
         gap: 20px;
         margin: 20px auto;
-         margin-left: -20px;
-        
+        padding: 0 12px;
     }
     .about-market iframe {
         height: 250px;           
