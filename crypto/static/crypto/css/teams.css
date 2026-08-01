@@ -1,0 +1,198 @@
+.team-showcase {
+    width:100%;
+    padding:90px 0;
+    background:
+      radial-gradient(circle at top left,#004aad33,transparent 40%),
+      radial-gradient(circle at bottom right,#7a00ff22,transparent 35%),
+      linear-gradient(180deg,#05070d,#0a1020);
+    color:#fff;
+}
+
+/* Heading */
+.team-heading-container {
+    text-align:center;
+    margin-bottom:60px;
+    padding:20px;
+    background:rgba(255,255,255,.05);
+    border-radius:20px;
+    backdrop-filter:blur(12px);
+    -webkit-backdrop-filter:blur(12px);
+    box-shadow:0 0 25px rgba(0,216,239,.35);
+}
+
+.team-heading-title {
+    font-size:28px;
+    font-weight:900;
+    text-transform:uppercase;
+    text-shadow:0 0 10px #00d8ef,0 0 20px #00d8ef,0 0 40px #7a00ff;
+    animation:glowPulse 3s infinite alternate;
+}
+
+.team-heading-subtitle {
+    font-size:18px;
+    font-weight:600;
+    background:linear-gradient(90deg,#00d8ef,#7a00ff,#ff0080);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    background-size:200% auto;
+    animation:shineFlow 6s linear infinite;
+}
+
+.team-intro {
+    font-size:16px;
+    color:rgba(255,255,255,.85);
+    max-width:800px;
+    margin:20px auto 0;
+    line-height:1.7;
+}
+
+/* Grid */
+.team-grid {
+    width:90%;
+    max-width:1600px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:35px;
+    margin-bottom:40px; /* spacing before footer */
+}
+
+/* Panel */
+.team-panel {
+    background:rgba(255,255,255,.08);
+    border-radius:30px;
+    padding:25px;
+    text-align:center;
+    backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
+    border:1px solid rgba(255,255,255,.12);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.15),0 18px 45px rgba(0,0,0,.35);
+    transition:.4s ease;
+}
+
+.team-panel:hover {
+    transform:translateY(-10px);
+    box-shadow:0 25px 60px rgba(0,0,0,.45),0 0 30px rgba(0,216,239,.18);
+}
+
+.team-panel img {
+    max-width:100px;
+    border-radius:50%;
+    margin-bottom:15px;
+}
+
+.team-panel-title {
+    font-size:20px;
+    font-weight:700;
+    margin-bottom:10px;
+}
+
+.team-panel-description {
+    font-size:14px;
+    color:rgba(255,255,255,.85);
+    line-height:1.5;
+}
+
+/* Global section */
+.team-global {
+    text-align:center;
+    margin:60px auto;
+    max-width:900px;
+}
+
+.team-global-title {
+    font-size:24px;
+    font-weight:800;
+    margin-bottom:15px;
+    text-shadow:0 0 10px #00d8ef,0 0 20px #7a00ff;
+}
+
+.team-global-description {
+    font-size:15px;
+    color:rgba(255,255,255,.85);
+    line-height:1.6;
+    margin-bottom:20px;
+}
+
+.team-global img {
+    max-width:100%;
+    border-radius:20px;
+    box-shadow:0 0 25px rgba(0,216,239,.25);
+}
+
+/* Bottom sections */
+.team-bottom {
+    margin-top:60px;
+    text-align:center;
+}
+
+.team-advisory,
+.team-testimonials,
+.team-cta {
+    margin:40px auto;
+    max-width:800px;
+}
+
+.team-button {
+    display:inline-block;
+    margin-top:20px;
+    padding:12px 28px;
+    border-radius:30px;
+    background:linear-gradient(90deg,#00d8ef,#7a00ff);
+    color:#fff;
+    font-weight:700;
+    text-decoration:none;
+    transition:.3s ease;
+}
+
+.team-button:hover {
+    background:linear-gradient(90deg,#7a00ff,#ff0080);
+    box-shadow:0 0 20px rgba(0,216,239,.4);
+}
+
+/* Animations */
+@keyframes glowPulse {
+    from { text-shadow:0 0 10px #00d8ef,0 0 20px #00d8ef; }
+    to   { text-shadow:0 0 20px #7a00ff,0 0 40px #ff0080; }
+}
+
+@keyframes shineFlow {
+    0%   { background-position:0% 50%; }
+    50%  { background-position:100% 50%; }
+    100% { background-position:0% 50%; }
+}
+
+/* Responsive */
+@media(max-width:991px){
+  .team-grid {
+    grid-template-columns:repeat(2,1fr);
+  }
+}
+
+@media(max-width:600px){
+  .team-showcase {
+    padding:60px 0;
+  }
+  .team-grid {
+    grid-template-columns:1fr;
+    gap:24px;
+  }
+  .team-panel {
+    padding:20px;
+  }
+  .team-heading-title {
+    font-size:22px;
+  }
+  .team-heading-subtitle {
+    font-size:16px;
+  }
+  .team-panel-title {
+    font-size:18px;
+  }
+  .team-panel-description {
+    font-size:13px;
+  }
+  .team-global-title {
+    font-size:20px;
+  }
+}

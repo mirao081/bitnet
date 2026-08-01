@@ -1,124 +1,124 @@
 {% extends "crypto/crypto_base.html" %}
-
 {% load static %}
 {% block content %}
 
-<section class="team">
+<link rel="stylesheet" href="{% static 'crypto/css/team.css' %}">
 
-  <div class="team-top">
-    <h1>Our Vision</h1>
-    <div class="blurred-container">
-    <p class="team-intro">
-        We are committed to building secure, transparent, and profitable blockchain investments 
-        for a global community of investors.
+<section class="team-showcase">
+
+  <div class="team-heading-container">
+    <h1 class="team-heading-title">Our Vision</h1>
+    <p class="team-heading-subtitle">
+      Secure • Transparent • Profitable Blockchain Investments
     </p>
-    </div>
-
-    <div class="core-values">
-      <div class="value-card">
-        <img src="{% static 'crypto/images/image.png' %}" alt="Integrity">
-        <h3>Integrity</h3>
-      </div>
-      <div class="value-card">
-        <img src="{% static 'crypto/images/innovation.webp' %}" alt="Innovation">
-        <h3>Innovation</h3>
-      </div>
-      <div class="value-card">
-        <img src="{% static 'crypto/images/transparency.webp' %}" alt="Transparency">
-        <h3>Transparency</h3>
-      </div>
-      <div class="value-card">
-        <img src="{% static 'crypto/images/globe.webp' %}" alt="Global Reach">
-        <h3>Global Reach</h3>
-      </div>
-    </div>
-
-    <div class="global-presence">
-      <h2>Global Presence</h2>
-      <p>BitnetFx proudly serves investors across 50+ countries, with partnerships and offices worldwide.</p>
-      <img src="{% static 'crypto/images/map.webp' %}" alt="Global Map">
-    </div>
+    <p class="team-intro">
+      We are committed to building secure, transparent, and profitable blockchain investments 
+      for a global community of investors.
+    </p>
   </div>
-  <h1>Meet Our Team</h1>
-  <p class="team-intro">
-    At BitnetFx, our leadership combines deep expertise in blockchain, finance, and technology. 
-    Together, we drive innovation and ensure secure, profitable investment opportunities for our clients.
-  </p>
 
   <div class="team-grid">
-    <div class="team-card">
+    <div class="team-panel">
+      <img src="{% static 'crypto/images/image.png' %}" alt="Integrity">
+      <h3 class="team-panel-title">Integrity</h3>
+    </div>
+    <div class="team-panel">
+      <img src="{% static 'crypto/images/innovation.webp' %}" alt="Innovation">
+      <h3 class="team-panel-title">Innovation</h3>
+    </div>
+    <div class="team-panel">
+      <img src="{% static 'crypto/images/transparency.webp' %}" alt="Transparency">
+      <h3 class="team-panel-title">Transparency</h3>
+    </div>
+    <div class="team-panel">
+      <img src="{% static 'crypto/images/globe.webp' %}" alt="Global Reach">
+      <h3 class="team-panel-title">Global Reach</h3>
+    </div>
+  </div>
+
+  <div class="team-global">
+    <h2 class="team-global-title">Global Presence</h2>
+    <p class="team-global-description">
+      BitnetFx proudly serves investors across 50+ countries, with partnerships and offices worldwide.
+    </p>
+    <img src="{% static 'crypto/images/map.webp' %}" alt="Global Map">
+  </div>
+
+  <div class="team-heading-container">
+    <h1 class="team-heading-title">Meet Our Team</h1>
+    <p class="team-intro">
+      At BitnetFx, our leadership combines deep expertise in blockchain, finance, and technology. 
+      Together, we drive innovation and ensure secure, profitable investment opportunities for our clients.
+    </p>
+  </div>
+
+  <div class="team-grid">
+    <div class="team-panel">
       <img src="{% static 'crypto/images/51.png' %}" alt="CEO">
-      <h2>Jane Martins</h2>
-      <p>Chief Executive Officer (CEO) <br> Blockchain Strategist</p>
+      <h2 class="team-panel-title">Jane Martins</h2>
+      <p class="team-panel-description">Chief Executive Officer (CEO) <br> Blockchain Strategist</p>
     </div>
-
-    <div class="team-card">
+    <div class="team-panel">
       <img src="{% static 'crypto/images/14.jpeg' %}" alt="CTO">
-      <h2>John Michael</h2>
-      <p>Chief Technology Officer (CTO) <br> Security Expert</p>
+      <h2 class="team-panel-title">John Michael</h2>
+      <p class="team-panel-description">Chief Technology Officer (CTO) <br> Security Expert</p>
     </div>
-
-    <div class="team-card">
-      <img src="{% static 'crypto/images/top.jpeg' %}" alt="Chief Investment Officer">
-      <h2>Michael Carter</h2>
-      <p>Chief Investment Officer (CIO) <br> Portfolio Manager</p>
+    <div class="team-panel">
+      <img src="{% static 'crypto/images/top.jpeg' %}" alt="CIO">
+      <h2 class="team-panel-title">Michael Carter</h2>
+      <p class="team-panel-description">Chief Investment Officer (CIO) <br> Portfolio Manager</p>
     </div>
-
-    <div class="team-card">
-      <img src="{% static 'crypto/images/567.png' %}" alt="Chief Financial Officer">
-      <h2>Emily Johnson</h2>
-      <p>Chief Financial Officer (CFO) <br> Financial Strategist</p>
+    <div class="team-panel">
+      <img src="{% static 'crypto/images/567.png' %}" alt="CFO">
+      <h2 class="team-panel-title">Emily Johnson</h2>
+      <p class="team-panel-description">Chief Financial Officer (CFO) <br> Financial Strategist</p>
     </div>
-
-    <div class="team-card">
-      <img src="{% static 'crypto/images/jpg1.jpg' %}" alt="Head of Compliance">
-      <h2>David Wilson</h2>
-      <p>Head of Compliance <br> Risk Management</p>
+    <div class="team-panel">
+      <img src="{% static 'crypto/images/jpg1.jpg' %}" alt="Compliance">
+      <h2 class="team-panel-title">David Wilson</h2>
+      <p class="team-panel-description">Head of Compliance <br> Risk Management</p>
     </div>
-
-    <div class="team-card">
-      <img src="{% static 'crypto/images/454.png' %}" alt="Customer Success Manager">
-      <h2>Sophia Martinez</h2>
-      <p>Customer Success Manager <br> Investor Relations</p>
+    <div class="team-panel">
+      <img src="{% static 'crypto/images/454.png' %}" alt="Customer Success">
+      <h2 class="team-panel-title">Sophia Martinez</h2>
+      <p class="team-panel-description">Customer Success Manager <br> Investor Relations</p>
     </div>
   </div>
 
   <div class="team-bottom">
-
-    <div class="advisory-board">
-      <h2>Advisory Board</h2>
-      <p>Our advisors include industry veterans in fintech, compliance, and global investment strategy, 
-         guiding BitnetFx toward sustainable growth.</p>
+    <div class="team-advisory">
+      <h2 class="team-global-title">Advisory Board</h2>
+      <p class="team-global-description">
+        Our advisors include industry veterans in fintech, compliance, and global investment strategy, 
+        guiding BitnetFx toward sustainable growth.
+      </p>
     </div>
 
-    <div class="testimonials">
-      <h2>Investor Testimonials</h2>
-      <div class="testimonial-grid">
-        <div class="testimonial-card">
+    <div class="team-testimonials">
+      <h2 class="team-global-title">Investor Testimonials</h2>
+      <div class="team-grid">
+        <div class="team-panel">
           <p>"BitnetFx has transformed my portfolio. Transparent, secure, and highly rewarding."</p>
           <span>- Sarah K., UK</span>
         </div>
-        <div class="testimonial-card">
+        <div class="team-panel">
           <p>"The leadership team inspires confidence. I trust BitnetFx with my long-term investments."</p>
           <span>- Ahmed R., UAE</span>
         </div>
-        <div class="testimonial-card">
+        <div class="team-panel">
           <p>"Global reach and strong compliance make BitnetFx my preferred crypto investment partner."</p>
           <span>- Chen L., Singapore</span>
         </div>
       </div>
     </div>
 
-    
-
-    <div class="cta-banner">
-        <h2>Join BitnetFx Today</h2>
-        <div class="blurred-container">
-            <p>Be part of a global investment community built on trust, transparency, and innovation.</p>
-        </div>
-        <a href="{% url 'crypto:signup' %}" class="cta-button">Get Started</a>
+    <div class="team-cta">
+      <h2 class="team-global-title">Join BitnetFx Today</h2>
+      <p class="team-global-description">
+        Be part of a global investment community built on trust, transparency, and innovation.
+      </p>
+      <a href="{% url 'crypto:signup' %}" class="team-button">Get Started</a>
     </div>
-
   </div>
 </section>
 
