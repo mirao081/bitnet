@@ -480,7 +480,7 @@ p {
 #moveableCanvas,
 #marketChart {
     display: block;
-    margin: 0 auto;
+    margin: 0 15px 0 auto;
 }
 .page-content{
     margin-top:105px;
@@ -1017,7 +1017,7 @@ text-shadow:
 .about-text p { font-size: 15px; }
 
 .charts-section {
-    margin: 40px auto 20px;
+    margin: 40px 15px 20px auto;
     width: 100%;
     max-width: 900px;
     box-sizing: border-box;
