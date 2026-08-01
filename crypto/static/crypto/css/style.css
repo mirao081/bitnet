@@ -4351,6 +4351,16 @@ section p {
   text-align: center;
   width: 100%;
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.mission-guarantees > h1,
+.mission-guarantees > p {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
 }
 
 .mission-grid {
