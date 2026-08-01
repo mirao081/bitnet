@@ -305,25 +305,96 @@
     </div>
 
 </section>
-<!-- INVESTMENT -->
-<section class="home-investment">
-  <h1>BUDGET-FRIENDLY <span>PLANS</span></h1>
-  <p>CHOOSE YOUR PREFERABLE PLAN FOR INVESTMENT</p>
-  <div class="home-investment-cards">
-    {% for plan in plans %}
-    <div class="home-investment-card">
-      <h2>{{ plan.name }}</h2>
-      <h2>{{ plan.percentage_text }}</h2>
-      <p>{{ plan.duration_text }}</p>
-      <p>{{ plan.maturity_text }}</p>
-      <p>Min: ${{ plan.min_amount }} | Max: ${{ plan.max_amount }}</p>
-      <a href="{{ plan.button_url }}" class="home-signup-btn">{{ plan.button_text }}</a>
+<!--====================================
+        ELITE INVESTMENT PLANS
+=====================================-->
+
+<section class="elite-plan-showcase">
+
+    <div class="elite-plan-wrapper">
+
+        <div class="elite-badge">
+            INVESTMENT PLANS
+        </div>
+
+        <h1 class="elite-plan-title">
+
+            BUDGET-FRIENDLY
+
+            <span class="elite-plan-accent">
+
+                PLANS
+
+            </span>
+
+        </h1>
+
+        <p class="elite-plan-subtitle">
+
+            CHOOSE YOUR PREFERABLE PLAN FOR INVESTMENT
+
+        </p>
+
+        <div class="elite-plan-grid">
+
+            {% for plan in plans %}
+
+            <div class="elite-plan-card">
+
+                <h2 class="elite-plan-name">
+
+                    {{ plan.name }}
+
+                </h2>
+
+                <div class="elite-plan-return">
+
+                    {{ plan.percentage_text }}
+
+                </div>
+
+                <p class="elite-plan-detail">
+
+                    {{ plan.duration_text }}
+
+                </p>
+
+                <p class="elite-plan-detail">
+
+                    {{ plan.maturity_text }}
+
+                </p>
+
+                <p class="elite-plan-limit">
+
+                    Min:
+                    ${{ plan.min_amount }}
+
+                    &nbsp;&nbsp;|&nbsp;&nbsp;
+
+                    Max:
+                    ${{ plan.max_amount }}
+
+                </p>
+
+                <a href="{{ plan.button_url }}"
+                   class="elite-plan-button">
+
+                    {{ plan.button_text }}
+
+                </a>
+
+            </div>
+
+            {% endfor %}
+
+        </div>
+
     </div>
-    {% endfor %}
-  </div>
+
 </section>
 
-<!-- BITCOIN -->
+
 <section class="home-bitcoin">
   <div class="home-bitcoin-flex">
     <div class="home-calculator">
