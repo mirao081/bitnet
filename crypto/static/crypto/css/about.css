@@ -1,0 +1,138 @@
+/*==================================================
+        ABOUT SHOWCASE STYLE
+==================================================*/
+
+.about-showcase {
+    width:100%;
+    padding:90px 0;
+    position:relative;
+    overflow:hidden;
+    background:
+      radial-gradient(circle at top left,#004aad33,transparent 40%),
+      radial-gradient(circle at bottom right,#7a00ff22,transparent 35%),
+      linear-gradient(180deg,#05070d,#0a1020);
+}
+
+.about-grid-premium {
+    width:90%;
+    max-width:1600px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:35px;
+    position:relative;
+    z-index:2;
+}
+
+/*=========================
+        GLASS CARD
+=========================*/
+
+.about-panel {
+    position:relative;
+    overflow:hidden;
+    text-align:center;
+    padding:35px 28px;
+    border-radius:30px;
+    background:rgba(255,255,255,.08);
+    backdrop-filter:blur(24px);
+    -webkit-backdrop-filter:blur(24px);
+    border:1px solid rgba(255,255,255,.12);
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,.15),
+      0 18px 45px rgba(0,0,0,.35);
+    transition:.45s ease;
+}
+
+.about-panel::before {
+    content:"";
+    position:absolute;
+    width:220px;
+    height:220px;
+    top:-120px;
+    right:-120px;
+    border-radius:50%;
+    background:radial-gradient(circle,rgba(0,216,239,.28),transparent 70%);
+    transition:.6s;
+}
+
+.about-panel:hover {
+    transform:translateY(-12px);
+    box-shadow:
+      0 30px 70px rgba(0,0,0,.45),
+      0 0 40px rgba(0,216,239,.18);
+}
+
+.about-panel:hover::before {
+    transform:scale(1.4);
+}
+
+/*=========================
+        TITLE & DESCRIPTION
+=========================*/
+
+.about-panel-title {
+    font-size:24px;
+    font-weight:800;
+    color:#fff;
+    margin-bottom:15px;
+    line-height:1.25;
+}
+
+.about-panel-description {
+    font-size:15px;
+    color:rgba(255,255,255,.80);
+    line-height:1.6;
+}
+
+/*=========================
+        BUTTON
+=========================*/
+
+.about-read-more-btn {
+    display:inline-block;
+    margin-top:15px;
+    padding:10px 20px;
+    border-radius:20px;
+    background:#00d8ef;
+    color:#05070d;
+    font-weight:600;
+    text-decoration:none;
+    transition:.3s;
+}
+
+.about-read-more-btn:hover {
+    background:#009bb8;
+    color:#fff;
+}
+
+/*=========================
+        RESPONSIVE
+=========================*/
+
+@media(max-width:991px){
+  .about-grid-premium {
+    grid-template-columns:repeat(2,1fr);
+  }
+}
+
+@media(max-width:600px){
+  .about-showcase {
+    padding:60px 0;
+  }
+  .about-grid-premium {
+    width:95%;
+    grid-template-columns:1fr;
+    gap:24px;
+  }
+  .about-panel {
+    padding:24px;
+  }
+  .about-panel-title {
+    font-size:21px;
+  }
+  .about-panel-description {
+    font-size:14px;
+    line-height:1.5;
+  }
+}
