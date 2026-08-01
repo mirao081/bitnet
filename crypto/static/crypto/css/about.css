@@ -107,9 +107,67 @@
 }
 
 /*=========================
-        RESPONSIVE
+   HEADING CONTAINER
 =========================*/
+.about-heading-container {
+    text-align:center;
+    margin-bottom:60px;
+    padding:20px;
+    background:rgba(255,255,255,.05);
+    border-radius:20px;
+    backdrop-filter:blur(12px);
+    -webkit-backdrop-filter:blur(12px);
+    box-shadow:0 0 25px rgba(0,216,239,.35);
+}
 
+/*=========================
+   HEADING TITLE
+=========================*/
+.about-heading-title {
+    font-size:25px;
+    font-weight:900;
+    color:#fff;
+    text-transform:uppercase;
+    letter-spacing:2px;
+    margin-bottom:15px;
+    text-shadow:
+      0 0 10px #00d8ef,
+      0 0 20px #00d8ef,
+      0 0 40px #7a00ff;
+    animation:glowPulse 3s infinite alternate;
+}
+
+/*=========================
+   SUBTITLE
+=========================*/
+.about-heading-subtitle {
+    font-size:18px;
+    font-weight:600;
+    background:linear-gradient(90deg,#00d8ef,#7a00ff,#ff0080);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    background-size:200% auto;
+    animation:shineFlow 6s linear infinite;
+    letter-spacing:1px;
+}
+
+/*=========================
+   ANIMATIONS
+=========================*/
+@keyframes glowPulse {
+    from { text-shadow:0 0 10px #00d8ef,0 0 20px #00d8ef; }
+    to   { text-shadow:0 0 20px #7a00ff,0 0 40px #ff0080; }
+}
+
+@keyframes shineFlow {
+    0%   { background-position:0% 50%; }
+    50%  { background-position:100% 50%; }
+    100% { background-position:0% 50%; }
+}
+
+/*=========================
+   RESPONSIVE
+=========================*/
 @media(max-width:991px){
   .about-grid-premium {
     grid-template-columns:repeat(2,1fr);
@@ -134,5 +192,11 @@
   .about-panel-description {
     font-size:14px;
     line-height:1.5;
+  }
+  .about-heading-title {
+    font-size:21px;
+  }
+  .about-heading-subtitle {
+    font-size:16px;
   }
 }
