@@ -1793,24 +1793,37 @@ text-shadow:
 }
 
 
-.charts-grid {
+.charts-professional {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+    box-sizing: border-box;
+}
+
+.charts-professional .charts-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 30px;
     margin: 40px auto 0;
     justify-items: center;
+    align-items: start;
     width: 100%;
     max-width: 1100px;
     box-sizing: border-box;
 }
 
-.chart-card {
+.charts-professional .chart-card {
     background: rgba(23, 23, 23, 0.6);
     border-radius: 12px;
     padding: 20px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.4);
     width: 100%;
     max-width: 500px;
+    margin: 0 auto;
     text-align: center;
     backdrop-filter: blur(6px);
     -webkit-backdrop-filter: blur(6px);
@@ -1834,9 +1847,15 @@ text-shadow:
     }
     .investment-title { font-size: 2.2rem; }
     .investment-subtitle { font-size: 0.95rem; }
-    .charts-grid {
+    .charts-professional {
+        padding: 0 16px;
+    }
+    .charts-professional .charts-grid {
         grid-template-columns: 1fr; 
         gap: 25px;
+    }
+    .charts-professional .chart-card {
+        max-width: 100%;
     }
     .chart-card h2 { font-size: 1.2rem; }
     .chart-card canvas { height: 240px !important; }
@@ -1849,15 +1868,19 @@ text-shadow:
     }
     .investment-title { font-size: 1.6rem; }
     .investment-subtitle { font-size: 0.85rem; }
-    .charts-grid {
+    .charts-professional {
+        padding: 0 12px;
+    }
+    .charts-professional .charts-grid {
         grid-template-columns: 1fr;
         gap: 20px;
         margin: 30px auto 0;
     }
-    .chart-card {
+    .charts-professional .chart-card {
         padding: 15px;
         border-radius: 10px;
-        width: 90%;
+        width: 100%;
+        max-width: 100%;
     }
     .chart-card h2 { font-size: 1rem; }
     .chart-card canvas { height: 200px !important; }
