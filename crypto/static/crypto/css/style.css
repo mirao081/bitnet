@@ -4155,6 +4155,32 @@ section p {
   display: block;
   margin: 0 auto 15px;
 }
+.team {
+  max-width: 1200px;
+  margin: 80px auto;
+  padding: 40px 24px;
+  text-align: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.team-grid {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin: 30px auto 0;
+  width: 100%;
+  max-width: 1100px;
+}
+
+.team-card {
+  flex: 1 1 240px;
+  max-width: 300px;
+  margin: 0 auto;
+}
+
 .team-card p {
   font-size: 0.95rem;
   font-weight: 600;
@@ -4172,7 +4198,21 @@ section p {
   section p { font-size: 0.9rem; }
   .btn { padding: 10px 20px; font-size: 0.9rem; }
 
-  
+  .team {
+    padding: 20px 15px;
+    margin: 40px auto;
+  }
+
+  .team-grid {
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .team-card {
+    width: 100%;
+    max-width: 100%;
+  }
 }
 
 @media (max-width: 480px) {
