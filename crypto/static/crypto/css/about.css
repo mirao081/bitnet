@@ -122,7 +122,7 @@
 }
 
 /*=========================
-   HEADING TITLE
+   HEADING TITLE (Default)
 =========================*/
 .about-heading-title {
     font-size:25px;
@@ -138,20 +138,23 @@
     animation:glowPulse 3s infinite alternate;
 }
 
+/*=========================
+   MOBILE OVERRIDE
+=========================*/
 @media(max-width:600px){
   .about-heading-title {
-    font-size:25px; /* ✅ fixed size on mobile */
+    font-size:25px; /* ✅ stays at 25px on mobile */
     text-shadow:
-      0 0 12px #00d8ef,
-      0 0 24px #7a00ff,
-      0 0 48px #ff0080; /* stronger glow for mobile */
+      0 0 15px #00d8ef,
+      0 0 30px #7a00ff,
+      0 0 60px #ff0080; /* stronger glow for small screens */
     animation:glowPulseMobile 2.5s infinite alternate;
   }
 }
 
 @keyframes glowPulseMobile {
-    from { text-shadow:0 0 12px #00d8ef,0 0 24px #7a00ff; }
-    to   { text-shadow:0 0 24px #ff0080,0 0 48px #00d8ef; }
+    from { text-shadow:0 0 15px #00d8ef,0 0 30px #7a00ff; }
+    to   { text-shadow:0 0 30px #ff0080,0 0 60px #00d8ef; }
 }
 
 .about-heading-subtitle {
