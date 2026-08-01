@@ -3,81 +3,38 @@
 {% load static %}
 
 {% block content %}
+<link rel="stylesheet" href="{% static 'css/page.css' %}">
 
-<link rel="stylesheet" href="{% static 'crypto/css/page.css' %}">
+<div class="legals-page">
+    <h1>Legals</h1>
 
-<section class="bn-legals-showcase">
-
-    <div class="bn-legals-heading">
-        <h1 class="bn-legals-title">LEGALS</h1>
-
-        <p class="bn-legals-subtitle">
-            Transparency, security and clarity for every step of your investment journey.
-        </p>
-    </div>
-
-
-    <div class="bn-legals-grid">
-
-        <article class="bn-legals-card">
-
-            <div class="bn-legals-card-glow"></div>
-
-            <div class="bn-legals-card-content">
-
-                <h2 class="bn-legals-card-title">
-                    <a href="{% url 'crypto:terms' %}">
-                        Terms and Conditions
-                    </a>
-                </h2>
-
-                <p class="bn-legals-intro">
-                    Our Terms and Conditions outline the rules, responsibilities,
-                    and agreements you accept when using BitnetFX.
-                    They ensure transparency and protect both you and our platform.
-                </p>
-
-                <div class="bn-legals-section">
-                    {% include "crypto/terms_content.html" %}
-                </div>
-
-                <div class="bn-legals-section">
-                    {% include "crypto/faqs_content.html" %}
-                </div>
-
+    <div class="legals-cards">
+      
+        <div class="legal-card">
+            <h2><a href="{% url 'crypto:terms' %}">Terms and Conditions</a></h2>
+            <p class="section-intro">
+                Our Terms and Conditions outline the rules, responsibilities, and agreements you accept when using BitnetFX.
+                They ensure transparency and protect both you and our platform.
+            </p>
+            <div class="section-content">
+                {% include "crypto/terms_content.html" %}
             </div>
-
-        </article>
-
-
-        <article class="bn-legals-card">
-
-            <div class="bn-legals-card-glow"></div>
-
-            <div class="bn-legals-card-content">
-
-                <h2 class="bn-legals-card-title">
-                    <a href="{% url 'crypto:faqs' %}">
-                        FAQs
-                    </a>
-                </h2>
-
-                <p class="bn-legals-intro">
-                    Our Frequently Asked Questions provide quick answers
-                    to common queries about accounts, deposits, trading,
-                    and security.
-                </p>
-
-                <div class="bn-legals-section">
-                    {% include "crypto/terms_content.html" %}
-                </div>
-
+            <div>
+                {% include "crypto/faqs_content.html" %}
             </div>
+        </div>
 
-        </article>
-
+      
+        <div class="legal-card">
+            <h2><a href="{% url 'crypto:faqs' %}">FAQs</a></h2>
+            <p class="section-intro">
+                Our Frequently Asked Questions provide quick answers to common queries about accounts, deposits, trading, and security.
+                Explore them here or visit the full FAQ page for more details.
+            </p>
+            <div class="section-content">
+               {% include "crypto/terms_content.html" %}
+            </div>
+        </div>
     </div>
-
-</section>
-
+</div>
 {% endblock %}
