@@ -120,22 +120,15 @@
 .bn-contact-map {
     width: 90%;
     max-width: 1090px;
-
-    margin: 0 auto 45px;
-
+    margin: 0 auto 50px;
     position: relative;
-
     border-radius: 28px;
-
     overflow: hidden;
-
     border: 1px solid rgba(0,216,239,.25);
-
     box-shadow:
         0 25px 60px rgba(0,0,0,.45),
         0 0 35px rgba(0,216,239,.12);
 }
-
 
 .bn-contact-map::after {
     content: "";
