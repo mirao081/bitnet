@@ -42,6 +42,7 @@
       inset 0 1px 0 rgba(255,255,255,.15),
       0 18px 45px rgba(0,0,0,.35);
     transition:.45s ease;
+    margin-bottom:40px; /* ✅ spacing after each row */
 }
 
 .about-panel::before {
