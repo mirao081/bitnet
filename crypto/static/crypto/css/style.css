@@ -4365,6 +4365,11 @@ section p {
   text-align: center;
 }
 
+.mission-guarantees > p {
+  font-size: 1rem;
+  margin-left: -10px;
+}
+
 .mission-grid {
   display: flex;
   justify-content: center;
