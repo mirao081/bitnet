@@ -3,14 +3,8 @@
 {% load static %}
 
 {% block content %}
-<section class="about-showcase investment-plans-section">
-    <div class="about-heading-container">
-        <h2 class="about-heading-title">Investment Opportunities</h2>
-        <p class="about-heading-subtitle">Premium plans, trusted analytics, and secure growth paths</p>
-    </div>
-
-    <div class="about-grid-premium">
-        <div class="about-panel carousel-container">
+<section class="hero-section investment-plans-section">
+    <div class="carousel-container">
         {% for slide in slides %}
             <div class="carousel-slide {% if forloop.first %}active{% endif %}">
                 <h1>{{ slide.title }}</h1>
@@ -34,22 +28,22 @@
 
     <div class="cards-container">
         {% for card in cards %}
-            <div class="plan-card about-panel">
+            <div class="plan-card">
                 <i class="fa-brands fa-bitcoin card-icon"></i>
-                <h1 class="about-panel-title">{{ card.title }}</h1>
-                <p class="about-panel-description">{{ card.description }}</p>
+                <h1>{{ card.title }}</h1>
+                <p>{{ card.description }}</p>
             </div>
         {% endfor %}
     </div>
 
-    <div class="about-us-container about-grid-premium">
-        <div class="about-market about-panel">
+    <div class="about-us-container">
+        <div class="about-market">
             <iframe src="https://www.tradingview.com/widgetembed/?frameElementId=tradingview_widget"
                     width="100%" height="400" frameborder="0" allowfullscreen>
             </iframe>
         </div>
 
-        <div class="about-text about-panel">
+        <div class="about-text">
             <h1>{{ about.heading }}</h1>
             <p>{{ about.intro_text }}</p>
 
@@ -65,14 +59,12 @@
     </div>
 
     <canvas id="moveableCanvas" width="400" height="400"></canvas>
-    <div class="charts-section about-panel">
-        <h2 class="about-panel-title">Market Trends</h2>
-        <p class="about-panel-description">Live market performance and trading insights curated for investors.</p>
+    <div class="charts-section">
+        <h2>Market Trends</h2>
         <canvas id="marketChart"></canvas>
     </div>
-    </div>
 </section>
-<section class="about-section investment-section">
+<section class="investment-section">
     <h1 class="investment-title">
         <a href="{% url 'crypto:investment_plans' %}">
             TRADING <span>OPTIONS</span>
@@ -113,7 +105,7 @@
     </div>
 </section>
 
-<section class="about-section investment-section charts-professional">
+<section class="investment-section charts-professional">
     <h1 class="investment-title">Analytics & Insights</h1>
     <p class="investment-subtitle">
         <span class="line"></span>
@@ -141,7 +133,7 @@
     </div>
 </section>
 
-<section class="about-section trust-security">
+<section class="trust-security">
   <h1>Trust & Security</h1>
   <p>We prioritize investor protection with strict KYC/AML compliance, insured transactions, and partnerships with leading exchanges.</p>
   
@@ -174,7 +166,7 @@
   </p>
 </section>
 
-<section class="about-section mission-guarantees">
+<section class="mission-guarantees">
   <h1>Our Mission & Guarantees</h1>
   <p>We are committed to empowering investors with secure, transparent, and profitable crypto solutions.</p>
   
@@ -200,7 +192,7 @@
 
 
 
-<section class="about-section testimonials">
+<section class="testimonials">
   <h1>What Our Investors Say</h1>
   <p class="testimonial-intro">
     Hear from our global investors who trust Bitnet for secure, transparent, and profitable crypto investments.
@@ -235,7 +227,7 @@
 </section>
 
 
-<section class="about-section team">
+<section class="team">
   <h1>Meet Our Team</h1>
 
   <div class="team-grid">
@@ -279,34 +271,34 @@
   </div>
 </section>
 
-<section class="about-section education">
+<section class="education">
   <h1>Educational Resources</h1>
   <p>Learn more about crypto markets, trading strategies, and blockchain technology.</p>
   <a href="{% url 'crypto:resources' %}" class="btn">Explore Resources</a>
 </section>
 
-<section class="about-section live-data">
+<section class="live-data">
   <h1>Live Market Data</h1>
   <iframe src="https://www.tradingview.com/widgetembed/?frameElementId=tradingview_widget"
           width="100%" height="400" frameborder="0" allowfullscreen></iframe>
 </section>
 
-<section class="about-section faq-link">
+<section class="faq-link">
   <h1>Frequently Asked Questions</h1>
   <p>Have questions? Visit our FAQ section for answers.</p>
   <a href="{% url 'crypto:faqs' %}" class="btn">Go to FAQ</a>
 </section>
 
-<section class="about-section cta">
+<section class="cta">
   <h1>Ready to Start Investing?</h1>
   <a href="{% url 'crypto:signup' %}" class="btn">Sign Up Now</a>
 </section>
 
-<section class="about-section disclaimer">
+<section class="disclaimer">
   <p>Disclaimer: Crypto investments carry risk. Ensure you understand the risks before investing. We comply with KYC/AML and SEC regulations.</p>
 </section>
 
-<section class="about-section community">
+<section class="community">
   <h1>Join Our Community</h1>
   <p>Connect with us on Telegram and Discord, or reach out to our 24/7 support team.</p>
   <div class="community-links">
@@ -315,7 +307,7 @@
     <a href="{% url 'crypto:contact' %}">24/7 Support</a>
   </div>
 </section>
-<section class="about-section investment-canvas">
+<section class="investment-canvas">
   <canvas id="investBtnCanvas" width="200" height="150"></canvas>
   <canvas id="investEthCanvas" width="200" height="150"></canvas>
   <canvas id="investUsdtCanvas" width="200" height="150"></canvas>
