@@ -190,11 +190,6 @@ def affiliate(request):
         "page": page,
     })
 
-
-
-def affiliate_new(request):
-    return render(request, "crypto/affiliate_new.html")
-
 def teams(request):
     settings = SiteSetting.objects.first()
     nav_links = NavigationLink.objects.all()
