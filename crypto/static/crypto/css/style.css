@@ -3895,7 +3895,7 @@ footer {
 
 #moveableCanvas {
     display: block;
-    margin: 0 15px 0 auto;
+    margin: 0 8px 0 auto;
     max-width: 100%;
     height: auto;
 }
@@ -3948,7 +3948,7 @@ footer {
 @media (max-width: 480px) {
     #moveableCanvas {
         max-width: 85%;
-        margin: 0 10px 0 auto;
+        margin: 0 6px 0 auto;
     }
     .charts-section {
         padding: 10px;
