@@ -5456,12 +5456,12 @@ section p {
 
 .investment-canvas {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  gap: 30px;
+  gap: 24px;
   margin: 60px auto;
   width: 100%;
-  max-width: 1200px;
+  max-width: 420px;
   padding: 0 24px;
   box-sizing: border-box;
 }
