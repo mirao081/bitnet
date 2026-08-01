@@ -1,329 +1,139 @@
 {% extends "crypto/crypto_base.html" %}
 {% load static %}
-
 {% block content %}
 
-<section class="bn-affiliate-showcase">
+<link rel="stylesheet" href="{% static 'crypto/css/affiliate.css' %}">
 
-    <div class="bn-affiliate-heading">
-
-        <h1 class="bn-affiliate-title">
+<section class="affiliate-showcase">
+    <div class="affiliate-heading-container">
+        <h1 class="affiliate-heading-title">
             BITNETFX AFFILIATE PROGRAM
         </h1>
-
-        <p class="bn-affiliate-subtitle">
-            Grow with BitnetFX. Share the opportunity, build your network,
-            and unlock rewarding affiliate benefits.
+        <p class="affiliate-heading-subtitle">
+            Grow with BitnetFX • Share the opportunity • Unlock rewards
         </p>
-
-        <p class="bn-affiliate-intro">
+        <p class="affiliate-intro">
             The growth of BitnetFx is powered by our community of investors
             and partners. With our Affiliate Program, you can earn substantial
             rewards by inviting new clients, sharing your referral link,
             and helping expand our global reach. Every deposit made by your
             referrals generates commissions, giving you a steady stream of income.
         </p>
-
     </div>
 
-
-    <div class="bn-affiliate-grid">
-
-
-        <article class="bn-affiliate-card">
-
-            <div class="bn-affiliate-glow"></div>
-
-            <div class="bn-affiliate-content">
-
-                <div class="bn-affiliate-number">
-                    01
-                </div>
-
-                <h2>
-                    Easy Registration
-                </h2>
-
-                <p>
-                    Sign up quickly and receive a unique affiliate link tied
-                    to your username. No complicated setup — just register
-                    and start earning immediately.
-                </p>
-
-            </div>
-
+    <div class="affiliate-grid">
+        <article class="affiliate-panel">
+            <div class="affiliate-number">01</div>
+            <h2 class="affiliate-panel-title">Easy Registration</h2>
+            <p class="affiliate-panel-description">
+                Sign up quickly and receive a unique affiliate link tied
+                to your username. No complicated setup — just register
+                and start earning immediately.
+            </p>
         </article>
 
-
-        <article class="bn-affiliate-card">
-
-            <div class="bn-affiliate-glow"></div>
-
-            <div class="bn-affiliate-content">
-
-                <div class="bn-affiliate-number">
-                    02
-                </div>
-
-                <h2>
-                    Share Your Link
-                </h2>
-
-                <p>
-                    Promote your referral link via email, social media,
-                    or direct messaging. The more you share, the more
-                    potential investors you attract.
-                </p>
-
-            </div>
-
+        <article class="affiliate-panel">
+            <div class="affiliate-number">02</div>
+            <h2 class="affiliate-panel-title">Share Your Link</h2>
+            <p class="affiliate-panel-description">
+                Promote your referral link via email, social media,
+                or direct messaging. The more you share, the more
+                potential investors you attract.
+            </p>
         </article>
 
-
-        <article class="bn-affiliate-card">
-
-            <div class="bn-affiliate-glow"></div>
-
-            <div class="bn-affiliate-content">
-
-                <div class="bn-affiliate-number">
-                    03
-                </div>
-
-                <h2>
-                    Referral Rewards
-                </h2>
-
-                <p>
-                    Earn 7% commission on every deposit made by your referrals.
-                    Your earnings grow as your network expands.
-                </p>
-
-            </div>
-
+        <article class="affiliate-panel">
+            <div class="affiliate-number">03</div>
+            <h2 class="affiliate-panel-title">Referral Rewards</h2>
+            <p class="affiliate-panel-description">
+                Earn 7% commission on every deposit made by your referrals.
+                Your earnings grow as your network expands.
+            </p>
         </article>
 
-
-        <article class="bn-affiliate-card">
-
-            <div class="bn-affiliate-glow"></div>
-
-            <div class="bn-affiliate-content">
-
-                <div class="bn-affiliate-number">
-                    04
-                </div>
-
-                <h2>
-                    Automatic Tracking
-                </h2>
-
-                <p>
-                    Our system automatically tracks referrals and deposits,
-                    ensuring transparency and accuracy in your commissions.
-                </p>
-
-            </div>
-
+        <article class="affiliate-panel">
+            <div class="affiliate-number">04</div>
+            <h2 class="affiliate-panel-title">Automatic Tracking</h2>
+            <p class="affiliate-panel-description">
+                Our system automatically tracks referrals and deposits,
+                ensuring transparency and accuracy in your commissions.
+            </p>
         </article>
 
-
-        <article class="bn-affiliate-card">
-
-            <div class="bn-affiliate-glow"></div>
-
-            <div class="bn-affiliate-content">
-
-                <div class="bn-affiliate-number">
-                    05
-                </div>
-
-                <h2>
-                    Instant Commission
-                </h2>
-
-                <p>
-                    Commissions are credited immediately after deposits are made,
-                    so you can withdraw or reinvest without delay.
-                </p>
-
-            </div>
-
+        <article class="affiliate-panel">
+            <div class="affiliate-number">05</div>
+            <h2 class="affiliate-panel-title">Instant Commission</h2>
+            <p class="affiliate-panel-description">
+                Commissions are credited immediately after deposits are made,
+                so you can withdraw or reinvest without delay.
+            </p>
         </article>
 
-
-        <article class="bn-affiliate-card">
-
-            <div class="bn-affiliate-glow"></div>
-
-            <div class="bn-affiliate-content">
-
-                <div class="bn-affiliate-number">
-                    06
-                </div>
-
-                <h2>
-                    Flexible Usage
-                </h2>
-
-                <p>
-                    Withdraw your earnings to your wallet or reinvest them
-                    into new deposits. You have full control over how you
-                    use your rewards.
-                </p>
-
-            </div>
-
+        <article class="affiliate-panel">
+            <div class="affiliate-number">06</div>
+            <h2 class="affiliate-panel-title">Flexible Usage</h2>
+            <p class="affiliate-panel-description">
+                Withdraw your earnings to your wallet or reinvest them
+                into new deposits. You have full control over how you
+                use your rewards.
+            </p>
         </article>
 
-
-        <article class="bn-affiliate-card">
-
-            <div class="bn-affiliate-glow"></div>
-
-            <div class="bn-affiliate-content">
-
-                <div class="bn-affiliate-number">
-                    07
-                </div>
-
-                <h2>
-                    No Active Deposit Required
-                </h2>
-
-                <p>
-                    You can participate even without an active investment account.
-                    Start earning commissions simply by referring others.
-                </p>
-
-            </div>
-
+        <article class="affiliate-panel">
+            <div class="affiliate-number">07</div>
+            <h2 class="affiliate-panel-title">No Active Deposit Required</h2>
+            <p class="affiliate-panel-description">
+                You can participate even without an active investment account.
+                Start earning commissions simply by referring others.
+            </p>
         </article>
 
-
-        <article class="bn-affiliate-card">
-
-            <div class="bn-affiliate-glow"></div>
-
-            <div class="bn-affiliate-content">
-
-                <div class="bn-affiliate-number">
-                    08
-                </div>
-
-                <h2>
-                    Transparent Dashboard
-                </h2>
-
-                <p>
-                    Monitor your referrals, commissions, and performance
-                    in real time with our easy-to-use affiliate dashboard.
-                </p>
-
-            </div>
-
+        <article class="affiliate-panel">
+            <div class="affiliate-number">08</div>
+            <h2 class="affiliate-panel-title">Transparent Dashboard</h2>
+            <p class="affiliate-panel-description">
+                Monitor your referrals, commissions, and performance
+                in real time with our easy-to-use affiliate dashboard.
+            </p>
         </article>
 
-
-        <article class="bn-affiliate-card">
-
-            <div class="bn-affiliate-glow"></div>
-
-            <div class="bn-affiliate-content">
-
-                <div class="bn-affiliate-number">
-                    09
-                </div>
-
-                <h2>
-                    Competitive Rates
-                </h2>
-
-                <p>
-                    Enjoy industry-leading commission rates designed to
-                    maximize your earnings and reward your efforts generously.
-                </p>
-
-            </div>
-
+        <article class="affiliate-panel">
+            <div class="affiliate-number">09</div>
+            <h2 class="affiliate-panel-title">Competitive Rates</h2>
+            <p class="affiliate-panel-description">
+                Enjoy industry-leading commission rates designed to
+                maximize your earnings and reward your efforts generously.
+            </p>
         </article>
 
-
-        <article class="bn-affiliate-card">
-
-            <div class="bn-affiliate-glow"></div>
-
-            <div class="bn-affiliate-content">
-
-                <div class="bn-affiliate-number">
-                    10
-                </div>
-
-                <h2>
-                    Global Opportunity
-                </h2>
-
-                <p>
-                    Invite investors worldwide and grow alongside BitnetFx's
-                    expanding network. There are no geographical limits
-                    to your success.
-                </p>
-
-            </div>
-
+        <article class="affiliate-panel">
+            <div class="affiliate-number">10</div>
+            <h2 class="affiliate-panel-title">Global Opportunity</h2>
+            <p class="affiliate-panel-description">
+                Invite investors worldwide and grow alongside BitnetFx's
+                expanding network. There are no geographical limits
+                to your success.
+            </p>
         </article>
 
-
-        <article class="bn-affiliate-card">
-
-            <div class="bn-affiliate-glow"></div>
-
-            <div class="bn-affiliate-content">
-
-                <div class="bn-affiliate-number">
-                    11
-                </div>
-
-                <h2>
-                    Community Support
-                </h2>
-
-                <p>
-                    Join a thriving community of affiliates who share strategies,
-                    success stories, and tips to help you succeed faster.
-                </p>
-
-            </div>
-
+        <article class="affiliate-panel">
+            <div class="affiliate-number">11</div>
+            <h2 class="affiliate-panel-title">Community Support</h2>
+            <p class="affiliate-panel-description">
+                Join a thriving community of affiliates who share strategies,
+                success stories, and tips to help you succeed faster.
+            </p>
         </article>
 
-
-        <article class="bn-affiliate-card">
-
-            <div class="bn-affiliate-glow"></div>
-
-            <div class="bn-affiliate-content">
-
-                <div class="bn-affiliate-number">
-                    12
-                </div>
-
-                <h2>
-                    Long-Term Growth
-                </h2>
-
-                <p>
-                    Build a sustainable income stream by continuously expanding
-                    your referral base. The more you grow, the more you earn.
-                </p>
-
-            </div>
-
+        <article class="affiliate-panel">
+            <div class="affiliate-number">12</div>
+            <h2 class="affiliate-panel-title">Long-Term Growth</h2>
+            <p class="affiliate-panel-description">
+                Build a sustainable income stream by continuously expanding
+                your referral base. The more you grow, the more you earn.
+            </p>
         </article>
-
-
     </div>
-
 </section>
 
 {% endblock %}
