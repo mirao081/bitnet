@@ -1,125 +1,406 @@
+
 {% extends "crypto/crypto_base.html" %}
 
 {% load static %}
+
 {% block content %}
 
-<section class="team">
+<section class="bf-page">
 
-  <div class="team-top">
-    <h1>Our Vision</h1>
-    <div class="blurred-container">
-    <p class="team-intro">
-        We are committed to building secure, transparent, and profitable blockchain investments 
-        for a global community of investors.
-    </p>
-    </div>
+    <!-- =========================
+         VISION SECTION
+    ========================== -->
 
-    <div class="core-values">
-      <div class="value-card">
-        <img src="{% static 'crypto/images/image.png' %}" alt="Integrity">
-        <h3>Integrity</h3>
-      </div>
-      <div class="value-card">
-        <img src="{% static 'crypto/images/innovation.webp' %}" alt="Innovation">
-        <h3>Innovation</h3>
-      </div>
-      <div class="value-card">
-        <img src="{% static 'crypto/images/transparency.webp' %}" alt="Transparency">
-        <h3>Transparency</h3>
-      </div>
-      <div class="value-card">
-        <img src="{% static 'crypto/images/globe.webp' %}" alt="Global Reach">
-        <h3>Global Reach</h3>
-      </div>
-    </div>
+    <div class="bf-hero">
 
-    <div class="global-presence">
-      <h2>Global Presence</h2>
-      <p>BitnetFx proudly serves investors across 50+ countries, with partnerships and offices worldwide.</p>
-      <img src="{% static 'crypto/images/map.webp' %}" alt="Global Map">
-    </div>
-  </div>
-  <h1>Meet Our Team</h1>
-  <p class="team-intro">
-    At BitnetFx, our leadership combines deep expertise in blockchain, finance, and technology. 
-    Together, we drive innovation and ensure secure, profitable investment opportunities for our clients.
-  </p>
+        <div class="bf-heading">
+            <span class="bf-eyebrow">WHO WE ARE</span>
 
-  <div class="team-grid">
-    <div class="team-card">
-      <img src="{% static 'crypto/images/51.png' %}" alt="CEO">
-      <h2>Jane Martins</h2>
-      <p>Chief Executive Officer (CEO) <br> Blockchain Strategist</p>
-    </div>
+            <h1>Our Vision</h1>
 
-    <div class="team-card">
-      <img src="{% static 'crypto/images/14.jpeg' %}" alt="CTO">
-      <h2>John Michael</h2>
-      <p>Chief Technology Officer (CTO) <br> Security Expert</p>
-    </div>
-
-    <div class="team-card">
-      <img src="{% static 'crypto/images/top.jpeg' %}" alt="Chief Investment Officer">
-      <h2>Michael Carter</h2>
-      <p>Chief Investment Officer (CIO) <br> Portfolio Manager</p>
-    </div>
-
-    <div class="team-card">
-      <img src="{% static 'crypto/images/567.png' %}" alt="Chief Financial Officer">
-      <h2>Emily Johnson</h2>
-      <p>Chief Financial Officer (CFO) <br> Financial Strategist</p>
-    </div>
-
-    <div class="team-card">
-      <img src="{% static 'crypto/images/jpg1.jpg' %}" alt="Head of Compliance">
-      <h2>David Wilson</h2>
-      <p>Head of Compliance <br> Risk Management</p>
-    </div>
-
-    <div class="team-card">
-      <img src="{% static 'crypto/images/454.png' %}" alt="Customer Success Manager">
-      <h2>Sophia Martinez</h2>
-      <p>Customer Success Manager <br> Investor Relations</p>
-    </div>
-  </div>
-
-  <div class="team-bottom">
-
-    <div class="advisory-board">
-      <h2>Advisory Board</h2>
-      <p>Our advisors include industry veterans in fintech, compliance, and global investment strategy, 
-         guiding BitnetFx toward sustainable growth.</p>
-    </div>
-
-    <div class="testimonials">
-      <h2>Investor Testimonials</h2>
-      <div class="testimonial-grid">
-        <div class="testimonial-card">
-          <p>"BitnetFx has transformed my portfolio. Transparent, secure, and highly rewarding."</p>
-          <span>- Sarah K., UK</span>
+            <div class="bf-intro">
+                <p>
+                    We are committed to building secure, transparent, and
+                    responsible blockchain investment solutions for a global
+                    community of investors.
+                </p>
+            </div>
         </div>
-        <div class="testimonial-card">
-          <p>"The leadership team inspires confidence. I trust BitnetFx with my long-term investments."</p>
-          <span>- Ahmed R., UAE</span>
+
+
+        <!-- =========================
+             CORE VALUES
+        ========================== -->
+
+        <div class="bf-values">
+
+            <div class="bf-value">
+                <div class="bf-value-image">
+                    <img
+                        src="{% static 'crypto/images/image.png' %}"
+                        alt="Integrity"
+                    >
+                </div>
+
+                <div class="bf-value-text">
+                    <h3>Integrity</h3>
+                    <p>
+                        We believe in honest communication and responsible
+                        practices.
+                    </p>
+                </div>
+            </div>
+
+
+            <div class="bf-value">
+                <div class="bf-value-image">
+                    <img
+                        src="{% static 'crypto/images/innovation.webp' %}"
+                        alt="Innovation"
+                    >
+                </div>
+
+                <div class="bf-value-text">
+                    <h3>Innovation</h3>
+                    <p>
+                        We embrace modern blockchain technology and evolving
+                        digital markets.
+                    </p>
+                </div>
+            </div>
+
+
+            <div class="bf-value">
+                <div class="bf-value-image">
+                    <img
+                        src="{% static 'crypto/images/transparency.webp' %}"
+                        alt="Transparency"
+                    >
+                </div>
+
+                <div class="bf-value-text">
+                    <h3>Transparency</h3>
+                    <p>
+                        We aim to provide clear information about our services
+                        and processes.
+                    </p>
+                </div>
+            </div>
+
+
+            <div class="bf-value">
+                <div class="bf-value-image">
+                    <img
+                        src="{% static 'crypto/images/globe.webp' %}"
+                        alt="Global Reach"
+                    >
+                </div>
+
+                <div class="bf-value-text">
+                    <h3>Global Reach</h3>
+                    <p>
+                        We work to make digital-asset services accessible to
+                        eligible clients worldwide.
+                    </p>
+                </div>
+            </div>
+
         </div>
-        <div class="testimonial-card">
-          <p>"Global reach and strong compliance make BitnetFx my preferred crypto investment partner."</p>
-          <span>- Chen L., Singapore</span>
+
+
+        <!-- =========================
+             GLOBAL PRESENCE
+        ========================== -->
+
+        <div class="bf-global">
+
+            <div class="bf-global-content">
+
+                <span class="bf-eyebrow">OUR REACH</span>
+
+                <h2>Global Presence</h2>
+
+                <p>
+                    BitnetFx serves a growing community of clients interested
+                    in blockchain and digital-asset opportunities.
+                </p>
+
+            </div>
+
+            <div class="bf-global-map">
+                <img
+                    src="{% static 'crypto/images/map.webp' %}"
+                    alt="Global Map"
+                >
+            </div>
+
         </div>
-      </div>
+
     </div>
 
-    
 
-    <div class="cta-banner">
-        <h2>Join BitnetFx Today</h2>
-        <div class="blurred-container">
-            <p>Be part of a global investment community built on trust, transparency, and innovation.</p>
+    <!-- =========================
+         TEAM SECTION
+    ========================== -->
+
+    <section class="bf-team">
+
+        <div class="bf-section-heading">
+
+            <span class="bf-eyebrow">OUR PEOPLE</span>
+
+            <h2>Meet Our Team</h2>
+
+            <p>
+                Our team brings together experience across blockchain,
+                technology, finance, operations, and client support.
+            </p>
+
         </div>
-        <a href="{% url 'crypto:signup' %}" class="cta-button">Get Started</a>
-    </div>
 
-  </div>
+
+        <div class="bf-team-grid">
+
+            <!-- Team Member 1 -->
+            <div class="bf-person">
+
+                <div class="bf-person-image">
+                    <img
+                        src="{% static 'crypto/images/51.png' %}"
+                        alt="Jane Martins"
+                    >
+                </div>
+
+                <div class="bf-person-info">
+                    <h3>Jane Martins</h3>
+                    <span>Chief Executive Officer</span>
+                    <p>Blockchain Strategist</p>
+                </div>
+
+            </div>
+
+
+            <!-- Team Member 2 -->
+            <div class="bf-person">
+
+                <div class="bf-person-image">
+                    <img
+                        src="{% static 'crypto/images/14.jpeg' %}"
+                        alt="John Michael"
+                    >
+                </div>
+
+                <div class="bf-person-info">
+                    <h3>John Michael</h3>
+                    <span>Chief Technology Officer</span>
+                    <p>Security Expert</p>
+                </div>
+
+            </div>
+
+
+            <!-- Team Member 3 -->
+            <div class="bf-person">
+
+                <div class="bf-person-image">
+                    <img
+                        src="{% static 'crypto/images/top.jpeg' %}"
+                        alt="Michael Carter"
+                    >
+                </div>
+
+                <div class="bf-person-info">
+                    <h3>Michael Carter</h3>
+                    <span>Chief Investment Officer</span>
+                    <p>Portfolio Manager</p>
+                </div>
+
+            </div>
+
+
+            <!-- Team Member 4 -->
+            <div class="bf-person">
+
+                <div class="bf-person-image">
+                    <img
+                        src="{% static 'crypto/images/567.png' %}"
+                        alt="Emily Johnson"
+                    >
+                </div>
+
+                <div class="bf-person-info">
+                    <h3>Emily Johnson</h3>
+                    <span>Chief Financial Officer</span>
+                    <p>Financial Strategist</p>
+                </div>
+
+            </div>
+
+
+            <!-- Team Member 5 -->
+            <div class="bf-person">
+
+                <div class="bf-person-image">
+                    <img
+                        src="{% static 'crypto/images/jpg1.jpg' %}"
+                        alt="David Wilson"
+                    >
+                </div>
+
+                <div class="bf-person-info">
+                    <h3>David Wilson</h3>
+                    <span>Head of Compliance</span>
+                    <p>Risk Management</p>
+                </div>
+
+            </div>
+
+
+            <!-- Team Member 6 -->
+            <div class="bf-person">
+
+                <div class="bf-person-image">
+                    <img
+                        src="{% static 'crypto/images/454.png' %}"
+                        alt="Sophia Martinez"
+                    >
+                </div>
+
+                <div class="bf-person-info">
+                    <h3>Sophia Martinez</h3>
+                    <span>Customer Success Manager</span>
+                    <p>Investor Relations</p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         BOTTOM CONTENT
+    ========================== -->
+
+    <section class="bf-bottom">
+
+
+        <!-- Advisory Board -->
+
+        <div class="bf-advisory">
+
+            <div class="bf-advisory-icon">
+                ✓
+            </div>
+
+            <div class="bf-advisory-content">
+
+                <span class="bf-eyebrow">EXPERTISE</span>
+
+                <h2>Advisory Board</h2>
+
+                <p>
+                    Our advisors provide experience across fintech,
+                    compliance, blockchain, and global investment strategy.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- Testimonials -->
+
+        <div class="bf-testimonials">
+
+            <div class="bf-section-heading">
+
+                <span class="bf-eyebrow">CLIENT EXPERIENCE</span>
+
+                <h2>Investor Testimonials</h2>
+
+            </div>
+
+
+            <div class="bf-testimonial-grid">
+
+                <div class="bf-testimonial">
+
+                    <div class="bf-quote">“</div>
+
+                    <p>
+                        BitnetFx has transformed my portfolio. Transparent,
+                        secure, and highly rewarding.
+                    </p>
+
+                    <span>— Sarah K., UK</span>
+
+                </div>
+
+
+                <div class="bf-testimonial">
+
+                    <div class="bf-quote">“</div>
+
+                    <p>
+                        The leadership team inspires confidence. I trust
+                        BitnetFx with my long-term investments.
+                    </p>
+
+                    <span>— Ahmed R., UAE</span>
+
+                </div>
+
+
+                <div class="bf-testimonial">
+
+                    <div class="bf-quote">“</div>
+
+                    <p>
+                        Global reach and strong compliance make BitnetFx my
+                        preferred crypto investment partner.
+                    </p>
+
+                    <span>— Chen L., Singapore</span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- CTA -->
+
+        <div class="bf-cta">
+
+            <div class="bf-cta-content">
+
+                <span class="bf-eyebrow">GET STARTED</span>
+
+                <h2>Join BitnetFx Today</h2>
+
+                <p>
+                    Be part of a global investment community built around
+                    transparency, innovation, and responsible participation
+                    in digital-asset markets.
+                </p>
+
+                <a
+                    href="{% url 'crypto:signup' %}"
+                    class="bf-button"
+                >
+                    Get Started
+                    <span>→</span>
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
 </section>
 
 {% endblock %}

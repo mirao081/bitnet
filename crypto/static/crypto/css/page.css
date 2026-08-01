@@ -1,843 +1,2481 @@
-.legals-page {
-  max-width: 1200px;
-  margin: 0 auto 40px auto;
-  padding: 100px 20px 20px 20px; 
-}
+/*==================================================
+        BITNETFX LEGALS SHOWCASE
+==================================================*/
 
-.legals-page h1 {
-  text-align: center;
-  font-size: 2.5rem;
-  margin-bottom: 30px;
-  color: #ffc107;
-  text-shadow: 2px 2px 6px rgba(0,0,0,0.6),
-               -1px -1px 4px rgba(255,255,255,0.2);
-}
-
-.legals-cards {
-  display: flex;
-  gap: 20px;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.legal-card {
-  flex: 1;
-  min-width: 300px;
-  max-width: 500px;
-  background: rgba(26, 26, 26, 0.6);
-  border-radius: 12px;
-  padding: 20px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.5);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  margin: 0 auto; 
-}
-
-.legal-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 12px 28px rgba(0,0,0,0.6);
-}
-
-.legal-card h2 {
-  text-align: center;
-  margin-bottom: 10px;
-}
-
-.legal-card h2 a {
-  color: #8a7a22;
-  text-decoration: none;
-  border-bottom: 2px solid crimson;
-  padding-bottom: 4px;
-  font-weight: 600;
-}
-
-.legal-card h2 a:hover {
-  color: limegreen;
-  border-color: limegreen;
-}
-
-.section-intro {
-  font-size: 0.95rem;
-  color: #ddd;
-  margin: 10px 0 20px;
-  line-height: 1.6;
-  text-align: center;
-}
-
-.section-content {
-  font-size: 0.9rem;
-  color: #eee;
-  line-height: 1.6;
-}
-
-@media (max-width: 768px) {
-    .legals-cards {
-      flex-direction: column;
-      gap: 25px;
-      align-items: center;
-      margin-left: -20px;
-    }
-
-    .legal-card {
-      width: 90%;
-      max-width: 500px;
-    }
-    .legals-page {
-    max-width: 1200px;
-    margin: 0 auto 40px auto;
-    padding: 50px 20px 20px 20px; 
-  }
-}
-
-.affiliate-page {
-  max-width: 1200px;
-  margin: 120px auto 40px auto;
-  padding: 20px;
-  text-align: center;
-}
-
-.affiliate-page h1 {
-  font-size: 2.8rem;
-  color: #ffc107;
-  margin-top: 70px;
-  margin-bottom: 20px;
-  text-shadow: 2px 2px 6px rgba(0,0,0,0.6),
-               -1px -1px 4px rgba(255,255,255,0.2);
-  text-align: center;
-  margin-left: auto;  
-  margin-right: auto; 
-}
-
-.affiliate-page .intro {
-  font-size: 1.1rem;
-  color: #ddd;
-  margin-bottom: 50px;
-  line-height: 1.4;
-  max-width: 900px;
-  margin-left: auto; 
-  margin-right: auto; 
-  text-align: center; 
-  background: rgba(26,26,26,0.6);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-radius: 12px;
-  padding: 20px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.5);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-
-.affiliate-cards {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center;
-  margin-left: -39px;
-}
-
-.affiliate-card {
-  flex: 0 0 calc(33.333% - 20px);
-  box-sizing: border-box;         
-  background: rgba(26,26,26,0.6);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-radius: 12px;
-  padding: 20px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.5);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.affiliate-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 12px 28px rgba(0,0,0,0.6);
-}
-
-.affiliate-card h2 {
-  color: #8a7a22;
-  margin-bottom: 10px;
-  text-align: center;
-}
-
-.affiliate-card p {
-  color: #eee;
-  font-size: 0.95rem;
-  line-height: 1.6;
-  text-align: center;
-}
-
-@media (max-width: 992px) {
-  .affiliate-card {
-    flex: 0 0 calc(50% - 20px);
-  }
-}
-
-@media (max-width: 600px) {
-  .affiliate-card {
-    flex: 0 0 100%; 
-  }
-  .affiliate-page h1 {
-    font-size: 25px;
-    margin-left: -25px;
-  }
-  .affiliate-cards {
-    margin-left: -39px; 
-  }
-  .affiliate-page .intro {
-    margin-left: -39px; 
-    margin-right: 0;  
-    font-size: 14px;
-    text-align: center; 
-    background: rgba(26,26,26,0.6);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border-radius: 12px;
-    padding: 20px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.5);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    line-height: 1.4rem;
-    }
-  
-}
-
-.team-top {
-  text-align: center;
-  margin-bottom: 60px;
-
-}
-
-.core-values {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 30px;
-  justify-content: center;
-  margin: 40px 0;
-}
-.value-card img,
-.global-presence img {
-    width: 200px;
-    height: 200px;
-    object-fit: cover;
-    border-radius: 50% !important;
-    display: block;
-}
-.value-card {
-  flex: 0 0 150px;
-  background: rgba(26,26,26,0.6);
-  backdrop-filter: blur(12px);
-  border-radius: 12px;
-  padding: 20px;
-  text-align: center;
-  box-shadow: 0 6px 15px rgba(0,0,0,0.4);
-  transition: transform 0.3s ease;
-}
-
-.value-card:hover {
-  transform: translateY(-5px);
-}
-
-.value-card img {
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;   /* makes them circular */
-  object-fit: cover;    /* ensures the image fills the circle */
-  margin-bottom: 10px;
-}
-
-
-.value-card h3 {
-  color: #ffc107;
-  font-size: 1rem;
-}
-
-.global-presence {
-    max-width: 900px;
-    margin: 60px auto;
-    background: rgba(26,26,26,.6);
-    backdrop-filter: blur(12px);
-    border-radius: 12px;
-    padding: 20px;
-    box-shadow: 0 6px 15px rgba(0,0,0,.4);
-    text-align:center;
-}
-
-.global-presence h2 {
-  color: #ffc107;
-  margin-bottom: 15px;
-}
-
-.global-presence p {
-  color: #eee;
-  margin-bottom: 20px;
-}
-
-.global-presence img {
-  width: 200px;
-  height: 200px;
-  object-fit: cover;
-  display: block;
-  margin: 20px auto 0;
-  border-radius: 50%;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.5);
-}
-
-.testimonials {
-  margin: 80px 0;
-  text-align: center;
-}
-
-.testimonial-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center;
-}
-
-.testimonial-card {
-  flex: 0 0 calc(33.333% - 20px);
-  background: rgba(26,26,26,0.6);
-  backdrop-filter: blur(12px);
-  border-radius: 12px;
-  padding: 20px;
-  box-shadow: 0 6px 15px rgba(0,0,0,0.4);
-  text-align: center;
-}
-
-.testimonial-card p {
-  color: #eee;
-  font-style: italic;
-}
-
-.testimonial-card span {
-  display: block;
-  margin-top: 10px;
-  color: #ffc107;
-  font-weight: bold;
-}
-
-/* Partnerships container */
-
-.cta-banner{
-    max-width:900px;
-    margin:80px auto 0;
-    padding:60px 20px;
-    background:rgba(26,26,26,.6);
-    backdrop-filter:blur(12px);
-    border-radius:12px;
-    box-shadow:0 6px 15px rgba(0,0,0,.4);
-    text-align:center;
-}
-
-.cta-banner h2 {
-  font-size: 2rem;
-  margin-bottom: 20px;
-  color: #ffc107;
-}
-
-.cta-banner p {
-  font-size: 1.1rem;
-  margin-bottom: 30px;
-  color: #eee;
-}
-
-.cta-button {
-  background: #fff;
-  color: #0d1b2a;
-  padding: 15px 30px;
-  border-radius: 8px;
-  font-weight: bold;
-  text-decoration: none;
-  transition: background 0.3s ease, color 0.3s ease;
-}
-
-.cta-button:hover {
-  background: #0d1b2a;
-  color: #ffc107;
-}
-
-@media (max-width:768px){
-
-.team{
-    padding:90px 15px 30px;
-}
-
-.core-values{
-    justify-content:center;
-    gap:20px;
-    margin:30px auto;
-}
-
-.value-card{
-    flex:0 0 100%;
-    max-width:320px;
-}
-
-.testimonial-card{
-    flex:0 0 100%;
-}
-
-.value-card img{
-    width:100px;
-    height:100px;
-}
-
-.global-presence{
-    margin:40px auto;
-}
-
-.global-presence img{
-    width:150px;
-    height:150px;
-}
-
-.blurred-container,
-.partnerships,
-.cta-banner{
-    width:100%;
-    margin-left:auto;
-    margin-right:auto;
-}
-
-.cta-banner{
-    padding:40px 15px;
-}
-
-.cta-banner h2{
-    font-size:1.5rem;
-}
-
-.cta-banner p{
-    font-size:1rem;
-}
-}
-.page-wrapper {
+.bn-legals-showcase {
     width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;     
-    padding: 20px;
+    min-height: 100vh;
+    padding: 90px 0;
+    position: relative;
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at top left,
+            rgba(0, 74, 173, 0.20),
+            transparent 40%
+        ),
+        radial-gradient(
+            circle at bottom right,
+            rgba(122, 0, 255, 0.16),
+            transparent 35%
+        ),
+        linear-gradient(
+            180deg,
+            #05070d 0%,
+            #0a1020 100%
+        );
+
     box-sizing: border-box;
 }
 
-.blurred-container {
-    width: 100%;
-    padding: 20px;
-    background: rgba(26, 26, 26, 0.6);
-    backdrop-filter: blur(12px);
-    border-radius: 12px;
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+
+/*==================================================
+        HEADING
+==================================================*/
+
+.bn-legals-heading {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto 60px;
+    padding: 30px 20px;
+
     text-align: center;
+
+    background: rgba(255, 255, 255, 0.05);
+
+    border: 1px solid rgba(255, 255, 255, 0.10);
+    border-radius: 25px;
+
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.12),
+        0 0 30px rgba(0, 216, 239, 0.18);
 }
 
-.blurred-container p {
-    color: #eee;
-    font-size: 1.05rem;
+
+/*==================================================
+        MAIN TITLE
+==================================================*/
+
+.bn-legals-title {
+    margin: 0 0 15px;
+
+    font-size: 46px;
+    font-weight: 900;
+
+    text-transform: uppercase;
+    letter-spacing: 4px;
+
+    color: #ffffff;
+
+    text-shadow:
+        0 0 10px #00d8ef,
+        0 0 25px #00d8ef,
+        0 0 45px #7a00ff;
+
+    animation: bnLegalsTitleGlow 3s infinite alternate;
+}
+
+
+/*==================================================
+        SUBTITLE
+==================================================*/
+
+.bn-legals-subtitle {
     margin: 0;
+
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1.6;
+
+    background:
+        linear-gradient(
+            90deg,
+            #00d8ef,
+            #7a00ff,
+            #ff0080,
+            #00d8ef
+        );
+
+    background-size: 250% auto;
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    animation: bnLegalsShine 6s linear infinite;
+
+    letter-spacing: 1px;
 }
 
-.services-hero {
-    text-align: center;
-    margin: 40px 0 60px;
+
+/*==================================================
+        CARDS GRID
+==================================================*/
+
+.bn-legals-grid {
+    width: 90%;
+    max-width: 1600px;
+    margin: 0 auto;
+
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    gap: 35px;
+
+    position: relative;
+    z-index: 2;
 }
 
-.services-hero h1 {
-    color: #ffc107;
-    font-size: 2.2rem;
-    margin-bottom: 15px;
+
+/*==================================================
+        LEGAL CARD
+==================================================*/
+
+.bn-legals-card {
+    position: relative;
+    overflow: hidden;
+
+    padding: 38px 30px;
+
+    border-radius: 30px;
+
+    background: rgba(255, 255, 255, 0.07);
+
+    border: 1px solid rgba(255, 255, 255, 0.12);
+
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.15),
+        0 18px 45px rgba(0, 0, 0, 0.35);
+
+    transition:
+        transform 0.45s ease,
+        box-shadow 0.45s ease,
+        border-color 0.45s ease;
 }
 
-.services-hero p {
-    color: #eee;
-    font-size: 1.1rem;
-    line-height: 1.7;
-}
 
-.services-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 30px;
-    justify-content: center;
-    margin: 50px 0;
-}
+/*==================================================
+        CARD GLOW
+==================================================*/
 
-.service-card {
-    flex: 1 1 calc(50% - 30px);
-    max-width: calc(50% - 15px);
-}
+.bn-legals-card-glow {
+    position: absolute;
 
-.service-card img {
-    width: 140px;
-    height: 140px;
+    width: 240px;
+    height: 240px;
+
+    top: -130px;
+    right: -120px;
+
     border-radius: 50%;
-    object-fit: cover;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(0, 216, 239, 0.28),
+            transparent 70%
+        );
+
+    transition: transform 0.6s ease;
+}
+
+
+/*==================================================
+        CARD HOVER
+==================================================*/
+
+.bn-legals-card:hover {
+    transform: translateY(-10px);
+
+    border-color: rgba(0, 216, 239, 0.30);
+
+    box-shadow:
+        0 30px 70px rgba(0, 0, 0, 0.45),
+        0 0 40px rgba(0, 216, 239, 0.16);
+}
+
+
+.bn-legals-card:hover .bn-legals-card-glow {
+    transform: scale(1.5);
+}
+
+
+/*==================================================
+        CARD CONTENT
+==================================================*/
+
+.bn-legals-card-content {
+    position: relative;
+    z-index: 2;
+}
+
+
+/*==================================================
+        CARD TITLE
+==================================================*/
+
+.bn-legals-card-title {
+    margin: 0 0 20px;
+
+    text-align: center;
+
+    font-size: 27px;
+    font-weight: 800;
+
+    line-height: 1.3;
+}
+
+
+.bn-legals-card-title a {
+    color: #ffffff;
+
+    text-decoration: none;
+
+    text-shadow:
+        0 0 8px rgba(0, 216, 239, 0.8),
+        0 0 18px rgba(122, 0, 255, 0.45);
+
+    transition: 0.35s ease;
+}
+
+
+.bn-legals-card-title a:hover {
+    color: #00d8ef;
+
+    text-shadow:
+        0 0 10px #00d8ef,
+        0 0 25px #00d8ef,
+        0 0 40px #7a00ff;
+}
+
+
+/*==================================================
+        INTRO TEXT
+==================================================*/
+
+.bn-legals-intro {
+    margin: 0 auto 30px;
+
+    max-width: 850px;
+
+    text-align: center;
+
+    font-size: 15px;
+    line-height: 1.7;
+
+    color: rgba(255, 255, 255, 0.80);
+}
+
+
+/*==================================================
+        CONTENT AREA
+==================================================*/
+
+.bn-legals-section {
+    margin-top: 25px;
+    padding: 25px;
+
+    border-radius: 20px;
+
+    background: rgba(0, 0, 0, 0.20);
+
+    border: 1px solid rgba(255, 255, 255, 0.07);
+
+    color: rgba(255, 255, 255, 0.82);
+
+    line-height: 1.7;
+
+    overflow-wrap: anywhere;
+}
+
+
+/*==================================================
+        CONTENT HEADINGS
+==================================================*/
+
+.bn-legals-section h1,
+.bn-legals-section h2,
+.bn-legals-section h3,
+.bn-legals-section h4 {
+    color: #ffffff;
+
+    margin-top: 25px;
+    margin-bottom: 12px;
+
+    text-shadow:
+        0 0 8px rgba(0, 216, 239, 0.5);
+}
+
+
+.bn-legals-section h1:first-child,
+.bn-legals-section h2:first-child,
+.bn-legals-section h3:first-child,
+.bn-legals-section h4:first-child {
+    margin-top: 0;
+}
+
+
+/*==================================================
+        CONTENT PARAGRAPHS
+==================================================*/
+
+.bn-legals-section p {
+    color: rgba(255, 255, 255, 0.78);
+
+    font-size: 14px;
+
+    line-height: 1.75;
+
     margin-bottom: 15px;
 }
 
-.service-card h2 {
-    color: #ffc107;
-    margin-bottom: 12px;
+
+/*==================================================
+        CONTENT LISTS
+==================================================*/
+
+.bn-legals-section ul,
+.bn-legals-section ol {
+    padding-left: 25px;
+
+    color: rgba(255, 255, 255, 0.78);
 }
 
-.service-card p {
-    color: #eee;
-    line-height: 1.7;
+
+.bn-legals-section li {
+    margin-bottom: 10px;
+
+    line-height: 1.65;
 }
 
-.investor-benefits,
-.testimonials,
-.partnerships,
-.faq-section,
-.technology-expertise,
-.advisory-compliance {
-    margin: 70px 0;
+
+/*==================================================
+        LINKS INSIDE CONTENT
+==================================================*/
+
+.bn-legals-section a {
+    color: #00d8ef;
+
+    text-decoration: none;
+
+    transition: 0.3s ease;
 }
 
-.investor-benefits h2,
-.testimonials h2,
-.partnerships h2,
-.faq-section h2,
-.technology-expertise h2,
-.advisory-compliance h2 {
+
+.bn-legals-section a:hover {
+    color: #ffffff;
+
+    text-shadow:
+        0 0 10px #00d8ef;
+}
+
+
+/*==================================================
+        ANIMATIONS
+==================================================*/
+
+@keyframes bnLegalsTitleGlow {
+
+    from {
+        text-shadow:
+            0 0 10px #00d8ef,
+            0 0 20px #00d8ef,
+            0 0 35px #7a00ff;
+    }
+
+    to {
+        text-shadow:
+            0 0 20px #00d8ef,
+            0 0 40px #7a00ff,
+            0 0 60px #ff0080;
+    }
+}
+
+
+@keyframes bnLegalsShine {
+
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+
+/*==================================================
+        TABLET
+==================================================*/
+
+@media (max-width: 991px) {
+
+    .bn-legals-showcase {
+        padding: 70px 0;
+    }
+
+    .bn-legals-grid {
+        width: 92%;
+
+        grid-template-columns: 1fr;
+
+        gap: 28px;
+    }
+
+    .bn-legals-card {
+        padding: 32px 25px;
+    }
+
+    .bn-legals-title {
+        font-size: 38px;
+    }
+}
+
+
+/*==================================================
+        MOBILE
+==================================================*/
+
+@media (max-width: 600px) {
+
+    .bn-legals-showcase {
+        padding: 50px 0;
+    }
+
+
+    .bn-legals-heading {
+        width: 92%;
+
+        margin-bottom: 35px;
+
+        padding: 25px 15px;
+
+        border-radius: 20px;
+    }
+
+
+    .bn-legals-title {
+        font-size: 27px;
+
+        letter-spacing: 2px;
+
+        text-shadow:
+            0 0 12px #00d8ef,
+            0 0 25px #7a00ff,
+            0 0 45px #ff0080;
+    }
+
+
+    .bn-legals-subtitle {
+        font-size: 14px;
+
+        line-height: 1.55;
+    }
+
+
+    .bn-legals-grid {
+        width: 92%;
+
+        grid-template-columns: 1fr;
+
+        gap: 22px;
+    }
+
+
+    .bn-legals-card {
+        padding: 25px 18px;
+
+        border-radius: 22px;
+    }
+
+
+    .bn-legals-card-title {
+        font-size: 22px;
+
+        margin-bottom: 16px;
+    }
+
+
+    .bn-legals-intro {
+        font-size: 14px;
+
+        line-height: 1.6;
+
+        margin-bottom: 22px;
+    }
+
+
+    .bn-legals-section {
+        padding: 18px;
+
+        border-radius: 16px;
+    }
+
+
+    .bn-legals-section p {
+        font-size: 13px;
+
+        line-height: 1.7;
+    }
+
+
+    .bn-legals-section li {
+        font-size: 13px;
+
+        line-height: 1.6;
+    }
+
+
+    .bn-legals-card:hover {
+        transform: none;
+    }
+}
+
+
+/*==================================================
+        SMALL MOBILE
+==================================================*/
+
+@media (max-width: 380px) {
+
+    .bn-legals-showcase {
+        padding: 40px 0;
+    }
+
+
+    .bn-legals-heading {
+        width: 94%;
+
+        padding: 22px 12px;
+    }
+
+
+    .bn-legals-title {
+        font-size: 24px;
+
+        letter-spacing: 1.5px;
+    }
+
+
+    .bn-legals-subtitle {
+        font-size: 13px;
+    }
+
+
+    .bn-legals-grid {
+        width: 94%;
+    }
+
+
+    .bn-legals-card {
+        padding: 22px 15px;
+    }
+
+
+    .bn-legals-card-title {
+        font-size: 20px;
+    }
+
+
+    .bn-legals-section {
+        padding: 15px;
+    }
+}
+/*==================================================
+        BITNETFX AFFILIATE SHOWCASE
+==================================================*/
+
+.bn-affiliate-showcase {
+    width: 100%;
+    min-height: 100vh;
+    padding: 90px 0;
+    position: relative;
+    overflow: hidden;
+    box-sizing: border-box;
+
+    background:
+        radial-gradient(
+            circle at top left,
+            rgba(0, 74, 173, 0.20),
+            transparent 40%
+        ),
+        radial-gradient(
+            circle at bottom right,
+            rgba(122, 0, 255, 0.18),
+            transparent 35%
+        ),
+        linear-gradient(
+            180deg,
+            #05070d 0%,
+            #0a1020 100%
+        );
+}
+
+
+/*==================================================
+        HEADING
+==================================================*/
+
+.bn-affiliate-heading {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto 60px;
+    padding: 30px 25px;
+
     text-align: center;
-    color: #ffc107;
-    margin-bottom: 25px;
+
+    background: rgba(255,255,255,.05);
+
+    border: 1px solid rgba(255,255,255,.10);
+    border-radius: 25px;
+
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.12),
+        0 0 30px rgba(0,216,239,.18);
+
+    box-sizing: border-box;
 }
 
-.investor-benefits ul {
-    color: #eee;
-    padding-left: 30px;
-    text-align: left;
+
+/*==================================================
+        MAIN TITLE
+==================================================*/
+
+.bn-affiliate-title {
+    margin: 0 0 18px;
+
+    font-size: 46px;
+    font-weight: 900;
+
+    color: #fff;
+
+    text-transform: uppercase;
+    letter-spacing: 4px;
+
+    text-shadow:
+        0 0 10px #00d8ef,
+        0 0 25px #00d8ef,
+        0 0 45px #7a00ff;
+
+    animation: bnAffiliateGlow 3s infinite alternate;
 }
 
-.investor-benefits li {
-    margin: 15px 0;
+
+/*==================================================
+        SUBTITLE
+==================================================*/
+
+.bn-affiliate-subtitle {
+    margin: 0 auto 20px;
+
+    max-width: 850px;
+
+    font-size: 19px;
+    font-weight: 700;
+    line-height: 1.6;
+
+    background:
+        linear-gradient(
+            90deg,
+            #00d8ef,
+            #7a00ff,
+            #ff0080,
+            #00d8ef
+        );
+
+    background-size: 250% auto;
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    animation: bnAffiliateShine 6s linear infinite;
+
+    letter-spacing: 1px;
 }
 
-.testimonial-grid {
+
+/*==================================================
+        INTRO
+==================================================*/
+
+.bn-affiliate-intro {
+    max-width: 900px;
+
+    margin: 0 auto;
+
+    color: rgba(255,255,255,.78);
+
+    font-size: 15px;
+    line-height: 1.8;
+}
+
+
+/*==================================================
+        CARDS GRID
+==================================================*/
+
+.bn-affiliate-grid {
+    width: 90%;
+    max-width: 1600px;
+
+    margin: 0 auto;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    gap: 30px;
+
+    position: relative;
+    z-index: 2;
+}
+
+
+/*==================================================
+        AFFILIATE CARD
+==================================================*/
+
+.bn-affiliate-card {
+    position: relative;
+    overflow: hidden;
+
+    min-height: 260px;
+
+    padding: 32px 28px;
+
+    border-radius: 28px;
+
+    background: rgba(255,255,255,.07);
+
+    border: 1px solid rgba(255,255,255,.12);
+
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.15),
+        0 18px 45px rgba(0,0,0,.35);
+
+    transition:
+        transform .45s ease,
+        box-shadow .45s ease,
+        border-color .45s ease;
+
+    box-sizing: border-box;
+}
+
+
+/*==================================================
+        CARD GLOW
+==================================================*/
+
+.bn-affiliate-glow {
+    position: absolute;
+
+    width: 220px;
+    height: 220px;
+
+    top: -120px;
+    right: -110px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(0,216,239,.30),
+            transparent 70%
+        );
+
+    transition: .6s ease;
+}
+
+
+/*==================================================
+        HOVER
+==================================================*/
+
+.bn-affiliate-card:hover {
+    transform: translateY(-10px);
+
+    border-color: rgba(0,216,239,.30);
+
+    box-shadow:
+        0 30px 70px rgba(0,0,0,.45),
+        0 0 40px rgba(0,216,239,.17);
+}
+
+
+.bn-affiliate-card:hover .bn-affiliate-glow {
+    transform: scale(1.5);
+}
+
+
+/*==================================================
+        CARD CONTENT
+==================================================*/
+
+.bn-affiliate-content {
+    position: relative;
+    z-index: 2;
+}
+
+
+/*==================================================
+        NUMBER
+==================================================*/
+
+.bn-affiliate-number {
+    width: 55px;
+    height: 55px;
+
+    margin-bottom: 22px;
+
     display: flex;
-    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background:
+        linear-gradient(
+            135deg,
+            #00d8ef,
+            #7a00ff
+        );
+
+    color: #fff;
+
+    font-size: 15px;
+    font-weight: 900;
+
+    box-shadow:
+        0 0 15px rgba(0,216,239,.45),
+        0 0 30px rgba(122,0,255,.25);
+}
+
+
+/*==================================================
+        CARD TITLE
+==================================================*/
+
+.bn-affiliate-card h2 {
+    margin: 0 0 15px;
+
+    color: #fff;
+
+    font-size: 22px;
+    font-weight: 800;
+
+    line-height: 1.3;
+
+    text-shadow:
+        0 0 8px rgba(0,216,239,.55);
+}
+
+
+/*==================================================
+        CARD TEXT
+==================================================*/
+
+.bn-affiliate-card p {
+    margin: 0;
+
+    color: rgba(255,255,255,.78);
+
+    font-size: 14px;
+
+    line-height: 1.75;
+}
+
+
+/*==================================================
+        ANIMATIONS
+==================================================*/
+
+@keyframes bnAffiliateGlow {
+
+    from {
+        text-shadow:
+            0 0 10px #00d8ef,
+            0 0 20px #00d8ef,
+            0 0 35px #7a00ff;
+    }
+
+    to {
+        text-shadow:
+            0 0 20px #00d8ef,
+            0 0 40px #7a00ff,
+            0 0 60px #ff0080;
+    }
+}
+
+
+@keyframes bnAffiliateShine {
+
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+
+/*==================================================
+        TABLET
+==================================================*/
+
+@media (max-width: 1100px) {
+
+    .bn-affiliate-grid {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+        gap: 25px;
+    }
+
+    .bn-affiliate-title {
+        font-size: 40px;
+    }
+}
+
+
+/*==================================================
+        MOBILE
+==================================================*/
+
+@media (max-width: 600px) {
+
+    .bn-affiliate-showcase {
+        padding: 55px 0;
+    }
+
+
+    .bn-affiliate-heading {
+        width: 92%;
+
+        margin-bottom: 35px;
+
+        padding: 25px 16px;
+
+        border-radius: 20px;
+    }
+
+
+    .bn-affiliate-title {
+        font-size: 27px;
+
+        letter-spacing: 2px;
+
+        line-height: 1.25;
+
+        text-shadow:
+            0 0 12px #00d8ef,
+            0 0 25px #7a00ff,
+            0 0 45px #ff0080;
+    }
+
+
+    .bn-affiliate-subtitle {
+        font-size: 15px;
+
+        line-height: 1.55;
+    }
+
+
+    .bn-affiliate-intro {
+        font-size: 13px;
+
+        line-height: 1.7;
+    }
+
+
+    .bn-affiliate-grid {
+        width: 92%;
+
+        grid-template-columns: 1fr;
+
+        gap: 20px;
+    }
+
+
+    .bn-affiliate-card {
+        min-height: auto;
+
+        padding: 25px 20px;
+
+        border-radius: 22px;
+    }
+
+
+    .bn-affiliate-number {
+        width: 48px;
+        height: 48px;
+
+        margin-bottom: 18px;
+
+        font-size: 13px;
+    }
+
+
+    .bn-affiliate-card h2 {
+        font-size: 20px;
+
+        margin-bottom: 12px;
+    }
+
+
+    .bn-affiliate-card p {
+        font-size: 13px;
+
+        line-height: 1.7;
+    }
+
+
+    .bn-affiliate-card:hover {
+        transform: none;
+    }
+}
+
+
+/*==================================================
+        SMALL MOBILE
+==================================================*/
+
+@media (max-width: 380px) {
+
+    .bn-affiliate-showcase {
+        padding: 40px 0;
+    }
+
+
+    .bn-affiliate-heading {
+        width: 94%;
+
+        padding: 22px 13px;
+    }
+
+
+    .bn-affiliate-title {
+        font-size: 23px;
+
+        letter-spacing: 1.5px;
+    }
+
+
+    .bn-affiliate-subtitle {
+        font-size: 14px;
+    }
+
+
+    .bn-affiliate-intro {
+        font-size: 12.5px;
+    }
+
+
+    .bn-affiliate-grid {
+        width: 94%;
+    }
+
+
+    .bn-affiliate-card {
+        padding: 22px 17px;
+    }
+
+
+    .bn-affiliate-card h2 {
+        font-size: 19px;
+    }
+
+
+    .bn-affiliate-card p {
+        font-size: 13px;
+    }
+}
+```css
+/* =========================================================
+   BITNETFX PAGE
+   All classes use the "bf-" prefix to prevent conflicts.
+   ========================================================= */
+
+
+/* =========================================================
+   MAIN PAGE
+   ========================================================= */
+
+.bf-page {
+    width: 100%;
+    max-width: 1250px;
+    margin: 0 auto;
+    padding: 80px 25px;
+    color: #ffffff;
+}
+
+
+/* =========================================================
+   EYEBROW
+   ========================================================= */
+
+.bf-eyebrow {
+    display: inline-block;
+
+    margin-bottom: 12px;
+
+    font-size: 11px;
+    font-weight: 700;
+
+    letter-spacing: 3px;
+    text-transform: uppercase;
+
+    opacity: 0.55;
+}
+
+
+/* =========================================================
+   HERO / VISION
+   ========================================================= */
+
+.bf-hero {
+    width: 100%;
+}
+
+.bf-heading {
+    max-width: 850px;
+
+    margin: 0 auto 65px;
+
+    text-align: center;
+}
+
+.bf-heading h1 {
+    margin: 0;
+
+    font-size: clamp(42px, 6vw, 68px);
+
+    line-height: 1.05;
+
+    font-weight: 800;
+
+    letter-spacing: -2px;
+}
+
+
+/* =========================================================
+   INTRO
+   ========================================================= */
+
+.bf-intro {
+    margin-top: 30px;
+
+    padding: 27px 32px;
+
+    border: 1px solid rgba(255, 255, 255, 0.09);
+
+    border-radius: 20px;
+
+    background: rgba(255, 255, 255, 0.035);
+
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+}
+
+.bf-intro p {
+    margin: 0;
+
+    font-size: 17px;
+
+    line-height: 1.8;
+
+    opacity: 0.7;
+}
+
+
+/* =========================================================
+   VALUES
+   ========================================================= */
+
+.bf-values {
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 20px;
+
+    margin-bottom: 70px;
+}
+
+.bf-value {
+    padding: 27px 23px;
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+
+    border-radius: 20px;
+
+    background: rgba(255, 255, 255, 0.035);
+
+    transition:
+        transform 0.3s ease,
+        border-color 0.3s ease,
+        background 0.3s ease;
+}
+
+.bf-value:hover {
+    transform: translateY(-7px);
+
+    border-color: rgba(255, 255, 255, 0.2);
+
+    background: rgba(255, 255, 255, 0.055);
+}
+
+.bf-value-image {
+    width: 62px;
+    height: 62px;
+
+    margin-bottom: 20px;
+
+    overflow: hidden;
+
+    border-radius: 16px;
+}
+
+.bf-value-image img {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+}
+
+.bf-value-text h3 {
+    margin: 0 0 9px;
+
+    font-size: 19px;
+}
+
+.bf-value-text p {
+    margin: 0;
+
+    font-size: 13px;
+
+    line-height: 1.7;
+
+    opacity: 0.55;
+}
+
+
+/* =========================================================
+   GLOBAL PRESENCE
+   ========================================================= */
+
+.bf-global {
+    display: grid;
+
+    grid-template-columns: 0.8fr 1.2fr;
+
+    align-items: center;
+
+    gap: 55px;
+
+    padding: 42px;
+
+    margin-bottom: 105px;
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+
+    border-radius: 28px;
+
+    background: rgba(255, 255, 255, 0.035);
+
+    overflow: hidden;
+}
+
+.bf-global-content h2 {
+    margin: 0 0 18px;
+
+    font-size: 38px;
+
+    letter-spacing: -1px;
+}
+
+.bf-global-content p {
+    max-width: 480px;
+
+    margin: 0;
+
+    font-size: 15px;
+
+    line-height: 1.8;
+
+    opacity: 0.6;
+}
+
+.bf-global-map {
+    width: 100%;
+}
+
+.bf-global-map img {
+    display: block;
+
+    width: 100%;
+
+    max-height: 320px;
+
+    object-fit: contain;
+
+    opacity: 0.8;
+}
+
+
+/* =========================================================
+   TEAM SECTION
+   ========================================================= */
+
+.bf-team {
+    width: 100%;
+
+    margin-bottom: 105px;
+}
+
+.bf-section-heading {
+    max-width: 760px;
+
+    margin: 0 auto 50px;
+
+    text-align: center;
+}
+
+.bf-section-heading h2 {
+    margin: 0;
+
+    font-size: clamp(36px, 5vw, 54px);
+
+    line-height: 1.08;
+
+    font-weight: 800;
+
+    letter-spacing: -1.5px;
+}
+
+.bf-section-heading p {
+    max-width: 680px;
+
+    margin: 20px auto 0;
+
+    font-size: 15px;
+
+    line-height: 1.8;
+
+    opacity: 0.6;
+}
+
+
+/* =========================================================
+   TEAM GRID
+   ========================================================= */
+
+.bf-team-grid {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 24px;
+}
+
+
+/* =========================================================
+   PERSON CARD
+   ========================================================= */
+
+.bf-person {
+    overflow: hidden;
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+
+    border-radius: 23px;
+
+    background: rgba(255, 255, 255, 0.035);
+
+    transition:
+        transform 0.3s ease,
+        border-color 0.3s ease;
+}
+
+.bf-person:hover {
+    transform: translateY(-7px);
+
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+
+/* =========================================================
+   PERSON IMAGE
+   ========================================================= */
+
+.bf-person-image {
+    width: 100%;
+
+    height: 320px;
+
+    overflow: hidden;
+
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.bf-person-image img {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    transition: transform 0.5s ease;
+}
+
+.bf-person:hover .bf-person-image img {
+    transform: scale(1.04);
+}
+
+
+/* =========================================================
+   PERSON INFORMATION
+   ========================================================= */
+
+.bf-person-info {
+    padding: 24px;
+}
+
+.bf-person-info h3 {
+    margin: 0 0 8px;
+
+    font-size: 20px;
+
+    font-weight: 700;
+}
+
+.bf-person-info span {
+    display: block;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    opacity: 0.7;
+}
+
+.bf-person-info p {
+    margin: 7px 0 0;
+
+    font-size: 13px;
+
+    opacity: 0.45;
+}
+
+
+/* =========================================================
+   BOTTOM SECTION
+   ========================================================= */
+
+.bf-bottom {
+    width: 100%;
+}
+
+
+/* =========================================================
+   ADVISORY
+   ========================================================= */
+
+.bf-advisory {
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 25px;
+
+    padding: 35px;
+
+    margin-bottom: 95px;
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+
+    border-radius: 24px;
+
+    background: rgba(255, 255, 255, 0.035);
+}
+
+.bf-advisory-icon {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    width: 56px;
+    height: 56px;
+
+    border-radius: 50%;
+
+    border: 1px solid rgba(255, 255, 255, 0.18);
+
+    font-size: 21px;
+}
+
+.bf-advisory-content h2 {
+    margin: 0 0 12px;
+
+    font-size: 30px;
+}
+
+.bf-advisory-content p {
+    max-width: 760px;
+
+    margin: 0;
+
+    font-size: 15px;
+
+    line-height: 1.8;
+
+    opacity: 0.6;
+}
+
+
+/* =========================================================
+   TESTIMONIALS
+   ========================================================= */
+
+.bf-testimonials {
+    margin-bottom: 95px;
+}
+
+.bf-testimonial-grid {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
     gap: 20px;
 }
 
-.testimonial-card {
-    flex: 1 1 calc(33.333% - 20px);
-    background: rgba(26,26,26,.6);
-    backdrop-filter: blur(12px);
-    border-radius: 12px;
-    padding: 20px;
-    text-align: center;
-}
-
-.testimonial-card p {
-    color: #eee;
-    font-style: italic;
-}
-
-.testimonial-card span {
-    display: block;
-    margin-top: 15px;
-    color: #ffc107;
-    font-weight: bold;
-}
-
-.partnerships {
-  max-width: 900px;
-  margin: 80px auto;
-  padding: 20px;
-  background: rgba(26,26,26,.6);
-  backdrop-filter: blur(12px);
-  border-radius: 12px;
-  box-shadow: 0 6px 15px rgba(0,0,0,.4);
-  text-align: center;
-}
-
-/* Partner logos grid */
-.partner-logos {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 40px;
-  margin-top: 30px;
-}
-
-.partner-logos img {
-  width: 140px;
-  height: 140px;
-  border-radius: 50%;   /* circular by default */
-  object-fit: cover;
-  filter: grayscale(100%);
-  transition: .3s;
-}
-
-.partner-logos img:hover {
-  filter: grayscale(0%);
-  transform: scale(1.1);
-}
-
-/* Tablet overrides */
-@media (max-width: 768px) {
-  .partner-logos {
-    gap: 20px;               /* reduce spacing */
-  }
-
-  .partner-logos img {
-    width: 100px;            /* shrink logos */
-    height: 100px;
-    border-radius: 50%;      /* keep circular */
-  }
-}
-
-/* Mobile overrides */
-@media (max-width: 480px) {
-  .partner-logos {
-    flex-direction: column;  /* stack vertically */
-    align-items: center;
-  }
-
-  .partner-logos img {
-    width: 80px;             /* even smaller */
-    height: 80px;
-    border-radius: 50%;      /* keep circular */
-    margin-bottom: 15px;
-  }
-}
-
-
-@media (max-width: 480px) {
-  .partner-logos {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .partner-logos img {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;   /* keep circular */
-    margin-bottom: 15px;
-  }
-}
-
-.partner-logos img:hover {
-    filter: grayscale(0%);
-}
-
-.faq-item {
-    margin-bottom: 30px;
-}
-
-.faq-item h3 {
-    color: #ffc107;
-}
-
-.faq-item p {
-    color: #eee;
-    line-height: 1.7;
-}
-
-.cta-banner {
-    background: rgba(26,26,26,.6);
-    backdrop-filter: blur(12px);
-    border-radius: 12px;
-    text-align: center;
-    padding: 60px 30px;
-    margin: 80px 0;
-}
-
-.cta-banner h2 {
-    color: #ffc107;
-    margin-bottom: 20px;
-}
-
-.cta-banner p {
-    color: #eee;
-    line-height: 1.7;
-    margin-bottom: 30px;
-}
-
-.cta-button {
-    display: inline-block;
-    background: #fff;
-    color: #0d1b2a;
-    padding: 15px 35px;
-    text-decoration: none;
-    font-weight: bold;
-    border-radius: 8px;
-    transition: .3s;
-}
-
-.cta-button:hover {
-    background: #0d1b2a;
-    color: #ffc107;
-}
-
-@media (max-width: 992px) {
-    .service-card,
-    .testimonial-card {
-        flex: 1 1 calc(50% - 20px);
-        max-width: calc(50% - 10px);
-    }
-}
-
-@media (max-width: 768px) {
-    .page-wrapper {
-    margin: 0 auto;
-    padding: 15px;
+.bf-testimonial {
     position: relative;
-    left: -1px;   
-  }
 
-    .service-card,
-    .testimonial-card {
-        flex: 1 1 100%;
-        max-width: 100%;
-    }
+    min-height: 200px;
 
-    .services-hero h1 {
-        font-size: 1.8rem;
-    }
+    padding: 30px 28px;
 
-    
-    .cta-banner {
-        padding: 40px 20px;
-    }
+    border: 1px solid rgba(255, 255, 255, 0.08);
+
+    border-radius: 21px;
+
+    background: rgba(255, 255, 255, 0.035);
+
+    transition:
+        transform 0.3s ease,
+        border-color 0.3s ease;
 }
 
-@media (max-width: 480px) {
-    .services-hero h1 {
-        font-size: 1.5rem;
-    }
+.bf-testimonial:hover {
+    transform: translateY(-5px);
 
-    .services-hero p,
-    .service-card p,
-    .faq-item p,
-    .cta-banner p {
-        font-size: .95rem;
-    }
-}
-.technology-expertise,
-.advisory-compliance {
-  max-width: 900px;       
-  margin: 40px auto;       
-  box-sizing: border-box;
-  text-align: center;
+    border-color: rgba(255, 255, 255, 0.18);
 }
 
-.technology-expertise p,
-.advisory-compliance p {
-  color: #eee;
-  line-height: 1.7;
-  font-size: 1rem;
+.bf-quote {
+    height: 35px;
+
+    font-size: 48px;
+
+    line-height: 1;
+
+    opacity: 0.2;
 }
 
-@media (max-width: 768px) {
-  .technology-expertise,
-  .advisory-compliance {
-    max-width: 95%;        
-    margin: 20px auto;    
-    padding: 15px;
-  }
+.bf-testimonial p {
+    margin: 10px 0 25px;
 
-  .technology-expertise p,
-  .advisory-compliance p {
-    font-size: 0.95rem;   
-    line-height: 1.6;
-  }
+    font-size: 14px;
+
+    line-height: 1.8;
+
+    opacity: 0.68;
+}
+
+.bf-testimonial span {
+    font-size: 12px;
+
+    font-weight: 600;
+
+    opacity: 0.5;
 }
 
 
+/* =========================================================
+   CTA
+   ========================================================= */
 
-.pages-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 25px;          
-  justify-content: center;
-}
+.bf-cta {
+    position: relative;
 
+    overflow: hidden;
 
-.page-card.blurred-container {
-  flex: 0 0 calc(50% - 25px);  
-  background: rgba(26, 26, 26, 0.6);
-  backdrop-filter: blur(12px);
-  border-radius: 12px;
-  box-shadow: 0 6px 15px rgba(0,0,0,0.4);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  margin-bottom: 20px;   
-  padding: 20px;
-  text-align: center;
-}
+    padding: 75px 40px;
 
-.page-card.blurred-container:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0,0,0,0.5);
-}
+    border: 1px solid rgba(255, 255, 255, 0.1);
 
+    border-radius: 30px;
 
-.cta-link {
-  display: inline-block;
-  margin-top: 10px;
-  color: #ffc107;
-  font-weight: bold;
-  text-decoration: none;
-  transition: color 0.3s ease, transform 0.2s ease;
-}
-
-.cta-link:hover {
-  color: #fff;
-  transform: translateX(5px);
-}
-
-
-.auth-buttons {
-  display: flex;
-  justify-content: center;  
-  gap: 15px;
-  margin: 30px auto;         
-  background: rgba(26,26,26,0.6);
-  backdrop-filter: blur(12px);
-  border-radius: 12px;
-  padding: 12px;
-  max-width: 300px;         
-}
-
-.auth-button {
-  background: linear-gradient(135deg, #ffc107, #ff9800);
-  color: #0d1b2a;
-  padding: 7px 16px;
-  border-radius: 6px;
-  font-weight: bold;
-  text-decoration: none;
-  font-size: 0.85rem;
-  transition: background 0.3s ease, color 0.3s ease, transform 0.2s ease;
-  text-align: center;
-}
-
-.auth-button:hover {
-  background: linear-gradient(135deg, #0d1b2a, #1a1a1a);
-  color: #ffc107;
-  transform: scale(1.05);
-}
-
-
-@media (max-width: 768px) {
-  .auth-buttons {
-    flex-direction: row;
-    gap: 10px;
-    margin: 25px auto;      
-    max-width: 150px;        
-  }
-
-  .auth-button {
-    width: 100%;
     text-align: center;
-  }
 
-  .pages-grid {
-    flex-direction: column;
+    background: rgba(255, 255, 255, 0.045);
+}
+
+.bf-cta::before {
+    content: "";
+
+    position: absolute;
+
+    width: 400px;
+    height: 400px;
+
+    top: -230px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.05);
+
+    filter: blur(75px);
+
+    pointer-events: none;
+}
+
+.bf-cta-content {
+    position: relative;
+
+    z-index: 1;
+}
+
+.bf-cta h2 {
+    margin: 0 0 18px;
+
+    font-size: clamp(34px, 5vw, 50px);
+
+    letter-spacing: -1px;
+}
+
+.bf-cta p {
+    max-width: 650px;
+
+    margin: 0 auto 32px;
+
+    font-size: 15px;
+
+    line-height: 1.8;
+
+    opacity: 0.6;
+}
+
+
+/* =========================================================
+   CTA BUTTON
+   ========================================================= */
+
+.bf-button {
+    display: inline-flex;
+
     align-items: center;
-    margin-left: -5px;     
-  }
-  .page-card.blurred-container {
-    flex: 0 0 95%;
-    margin-bottom: 15px;
-    padding: 15px;
-  }
+
+    gap: 12px;
+
+    padding: 14px 25px;
+
+    border: 1px solid rgba(255, 255, 255, 0.15);
+
+    border-radius: 11px;
+
+    color: inherit;
+
+    background: rgba(255, 255, 255, 0.08);
+
+    text-decoration: none;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    transition:
+        transform 0.25s ease,
+        background 0.25s ease;
+}
+
+.bf-button:hover {
+    transform: translateY(-3px);
+
+    background: rgba(255, 255, 255, 0.14);
+}
+
+.bf-button span {
+    font-size: 18px;
+
+    transition: transform 0.25s ease;
+}
+
+.bf-button:hover span {
+    transform: translateX(4px);
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 950px) {
+
+    .bf-values {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .bf-team-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .bf-testimonial-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .bf-global {
+        grid-template-columns: 1fr;
+
+        gap: 30px;
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+    .bf-page {
+        padding: 55px 16px;
+    }
+
+
+    .bf-heading {
+        margin-bottom: 50px;
+    }
+
+
+    .bf-heading h1 {
+        font-size: 42px;
+
+        letter-spacing: -1.5px;
+    }
+
+
+    .bf-intro {
+        padding: 23px 20px;
+    }
+
+
+    .bf-intro p {
+        font-size: 15px;
+    }
+
+
+    .bf-values {
+        grid-template-columns: 1fr;
+
+        gap: 15px;
+
+        margin-bottom: 55px;
+    }
+
+
+    .bf-value {
+        padding: 23px;
+    }
+
+
+    .bf-global {
+        padding: 27px;
+
+        margin-bottom: 75px;
+    }
+
+
+    .bf-global-content h2 {
+        font-size: 32px;
+    }
+
+
+    .bf-team {
+        margin-bottom: 75px;
+    }
+
+
+    .bf-team-grid {
+        grid-template-columns: 1fr;
+
+        gap: 18px;
+    }
+
+
+    .bf-person-image {
+        height: 350px;
+    }
+
+
+    .bf-person-info {
+        padding: 22px;
+    }
+
+
+    .bf-advisory {
+        padding: 25px;
+
+        margin-bottom: 70px;
+    }
+
+
+    .bf-advisory-icon {
+        width: 48px;
+        height: 48px;
+
+        font-size: 18px;
+    }
+
+
+    .bf-advisory-content h2 {
+        font-size: 27px;
+    }
+
+
+    .bf-testimonials {
+        margin-bottom: 70px;
+    }
+
+
+    .bf-testimonial {
+        min-height: auto;
+
+        padding: 27px 24px;
+    }
+
+
+    .bf-cta {
+        padding: 58px 22px;
+    }
+
+
+    .bf-cta h2 {
+        font-size: 36px;
+    }
+
+
+    .bf-cta p {
+        font-size: 14px;
+    }
+
+}
+.bt-services-page {
+    width: 100%;
+    padding: 70px 0;
+    position: relative;
+    overflow: hidden;
+    background:
+        radial-gradient(circle at top left, #004aad33, transparent 40%),
+        radial-gradient(circle at bottom right, #7a00ff22, transparent 35%),
+        linear-gradient(180deg, #05070d, #0a1020);
+    color: #fff;
+}
+
+.bt-services-page::before {
+    content: "";
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    top: -250px;
+    left: -250px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #00d8ef18, transparent 70%);
+    pointer-events: none;
+}
+
+.bt-services-page::after {
+    content: "";
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    bottom: -250px;
+    right: -250px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #7a00ff18, transparent 70%);
+    pointer-events: none;
+}
+
+.bt-services-hero {
+    width: 90%;
+    max-width: 1500px;
+    margin: 0 auto 60px;
+    padding: 45px 35px;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+    border-radius: 30px;
+    background: rgba(255, 255, 255, .06);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(255, 255, 255, .12);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, .15),
+        0 18px 50px rgba(0, 0, 0, .35),
+        0 0 35px rgba(0, 216, 239, .12);
+}
+
+.bt-services-hero h1 {
+    margin: 0 0 20px;
+    font-size: 48px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    background: linear-gradient(
+        90deg,
+        #00d8ef,
+        #ffffff,
+        #7a00ff,
+        #ff0080,
+        #00d8ef
+    );
+    background-size: 300% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: btServicesTitleFlow 6s linear infinite;
+    text-shadow: 0 0 25px rgba(0, 216, 239, .25);
+}
+
+.bt-services-hero p {
+    max-width: 1000px;
+    margin: auto;
+    color: rgba(255, 255, 255, .82);
+    font-size: 17px;
+    line-height: 1.8;
+}
+
+@keyframes btServicesTitleFlow {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.bt-services-grid {
+    width: 90%;
+    max-width: 1600px;
+    margin: 0 auto 60px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 35px;
+    position: relative;
+    z-index: 2;
+}
+
+.bt-services-card {
+    position: relative;
+    overflow: hidden;
+    padding: 32px 28px;
+    border-radius: 30px;
+    text-align: center;
+    background: rgba(255, 255, 255, .07);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(255, 255, 255, .12);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, .14),
+        0 18px 45px rgba(0, 0, 0, .35);
+    transition: .45s ease;
+}
+
+.bt-services-card::before {
+    content: "";
+    position: absolute;
+    width: 220px;
+    height: 220px;
+    top: -120px;
+    right: -120px;
+    border-radius: 50%;
+    background: radial-gradient(
+        circle,
+        rgba(0, 216, 239, .28),
+        transparent 70%
+    );
+    transition: .6s ease;
+}
+
+.bt-services-card:hover {
+    transform: translateY(-10px);
+    border-color: rgba(0, 216, 239, .35);
+    box-shadow:
+        0 30px 70px rgba(0, 0, 0, .45),
+        0 0 40px rgba(0, 216, 239, .16);
+}
+
+.bt-services-card:hover::before {
+    transform: scale(1.5);
+}
+
+.bt-services-card img {
+    width: 100%;
+    max-width: 230px;
+    height: 170px;
+    object-fit: contain;
+    margin: 0 auto 20px;
+    display: block;
+    border-radius: 18px;
+}
+
+.bt-services-card h2 {
+    margin: 0 0 15px;
+    font-size: 24px;
+    font-weight: 800;
+    color: #fff;
+}
+
+.bt-services-card p {
+    margin: 0;
+    color: rgba(255, 255, 255, .78);
+    font-size: 15px;
+    line-height: 1.7;
+}
+
+.bt-services-benefits,
+.bt-services-info,
+.bt-services-partnerships,
+.bt-services-faq {
+    width: 90%;
+    max-width: 1500px;
+    margin: 0 auto 40px;
+    padding: 35px 30px;
+    position: relative;
+    z-index: 2;
+    border-radius: 30px;
+    background: rgba(255, 255, 255, .07);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(255, 255, 255, .12);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, .14),
+        0 18px 45px rgba(0, 0, 0, .35);
+}
+
+.bt-services-benefits h2,
+.bt-services-info h2,
+.bt-services-partnerships h2,
+.bt-services-faq > h2,
+.bt-services-testimonials > h2 {
+    margin: 0 0 25px;
+    text-align: center;
+    font-size: 30px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #fff;
+    text-shadow:
+        0 0 10px #00d8ef,
+        0 0 25px #7a00ff;
+}
+
+.bt-services-benefits ul {
+    max-width: 900px;
+    margin: auto;
+    padding: 0;
+    list-style: none;
+}
+
+.bt-services-benefits li {
+    position: relative;
+    padding: 15px 20px 15px 45px;
+    margin-bottom: 12px;
+    border-radius: 15px;
+    background: rgba(255, 255, 255, .05);
+    color: rgba(255, 255, 255, .85);
+    line-height: 1.5;
+}
+
+.bt-services-benefits li::before {
+    content: "✓";
+    position: absolute;
+    left: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #00d8ef;
+    font-weight: 900;
+    font-size: 18px;
+}
+
+.bt-services-info p,
+.bt-services-partnerships > p,
+.bt-services-faq-item p {
+    max-width: 1100px;
+    margin: auto;
+    color: rgba(255, 255, 255, .80);
+    font-size: 16px;
+    line-height: 1.8;
+    text-align: center;
+}
+
+.bt-services-testimonials {
+    width: 90%;
+    max-width: 1500px;
+    margin: 0 auto 40px;
+    position: relative;
+    z-index: 2;
+}
+
+.bt-services-testimonial-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.bt-services-testimonial-card {
+    padding: 28px 24px;
+    border-radius: 25px;
+    text-align: center;
+    background: rgba(255, 255, 255, .07);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, .12);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, .12),
+        0 18px 40px rgba(0, 0, 0, .3);
+    transition: .4s ease;
+}
+
+.bt-services-testimonial-card:hover {
+    transform: translateY(-8px);
+    box-shadow:
+        0 25px 55px rgba(0, 0, 0, .4),
+        0 0 30px rgba(0, 216, 239, .15);
+}
+
+.bt-services-testimonial-card p {
+    color: rgba(255, 255, 255, .82);
+    font-size: 15px;
+    line-height: 1.7;
+    margin: 0 0 18px;
+}
+
+.bt-services-testimonial-card span {
+    color: #00d8ef;
+    font-weight: 700;
+}
+
+.bt-services-partner-logos {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 35px;
+}
+
+.bt-services-partner-logos img {
+    width: 150px;
+    max-width: 100%;
+    height: 80px;
+    object-fit: contain;
+    filter: brightness(.9);
+    transition: .3s ease;
+}
+
+.bt-services-partner-logos img:hover {
+    transform: scale(1.08);
+    filter: brightness(1.15);
+}
+
+.bt-services-faq-item {
+    max-width: 1100px;
+    margin: 0 auto 20px;
+    padding: 25px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, .05);
+    border: 1px solid rgba(255, 255, 255, .08);
+}
+
+.bt-services-faq-item:last-child {
+    margin-bottom: 0;
+}
+
+.bt-services-faq-item h3 {
+    margin: 0 0 12px;
+    text-align: center;
+    font-size: 20px;
+    color: #fff;
+}
+
+.bt-services-cta {
+    width: 90%;
+    max-width: 1500px;
+    margin: 60px auto 0;
+    padding: 55px 35px;
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    border-radius: 30px;
+    background:
+        radial-gradient(circle at top left, rgba(0, 216, 239, .20), transparent 40%),
+        radial-gradient(circle at bottom right, rgba(122, 0, 255, .20), transparent 40%),
+        rgba(255, 255, 255, .07);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    border: 1px solid rgba(0, 216, 239, .22);
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, .4),
+        0 0 40px rgba(0, 216, 239, .10);
+}
+
+.bt-services-cta h2 {
+    margin: 0 0 20px;
+    font-size: 38px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #fff;
+    text-shadow:
+        0 0 12px #00d8ef,
+        0 0 30px #7a00ff,
+        0 0 50px #ff0080;
+}
+
+.bt-services-cta p {
+    max-width: 950px;
+    margin: 0 auto 30px;
+    color: rgba(255, 255, 255, .82);
+    font-size: 16px;
+    line-height: 1.8;
+}
+
+.bt-services-cta-button {
+    display: inline-block;
+    padding: 14px 32px;
+    border-radius: 30px;
+    background: linear-gradient(90deg, #00d8ef, #7a00ff);
+    color: #fff;
+    text-decoration: none;
+    font-weight: 800;
+    letter-spacing: 1px;
+    box-shadow:
+        0 10px 30px rgba(0, 216, 239, .25),
+        0 0 25px rgba(122, 0, 255, .20);
+    transition: .35s ease;
+}
+
+.bt-services-cta-button:hover {
+    transform: translateY(-4px) scale(1.03);
+    color: #fff;
+    box-shadow:
+        0 15px 40px rgba(0, 216, 239, .35),
+        0 0 40px rgba(122, 0, 255, .30);
+}
+
+@media (max-width: 991px) {
+
+    .bt-services-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .bt-services-testimonial-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .bt-services-hero h1 {
+        font-size: 40px;
+    }
+}
+
+@media (max-width: 600px) {
+
+    .bt-services-page {
+        padding: 45px 0;
+    }
+
+    .bt-services-hero {
+        width: 94%;
+        margin-bottom: 35px;
+        padding: 32px 20px;
+        border-radius: 24px;
+    }
+
+    .bt-services-hero h1 {
+        font-size: 27px;
+        line-height: 1.25;
+        letter-spacing: 2px;
+        margin-bottom: 18px;
+        text-shadow:
+            0 0 15px #00d8ef,
+            0 0 30px #7a00ff,
+            0 0 45px #ff0080;
+    }
+
+    .bt-services-hero p {
+        font-size: 14px;
+        line-height: 1.65;
+    }
+
+    .bt-services-grid {
+        width: 94%;
+        grid-template-columns: 1fr;
+        gap: 22px;
+        margin-bottom: 35px;
+    }
+
+    .bt-services-card {
+        padding: 25px 20px;
+        border-radius: 24px;
+    }
+
+    .bt-services-card img {
+        height: 140px;
+        max-width: 190px;
+        margin-bottom: 15px;
+    }
+
+    .bt-services-card h2 {
+        font-size: 21px;
+    }
+
+    .bt-services-card p {
+        font-size: 14px;
+        line-height: 1.6;
+    }
+
+    .bt-services-benefits,
+    .bt-services-info,
+    .bt-services-partnerships,
+    .bt-services-faq {
+        width: 94%;
+        padding: 28px 20px;
+        margin-bottom: 25px;
+        border-radius: 24px;
+    }
+
+    .bt-services-benefits h2,
+    .bt-services-info h2,
+    .bt-services-partnerships h2,
+    .bt-services-faq > h2,
+    .bt-services-testimonials > h2 {
+        font-size: 22px;
+        line-height: 1.3;
+        letter-spacing: 1px;
+    }
+
+    .bt-services-benefits li {
+        padding: 13px 15px 13px 40px;
+        font-size: 14px;
+    }
+
+    .bt-services-benefits li::before {
+        left: 14px;
+    }
+
+    .bt-services-info p,
+    .bt-services-partnerships > p,
+    .bt-services-faq-item p {
+        font-size: 14px;
+        line-height: 1.65;
+    }
+
+    .bt-services-testimonials {
+        width: 94%;
+        margin-bottom: 25px;
+    }
+
+    .bt-services-testimonial-grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    .bt-services-testimonial-card {
+        padding: 24px 20px;
+        border-radius: 22px;
+    }
+
+    .bt-services-testimonial-card p {
+        font-size: 14px;
+    }
+
+    .bt-services-partner-logos {
+        gap: 20px;
+    }
+
+    .bt-services-partner-logos img {
+        width: 120px;
+        height: 65px;
+    }
+
+    .bt-services-faq-item {
+        padding: 20px 16px;
+    }
+
+    .bt-services-faq-item h3 {
+        font-size: 18px;
+        line-height: 1.4;
+    }
+
+    .bt-services-cta {
+        width: 94%;
+        margin-top: 35px;
+        padding: 38px 20px;
+        border-radius: 24px;
+    }
+
+    .bt-services-cta h2 {
+        font-size: 25px;
+        line-height: 1.3;
+        letter-spacing: 1px;
+    }
+
+    .bt-services-cta p {
+        font-size: 14px;
+        line-height: 1.65;
+    }
+
+    .bt-services-cta-button {
+        width: 100%;
+        max-width: 230px;
+        padding: 13px 20px;
+    }
 }
