@@ -1,7 +1,7 @@
 {% extends "crypto/crypto_base.html" %}
 {% load static %}
 {% block content %}
-<link rel="stylesheet" href="{% static 'crypto/css/services.css' %}">
+<link rel="stylesheet" href="{% static 'css/services.css' %}">
 
 <div class="services-showcase">
 
@@ -21,7 +21,7 @@
   <!-- Services Grid -->
   <section class="services-grid">
     <div class="services-panel">
-      <img src="{% static 'images/aiTrading.png' %}" alt="AI Trading">
+      <img class="services-icon" src="{% static 'images/aiTrading.png' %}" alt="AI Trading">
       <h2 class="services-panel-title">AI-Powered Trading</h2>
       <p class="services-panel-description">
         Harness artificial intelligence to analyze markets, predict trends, and execute profitable strategies automatically.
@@ -30,7 +30,7 @@
     </div>
 
     <div class="services-panel">
-      <img src="{% static 'images/portfolio.png' %}" alt="Portfolio Management">
+      <img class="services-icon" src="{% static 'images/portfolio.png' %}" alt="Portfolio Management">
       <h2 class="services-panel-title">Portfolio Management</h2>
       <p class="services-panel-description">
         Customized portfolios designed to balance risk and maximize returns across multiple crypto assets.
@@ -39,7 +39,7 @@
     </div>
 
     <div class="services-panel">
-      <img src="{% static 'images/security.webp' %}" alt="Security & Compliance">
+      <img class="services-icon" src="{% static 'images/security.webp' %}" alt="Security & Compliance">
       <h2 class="services-panel-title">Security & Compliance</h2>
       <p class="services-panel-description">
         Multi-layer encryption, cold storage, and regular audits ensure your assets remain safe and compliant.
@@ -48,7 +48,7 @@
     </div>
 
     <div class="services-panel">
-      <img src="{% static 'images/global.webp' %}" alt="Global Reach">
+      <img class="services-icon" src="{% static 'images/global.webp' %}" alt="Global Reach">
       <h2 class="services-panel-title">Global Reach</h2>
       <p class="services-panel-description">
         BitnetFx serves investors across 50+ countries with multilingual support and seamless accessibility.
@@ -125,9 +125,9 @@
       These partnerships strengthen our ecosystem and expand opportunities for investors.
     </p>
     <div class="services-grid">
-      <img src="{% static 'crypto/images/partner.png' %}" alt="Partner 1">
-      <img src="{% static 'crypto/images/bcs.png' %}" alt="Partner 2">
-      <img src="{% static 'crypto/images/fintech.webp' %}" alt="Partner 3">
+      <img class="services-icon" src="{% static 'images/partner.png' %}" alt="Partner 1">
+      <img class="services-icon" src="{% static 'images/bcs.png' %}" alt="Partner 2">
+      <img class="services-icon" src="{% static 'images/fintech.webp' %}" alt="Partner 3">
     </div>
   </section>
 
