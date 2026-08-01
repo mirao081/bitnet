@@ -148,3 +148,17 @@
     50%  { background-position:100% 50%; }
     100% { background-position:0% 50%; }
 }
+.services-panel img {
+    width: 200px;       /* fixed size */
+    height: 200px;      /* keep square for circle */
+    object-fit: cover;  /* crop nicely if not square */
+    border-radius: 50%; /* makes it circular */
+    margin-bottom: 15px;
+    box-shadow: 0 0 20px rgba(0,216,239,.4); /* optional glow */
+    transition: .3s ease;
+}
+
+.services-panel img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 30px rgba(255,0,128,.5);
+}
