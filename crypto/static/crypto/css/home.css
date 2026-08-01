@@ -2176,11 +2176,6 @@ grid-template-columns:repeat(2,1fr);
 }
 
 }
-
-/*==========================
-        MOBILE
-==========================*/
-
 @media(max-width:600px){
 
 .elite-plan-showcase{
@@ -2197,15 +2192,15 @@ width:95%;
 
 .elite-plan-title{
 
-font-size:30px;
+font-size:27px;
 
 }
 
 .elite-plan-subtitle{
 
-font-size:15px;
+font-size:14px;
 
-margin-bottom:35px;
+margin-bottom:32px;
 
 }
 
@@ -2219,29 +2214,53 @@ gap:25px;
 
 .elite-plan-card{
 
-padding:26px;
+padding:24px;
 
 }
 
 .elite-plan-name{
 
-font-size:24px;
+font-size:22px;
 
 }
 
 .elite-plan-return{
 
-font-size:34px;
+font-size:31px;
+
+}
+
+.elite-plan-detail{
+
+font-size:13px;
+
+line-height:1.45;
+
+}
+
+.elite-plan-limit{
+
+font-size:14px;
+
+margin:18px 0;
 
 }
 
 .elite-plan-button{
 
-width:65%;
+width:60%;
+
+padding:11px;
+
+font-size:14px;
 
 margin:auto;
 
 display:flex;
+
+justify-content:center;
+
+align-items:center;
 
 }
 
