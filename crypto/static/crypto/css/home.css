@@ -2859,10 +2859,11 @@ min-height:300px;
 
     .elite-feature-panel-image img{
 
-    width:150px;
+        width:110px;
 
-    height:150px;
+        height:110px;
 
+        object-fit:contain;
     }
 
     .elite-feature-panel-title{
