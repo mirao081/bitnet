@@ -1829,6 +1829,11 @@ text-shadow:
     backdrop-filter: blur(6px);
     -webkit-backdrop-filter: blur(6px);
 }
+
+.charts-professional .chart-card:nth-child(3) {
+    margin-left: -20px;
+}
+
 .chart-card h2 {
     color: #FFD700;
     margin-bottom: 15px;
