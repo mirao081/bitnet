@@ -395,28 +395,81 @@
 </section>
 
 
-<section class="home-bitcoin">
-  <div class="home-bitcoin-flex">
-    <div class="home-calculator">
-      <h1><span class="home-yellow">{{ calculator.title_first }}</span> {{ calculator.title_second }}</h1>
-      <p>{{ calculator.subtitle }}</p>
-      <div class="home-calc-row">
-        <input type="number" id="btcAmount" placeholder="Enter amount">
-        <img src="{% static 'crypto/images/btc1.png' %}" alt="Bitcoin">
-        <span>=</span>
-        <div id="calcResult">0</div>
-        <select id="currencySelect">
-          <option>ARS</option><option>AUD</option><option>BRL</option>
-          <option>CAD</option><option>CHF</option>
-        </select>
-      </div>
-    </div>
-    <div class="home-canvas">
-      <canvas id="btcCalcCanvas"></canvas>
-    </div>
-  </div>
-</section>
+<!--====================================
+        ELITE BITCOIN CALCULATOR
+=====================================-->
 
+<section class="elite-calculator-showcase">
+
+    <div class="elite-calculator-wrapper">
+
+        <div class="elite-calculator-panel">
+
+            <div class="elite-badge">
+                BITCOIN CALCULATOR
+            </div>
+
+            <h1 class="elite-calculator-title">
+
+                <span class="elite-calculator-accent">
+
+                    {{ calculator.title_first }}
+
+                </span>
+
+                {{ calculator.title_second }}
+
+            </h1>
+
+            <p class="elite-calculator-description">
+
+                {{ calculator.subtitle }}
+
+            </p>
+
+            <div class="elite-calculator-row">
+
+                <input
+                    type="number"
+                    id="btcAmount"
+                    placeholder="Enter amount">
+
+                <img
+                    src="{% static 'crypto/images/btc1.png' %}"
+                    alt="Bitcoin">
+
+                <span>=</span>
+
+                <div id="calcResult">
+
+                    0
+
+                </div>
+
+                <select id="currencySelect">
+
+                    <option>ARS</option>
+                    <option>AUD</option>
+                    <option>BRL</option>
+                    <option>CAD</option>
+                    <option>CHF</option>
+
+                </select>
+
+            </div>
+
+        </div>
+
+        <!-- Canvas class kept unchanged -->
+        <div class="home-canvas">
+
+            <canvas id="btcCalcCanvas"></canvas>
+
+        </div>
+
+    </div>
+
+</section>
 <!-- FEATURES -->
 <section class="home-features">
   <div class="home-features-grid">

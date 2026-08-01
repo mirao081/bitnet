@@ -2265,3 +2265,357 @@ align-items:center;
 }
 
 }
+/*==================================================
+            ELITE BITCOIN CALCULATOR
+==================================================*/
+
+.elite-calculator-showcase{
+
+    width:100%;
+
+    padding:90px 0;
+
+    background:
+    radial-gradient(circle at top left,#004aad33,transparent 40%),
+    radial-gradient(circle at bottom right,#7a00ff22,transparent 35%),
+    linear-gradient(180deg,#05070d,#0a1020);
+
+}
+
+.elite-calculator-wrapper{
+
+    width:90%;
+
+    max-width:1600px;
+
+    margin:auto;
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:40px;
+
+    align-items:center;
+
+}
+
+/*==============================
+        GLASS PANELS
+==============================*/
+
+.elite-calculator-panel,
+.elite-calculator-canvas{
+
+    position:relative;
+
+    overflow:hidden;
+
+    padding:35px;
+
+    border-radius:30px;
+
+    background:rgba(255,255,255,.08);
+
+    backdrop-filter:blur(24px);
+    -webkit-backdrop-filter:blur(24px);
+
+    border:1px solid rgba(255,255,255,.12);
+
+    box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.15),
+    0 18px 45px rgba(0,0,0,.35);
+
+    transition:.45s;
+
+}
+
+.elite-calculator-panel::before,
+.elite-calculator-canvas::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:240px;
+
+    height:240px;
+
+    top:-120px;
+
+    right:-120px;
+
+    border-radius:50%;
+
+    background:
+
+    radial-gradient(circle,
+
+    rgba(0,216,239,.25),
+
+    transparent 70%);
+
+    transition:.6s;
+
+}
+
+.elite-calculator-panel:hover,
+.elite-calculator-canvas:hover{
+
+    transform:translateY(-10px);
+
+    box-shadow:
+
+    0 30px 70px rgba(0,0,0,.45),
+
+    0 0 40px rgba(0,216,239,.18);
+
+}
+
+.elite-calculator-panel:hover::before,
+.elite-calculator-canvas:hover::before{
+
+    transform:scale(1.4);
+
+}
+
+/*==============================
+        TITLE
+==============================*/
+
+.elite-calculator-title{
+
+    margin:20px 0 15px;
+
+    font-size:38px;
+
+    font-weight:800;
+
+    line-height:1.2;
+
+    color:#fff;
+
+}
+
+.elite-calculator-accent{
+
+    color:#00d8ef;
+
+    text-shadow:
+
+    0 0 18px rgba(0,216,239,.35);
+
+}
+
+.elite-calculator-description{
+
+    font-size:16px;
+
+    line-height:1.6;
+
+    color:rgba(255,255,255,.82);
+
+    margin-bottom:30px;
+
+}
+
+/*==============================
+        CALCULATOR
+==============================*/
+
+.elite-calculator-row{
+
+    display:flex;
+
+    gap:15px;
+
+    flex-wrap:wrap;
+
+    align-items:center;
+
+}
+
+.elite-calculator-row input,
+.elite-calculator-row select,
+#calcResult{
+
+    height:54px;
+
+    border:none;
+
+    outline:none;
+
+    border-radius:16px;
+
+    padding:0 18px;
+
+    background:rgba(255,255,255,.10);
+
+    backdrop-filter:blur(15px);
+
+    color:#fff;
+
+    font-size:16px;
+
+    border:1px solid rgba(255,255,255,.12);
+
+}
+
+.elite-calculator-row input{
+
+    flex:1;
+
+    min-width:180px;
+
+}
+
+.elite-calculator-row img{
+
+    width:55px;
+
+    height:55px;
+
+    object-fit:contain;
+
+}
+
+.elite-calculator-row span{
+
+    font-size:26px;
+
+    font-weight:700;
+
+    color:#00d8ef;
+
+}
+
+#calcResult{
+
+    min-width:120px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+
+/*==============================
+        CANVAS
+==============================*/
+
+.elite-calculator-canvas{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    min-height:450px;
+
+}
+
+#btcCalcCanvas{
+
+    width:100%;
+
+    max-width:520px;
+
+    height:auto;
+
+}
+
+/*==============================
+        TABLET
+==============================*/
+
+@media(max-width:991px){
+
+.elite-calculator-wrapper{
+
+grid-template-columns:1fr;
+
+}
+
+}
+
+/*==============================
+        MOBILE
+==============================*/
+
+@media(max-width:600px){
+
+.elite-calculator-showcase{
+
+padding:60px 0;
+
+}
+
+.elite-calculator-wrapper{
+
+width:95%;
+
+}
+
+.elite-calculator-panel,
+.elite-calculator-canvas{
+
+padding:24px;
+
+}
+
+.elite-calculator-title{
+
+font-size:28px;
+
+}
+
+.elite-calculator-description{
+
+font-size:15px;
+
+line-height:1.5;
+
+}
+
+.elite-calculator-row{
+
+flex-direction:column;
+
+align-items:stretch;
+
+}
+
+.elite-calculator-row input,
+.elite-calculator-row select,
+#calcResult{
+
+width:100%;
+
+}
+
+.elite-calculator-row img{
+
+width:45px;
+
+height:45px;
+
+margin:auto;
+
+}
+
+.elite-calculator-row span{
+
+text-align:center;
+
+}
+
+.elite-calculator-canvas{
+
+min-height:300px;
+
+}
+
+}
