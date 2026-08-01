@@ -4,27 +4,27 @@
 
 {% block content %}
 <section class="hero-section investment-plans-section">
-    <div class="elite-carousel-container">
-      {% for slide in slides %}
-          <div class="elite-carousel-slide {% if forloop.first %}active{% endif %}">
-              <h1 class="elite-carousel-title">{{ slide.title }}</h1>
-              {% if slide.subtitle %}
-                  <p class="elite-carousel-subtitle">{{ slide.subtitle }}</p>
-              {% endif %}
+    <div class="carousel-container">
+        {% for slide in slides %}
+            <div class="carousel-slide {% if forloop.first %}active{% endif %}">
+                <h1>{{ slide.title }}</h1>
+                {% if slide.subtitle %}
+                    <p>{{ slide.subtitle }}</p>
+                {% endif %}
 
-              <!-- Always show both buttons -->
-              <a href="{% url 'crypto:signup' %}" class="elite-carousel-btn primary">
-                  Get Started
-              </a>
-              <a href="{% url 'crypto:login' %}" class="elite-carousel-btn secondary">
-                  Sign In
-              </a>
-          </div>
-      {% endfor %}
+                <!-- Always show both buttons -->
+                <a href="{% url 'crypto:signup' %}" class="btn btn-primary">
+                    Get Started
+                </a>
+                <a href="{% url 'crypto:login' %}" class="btn btn-secondary">
+                    Sign In
+                </a>
+            </div>
+        {% endfor %}
 
-      <span class="elite-carousel-prev">&lt;</span>
-      <span class="elite-carousel-next">&gt;</span>
-  </div>
+        <span class="carousel-prev">&lt;</span>
+        <span class="carousel-next">&gt;</span>
+    </div>
 
     <div class="cards-container">
         {% for card in cards %}
