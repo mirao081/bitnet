@@ -5456,12 +5456,12 @@ section p {
 
 .investment-canvas {
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
   gap: 24px;
   margin: 60px auto;
   width: 100%;
-  max-width: 420px;
+  max-width: 1200px;
   padding: 0 24px;
   box-sizing: border-box;
 }
@@ -5471,11 +5471,15 @@ section p {
   box-shadow: 0 0 25px rgba(255, 215, 0, 0.8), 
               0 0 50px rgba(255, 215, 0, 0.6);
   background: rgba(18,18,18,0.7);
-  margin-bottom: 35px;
 }
 
-.investment-canvas canvas:last-child {
-  margin-bottom: 0;
+@media (max-width: 768px) {
+  .investment-canvas {
+    flex-direction: column;
+    gap: 20px;
+    max-width: 420px;
+    padding: 0 16px;
+  }
 }
 
 
