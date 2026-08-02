@@ -2342,3 +2342,571 @@ section.trading-options-isolated
         font-size:17px !important;
     }
 }
+/* =========================================================
+   ANALYTICS INSIGHTS
+   FULLY ISOLATED PREMIUM STYLE
+   ========================================================= */
+
+section.analytics-insights-isolated {
+
+    width:100% !important;
+    padding:90px 0 !important;
+    position:relative !important;
+    overflow:hidden !important;
+
+    background:
+        radial-gradient(
+            circle at top left,
+            #004aad33,
+            transparent 40%
+        ),
+        radial-gradient(
+            circle at bottom right,
+            #7a00ff22,
+            transparent 35%
+        ),
+        linear-gradient(
+            180deg,
+            #05070d,
+            #0a1020
+        ) !important;
+}
+
+
+/* =========================================================
+   MAIN HEADING
+   ========================================================= */
+
+section.analytics-insights-isolated
+.analytics-insights-isolated-heading {
+
+    width:90% !important;
+
+    margin:0 auto 20px auto !important;
+
+    padding:0 !important;
+
+    text-align:center !important;
+
+    font-size:30px !important;
+
+    font-weight:900 !important;
+
+    line-height:1.2 !important;
+
+    text-transform:uppercase !important;
+
+    letter-spacing:2px !important;
+
+    background:
+        linear-gradient(
+            90deg,
+            #00d8ef,
+            #7a00ff,
+            #ff0080
+        ) !important;
+
+    background-size:200% auto !important;
+
+    -webkit-background-clip:text !important;
+
+    background-clip:text !important;
+
+    -webkit-text-fill-color:transparent !important;
+
+    color:transparent !important;
+
+    animation:
+        analyticsInsightsHeadingShine 5s linear infinite !important;
+
+    filter:
+        drop-shadow(0 0 8px rgba(0,216,239,.45))
+        drop-shadow(0 0 15px rgba(122,0,255,.30)) !important;
+}
+
+
+@keyframes analyticsInsightsHeadingShine {
+
+    0% {
+        background-position:0% 50%;
+    }
+
+    50% {
+        background-position:100% 50%;
+    }
+
+    100% {
+        background-position:0% 50%;
+    }
+}
+
+
+/* =========================================================
+   SUBHEADING
+   ========================================================= */
+
+section.analytics-insights-isolated
+.analytics-insights-isolated-subheading {
+
+    width:90% !important;
+
+    margin:0 auto 60px auto !important;
+
+    padding:0 !important;
+
+    display:flex !important;
+
+    align-items:center !important;
+
+    justify-content:center !important;
+
+    gap:18px !important;
+
+    text-align:center !important;
+
+    font-size:18px !important;
+
+    font-weight:600 !important;
+
+    line-height:1.5 !important;
+
+    letter-spacing:1px !important;
+
+    background:
+        linear-gradient(
+            90deg,
+            #00d8ef,
+            #7a00ff,
+            #ff0080
+        ) !important;
+
+    background-size:200% auto !important;
+
+    -webkit-background-clip:text !important;
+
+    background-clip:text !important;
+
+    -webkit-text-fill-color:transparent !important;
+
+    color:transparent !important;
+
+    animation:
+        analyticsInsightsSubheadingShine 6s linear infinite !important;
+}
+
+
+@keyframes analyticsInsightsSubheadingShine {
+
+    0% {
+        background-position:0% 50%;
+    }
+
+    50% {
+        background-position:100% 50%;
+    }
+
+    100% {
+        background-position:0% 50%;
+    }
+}
+
+
+/* =========================================================
+   SUBHEADING LINES
+   ========================================================= */
+
+section.analytics-insights-isolated
+.analytics-insights-isolated-line {
+
+    width:80px !important;
+
+    height:2px !important;
+
+    min-width:80px !important;
+
+    display:block !important;
+
+    flex-shrink:0 !important;
+
+    padding:0 !important;
+
+    margin:0 !important;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            #00d8ef,
+            #7a00ff,
+            #ff0080
+        ) !important;
+
+    box-shadow:
+        0 0 10px #00d8ef,
+        0 0 20px rgba(122,0,255,.45) !important;
+}
+
+
+/* =========================================================
+   GRID
+   ========================================================= */
+
+section.analytics-insights-isolated
+.analytics-insights-isolated-grid {
+
+    width:90% !important;
+
+    max-width:1600px !important;
+
+    margin:0 auto !important;
+
+    padding:0 !important;
+
+    display:grid !important;
+
+    grid-template-columns:
+        repeat(2,minmax(300px,1fr)) !important;
+
+    gap:35px !important;
+
+    position:relative !important;
+
+    z-index:2 !important;
+}
+
+
+/* =========================================================
+   GLASS CARD
+   ========================================================= */
+
+section.analytics-insights-isolated
+.analytics-insights-isolated-card {
+
+    position:relative !important;
+
+    overflow:hidden !important;
+
+    text-align:center !important;
+
+    padding:35px 28px !important;
+
+    margin:0 !important;
+
+    min-width:0 !important;
+
+    border-radius:30px !important;
+
+    background:rgba(255,255,255,.08) !important;
+
+    backdrop-filter:blur(24px) !important;
+
+    -webkit-backdrop-filter:blur(24px) !important;
+
+    border:1px solid rgba(255,255,255,.12) !important;
+
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.15),
+        0 18px 45px rgba(0,0,0,.35) !important;
+
+    transition:
+        transform .45s ease,
+        box-shadow .45s ease !important;
+}
+
+
+/* =========================================================
+   CARD DECORATIVE GLOW
+   ========================================================= */
+
+section.analytics-insights-isolated
+.analytics-insights-isolated-card::before {
+
+    content:"" !important;
+
+    position:absolute !important;
+
+    width:220px !important;
+
+    height:220px !important;
+
+    top:-120px !important;
+
+    right:-120px !important;
+
+    border-radius:50% !important;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(0,216,239,.28),
+            transparent 70%
+        ) !important;
+
+    transition:.6s ease !important;
+
+    pointer-events:none !important;
+}
+
+
+section.analytics-insights-isolated
+.analytics-insights-isolated-card:hover {
+
+    transform:translateY(-12px) !important;
+
+    box-shadow:
+        0 30px 70px rgba(0,0,0,.45),
+        0 0 40px rgba(0,216,239,.18) !important;
+}
+
+
+section.analytics-insights-isolated
+.analytics-insights-isolated-card:hover::before {
+
+    transform:scale(1.4) !important;
+}
+
+
+/* =========================================================
+   CARD HEADING
+   ========================================================= */
+
+section.analytics-insights-isolated
+.analytics-insights-isolated-card-title {
+
+    position:relative !important;
+
+    z-index:2 !important;
+
+    margin:0 0 25px 0 !important;
+
+    padding:0 !important;
+
+    font-size:24px !important;
+
+    font-weight:900 !important;
+
+    line-height:1.25 !important;
+
+    background:
+        linear-gradient(
+            90deg,
+            #00d8ef,
+            #7a00ff,
+            #ff0080
+        ) !important;
+
+    background-size:200% auto !important;
+
+    -webkit-background-clip:text !important;
+
+    background-clip:text !important;
+
+    -webkit-text-fill-color:transparent !important;
+
+    color:transparent !important;
+
+    animation:
+        analyticsInsightsCardHeadingShine 5s linear infinite !important;
+
+    filter:
+        drop-shadow(0 0 6px rgba(0,216,239,.40))
+        drop-shadow(0 0 12px rgba(122,0,255,.25)) !important;
+}
+
+
+@keyframes analyticsInsightsCardHeadingShine {
+
+    0% {
+        background-position:0% 50%;
+    }
+
+    50% {
+        background-position:100% 50%;
+    }
+
+    100% {
+        background-position:0% 50%;
+    }
+}
+
+
+/* =========================================================
+   CANVAS
+   IDS ARE NOT CHANGED
+   ========================================================= */
+
+section.analytics-insights-isolated
+.analytics-insights-isolated-card canvas {
+
+    position:relative !important;
+
+    z-index:2 !important;
+
+    display:block !important;
+
+    width:100% !important;
+
+    max-width:400px !important;
+
+    height:auto !important;
+
+    margin:0 auto !important;
+
+    padding:0 !important;
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media(max-width:991px) {
+
+    section.analytics-insights-isolated {
+
+        padding:70px 0 !important;
+    }
+
+    section.analytics-insights-isolated
+    .analytics-insights-isolated-grid {
+
+        width:92% !important;
+
+        grid-template-columns:
+            repeat(2,minmax(0,1fr)) !important;
+
+        gap:25px !important;
+    }
+
+    section.analytics-insights-isolated
+    .analytics-insights-isolated-card {
+
+        padding:30px 22px !important;
+    }
+
+    section.analytics-insights-isolated
+    .analytics-insights-isolated-card-title {
+
+        font-size:22px !important;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media(max-width:600px) {
+
+    section.analytics-insights-isolated {
+
+        padding:60px 0 !important;
+    }
+
+    section.analytics-insights-isolated
+    .analytics-insights-isolated-heading {
+
+        width:95% !important;
+
+        margin-bottom:18px !important;
+
+        font-size:25px !important;
+
+        text-shadow:
+            0 0 15px #00d8ef,
+            0 0 30px #7a00ff,
+            0 0 60px #ff0080 !important;
+    }
+
+    section.analytics-insights-isolated
+    .analytics-insights-isolated-subheading {
+
+        width:95% !important;
+
+        margin-bottom:40px !important;
+
+        gap:10px !important;
+
+        font-size:16px !important;
+    }
+
+    section.analytics-insights-isolated
+    .analytics-insights-isolated-line {
+
+        width:35px !important;
+
+        min-width:35px !important;
+    }
+
+    section.analytics-insights-isolated
+    .analytics-insights-isolated-grid {
+
+        width:95% !important;
+
+        grid-template-columns:1fr !important;
+
+        gap:24px !important;
+    }
+
+    section.analytics-insights-isolated
+    .analytics-insights-isolated-card {
+
+        padding:24px !important;
+
+        margin:0 !important;
+    }
+
+    section.analytics-insights-isolated
+    .analytics-insights-isolated-card-title {
+
+        margin-bottom:20px !important;
+
+        font-size:21px !important;
+    }
+
+    section.analytics-insights-isolated
+    .analytics-insights-isolated-card canvas {
+
+        max-width:100% !important;
+    }
+}
+
+
+/* =========================================================
+   SMALL PHONES
+   ========================================================= */
+
+@media(max-width:380px) {
+
+    section.analytics-insights-isolated
+    .analytics-insights-isolated-heading {
+
+        font-size:21px !important;
+    }
+
+    section.analytics-insights-isolated
+    .analytics-insights-isolated-subheading {
+
+        font-size:14px !important;
+    }
+
+    section.analytics-insights-isolated
+    .analytics-insights-isolated-line {
+
+        width:25px !important;
+
+        min-width:25px !important;
+    }
+
+    section.analytics-insights-isolated
+    .analytics-insights-isolated-card {
+
+        padding:22px 18px !important;
+    }
+
+    section.analytics-insights-isolated
+    .analytics-insights-isolated-card-title {
+
+        font-size:19px !important;
+    }
+}
