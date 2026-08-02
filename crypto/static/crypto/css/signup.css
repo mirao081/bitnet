@@ -13,14 +13,13 @@ body.register-body {
     radial-gradient(circle at bottom right,#ff00cc22,transparent 35%),
     linear-gradient(180deg,#05070d,#0a1020);
   padding:20px;
-  overflow-x:hidden;
 }
 
-/* 🔥 Reduced container size by ~10% */
+/* 🔥 Sleeker container */
 .register-container {
-  max-width:380px; /* was 420px */
+  max-width:380px; /* reduced from 420px */
   width:100%;
-  padding:32px 24px;
+  padding:30px 24px;
   border-radius:25px;
   background:rgba(255,255,255,.08);
   backdrop-filter:blur(24px);
@@ -42,7 +41,7 @@ body.register-body {
 .login-logo .site-name {
   display:block;
   text-align:center;
-  font-size:30px;
+  font-size:28px;
   font-weight:900;
   font-family:'Orbitron',sans-serif;
   background:linear-gradient(90deg,#00c6ff,#ff00cc,#ff8c00);
@@ -67,9 +66,7 @@ body.register-body {
   letter-spacing:1px;
 }
 
-.form-group {
-  margin-bottom:18px;
-}
+.form-group { margin-bottom:16px; }
 
 .form-group label {
   display:block;
@@ -81,7 +78,7 @@ body.register-body {
 
 .form-group input {
   width:100%;
-  padding:14px;
+  padding:12px;
   border-radius:12px;
   border:1px solid rgba(255,255,255,.2);
   background:rgba(255,255,255,.05);
@@ -93,36 +90,36 @@ body.register-body {
 .form-group input:focus {
   outline:none;
   border-color:#00c6ff;
-  box-shadow:0 0 15px rgba(0,198,255,.4);
+  box-shadow:0 0 12px rgba(0,198,255,.4);
 }
 
 /* 🚀 Attractive button */
 .register-button {
   width:100%;
   margin-top:15px;
-  padding:14px;
+  padding:12px;
   border:none;
   border-radius:20px;
   cursor:pointer;
-  font-size:16px;
+  font-size:15px;
   font-weight:700;
   background:linear-gradient(135deg,#ff00cc,#ff8c00,#00c6ff);
   color:#fff;
   transition:.35s;
-  box-shadow:0 12px 25px rgba(255,0,204,.35);
+  box-shadow:0 10px 20px rgba(255,0,204,.35);
 }
 
 .register-button:hover {
   transform:translateY(-3px);
   background:linear-gradient(135deg,#00c6ff,#00ffcc,#ff00cc);
   color:#05070d;
-  box-shadow:0 15px 35px rgba(0,198,255,.45);
+  box-shadow:0 12px 28px rgba(0,198,255,.45);
 }
 
 .auth-switch {
   text-align:center;
-  margin-top:20px;
-  font-size:14px;
+  margin-top:18px;
+  font-size:13px;
   color:#ccc;
 }
 
@@ -132,27 +129,25 @@ body.register-body {
   text-decoration:none;
 }
 
-.auth-switch a:hover {
-  color:#ff00cc;
-}
+.auth-switch a:hover { color:#ff00cc; }
 
 .error-box {
   background:rgba(220,20,60,.15);
   color:#ff8e8e;
   border:1px solid rgba(220,20,60,.35);
   border-radius:10px;
-  padding:12px;
-  margin-bottom:20px;
+  padding:10px;
+  margin-bottom:18px;
 }
 
 /* 📱 Responsive */
 @media(max-width:768px){
-  .register-container { max-width:85%; padding:28px 20px; }
-  .login-logo .site-name { font-size:26px; }
+  .register-container { max-width:80%; padding:26px 18px; }
+  .login-logo .site-name { font-size:24px; }
 }
 
 @media(max-width:480px){
-  .register-container { max-width:92%; padding:24px 15px; }
-  .login-logo .site-name { font-size:22px; }
-  .form-group input, .register-button { font-size:14px; padding:12px; }
+  .register-container { max-width:85%; padding:22px 14px; }
+  .login-logo .site-name { font-size:20px; }
+  .form-group input, .register-button { font-size:13px; padding:10px; }
 }
