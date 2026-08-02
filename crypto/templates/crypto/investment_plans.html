@@ -3,68 +3,64 @@
 {% load static %}
 
 {% block content %}
-<link rel="stylesheet" href="{% static 'crypto/css/investment.css' %}">
-<section class="crypto-hero investment-showcase">
+<section class="investment-showcase">
     <div class="carousel-container">
         {% for slide in slides %}
             <div class="carousel-slide {% if forloop.first %}active{% endif %}">
-                <h1 class="crypto-heading">{{ slide.title }}</h1>
+                <h1 class="investment-heading-title">{{ slide.title }}</h1>
                 {% if slide.subtitle %}
-                    <p class="crypto-subtitle">{{ slide.subtitle }}</p>
+                    <p class="investment-heading-subtitle">{{ slide.subtitle }}</p>
                 {% endif %}
 
-                <!-- Always show both buttons -->
-                <a href="{% url 'crypto:signup' %}" class="crypto-btn crypto-btn-primary">
+                <a href="{% url 'crypto:signup' %}" class="investment-read-more-btn">
                     Get Started
                 </a>
-                <a href="{% url 'crypto:login' %}" class="crypto-btn crypto-btn-secondary">
+                <a href="{% url 'crypto:login' %}" class="investment-read-more-btn">
                     Sign In
                 </a>
             </div>
         {% endfor %}
-
-        <span class="carousel-prev">&lt;</span>
-        <span class="carousel-next">&gt;</span>
     </div>
 
-    <div class="crypto-cards">
+    <div class="investment-grid">
         {% for card in cards %}
-            <div class="crypto-plan-card">
-                <i class="fa-brands fa-bitcoin crypto-card-icon"></i>
-                <h1 class="crypto-heading">{{ card.title }}</h1>
-                <p class="crypto-text">{{ card.description }}</p>
+            <div class="investment-panel">
+                <i class="fa-brands fa-bitcoin"></i>
+                <h1 class="investment-panel-title">{{ card.title }}</h1>
+                <p class="investment-panel-description">{{ card.description }}</p>
             </div>
         {% endfor %}
     </div>
 
-    <div class="crypto-about">
-        <div class="crypto-about-market">
+    <div class="investment-heading-container">
+        <div class="investment-panel">
             <iframe src="https://www.tradingview.com/widgetembed/?frameElementId=tradingview_widget"
                     width="100%" height="400" frameborder="0" allowfullscreen>
             </iframe>
         </div>
 
-        <div class="crypto-about-text">
-            <h1 class="crypto-heading">{{ about.heading }}</h1>
-            <p class="crypto-text">{{ about.intro_text }}</p>
+        <div class="investment-panel">
+            <h1 class="investment-panel-title">{{ about.heading }}</h1>
+            <p class="investment-panel-description">{{ about.intro_text }}</p>
 
-            <div class="crypto-about-links">
+            <div class="investment-about-links">
                 <a href="#mission">OUR MISSION</a> |
                 <a href="#advantages">OUR ADVANTAGES</a> |
                 <a href="#guarantees">OUR GUARANTEES</a>
             </div>
 
-            <p class="crypto-text">{{ about.extra_text }}</p>
-            <a href="{% url 'crypto:features' %}" class="crypto-btn">Read More</a>
+            <p class="investment-panel-description">{{ about.extra_text }}</p>
+            <a href="{% url 'crypto:features' %}" class="investment-read-more-btn">Read More</a>
         </div>
     </div>
 
     <canvas id="moveableCanvas" width="400" height="400"></canvas>
-    <div class="crypto-charts">
-        <h2 class="crypto-heading">Market Trends</h2>
+    <div class="investment-heading-container">
+        <h2 class="investment-heading-title">Market Trends</h2>
         <canvas id="marketChart"></canvas>
     </div>
 </section>
+
 
 <section class="investment-section">
     <h1 class="investment-title">
