@@ -916,3 +916,1093 @@ section.investment-plans-isolated
         padding:22px 18px !important;
     }
 }
+ /* =========================================================
+    TRADING OPTIONS
+    ISOLATED PREMIUM STYLE
+    ========================================================= */
+
+section.trading-options-isolated {
+
+    width:100% !important;
+
+    padding:90px 0 !important;
+
+    position:relative !important;
+
+    overflow:hidden !important;
+
+    background:
+        radial-gradient(
+            circle at top left,
+            #004aad33,
+            transparent 40%
+        ),
+        radial-gradient(
+            circle at bottom right,
+            #7a00ff22,
+            transparent 35%
+        ),
+        linear-gradient(
+            180deg,
+            #05070d,
+            #0a1020
+        ) !important;
+}
+
+
+/* =========================================================
+   HEADING
+   ========================================================= */
+
+section.trading-options-isolated
+.trading-options-heading {
+
+    width:90% !important;
+
+    margin:0 auto 20px auto !important;
+
+    text-align:center !important;
+
+    font-size:30px !important;
+
+    font-weight:900 !important;
+
+    line-height:1.2 !important;
+
+    letter-spacing:2px !important;
+
+    text-transform:uppercase !important;
+
+    text-shadow:
+        0 0 10px #00d8ef,
+        0 0 20px #00d8ef,
+        0 0 40px #7a00ff !important;
+}
+
+
+section.trading-options-isolated
+.trading-options-heading a {
+
+    color:#fff !important;
+
+    text-decoration:none !important;
+
+    transition:.3s ease !important;
+}
+
+
+section.trading-options-isolated
+.trading-options-heading a:hover {
+
+    text-shadow:
+        0 0 15px #00d8ef,
+        0 0 30px #7a00ff,
+        0 0 50px #ff0080 !important;
+}
+
+
+section.trading-options-isolated
+.trading-options-heading-accent {
+
+    background:
+        linear-gradient(
+            90deg,
+            #00d8ef,
+            #7a00ff,
+            #ff0080
+        ) !important;
+
+    -webkit-background-clip:text !important;
+
+    -webkit-text-fill-color:transparent !important;
+
+    background-size:200% auto !important;
+
+    animation:tradingOptionsShine 6s linear infinite !important;
+}
+
+
+/* =========================================================
+   SUBTITLE
+   ========================================================= */
+
+section.trading-options-isolated
+.trading-options-subheading {
+
+    width:90% !important;
+
+    margin:0 auto 60px auto !important;
+
+    display:flex !important;
+
+    align-items:center !important;
+
+    justify-content:center !important;
+
+    gap:18px !important;
+
+    text-align:center !important;
+
+    font-size:18px !important;
+
+    font-weight:600 !important;
+
+    letter-spacing:1px !important;
+
+    color:#fff !important;
+}
+
+
+section.trading-options-isolated
+.trading-options-line {
+
+    width:80px !important;
+
+    height:2px !important;
+
+    display:block !important;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            #00d8ef,
+            #7a00ff
+        ) !important;
+
+    box-shadow:
+        0 0 10px #00d8ef !important;
+}
+
+
+/* =========================================================
+   CARD GRID
+   ========================================================= */
+
+section.trading-options-isolated
+.trading-options-card-grid {
+
+    width:90% !important;
+
+    max-width:1600px !important;
+
+    margin:auto !important;
+
+    display:grid !important;
+
+    grid-template-columns:
+        repeat(auto-fit,minmax(280px,1fr)) !important;
+
+    gap:35px !important;
+
+    position:relative !important;
+
+    z-index:2 !important;
+}
+
+
+/* =========================================================
+   GLASS CARD
+   ========================================================= */
+
+section.trading-options-isolated
+.trading-options-card {
+
+    position:relative !important;
+
+    overflow:hidden !important;
+
+    text-align:center !important;
+
+    padding:35px 28px !important;
+
+    border-radius:30px !important;
+
+    background:rgba(255,255,255,.08) !important;
+
+    backdrop-filter:blur(24px) !important;
+
+    -webkit-backdrop-filter:blur(24px) !important;
+
+    border:1px solid rgba(255,255,255,.12) !important;
+
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.15),
+        0 18px 45px rgba(0,0,0,.35) !important;
+
+    transition:.45s ease !important;
+
+    margin-bottom:20px !important;
+}
+
+
+section.trading-options-isolated
+.trading-options-card::before {
+
+    content:"" !important;
+
+    position:absolute !important;
+
+    width:220px !important;
+
+    height:220px !important;
+
+    top:-120px !important;
+
+    right:-120px !important;
+
+    border-radius:50% !important;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(0,216,239,.28),
+            transparent 70%
+        ) !important;
+
+    transition:.6s !important;
+
+    pointer-events:none !important;
+}
+
+
+section.trading-options-isolated
+.trading-options-card:hover {
+
+    transform:translateY(-12px) !important;
+
+    box-shadow:
+        0 30px 70px rgba(0,0,0,.45),
+        0 0 40px rgba(0,216,239,.18) !important;
+}
+
+
+section.trading-options-isolated
+.trading-options-card:hover::before {
+
+    transform:scale(1.4) !important;
+}
+
+
+/* =========================================================
+   CARD TOP
+   ========================================================= */
+
+section.trading-options-isolated
+.trading-options-card-top {
+
+    display:flex !important;
+
+    justify-content:space-between !important;
+
+    align-items:center !important;
+
+    gap:15px !important;
+
+    margin-bottom:20px !important;
+}
+
+
+section.trading-options-isolated
+.trading-options-card-top h1 {
+
+    margin:0 !important;
+
+    font-size:24px !important;
+
+    font-weight:800 !important;
+
+    color:#fff !important;
+
+    line-height:1.25 !important;
+}
+
+
+/* =========================================================
+   SEPARATORS
+   ========================================================= */
+
+section.trading-options-isolated
+.trading-options-separator {
+
+    width:100% !important;
+
+    height:1px !important;
+
+    margin:18px 0 !important;
+}
+
+
+section.trading-options-isolated
+.trading-options-separator-black {
+
+    background:rgba(255,255,255,.18) !important;
+}
+
+
+section.trading-options-isolated
+.trading-options-separator-yellow {
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            #00d8ef,
+            #7a00ff,
+            transparent
+        ) !important;
+
+    box-shadow:
+        0 0 12px rgba(0,216,239,.5) !important;
+}
+
+
+/* =========================================================
+   DURATION / MATURITY
+   ========================================================= */
+
+section.trading-options-isolated
+.trading-options-duration {
+
+    margin:15px 0 !important;
+
+    font-size:22px !important;
+
+    font-weight:800 !important;
+
+    color:#fff !important;
+}
+
+
+section.trading-options-isolated
+.trading-options-maturity {
+
+    margin:15px 0 25px 0 !important;
+
+    font-size:18px !important;
+
+    font-weight:600 !important;
+
+    color:rgba(255,255,255,.80) !important;
+}
+
+
+/* =========================================================
+   MINIMUM / MAXIMUM
+   ========================================================= */
+
+section.trading-options-isolated
+.trading-options-amount-grid {
+
+    display:grid !important;
+
+    grid-template-columns:1fr 1fr !important;
+
+    gap:20px !important;
+
+    margin:25px 0 !important;
+}
+
+
+section.trading-options-isolated
+.trading-options-amount-left,
+section.trading-options-isolated
+.trading-options-amount-right {
+
+    text-align:center !important;
+}
+
+
+section.trading-options-isolated
+.trading-options-amount-left h2,
+section.trading-options-isolated
+.trading-options-amount-right h2 {
+
+    margin:5px 0 !important;
+
+    font-size:15px !important;
+
+    font-weight:600 !important;
+
+    color:rgba(255,255,255,.75) !important;
+}
+
+
+section.trading-options-isolated
+.trading-options-amount {
+
+    color:#00d8ef !important;
+
+    font-size:20px !important;
+
+    font-weight:800 !important;
+
+    text-shadow:
+        0 0 10px rgba(0,216,239,.6) !important;
+}
+
+
+/* =========================================================
+   SIGNUP BUTTON
+   ========================================================= */
+
+section.trading-options-isolated
+.trading-options-signup-button {
+
+    display:inline-block !important;
+
+    width:auto !important;
+
+    margin-top:15px !important;
+
+    padding:12px 25px !important;
+
+    border-radius:25px !important;
+
+    background:#00d8ef !important;
+
+    color:#05070d !important;
+
+    font-size:15px !important;
+
+    font-weight:700 !important;
+
+    text-decoration:none !important;
+
+    transition:.3s ease !important;
+
+    box-shadow:
+        0 8px 25px rgba(0,216,239,.18) !important;
+}
+
+
+section.trading-options-isolated
+.trading-options-signup-button:hover {
+
+    background:#009bb8 !important;
+
+    color:#fff !important;
+
+    transform:translateY(-3px) !important;
+
+    box-shadow:
+        0 12px 30px rgba(0,216,239,.35) !important;
+}
+
+
+/* =========================================================
+   ANIMATION
+   ========================================================= */
+
+@keyframes tradingOptionsShine {
+
+    0% {
+        background-position:0% 50%;
+    }
+
+    50% {
+        background-position:100% 50%;
+    }
+
+    100% {
+        background-position:0% 50%;
+    }
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media(max-width:991px) {
+
+    section.trading-options-isolated {
+
+        padding:70px 0 !important;
+    }
+
+    section.trading-options-isolated
+    .trading-options-card-grid {
+
+        width:92% !important;
+
+        grid-template-columns:
+            repeat(2,1fr) !important;
+
+        gap:25px !important;
+    }
+
+    section.trading-options-isolated
+    .trading-options-subheading {
+
+        width:92% !important;
+
+        margin-bottom:45px !important;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media(max-width:600px) {
+
+    section.trading-options-isolated {
+
+        padding:60px 0 !important;
+    }
+
+    section.trading-options-isolated
+    .trading-options-heading {
+
+        width:95% !important;
+
+        font-size:25px !important;
+    }
+
+    section.trading-options-isolated
+    .trading-options-subheading {
+
+        width:95% !important;
+
+        margin-bottom:40px !important;
+
+        gap:10px !important;
+
+        font-size:16px !important;
+
+        line-height:1.5 !important;
+    }
+
+    section.trading-options-isolated
+    .trading-options-line {
+
+        width:35px !important;
+
+        flex-shrink:0 !important;
+    }
+
+    section.trading-options-isolated
+    .trading-options-card-grid {
+
+        width:95% !important;
+
+        grid-template-columns:1fr !important;
+
+        gap:24px !important;
+    }
+
+    section.trading-options-isolated
+    .trading-options-card {
+
+        padding:24px !important;
+
+        margin-bottom:0 !important;
+    }
+
+    section.trading-options-isolated
+    .trading-options-card-top h1 {
+
+        font-size:21px !important;
+    }
+
+    section.trading-options-isolated
+    .trading-options-duration {
+
+        font-size:20px !important;
+    }
+
+    section.trading-options-isolated
+    .trading-options-maturity {
+
+        font-size:16px !important;
+    }
+
+    section.trading-options-isolated
+    .trading-options-amount {
+
+        font-size:18px !important;
+    }
+
+    section.trading-options-isolated
+    .trading-options-signup-button {
+
+        width:100% !important;
+
+        box-sizing:border-box !important;
+
+        text-align:center !important;
+    }
+}
+
+
+/* =========================================================
+   SMALL PHONES
+   ========================================================= */
+
+@media(max-width:380px) {
+
+    section.trading-options-isolated
+    .trading-options-heading {
+
+        font-size:21px !important;
+    }
+
+    section.trading-options-isolated
+    .trading-options-subheading {
+
+        font-size:14px !important;
+    }
+
+    section.trading-options-isolated
+    .trading-options-card {
+
+        padding:22px 18px !important;
+    }
+
+    section.trading-options-isolated
+    .trading-options-card-top h1 {
+
+        font-size:19px !important;
+    }
+}
+/* =========================================================
+   ANALYTICS & INSIGHTS
+   ISOLATED PREMIUM STYLE
+   ========================================================= */
+
+section.analytics-insights-isolated {
+
+    width:100% !important;
+
+    padding:90px 0 !important;
+
+    position:relative !important;
+
+    overflow:hidden !important;
+
+    background:
+        radial-gradient(
+            circle at top left,
+            #004aad33,
+            transparent 40%
+        ),
+        radial-gradient(
+            circle at bottom right,
+            #7a00ff22,
+            transparent 35%
+        ),
+        linear-gradient(
+            180deg,
+            #05070d,
+            #0a1020
+        ) !important;
+}
+
+
+/* =========================================================
+   HEADING
+   ========================================================= */
+
+section.analytics-insights-isolated
+.analytics-insights-heading {
+
+    width:90% !important;
+
+    margin:0 auto 20px auto !important;
+
+    text-align:center !important;
+
+    font-size:30px !important;
+
+    font-weight:900 !important;
+
+    line-height:1.2 !important;
+
+    color:#fff !important;
+
+    text-transform:uppercase !important;
+
+    letter-spacing:2px !important;
+
+    text-shadow:
+        0 0 10px #00d8ef,
+        0 0 20px #00d8ef,
+        0 0 40px #7a00ff !important;
+}
+
+
+/* =========================================================
+   SUBTITLE
+   ========================================================= */
+
+section.analytics-insights-isolated
+.analytics-insights-subheading {
+
+    width:90% !important;
+
+    margin:0 auto 60px auto !important;
+
+    display:flex !important;
+
+    align-items:center !important;
+
+    justify-content:center !important;
+
+    gap:18px !important;
+
+    text-align:center !important;
+
+    font-size:18px !important;
+
+    font-weight:600 !important;
+
+    color:#fff !important;
+
+    letter-spacing:1px !important;
+
+    line-height:1.5 !important;
+}
+
+
+section.analytics-insights-isolated
+.analytics-insights-line {
+
+    width:80px !important;
+
+    height:2px !important;
+
+    display:block !important;
+
+    flex-shrink:0 !important;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            #00d8ef,
+            #7a00ff
+        ) !important;
+
+    box-shadow:
+        0 0 10px #00d8ef !important;
+}
+
+
+/* =========================================================
+   CHART GRID
+   ========================================================= */
+
+section.analytics-insights-isolated
+.analytics-insights-grid {
+
+    width:90% !important;
+
+    max-width:1600px !important;
+
+    margin:auto !important;
+
+    display:grid !important;
+
+    grid-template-columns:
+        repeat(2, minmax(300px,1fr)) !important;
+
+    gap:35px !important;
+
+    position:relative !important;
+
+    z-index:2 !important;
+}
+
+
+/* =========================================================
+   GLASS CHART CARD
+   ========================================================= */
+
+section.analytics-insights-isolated
+.analytics-insights-card {
+
+    position:relative !important;
+
+    overflow:hidden !important;
+
+    text-align:center !important;
+
+    padding:35px 28px !important;
+
+    border-radius:30px !important;
+
+    background:rgba(255,255,255,.08) !important;
+
+    backdrop-filter:blur(24px) !important;
+
+    -webkit-backdrop-filter:blur(24px) !important;
+
+    border:1px solid rgba(255,255,255,.12) !important;
+
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.15),
+        0 18px 45px rgba(0,0,0,.35) !important;
+
+    transition:.45s ease !important;
+
+    min-width:0 !important;
+}
+
+
+section.analytics-insights-isolated
+.analytics-insights-card::before {
+
+    content:"" !important;
+
+    position:absolute !important;
+
+    width:220px !important;
+
+    height:220px !important;
+
+    top:-120px !important;
+
+    right:-120px !important;
+
+    border-radius:50% !important;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(0,216,239,.28),
+            transparent 70%
+        ) !important;
+
+    transition:.6s !important;
+
+    pointer-events:none !important;
+}
+
+
+section.analytics-insights-isolated
+.analytics-insights-card:hover {
+
+    transform:translateY(-12px) !important;
+
+    box-shadow:
+        0 30px 70px rgba(0,0,0,.45),
+        0 0 40px rgba(0,216,239,.18) !important;
+}
+
+
+section.analytics-insights-isolated
+.analytics-insights-card:hover::before {
+
+    transform:scale(1.4) !important;
+}
+
+
+/* =========================================================
+   CHART TITLES
+   ========================================================= */
+
+section.analytics-insights-isolated
+.analytics-insights-card-title {
+
+    position:relative !important;
+
+    z-index:2 !important;
+
+    margin:0 0 25px 0 !important;
+
+    font-size:22px !important;
+
+    font-weight:800 !important;
+
+    line-height:1.3 !important;
+
+    color:#fff !important;
+
+    text-align:center !important;
+}
+
+
+/* =========================================================
+   CANVAS
+   IDs LEFT COMPLETELY UNCHANGED
+   ========================================================= */
+
+section.analytics-insights-isolated
+#roiChart,
+section.analytics-insights-isolated
+#riskRewardChart,
+section.analytics-insights-isolated
+#portfolioChart,
+section.analytics-insights-isolated
+#volumeChart {
+
+    position:relative !important;
+
+    z-index:2 !important;
+
+    display:block !important;
+
+    width:100% !important;
+
+    max-width:400px !important;
+
+    height:auto !important;
+
+    margin:0 auto !important;
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media(max-width:991px) {
+
+    section.analytics-insights-isolated {
+
+        padding:70px 0 !important;
+    }
+
+    section.analytics-insights-isolated
+    .analytics-insights-grid {
+
+        width:92% !important;
+
+        grid-template-columns:
+            repeat(2,minmax(0,1fr)) !important;
+
+        gap:25px !important;
+    }
+
+    section.analytics-insights-isolated
+    .analytics-insights-subheading {
+
+        width:92% !important;
+
+        margin-bottom:45px !important;
+    }
+
+    section.analytics-insights-isolated
+    .analytics-insights-card {
+
+        padding:30px 22px !important;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media(max-width:600px) {
+
+    section.analytics-insights-isolated {
+
+        padding:60px 0 !important;
+    }
+
+    section.analytics-insights-isolated
+    .analytics-insights-heading {
+
+        width:95% !important;
+
+        font-size:25px !important;
+
+        text-shadow:
+            0 0 15px #00d8ef,
+            0 0 30px #7a00ff,
+            0 0 60px #ff0080 !important;
+    }
+
+    section.analytics-insights-isolated
+    .analytics-insights-subheading {
+
+        width:95% !important;
+
+        margin-bottom:40px !important;
+
+        gap:10px !important;
+
+        font-size:16px !important;
+    }
+
+    section.analytics-insights-isolated
+    .analytics-insights-line {
+
+        width:35px !important;
+    }
+
+    section.analytics-insights-isolated
+    .analytics-insights-grid {
+
+        width:95% !important;
+
+        grid-template-columns:1fr !important;
+
+        gap:24px !important;
+    }
+
+    section.analytics-insights-isolated
+    .analytics-insights-card {
+
+        padding:24px !important;
+    }
+
+    section.analytics-insights-isolated
+    .analytics-insights-card-title {
+
+        font-size:21px !important;
+
+        margin-bottom:20px !important;
+    }
+
+    section.analytics-insights-isolated
+    #roiChart,
+    section.analytics-insights-isolated
+    #riskRewardChart,
+    section.analytics-insights-isolated
+    #portfolioChart,
+    section.analytics-insights-isolated
+    #volumeChart {
+
+        width:100% !important;
+
+        max-width:400px !important;
+
+        height:auto !important;
+    }
+}
+
+
+/* =========================================================
+   SMALL PHONES
+   ========================================================= */
+
+@media(max-width:380px) {
+
+    section.analytics-insights-isolated
+    .analytics-insights-heading {
+
+        font-size:21px !important;
+    }
+
+    section.analytics-insights-isolated
+    .analytics-insights-subheading {
+
+        font-size:14px !important;
+    }
+
+    section.analytics-insights-isolated
+    .analytics-insights-card {
+
+        padding:22px 18px !important;
+    }
+
+    section.analytics-insights-isolated
+    .analytics-insights-card-title {
+
+        font-size:19px !important;
+    }
+}

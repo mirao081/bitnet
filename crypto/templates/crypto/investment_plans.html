@@ -166,74 +166,165 @@
         <canvas id="marketChart"></canvas>
 
     </div>
+<section class="trading-options-isolated">
 
-<section class="investment-section">
-    <h1 class="investment-title">
+    <h1 class="trading-options-heading">
         <a href="{% url 'crypto:investment_plans' %}">
-            TRADING <span>OPTIONS</span>
+            TRADING <span class="trading-options-heading-accent">OPTIONS</span>
         </a>
     </h1>
-    <p class="investment-subtitle">
-        <span class="line"></span>
+
+    <p class="trading-options-subheading">
+        <span class="trading-options-line"></span>
+
         CHOOSE YOUR PREFERABLE PLAN FOR INVESTMENT
-        <span class="line"></span>
+
+        <span class="trading-options-line"></span>
     </p>
 
-    <div class="investment-cards">
+
+    <div class="trading-options-card-grid">
+
         {% for plan in plans %}
-        <div class="investment-card">
-            <div class="card-top">
-                <h1>{{ plan.name }}</h1>
-                <h1>{{ plan.percentage_text }}</h1>
+
+        <div class="trading-options-card">
+
+            <div class="trading-options-card-top">
+
+                <h1>
+                    {{ plan.name }}
+                </h1>
+
+                <h1>
+                    {{ plan.percentage_text }}
+                </h1>
+
             </div>
-            <div class="separator black"></div>
-            <h1 class="duration">{{ plan.duration_text }}</h1>
-            <div class="separator yellow"></div>
-            <h1 class="grey">{{ plan.maturity_text }}</h1>
-            <div class="headers">
-                <div class="header-left">
-                    <h2>Minimum</h2>
-                    <h2 class="amount">${{ plan.min_amount }}</h2>
+
+
+            <div class="trading-options-separator trading-options-separator-black"></div>
+
+
+            <h1 class="trading-options-duration">
+                {{ plan.duration_text }}
+            </h1>
+
+
+            <div class="trading-options-separator trading-options-separator-yellow"></div>
+
+
+            <h1 class="trading-options-maturity">
+                {{ plan.maturity_text }}
+            </h1>
+
+
+            <div class="trading-options-amount-grid">
+
+                <div class="trading-options-amount-left">
+
+                    <h2>
+                        Minimum
+                    </h2>
+
+                    <h2 class="trading-options-amount">
+                        ${{ plan.min_amount }}
+                    </h2>
+
                 </div>
-                <div class="header-right">
-                    <h2>Maximum</h2>
-                    <h2 class="amount">${{ plan.max_amount }}</h2>
+
+
+                <div class="trading-options-amount-right">
+
+                    <h2>
+                        Maximum
+                    </h2>
+
+                    <h2 class="trading-options-amount">
+                        ${{ plan.max_amount }}
+                    </h2>
+
                 </div>
+
             </div>
-            <a href="{{ plan.button_url }}" class="signup-button">
+
+
+            <a href="{{ plan.button_url }}"
+               class="trading-options-signup-button">
                 {{ plan.button_text }}
             </a>
+
         </div>
+
         {% endfor %}
+
     </div>
+
 </section>
 
-<section class="investment-section charts-professional">
-    <h1 class="investment-title">Analytics & Insights</h1>
-    <p class="investment-subtitle">
-        <span class="line"></span>
+<section class="analytics-insights-isolated">
+
+    <h1 class="analytics-insights-heading">
+        Analytics &amp; Insights
+    </h1>
+
+    <p class="analytics-insights-subheading">
+
+        <span class="analytics-insights-line"></span>
+
         DEEPER LOOK INTO PERFORMANCE
-        <span class="line"></span>
+
+        <span class="analytics-insights-line"></span>
+
     </p>
 
-    <div class="charts-grid">
-        <div class="chart-card">
-            <h2>ROI Comparison</h2>
+
+    <div class="analytics-insights-grid">
+
+        <div class="analytics-insights-card">
+
+            <h2 class="analytics-insights-card-title">
+                ROI Comparison
+            </h2>
+
             <canvas id="roiChart" width="400" height="300"></canvas>
+
         </div>
-        <div class="chart-card">
-            <h2>Risk vs Reward</h2>
+
+
+        <div class="analytics-insights-card">
+
+            <h2 class="analytics-insights-card-title">
+                Risk vs Reward
+            </h2>
+
             <canvas id="riskRewardChart" width="400" height="300"></canvas>
+
         </div>
-        <div class="chart-card">
-            <h2>Portfolio Allocation</h2>
+
+
+        <div class="analytics-insights-card">
+
+            <h2 class="analytics-insights-card-title">
+                Portfolio Allocation
+            </h2>
+
             <canvas id="portfolioChart" width="400" height="300"></canvas>
+
         </div>
-        <div class="chart-card">
-            <h2>Market Volume Trends</h2>
+
+
+        <div class="analytics-insights-card">
+
+            <h2 class="analytics-insights-card-title">
+                Market Volume Trends
+            </h2>
+
             <canvas id="volumeChart" width="400" height="300"></canvas>
+
         </div>
+
     </div>
+
 </section>
 
 <section class="trust-security">
