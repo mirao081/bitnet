@@ -107,15 +107,12 @@
     flex-wrap:wrap;
 }
 
-.crypto-partnerships .crypto-grid img:last-child {
-    width:300px; /* last image larger on desktop */
-    height:auto;
-    border-radius:50%;
+crypto-partnerships .crypto-grid img.crypto-icon {
+    width:200px;      
+    height:200px;     
+    border-radius:50%; 
+    object-fit:cover;  
 }
-
-/*=========================
-        BUTTON
-=========================*/
 .crypto-button {
     display:inline-block;
     margin-top:15px;
@@ -190,6 +187,11 @@
     text-align:center;
     margin-bottom:25px;
     text-shadow:0 0 15px #00d8ef;
+}
+.crypto-section-title,
+.crypto-hero-title,
+.crypto-hero-subtitle {
+    color:#fff !important;
 }
 
 .crypto-section-text {
