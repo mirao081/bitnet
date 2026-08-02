@@ -724,8 +724,6 @@ section.investment-plans-isolated
 
     display:block !important;
 }
-
-
 /* =========================================================
    TABLET
    ========================================================= */
@@ -793,10 +791,11 @@ section.investment-plans-isolated
         padding:35px 20px !important;
     }
 
+    /* ONLY THE SLIDE HEADING */
     section.investment-plans-isolated
     .investment-plans-slide-title {
 
-        font-size:25px !important;
+        font-size:17px !important;
 
         text-shadow:
             0 0 15px #00d8ef,
@@ -900,6 +899,7 @@ section.investment-plans-isolated
 
 @media(max-width:380px) {
 
+    /* Keep the slide heading at 17px */
     section.investment-plans-isolated
     .investment-plans-slide-title {
 
