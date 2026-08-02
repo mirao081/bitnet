@@ -17,7 +17,7 @@ body.bitnet-login-body {
 
 /* Main container */
 .bitnet-login-container {
-  max-width:360px;
+  max-width:420px;   /* increased base width */
   width:100%;
   padding:32px 24px;
   border-radius:25px;
@@ -121,7 +121,7 @@ body.bitnet-login-body {
 
 .bitnet-auth-switch a:hover { color:#ff0080; }
 
-/* 📱 Responsive — force 400px on mobile */
+/* 📱 Responsive — enforce 400px on mobile */
 @media(max-width:480px){
   .bitnet-login-container {
     max-width:400px;   /* fixed width on mobile */
@@ -129,5 +129,5 @@ body.bitnet-login-body {
     padding:40px 28px; /* generous padding */
   }
   .bitnet-login-logo .bitnet-site-name { font-size:26px; }
-  .form-group input, .bitnet-login-button { font-size:15px; padding:14px; }
+  .form-group input, .bitnet-login-button { font-size:16px; padding:16px; }
 }
