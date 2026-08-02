@@ -1,397 +1,509 @@
-.investment-plans-isolated {
-    width:100%;
-    padding:90px 0;
-    position:relative;
-    overflow:hidden;
+/* =========================================================
+   INVESTMENT PLANS — HARD ISOLATED STYLE
+   ========================================================= */
+
+/* MAIN CONTAINER */
+section.investment-plans-isolated {
+    width:100% !important;
+    padding:90px 0 !important;
+    position:relative !important;
+    overflow:hidden !important;
 
     background:
-        radial-gradient(
-            circle at top left,
-            #004aad33,
-            transparent 40%
-        ),
-        radial-gradient(
-            circle at bottom right,
-            #7a00ff22,
-            transparent 35%
-        ),
-        linear-gradient(
-            180deg,
-            #05070d,
-            #0a1020
-        );
+        radial-gradient(circle at top left,#004aad33,transparent 40%),
+        radial-gradient(circle at bottom right,#7a00ff22,transparent 35%),
+        linear-gradient(180deg,#05070d,#0a1020) !important;
+
+    box-sizing:border-box !important;
 }
 
 
-/* ==========================================
+/* =========================================================
    CAROUSEL
-   JS CLASSES PRESERVED BUT OVERRIDDEN
-========================================== */
+   JS CLASSES ARE KEPT
+   ========================================================= */
 
-.investment-plans-isolated .carousel-container {
+section.investment-plans-isolated
+.carousel-container.investment-plans-carousel {
 
-    width:90%;
-    max-width:1600px;
+    width:90% !important;
+    max-width:1600px !important;
 
-    margin:0 auto;
+    min-height:420px !important;
 
-    position:relative;
+    margin:0 auto !important;
+    padding:40px 20px !important;
 
-    min-height:420px;
+    position:relative !important;
 
-    display:flex;
-    align-items:center;
-    justify-content:center;
+    display:flex !important;
+    align-items:center !important;
+    justify-content:center !important;
 
-    overflow:hidden;
+    overflow:hidden !important;
 
-    background:transparent;
+    background:transparent !important;
 
-    padding:40px 20px;
-
-    box-sizing:border-box;
+    box-sizing:border-box !important;
 }
 
 
-.investment-plans-isolated .carousel-slide {
+/* =========================================================
+   CAROUSEL SLIDE
+   ========================================================= */
 
-    width:100%;
+section.investment-plans-isolated
+.carousel-container
+.carousel-slide.investment-plans-slide {
 
-    text-align:center;
+    width:100% !important;
 
-    padding:50px 30px;
+    min-height:320px !important;
 
-    box-sizing:border-box;
+    padding:50px 30px !important;
 
-    background:rgba(255,255,255,.08);
+    margin:0 !important;
 
-    border:1px solid rgba(255,255,255,.12);
+    box-sizing:border-box !important;
 
-    border-radius:30px;
+    text-align:center !important;
 
-    backdrop-filter:blur(24px);
-    -webkit-backdrop-filter:blur(24px);
+    border-radius:30px !important;
+
+    background:rgba(255,255,255,.08) !important;
+
+    backdrop-filter:blur(24px) !important;
+    -webkit-backdrop-filter:blur(24px) !important;
+
+    border:1px solid rgba(255,255,255,.12) !important;
 
     box-shadow:
         inset 0 1px 0 rgba(255,255,255,.15),
-        0 18px 45px rgba(0,0,0,.35);
+        0 18px 45px rgba(0,0,0,.35) !important;
 
+    position:relative !important;
+
+    overflow:hidden !important;
 }
 
 
-/*
-   Preserve the JS active class but prevent
-   outside active styles from breaking this section.
-*/
+/* Force the first/active slide to remain visible */
+section.investment-plans-isolated
+.carousel-slide.active {
 
-.investment-plans-isolated .carousel-slide.active {
-
-    position:relative;
-
-    opacity:1;
-
-    visibility:visible;
-
-    transform:none;
+    opacity:1 !important;
+    visibility:visible !important;
 }
 
 
-/* ==========================================
-   CAROUSEL TITLE
-========================================== */
+/* =========================================================
+   HERO TITLE
+   ========================================================= */
 
+section.investment-plans-isolated
 .investment-plans-slide-title {
 
-    font-size:32px !important;
-
+    font-size:25px !important;
     font-weight:900 !important;
 
     color:#fff !important;
 
-    margin:0 0 15px !important;
+    text-transform:uppercase !important;
+
+    letter-spacing:2px !important;
 
     line-height:1.25 !important;
 
-    text-transform:uppercase;
+    margin:0 0 15px !important;
+    padding:0 !important;
 
-    letter-spacing:2px;
+    text-align:center !important;
 
     text-shadow:
         0 0 10px #00d8ef,
         0 0 20px #00d8ef,
-        0 0 40px #7a00ff;
+        0 0 40px #7a00ff !important;
+
+    animation:investmentPlansGlow 3s infinite alternate !important;
 }
 
 
+@keyframes investmentPlansGlow {
+
+    from {
+        text-shadow:
+            0 0 10px #00d8ef,
+            0 0 20px #00d8ef !important;
+    }
+
+    to {
+        text-shadow:
+            0 0 20px #7a00ff,
+            0 0 40px #ff0080 !important;
+    }
+
+}
+
+
+/* =========================================================
+   HERO SUBTITLE
+   ========================================================= */
+
+section.investment-plans-isolated
 .investment-plans-slide-subtitle {
 
     font-size:18px !important;
 
-    color:rgba(255,255,255,.8) !important;
+    font-weight:600 !important;
 
     line-height:1.6 !important;
 
+    color:rgba(255,255,255,.8) !important;
+
     margin:0 0 25px !important;
+
+    text-align:center !important;
+
+    background:
+        linear-gradient(
+            90deg,
+            #00d8ef,
+            #7a00ff,
+            #ff0080
+        ) !important;
+
+    -webkit-background-clip:text !important;
+    background-clip:text !important;
+
+    -webkit-text-fill-color:transparent !important;
+
+    background-size:200% auto !important;
+
+    animation:investmentPlansShine 6s linear infinite !important;
 }
 
 
-/* ==========================================
+@keyframes investmentPlansShine {
+
+    0% {
+        background-position:0% 50%;
+    }
+
+    50% {
+        background-position:100% 50%;
+    }
+
+    100% {
+        background-position:0% 50%;
+    }
+
+}
+
+
+/* =========================================================
+   BUTTONS
    IMPORTANT:
-   KEEP BUTTON CLASSES FOR YOUR EXISTING JS
-   BUT SCOPE THEIR VISUAL STYLE
-========================================== */
+   btn btn-primary / btn btn-secondary ARE NOT RENAMED
+   ========================================================= */
 
-.investment-plans-isolated .btn.btn-primary,
-.investment-plans-isolated .btn.btn-secondary {
+section.investment-plans-isolated
+.btn.btn-primary,
+section.investment-plans-isolated
+.btn.btn-secondary {
 
-    display:inline-block;
+    display:inline-block !important;
 
-    margin:8px;
+    width:auto !important;
 
-    padding:12px 24px;
+    margin:8px !important;
 
-    border-radius:20px;
+    padding:10px 20px !important;
 
-    text-decoration:none;
+    border-radius:20px !important;
 
-    font-weight:600;
+    font-size:inherit !important;
 
-    transition:.3s;
+    font-weight:600 !important;
 
-    box-sizing:border-box;
+    line-height:normal !important;
+
+    text-decoration:none !important;
+
+    transition:.3s ease !important;
+
+    box-sizing:border-box !important;
 }
 
 
-.investment-plans-isolated .btn.btn-primary {
+section.investment-plans-isolated
+.btn.btn-primary {
 
-    background:#00d8ef;
+    background:#00d8ef !important;
 
-    color:#05070d;
+    color:#05070d !important;
 
-    border:1px solid #00d8ef;
+    border:1px solid #00d8ef !important;
 }
 
 
-.investment-plans-isolated .btn.btn-primary:hover {
+section.investment-plans-isolated
+.btn.btn-primary:hover {
 
-    background:#009bb8;
+    background:#009bb8 !important;
 
-    color:#fff;
-
-    box-shadow:0 0 25px rgba(0,216,239,.4);
+    color:#fff !important;
 }
 
 
-.investment-plans-isolated .btn.btn-secondary {
+section.investment-plans-isolated
+.btn.btn-secondary {
 
-    background:rgba(255,255,255,.08);
+    background:rgba(255,255,255,.08) !important;
 
-    color:#fff;
+    color:#fff !important;
 
-    border:1px solid rgba(255,255,255,.2);
+    border:1px solid rgba(255,255,255,.12) !important;
 }
 
 
-.investment-plans-isolated .btn.btn-secondary:hover {
+section.investment-plans-isolated
+.btn.btn-secondary:hover {
 
-    background:rgba(255,255,255,.15);
+    background:#009bb8 !important;
 
-    color:#00d8ef;
+    color:#fff !important;
 }
 
 
-/* ==========================================
+/* =========================================================
    CAROUSEL ARROWS
    JS CLASSES PRESERVED
-========================================== */
+   ========================================================= */
 
-.investment-plans-isolated .carousel-prev,
-.investment-plans-isolated .carousel-next {
+section.investment-plans-isolated
+.carousel-prev,
+section.investment-plans-isolated
+.carousel-next {
 
-    position:absolute;
+    position:absolute !important;
 
-    top:50%;
+    top:50% !important;
 
-    transform:translateY(-50%);
+    transform:translateY(-50%) !important;
 
-    width:42px;
-    height:42px;
+    width:42px !important;
+    height:42px !important;
 
-    display:flex;
+    display:flex !important;
 
-    align-items:center;
-    justify-content:center;
+    align-items:center !important;
+    justify-content:center !important;
 
-    border-radius:50%;
+    border-radius:50% !important;
 
-    background:rgba(255,255,255,.08);
+    background:rgba(255,255,255,.08) !important;
 
-    border:1px solid rgba(255,255,255,.15);
+    border:1px solid rgba(255,255,255,.12) !important;
 
-    color:#fff;
+    color:#fff !important;
 
-    cursor:pointer;
+    cursor:pointer !important;
 
-    z-index:10;
+    z-index:20 !important;
 
-    transition:.3s;
+    transition:.3s ease !important;
+
+    box-sizing:border-box !important;
 }
 
 
-.investment-plans-isolated .carousel-prev {
-    left:10px;
+section.investment-plans-isolated
+.carousel-prev {
+    left:10px !important;
 }
 
 
-.investment-plans-isolated .carousel-next {
-    right:10px;
+section.investment-plans-isolated
+.carousel-next {
+    right:10px !important;
 }
 
 
-.investment-plans-isolated .carousel-prev:hover,
-.investment-plans-isolated .carousel-next:hover {
+section.investment-plans-isolated
+.carousel-prev:hover,
+section.investment-plans-isolated
+.carousel-next:hover {
 
-    background:#00d8ef;
+    background:#00d8ef !important;
 
-    color:#05070d;
+    color:#05070d !important;
 
-    box-shadow:0 0 25px rgba(0,216,239,.4);
+    box-shadow:0 0 25px rgba(0,216,239,.4) !important;
 }
 
 
-/* ==========================================
+/* =========================================================
    CARD GRID
-========================================== */
+   ========================================================= */
 
+section.investment-plans-isolated
 .investment-plans-card-grid {
 
-    width:90%;
-    max-width:1600px;
+    width:90% !important;
 
-    margin:40px auto;
+    max-width:1600px !important;
 
-    display:grid;
+    margin:40px auto !important;
+
+    display:grid !important;
 
     grid-template-columns:
-        repeat(auto-fit,minmax(300px,1fr));
+        repeat(auto-fit,minmax(300px,1fr)) !important;
 
-    gap:35px;
+    gap:35px !important;
+
+    position:relative !important;
+
+    z-index:2 !important;
+
+    box-sizing:border-box !important;
 }
 
 
-/* ==========================================
+/* =========================================================
    GLASS CARDS
-========================================== */
+   ========================================================= */
 
+section.investment-plans-isolated
 .investment-plans-card,
+section.investment-plans-isolated
 .investment-plans-market-card,
+section.investment-plans-isolated
 .investment-plans-information-card,
+section.investment-plans-isolated
 .investment-plans-chart-card {
 
-    position:relative;
+    position:relative !important;
 
-    overflow:hidden;
+    overflow:hidden !important;
 
-    text-align:center;
+    text-align:center !important;
 
-    padding:35px 28px;
+    padding:35px 28px !important;
 
-    border-radius:30px;
+    margin-bottom:40px !important;
 
-    background:rgba(255,255,255,.08);
+    border-radius:30px !important;
 
-    backdrop-filter:blur(24px);
-    -webkit-backdrop-filter:blur(24px);
+    background:rgba(255,255,255,.08) !important;
 
-    border:1px solid rgba(255,255,255,.12);
+    backdrop-filter:blur(24px) !important;
+    -webkit-backdrop-filter:blur(24px) !important;
+
+    border:1px solid rgba(255,255,255,.12) !important;
 
     box-shadow:
         inset 0 1px 0 rgba(255,255,255,.15),
-        0 18px 45px rgba(0,0,0,.35);
+        0 18px 45px rgba(0,0,0,.35) !important;
 
-    transition:.45s ease;
+    transition:.45s ease !important;
 
-    box-sizing:border-box;
+    box-sizing:border-box !important;
 }
 
 
+section.investment-plans-isolated
 .investment-plans-card::before,
+section.investment-plans-isolated
 .investment-plans-market-card::before,
+section.investment-plans-isolated
 .investment-plans-information-card::before,
+section.investment-plans-isolated
 .investment-plans-chart-card::before {
 
-    content:"";
+    content:"" !important;
 
-    position:absolute;
+    position:absolute !important;
 
-    width:220px;
-    height:220px;
+    width:220px !important;
+    height:220px !important;
 
-    top:-120px;
-    right:-120px;
+    top:-120px !important;
+    right:-120px !important;
 
-    border-radius:50%;
+    border-radius:50% !important;
 
     background:
         radial-gradient(
             circle,
             rgba(0,216,239,.28),
             transparent 70%
-        );
+        ) !important;
 
-    transition:.6s;
+    transition:.6s !important;
 
-    pointer-events:none;
+    pointer-events:none !important;
 }
 
 
+section.investment-plans-isolated
 .investment-plans-card:hover,
+section.investment-plans-isolated
 .investment-plans-market-card:hover,
+section.investment-plans-isolated
 .investment-plans-information-card:hover,
+section.investment-plans-isolated
 .investment-plans-chart-card:hover {
 
-    transform:translateY(-12px);
+    transform:translateY(-12px) !important;
 
     box-shadow:
         0 30px 70px rgba(0,0,0,.45),
-        0 0 40px rgba(0,216,239,.18);
+        0 0 40px rgba(0,216,239,.18) !important;
 }
 
 
+section.investment-plans-isolated
 .investment-plans-card:hover::before,
+section.investment-plans-isolated
 .investment-plans-market-card:hover::before,
+section.investment-plans-isolated
 .investment-plans-information-card:hover::before,
+section.investment-plans-isolated
 .investment-plans-chart-card:hover::before {
 
-    transform:scale(1.4);
+    transform:scale(1.4) !important;
 }
 
 
-/* ==========================================
+/* =========================================================
    BITCOIN ICON
-========================================== */
+   ========================================================= */
 
+section.investment-plans-isolated
 .investment-plans-bitcoin-icon {
 
-    display:block;
+    display:block !important;
 
-    margin:0 auto 20px;
+    margin:0 auto 20px !important;
 
-    font-size:42px;
+    font-size:42px !important;
 
-    color:#00d8ef;
+    color:#00d8ef !important;
 
     text-shadow:
         0 0 10px #00d8ef,
-        0 0 25px #7a00ff;
+        0 0 25px #7a00ff !important;
 }
 
 
-/* ==========================================
-   CARD TEXT
-========================================== */
+/* =========================================================
+   CARD TITLES
+   ========================================================= */
 
+section.investment-plans-isolated
 .investment-plans-card-title,
+section.investment-plans-isolated
 .investment-plans-about-title {
 
     font-size:24px !important;
@@ -402,11 +514,19 @@
 
     margin:0 0 15px !important;
 
+    padding:0 !important;
+
     line-height:1.25 !important;
 }
 
 
+/* =========================================================
+   CARD DESCRIPTION
+   ========================================================= */
+
+section.investment-plans-isolated
 .investment-plans-card-description,
+section.investment-plans-isolated
 .investment-plans-about-text {
 
     font-size:15px !important;
@@ -415,76 +535,74 @@
 
     line-height:1.6 !important;
 
-    margin-bottom:20px !important;
+    margin:0 0 20px !important;
+
+    padding:0 !important;
 }
 
 
-/* ==========================================
+/* =========================================================
    ABOUT GRID
-========================================== */
+   ========================================================= */
 
+section.investment-plans-isolated
 .investment-plans-about-grid {
 
-    width:90%;
-    max-width:1600px;
+    width:90% !important;
 
-    margin:50px auto;
+    max-width:1600px !important;
 
-    display:grid;
+    margin:50px auto !important;
 
-    grid-template-columns:
-        repeat(2,minmax(0,1fr));
+    display:grid !important;
 
-    gap:35px;
+    grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+
+    gap:35px !important;
+
+    box-sizing:border-box !important;
 }
 
 
-/* ==========================================
+/* =========================================================
    TRADINGVIEW
-========================================== */
+   ========================================================= */
 
+section.investment-plans-isolated
 .investment-plans-market-card iframe {
 
-    display:block;
+    display:block !important;
 
-    width:100%;
+    width:100% !important;
 
-    height:400px;
+    height:400px !important;
 
-    border:0;
+    border:0 !important;
 
-    border-radius:20px;
+    border-radius:20px !important;
 
-    position:relative;
-
-    z-index:2;
+    box-sizing:border-box !important;
 }
 
 
-/* ==========================================
+/* =========================================================
    ABOUT LINKS
-========================================== */
+   ========================================================= */
 
+section.investment-plans-isolated
 .investment-plans-navigation-links {
 
-    display:flex;
+    text-align:center !important;
 
-    justify-content:center;
+    margin:25px 0 !important;
 
-    align-items:center;
+    position:relative !important;
 
-    flex-wrap:wrap;
-
-    gap:8px;
-
-    margin:25px 0;
-
-    position:relative;
-
-    z-index:3;
+    z-index:5 !important;
 }
 
 
+section.investment-plans-isolated
 .investment-plans-navigation-links a {
 
     color:#00d8ef !important;
@@ -495,37 +613,40 @@
 
     text-decoration:none !important;
 
-    transition:.3s;
+    transition:.3s !important;
 }
 
 
+section.investment-plans-isolated
 .investment-plans-navigation-links a:hover {
 
     color:#fff !important;
 
-    text-shadow:0 0 10px #00d8ef;
+    text-shadow:0 0 10px #00d8ef !important;
 }
 
 
+section.investment-plans-isolated
 .investment-plans-navigation-links span {
 
-    color:rgba(255,255,255,.35);
+    color:rgba(255,255,255,.35) !important;
 }
 
 
-/* ==========================================
+/* =========================================================
    READ MORE
-========================================== */
+   ========================================================= */
 
+section.investment-plans-isolated
 .investment-plans-read-more {
 
-    display:inline-block;
+    display:inline-block !important;
 
-    margin-top:15px;
+    margin-top:15px !important;
 
-    padding:10px 20px;
+    padding:10px 20px !important;
 
-    border-radius:20px;
+    border-radius:20px !important;
 
     background:#00d8ef !important;
 
@@ -535,14 +656,11 @@
 
     text-decoration:none !important;
 
-    transition:.3s;
-
-    position:relative;
-
-    z-index:3;
+    transition:.3s !important;
 }
 
 
+section.investment-plans-isolated
 .investment-plans-read-more:hover {
 
     background:#009bb8 !important;
@@ -551,20 +669,22 @@
 }
 
 
-/* ==========================================
+/* =========================================================
    CHART
-========================================== */
+   ========================================================= */
 
+section.investment-plans-isolated
 .investment-plans-chart-card {
 
-    width:90%;
+    width:90% !important;
 
-    max-width:1600px;
+    max-width:1600px !important;
 
-    margin:40px auto;
+    margin:40px auto !important;
 }
 
 
+section.investment-plans-isolated
 .investment-plans-chart-heading {
 
     font-size:25px !important;
@@ -573,157 +693,168 @@
 
     color:#fff !important;
 
-    text-transform:uppercase;
+    text-transform:uppercase !important;
 
-    letter-spacing:2px;
+    letter-spacing:2px !important;
 
     margin:0 0 20px !important;
 }
 
 
-/* ==========================================
+/* =========================================================
    CANVAS
-   IDs UNCHANGED
-========================================== */
+   IDs LEFT UNCHANGED
+   ========================================================= */
 
-.investment-plans-isolated #moveableCanvas {
+section.investment-plans-isolated
+#moveableCanvas {
 
-    max-width:100%;
+    max-width:100% !important;
 
-    margin:30px auto;
+    display:block !important;
 
-    display:block;
+    margin:30px auto !important;
 }
 
 
-.investment-plans-isolated #marketChart {
+section.investment-plans-isolated
+#marketChart {
 
-    max-width:100%;
+    max-width:100% !important;
 
-    display:block;
+    display:block !important;
 }
 
 
-/* ==========================================
+/* =========================================================
    TABLET
-========================================== */
+   ========================================================= */
 
 @media(max-width:991px) {
 
-    .investment-plans-isolated {
+    section.investment-plans-isolated {
 
-        padding:70px 0;
+        padding:70px 0 !important;
     }
 
-
+    section.investment-plans-isolated
     .investment-plans-card-grid {
 
-        width:92%;
+        width:92% !important;
 
         grid-template-columns:
-            repeat(2,minmax(0,1fr));
+            repeat(2,1fr) !important;
 
-        gap:25px;
+        gap:25px !important;
     }
 
-
+    section.investment-plans-isolated
     .investment-plans-about-grid {
 
-        width:92%;
+        width:92% !important;
 
-        grid-template-columns:1fr;
+        grid-template-columns:1fr !important;
 
-        gap:25px;
+        gap:25px !important;
     }
 
-
+    section.investment-plans-isolated
     .investment-plans-carousel {
 
-        width:92%;
+        width:92% !important;
     }
-
 }
 
 
-/* ==========================================
+/* =========================================================
    MOBILE
-========================================== */
+   ========================================================= */
 
 @media(max-width:600px) {
 
-    .investment-plans-isolated {
+    section.investment-plans-isolated {
 
-        padding:60px 0;
+        padding:60px 0 !important;
     }
 
-
+    section.investment-plans-isolated
     .investment-plans-carousel {
 
-        width:95%;
+        width:95% !important;
 
-        min-height:360px;
+        min-height:360px !important;
 
-        padding:25px 10px;
+        padding:25px 10px !important;
     }
 
+    section.investment-plans-isolated
+    .carousel-slide.investment-plans-slide {
 
-    .investment-plans-isolated .carousel-slide {
-
-        padding:35px 20px;
+        padding:35px 20px !important;
     }
 
-
+    section.investment-plans-isolated
     .investment-plans-slide-title {
 
         font-size:25px !important;
+
+        text-shadow:
+            0 0 15px #00d8ef,
+            0 0 30px #7a00ff,
+            0 0 60px #ff0080 !important;
     }
 
-
+    section.investment-plans-isolated
     .investment-plans-slide-subtitle {
 
         font-size:16px !important;
     }
 
-
+    section.investment-plans-isolated
     .investment-plans-card-grid {
 
-        width:95%;
+        width:95% !important;
 
-        grid-template-columns:1fr;
+        grid-template-columns:1fr !important;
 
-        gap:24px;
+        gap:24px !important;
     }
 
-
+    section.investment-plans-isolated
     .investment-plans-about-grid {
 
-        width:95%;
+        width:95% !important;
 
-        grid-template-columns:1fr;
+        grid-template-columns:1fr !important;
 
-        gap:24px;
+        gap:24px !important;
     }
 
-
+    section.investment-plans-isolated
     .investment-plans-card,
+    section.investment-plans-isolated
     .investment-plans-market-card,
+    section.investment-plans-isolated
     .investment-plans-information-card,
+    section.investment-plans-isolated
     .investment-plans-chart-card {
 
-        padding:24px;
+        padding:24px !important;
 
-        margin-bottom:0;
+        margin-bottom:24px !important;
     }
 
-
+    section.investment-plans-isolated
     .investment-plans-card-title,
+    section.investment-plans-isolated
     .investment-plans-about-title {
 
         font-size:21px !important;
     }
 
-
+    section.investment-plans-isolated
     .investment-plans-card-description,
+    section.investment-plans-isolated
     .investment-plans-about-text {
 
         font-size:14px !important;
@@ -731,45 +862,57 @@
         line-height:1.5 !important;
     }
 
+    section.investment-plans-isolated
+    .btn.btn-primary,
+    section.investment-plans-isolated
+    .btn.btn-secondary {
 
-    .investment-plans-isolated .carousel-prev,
-    .investment-plans-isolated .carousel-next {
+        display:block !important;
 
-        width:35px;
-        height:35px;
+        width:100% !important;
+
+        margin:10px 0 !important;
     }
 
-
-    .investment-plans-isolated .carousel-prev {
-        left:5px;
-    }
-
-
-    .investment-plans-isolated .carousel-next {
-        right:5px;
-    }
-
-
-    .investment-plans-isolated .btn.btn-primary,
-    .investment-plans-isolated .btn.btn-secondary {
-
-        display:block;
-
-        width:100%;
-
-        margin:10px 0;
-    }
-
-
+    section.investment-plans-isolated
     .investment-plans-market-card iframe {
 
-        height:350px;
+        height:350px !important;
     }
 
-
+    section.investment-plans-isolated
     .investment-plans-chart-card {
 
-        width:95%;
+        width:95% !important;
     }
 
+    section.investment-plans-isolated
+    .investment-plans-chart-heading {
+
+        font-size:21px !important;
+    }
+}
+
+
+/* =========================================================
+   SMALL PHONES
+   ========================================================= */
+
+@media(max-width:380px) {
+
+    section.investment-plans-isolated
+    .investment-plans-slide-title {
+
+        font-size:22px !important;
+    }
+
+    section.investment-plans-isolated
+    .investment-plans-card,
+    section.investment-plans-isolated
+    .investment-plans-market-card,
+    section.investment-plans-isolated
+    .investment-plans-information-card {
+
+        padding:22px 18px !important;
+    }
 }
