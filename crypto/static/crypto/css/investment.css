@@ -3355,3 +3355,790 @@ section.mission-showcase-isolated {
         font-size:19px !important;
     }
 }
+/* =========================================================
+   INVESTOR TESTIMONIALS
+   ISOLATED PREMIUM STYLE
+   ========================================================= */
+
+section.investor-testimonials-isolated {
+
+    width:100% !important;
+
+    padding:90px 0 !important;
+
+    position:relative !important;
+
+    overflow:hidden !important;
+
+    background:
+        radial-gradient(
+            circle at top left,
+            #004aad33,
+            transparent 40%
+        ),
+        radial-gradient(
+            circle at bottom right,
+            #7a00ff22,
+            transparent 35%
+        ),
+        linear-gradient(
+            180deg,
+            #05070d,
+            #0a1020
+        ) !important;
+}
+
+
+.investor-testimonials-inner {
+
+    width:90% !important;
+
+    max-width:1600px !important;
+
+    margin:auto !important;
+
+    position:relative !important;
+
+    z-index:2 !important;
+}
+
+
+/* =========================================================
+   HEADING
+   ========================================================= */
+
+.investor-testimonials-heading {
+
+    margin:0 0 20px 0 !important;
+
+    text-align:center !important;
+
+    font-size:30px !important;
+
+    font-weight:900 !important;
+
+    text-transform:uppercase !important;
+
+    letter-spacing:2px !important;
+
+    line-height:1.2 !important;
+
+    background:
+        linear-gradient(
+            90deg,
+            #00d8ef,
+            #7a00ff,
+            #ff0080
+        ) !important;
+
+    background-size:200% auto !important;
+
+    -webkit-background-clip:text !important;
+
+    background-clip:text !important;
+
+    -webkit-text-fill-color:transparent !important;
+
+    color:transparent !important;
+
+    animation:
+        investorTestimonialsHeadingFlow 5s linear infinite !important;
+
+    filter:
+        drop-shadow(0 0 8px rgba(0,216,239,.45))
+        drop-shadow(0 0 15px rgba(122,0,255,.30)) !important;
+}
+
+
+@keyframes investorTestimonialsHeadingFlow {
+
+    0% {
+        background-position:0% 50%;
+    }
+
+    50% {
+        background-position:100% 50%;
+    }
+
+    100% {
+        background-position:0% 50%;
+    }
+}
+
+
+/* =========================================================
+   INTRO
+   ========================================================= */
+
+.investor-testimonials-intro {
+
+    width:90% !important;
+
+    max-width:900px !important;
+
+    margin:0 auto 55px auto !important;
+
+    text-align:center !important;
+
+    font-size:17px !important;
+
+    line-height:1.7 !important;
+
+    color:rgba(255,255,255,.78) !important;
+}
+
+
+/* =========================================================
+   TESTIMONIAL GRID
+   ========================================================= */
+
+.investor-testimonials-grid {
+
+    width:100% !important;
+
+    display:grid !important;
+
+    grid-template-columns:
+        repeat(3,minmax(0,1fr)) !important;
+
+    gap:35px !important;
+}
+
+
+/* =========================================================
+   TESTIMONIAL CARD
+   ========================================================= */
+
+.investor-testimonials-card {
+
+    position:relative !important;
+
+    overflow:hidden !important;
+
+    padding:35px 28px !important;
+
+    margin:0 !important;
+
+    text-align:center !important;
+
+    border-radius:30px !important;
+
+    background:rgba(255,255,255,.08) !important;
+
+    backdrop-filter:blur(24px) !important;
+
+    -webkit-backdrop-filter:blur(24px) !important;
+
+    border:1px solid rgba(255,255,255,.12) !important;
+
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.15),
+        0 18px 45px rgba(0,0,0,.35) !important;
+
+    transition:
+        transform .45s ease,
+        box-shadow .45s ease !important;
+}
+
+
+.investor-testimonials-card::before {
+
+    content:"" !important;
+
+    position:absolute !important;
+
+    width:220px !important;
+
+    height:220px !important;
+
+    top:-120px !important;
+
+    right:-120px !important;
+
+    border-radius:50% !important;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(0,216,239,.28),
+            transparent 70%
+        ) !important;
+
+    transition:.6s ease !important;
+
+    pointer-events:none !important;
+}
+
+
+.investor-testimonials-card:hover {
+
+    transform:translateY(-12px) !important;
+
+    box-shadow:
+        0 30px 70px rgba(0,0,0,.45),
+        0 0 40px rgba(0,216,239,.18) !important;
+}
+
+
+.investor-testimonials-card:hover::before {
+
+    transform:scale(1.4) !important;
+}
+
+
+/* =========================================================
+   TESTIMONIAL TEXT
+   ========================================================= */
+
+.investor-testimonials-text {
+
+    position:relative !important;
+
+    z-index:2 !important;
+
+    margin:0 0 20px 0 !important;
+
+    font-size:15px !important;
+
+    line-height:1.7 !important;
+
+    font-style:italic !important;
+
+    color:rgba(255,255,255,.82) !important;
+}
+
+
+/* =========================================================
+   INVESTOR NAME
+   ========================================================= */
+
+.investor-testimonials-name {
+
+    position:relative !important;
+
+    z-index:2 !important;
+
+    display:block !important;
+
+    font-size:14px !important;
+
+    font-weight:800 !important;
+
+    background:
+        linear-gradient(
+            90deg,
+            #00d8ef,
+            #7a00ff,
+            #ff0080
+        ) !important;
+
+    background-size:200% auto !important;
+
+    -webkit-background-clip:text !important;
+
+    background-clip:text !important;
+
+    -webkit-text-fill-color:transparent !important;
+
+    color:transparent !important;
+
+    animation:
+        investorNameFlow 5s linear infinite !important;
+}
+
+
+@keyframes investorNameFlow {
+
+    0% {
+        background-position:0% 50%;
+    }
+
+    50% {
+        background-position:100% 50%;
+    }
+
+    100% {
+        background-position:0% 50%;
+    }
+}
+
+
+/* =========================================================
+   TEAM SECTION
+   ========================================================= */
+
+section.leadership-showcase-isolated {
+
+    width:100% !important;
+
+    padding:90px 0 !important;
+
+    position:relative !important;
+
+    overflow:hidden !important;
+
+    background:
+        radial-gradient(
+            circle at top right,
+            #004aad33,
+            transparent 40%
+        ),
+        radial-gradient(
+            circle at bottom left,
+            #7a00ff22,
+            transparent 35%
+        ),
+        linear-gradient(
+            180deg,
+            #0a1020,
+            #05070d
+        ) !important;
+}
+
+
+.leadership-showcase-inner {
+
+    width:90% !important;
+
+    max-width:1600px !important;
+
+    margin:auto !important;
+
+    position:relative !important;
+
+    z-index:2 !important;
+}
+
+
+/* =========================================================
+   TEAM HEADING
+   ========================================================= */
+
+.leadership-showcase-heading {
+
+    margin:0 0 55px 0 !important;
+
+    text-align:center !important;
+
+    font-size:30px !important;
+
+    font-weight:900 !important;
+
+    text-transform:uppercase !important;
+
+    letter-spacing:2px !important;
+
+    line-height:1.2 !important;
+
+    background:
+        linear-gradient(
+            90deg,
+            #00d8ef,
+            #7a00ff,
+            #ff0080
+        ) !important;
+
+    background-size:200% auto !important;
+
+    -webkit-background-clip:text !important;
+
+    background-clip:text !important;
+
+    -webkit-text-fill-color:transparent !important;
+
+    color:transparent !important;
+
+    animation:
+        leadershipHeadingFlow 5s linear infinite !important;
+}
+
+
+@keyframes leadershipHeadingFlow {
+
+    0% {
+        background-position:0% 50%;
+    }
+
+    50% {
+        background-position:100% 50%;
+    }
+
+    100% {
+        background-position:0% 50%;
+    }
+}
+
+
+/* =========================================================
+   TEAM GRID
+   ========================================================= */
+
+.leadership-showcase-grid {
+
+    width:100% !important;
+
+    display:grid !important;
+
+    grid-template-columns:
+        repeat(3,minmax(0,1fr)) !important;
+
+    gap:35px !important;
+}
+
+
+/* =========================================================
+   TEAM CARD
+   ========================================================= */
+
+.leadership-showcase-card {
+
+    position:relative !important;
+
+    overflow:hidden !important;
+
+    padding:35px 28px !important;
+
+    margin:0 !important;
+
+    text-align:center !important;
+
+    border-radius:30px !important;
+
+    background:rgba(255,255,255,.08) !important;
+
+    backdrop-filter:blur(24px) !important;
+
+    -webkit-backdrop-filter:blur(24px) !important;
+
+    border:1px solid rgba(255,255,255,.12) !important;
+
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.15),
+        0 18px 45px rgba(0,0,0,.35) !important;
+
+    transition:
+        transform .45s ease,
+        box-shadow .45s ease !important;
+}
+
+
+.leadership-showcase-card::before {
+
+    content:"" !important;
+
+    position:absolute !important;
+
+    width:220px !important;
+
+    height:220px !important;
+
+    top:-120px !important;
+
+    right:-120px !important;
+
+    border-radius:50% !important;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(0,216,239,.28),
+            transparent 70%
+        ) !important;
+
+    transition:.6s ease !important;
+
+    pointer-events:none !important;
+}
+
+
+.leadership-showcase-card:hover {
+
+    transform:translateY(-12px) !important;
+
+    box-shadow:
+        0 30px 70px rgba(0,0,0,.45),
+        0 0 40px rgba(0,216,239,.18) !important;
+}
+
+
+.leadership-showcase-card:hover::before {
+
+    transform:scale(1.4) !important;
+}
+
+
+/* =========================================================
+   TEAM IMAGE
+   ========================================================= */
+
+.leadership-showcase-image {
+
+    position:relative !important;
+
+    z-index:2 !important;
+
+    width:130px !important;
+
+    height:130px !important;
+
+    display:block !important;
+
+    margin:0 auto 25px auto !important;
+
+    object-fit:cover !important;
+
+    border-radius:50% !important;
+
+    border:2px solid rgba(0,216,239,.45) !important;
+
+    box-shadow:
+        0 0 20px rgba(0,216,239,.25),
+        0 0 40px rgba(122,0,255,.15) !important;
+
+    transition:
+        transform .4s ease,
+        box-shadow .4s ease !important;
+}
+
+
+.leadership-showcase-card:hover
+.leadership-showcase-image {
+
+    transform:scale(1.07) !important;
+
+    box-shadow:
+        0 0 30px rgba(0,216,239,.45),
+        0 0 60px rgba(122,0,255,.25) !important;
+}
+
+
+/* =========================================================
+   TEAM NAME
+   ========================================================= */
+
+.leadership-showcase-name {
+
+    position:relative !important;
+
+    z-index:2 !important;
+
+    margin:0 0 12px 0 !important;
+
+    font-size:22px !important;
+
+    font-weight:900 !important;
+
+    line-height:1.3 !important;
+
+    background:
+        linear-gradient(
+            90deg,
+            #00d8ef,
+            #7a00ff,
+            #ff0080
+        ) !important;
+
+    background-size:200% auto !important;
+
+    -webkit-background-clip:text !important;
+
+    background-clip:text !important;
+
+    -webkit-text-fill-color:transparent !important;
+
+    color:transparent !important;
+
+    animation:
+        leadershipNameFlow 5s linear infinite !important;
+}
+
+
+@keyframes leadershipNameFlow {
+
+    0% {
+        background-position:0% 50%;
+    }
+
+    50% {
+        background-position:100% 50%;
+    }
+
+    100% {
+        background-position:0% 50%;
+    }
+}
+
+
+/* =========================================================
+   TEAM ROLE
+   ========================================================= */
+
+.leadership-showcase-role {
+
+    position:relative !important;
+
+    z-index:2 !important;
+
+    margin:0 !important;
+
+    font-size:14px !important;
+
+    line-height:1.6 !important;
+
+    color:rgba(255,255,255,.78) !important;
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media(max-width:991px) {
+
+    section.investor-testimonials-isolated,
+    section.leadership-showcase-isolated {
+
+        padding:70px 0 !important;
+    }
+
+    .investor-testimonials-grid,
+    .leadership-showcase-grid {
+
+        grid-template-columns:
+            repeat(2,minmax(0,1fr)) !important;
+
+        gap:25px !important;
+    }
+
+    .investor-testimonials-card,
+    .leadership-showcase-card {
+
+        padding:30px 24px !important;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media(max-width:600px) {
+
+    section.investor-testimonials-isolated,
+    section.leadership-showcase-isolated {
+
+        padding:60px 0 !important;
+    }
+
+    .investor-testimonials-inner,
+    .leadership-showcase-inner {
+
+        width:95% !important;
+    }
+
+    .investor-testimonials-heading,
+    .leadership-showcase-heading {
+
+        font-size:25px !important;
+
+        text-shadow:
+            0 0 15px #00d8ef,
+            0 0 30px #7a00ff,
+            0 0 60px #ff0080 !important;
+    }
+
+    .investor-testimonials-intro {
+
+        width:95% !important;
+
+        font-size:16px !important;
+
+        line-height:1.6 !important;
+
+        margin-bottom:40px !important;
+    }
+
+    .investor-testimonials-grid,
+    .leadership-showcase-grid {
+
+        grid-template-columns:1fr !important;
+
+        gap:24px !important;
+    }
+
+    .investor-testimonials-card,
+    .leadership-showcase-card {
+
+        padding:24px !important;
+    }
+
+    .investor-testimonials-text {
+
+        font-size:14px !important;
+
+        line-height:1.6 !important;
+    }
+
+    .investor-testimonials-name {
+
+        font-size:13px !important;
+    }
+
+    .leadership-showcase-heading {
+
+        margin-bottom:40px !important;
+    }
+
+    .leadership-showcase-image {
+
+        width:105px !important;
+
+        height:105px !important;
+
+        margin-bottom:20px !important;
+    }
+
+    .leadership-showcase-name {
+
+        font-size:21px !important;
+    }
+
+    .leadership-showcase-role {
+
+        font-size:14px !important;
+
+        line-height:1.5 !important;
+    }
+}
+
+
+/* =========================================================
+   SMALL PHONES
+   ========================================================= */
+
+@media(max-width:380px) {
+
+    .investor-testimonials-heading,
+    .leadership-showcase-heading {
+
+        font-size:21px !important;
+    }
+
+    .investor-testimonials-card,
+    .leadership-showcase-card {
+
+        padding:22px 18px !important;
+    }
+
+    .leadership-showcase-name {
+
+        font-size:19px !important;
+    }
+
+    .leadership-showcase-image {
+
+        width:90px !important;
+
+        height:90px !important;
+    }
+}
