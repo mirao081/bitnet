@@ -721,48 +721,169 @@
     </div>
 
 </section>
-<section class="education">
-  <h1>Educational Resources</h1>
-  <p>Learn more about crypto markets, trading strategies, and blockchain technology.</p>
-  <a href="{% url 'crypto:resources' %}" class="btn">Explore Resources</a>
+
+<!-- =========================================================
+     EDUCATIONAL RESOURCES
+     ========================================================= -->
+
+<section class="investment-education-isolated">
+
+    <h1 class="investment-education-heading">
+        Educational Resources
+    </h1>
+
+    <p class="investment-education-text">
+        Learn more about crypto markets, trading strategies,
+        and blockchain technology.
+    </p>
+
+    <a href="{% url 'crypto:resources' %}"
+       class="btn">
+        Explore Resources
+    </a>
+
 </section>
 
-<section class="live-data">
-  <h1>Live Market Data</h1>
-  <iframe src="https://www.tradingview.com/widgetembed/?frameElementId=tradingview_widget"
-          width="100%" height="400" frameborder="0" allowfullscreen></iframe>
+
+<!-- =========================================================
+     LIVE MARKET DATA
+     CHART/IFRAME CONTENT LEFT UNCHANGED
+     ========================================================= -->
+
+<section class="investment-live-market-isolated">
+
+    <h1 class="investment-live-market-heading">
+        Live Market Data
+    </h1>
+
+    <div class="investment-live-market-container">
+
+        <iframe
+            src="https://www.tradingview.com/widgetembed/?frameElementId=tradingview_widget"
+            width="100%"
+            height="400"
+            frameborder="0"
+            allowfullscreen>
+        </iframe>
+
+    </div>
+
 </section>
 
-<section class="faq-link">
-  <h1>Frequently Asked Questions</h1>
-  <p>Have questions? Visit our FAQ section for answers.</p>
-  <a href="{% url 'crypto:faqs' %}" class="btn">Go to FAQ</a>
+
+<!-- =========================================================
+     FAQ
+     ========================================================= -->
+
+<section class="investment-faq-isolated">
+
+    <h1 class="investment-faq-heading">
+        Frequently Asked Questions
+    </h1>
+
+    <p class="investment-faq-text">
+        Have questions? Visit our FAQ section for answers.
+    </p>
+
+    <a href="{% url 'crypto:faqs' %}"
+       class="btn">
+        Go to FAQ
+    </a>
+
 </section>
 
-<section class="cta">
-  <h1>Ready to Start Investing?</h1>
-  <a href="{% url 'crypto:signup' %}" class="btn">Sign Up Now</a>
+
+<!-- =========================================================
+     CALL TO ACTION
+     ========================================================= -->
+
+<section class="investment-cta-isolated">
+
+    <h1 class="investment-cta-heading">
+        Ready to Start Investing?
+    </h1>
+
+    <a href="{% url 'crypto:signup' %}"
+       class="btn">
+        Sign Up Now
+    </a>
+
 </section>
 
-<section class="disclaimer">
-  <p>Disclaimer: Crypto investments carry risk. Ensure you understand the risks before investing. We comply with KYC/AML and SEC regulations.</p>
+
+<!-- =========================================================
+     DISCLAIMER
+     ========================================================= -->
+
+<section class="investment-disclaimer-isolated">
+
+    <p>
+        Disclaimer: Crypto investments carry risk.
+        Ensure you understand the risks before investing.
+        We comply with KYC/AML and SEC regulations.
+    </p>
+
 </section>
 
-<section class="community">
-  <h1>Join Our Community</h1>
-  <p>Connect with us on Telegram and Discord, or reach out to our 24/7 support team.</p>
-  <div class="community-links">
-    <a href="https://t.me/bitnet" target="_blank">Telegram</a>
-    <a href="https://discord.gg/bitnet" target="_blank">Discord</a>
-    <a href="{% url 'crypto:contact' %}">24/7 Support</a>
-  </div>
+
+<!-- =========================================================
+     COMMUNITY
+     ========================================================= -->
+
+<section class="investment-community-isolated">
+
+    <h1 class="investment-community-heading">
+        Join Our Community
+    </h1>
+
+    <p class="investment-community-text">
+        Connect with us on Telegram and Discord,
+        or reach out to our 24/7 support team.
+    </p>
+
+    <div class="investment-community-links">
+
+        <a href="https://t.me/bitnet"
+           target="_blank">
+            Telegram
+        </a>
+
+        <a href="https://discord.gg/bitnet"
+           target="_blank">
+            Discord
+        </a>
+
+        <a href="{% url 'crypto:contact' %}">
+            24/7 Support
+        </a>
+
+    </div>
+
 </section>
+
+
+<!-- =========================================================
+     CANVAS SECTION
+     CANVAS IDS LEFT COMPLETELY UNCHANGED
+     ========================================================= -->
+
 <section class="investment-canvas">
-  <canvas id="investBtnCanvas" width="200" height="150"></canvas>
-  <canvas id="investEthCanvas" width="200" height="150"></canvas>
-  <canvas id="investUsdtCanvas" width="200" height="150"></canvas>
+
+    <canvas id="investBtnCanvas"
+            width="200"
+            height="150"></canvas>
+
+    <canvas id="investEthCanvas"
+            width="200"
+            height="150"></canvas>
+
+    <canvas id="investUsdtCanvas"
+            width="200"
+            height="150"></canvas>
 
 </section>
+
+
 
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>

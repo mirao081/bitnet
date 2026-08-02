@@ -4142,3 +4142,966 @@ section.leadership-showcase-isolated {
         height:90px !important;
     }
 }
+/* =========================================================
+   EDUCATIONAL RESOURCES
+   ISOLATED INVESTMENT DESIGN
+   ========================================================= */
+
+section.investment-resources-isolated {
+
+    width:100% !important;
+
+    margin:0 auto 40px auto !important;
+
+    padding:90px 5% !important;
+
+    position:relative !important;
+
+    overflow:hidden !important;
+
+    text-align:center !important;
+
+    background:
+        radial-gradient(
+            circle at top left,
+            #004aad33,
+            transparent 40%
+        ),
+        radial-gradient(
+            circle at bottom right,
+            #7a00ff22,
+            transparent 35%
+        ),
+        linear-gradient(
+            180deg,
+            #05070d,
+            #0a1020
+        ) !important;
+
+    border:0 !important;
+
+    box-sizing:border-box !important;
+}
+
+
+section.investment-resources-isolated
+.investment-resources-heading {
+
+    margin:0 0 18px 0 !important;
+
+    padding:0 !important;
+
+    font-size:32px !important;
+
+    line-height:1.2 !important;
+
+    font-weight:900 !important;
+
+    color:#ffffff !important;
+
+    text-transform:uppercase !important;
+
+    letter-spacing:2px !important;
+
+    text-shadow:
+        0 0 10px #00d8ef,
+        0 0 25px #7a00ff,
+        0 0 45px #ff0080 !important;
+}
+
+
+section.investment-resources-isolated
+.investment-resources-text {
+
+    max-width:850px !important;
+
+    margin:0 auto 30px auto !important;
+
+    padding:0 !important;
+
+    font-size:16px !important;
+
+    line-height:1.7 !important;
+
+    color:rgba(255,255,255,.82) !important;
+}
+
+
+section.investment-resources-isolated
+.investment-resources-button {
+
+    display:inline-block !important;
+
+    padding:13px 28px !important;
+
+    border-radius:25px !important;
+
+    background:#00d8ef !important;
+
+    color:#05070d !important;
+
+    font-size:15px !important;
+
+    font-weight:700 !important;
+
+    text-decoration:none !important;
+
+    border:1px solid rgba(255,255,255,.15) !important;
+
+    box-shadow:
+        0 8px 25px rgba(0,216,239,.25) !important;
+
+    transition:.3s ease !important;
+}
+
+
+section.investment-resources-isolated
+.investment-resources-button:hover {
+
+    background:#009bb8 !important;
+
+    color:#ffffff !important;
+
+    transform:translateY(-3px) !important;
+
+    box-shadow:
+        0 15px 35px rgba(0,216,239,.35) !important;
+}
+
+
+/* =========================================================
+   LIVE MARKET DATA
+   ========================================================= */
+
+section.investment-live-market-isolated {
+
+    width:100% !important;
+
+    margin:0 auto 40px auto !important;
+
+    padding:70px 5% !important;
+
+    position:relative !important;
+
+    overflow:hidden !important;
+
+    box-sizing:border-box !important;
+
+    background:
+        radial-gradient(
+            circle at top left,
+            #004aad33,
+            transparent 40%
+        ),
+        radial-gradient(
+            circle at bottom right,
+            #7a00ff22,
+            transparent 35%
+        ),
+        linear-gradient(
+            180deg,
+            #05070d,
+            #0a1020
+        ) !important;
+}
+
+
+section.investment-live-market-isolated
+.investment-live-market-heading {
+
+    margin:0 0 35px 0 !important;
+
+    text-align:center !important;
+
+    font-size:32px !important;
+
+    font-weight:900 !important;
+
+    color:#ffffff !important;
+
+    text-transform:uppercase !important;
+
+    letter-spacing:2px !important;
+
+    text-shadow:
+        0 0 10px #00d8ef,
+        0 0 25px #7a00ff,
+        0 0 45px #ff0080 !important;
+}
+
+
+/*
+   CHART / TRADINGVIEW CONTAINER
+
+   The iframe itself is left alone.
+   Only its surrounding background is controlled here.
+*/
+
+section.investment-live-market-isolated
+.investment-live-market-chart {
+
+    width:100% !important;
+
+    max-width:1600px !important;
+
+    margin:auto !important;
+
+    padding:15px !important;
+
+    box-sizing:border-box !important;
+
+    border-radius:30px !important;
+
+    background:rgba(255,255,255,.08) !important;
+
+    backdrop-filter:blur(24px) !important;
+
+    -webkit-backdrop-filter:blur(24px) !important;
+
+    border:1px solid rgba(255,255,255,.12) !important;
+
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.15),
+        0 18px 45px rgba(0,0,0,.35) !important;
+
+    overflow:hidden !important;
+}
+
+
+section.investment-live-market-isolated
+.investment-live-market-chart iframe {
+
+    display:block !important;
+
+    width:100% !important;
+
+    max-width:100% !important;
+
+    border:0 !important;
+
+    border-radius:20px !important;
+
+    background:#05070d !important;
+}
+
+
+/* =========================================================
+   FAQ
+   ========================================================= */
+
+section.investment-faq-isolated {
+
+    width:100% !important;
+
+    margin:0 auto 40px auto !important;
+
+    padding:90px 5% !important;
+
+    text-align:center !important;
+
+    position:relative !important;
+
+    overflow:hidden !important;
+
+    box-sizing:border-box !important;
+
+    background:
+        radial-gradient(
+            circle at top left,
+            #004aad33,
+            transparent 40%
+        ),
+        radial-gradient(
+            circle at bottom right,
+            #7a00ff22,
+            transparent 35%
+        ),
+        linear-gradient(
+            180deg,
+            #05070d,
+            #0a1020
+        ) !important;
+}
+
+
+section.investment-faq-isolated
+.investment-faq-heading {
+
+    margin:0 0 18px 0 !important;
+
+    font-size:32px !important;
+
+    font-weight:900 !important;
+
+    color:#ffffff !important;
+
+    text-transform:uppercase !important;
+
+    letter-spacing:2px !important;
+
+    text-shadow:
+        0 0 10px #00d8ef,
+        0 0 25px #7a00ff,
+        0 0 45px #ff0080 !important;
+}
+
+
+section.investment-faq-isolated
+.investment-faq-text {
+
+    max-width:800px !important;
+
+    margin:0 auto 30px auto !important;
+
+    font-size:16px !important;
+
+    line-height:1.7 !important;
+
+    color:rgba(255,255,255,.82) !important;
+}
+
+
+section.investment-faq-isolated
+.investment-faq-button {
+
+    display:inline-block !important;
+
+    padding:13px 28px !important;
+
+    border-radius:25px !important;
+
+    background:#00d8ef !important;
+
+    color:#05070d !important;
+
+    font-weight:700 !important;
+
+    text-decoration:none !important;
+
+    transition:.3s ease !important;
+
+    box-shadow:
+        0 8px 25px rgba(0,216,239,.25) !important;
+}
+
+
+section.investment-faq-isolated
+.investment-faq-button:hover {
+
+    background:#009bb8 !important;
+
+    color:#ffffff !important;
+
+    transform:translateY(-3px) !important;
+
+    box-shadow:
+        0 15px 35px rgba(0,216,239,.35) !important;
+}
+
+
+/* =========================================================
+   CALL TO ACTION
+   ========================================================= */
+
+section.investment-cta-isolated {
+
+    width:100% !important;
+
+    margin:0 auto 40px auto !important;
+
+    padding:90px 5% !important;
+
+    text-align:center !important;
+
+    position:relative !important;
+
+    overflow:hidden !important;
+
+    box-sizing:border-box !important;
+
+    background:
+        radial-gradient(
+            circle at top left,
+            #004aad33,
+            transparent 40%
+        ),
+        radial-gradient(
+            circle at bottom right,
+            #7a00ff22,
+            transparent 35%
+        ),
+        linear-gradient(
+            180deg,
+            #05070d,
+            #0a1020
+        ) !important;
+
+    border:1px solid rgba(255,255,255,.06) !important;
+}
+
+
+section.investment-cta-isolated
+.investment-cta-heading {
+
+    margin:0 0 30px 0 !important;
+
+    font-size:35px !important;
+
+    font-weight:900 !important;
+
+    color:#ffffff !important;
+
+    text-transform:uppercase !important;
+
+    letter-spacing:2px !important;
+
+    text-shadow:
+        0 0 12px #00d8ef,
+        0 0 30px #7a00ff,
+        0 0 55px #ff0080 !important;
+}
+
+
+section.investment-cta-isolated
+.investment-cta-button {
+
+    display:inline-block !important;
+
+    padding:15px 35px !important;
+
+    border-radius:30px !important;
+
+    background:
+        linear-gradient(
+            90deg,
+            #00d8ef,
+            #7a00ff,
+            #ff0080
+        ) !important;
+
+    background-size:200% auto !important;
+
+    color:#ffffff !important;
+
+    font-weight:800 !important;
+
+    text-decoration:none !important;
+
+    transition:.4s ease !important;
+
+    box-shadow:
+        0 10px 35px rgba(0,216,239,.3) !important;
+}
+
+
+section.investment-cta-isolated
+.investment-cta-button:hover {
+
+    background-position:100% center !important;
+
+    transform:translateY(-4px) !important;
+
+    box-shadow:
+        0 18px 45px rgba(122,0,255,.4) !important;
+}
+
+
+/* =========================================================
+   DISCLAIMER
+   ========================================================= */
+
+section.investment-disclaimer-isolated {
+
+    width:100% !important;
+
+    margin:0 auto 40px auto !important;
+
+    padding:35px 5% !important;
+
+    box-sizing:border-box !important;
+
+    text-align:center !important;
+
+    background:
+        rgba(255,255,255,.05) !important;
+
+    border-top:1px solid rgba(255,255,255,.08) !important;
+
+    border-bottom:1px solid rgba(255,255,255,.08) !important;
+
+    backdrop-filter:blur(15px) !important;
+
+    -webkit-backdrop-filter:blur(15px) !important;
+}
+
+
+section.investment-disclaimer-isolated
+.investment-disclaimer-text {
+
+    max-width:1000px !important;
+
+    margin:auto !important;
+
+    font-size:14px !important;
+
+    line-height:1.7 !important;
+
+    color:rgba(255,255,255,.65) !important;
+}
+
+
+/* =========================================================
+   COMMUNITY
+   ========================================================= */
+
+section.investment-community-isolated {
+
+    width:100% !important;
+
+    margin:0 auto 40px auto !important;
+
+    padding:90px 5% !important;
+
+    text-align:center !important;
+
+    position:relative !important;
+
+    overflow:hidden !important;
+
+    box-sizing:border-box !important;
+
+    background:
+        radial-gradient(
+            circle at top left,
+            #004aad33,
+            transparent 40%
+        ),
+        radial-gradient(
+            circle at bottom right,
+            #7a00ff22,
+            transparent 35%
+        ),
+        linear-gradient(
+            180deg,
+            #05070d,
+            #0a1020
+        ) !important;
+}
+
+
+section.investment-community-isolated
+.investment-community-heading {
+
+    margin:0 0 18px 0 !important;
+
+    font-size:32px !important;
+
+    font-weight:900 !important;
+
+    color:#ffffff !important;
+
+    text-transform:uppercase !important;
+
+    letter-spacing:2px !important;
+
+    text-shadow:
+        0 0 10px #00d8ef,
+        0 0 25px #7a00ff,
+        0 0 45px #ff0080 !important;
+}
+
+
+section.investment-community-isolated
+.investment-community-text {
+
+    max-width:850px !important;
+
+    margin:0 auto 35px auto !important;
+
+    font-size:16px !important;
+
+    line-height:1.7 !important;
+
+    color:rgba(255,255,255,.82) !important;
+}
+
+
+section.investment-community-isolated
+.investment-community-links {
+
+    width:100% !important;
+
+    display:flex !important;
+
+    justify-content:center !important;
+
+    align-items:center !important;
+
+    flex-wrap:wrap !important;
+
+    gap:18px !important;
+}
+
+
+section.investment-community-isolated
+.investment-community-links a {
+
+    display:inline-block !important;
+
+    min-width:130px !important;
+
+    padding:12px 24px !important;
+
+    border-radius:25px !important;
+
+    background:rgba(255,255,255,.08) !important;
+
+    color:#ffffff !important;
+
+    border:1px solid rgba(255,255,255,.12) !important;
+
+    text-decoration:none !important;
+
+    font-size:14px !important;
+
+    font-weight:700 !important;
+
+    backdrop-filter:blur(15px) !important;
+
+    -webkit-backdrop-filter:blur(15px) !important;
+
+    box-shadow:
+        0 10px 25px rgba(0,0,0,.25) !important;
+
+    transition:.35s ease !important;
+}
+
+
+section.investment-community-isolated
+.investment-community-links a:hover {
+
+    background:#00d8ef !important;
+
+    color:#05070d !important;
+
+    border-color:#00d8ef !important;
+
+    transform:translateY(-5px) !important;
+
+    box-shadow:
+        0 15px 35px rgba(0,216,239,.3) !important;
+}
+
+
+/* =========================================================
+   CANVAS CONTAINER
+   =========================================================
+
+   IMPORTANT:
+   Canvas IDs are untouched.
+
+   The canvas elements themselves are NOT renamed.
+   This only gives their existing container the same
+   glass/background treatment.
+   ========================================================= */
+
+section.investment-canvas {
+
+    width:100% !important;
+
+    margin:0 auto !important;
+
+    padding:60px 5% !important;
+
+    display:flex !important;
+
+    justify-content:center !important;
+
+    align-items:center !important;
+
+    flex-wrap:wrap !important;
+
+    gap:30px !important;
+
+    box-sizing:border-box !important;
+
+    background:
+        radial-gradient(
+            circle at top left,
+            #004aad33,
+            transparent 40%
+        ),
+        radial-gradient(
+            circle at bottom right,
+            #7a00ff22,
+            transparent 35%
+        ),
+        linear-gradient(
+            180deg,
+            #05070d,
+            #0a1020
+        ) !important;
+
+    border-top:1px solid rgba(255,255,255,.08) !important;
+}
+
+
+section.investment-canvas canvas {
+
+    display:block !important;
+
+    max-width:100% !important;
+
+    height:auto !important;
+
+    background:transparent !important;
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media(max-width:991px) {
+
+    section.investment-resources-isolated,
+    section.investment-faq-isolated,
+    section.investment-cta-isolated,
+    section.investment-community-isolated {
+
+        padding:70px 5% !important;
+    }
+
+
+    section.investment-live-market-isolated {
+
+        padding:60px 4% !important;
+    }
+
+
+    section.investment-resources-isolated
+    .investment-resources-heading,
+
+    section.investment-live-market-isolated
+    .investment-live-market-heading,
+
+    section.investment-faq-isolated
+    .investment-faq-heading,
+
+    section.investment-community-isolated
+    .investment-community-heading {
+
+        font-size:28px !important;
+    }
+
+
+    section.investment-cta-isolated
+    .investment-cta-heading {
+
+        font-size:30px !important;
+    }
+
+
+    section.investment-live-market-isolated
+    .investment-live-market-chart iframe {
+
+        height:400px !important;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media(max-width:600px) {
+
+    section.investment-resources-isolated,
+    section.investment-faq-isolated,
+    section.investment-cta-isolated,
+    section.investment-community-isolated {
+
+        padding:60px 5% !important;
+
+        margin-bottom:25px !important;
+    }
+
+
+    section.investment-live-market-isolated {
+
+        padding:55px 3% !important;
+
+        margin-bottom:25px !important;
+    }
+
+
+    section.investment-resources-isolated
+    .investment-resources-heading,
+
+    section.investment-live-market-isolated
+    .investment-live-market-heading,
+
+    section.investment-faq-isolated
+    .investment-faq-heading,
+
+    section.investment-community-isolated
+    .investment-community-heading {
+
+        font-size:25px !important;
+
+        line-height:1.25 !important;
+
+        letter-spacing:1px !important;
+    }
+
+
+    section.investment-cta-isolated
+    .investment-cta-heading {
+
+        font-size:27px !important;
+
+        line-height:1.25 !important;
+
+        letter-spacing:1px !important;
+    }
+
+
+    section.investment-resources-isolated
+    .investment-resources-text,
+
+    section.investment-faq-isolated
+    .investment-faq-text,
+
+    section.investment-community-isolated
+    .investment-community-text {
+
+        font-size:14px !important;
+
+        line-height:1.6 !important;
+    }
+
+
+    section.investment-resources-isolated
+    .investment-resources-button,
+
+    section.investment-faq-isolated
+    .investment-faq-button,
+
+    section.investment-cta-isolated
+    .investment-cta-button {
+
+        width:100% !important;
+
+        max-width:320px !important;
+
+        box-sizing:border-box !important;
+
+        padding:13px 20px !important;
+    }
+
+
+    section.investment-live-market-isolated
+    .investment-live-market-chart {
+
+        padding:8px !important;
+
+        border-radius:20px !important;
+    }
+
+
+    section.investment-live-market-isolated
+    .investment-live-market-chart iframe {
+
+        height:350px !important;
+
+        border-radius:14px !important;
+    }
+
+
+    section.investment-disclaimer-isolated {
+
+        padding:30px 6% !important;
+
+        margin-bottom:25px !important;
+    }
+
+
+    section.investment-disclaimer-isolated
+    .investment-disclaimer-text {
+
+        font-size:13px !important;
+
+        line-height:1.6 !important;
+    }
+
+
+    section.investment-community-isolated
+    .investment-community-links {
+
+        flex-direction:column !important;
+
+        gap:12px !important;
+    }
+
+
+    section.investment-community-isolated
+    .investment-community-links a {
+
+        width:100% !important;
+
+        max-width:320px !important;
+
+        box-sizing:border-box !important;
+    }
+
+
+    section.investment-canvas {
+
+        padding:45px 5% !important;
+
+        gap:20px !important;
+    }
+}
+
+
+/* =========================================================
+   SMALL PHONES
+   ========================================================= */
+
+@media(max-width:380px) {
+
+    section.investment-resources-isolated
+    .investment-resources-heading,
+
+    section.investment-live-market-isolated
+    .investment-live-market-heading,
+
+    section.investment-faq-isolated
+    .investment-faq-heading,
+
+    section.investment-community-isolated
+    .investment-community-heading {
+
+        font-size:22px !important;
+    }
+
+
+    section.investment-cta-isolated
+    .investment-cta-heading {
+
+        font-size:24px !important;
+    }
+
+
+    section.investment-live-market-isolated
+    .investment-live-market-chart iframe {
+
+        height:320px !important;
+    }
+
+
+    section.investment-canvas {
+
+        padding:35px 3% !important;
+    }
+}
