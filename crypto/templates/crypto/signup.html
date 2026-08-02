@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign Up - BitnetFx</title>
 
-    <link rel="stylesheet" href="{% static 'crypto/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'crypto/css/signup.css' %}">
 
     <!-- Google reCAPTCHA v3 -->
     <script src="https://www.google.com/recaptcha/api.js?render=6LfYRWotAAAAADZOYTAPexRxP48RWIDrfj7sCAaj"></script>
@@ -21,7 +21,6 @@
 
     <h2 class="register-title">Create Your Account</h2>
 
-    <!-- Django messages -->
     {% if messages %}
         {% for message in messages %}
             <div class="message {{ message.tags }}">
@@ -30,17 +29,15 @@
         {% endfor %}
     {% endif %}
 
-    <!-- Form errors -->
     {% if form.errors %}
-    <div style="background:#ffe6e6;border:1px solid #cc0000;padding:12px;margin-bottom:15px;border-radius:5px;color:#900;">
+    <div class="error-box">
         <strong>Please correct the following errors:</strong>
-        <ul style="margin-top:10px;">
+        <ul>
             {% for field in form %}
                 {% for error in field.errors %}
                     <li><strong>{{ field.label }}:</strong> {{ error }}</li>
                 {% endfor %}
             {% endfor %}
-
             {% for error in form.non_field_errors %}
                 <li>{{ error }}</li>
             {% endfor %}
@@ -71,12 +68,9 @@
             {{ form.password2 }}
         </div>
 
-        <!-- reCAPTCHA -->
         {{ form.captcha }}
 
-        <button type="submit" class="register-button">
-            Sign Up
-        </button>
+        <button type="submit" class="register-button">Sign Up</button>
     </form>
 
     <p class="auth-switch">
@@ -86,19 +80,17 @@
 
 </div>
 
-
 <script>
     grecaptcha.ready(function() {
         document.querySelector('.register-form').addEventListener('submit', function(event) {
-            event.preventDefault(); // stop normal submit
+            event.preventDefault();
             grecaptcha.execute('6LfYRWotAAAAADZOYTAPexRxP48RWIDrfj7sCAaj', {action: 'signup'}).then(function(token) {
-                // create hidden input with token
                 var input = document.createElement('input');
                 input.type = 'hidden';
                 input.name = 'g-recaptcha-response';
                 input.value = token;
                 event.target.appendChild(input);
-                event.target.submit(); // now submit with token
+                event.target.submit();
             });
         });
     });
