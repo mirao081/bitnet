@@ -3563,12 +3563,11 @@ text-shadow:
     }
 }
 @media (max-width: 768px) {
-
     .payment-wrapper {
         display: flex;
         flex-direction: column;
         align-items: center;
-        padding: 20px 15px;
+        padding: 20px 12px;
     }
 
     .payment-wrapper form {
@@ -3581,6 +3580,7 @@ text-shadow:
     .payment-title {
         font-size: 1.8rem;
         letter-spacing: 2px;
+        text-align: center;
     }
 
     .payment-title::after {
@@ -3590,6 +3590,7 @@ text-shadow:
     .payment-card {
         width: 100%;
         max-width: 420px;
+        padding: 16px;
         text-align: center;
     }
 
@@ -3600,17 +3601,34 @@ text-shadow:
     .browse-btn,
     .qr-upload {
         width: 100%;
+        box-sizing: border-box;
+    }
+
+    .qr-upload {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 8px;
+    }
+
+    .browse-btn,
+    .wallet-update-btn {
+        display: block;
+        margin: 8px auto 0;
+        width: 100%;
+        max-width: 220px;
     }
 
     .qr-preview {
         display: block;
         margin: 0 auto 15px;
+        max-width: 100%;
+        height: auto;
     }
 }
-@media (max-width: 480px) {
 
+@media (max-width: 480px) {
     .payment-title {
-        font-size: 1.1rem;
+        font-size: 1.2rem;
         letter-spacing: 1px;
     }
 
@@ -3622,36 +3640,17 @@ text-shadow:
 
     .payment-card {
         max-width: 100%;
-        padding: 18px;
+        padding: 14px;
     }
 
     .payment-card h3 {
-        font-size: 1.2rem;
-    }
-}
-@media (max-width: 768px) {
-    .wallet-update-btn {
-        width: 80px;
-        min-width: 150px;
-        padding: 8px 12px;
-        font-size: 0.85rem;
-        margin: 10px auto 0;
-        display: block;
-    }
-}
-@media (max-width: 768px) {
-    .browse-btn {
-        width: 100px;
-        min-width: 100px;
-        margin: 10px auto;
-        display: block;
+        font-size: 1.05rem;
     }
 
+    .browse-btn,
     .wallet-update-btn {
-        width: 150px;
-        min-width: 150px;
-        margin: 10px auto;
-        display: block;
+        max-width: 100%;
+        font-size: 0.9rem;
     }
 }
 
