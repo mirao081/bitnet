@@ -882,9 +882,13 @@
             height="150"></canvas>
 
 </section>
-
-
-
+<script>
+    window.investmentCanvasImages = {
+        btc: "{% static 'crypto/images/btc.png' %}",
+        eth: "{% static 'crypto/images/ethe.png' %}",
+        usdt: "{% static 'crypto/images/usdt.png' %}"
+    };
+</script>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="{% static 'crypto/js/investment_plans.js' %}"></script>
