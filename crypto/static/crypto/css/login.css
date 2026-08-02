@@ -135,9 +135,12 @@ body.bitnet-login-body {
   .bitnet-login-container {
     width:100%;       /* full width on mobile */
     max-width:none;   /* no cap, fills screen */
-    padding:55px 36px; /* extra padding for bold look */
+    padding:60px 36px; /* extra padding for bold look */
   }
-  .bitnet-login-logo .bitnet-site-name { font-size:32px; }
-  .bitnet-login-title { font-size:24px; }
-  .form-group input, .bitnet-login-button { font-size:18px; padding:20px; }
+  .bitnet-login-logo .bitnet-site-name { font-size:34px; }
+  .bitnet-login-title { font-size:26px; }
+  .form-group input, .bitnet-login-button {
+    font-size:18px;
+    padding:20px;
+  }
 }
