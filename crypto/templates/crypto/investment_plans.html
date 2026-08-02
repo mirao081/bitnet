@@ -1,8 +1,10 @@
 {% extends "crypto/crypto_base.html" %}
 
 {% load static %}
+<link rel="stylesheet" href="{% static 'crypto/css/services.css' %}">
 
 {% block content %}
+<div class="crypto-services-container">
 <section class="hero-section investment-plans-section">
     <div class="carousel-container">
         {% for slide in slides %}
@@ -318,5 +320,6 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="{% static 'js/investment_plans.js' %}"></script>
 
+</div>
 
 {% endblock %}
