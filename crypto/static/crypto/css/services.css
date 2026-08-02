@@ -91,9 +91,26 @@
         ICONS
 =========================*/
 .crypto-icon {
-    width:80px;
-    height:auto;
+    width:100px; /* increased by 20px */
+    height:100px; /* keep square for perfect circle */
     margin-bottom:20px;
+    border-radius:50%; /* circular */
+    object-fit:cover;
+}
+
+/* Special rule for partnerships last image */
+.crypto-partnerships .crypto-grid {
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:30px;
+    flex-wrap:wrap;
+}
+
+.crypto-partnerships .crypto-grid img:last-child {
+    width:300px; /* last image larger on desktop */
+    height:auto;
+    border-radius:50%;
 }
 
 /*=========================
@@ -255,5 +272,14 @@
   }
   .crypto-hero-subtitle {
     font-size:16px;
+  }
+
+  /* Partnerships images stack in column on mobile */
+  .crypto-partnerships .crypto-grid {
+    flex-direction:column;
+    align-items:center;
+  }
+  .crypto-partnerships .crypto-grid img:last-child {
+    width:100px; /* revert to normal size on mobile */
   }
 }
