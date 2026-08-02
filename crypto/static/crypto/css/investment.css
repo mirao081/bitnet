@@ -1,63 +1,295 @@
-/*==================================================
-    INVESTMENT PLANS SHOWCASE
-==================================================*/
-
-.investment-plans-showcase {
+.investment-plans-isolated {
     width:100%;
     padding:90px 0;
     position:relative;
     overflow:hidden;
 
     background:
-      radial-gradient(
-        circle at top left,
-        #004aad33,
-        transparent 40%
-      ),
-      radial-gradient(
-        circle at bottom right,
-        #7a00ff22,
-        transparent 35%
-      ),
-      linear-gradient(
-        180deg,
-        #05070d,
-        #0a1020
-      );
+        radial-gradient(
+            circle at top left,
+            #004aad33,
+            transparent 40%
+        ),
+        radial-gradient(
+            circle at bottom right,
+            #7a00ff22,
+            transparent 35%
+        ),
+        linear-gradient(
+            180deg,
+            #05070d,
+            #0a1020
+        );
 }
 
 
-/*==================================================
-    INVESTMENT GRID
-==================================================*/
+/* ==========================================
+   CAROUSEL
+   JS CLASSES PRESERVED BUT OVERRIDDEN
+========================================== */
 
-.investment-plans-grid,
-.investment-plans-about-grid {
+.investment-plans-isolated .carousel-container {
+
     width:90%;
     max-width:1600px;
-    margin:auto;
+
+    margin:0 auto;
+
+    position:relative;
+
+    min-height:420px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    overflow:hidden;
+
+    background:transparent;
+
+    padding:40px 20px;
+
+    box-sizing:border-box;
+}
+
+
+.investment-plans-isolated .carousel-slide {
+
+    width:100%;
+
+    text-align:center;
+
+    padding:50px 30px;
+
+    box-sizing:border-box;
+
+    background:rgba(255,255,255,.08);
+
+    border:1px solid rgba(255,255,255,.12);
+
+    border-radius:30px;
+
+    backdrop-filter:blur(24px);
+    -webkit-backdrop-filter:blur(24px);
+
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.15),
+        0 18px 45px rgba(0,0,0,.35);
+
+}
+
+
+/*
+   Preserve the JS active class but prevent
+   outside active styles from breaking this section.
+*/
+
+.investment-plans-isolated .carousel-slide.active {
+
+    position:relative;
+
+    opacity:1;
+
+    visibility:visible;
+
+    transform:none;
+}
+
+
+/* ==========================================
+   CAROUSEL TITLE
+========================================== */
+
+.investment-plans-slide-title {
+
+    font-size:32px !important;
+
+    font-weight:900 !important;
+
+    color:#fff !important;
+
+    margin:0 0 15px !important;
+
+    line-height:1.25 !important;
+
+    text-transform:uppercase;
+
+    letter-spacing:2px;
+
+    text-shadow:
+        0 0 10px #00d8ef,
+        0 0 20px #00d8ef,
+        0 0 40px #7a00ff;
+}
+
+
+.investment-plans-slide-subtitle {
+
+    font-size:18px !important;
+
+    color:rgba(255,255,255,.8) !important;
+
+    line-height:1.6 !important;
+
+    margin:0 0 25px !important;
+}
+
+
+/* ==========================================
+   IMPORTANT:
+   KEEP BUTTON CLASSES FOR YOUR EXISTING JS
+   BUT SCOPE THEIR VISUAL STYLE
+========================================== */
+
+.investment-plans-isolated .btn.btn-primary,
+.investment-plans-isolated .btn.btn-secondary {
+
+    display:inline-block;
+
+    margin:8px;
+
+    padding:12px 24px;
+
+    border-radius:20px;
+
+    text-decoration:none;
+
+    font-weight:600;
+
+    transition:.3s;
+
+    box-sizing:border-box;
+}
+
+
+.investment-plans-isolated .btn.btn-primary {
+
+    background:#00d8ef;
+
+    color:#05070d;
+
+    border:1px solid #00d8ef;
+}
+
+
+.investment-plans-isolated .btn.btn-primary:hover {
+
+    background:#009bb8;
+
+    color:#fff;
+
+    box-shadow:0 0 25px rgba(0,216,239,.4);
+}
+
+
+.investment-plans-isolated .btn.btn-secondary {
+
+    background:rgba(255,255,255,.08);
+
+    color:#fff;
+
+    border:1px solid rgba(255,255,255,.2);
+}
+
+
+.investment-plans-isolated .btn.btn-secondary:hover {
+
+    background:rgba(255,255,255,.15);
+
+    color:#00d8ef;
+}
+
+
+/* ==========================================
+   CAROUSEL ARROWS
+   JS CLASSES PRESERVED
+========================================== */
+
+.investment-plans-isolated .carousel-prev,
+.investment-plans-isolated .carousel-next {
+
+    position:absolute;
+
+    top:50%;
+
+    transform:translateY(-50%);
+
+    width:42px;
+    height:42px;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,.08);
+
+    border:1px solid rgba(255,255,255,.15);
+
+    color:#fff;
+
+    cursor:pointer;
+
+    z-index:10;
+
+    transition:.3s;
+}
+
+
+.investment-plans-isolated .carousel-prev {
+    left:10px;
+}
+
+
+.investment-plans-isolated .carousel-next {
+    right:10px;
+}
+
+
+.investment-plans-isolated .carousel-prev:hover,
+.investment-plans-isolated .carousel-next:hover {
+
+    background:#00d8ef;
+
+    color:#05070d;
+
+    box-shadow:0 0 25px rgba(0,216,239,.4);
+}
+
+
+/* ==========================================
+   CARD GRID
+========================================== */
+
+.investment-plans-card-grid {
+
+    width:90%;
+    max-width:1600px;
+
+    margin:40px auto;
 
     display:grid;
 
     grid-template-columns:
-      repeat(auto-fit,minmax(300px,1fr));
+        repeat(auto-fit,minmax(300px,1fr));
 
     gap:35px;
-
-    position:relative;
-    z-index:2;
 }
 
 
-/*==================================================
-    GLASS PANEL
-==================================================*/
+/* ==========================================
+   GLASS CARDS
+========================================== */
 
-.investment-plans-panel,
-.investment-plans-about-panel,
-.investment-plans-chart-panel {
+.investment-plans-card,
+.investment-plans-market-card,
+.investment-plans-information-card,
+.investment-plans-chart-card {
 
     position:relative;
+
     overflow:hidden;
 
     text-align:center;
@@ -74,22 +306,19 @@
     border:1px solid rgba(255,255,255,.12);
 
     box-shadow:
-      inset 0 1px 0 rgba(255,255,255,.15),
-      0 18px 45px rgba(0,0,0,.35);
+        inset 0 1px 0 rgba(255,255,255,.15),
+        0 18px 45px rgba(0,0,0,.35);
 
     transition:.45s ease;
 
-    margin-bottom:40px;
+    box-sizing:border-box;
 }
 
 
-/*==================================================
-    GLASS GLOW
-==================================================*/
-
-.investment-plans-panel::before,
-.investment-plans-about-panel::before,
-.investment-plans-chart-panel::before {
+.investment-plans-card::before,
+.investment-plans-market-card::before,
+.investment-plans-information-card::before,
+.investment-plans-chart-card::before {
 
     content:"";
 
@@ -104,11 +333,11 @@
     border-radius:50%;
 
     background:
-      radial-gradient(
-        circle,
-        rgba(0,216,239,.28),
-        transparent 70%
-      );
+        radial-gradient(
+            circle,
+            rgba(0,216,239,.28),
+            transparent 70%
+        );
 
     transition:.6s;
 
@@ -116,166 +345,33 @@
 }
 
 
-.investment-plans-panel:hover,
-.investment-plans-about-panel:hover,
-.investment-plans-chart-panel:hover {
+.investment-plans-card:hover,
+.investment-plans-market-card:hover,
+.investment-plans-information-card:hover,
+.investment-plans-chart-card:hover {
 
     transform:translateY(-12px);
 
     box-shadow:
-      0 30px 70px rgba(0,0,0,.45),
-      0 0 40px rgba(0,216,239,.18);
+        0 30px 70px rgba(0,0,0,.45),
+        0 0 40px rgba(0,216,239,.18);
 }
 
 
-.investment-plans-panel:hover::before,
-.investment-plans-about-panel:hover::before,
-.investment-plans-chart-panel:hover::before {
+.investment-plans-card:hover::before,
+.investment-plans-market-card:hover::before,
+.investment-plans-information-card:hover::before,
+.investment-plans-chart-card:hover::before {
 
     transform:scale(1.4);
 }
 
 
-/*==================================================
-    HERO HEADING
-==================================================*/
+/* ==========================================
+   BITCOIN ICON
+========================================== */
 
-.investment-plans-heading-title {
-
-    font-size:25px;
-    font-weight:900;
-
-    color:#fff;
-
-    text-transform:uppercase;
-
-    letter-spacing:2px;
-
-    margin-bottom:15px;
-
-    line-height:1.25;
-
-    text-shadow:
-      0 0 10px #00d8ef,
-      0 0 20px #00d8ef,
-      0 0 40px #7a00ff;
-
-    animation:
-      investmentPlansGlowPulse
-      3s
-      infinite
-      alternate;
-}
-
-
-@keyframes investmentPlansGlowPulse {
-
-    from {
-        text-shadow:
-          0 0 10px #00d8ef,
-          0 0 20px #00d8ef;
-    }
-
-    to {
-        text-shadow:
-          0 0 20px #7a00ff,
-          0 0 40px #ff0080;
-    }
-
-}
-
-
-/*==================================================
-    HERO SUBTITLE
-==================================================*/
-
-.investment-plans-heading-subtitle {
-
-    font-size:18px;
-
-    font-weight:600;
-
-    background:
-      linear-gradient(
-        90deg,
-        #00d8ef,
-        #7a00ff,
-        #ff0080
-      );
-
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
-
-    background-size:200% auto;
-
-    animation:
-      investmentPlansShineFlow
-      6s
-      linear
-      infinite;
-
-    letter-spacing:1px;
-
-    line-height:1.6;
-}
-
-
-@keyframes investmentPlansShineFlow {
-
-    0% {
-        background-position:0% 50%;
-    }
-
-    50% {
-        background-position:100% 50%;
-    }
-
-    100% {
-        background-position:0% 50%;
-    }
-
-}
-
-
-/*==================================================
-    CARD TITLE
-==================================================*/
-
-.investment-plans-panel-title {
-
-    font-size:24px;
-
-    font-weight:800;
-
-    color:#fff;
-
-    margin-bottom:15px;
-
-    line-height:1.25;
-}
-
-
-/*==================================================
-    CARD DESCRIPTION
-==================================================*/
-
-.investment-plans-panel-description {
-
-    font-size:15px;
-
-    color:rgba(255,255,255,.80);
-
-    line-height:1.6;
-
-    margin-bottom:20px;
-}
-
-
-/*==================================================
-    BITCOIN ICON
-==================================================*/
-
-.investment-plans-card-icon {
+.investment-plans-bitcoin-icon {
 
     display:block;
 
@@ -286,16 +382,90 @@
     color:#00d8ef;
 
     text-shadow:
-      0 0 10px #00d8ef,
-      0 0 25px #7a00ff;
+        0 0 10px #00d8ef,
+        0 0 25px #7a00ff;
 }
 
 
-/*==================================================
-    ABOUT LINKS
-==================================================*/
+/* ==========================================
+   CARD TEXT
+========================================== */
 
-.investment-plans-about-links {
+.investment-plans-card-title,
+.investment-plans-about-title {
+
+    font-size:24px !important;
+
+    font-weight:800 !important;
+
+    color:#fff !important;
+
+    margin:0 0 15px !important;
+
+    line-height:1.25 !important;
+}
+
+
+.investment-plans-card-description,
+.investment-plans-about-text {
+
+    font-size:15px !important;
+
+    color:rgba(255,255,255,.80) !important;
+
+    line-height:1.6 !important;
+
+    margin-bottom:20px !important;
+}
+
+
+/* ==========================================
+   ABOUT GRID
+========================================== */
+
+.investment-plans-about-grid {
+
+    width:90%;
+    max-width:1600px;
+
+    margin:50px auto;
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(2,minmax(0,1fr));
+
+    gap:35px;
+}
+
+
+/* ==========================================
+   TRADINGVIEW
+========================================== */
+
+.investment-plans-market-card iframe {
+
+    display:block;
+
+    width:100%;
+
+    height:400px;
+
+    border:0;
+
+    border-radius:20px;
+
+    position:relative;
+
+    z-index:2;
+}
+
+
+/* ==========================================
+   ABOUT LINKS
+========================================== */
+
+.investment-plans-navigation-links {
 
     display:flex;
 
@@ -315,64 +485,39 @@
 }
 
 
-.investment-plans-about-links a {
+.investment-plans-navigation-links a {
 
-    color:#00d8ef;
+    color:#00d8ef !important;
 
-    font-size:13px;
+    font-size:13px !important;
 
-    font-weight:700;
+    font-weight:700 !important;
 
-    text-decoration:none;
-
-    letter-spacing:.5px;
+    text-decoration:none !important;
 
     transition:.3s;
 }
 
 
-.investment-plans-about-links a:hover {
+.investment-plans-navigation-links a:hover {
 
-    color:#fff;
+    color:#fff !important;
 
-    text-shadow:
-      0 0 10px #00d8ef;
+    text-shadow:0 0 10px #00d8ef;
 }
 
 
-.investment-plans-about-links span {
+.investment-plans-navigation-links span {
 
     color:rgba(255,255,255,.35);
 }
 
 
-/*==================================================
-    TRADINGVIEW
-==================================================*/
+/* ==========================================
+   READ MORE
+========================================== */
 
-.investment-plans-about-panel iframe {
-
-    display:block;
-
-    width:100%;
-
-    height:400px;
-
-    border:0;
-
-    border-radius:20px;
-
-    position:relative;
-
-    z-index:2;
-}
-
-
-/*==================================================
-    READ MORE BUTTON
-==================================================*/
-
-.investment-plans-read-more-btn {
+.investment-plans-read-more {
 
     display:inline-block;
 
@@ -382,13 +527,13 @@
 
     border-radius:20px;
 
-    background:#00d8ef;
+    background:#00d8ef !important;
 
-    color:#05070d;
+    color:#05070d !important;
 
-    font-weight:600;
+    font-weight:600 !important;
 
-    text-decoration:none;
+    text-decoration:none !important;
 
     transition:.3s;
 
@@ -398,127 +543,158 @@
 }
 
 
-.investment-plans-read-more-btn:hover {
+.investment-plans-read-more:hover {
 
-    background:#009bb8;
+    background:#009bb8 !important;
 
-    color:#fff;
+    color:#fff !important;
 }
 
 
-/*==================================================
-    CHART PANEL
-==================================================*/
+/* ==========================================
+   CHART
+========================================== */
 
-.investment-plans-chart-panel {
+.investment-plans-chart-card {
 
     width:90%;
 
     max-width:1600px;
 
-    margin:20px auto 40px;
-
+    margin:40px auto;
 }
 
 
-/*==================================================
-    CHART TITLE
-==================================================*/
+.investment-plans-chart-heading {
 
-.investment-plans-chart-title {
+    font-size:25px !important;
 
-    font-size:25px;
+    font-weight:900 !important;
 
-    font-weight:900;
-
-    color:#fff;
+    color:#fff !important;
 
     text-transform:uppercase;
 
     letter-spacing:2px;
 
-    margin-bottom:15px;
-
-    line-height:1.25;
-
-    text-shadow:
-      0 0 10px #00d8ef,
-      0 0 20px #00d8ef,
-      0 0 40px #7a00ff;
-
-    position:relative;
-
-    z-index:2;
+    margin:0 0 20px !important;
 }
 
 
-/*==================================================
-    CANVAS
-    IDs ARE NOT CHANGED
-==================================================*/
+/* ==========================================
+   CANVAS
+   IDs UNCHANGED
+========================================== */
 
-#moveableCanvas {
-    display:block;
+.investment-plans-isolated #moveableCanvas {
 
     max-width:100%;
 
     margin:30px auto;
+
+    display:block;
 }
 
 
-#marketChart {
-    display:block;
-
-    width:100%;
+.investment-plans-isolated #marketChart {
 
     max-width:100%;
+
+    display:block;
 }
 
 
-/*==================================================
-    TABLET
-==================================================*/
+/* ==========================================
+   TABLET
+========================================== */
 
-@media(max-width:991px){
+@media(max-width:991px) {
 
-    .investment-plans-showcase {
+    .investment-plans-isolated {
+
         padding:70px 0;
     }
 
-    .investment-plans-grid,
-    .investment-plans-about-grid {
+
+    .investment-plans-card-grid {
 
         width:92%;
 
         grid-template-columns:
-          repeat(2,1fr);
+            repeat(2,minmax(0,1fr));
 
         gap:25px;
     }
 
-    .investment-plans-panel,
-    .investment-plans-about-panel,
-    .investment-plans-chart-panel {
 
-        padding:30px 24px;
+    .investment-plans-about-grid {
+
+        width:92%;
+
+        grid-template-columns:1fr;
+
+        gap:25px;
+    }
+
+
+    .investment-plans-carousel {
+
+        width:92%;
     }
 
 }
 
 
-/*==================================================
-    MOBILE
-==================================================*/
+/* ==========================================
+   MOBILE
+========================================== */
 
-@media(max-width:600px){
+@media(max-width:600px) {
 
-    .investment-plans-showcase {
+    .investment-plans-isolated {
 
         padding:60px 0;
     }
 
 
-    .investment-plans-grid,
+    .investment-plans-carousel {
+
+        width:95%;
+
+        min-height:360px;
+
+        padding:25px 10px;
+    }
+
+
+    .investment-plans-isolated .carousel-slide {
+
+        padding:35px 20px;
+    }
+
+
+    .investment-plans-slide-title {
+
+        font-size:25px !important;
+    }
+
+
+    .investment-plans-slide-subtitle {
+
+        font-size:16px !important;
+    }
+
+
+    .investment-plans-card-grid {
+
+        width:95%;
+
+        grid-template-columns:1fr;
+
+        gap:24px;
+    }
+
+
     .investment-plans-about-grid {
 
         width:95%;
@@ -529,130 +705,71 @@
     }
 
 
-    .investment-plans-panel,
-    .investment-plans-about-panel,
-    .investment-plans-chart-panel {
+    .investment-plans-card,
+    .investment-plans-market-card,
+    .investment-plans-information-card,
+    .investment-plans-chart-card {
 
         padding:24px;
 
-        margin-bottom:24px;
+        margin-bottom:0;
     }
 
 
-    .investment-plans-panel-title {
+    .investment-plans-card-title,
+    .investment-plans-about-title {
 
-        font-size:21px;
+        font-size:21px !important;
     }
 
 
-    .investment-plans-panel-description {
+    .investment-plans-card-description,
+    .investment-plans-about-text {
 
-        font-size:14px;
+        font-size:14px !important;
 
-        line-height:1.5;
+        line-height:1.5 !important;
     }
 
 
-    .investment-plans-heading-title {
+    .investment-plans-isolated .carousel-prev,
+    .investment-plans-isolated .carousel-next {
 
-        font-size:25px;
-
-        text-shadow:
-          0 0 15px #00d8ef,
-          0 0 30px #7a00ff,
-          0 0 60px #ff0080;
-
-        animation:
-          investmentPlansGlowPulseMobile
-          2.5s
-          infinite
-          alternate;
+        width:35px;
+        height:35px;
     }
 
 
-    @keyframes investmentPlansGlowPulseMobile {
-
-        from {
-
-            text-shadow:
-              0 0 15px #00d8ef,
-              0 0 30px #7a00ff;
-        }
-
-        to {
-
-            text-shadow:
-              0 0 30px #ff0080,
-              0 0 60px #00d8ef;
-        }
-
+    .investment-plans-isolated .carousel-prev {
+        left:5px;
     }
 
 
-    .investment-plans-heading-subtitle {
-
-        font-size:16px;
+    .investment-plans-isolated .carousel-next {
+        right:5px;
     }
 
 
-    .investment-plans-about-links {
+    .investment-plans-isolated .btn.btn-primary,
+    .investment-plans-isolated .btn.btn-secondary {
 
-        gap:5px;
+        display:block;
 
-        line-height:1.7;
+        width:100%;
+
+        margin:10px 0;
     }
 
 
-    .investment-plans-about-links a {
-
-        font-size:11px;
-    }
-
-
-    .investment-plans-about-panel iframe {
+    .investment-plans-market-card iframe {
 
         height:350px;
     }
 
 
-    .investment-plans-chart-panel {
+    .investment-plans-chart-card {
 
         width:95%;
-    }
-
-
-    .investment-plans-chart-title {
-
-        font-size:21px;
-    }
-
-}
-
-
-/*==================================================
-    SMALL PHONES
-==================================================*/
-
-@media(max-width:380px){
-
-    .investment-plans-heading-title {
-
-        font-size:22px;
-    }
-
-
-    .investment-plans-panel,
-    .investment-plans-about-panel {
-
-        padding:22px 18px;
-    }
-
-
-    .investment-plans-about-links {
-
-        justify-content:center;
-
-        text-align:center;
     }
 
 }
