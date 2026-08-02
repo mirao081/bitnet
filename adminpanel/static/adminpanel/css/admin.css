@@ -159,10 +159,16 @@ body{
 
 }
 
-.mobile-header .logo img{
-
+.mobile-header .logo img,
+.sidebar .logo img{
+    display:block;
     width:120px;
+    max-width:100%;
+    height:auto;
+}
 
+.sidebar .logo img{
+    margin:0 auto;
 }
 
 .menu-toggle{
