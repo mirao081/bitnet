@@ -5,6 +5,7 @@ app_name = "users"
 
 urlpatterns = [
     path("dashboard/", views.dashboard, name="dashboard"),
+    path("login/", views.user_login, name="login"),
     path("portfolio/", views.portfolio, name="portfolio"),
     path("portfolio/export/excel/", views.export_portfolio_excel, name="export_portfolio_excel"),
 

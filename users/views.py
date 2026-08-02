@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib.auth import logout as auth_logout
+from django.contrib.auth import authenticate, login
 from django.contrib import messages
 from django.utils.timezone import now
 from users.utils import credit_profit
@@ -1862,3 +1863,18 @@ def company_wallet(request, asset):
         })
 
     return JsonResponse({"error": "Invalid asset."}, status=400)
+
+
+def user_login(request):
+    if request.method == "POST":
+        username = request.POST.get("username")
+        password = request.POST.get("password")
+        user = authenticate(request, username=username, password=password)
+
+        if user is not None:
+            login(request, user)
+            return redirect("users:dashboard")  # adjust to your dashboard route
+        else:
+            messages.error(request, "Invalid username or password")
+
+    return render(request, "users/login.html")
