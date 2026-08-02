@@ -1,69 +1,168 @@
 {% extends "crypto/crypto_base.html" %}
 
 {% load static %}
-
+<link rel="stylesheet" href="{% static 'crypto/css/investment.css' %}">
 {% block content %}
-<section class="hero-section investment-plans-section">
+
+<section class="investment-plans-showcase">
+
+    <!-- ==================================================
+         HERO / CAROUSEL
+         JS CLASSES ARE INTENTIONALLY LEFT UNCHANGED
+    =================================================== -->
+
     <div class="carousel-container">
+
         {% for slide in slides %}
+
             <div class="carousel-slide {% if forloop.first %}active{% endif %}">
-                <h1>{{ slide.title }}</h1>
+
+                <h1 class="investment-plans-slide-title">
+                    {{ slide.title }}
+                </h1>
+
                 {% if slide.subtitle %}
-                    <p>{{ slide.subtitle }}</p>
+                    <p class="investment-plans-slide-subtitle">
+                        {{ slide.subtitle }}
+                    </p>
                 {% endif %}
 
-                <!-- Always show both buttons -->
+                <!-- JS / EXISTING CLASSES LEFT UNCHANGED -->
                 <a href="{% url 'crypto:signup' %}" class="btn btn-primary">
                     Get Started
                 </a>
+
                 <a href="{% url 'crypto:login' %}" class="btn btn-secondary">
                     Sign In
                 </a>
+
             </div>
+
         {% endfor %}
 
+        <!-- JS CLASSES LEFT UNCHANGED -->
         <span class="carousel-prev">&lt;</span>
         <span class="carousel-next">&gt;</span>
+
     </div>
 
-    <div class="cards-container">
+
+    <!-- ==================================================
+         INVESTMENT CARDS
+    =================================================== -->
+
+    <div class="investment-plans-cards-container">
+
         {% for card in cards %}
-            <div class="plan-card">
-                <i class="fa-brands fa-bitcoin card-icon"></i>
-                <h1>{{ card.title }}</h1>
-                <p>{{ card.description }}</p>
+
+            <div class="investment-plans-card">
+
+                <i class="fa-brands fa-bitcoin investment-plans-card-icon"></i>
+
+                <h1 class="investment-plans-card-title">
+                    {{ card.title }}
+                </h1>
+
+                <p class="investment-plans-card-description">
+                    {{ card.description }}
+                </p>
+
             </div>
+
         {% endfor %}
+
     </div>
 
-    <div class="about-us-container">
-        <div class="about-market">
-            <iframe src="https://www.tradingview.com/widgetembed/?frameElementId=tradingview_widget"
-                    width="100%" height="400" frameborder="0" allowfullscreen>
+
+    <!-- ==================================================
+         ABOUT / MARKET SECTION
+    =================================================== -->
+
+    <div class="investment-plans-about-container">
+
+        <div class="investment-plans-market">
+
+            <iframe
+                src="https://www.tradingview.com/widgetembed/?frameElementId=tradingview_widget"
+                width="100%"
+                height="400"
+                frameborder="0"
+                allowfullscreen>
             </iframe>
+
         </div>
 
-        <div class="about-text">
-            <h1>{{ about.heading }}</h1>
-            <p>{{ about.intro_text }}</p>
 
-            <div class="about-links">
-                <a href="#mission">OUR MISSION</a> |
-                <a href="#advantages">OUR ADVANTAGES</a> |
-                <a href="#guarantees">OUR GUARANTEES</a>
+        <div class="investment-plans-about-text">
+
+            <h1 class="investment-plans-about-title">
+                {{ about.heading }}
+            </h1>
+
+            <p class="investment-plans-about-intro">
+                {{ about.intro_text }}
+            </p>
+
+
+            <div class="investment-plans-about-links">
+
+                <a href="#mission" class="investment-plans-about-link">
+                    OUR MISSION
+                </a>
+
+                <span class="investment-plans-link-divider">|</span>
+
+                <a href="#advantages" class="investment-plans-about-link">
+                    OUR ADVANTAGES
+                </a>
+
+                <span class="investment-plans-link-divider">|</span>
+
+                <a href="#guarantees" class="investment-plans-about-link">
+                    OUR GUARANTEES
+                </a>
+
             </div>
 
-            <p>{{ about.extra_text }}</p>
-            <a href="{% url 'crypto:features' %}" class="btn">Read More</a>
+
+            <p class="investment-plans-about-extra">
+                {{ about.extra_text }}
+            </p>
+
+
+            <a href="{% url 'crypto:features' %}"
+               class="investment-plans-read-more">
+                Read More
+            </a>
+
         </div>
+
     </div>
+
+
+    <!-- ==================================================
+         CANVAS
+         IDs LEFT COMPLETELY UNCHANGED
+    =================================================== -->
 
     <canvas id="moveableCanvas" width="400" height="400"></canvas>
-    <div class="charts-section">
-        <h2>Market Trends</h2>
+
+
+    <!-- ==================================================
+         MARKET CHART
+    =================================================== -->
+
+    <div class="investment-plans-charts">
+
+        <h2 class="investment-plans-charts-title">
+            Market Trends
+        </h2>
+
         <canvas id="marketChart"></canvas>
+
     </div>
 </section>
+
 <section class="investment-section">
     <h1 class="investment-title">
         <a href="{% url 'crypto:investment_plans' %}">

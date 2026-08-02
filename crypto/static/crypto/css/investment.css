@@ -1,0 +1,658 @@
+/*==================================================
+    INVESTMENT PLANS SHOWCASE
+==================================================*/
+
+.investment-plans-showcase {
+    width:100%;
+    padding:90px 0;
+    position:relative;
+    overflow:hidden;
+
+    background:
+      radial-gradient(
+        circle at top left,
+        #004aad33,
+        transparent 40%
+      ),
+      radial-gradient(
+        circle at bottom right,
+        #7a00ff22,
+        transparent 35%
+      ),
+      linear-gradient(
+        180deg,
+        #05070d,
+        #0a1020
+      );
+}
+
+
+/*==================================================
+    INVESTMENT GRID
+==================================================*/
+
+.investment-plans-grid,
+.investment-plans-about-grid {
+    width:90%;
+    max-width:1600px;
+    margin:auto;
+
+    display:grid;
+
+    grid-template-columns:
+      repeat(auto-fit,minmax(300px,1fr));
+
+    gap:35px;
+
+    position:relative;
+    z-index:2;
+}
+
+
+/*==================================================
+    GLASS PANEL
+==================================================*/
+
+.investment-plans-panel,
+.investment-plans-about-panel,
+.investment-plans-chart-panel {
+
+    position:relative;
+    overflow:hidden;
+
+    text-align:center;
+
+    padding:35px 28px;
+
+    border-radius:30px;
+
+    background:rgba(255,255,255,.08);
+
+    backdrop-filter:blur(24px);
+    -webkit-backdrop-filter:blur(24px);
+
+    border:1px solid rgba(255,255,255,.12);
+
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,.15),
+      0 18px 45px rgba(0,0,0,.35);
+
+    transition:.45s ease;
+
+    margin-bottom:40px;
+}
+
+
+/*==================================================
+    GLASS GLOW
+==================================================*/
+
+.investment-plans-panel::before,
+.investment-plans-about-panel::before,
+.investment-plans-chart-panel::before {
+
+    content:"";
+
+    position:absolute;
+
+    width:220px;
+    height:220px;
+
+    top:-120px;
+    right:-120px;
+
+    border-radius:50%;
+
+    background:
+      radial-gradient(
+        circle,
+        rgba(0,216,239,.28),
+        transparent 70%
+      );
+
+    transition:.6s;
+
+    pointer-events:none;
+}
+
+
+.investment-plans-panel:hover,
+.investment-plans-about-panel:hover,
+.investment-plans-chart-panel:hover {
+
+    transform:translateY(-12px);
+
+    box-shadow:
+      0 30px 70px rgba(0,0,0,.45),
+      0 0 40px rgba(0,216,239,.18);
+}
+
+
+.investment-plans-panel:hover::before,
+.investment-plans-about-panel:hover::before,
+.investment-plans-chart-panel:hover::before {
+
+    transform:scale(1.4);
+}
+
+
+/*==================================================
+    HERO HEADING
+==================================================*/
+
+.investment-plans-heading-title {
+
+    font-size:25px;
+    font-weight:900;
+
+    color:#fff;
+
+    text-transform:uppercase;
+
+    letter-spacing:2px;
+
+    margin-bottom:15px;
+
+    line-height:1.25;
+
+    text-shadow:
+      0 0 10px #00d8ef,
+      0 0 20px #00d8ef,
+      0 0 40px #7a00ff;
+
+    animation:
+      investmentPlansGlowPulse
+      3s
+      infinite
+      alternate;
+}
+
+
+@keyframes investmentPlansGlowPulse {
+
+    from {
+        text-shadow:
+          0 0 10px #00d8ef,
+          0 0 20px #00d8ef;
+    }
+
+    to {
+        text-shadow:
+          0 0 20px #7a00ff,
+          0 0 40px #ff0080;
+    }
+
+}
+
+
+/*==================================================
+    HERO SUBTITLE
+==================================================*/
+
+.investment-plans-heading-subtitle {
+
+    font-size:18px;
+
+    font-weight:600;
+
+    background:
+      linear-gradient(
+        90deg,
+        #00d8ef,
+        #7a00ff,
+        #ff0080
+      );
+
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+
+    background-size:200% auto;
+
+    animation:
+      investmentPlansShineFlow
+      6s
+      linear
+      infinite;
+
+    letter-spacing:1px;
+
+    line-height:1.6;
+}
+
+
+@keyframes investmentPlansShineFlow {
+
+    0% {
+        background-position:0% 50%;
+    }
+
+    50% {
+        background-position:100% 50%;
+    }
+
+    100% {
+        background-position:0% 50%;
+    }
+
+}
+
+
+/*==================================================
+    CARD TITLE
+==================================================*/
+
+.investment-plans-panel-title {
+
+    font-size:24px;
+
+    font-weight:800;
+
+    color:#fff;
+
+    margin-bottom:15px;
+
+    line-height:1.25;
+}
+
+
+/*==================================================
+    CARD DESCRIPTION
+==================================================*/
+
+.investment-plans-panel-description {
+
+    font-size:15px;
+
+    color:rgba(255,255,255,.80);
+
+    line-height:1.6;
+
+    margin-bottom:20px;
+}
+
+
+/*==================================================
+    BITCOIN ICON
+==================================================*/
+
+.investment-plans-card-icon {
+
+    display:block;
+
+    margin:0 auto 20px;
+
+    font-size:42px;
+
+    color:#00d8ef;
+
+    text-shadow:
+      0 0 10px #00d8ef,
+      0 0 25px #7a00ff;
+}
+
+
+/*==================================================
+    ABOUT LINKS
+==================================================*/
+
+.investment-plans-about-links {
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    flex-wrap:wrap;
+
+    gap:8px;
+
+    margin:25px 0;
+
+    position:relative;
+
+    z-index:3;
+}
+
+
+.investment-plans-about-links a {
+
+    color:#00d8ef;
+
+    font-size:13px;
+
+    font-weight:700;
+
+    text-decoration:none;
+
+    letter-spacing:.5px;
+
+    transition:.3s;
+}
+
+
+.investment-plans-about-links a:hover {
+
+    color:#fff;
+
+    text-shadow:
+      0 0 10px #00d8ef;
+}
+
+
+.investment-plans-about-links span {
+
+    color:rgba(255,255,255,.35);
+}
+
+
+/*==================================================
+    TRADINGVIEW
+==================================================*/
+
+.investment-plans-about-panel iframe {
+
+    display:block;
+
+    width:100%;
+
+    height:400px;
+
+    border:0;
+
+    border-radius:20px;
+
+    position:relative;
+
+    z-index:2;
+}
+
+
+/*==================================================
+    READ MORE BUTTON
+==================================================*/
+
+.investment-plans-read-more-btn {
+
+    display:inline-block;
+
+    margin-top:15px;
+
+    padding:10px 20px;
+
+    border-radius:20px;
+
+    background:#00d8ef;
+
+    color:#05070d;
+
+    font-weight:600;
+
+    text-decoration:none;
+
+    transition:.3s;
+
+    position:relative;
+
+    z-index:3;
+}
+
+
+.investment-plans-read-more-btn:hover {
+
+    background:#009bb8;
+
+    color:#fff;
+}
+
+
+/*==================================================
+    CHART PANEL
+==================================================*/
+
+.investment-plans-chart-panel {
+
+    width:90%;
+
+    max-width:1600px;
+
+    margin:20px auto 40px;
+
+}
+
+
+/*==================================================
+    CHART TITLE
+==================================================*/
+
+.investment-plans-chart-title {
+
+    font-size:25px;
+
+    font-weight:900;
+
+    color:#fff;
+
+    text-transform:uppercase;
+
+    letter-spacing:2px;
+
+    margin-bottom:15px;
+
+    line-height:1.25;
+
+    text-shadow:
+      0 0 10px #00d8ef,
+      0 0 20px #00d8ef,
+      0 0 40px #7a00ff;
+
+    position:relative;
+
+    z-index:2;
+}
+
+
+/*==================================================
+    CANVAS
+    IDs ARE NOT CHANGED
+==================================================*/
+
+#moveableCanvas {
+    display:block;
+
+    max-width:100%;
+
+    margin:30px auto;
+}
+
+
+#marketChart {
+    display:block;
+
+    width:100%;
+
+    max-width:100%;
+}
+
+
+/*==================================================
+    TABLET
+==================================================*/
+
+@media(max-width:991px){
+
+    .investment-plans-showcase {
+        padding:70px 0;
+    }
+
+    .investment-plans-grid,
+    .investment-plans-about-grid {
+
+        width:92%;
+
+        grid-template-columns:
+          repeat(2,1fr);
+
+        gap:25px;
+    }
+
+    .investment-plans-panel,
+    .investment-plans-about-panel,
+    .investment-plans-chart-panel {
+
+        padding:30px 24px;
+    }
+
+}
+
+
+/*==================================================
+    MOBILE
+==================================================*/
+
+@media(max-width:600px){
+
+    .investment-plans-showcase {
+
+        padding:60px 0;
+    }
+
+
+    .investment-plans-grid,
+    .investment-plans-about-grid {
+
+        width:95%;
+
+        grid-template-columns:1fr;
+
+        gap:24px;
+    }
+
+
+    .investment-plans-panel,
+    .investment-plans-about-panel,
+    .investment-plans-chart-panel {
+
+        padding:24px;
+
+        margin-bottom:24px;
+    }
+
+
+    .investment-plans-panel-title {
+
+        font-size:21px;
+    }
+
+
+    .investment-plans-panel-description {
+
+        font-size:14px;
+
+        line-height:1.5;
+    }
+
+
+    .investment-plans-heading-title {
+
+        font-size:25px;
+
+        text-shadow:
+          0 0 15px #00d8ef,
+          0 0 30px #7a00ff,
+          0 0 60px #ff0080;
+
+        animation:
+          investmentPlansGlowPulseMobile
+          2.5s
+          infinite
+          alternate;
+    }
+
+
+    @keyframes investmentPlansGlowPulseMobile {
+
+        from {
+
+            text-shadow:
+              0 0 15px #00d8ef,
+              0 0 30px #7a00ff;
+        }
+
+        to {
+
+            text-shadow:
+              0 0 30px #ff0080,
+              0 0 60px #00d8ef;
+        }
+
+    }
+
+
+    .investment-plans-heading-subtitle {
+
+        font-size:16px;
+    }
+
+
+    .investment-plans-about-links {
+
+        gap:5px;
+
+        line-height:1.7;
+    }
+
+
+    .investment-plans-about-links a {
+
+        font-size:11px;
+    }
+
+
+    .investment-plans-about-panel iframe {
+
+        height:350px;
+    }
+
+
+    .investment-plans-chart-panel {
+
+        width:95%;
+    }
+
+
+    .investment-plans-chart-title {
+
+        font-size:21px;
+    }
+
+}
+
+
+/*==================================================
+    SMALL PHONES
+==================================================*/
+
+@media(max-width:380px){
+
+    .investment-plans-heading-title {
+
+        font-size:22px;
+    }
+
+
+    .investment-plans-panel,
+    .investment-plans-about-panel {
+
+        padding:22px 18px;
+    }
+
+
+    .investment-plans-about-links {
+
+        justify-content:center;
+
+        text-align:center;
+    }
+
+}
