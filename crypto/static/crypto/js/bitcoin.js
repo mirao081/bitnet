@@ -151,7 +151,7 @@ window.onload = function() {
 
 // === BITCOIN CALCULATOR ===
 document.addEventListener("DOMContentLoaded", () => {
-    const currencyInput = document.getElementById("btcAmount"); // user enters $ amount
+    const btcInput = document.getElementById("btcAmount"); // user enters BTC amount
     const resultBox = document.getElementById("calcResult");
     const currencySelect = document.getElementById("currencySelect");
 
@@ -169,7 +169,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     async function updateResult() {
-        const amount = parseFloat(currencyInput.value); // this is dollars (or selected currency)
+        const amount = parseFloat(btcInput.value); // BTC amount entered
         const currency = currencySelect ? currencySelect.value : "usd";
 
         if (!amount || amount <= 0) {
@@ -179,15 +179,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const btcPrice = await getBTCPrice(currency);
         if (btcPrice) {
-            // Convert currency → BTC
-            const worth = amount / btcPrice;
-            resultBox.textContent = `${worth.toFixed(8)} BTC`;
+            // Show BTC amount × current BTC price
+            const worth = amount * btcPrice;
+            resultBox.textContent = `${worth.toLocaleString()} ${currency.toUpperCase()}`;
         } else {
             resultBox.textContent = "Error";
         }
     }
 
-    currencyInput.addEventListener("input", updateResult);
+    btcInput.addEventListener("input", updateResult);
     if (currencySelect) {
         currencySelect.addEventListener("change", updateResult);
     }
