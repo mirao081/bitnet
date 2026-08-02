@@ -36,7 +36,7 @@ ROOT_URLCONF = 'bitnet.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / "templates"],  # optional global templates folder
+        'DIRS': [BASE_DIR / "templates"],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -72,33 +72,26 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 USE_TZ = True
 
-# Login flow
-LOGIN_URL = '/login/'
+LOGIN_URL = '/users/login/'
 LOGIN_REDIRECT_URL = '/users/dashboard/'
+LOGOUT_REDIRECT_URL = '/users/login/'
 
-# Static & media
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
-
-
-# Tell Django where to find static files in your apps
 STATICFILES_DIRS = [
     BASE_DIR / "crypto" / "static",
     BASE_DIR / "users" / "static",
     BASE_DIR / "adminpanel" / "static",
 ]
 
-
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
-# reCAPTCHA keys
 RECAPTCHA_PUBLIC_KEY = "6LfYRWotAAAAADZOYTAPexRxP48RWIDrfj7sCAaj"
 RECAPTCHA_PRIVATE_KEY = "6LfYRWotAAAAAAUahZ20rCzW6f9ksHJyMfXsH9WV"
 RECAPTCHA_USE_SSL = True
 
-# Email
 DEFAULT_FROM_EMAIL = "chineduarize4@gmail.com"
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 EMAIL_HOST = "smtp.gmail.com"

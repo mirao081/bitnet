@@ -1865,14 +1865,3 @@ def company_wallet(request, asset):
     return JsonResponse({"error": "Invalid asset."}, status=400)
 
 
-def user_login(request):
-    if request.method == "POST":
-        username = request.POST.get("username")
-        password = request.POST.get("password")
-        user = authenticate(request, username=username, password=password)
-        if user is not None:
-            login(request, user)
-            return redirect("users:dashboard")  # adjust to your dashboard route
-        else:
-            messages.error(request, "Invalid username or password")
-    return render(request, "users/login.html")
