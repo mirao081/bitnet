@@ -1568,11 +1568,11 @@ section.trading-options-isolated
     }
 }
 /* =========================================================
-   ANALYTICS & INSIGHTS
+   TRADING OPTIONS
    ISOLATED PREMIUM STYLE
    ========================================================= */
 
-section.analytics-insights-isolated {
+section.trading-options-isolated {
 
     width:100% !important;
 
@@ -1602,11 +1602,11 @@ section.analytics-insights-isolated {
 
 
 /* =========================================================
-   HEADING
+   MAIN HEADING
    ========================================================= */
 
-section.analytics-insights-isolated
-.analytics-insights-heading {
+section.trading-options-isolated
+.trading-options-title {
 
     width:90% !important;
 
@@ -1620,16 +1620,69 @@ section.analytics-insights-isolated
 
     line-height:1.2 !important;
 
-    color:#fff !important;
-
     text-transform:uppercase !important;
 
     letter-spacing:2px !important;
+}
 
-    text-shadow:
-        0 0 10px #00d8ef,
-        0 0 20px #00d8ef,
-        0 0 40px #7a00ff !important;
+
+section.trading-options-isolated
+.trading-options-title a {
+
+    text-decoration:none !important;
+
+    background:
+        linear-gradient(
+            90deg,
+            #00d8ef,
+            #7a00ff,
+            #ff0080
+        ) !important;
+
+    background-size:200% auto !important;
+
+    -webkit-background-clip:text !important;
+
+    background-clip:text !important;
+
+    -webkit-text-fill-color:transparent !important;
+
+    color:transparent !important;
+
+    animation:
+        tradingOptionsTitleShine 5s linear infinite !important;
+
+    filter:
+        drop-shadow(0 0 8px rgba(0,216,239,.45))
+        drop-shadow(0 0 15px rgba(122,0,255,.30)) !important;
+
+    transition:.3s ease !important;
+}
+
+
+section.trading-options-isolated
+.trading-options-title a:hover {
+
+    filter:
+        drop-shadow(0 0 10px rgba(0,216,239,.75))
+        drop-shadow(0 0 20px rgba(122,0,255,.65))
+        drop-shadow(0 0 30px rgba(255,0,128,.45)) !important;
+}
+
+
+@keyframes tradingOptionsTitleShine {
+
+    0% {
+        background-position:0% 50%;
+    }
+
+    50% {
+        background-position:100% 50%;
+    }
+
+    100% {
+        background-position:0% 50%;
+    }
 }
 
 
@@ -1637,8 +1690,8 @@ section.analytics-insights-isolated
    SUBTITLE
    ========================================================= */
 
-section.analytics-insights-isolated
-.analytics-insights-subheading {
+section.trading-options-isolated
+.trading-options-subtitle {
 
     width:90% !important;
 
@@ -1658,16 +1711,55 @@ section.analytics-insights-isolated
 
     font-weight:600 !important;
 
-    color:#fff !important;
-
     letter-spacing:1px !important;
 
     line-height:1.5 !important;
+
+    background:
+        linear-gradient(
+            90deg,
+            #00d8ef,
+            #7a00ff,
+            #ff0080
+        ) !important;
+
+    background-size:200% auto !important;
+
+    -webkit-background-clip:text !important;
+
+    background-clip:text !important;
+
+    -webkit-text-fill-color:transparent !important;
+
+    color:transparent !important;
+
+    animation:
+        tradingOptionsSubtitleShine 6s linear infinite !important;
 }
 
 
-section.analytics-insights-isolated
-.analytics-insights-line {
+@keyframes tradingOptionsSubtitleShine {
+
+    0% {
+        background-position:0% 50%;
+    }
+
+    50% {
+        background-position:100% 50%;
+    }
+
+    100% {
+        background-position:0% 50%;
+    }
+}
+
+
+/* =========================================================
+   SUBTITLE LINES
+   ========================================================= */
+
+section.trading-options-isolated
+.trading-options-line {
 
     width:80px !important;
 
@@ -1682,20 +1774,22 @@ section.analytics-insights-isolated
             90deg,
             transparent,
             #00d8ef,
-            #7a00ff
+            #7a00ff,
+            #ff0080
         ) !important;
 
     box-shadow:
-        0 0 10px #00d8ef !important;
+        0 0 10px #00d8ef,
+        0 0 20px rgba(122,0,255,.45) !important;
 }
 
 
 /* =========================================================
-   CHART GRID
+   INVESTMENT CARDS GRID
    ========================================================= */
 
-section.analytics-insights-isolated
-.analytics-insights-grid {
+section.trading-options-isolated
+.trading-options-cards {
 
     width:90% !important;
 
@@ -1706,7 +1800,7 @@ section.analytics-insights-isolated
     display:grid !important;
 
     grid-template-columns:
-        repeat(2, minmax(300px,1fr)) !important;
+        repeat(auto-fit,minmax(300px,1fr)) !important;
 
     gap:35px !important;
 
@@ -1717,11 +1811,11 @@ section.analytics-insights-isolated
 
 
 /* =========================================================
-   GLASS CHART CARD
+   GLASS INVESTMENT CARD
    ========================================================= */
 
-section.analytics-insights-isolated
-.analytics-insights-card {
+section.trading-options-isolated
+.trading-options-card {
 
     position:relative !important;
 
@@ -1751,8 +1845,12 @@ section.analytics-insights-isolated
 }
 
 
-section.analytics-insights-isolated
-.analytics-insights-card::before {
+/* =========================================================
+   CARD GLOW
+   ========================================================= */
+
+section.trading-options-isolated
+.trading-options-card::before {
 
     content:"" !important;
 
@@ -1781,8 +1879,8 @@ section.analytics-insights-isolated
 }
 
 
-section.analytics-insights-isolated
-.analytics-insights-card:hover {
+section.trading-options-isolated
+.trading-options-card:hover {
 
     transform:translateY(-12px) !important;
 
@@ -1792,65 +1890,300 @@ section.analytics-insights-isolated
 }
 
 
-section.analytics-insights-isolated
-.analytics-insights-card:hover::before {
+section.trading-options-isolated
+.trading-options-card:hover::before {
 
     transform:scale(1.4) !important;
 }
 
 
 /* =========================================================
-   CHART TITLES
+   CARD TOP
    ========================================================= */
 
-section.analytics-insights-isolated
-.analytics-insights-card-title {
+section.trading-options-isolated
+.trading-options-card-top {
+
+    position:relative !important;
+
+    z-index:2 !important;
+}
+
+
+/* =========================================================
+   PLAN NAME + PERCENTAGE
+   REPLACES GOLD
+   ========================================================= */
+
+section.trading-options-isolated
+.trading-options-card-top h1 {
+
+    margin:0 0 10px 0 !important;
+
+    font-size:24px !important;
+
+    font-weight:900 !important;
+
+    line-height:1.25 !important;
+
+    background:
+        linear-gradient(
+            90deg,
+            #00d8ef,
+            #7a00ff,
+            #ff0080
+        ) !important;
+
+    background-size:200% auto !important;
+
+    -webkit-background-clip:text !important;
+
+    background-clip:text !important;
+
+    -webkit-text-fill-color:transparent !important;
+
+    color:transparent !important;
+
+    animation:
+        tradingCardHeadingShine 5s linear infinite !important;
+
+    filter:
+        drop-shadow(0 0 6px rgba(0,216,239,.40))
+        drop-shadow(0 0 12px rgba(122,0,255,.25)) !important;
+}
+
+
+/* =========================================================
+   CARD HEADING ANIMATION
+   ========================================================= */
+
+@keyframes tradingCardHeadingShine {
+
+    0% {
+        background-position:0% 50%;
+    }
+
+    50% {
+        background-position:100% 50%;
+    }
+
+    100% {
+        background-position:0% 50%;
+    }
+}
+
+
+/* =========================================================
+   SEPARATORS
+   ========================================================= */
+
+section.trading-options-isolated
+.trading-options-separator {
+
+    width:80% !important;
+
+    height:1px !important;
+
+    margin:20px auto !important;
+
+    border:0 !important;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(0,216,239,.75),
+            rgba(122,0,255,.85),
+            rgba(255,0,128,.65),
+            transparent
+        ) !important;
+
+    box-shadow:
+        0 0 10px rgba(0,216,239,.30) !important;
+}
+
+
+/* =========================================================
+   DURATION / MATURITY
+   ========================================================= */
+
+section.trading-options-isolated
+.trading-options-duration,
+section.trading-options-isolated
+.trading-options-maturity {
 
     position:relative !important;
 
     z-index:2 !important;
 
-    margin:0 0 25px 0 !important;
+    margin:15px 0 !important;
 
-    font-size:22px !important;
+    font-size:20px !important;
 
     font-weight:800 !important;
 
     line-height:1.3 !important;
 
-    color:#fff !important;
+    background:
+        linear-gradient(
+            90deg,
+            #00d8ef,
+            #7a00ff,
+            #ff0080
+        ) !important;
 
-    text-align:center !important;
+    background-size:200% auto !important;
+
+    -webkit-background-clip:text !important;
+
+    background-clip:text !important;
+
+    -webkit-text-fill-color:transparent !important;
+
+    color:transparent !important;
+
+    animation:
+        tradingCardHeadingShine 5s linear infinite !important;
 }
 
 
 /* =========================================================
-   CANVAS
-   IDs LEFT COMPLETELY UNCHANGED
+   MINIMUM / MAXIMUM HEADERS
    ========================================================= */
 
-section.analytics-insights-isolated
-#roiChart,
-section.analytics-insights-isolated
-#riskRewardChart,
-section.analytics-insights-isolated
-#portfolioChart,
-section.analytics-insights-isolated
-#volumeChart {
+section.trading-options-isolated
+.trading-options-limits {
 
     position:relative !important;
 
     z-index:2 !important;
 
-    display:block !important;
+    display:grid !important;
 
-    width:100% !important;
+    grid-template-columns:1fr 1fr !important;
 
-    max-width:400px !important;
+    gap:20px !important;
 
-    height:auto !important;
+    margin:25px 0 !important;
+}
 
-    margin:0 auto !important;
+
+section.trading-options-isolated
+.trading-options-limit h2 {
+
+    margin:0 0 8px 0 !important;
+
+    font-size:16px !important;
+
+    font-weight:700 !important;
+
+    color:rgba(255,255,255,.78) !important;
+
+    text-transform:uppercase !important;
+
+    letter-spacing:1px !important;
+}
+
+
+/* =========================================================
+   AMOUNTS
+   ========================================================= */
+
+section.trading-options-isolated
+.trading-options-amount {
+
+    margin:0 !important;
+
+    font-size:22px !important;
+
+    font-weight:900 !important;
+
+    background:
+        linear-gradient(
+            90deg,
+            #00d8ef,
+            #7a00ff,
+            #ff0080
+        ) !important;
+
+    background-size:200% auto !important;
+
+    -webkit-background-clip:text !important;
+
+    background-clip:text !important;
+
+    -webkit-text-fill-color:transparent !important;
+
+    color:transparent !important;
+
+    animation:
+        tradingCardHeadingShine 5s linear infinite !important;
+
+    filter:
+        drop-shadow(0 0 6px rgba(0,216,239,.35)) !important;
+}
+
+
+/* =========================================================
+   SIGNUP BUTTON
+   ========================================================= */
+
+section.trading-options-isolated
+.trading-options-signup {
+
+    position:relative !important;
+
+    z-index:3 !important;
+
+    display:inline-block !important;
+
+    margin-top:15px !important;
+
+    padding:12px 25px !important;
+
+    border-radius:25px !important;
+
+    background:
+        linear-gradient(
+            90deg,
+            #00d8ef,
+            #7a00ff,
+            #ff0080
+        ) !important;
+
+    background-size:200% auto !important;
+
+    color:#fff !important;
+
+    font-size:15px !important;
+
+    font-weight:800 !important;
+
+    text-decoration:none !important;
+
+    border:1px solid rgba(255,255,255,.18) !important;
+
+    box-shadow:
+        0 8px 25px rgba(0,0,0,.30),
+        0 0 20px rgba(0,216,239,.20) !important;
+
+    transition:.35s ease !important;
+}
+
+
+section.trading-options-isolated
+.trading-options-signup:hover {
+
+    background-position:100% 50% !important;
+
+    transform:translateY(-3px) !important;
+
+    box-shadow:
+        0 12px 35px rgba(0,0,0,.40),
+        0 0 30px rgba(122,0,255,.45),
+        0 0 45px rgba(255,0,128,.25) !important;
+
+    color:#fff !important;
 }
 
 
@@ -1860,13 +2193,13 @@ section.analytics-insights-isolated
 
 @media(max-width:991px) {
 
-    section.analytics-insights-isolated {
+    section.trading-options-isolated {
 
         padding:70px 0 !important;
     }
 
-    section.analytics-insights-isolated
-    .analytics-insights-grid {
+    section.trading-options-isolated
+    .trading-options-cards {
 
         width:92% !important;
 
@@ -1876,16 +2209,8 @@ section.analytics-insights-isolated
         gap:25px !important;
     }
 
-    section.analytics-insights-isolated
-    .analytics-insights-subheading {
-
-        width:92% !important;
-
-        margin-bottom:45px !important;
-    }
-
-    section.analytics-insights-isolated
-    .analytics-insights-card {
+    section.trading-options-isolated
+    .trading-options-card {
 
         padding:30px 22px !important;
     }
@@ -1898,26 +2223,21 @@ section.analytics-insights-isolated
 
 @media(max-width:600px) {
 
-    section.analytics-insights-isolated {
+    section.trading-options-isolated {
 
         padding:60px 0 !important;
     }
 
-    section.analytics-insights-isolated
-    .analytics-insights-heading {
+    section.trading-options-isolated
+    .trading-options-title {
 
         width:95% !important;
 
         font-size:25px !important;
-
-        text-shadow:
-            0 0 15px #00d8ef,
-            0 0 30px #7a00ff,
-            0 0 60px #ff0080 !important;
     }
 
-    section.analytics-insights-isolated
-    .analytics-insights-subheading {
+    section.trading-options-isolated
+    .trading-options-subtitle {
 
         width:95% !important;
 
@@ -1928,14 +2248,14 @@ section.analytics-insights-isolated
         font-size:16px !important;
     }
 
-    section.analytics-insights-isolated
-    .analytics-insights-line {
+    section.trading-options-isolated
+    .trading-options-line {
 
         width:35px !important;
     }
 
-    section.analytics-insights-isolated
-    .analytics-insights-grid {
+    section.trading-options-isolated
+    .trading-options-cards {
 
         width:95% !important;
 
@@ -1944,34 +2264,42 @@ section.analytics-insights-isolated
         gap:24px !important;
     }
 
-    section.analytics-insights-isolated
-    .analytics-insights-card {
+    section.trading-options-isolated
+    .trading-options-card {
 
         padding:24px !important;
     }
 
-    section.analytics-insights-isolated
-    .analytics-insights-card-title {
+    section.trading-options-isolated
+    .trading-options-card-top h1 {
 
         font-size:21px !important;
-
-        margin-bottom:20px !important;
     }
 
-    section.analytics-insights-isolated
-    #roiChart,
-    section.analytics-insights-isolated
-    #riskRewardChart,
-    section.analytics-insights-isolated
-    #portfolioChart,
-    section.analytics-insights-isolated
-    #volumeChart {
+    section.trading-options-isolated
+    .trading-options-duration,
+    section.trading-options-isolated
+    .trading-options-maturity {
 
-        width:100% !important;
+        font-size:18px !important;
+    }
 
-        max-width:400px !important;
+    section.trading-options-isolated
+    .trading-options-limits {
 
-        height:auto !important;
+        gap:12px !important;
+    }
+
+    section.trading-options-isolated
+    .trading-options-limit h2 {
+
+        font-size:14px !important;
+    }
+
+    section.trading-options-isolated
+    .trading-options-amount {
+
+        font-size:19px !important;
     }
 }
 
@@ -1982,27 +2310,35 @@ section.analytics-insights-isolated
 
 @media(max-width:380px) {
 
-    section.analytics-insights-isolated
-    .analytics-insights-heading {
+    section.trading-options-isolated
+    .trading-options-title {
 
         font-size:21px !important;
     }
 
-    section.analytics-insights-isolated
-    .analytics-insights-subheading {
+    section.trading-options-isolated
+    .trading-options-subtitle {
 
         font-size:14px !important;
     }
 
-    section.analytics-insights-isolated
-    .analytics-insights-card {
+    section.trading-options-isolated
+    .trading-options-card {
 
         padding:22px 18px !important;
     }
 
-    section.analytics-insights-isolated
-    .analytics-insights-card-title {
+    section.trading-options-isolated
+    .trading-options-card-top h1 {
 
         font-size:19px !important;
+    }
+
+    section.trading-options-isolated
+    .trading-options-duration,
+    section.trading-options-isolated
+    .trading-options-maturity {
+
+        font-size:17px !important;
     }
 }
