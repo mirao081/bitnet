@@ -1,15 +1,125 @@
-.services-showcase {
+/*==================================================
+        CRYPTO SERVICES SHOWCASE STYLE
+==================================================*/
+
+.crypto-services-container {
     width:100%;
     padding:90px 0;
+    position:relative;
+    overflow:hidden;
     background:
       radial-gradient(circle at top left,#004aad33,transparent 40%),
       radial-gradient(circle at bottom right,#7a00ff22,transparent 35%),
       linear-gradient(180deg,#05070d,#0a1020);
+}
+
+/*=========================
+        GRID LAYOUT
+=========================*/
+.crypto-grid {
+    width:90%;
+    max-width:1600px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:35px;
+    position:relative;
+    z-index:2;
+}
+
+/*=========================
+        GLASS CARD
+=========================*/
+.crypto-card {
+    position:relative;
+    overflow:hidden;
+    text-align:center;
+    padding:35px 28px;
+    border-radius:30px;
+    background:rgba(255,255,255,.08);
+    backdrop-filter:blur(24px);
+    -webkit-backdrop-filter:blur(24px);
+    border:1px solid rgba(255,255,255,.12);
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,.15),
+      0 18px 45px rgba(0,0,0,.35);
+    transition:.45s ease;
+    margin-bottom:40px;
+}
+
+.crypto-card::before {
+    content:"";
+    position:absolute;
+    width:220px;
+    height:220px;
+    top:-120px;
+    right:-120px;
+    border-radius:50%;
+    background:radial-gradient(circle,rgba(0,216,239,.28),transparent 70%);
+    transition:.6s;
+}
+
+.crypto-card:hover {
+    transform:translateY(-12px);
+    box-shadow:
+      0 30px 70px rgba(0,0,0,.45),
+      0 0 40px rgba(0,216,239,.18);
+}
+
+.crypto-card:hover::before {
+    transform:scale(1.4);
+}
+
+/*=========================
+        TITLE & DESCRIPTION
+=========================*/
+.crypto-card-title {
+    font-size:24px;
+    font-weight:800;
+    color:#fff;
+    margin-bottom:15px;
+    line-height:1.25;
+}
+
+.crypto-card-text {
+    font-size:15px;
+    color:rgba(255,255,255,.80);
+    line-height:1.6;
+}
+
+/*=========================
+        ICONS
+=========================*/
+.crypto-icon {
+    width:80px;
+    height:auto;
+    margin-bottom:20px;
+}
+
+/*=========================
+        BUTTON
+=========================*/
+.crypto-button {
+    display:inline-block;
+    margin-top:15px;
+    padding:12px 28px;
+    border-radius:25px;
+    background:#00d8ef;
+    color:#05070d;
+    font-weight:600;
+    text-decoration:none;
+    transition:.3s;
+}
+
+.crypto-button:hover {
+    background:#009bb8;
     color:#fff;
 }
 
-/* Heading */
-.services-heading-container {
+/*=========================
+   HEADING CONTAINER
+=========================*/
+.crypto-hero {
     text-align:center;
     margin-bottom:60px;
     padding:20px;
@@ -20,15 +130,21 @@
     box-shadow:0 0 25px rgba(0,216,239,.35);
 }
 
-.services-heading-title {
-    font-size:28px;
+.crypto-hero-title {
+    font-size:25px;
     font-weight:900;
+    color:#fff;
     text-transform:uppercase;
-    text-shadow:0 0 10px #00d8ef,0 0 20px #00d8ef,0 0 40px #7a00ff;
+    letter-spacing:2px;
+    margin-bottom:15px;
+    text-shadow:
+      0 0 10px #00d8ef,
+      0 0 20px #00d8ef,
+      0 0 40px #7a00ff;
     animation:glowPulse 3s infinite alternate;
 }
 
-.services-heading-subtitle {
+.crypto-hero-subtitle {
     font-size:18px;
     font-weight:600;
     background:linear-gradient(90deg,#00d8ef,#7a00ff,#ff0080);
@@ -36,159 +152,108 @@
     -webkit-text-fill-color:transparent;
     background-size:200% auto;
     animation:shineFlow 6s linear infinite;
+    letter-spacing:1px;
 }
 
-.services-intro {
+.crypto-hero-intro {
     font-size:16px;
     color:rgba(255,255,255,.85);
     max-width:800px;
-    margin:20px auto 0;
-    line-height:1.7;
-}
-
-/* Grid */
-.services-grid {
-    width:90%;
-    max-width:1600px;
     margin:auto;
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-    gap:35px;
-    margin-bottom:40px;
-}
-
-.services-panel {
-    background:rgba(255,255,255,.08);
-    border-radius:30px;
-    padding:25px;
-    text-align:center;
-    backdrop-filter:blur(18px);
-    -webkit-backdrop-filter:blur(18px);
-    border:1px solid rgba(255,255,255,.12);
-    box-shadow:inset 0 1px 0 rgba(255,255,255,.15),0 18px 45px rgba(0,0,0,.35);
-    transition:.4s ease;
-}
-
-.services-panel:hover {
-    transform:translateY(-10px);
-    box-shadow:0 25px 60px rgba(0,0,0,.45),0 0 30px rgba(0,216,239,.18);
-}
-
-/* Service Icons */
-.services-icon {
-    width:200px;
-    height:200px;
-    object-fit:cover;
-    border-radius:50%;
-    display:block;
-    margin:0 auto 15px auto;
-    box-shadow:0 0 20px rgba(0,216,239,.4);
-    transition:.3s ease;
-}
-
-.services-icon:hover {
-    transform:scale(1.05);
-    box-shadow:0 0 30px rgba(255,0,128,.5);
-}
-
-.services-panel-title {
-    font-size:20px;
-    font-weight:700;
-    margin-bottom:10px;
-    color:#fff;
-}
-
-.services-panel-description {
-    font-size:14px;
-    color:rgba(255,255,255,.85);
     line-height:1.6;
 }
 
-/* Benefits */
-.services-global-title {
+/*=========================
+   SECTION TITLES
+=========================*/
+.crypto-section-title {
     font-size:24px;
     font-weight:800;
-    margin-bottom:15px;
-    text-shadow:0 0 10px #00d8ef,0 0 20px #7a00ff;
+    color:#fff;
+    text-align:center;
+    margin-bottom:25px;
+    text-shadow:0 0 15px #00d8ef;
 }
 
-.services-list {
+.crypto-section-text {
+    font-size:15px;
+    color:rgba(255,255,255,.85);
+    line-height:1.6;
+    text-align:center;
+    max-width:900px;
+    margin:auto;
+}
+
+/*=========================
+   LISTS
+=========================*/
+.crypto-list {
     list-style:none;
     padding:0;
     margin:0 auto;
     max-width:700px;
+    text-align:left;
 }
-.services-list li {
-    margin:10px 0;
-    padding:12px;
-    background:rgba(255,255,255,.05);
-    border-radius:12px;
-    color:#fff;
-    box-shadow:0 0 15px rgba(0,216,239,.25);
+.crypto-list li {
+    color:rgba(255,255,255,.85);
+    margin-bottom:12px;
+    font-size:15px;
+    position:relative;
+    padding-left:20px;
 }
-
-/* CTA */
-.services-cta {
-    text-align:center;
-    margin-top:60px;
-}
-.services-button {
-    display:inline-block;
-    margin-top:20px;
-    padding:12px 28px;
-    border-radius:30px;
-    background:linear-gradient(90deg,#00d8ef,#7a00ff);
-    color:#fff;
-    font-weight:700;
-    text-decoration:none;
-    transition:.3s ease;
-    box-shadow:0 0 20px rgba(0,216,239,.4);
-}
-.services-button:hover {
-    background:linear-gradient(90deg,#7a00ff,#ff0080);
-    box-shadow:0 0 30px rgba(255,0,128,.5);
+.crypto-list li::before {
+    content:"✔";
+    position:absolute;
+    left:0;
+    color:#00d8ef;
 }
 
-/* Animations */
+/*=========================
+   ANIMATIONS
+=========================*/
 @keyframes glowPulse {
     from { text-shadow:0 0 10px #00d8ef,0 0 20px #00d8ef; }
     to   { text-shadow:0 0 20px #7a00ff,0 0 40px #ff0080; }
 }
+
 @keyframes shineFlow {
     0%   { background-position:0% 50%; }
     50%  { background-position:100% 50%; }
     100% { background-position:0% 50%; }
 }
-@media (max-width:768px) {
-    .services-heading-title {
-        font-size:22px;
-    }
-    .services-heading-subtitle {
-        font-size:16px;
-    }
-    .services-intro {
-        font-size:14px;
-        padding:0 15px;
-    }
-    .services-grid {
-        grid-template-columns:1fr;
-        gap:25px;
-    }
-    .services-icon {
-        width:150px;
-        height:150px;
-    }
-    .services-panel-title {
-        font-size:18px;
-    }
-    .services-panel-description {
-        font-size:13px;
-    }
-    .services-global-title {
-        font-size:20px;
-    }
-    .services-button {
-        padding:10px 22px;
-        font-size:14px;
-    }
+
+/*=========================
+   RESPONSIVE
+=========================*/
+@media(max-width:991px){
+  .crypto-grid {
+    grid-template-columns:repeat(2,1fr);
+  }
+}
+
+@media(max-width:600px){
+  .crypto-services-container {
+    padding:60px 0;
+  }
+  .crypto-grid {
+    width:95%;
+    grid-template-columns:1fr;
+    gap:24px;
+  }
+  .crypto-card {
+    padding:24px;
+  }
+  .crypto-card-title {
+    font-size:21px;
+  }
+  .crypto-card-text {
+    font-size:14px;
+    line-height:1.5;
+  }
+  .crypto-hero-title {
+    font-size:21px;
+  }
+  .crypto-hero-subtitle {
+    font-size:16px;
+  }
 }

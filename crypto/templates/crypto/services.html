@@ -1,17 +1,17 @@
 {% extends "crypto/crypto_base.html" %}
 {% load static %}
 {% block content %}
-<link rel="stylesheet" href="{% static 'css/services.css' %}">
+<link rel="stylesheet" href="{% static 'css/crypto_services.css' %}">
 
-<div class="services-showcase">
+<div class="crypto-services-container">
 
   <!-- Hero -->
-  <section class="services-heading-container">
-    <h1 class="services-heading-title">Our Services</h1>
-    <p class="services-heading-subtitle">
+  <section class="crypto-hero">
+    <h1 class="crypto-hero-title">Our Services</h1>
+    <p class="crypto-hero-subtitle">
       Secure • Transparent • Profitable Crypto Investments
     </p>
-    <p class="services-intro">
+    <p class="crypto-hero-intro">
       BitnetFx delivers secure, transparent, and profitable crypto investment solutions for global investors.
       Our mission is to democratize access to crypto investing by combining blockchain transparency with AI-driven insights.
       We empower investors everywhere with secure, intelligent, and profitable opportunities.
@@ -19,47 +19,47 @@
   </section>
 
   <!-- Services Grid -->
-  <section class="services-grid">
-    <div class="services-panel">
-      <img class="services-icon" src="{% static 'images/aiTrading.png' %}" alt="AI Trading">
-      <h2 class="services-panel-title">AI-Powered Trading</h2>
-      <p class="services-panel-description">
+  <section class="crypto-grid">
+    <div class="crypto-card">
+      <img class="crypto-icon" src="{% static 'images/aiTrading.png' %}" alt="AI Trading">
+      <h2 class="crypto-card-title">AI-Powered Trading</h2>
+      <p class="crypto-card-text">
         Harness artificial intelligence to analyze markets, predict trends, and execute profitable strategies automatically.
         Our AI models are continuously trained on global market data to identify profitable opportunities.
       </p>
     </div>
 
-    <div class="services-panel">
-      <img class="services-icon" src="{% static 'images/portfolio.png' %}" alt="Portfolio Management">
-      <h2 class="services-panel-title">Portfolio Management</h2>
-      <p class="services-panel-description">
+    <div class="crypto-card">
+      <img class="crypto-icon" src="{% static 'images/portfolio.png' %}" alt="Portfolio Management">
+      <h2 class="crypto-card-title">Portfolio Management</h2>
+      <p class="crypto-card-text">
         Customized portfolios designed to balance risk and maximize returns across multiple crypto assets.
         Our experts tailor strategies to match investor goals, whether conservative or aggressive.
       </p>
     </div>
 
-    <div class="services-panel">
-      <img class="services-icon" src="{% static 'images/security.webp' %}" alt="Security & Compliance">
-      <h2 class="services-panel-title">Security & Compliance</h2>
-      <p class="services-panel-description">
+    <div class="crypto-card">
+      <img class="crypto-icon" src="{% static 'images/security.webp' %}" alt="Security & Compliance">
+      <h2 class="crypto-card-title">Security & Compliance</h2>
+      <p class="crypto-card-text">
         Multi-layer encryption, cold storage, and regular audits ensure your assets remain safe and compliant.
         BitnetFx adheres to international financial regulations and undergoes independent audits.
       </p>
     </div>
 
-    <div class="services-panel">
-      <img class="services-icon" src="{% static 'images/global.webp' %}" alt="Global Reach">
-      <h2 class="services-panel-title">Global Reach</h2>
-      <p class="services-panel-description">
+    <div class="crypto-card">
+      <img class="crypto-icon" src="{% static 'images/global.webp' %}" alt="Global Reach">
+      <h2 class="crypto-card-title">Global Reach</h2>
+      <p class="crypto-card-text">
         BitnetFx serves investors across 50+ countries with multilingual support and seamless accessibility.
       </p>
     </div>
   </section>
 
   <!-- Benefits -->
-  <section class="services-benefits">
-    <h2 class="services-global-title">Why Invest with BitnetFx?</h2>
-    <ul class="services-list">
+  <section class="crypto-benefits">
+    <h2 class="crypto-section-title">Why Invest with BitnetFx?</h2>
+    <ul class="crypto-list">
       <li>Transparent performance reports with detailed analytics</li>
       <li>Zero withdrawal fees to maximize investor returns</li>
       <li>24/7 multilingual support for global accessibility</li>
@@ -69,48 +69,48 @@
   </section>
 
   <!-- Technology -->
-  <section class="services-section">
-    <h2 class="services-global-title">Technology & Expertise</h2>
-    <p class="services-global-description">
+  <section class="crypto-section">
+    <h2 class="crypto-section-title">Technology & Expertise</h2>
+    <p class="crypto-section-text">
       BitnetFx integrates AI models, blockchain automation, and predictive analytics to deliver real-time strategies that maximize investor returns.
       Our technology stack adapts instantly to market changes, ensuring investors stay ahead.
     </p>
   </section>
 
   <!-- Advisory -->
-  <section class="services-section">
-    <h2 class="services-global-title">Advisory & Compliance</h2>
-    <p class="services-global-description">
+  <section class="crypto-section">
+    <h2 class="crypto-section-title">Advisory & Compliance</h2>
+    <p class="crypto-section-text">
       Guided by industry veterans, BitnetFx adheres to international financial regulations and undergoes independent audits to ensure investor trust.
       Our advisory board includes fintech leaders and compliance experts who shape our long-term strategy.
     </p>
   </section>
 
   <!-- Testimonials -->
-  <section class="services-testimonials">
-    <h2 class="services-global-title">Investor Testimonials</h2>
-    <div class="services-grid">
-      <div class="services-panel">
+  <section class="crypto-testimonials">
+    <h2 class="crypto-section-title">Investor Testimonials</h2>
+    <div class="crypto-grid">
+      <div class="crypto-card">
         <p>"BitnetFx has transformed my portfolio. Transparent, secure, and highly rewarding."</p>
         <span>- Sarah K., UK</span>
       </div>
-      <div class="services-panel">
+      <div class="crypto-card">
         <p>"The leadership team inspires confidence. I trust BitnetFx with my long-term investments."</p>
         <span>- Ahmed R., UAE</span>
       </div>
-      <div class="services-panel">
+      <div class="crypto-card">
         <p>"Global reach and strong compliance make BitnetFx my preferred crypto investment partner."</p>
         <span>- Chen L., Singapore</span>
       </div>
-      <div class="services-panel">
+      <div class="crypto-card">
         <p>"Their AI trading strategies consistently outperform my expectations. I feel secure and optimistic."</p>
         <span>- Maria G., Spain</span>
       </div>
-      <div class="services-panel">
+      <div class="crypto-card">
         <p>"BitnetFx’s transparency and regular reports give me peace of mind. I know exactly how my money is working."</p>
         <span>- James T., USA</span>
       </div>
-      <div class="services-panel">
+      <div class="crypto-card">
         <p>"The multilingual support team makes investing easy. I recommend BitnetFx to anyone serious about crypto."</p>
         <span>- Aisha B., Nigeria</span>
       </div>
@@ -118,44 +118,44 @@
   </section>
 
   <!-- Partnerships -->
-  <section class="services-partnerships">
-    <h2 class="services-global-title">Strategic Partnerships</h2>
-    <p class="services-global-description">
+  <section class="crypto-partnerships">
+    <h2 class="crypto-section-title">Strategic Partnerships</h2>
+    <p class="crypto-section-text">
       We collaborate with leading exchanges, fintech innovators, and compliance organizations worldwide.
       These partnerships strengthen our ecosystem and expand opportunities for investors.
     </p>
-    <div class="services-grid">
-      <img class="services-icon" src="{% static 'images/partner.png' %}" alt="Partner 1">
-      <img class="services-icon" src="{% static 'images/bcs.png' %}" alt="Partner 2">
-      <img class="services-icon" src="{% static 'images/fintech.webp' %}" alt="Partner 3">
+    <div class="crypto-grid">
+      <img class="crypto-icon" src="{% static 'images/partner.png' %}" alt="Partner 1">
+      <img class="crypto-icon" src="{% static 'images/bcs.png' %}" alt="Partner 2">
+      <img class="crypto-icon" src="{% static 'images/fintech.webp' %}" alt="Partner 3">
     </div>
   </section>
 
   <!-- FAQ -->
-  <section class="services-faq">
-    <h2 class="services-global-title">Frequently Asked Questions</h2>
-    <div class="services-panel">
+  <section class="crypto-faq">
+    <h2 class="crypto-section-title">Frequently Asked Questions</h2>
+    <div class="crypto-card">
       <h3>How secure are my investments?</h3>
       <p>All assets are protected with multi-layer encryption, cold storage, and regular audits.</p>
     </div>
-    <div class="services-panel">
+    <div class="crypto-card">
       <h3>What fees does BitnetFx charge?</h3>
       <p>We charge no withdrawal fees and maintain transparent pricing for all services.</p>
     </div>
-    <div class="services-panel">
+    <div class="crypto-card">
       <h3>Can I access BitnetFx globally?</h3>
       <p>Yes, BitnetFx is available in 50+ countries with multilingual support.</p>
     </div>
   </section>
 
   <!-- CTA -->
-  <section class="services-cta">
-    <h2 class="services-global-title">Start Your Investment Journey</h2>
-    <p class="services-global-description">
+  <section class="crypto-cta">
+    <h2 class="crypto-section-title">Start Your Investment Journey</h2>
+    <p class="crypto-section-text">
       Join thousands of investors who trust BitnetFx for secure and profitable crypto investments.
       With cutting-edge technology, expert guidance, and global reach, your financial future is in safe hands.
     </p>
-    <a href="{% url 'crypto:signup' %}" class="services-button">Get Started</a>
+    <a href="{% url 'crypto:signup' %}" class="crypto-button">Get Started</a>
   </section>
 
 </div>
