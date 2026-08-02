@@ -393,72 +393,44 @@
     </div>
 
 </section>
-
-
-<!--====================================
-        ELITE BITCOIN CALCULATOR
-=====================================-->
-
 <section class="elite-calculator-showcase">
+  <div class="elite-calculator-wrapper">
+    <div class="elite-calculator-panel">
+      <div class="elite-badge">BITCOIN CALCULATOR</div>
 
-    <div class="elite-calculator-wrapper">
+      <h1 class="elite-calculator-title">
+        <span class="elite-calculator-accent">{{ calculator.title_first }}</span>
+        {{ calculator.title_second }}
+      </h1>
 
-        <div class="elite-calculator-panel">
+      <p class="elite-calculator-description">{{ calculator.subtitle }}</p>
 
-            <div class="elite-badge">
-                BITCOIN CALCULATOR
-            </div>
+      <div class="elite-calculator-row">
+        <input type="number" id="btcAmount" placeholder="Enter BTC amount">
 
-            <h1 class="elite-calculator-title">
+        <img src="{% static 'crypto/images/btc1.png' %}" alt="Bitcoin">
 
-                <span class="elite-calculator-accent">
+        <span>=</span>
 
-                    {{ calculator.title_first }}
+        <div id="calcResult">0</div>
+      </div>
 
-                </span>
-
-                {{ calculator.title_second }}
-
-            </h1>
-
-            <p class="elite-calculator-description">
-
-                {{ calculator.subtitle }}
-
-            </p>
-
-            <div class="elite-calculator-row">
-
-                <input
-                    type="number"
-                    id="btcAmount"
-                    placeholder="Enter amount">
-
-                <img
-                    src="{% static 'crypto/images/btc1.png' %}"
-                    alt="Bitcoin">
-
-                <span>=</span>
-
-                <div id="calcResult">
-
-                    0
-
-                </div>
-            </div>
-
-        </div>
-        <div class="home-canvas">
-            <canvas id="btcCalcCanvas"></canvas>
-
-        </div>
-
+      <!-- Currency selector added -->
+      <div class="elite-calculator-row">
+        <label for="currencySelect">Currency:</label>
+        <select id="currencySelect">
+          <option value="usd">USD</option>
+          <option value="eur">EUR</option>
+          <option value="ngn">NGN</option>
+        </select>
+      </div>
     </div>
 
+    <div class="home-canvas">
+      <canvas id="btcCalcCanvas"></canvas>
+    </div>
+  </div>
 </section>
-<!--====================================
-        ELITE FEATURE HIGHLIGHTS
-=====================================-->
 
 <section class="elite-feature-showcase">
 
