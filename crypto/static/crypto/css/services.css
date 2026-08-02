@@ -194,6 +194,12 @@ crypto-partnerships .crypto-grid img.crypto-icon {
     color:#fff !important;
 }
 
+.crypto-faq h3 {
+    color:#fff;         
+    font-weight:700;    
+    margin-bottom:10px; 
+}
+
 .crypto-section-text {
     font-size:15px;
     color:rgba(255,255,255,.85);
