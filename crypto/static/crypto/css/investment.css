@@ -2480,3 +2480,878 @@ section.analytics-background-only
         padding:50px 0 !important;
     }
 }
+/* =========================================================
+   TRUST & SECURITY
+   ISOLATED PREMIUM STYLE
+   ========================================================= */
+
+section.security-showcase-isolated {
+
+    width:100% !important;
+
+    padding:90px 0 !important;
+
+    position:relative !important;
+
+    overflow:hidden !important;
+
+    background:
+        radial-gradient(
+            circle at top left,
+            #004aad33,
+            transparent 40%
+        ),
+        radial-gradient(
+            circle at bottom right,
+            #7a00ff22,
+            transparent 35%
+        ),
+        linear-gradient(
+            180deg,
+            #05070d,
+            #0a1020
+        ) !important;
+}
+
+
+.security-showcase-inner {
+
+    width:90% !important;
+
+    max-width:1600px !important;
+
+    margin:auto !important;
+
+    position:relative !important;
+
+    z-index:2 !important;
+}
+
+
+/* =========================================================
+   HEADING
+   ========================================================= */
+
+.security-showcase-heading {
+
+    margin:0 0 20px 0 !important;
+
+    padding:0 !important;
+
+    text-align:center !important;
+
+    font-size:30px !important;
+
+    font-weight:900 !important;
+
+    text-transform:uppercase !important;
+
+    letter-spacing:2px !important;
+
+    line-height:1.2 !important;
+
+    background:
+        linear-gradient(
+            90deg,
+            #00d8ef,
+            #7a00ff,
+            #ff0080
+        ) !important;
+
+    background-size:200% auto !important;
+
+    -webkit-background-clip:text !important;
+
+    background-clip:text !important;
+
+    -webkit-text-fill-color:transparent !important;
+
+    color:transparent !important;
+
+    animation:
+        securityHeadingFlow 5s linear infinite !important;
+
+    filter:
+        drop-shadow(0 0 8px rgba(0,216,239,.45))
+        drop-shadow(0 0 15px rgba(122,0,255,.30)) !important;
+}
+
+
+@keyframes securityHeadingFlow {
+
+    0% {
+        background-position:0% 50%;
+    }
+
+    50% {
+        background-position:100% 50%;
+    }
+
+    100% {
+        background-position:0% 50%;
+    }
+}
+
+
+/* =========================================================
+   INTRO
+   ========================================================= */
+
+.security-showcase-intro {
+
+    width:90% !important;
+
+    max-width:900px !important;
+
+    margin:0 auto 55px auto !important;
+
+    text-align:center !important;
+
+    font-size:17px !important;
+
+    font-weight:500 !important;
+
+    line-height:1.7 !important;
+
+    color:rgba(255,255,255,.78) !important;
+}
+
+
+/* =========================================================
+   SECURITY GRID
+   ========================================================= */
+
+.security-showcase-grid {
+
+    width:100% !important;
+
+    display:grid !important;
+
+    grid-template-columns:
+        repeat(3,minmax(0,1fr)) !important;
+
+    gap:35px !important;
+}
+
+
+/* =========================================================
+   GLASS CARDS
+   ========================================================= */
+
+.security-showcase-card {
+
+    position:relative !important;
+
+    overflow:hidden !important;
+
+    padding:35px 28px !important;
+
+    margin:0 !important;
+
+    text-align:center !important;
+
+    border-radius:30px !important;
+
+    background:rgba(255,255,255,.08) !important;
+
+    backdrop-filter:blur(24px) !important;
+
+    -webkit-backdrop-filter:blur(24px) !important;
+
+    border:1px solid rgba(255,255,255,.12) !important;
+
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.15),
+        0 18px 45px rgba(0,0,0,.35) !important;
+
+    transition:
+        transform .45s ease,
+        box-shadow .45s ease !important;
+}
+
+
+.security-showcase-card::before {
+
+    content:"" !important;
+
+    position:absolute !important;
+
+    width:220px !important;
+
+    height:220px !important;
+
+    top:-120px !important;
+
+    right:-120px !important;
+
+    border-radius:50% !important;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(0,216,239,.28),
+            transparent 70%
+        ) !important;
+
+    transition:.6s ease !important;
+
+    pointer-events:none !important;
+}
+
+
+.security-showcase-card:hover {
+
+    transform:translateY(-12px) !important;
+
+    box-shadow:
+        0 30px 70px rgba(0,0,0,.45),
+        0 0 40px rgba(0,216,239,.18) !important;
+}
+
+
+.security-showcase-card:hover::before {
+
+    transform:scale(1.4) !important;
+}
+
+
+/* =========================================================
+   SECURITY CARD TITLE
+   ========================================================= */
+
+.security-showcase-card-title {
+
+    position:relative !important;
+
+    z-index:2 !important;
+
+    margin:0 0 15px 0 !important;
+
+    font-size:22px !important;
+
+    font-weight:900 !important;
+
+    line-height:1.3 !important;
+
+    background:
+        linear-gradient(
+            90deg,
+            #00d8ef,
+            #7a00ff,
+            #ff0080
+        ) !important;
+
+    background-size:200% auto !important;
+
+    -webkit-background-clip:text !important;
+
+    background-clip:text !important;
+
+    -webkit-text-fill-color:transparent !important;
+
+    color:transparent !important;
+
+    animation:
+        securityCardTitleFlow 5s linear infinite !important;
+}
+
+
+@keyframes securityCardTitleFlow {
+
+    0% {
+        background-position:0% 50%;
+    }
+
+    50% {
+        background-position:100% 50%;
+    }
+
+    100% {
+        background-position:0% 50%;
+    }
+}
+
+
+.security-showcase-card-text {
+
+    position:relative !important;
+
+    z-index:2 !important;
+
+    margin:0 !important;
+
+    font-size:15px !important;
+
+    line-height:1.6 !important;
+
+    color:rgba(255,255,255,.80) !important;
+}
+
+
+/* =========================================================
+   TRUST BADGES
+   ========================================================= */
+
+.security-showcase-badges {
+
+    width:100% !important;
+
+    margin:55px auto 30px auto !important;
+
+    display:flex !important;
+
+    align-items:center !important;
+
+    justify-content:center !important;
+
+    flex-wrap:wrap !important;
+
+    gap:30px !important;
+}
+
+
+.security-showcase-badges img {
+
+    width:auto !important;
+
+    max-width:150px !important;
+
+    height:80px !important;
+
+    object-fit:contain !important;
+
+    display:block !important;
+
+    opacity:.9 !important;
+
+    transition:
+        transform .35s ease,
+        opacity .35s ease,
+        filter .35s ease !important;
+
+    filter:
+        drop-shadow(0 0 8px rgba(0,216,239,.18)) !important;
+}
+
+
+.security-showcase-badges img:hover {
+
+    transform:translateY(-6px) scale(1.05) !important;
+
+    opacity:1 !important;
+
+    filter:
+        drop-shadow(0 0 15px rgba(0,216,239,.45)) !important;
+}
+
+
+/* =========================================================
+   DISCLAIMER
+   ========================================================= */
+
+.security-showcase-disclaimer {
+
+    width:90% !important;
+
+    max-width:850px !important;
+
+    margin:20px auto 0 auto !important;
+
+    text-align:center !important;
+
+    font-size:14px !important;
+
+    line-height:1.6 !important;
+
+    color:rgba(255,255,255,.65) !important;
+}
+
+
+/* =========================================================
+   MISSION & GUARANTEES
+   ========================================================= */
+
+section.mission-showcase-isolated {
+
+    width:100% !important;
+
+    padding:90px 0 !important;
+
+    position:relative !important;
+
+    overflow:hidden !important;
+
+    background:
+        radial-gradient(
+            circle at top right,
+            #004aad33,
+            transparent 40%
+        ),
+        radial-gradient(
+            circle at bottom left,
+            #7a00ff22,
+            transparent 35%
+        ),
+        linear-gradient(
+            180deg,
+            #0a1020,
+            #05070d
+        ) !important;
+}
+
+
+.mission-showcase-inner {
+
+    width:90% !important;
+
+    max-width:1600px !important;
+
+    margin:auto !important;
+
+    position:relative !important;
+
+    z-index:2 !important;
+}
+
+
+/* =========================================================
+   MISSION HEADING
+   ========================================================= */
+
+.mission-showcase-heading {
+
+    margin:0 0 20px 0 !important;
+
+    text-align:center !important;
+
+    font-size:30px !important;
+
+    font-weight:900 !important;
+
+    text-transform:uppercase !important;
+
+    letter-spacing:2px !important;
+
+    line-height:1.2 !important;
+
+    background:
+        linear-gradient(
+            90deg,
+            #00d8ef,
+            #7a00ff,
+            #ff0080
+        ) !important;
+
+    background-size:200% auto !important;
+
+    -webkit-background-clip:text !important;
+
+    background-clip:text !important;
+
+    -webkit-text-fill-color:transparent !important;
+
+    color:transparent !important;
+
+    animation:
+        missionHeadingFlow 5s linear infinite !important;
+}
+
+
+@keyframes missionHeadingFlow {
+
+    0% {
+        background-position:0% 50%;
+    }
+
+    50% {
+        background-position:100% 50%;
+    }
+
+    100% {
+        background-position:0% 50%;
+    }
+}
+
+
+.mission-showcase-intro {
+
+    width:90% !important;
+
+    max-width:900px !important;
+
+    margin:0 auto 55px auto !important;
+
+    text-align:center !important;
+
+    font-size:17px !important;
+
+    line-height:1.7 !important;
+
+    color:rgba(255,255,255,.78) !important;
+}
+
+
+/* =========================================================
+   MISSION GRID
+   ========================================================= */
+
+.mission-showcase-grid {
+
+    width:100% !important;
+
+    display:grid !important;
+
+    grid-template-columns:
+        repeat(3,minmax(0,1fr)) !important;
+
+    gap:35px !important;
+}
+
+
+/* =========================================================
+   MISSION CARDS
+   ========================================================= */
+
+.mission-showcase-card {
+
+    position:relative !important;
+
+    overflow:hidden !important;
+
+    padding:35px 28px !important;
+
+    text-align:center !important;
+
+    border-radius:30px !important;
+
+    background:rgba(255,255,255,.08) !important;
+
+    backdrop-filter:blur(24px) !important;
+
+    -webkit-backdrop-filter:blur(24px) !important;
+
+    border:1px solid rgba(255,255,255,.12) !important;
+
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.15),
+        0 18px 45px rgba(0,0,0,.35) !important;
+
+    transition:
+        transform .45s ease,
+        box-shadow .45s ease !important;
+}
+
+
+.mission-showcase-card::before {
+
+    content:"" !important;
+
+    position:absolute !important;
+
+    width:220px !important;
+
+    height:220px !important;
+
+    top:-120px !important;
+
+    right:-120px !important;
+
+    border-radius:50% !important;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(0,216,239,.28),
+            transparent 70%
+        ) !important;
+
+    transition:.6s ease !important;
+
+    pointer-events:none !important;
+}
+
+
+.mission-showcase-card:hover {
+
+    transform:translateY(-12px) !important;
+
+    box-shadow:
+        0 30px 70px rgba(0,0,0,.45),
+        0 0 40px rgba(0,216,239,.18) !important;
+}
+
+
+.mission-showcase-card:hover::before {
+
+    transform:scale(1.4) !important;
+}
+
+
+/* =========================================================
+   MISSION IMAGE
+   ========================================================= */
+
+.mission-showcase-image {
+
+    position:relative !important;
+
+    z-index:2 !important;
+
+    width:90px !important;
+
+    height:90px !important;
+
+    object-fit:contain !important;
+
+    display:block !important;
+
+    margin:0 auto 22px auto !important;
+
+    border-radius:18px !important;
+
+    filter:
+        drop-shadow(0 0 12px rgba(0,216,239,.30)) !important;
+
+    transition:
+        transform .35s ease,
+        filter .35s ease !important;
+}
+
+
+.mission-showcase-card:hover
+.mission-showcase-image {
+
+    transform:scale(1.08) !important;
+
+    filter:
+        drop-shadow(0 0 20px rgba(0,216,239,.55)) !important;
+}
+
+
+/* =========================================================
+   MISSION CARD TITLE
+   ========================================================= */
+
+.mission-showcase-card-title {
+
+    position:relative !important;
+
+    z-index:2 !important;
+
+    margin:0 0 15px 0 !important;
+
+    font-size:22px !important;
+
+    font-weight:900 !important;
+
+    line-height:1.3 !important;
+
+    background:
+        linear-gradient(
+            90deg,
+            #00d8ef,
+            #7a00ff,
+            #ff0080
+        ) !important;
+
+    background-size:200% auto !important;
+
+    -webkit-background-clip:text !important;
+
+    background-clip:text !important;
+
+    -webkit-text-fill-color:transparent !important;
+
+    color:transparent !important;
+
+    animation:
+        missionCardTitleFlow 5s linear infinite !important;
+}
+
+
+@keyframes missionCardTitleFlow {
+
+    0% {
+        background-position:0% 50%;
+    }
+
+    50% {
+        background-position:100% 50%;
+    }
+
+    100% {
+        background-position:0% 50%;
+    }
+}
+
+
+.mission-showcase-card-text {
+
+    position:relative !important;
+
+    z-index:2 !important;
+
+    margin:0 !important;
+
+    font-size:15px !important;
+
+    line-height:1.6 !important;
+
+    color:rgba(255,255,255,.80) !important;
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media(max-width:991px) {
+
+    section.security-showcase-isolated,
+    section.mission-showcase-isolated {
+
+        padding:70px 0 !important;
+    }
+
+    .security-showcase-grid,
+    .mission-showcase-grid {
+
+        grid-template-columns:
+            repeat(2,minmax(0,1fr)) !important;
+
+        gap:25px !important;
+    }
+
+    .security-showcase-card,
+    .mission-showcase-card {
+
+        padding:30px 24px !important;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media(max-width:600px) {
+
+    section.security-showcase-isolated,
+    section.mission-showcase-isolated {
+
+        padding:60px 0 !important;
+    }
+
+    .security-showcase-inner,
+    .mission-showcase-inner {
+
+        width:95% !important;
+    }
+
+    .security-showcase-heading,
+    .mission-showcase-heading {
+
+        font-size:25px !important;
+
+        text-shadow:
+            0 0 15px #00d8ef,
+            0 0 30px #7a00ff,
+            0 0 60px #ff0080 !important;
+    }
+
+    .security-showcase-intro,
+    .mission-showcase-intro {
+
+        width:95% !important;
+
+        font-size:16px !important;
+
+        line-height:1.6 !important;
+
+        margin-bottom:40px !important;
+    }
+
+    .security-showcase-grid,
+    .mission-showcase-grid {
+
+        grid-template-columns:1fr !important;
+
+        gap:24px !important;
+    }
+
+    .security-showcase-card,
+    .mission-showcase-card {
+
+        padding:24px !important;
+    }
+
+    .security-showcase-card-title,
+    .mission-showcase-card-title {
+
+        font-size:21px !important;
+    }
+
+    .security-showcase-card-text,
+    .mission-showcase-card-text {
+
+        font-size:14px !important;
+
+        line-height:1.5 !important;
+    }
+
+    .security-showcase-badges {
+
+        margin-top:40px !important;
+
+        gap:20px !important;
+    }
+
+    .security-showcase-badges img {
+
+        max-width:110px !important;
+
+        height:65px !important;
+    }
+
+    .security-showcase-disclaimer {
+
+        width:95% !important;
+
+        font-size:13px !important;
+    }
+
+    .mission-showcase-image {
+
+        width:75px !important;
+
+        height:75px !important;
+
+        margin-bottom:18px !important;
+    }
+}
+
+
+/* =========================================================
+   SMALL PHONES
+   ========================================================= */
+
+@media(max-width:380px) {
+
+    .security-showcase-heading,
+    .mission-showcase-heading {
+
+        font-size:21px !important;
+    }
+
+    .security-showcase-card,
+    .mission-showcase-card {
+
+        padding:22px 18px !important;
+    }
+
+    .security-showcase-card-title,
+    .mission-showcase-card-title {
+
+        font-size:19px !important;
+    }
+}
