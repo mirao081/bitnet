@@ -4,8 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Login - Bitnet</title>
-    <link rel="stylesheet" href="{% static 'crypto/css/style.css' %}">
-    <!-- Load Google reCAPTCHA script -->
+    <link rel="stylesheet" href="{% static 'crypto/css/login.css' %}">
     <script src="https://www.google.com/recaptcha/api.js?render=YOUR_SITE_KEY"></script>
 </head>
 <body class="bitnet-login-body">
@@ -20,8 +19,12 @@
             {% csrf_token %}
             {{ form.non_field_errors }}
 
-            {{ form.username }}
-            {{ form.password }}
+            <div class="form-group">
+                {{ form.username }}
+            </div>
+            <div class="form-group">
+                {{ form.password }}
+            </div>
 
             <input type="hidden" id="id_captcha" name="captcha">
 
