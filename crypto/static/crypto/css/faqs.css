@@ -1,0 +1,244 @@
+/*==================================================
+        FAQ SHOWCASE STYLE
+==================================================*/
+
+/* Reset FAQ styles to avoid inheritance */
+.faqs-section {
+    font-family: Arial, sans-serif;
+    padding: 90px 0;
+    position: relative;
+    overflow: hidden;
+    background:
+      radial-gradient(circle at top left,#004aad33,transparent 40%),
+      radial-gradient(circle at bottom right,#7a00ff22,transparent 35%),
+      linear-gradient(180deg,#05070d,#0a1020);
+    color: #fff;
+}
+
+/*=========================
+        HEADING
+=========================*/
+.faqs-heading {
+    text-align: center;
+    margin-bottom: 60px;
+    padding: 20px;
+    background: rgba(255,255,255,.05);
+    border-radius: 20px;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 0 25px rgba(0,216,239,.35);
+}
+
+.faqs-heading h1 {
+    font-size: 2.5rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+    text-shadow:
+      0 0 10px #00d8ef,
+      0 0 20px #00d8ef,
+      0 0 40px #7a00ff;
+    animation: glowPulse 3s infinite alternate;
+}
+
+.faqs-heading span {
+    color: #00d8ef;
+}
+
+.faqs-heading p {
+    font-size: 18px;
+    font-weight: 600;
+    background: linear-gradient(90deg,#00d8ef,#7a00ff,#ff0080);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 200% auto;
+    animation: shineFlow 6s linear infinite;
+    letter-spacing: 1px;
+}
+
+/*=========================
+        GRID LAYOUT
+=========================*/
+.faqs-container {
+    width: 90%;
+    max-width: 1600px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(300px,1fr));
+    gap: 35px;
+    position: relative;
+    z-index: 2;
+}
+
+/*=========================
+        FAQ CARD
+=========================*/
+.faqs-card {
+    position: relative;
+    overflow: hidden;
+    text-align: left;
+    padding: 35px 28px;
+    border-radius: 30px;
+    background: rgba(255,255,255,.08);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(255,255,255,.12);
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,.15),
+      0 18px 45px rgba(0,0,0,.35);
+    transition: .45s ease;
+    margin-bottom: 40px;
+}
+
+.faqs-card::before {
+    content: "";
+    position: absolute;
+    width: 220px;
+    height: 220px;
+    top: -120px;
+    right: -120px;
+    border-radius: 50%;
+    background: radial-gradient(circle,rgba(0,216,239,.28),transparent 70%);
+    transition: .6s;
+}
+
+.faqs-card:hover {
+    transform: translateY(-12px);
+    box-shadow:
+      0 30px 70px rgba(0,0,0,.45),
+      0 0 40px rgba(0,216,239,.18);
+}
+
+.faqs-card:hover::before {
+    transform: scale(1.4);
+}
+
+/*=========================
+        FAQ ITEM
+=========================*/
+.faqs-item h3 {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: #fff;
+}
+
+.faqs-item p {
+    font-size: 15px;
+    color: rgba(255,255,255,.80);
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+/*=========================
+        CONTACT SECTION
+=========================*/
+.faqs-contact {
+    margin-top: 60px;
+    text-align: center;
+}
+
+.faqs-title {
+    font-size: 25px;
+    font-weight: 900;
+    margin-bottom: 15px;
+    color: #fff;
+}
+
+.faqs-subtitle {
+    font-size: 18px;
+    font-weight: 600;
+    color: rgba(255,255,255,.85);
+    margin-bottom: 40px;
+}
+
+.faqs-support-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+    gap: 25px;
+}
+
+.faqs-support-card {
+    background: rgba(255,255,255,.08);
+    border-radius: 20px;
+    padding: 25px;
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    box-shadow: 0 12px 30px rgba(0,0,0,.35);
+    transition: .3s;
+}
+
+.faqs-support-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 50px rgba(0,0,0,.45);
+}
+
+.faqs-card-title {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: #fff;
+}
+
+.faqs-card-description {
+    font-size: 15px;
+    color: rgba(255,255,255,.80);
+    margin-bottom: 12px;
+}
+
+.faqs-contact-info {
+    font-size: 14px;
+    color: #00d8ef;
+    font-weight: 600;
+}
+
+/*=========================
+        ANIMATIONS
+=========================*/
+@keyframes glowPulse {
+    from { text-shadow:0 0 10px #00d8ef,0 0 20px #00d8ef; }
+    to   { text-shadow:0 0 20px #7a00ff,0 0 40px #ff0080; }
+}
+
+@keyframes shineFlow {
+    0%   { background-position:0% 50%; }
+    50%  { background-position:100% 50%; }
+    100% { background-position:0% 50%; }
+}
+
+/*=========================
+        RESPONSIVE
+=========================*/
+@media(max-width:991px){
+  .faqs-container {
+    grid-template-columns: repeat(2,1fr);
+  }
+}
+
+@media(max-width:600px){
+  .faqs-section {
+    padding: 60px 0;
+  }
+  .faqs-container {
+    width: 95%;
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .faqs-card {
+    padding: 24px;
+  }
+  .faqs-item h3 {
+    font-size: 18px;
+  }
+  .faqs-item p {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  .faqs-heading h1 {
+    font-size: 21px;
+  }
+  .faqs-heading p {
+    font-size: 16px;
+  }
+}
