@@ -81,10 +81,10 @@
 
 <div class="referral-section">
     <h3 id="copy-header">Click to copy referral link</h3>
-    <a id="referral-link" 
-       href="http://127.0.0.1:8000/?ref={{ user.username }}" 
-       target="_blank">
-       http://127.0.0.1:8000/?ref={{ user.username }}
+    <a id="referral-link"
+    href="{{ request.scheme }}://{{ request.get_host }}/?ref={{ user.username }}"
+    target="_blank">
+        {{ request.scheme }}://{{ request.get_host }}/?ref={{ user.username }}
     </a>
     <p id="copy-status"></p>
 </div>
