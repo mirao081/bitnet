@@ -29,22 +29,26 @@
     box-shadow: 0 0 25px rgba(0,216,239,.35);
 }
 
+.faqs-heading h1,
+.faqs-heading h2,
+.faqs-heading h3,
+.faqs-heading h4,
+.faqs-heading h5,
+.faqs-heading h6 {
+    color: #fff; /* ✅ enforce white for ALL headings */
+}
+
 .faqs-heading h1 {
     font-size: 2.5rem;
     font-weight: 900;
     text-transform: uppercase;
     letter-spacing: 2px;
     margin-bottom: 15px;
-    color: #fff; /* ✅ enforce white */
     text-shadow:
       0 0 10px #00d8ef,
       0 0 20px #00d8ef,
       0 0 40px #7a00ff;
     animation: glowPulse 3s infinite alternate;
-}
-
-.faqs-heading span {
-    color: #00d8ef;
 }
 
 .faqs-heading p {
@@ -62,10 +66,10 @@
         GRID LAYOUT
 =========================*/
 .faqs-container {
-    width: 100%;              /* ✅ full width */
-    max-width: 1200px;        /* ✅ limit max width */
-    margin: 0 auto;           /* ✅ center horizontally */
-    padding: 0 30px;          /* ✅ equal left/right padding */
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;       /* ✅ center horizontally */
+    padding: 0 30px;      /* ✅ equal left/right spacing */
     display: grid;
     grid-template-columns: repeat(auto-fit,minmax(300px,1fr));
     gap: 35px;
@@ -93,18 +97,6 @@
     margin-bottom: 40px;
 }
 
-.faqs-card::before {
-    content: "";
-    position: absolute;
-    width: 220px;
-    height: 220px;
-    top: -120px;
-    right: -120px;
-    border-radius: 50%;
-    background: radial-gradient(circle,rgba(0,216,239,.28),transparent 70%);
-    transition: .6s;
-}
-
 .faqs-card:hover {
     transform: translateY(-12px);
     box-shadow:
@@ -112,18 +104,16 @@
       0 0 40px rgba(0,216,239,.18);
 }
 
-.faqs-card:hover::before {
-    transform: scale(1.4);
-}
-
 /*=========================
         FAQ ITEM
 =========================*/
-.faqs-item h3 {
-    font-size: 20px;
-    font-weight: 700;
-    margin-bottom: 10px;
-    color: #fff; /* ✅ enforce white headings */
+.faqs-item h1,
+.faqs-item h2,
+.faqs-item h3,
+.faqs-item h4,
+.faqs-item h5,
+.faqs-item h6 {
+    color: #fff; /* ✅ enforce white headings inside cards */
 }
 
 .faqs-item p {
@@ -136,80 +126,10 @@
 /*=========================
         CONTACT SECTION
 =========================*/
-.faqs-contact {
-    margin-top: 60px;
-    text-align: center;
-    max-width: 900px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.faqs-title {
-    font-size: 25px;
-    font-weight: 900;
-    margin-bottom: 15px;
-    color: #fff; /* ✅ enforce white */
-}
-
-.faqs-subtitle {
-    font-size: 18px;
-    font-weight: 600;
-    color: rgba(255,255,255,.85);
-    margin-bottom: 40px;
-}
-
-.faqs-support-cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
-    gap: 25px;
-}
-
-.faqs-support-card {
-    background: rgba(255,255,255,.08);
-    border-radius: 20px;
-    padding: 25px;
-    backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
-    box-shadow: 0 12px 30px rgba(0,0,0,.35);
-    transition: .3s;
-}
-
-.faqs-support-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 20px 50px rgba(0,0,0,.45);
-}
-
+.faqs-title,
+.faqs-subtitle,
 .faqs-card-title {
-    font-size: 20px;
-    font-weight: 700;
-    margin-bottom: 10px;
-    color: #fff; /* ✅ enforce white headings */
-}
-
-.faqs-card-description {
-    font-size: 15px;
-    color: rgba(255,255,255,.80);
-    margin-bottom: 12px;
-}
-
-.faqs-contact-info {
-    font-size: 14px;
-    color: #00d8ef;
-    font-weight: 600;
-}
-
-/*=========================
-        ANIMATIONS
-=========================*/
-@keyframes glowPulse {
-    from { text-shadow:0 0 10px #00d8ef,0 0 20px #00d8ef; }
-    to   { text-shadow:0 0 20px #7a00ff,0 0 40px #ff0080; }
-}
-
-@keyframes shineFlow {
-    0%   { background-position:0% 50%; }
-    50%  { background-position:100% 50%; }
-    100% { background-position:0% 50%; }
+    color: #fff; /* ✅ enforce white headings everywhere */
 }
 
 /*=========================
@@ -220,21 +140,6 @@
     grid-template-columns: repeat(2,1fr);
     gap: 24px;
   }
-  .faqs-heading h1 {
-    font-size: 2rem;
-  }
-  .faqs-heading p {
-    font-size: 16px;
-  }
-  .faqs-card {
-    padding: 28px;
-  }
-  .faqs-item h3 {
-    font-size: 18px;
-  }
-  .faqs-item p {
-    font-size: 14px;
-  }
 }
 
 @media(max-width:600px){
@@ -244,42 +149,8 @@
   .faqs-container {
     grid-template-columns: 1fr;
     width: 100%;
-    max-width: 100%;
     margin: 0 auto;
-    padding: 0 30px; /* ✅ push 30px left/right */
+    padding: 0 30px; /* ✅ push 30px left/right on mobile */
     gap: 20px;
-  }
-  .faqs-heading h1 {
-    font-size: 1.6rem;
-    line-height: 1.3;
-  }
-  .faqs-heading p {
-    font-size: 14px;
-  }
-  .faqs-card {
-    padding: 20px;
-    border-radius: 20px;
-  }
-  .faqs-item h3 {
-    font-size: 16px;
-    color: #fff; /* ✅ enforce white */
-  }
-  .faqs-item p {
-    font-size: 13px;
-    line-height: 1.5;
-  }
-  .faqs-support-cards {
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
-  .faqs-card-title {
-    font-size: 18px;
-    color: #fff; /* ✅ enforce white */
-  }
-  .faqs-card-description {
-    font-size: 13px;
-  }
-  .faqs-contact-info {
-    font-size: 13px;
   }
 }
