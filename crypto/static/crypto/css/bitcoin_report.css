@@ -1,0 +1,581 @@
+.bitnet-bitcoin-reports-page {
+    width: 100%;
+    min-height: 100vh;
+
+    padding: 90px 0;
+
+    position: relative;
+    overflow: hidden;
+
+    box-sizing: border-box;
+
+    background:
+        radial-gradient(
+            circle at top left,
+            rgba(0, 74, 173, .22),
+            transparent 40%
+        ),
+        radial-gradient(
+            circle at bottom right,
+            rgba(122, 0, 255, .16),
+            transparent 35%
+        ),
+        linear-gradient(
+            180deg,
+            #05070d,
+            #0a1020
+        );
+
+    color: #fff;
+}
+
+
+/*==================================================
+    HEADING
+==================================================*/
+
+.bitnet-bitcoin-reports-heading {
+    width: 90%;
+    max-width: 1600px;
+
+    margin: 0 auto 60px;
+
+    padding: 30px 25px;
+
+    box-sizing: border-box;
+
+    text-align: center;
+
+    background:
+        rgba(255, 255, 255, .05);
+
+    border:
+        1px solid rgba(255, 255, 255, .12);
+
+    border-radius: 25px;
+
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, .12),
+        0 0 30px rgba(0, 216, 239, .30);
+}
+
+
+/*==================================================
+    TITLE
+==================================================*/
+
+.bitnet-bitcoin-reports-title {
+    margin: 0 0 15px;
+
+    font-size: 34px;
+
+    font-weight: 900;
+
+    line-height: 1.25;
+
+    text-transform: uppercase;
+
+    letter-spacing: 2px;
+
+    color: #fff;
+
+    text-shadow:
+        0 0 10px #00d8ef,
+        0 0 20px #00d8ef,
+        0 0 40px #7a00ff;
+
+    animation:
+        bitnetBitcoinReportsGlow 3s infinite alternate;
+}
+
+
+/*==================================================
+    INTRO
+==================================================*/
+
+.bitnet-bitcoin-reports-intro {
+    max-width: 900px;
+
+    margin: 0 auto;
+
+    font-size: 18px;
+
+    font-weight: 600;
+
+    line-height: 1.6;
+
+    letter-spacing: 1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #00d8ef,
+            #7a00ff,
+            #ff0080
+        );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    -webkit-text-fill-color: transparent;
+
+    background-size: 200% auto;
+
+    animation:
+        bitnetBitcoinReportsShine 6s linear infinite;
+}
+
+
+/*==================================================
+    GRID
+==================================================*/
+
+.bitnet-bitcoin-reports-grid {
+    width: 90%;
+    max-width: 1600px;
+
+    margin: 0 auto;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 35px;
+
+    position: relative;
+
+    z-index: 2;
+}
+
+
+/*==================================================
+    GLASS CARD
+==================================================*/
+
+.bitnet-bitcoin-reports-card {
+    position: relative;
+
+    overflow: hidden;
+
+    box-sizing: border-box;
+
+    min-height: 220px;
+
+    padding: 40px 30px;
+
+    text-align: center;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    background:
+        rgba(255, 255, 255, .08);
+
+    border:
+        1px solid rgba(255, 255, 255, .12);
+
+    border-radius: 30px;
+
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, .15),
+        0 18px 45px rgba(0, 0, 0, .35);
+
+    transition:
+        transform .45s ease,
+        box-shadow .45s ease,
+        border-color .45s ease;
+}
+
+
+/*==================================================
+    CARD CYAN GLOW
+==================================================*/
+
+.bitnet-bitcoin-reports-card::before {
+    content: "";
+
+    position: absolute;
+
+    width: 220px;
+    height: 220px;
+
+    top: -120px;
+    right: -120px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(0, 216, 239, .28),
+            transparent 70%
+        );
+
+    transition: .6s ease;
+
+    pointer-events: none;
+}
+
+
+/*==================================================
+    CARD PURPLE GLOW
+==================================================*/
+
+.bitnet-bitcoin-reports-card::after {
+    content: "";
+
+    position: absolute;
+
+    width: 170px;
+    height: 170px;
+
+    left: -110px;
+    bottom: -110px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(122, 0, 255, .20),
+            transparent 70%
+        );
+
+    pointer-events: none;
+}
+
+
+/*==================================================
+    CARD HOVER
+==================================================*/
+
+.bitnet-bitcoin-reports-card:hover {
+    transform: translateY(-12px);
+
+    border-color:
+        rgba(0, 216, 239, .30);
+
+    box-shadow:
+        0 30px 70px rgba(0, 0, 0, .45),
+        0 0 40px rgba(0, 216, 239, .18);
+}
+
+
+.bitnet-bitcoin-reports-card:hover::before {
+    transform: scale(1.4);
+}
+
+
+/*==================================================
+    CARD TITLE
+==================================================*/
+
+.bitnet-bitcoin-reports-card-title {
+    position: relative;
+
+    z-index: 1;
+
+    margin: 0 0 18px;
+
+    font-size: 25px;
+
+    font-weight: 800;
+
+    line-height: 1.3;
+
+    text-align: center;
+
+    color: #fff;
+
+    text-shadow:
+        0 0 10px rgba(0, 216, 239, .35);
+}
+
+
+/*==================================================
+    CARD TEXT
+==================================================*/
+
+.bitnet-bitcoin-reports-card-text {
+    position: relative;
+
+    z-index: 1;
+
+    max-width: 650px;
+
+    margin: 0 auto;
+
+    font-size: 15px;
+
+    line-height: 1.65;
+
+    text-align: center;
+
+    color:
+        rgba(255, 255, 255, .80);
+}
+
+
+/*==================================================
+    TABLET
+==================================================*/
+
+@media (max-width: 991px) {
+
+    .bitnet-bitcoin-reports-page {
+        padding: 70px 0;
+    }
+
+
+    .bitnet-bitcoin-reports-heading {
+        width: 92%;
+
+        margin-bottom: 45px;
+
+        padding: 28px 22px;
+    }
+
+
+    .bitnet-bitcoin-reports-title {
+        font-size: 30px;
+    }
+
+
+    .bitnet-bitcoin-reports-intro {
+        font-size: 17px;
+    }
+
+
+    .bitnet-bitcoin-reports-grid {
+        width: 92%;
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+        gap: 25px;
+    }
+
+
+    .bitnet-bitcoin-reports-card {
+        min-height: 210px;
+
+        padding: 32px 24px;
+    }
+
+
+    .bitnet-bitcoin-reports-card-title {
+        font-size: 22px;
+    }
+}
+
+
+/*==================================================
+    MOBILE
+==================================================*/
+
+@media (max-width: 600px) {
+
+    .bitnet-bitcoin-reports-page {
+        padding: 60px 0;
+    }
+
+
+    .bitnet-bitcoin-reports-heading {
+        width: 95%;
+
+        margin-bottom: 40px;
+
+        padding: 25px 18px;
+
+        border-radius: 22px;
+
+        text-align: center;
+    }
+
+
+    .bitnet-bitcoin-reports-title {
+        font-size: 25px;
+
+        line-height: 1.3;
+
+        text-align: center;
+
+        text-shadow:
+            0 0 15px #00d8ef,
+            0 0 30px #7a00ff,
+            0 0 60px #ff0080;
+    }
+
+
+    .bitnet-bitcoin-reports-intro {
+        font-size: 16px;
+
+        line-height: 1.5;
+
+        text-align: center;
+    }
+
+
+    /*----------------------------------------------
+        ONE CARD PER ROW
+    ----------------------------------------------*/
+
+    .bitnet-bitcoin-reports-grid {
+        width: 95%;
+
+        grid-template-columns: 1fr;
+
+        gap: 24px;
+
+        justify-items: center;
+    }
+
+
+    /*----------------------------------------------
+        CENTER EVERY CARD
+    ----------------------------------------------*/
+
+    .bitnet-bitcoin-reports-card {
+        width: 100%;
+
+        min-height: 200px;
+
+        padding: 28px 20px;
+
+        text-align: center;
+
+        justify-content: center;
+
+        align-items: center;
+
+        border-radius: 25px;
+    }
+
+
+    .bitnet-bitcoin-reports-card-title {
+        font-size: 21px;
+
+        line-height: 1.3;
+
+        text-align: center;
+    }
+
+
+    .bitnet-bitcoin-reports-card-text {
+        font-size: 14px;
+
+        line-height: 1.55;
+
+        text-align: center;
+    }
+}
+
+
+/*==================================================
+    SMALL PHONES
+==================================================*/
+
+@media (max-width: 380px) {
+
+    .bitnet-bitcoin-reports-page {
+        padding: 50px 0;
+    }
+
+
+    .bitnet-bitcoin-reports-heading {
+        padding: 22px 15px;
+    }
+
+
+    .bitnet-bitcoin-reports-title {
+        font-size: 22px;
+    }
+
+
+    .bitnet-bitcoin-reports-intro {
+        font-size: 14px;
+    }
+
+
+    .bitnet-bitcoin-reports-card {
+        min-height: 180px;
+
+        padding: 24px 16px;
+    }
+
+
+    .bitnet-bitcoin-reports-card-title {
+        font-size: 19px;
+    }
+
+
+    .bitnet-bitcoin-reports-card-text {
+        font-size: 13px;
+    }
+}
+
+
+/*==================================================
+    ANIMATIONS
+==================================================*/
+
+@keyframes bitnetBitcoinReportsGlow {
+
+    from {
+        text-shadow:
+            0 0 10px #00d8ef,
+            0 0 20px #00d8ef;
+    }
+
+    to {
+        text-shadow:
+            0 0 20px #7a00ff,
+            0 0 40px #ff0080;
+    }
+}
+
+
+@keyframes bitnetBitcoinReportsShine {
+
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+
+/*==================================================
+    REDUCED MOTION
+==================================================*/
+
+@media (prefers-reduced-motion: reduce) {
+
+    .bitnet-bitcoin-reports-title,
+    .bitnet-bitcoin-reports-intro {
+        animation: none;
+    }
+
+    .bitnet-bitcoin-reports-card {
+        transition: none;
+    }
+}
+

@@ -1,20 +1,60 @@
+
 {% extends "crypto/crypto_base.html" %}
+{% load static %}
+
 {% block content %}
-<section class="analysis-page">
-  <h1>Bitcoin Reports</h1>
-  <p>
-    Explore in‑depth Bitcoin market reports covering price trends, miner activity, 
-    institutional adoption, and global regulatory developments.
-  </p>
 
-  <article class="analysis-block">
-    <h2>Price Trends</h2>
-    <p>Weekly updates on BTC price movements, volatility indexes, and trading volumes.</p>
-  </article>
+<link rel="stylesheet" href="{% static 'crypto/css/bitcoin-reports.css' %}">
 
-  <article class="analysis-block">
-    <h2>Institutional Adoption</h2>
-    <p>Insights into hedge funds, ETFs, and corporate treasury strategies involving Bitcoin.</p>
-  </article>
+<section class="bitnet-bitcoin-reports-page">
+
+    <div class="bitnet-bitcoin-reports-heading">
+
+        <h1 class="bitnet-bitcoin-reports-title">
+            Bitcoin Reports
+        </h1>
+
+        <p class="bitnet-bitcoin-reports-intro">
+            Explore in-depth Bitcoin market reports covering price trends,
+            miner activity, institutional adoption, and global regulatory
+            developments.
+        </p>
+
+    </div>
+
+
+    <div class="bitnet-bitcoin-reports-grid">
+
+        <article class="bitnet-bitcoin-reports-card">
+
+            <h2 class="bitnet-bitcoin-reports-card-title">
+                Price Trends
+            </h2>
+
+            <p class="bitnet-bitcoin-reports-card-text">
+                Weekly updates on BTC price movements, volatility indexes,
+                and trading volumes.
+            </p>
+
+        </article>
+
+
+        <article class="bitnet-bitcoin-reports-card">
+
+            <h2 class="bitnet-bitcoin-reports-card-title">
+                Institutional Adoption
+            </h2>
+
+            <p class="bitnet-bitcoin-reports-card-text">
+                Insights into hedge funds, ETFs, and corporate treasury
+                strategies involving Bitcoin.
+            </p>
+
+        </article>
+
+    </div>
+
 </section>
+
 {% endblock %}
+
