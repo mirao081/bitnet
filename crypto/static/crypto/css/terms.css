@@ -1,0 +1,783 @@
+.terms-page,
+body {
+    --terms-cyan: #00d8ef;
+    --terms-purple: #7a00ff;
+    --terms-pink: #ff0080;
+    --terms-dark: #05070d;
+    --terms-dark-blue: #0a1020;
+}
+
+
+/*==================================================
+        MAIN GUIDELINES AREA
+==================================================*/
+
+.heading {
+    width: 90%;
+    max-width: 1600px;
+
+    margin: 60px auto 25px;
+
+    padding: 25px 20px;
+
+    text-align: center;
+
+    font-size: 30px;
+    font-weight: 900;
+
+    text-transform: uppercase;
+    letter-spacing: 2px;
+
+    color: #fff;
+
+    background: rgba(255,255,255,.05);
+
+    border: 1px solid rgba(255,255,255,.10);
+
+    border-radius: 20px;
+
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+
+    box-shadow:
+        0 0 25px rgba(0,216,239,.30);
+
+    text-shadow:
+        0 0 10px var(--terms-cyan),
+        0 0 20px var(--terms-purple);
+}
+
+
+/*==================================================
+        HEADING COLORS
+==================================================*/
+
+.heading .white {
+    color: #fff;
+}
+
+.heading .orange {
+    background:
+        linear-gradient(
+            90deg,
+            var(--terms-cyan),
+            var(--terms-purple),
+            var(--terms-pink)
+        );
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    background-size: 200% auto;
+
+    animation: termsShine 6s linear infinite;
+}
+
+
+/*==================================================
+        INTRODUCTION
+==================================================*/
+
+.guidelines-intro {
+    width: 90%;
+    max-width: 1000px;
+
+    margin: 0 auto 60px;
+
+    padding: 25px 30px;
+
+    text-align: center;
+
+    background: rgba(255,255,255,.05);
+
+    border: 1px solid rgba(255,255,255,.10);
+
+    border-radius: 20px;
+
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.10),
+        0 15px 40px rgba(0,0,0,.25);
+}
+
+.guidelines-intro p {
+    margin: 0;
+
+    color: rgba(255,255,255,.80);
+
+    font-size: 16px;
+    line-height: 1.7;
+}
+
+
+/*==================================================
+        GUIDELINES GRID
+==================================================*/
+
+.guidelines-container {
+    width: 90%;
+    max-width: 1600px;
+
+    margin: 0 auto 70px;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(300px, 1fr));
+
+    gap: 35px;
+
+    position: relative;
+    z-index: 2;
+}
+
+
+/*==================================================
+        GUIDELINE GLASS CARD
+==================================================*/
+
+.guideline-card {
+    position: relative;
+    overflow: hidden;
+
+    padding: 35px 28px;
+
+    text-align: center;
+
+    border-radius: 30px;
+
+    background: rgba(255,255,255,.08);
+
+    border: 1px solid rgba(255,255,255,.12);
+
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.15),
+        0 18px 45px rgba(0,0,0,.35);
+
+    transition:
+        transform .45s ease,
+        box-shadow .45s ease,
+        border-color .45s ease;
+}
+
+
+/*==================================================
+        CARD GLOW
+==================================================*/
+
+.guideline-card::before {
+    content: "";
+
+    position: absolute;
+
+    width: 220px;
+    height: 220px;
+
+    top: -120px;
+    right: -120px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(0,216,239,.28),
+            transparent 70%
+        );
+
+    transition: .6s ease;
+
+    pointer-events: none;
+}
+
+
+/* Secondary glow */
+
+.guideline-card::after {
+    content: "";
+
+    position: absolute;
+
+    width: 150px;
+    height: 150px;
+
+    bottom: -100px;
+    left: -100px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(122,0,255,.20),
+            transparent 70%
+        );
+
+    pointer-events: none;
+}
+
+
+/*==================================================
+        CARD HOVER
+==================================================*/
+
+.guideline-card:hover {
+    transform: translateY(-12px);
+
+    border-color:
+        rgba(0,216,239,.30);
+
+    box-shadow:
+        0 30px 70px rgba(0,0,0,.45),
+        0 0 40px rgba(0,216,239,.18);
+}
+
+.guideline-card:hover::before {
+    transform: scale(1.4);
+}
+
+
+/*==================================================
+        CARD NUMBER / TITLE
+==================================================*/
+
+.guideline-card h3 {
+    position: relative;
+    z-index: 1;
+
+    margin: 0 0 15px;
+
+    font-size: 21px;
+    font-weight: 800;
+
+    line-height: 1.35;
+
+    color: #fff;
+
+    text-shadow:
+        0 0 8px rgba(0,216,239,.30);
+}
+
+
+/*==================================================
+        CARD DESCRIPTION
+==================================================*/
+
+.guideline-card p {
+    position: relative;
+    z-index: 1;
+
+    margin: 0;
+
+    font-size: 15px;
+
+    line-height: 1.65;
+
+    color: rgba(255,255,255,.80);
+}
+
+
+/*==================================================
+        TERMS SECTION
+==================================================*/
+
+.terms-section {
+    width: 90%;
+    max-width: 1600px;
+
+    margin: 0 auto 80px;
+
+    padding: 45px 35px;
+
+    position: relative;
+    overflow: hidden;
+
+    text-align: center;
+
+    background:
+        rgba(255,255,255,.06);
+
+    border:
+        1px solid rgba(255,255,255,.12);
+
+    border-radius: 30px;
+
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.12),
+        0 20px 50px rgba(0,0,0,.35);
+}
+
+
+/*==================================================
+        TERMS SECTION GLOW
+==================================================*/
+
+.terms-section::before {
+    content: "";
+
+    position: absolute;
+
+    width: 300px;
+    height: 300px;
+
+    top: -180px;
+    right: -150px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(0,216,239,.20),
+            transparent 70%
+        );
+
+    pointer-events: none;
+}
+
+
+/*==================================================
+        TERMS TITLE
+==================================================*/
+
+.terms-section h2 {
+    position: relative;
+    z-index: 1;
+
+    margin: 0 0 15px;
+
+    font-size: 28px;
+    font-weight: 900;
+
+    text-transform: uppercase;
+    letter-spacing: 2px;
+
+    color: #fff;
+
+    text-shadow:
+        0 0 10px var(--terms-cyan),
+        0 0 25px var(--terms-purple),
+        0 0 40px rgba(255,0,128,.30);
+}
+
+
+/*==================================================
+        TERMS INTRO
+==================================================*/
+
+.terms-intro {
+    position: relative;
+    z-index: 1;
+
+    max-width: 900px;
+
+    margin: 0 auto 40px;
+
+    font-size: 16px;
+
+    line-height: 1.7;
+
+    color: rgba(255,255,255,.78);
+}
+
+
+/*==================================================
+        TERMS GRID
+==================================================*/
+
+.terms-grid {
+    position: relative;
+    z-index: 1;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 25px;
+}
+
+
+/*==================================================
+        TERMS CARD
+==================================================*/
+
+.terms-card {
+    position: relative;
+    overflow: hidden;
+
+    padding: 28px 22px;
+
+    text-align: center;
+
+    border-radius: 25px;
+
+    background:
+        rgba(255,255,255,.08);
+
+    border:
+        1px solid rgba(255,255,255,.11);
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.12),
+        0 15px 40px rgba(0,0,0,.30);
+
+    transition: .4s ease;
+}
+
+
+/*==================================================
+        TERMS CARD GLOW
+==================================================*/
+
+.terms-card::before {
+    content: "";
+
+    position: absolute;
+
+    width: 160px;
+    height: 160px;
+
+    top: -90px;
+    right: -90px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(122,0,255,.25),
+            transparent 70%
+        );
+
+    transition: .5s ease;
+}
+
+
+/*==================================================
+        TERMS CARD HOVER
+==================================================*/
+
+.terms-card:hover {
+    transform: translateY(-8px);
+
+    box-shadow:
+        0 25px 55px rgba(0,0,0,.40),
+        0 0 30px rgba(122,0,255,.16);
+}
+
+.terms-card:hover::before {
+    transform: scale(1.4);
+}
+
+
+/*==================================================
+        TERMS CARD TITLE
+==================================================*/
+
+.terms-card h3 {
+    position: relative;
+    z-index: 1;
+
+    margin: 0 0 12px;
+
+    font-size: 20px;
+    font-weight: 800;
+
+    color: #fff;
+}
+
+
+/*==================================================
+        TERMS CARD DESCRIPTION
+==================================================*/
+
+.terms-card p {
+    position: relative;
+    z-index: 1;
+
+    margin: 0;
+
+    font-size: 14px;
+
+    line-height: 1.6;
+
+    color: rgba(255,255,255,.78);
+}
+
+
+/*==================================================
+        TABLET
+==================================================*/
+
+@media (max-width: 991px) {
+
+    .heading {
+        width: 92%;
+        font-size: 28px;
+    }
+
+    .guidelines-intro {
+        width: 92%;
+    }
+
+    .guidelines-container {
+        width: 92%;
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+        gap: 25px;
+    }
+
+    .guideline-card {
+        padding: 30px 22px;
+    }
+
+    .terms-section {
+        width: 92%;
+        padding: 40px 25px;
+    }
+
+    .terms-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+}
+
+
+/*==================================================
+        MOBILE
+==================================================*/
+
+@media (max-width: 600px) {
+
+    .heading {
+        width: 94%;
+
+        margin-top: 40px;
+        margin-bottom: 20px;
+
+        padding: 22px 15px;
+
+        font-size: 23px;
+
+        line-height: 1.35;
+
+        text-align: center;
+    }
+
+
+    /*----------------------------------------------
+        INTRO
+    ----------------------------------------------*/
+
+    .guidelines-intro {
+        width: 94%;
+
+        margin-bottom: 40px;
+
+        padding: 22px 18px;
+
+        text-align: center;
+    }
+
+    .guidelines-intro p {
+        font-size: 14px;
+
+        line-height: 1.6;
+    }
+
+
+    /*----------------------------------------------
+        GUIDELINE GRID
+    ----------------------------------------------*/
+
+    .guidelines-container {
+        width: 94%;
+
+        grid-template-columns: 1fr;
+
+        gap: 22px;
+
+        justify-items: center;
+    }
+
+
+    /*----------------------------------------------
+        GUIDELINE CARD
+    ----------------------------------------------*/
+
+    .guideline-card {
+        width: 100%;
+
+        box-sizing: border-box;
+
+        padding: 25px 20px;
+
+        text-align: center;
+
+        border-radius: 25px;
+    }
+
+    .guideline-card h3 {
+        font-size: 19px;
+
+        text-align: center;
+    }
+
+    .guideline-card p {
+        font-size: 14px;
+
+        line-height: 1.55;
+
+        text-align: center;
+    }
+
+
+    /*----------------------------------------------
+        TERMS SECTION
+    ----------------------------------------------*/
+
+    .terms-section {
+        width: 94%;
+
+        box-sizing: border-box;
+
+        margin-bottom: 50px;
+
+        padding: 30px 18px;
+
+        border-radius: 25px;
+
+        text-align: center;
+    }
+
+    .terms-section h2 {
+        font-size: 22px;
+
+        line-height: 1.3;
+
+        text-align: center;
+    }
+
+    .terms-intro {
+        font-size: 14px;
+
+        line-height: 1.6;
+
+        text-align: center;
+
+        margin-bottom: 30px;
+    }
+
+
+    /*----------------------------------------------
+        TERMS GRID
+    ----------------------------------------------*/
+
+    .terms-grid {
+        grid-template-columns: 1fr;
+
+        gap: 20px;
+
+        justify-items: center;
+    }
+
+
+    /*----------------------------------------------
+        TERMS CARD
+    ----------------------------------------------*/
+
+    .terms-card {
+        width: 100%;
+
+        box-sizing: border-box;
+
+        padding: 25px 18px;
+
+        text-align: center;
+    }
+
+    .terms-card h3 {
+        font-size: 19px;
+
+        text-align: center;
+    }
+
+    .terms-card p {
+        font-size: 14px;
+
+        line-height: 1.55;
+
+        text-align: center;
+    }
+}
+
+
+/*==================================================
+        VERY SMALL PHONES
+==================================================*/
+
+@media (max-width: 380px) {
+
+    .heading {
+        font-size: 21px;
+    }
+
+    .guideline-card {
+        padding: 22px 16px;
+    }
+
+    .guideline-card h3 {
+        font-size: 18px;
+    }
+
+    .guideline-card p {
+        font-size: 13px;
+    }
+
+    .terms-section {
+        padding: 25px 15px;
+    }
+
+    .terms-section h2 {
+        font-size: 20px;
+    }
+
+    .terms-card {
+        padding: 22px 15px;
+    }
+}
+
+
+/*==================================================
+        ANIMATION
+==================================================*/
+
+@keyframes termsShine {
+
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
