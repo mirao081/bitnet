@@ -15,51 +15,15 @@
 }
 
 /*=========================
-        HEADING
+        HEADING COLORS
 =========================*/
-.faqs-heading {
-    text-align: center;
-    margin: 0 auto 60px auto;
-    padding: 20px;
-    max-width: 900px;
-    background: rgba(255,255,255,.05);
-    border-radius: 20px;
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    box-shadow: 0 0 25px rgba(0,216,239,.35);
-}
-
-.faqs-heading h1,
-.faqs-heading h2,
-.faqs-heading h3,
-.faqs-heading h4,
-.faqs-heading h5,
-.faqs-heading h6 {
+.faqs-section h1,
+.faqs-section h2,
+.faqs-section h3,
+.faqs-section h4,
+.faqs-section h5,
+.faqs-section h6 {
     color: #fff; /* ✅ enforce white for ALL headings */
-}
-
-.faqs-heading h1 {
-    font-size: 2.5rem;
-    font-weight: 900;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    margin-bottom: 15px;
-    text-shadow:
-      0 0 10px #00d8ef,
-      0 0 20px #00d8ef,
-      0 0 40px #7a00ff;
-    animation: glowPulse 3s infinite alternate;
-}
-
-.faqs-heading p {
-    font-size: 18px;
-    font-weight: 600;
-    background: linear-gradient(90deg,#00d8ef,#7a00ff,#ff0080);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-size: 200% auto;
-    animation: shineFlow 6s linear infinite;
-    letter-spacing: 1px;
 }
 
 /*=========================
@@ -75,61 +39,6 @@
     gap: 35px;
     position: relative;
     z-index: 2;
-}
-
-/*=========================
-        FAQ CARD
-=========================*/
-.faqs-card {
-    position: relative;
-    overflow: hidden;
-    text-align: left;
-    padding: 35px 28px;
-    border-radius: 30px;
-    background: rgba(255,255,255,.08);
-    backdrop-filter: blur(24px);
-    -webkit-backdrop-filter: blur(24px);
-    border: 1px solid rgba(255,255,255,.12);
-    box-shadow:
-      inset 0 1px 0 rgba(255,255,255,.15),
-      0 18px 45px rgba(0,0,0,.35);
-    transition: .45s ease;
-    margin-bottom: 40px;
-}
-
-.faqs-card:hover {
-    transform: translateY(-12px);
-    box-shadow:
-      0 30px 70px rgba(0,0,0,.45),
-      0 0 40px rgba(0,216,239,.18);
-}
-
-/*=========================
-        FAQ ITEM
-=========================*/
-.faqs-item h1,
-.faqs-item h2,
-.faqs-item h3,
-.faqs-item h4,
-.faqs-item h5,
-.faqs-item h6 {
-    color: #fff; /* ✅ enforce white headings inside cards */
-}
-
-.faqs-item p {
-    font-size: 15px;
-    color: rgba(255,255,255,.80);
-    line-height: 1.6;
-    margin-bottom: 20px;
-}
-
-/*=========================
-        CONTACT SECTION
-=========================*/
-.faqs-title,
-.faqs-subtitle,
-.faqs-card-title {
-    color: #fff; /* ✅ enforce white headings everywhere */
 }
 
 /*=========================
@@ -152,5 +61,17 @@
     margin: 0 auto;
     padding: 0 30px; /* ✅ push 30px left/right on mobile */
     gap: 20px;
+  }
+
+  /* ✅ reduce heading sizes for mobile */
+  .faqs-heading h1 {
+    font-size: 1.4rem;
+    line-height: 1.3;
+  }
+  .faqs-container h2 {
+    font-size: 1.2rem;
+  }
+  .faqs-container h3 {
+    font-size: 1rem;
   }
 }
