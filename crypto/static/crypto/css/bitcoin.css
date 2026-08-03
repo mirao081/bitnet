@@ -1,0 +1,697 @@
+.bitnet-bitcoin-page {
+    width: 100%;
+    min-height: 100vh;
+
+    box-sizing: border-box;
+
+    padding: 90px 0;
+
+    position: relative;
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at top left,
+            rgba(0, 74, 173, .22),
+            transparent 40%
+        ),
+        radial-gradient(
+            circle at bottom right,
+            rgba(122, 0, 255, .15),
+            transparent 35%
+        ),
+        linear-gradient(
+            180deg,
+            #05070d,
+            #0a1020
+        );
+
+    color: #fff;
+}
+
+
+/*==================================================
+    PAGE HEADING
+==================================================*/
+
+.bitnet-bitcoin-heading {
+    width: 90%;
+    max-width: 1600px;
+
+    margin: 0 auto 60px;
+
+    padding: 30px 25px;
+
+    box-sizing: border-box;
+
+    text-align: center;
+
+    background:
+        rgba(255, 255, 255, .05);
+
+    border:
+        1px solid rgba(255, 255, 255, .12);
+
+    border-radius: 25px;
+
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, .12),
+        0 0 30px rgba(0, 216, 239, .30);
+}
+
+
+/*==================================================
+    MAIN TITLE
+==================================================*/
+
+.bitnet-bitcoin-title {
+    margin: 0 0 15px;
+
+    font-size: 34px;
+
+    font-weight: 900;
+
+    line-height: 1.25;
+
+    text-transform: uppercase;
+
+    letter-spacing: 2px;
+
+    color: #fff;
+
+    text-shadow:
+        0 0 10px #00d8ef,
+        0 0 20px #00d8ef,
+        0 0 40px #7a00ff;
+
+    animation:
+        bitnetBitcoinGlow 3s infinite alternate;
+}
+
+
+/*==================================================
+    TAGLINE
+==================================================*/
+
+.bitnet-bitcoin-tagline {
+    margin: 0;
+
+    font-size: 18px;
+
+    font-weight: 600;
+
+    line-height: 1.5;
+
+    letter-spacing: 1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #00d8ef,
+            #7a00ff,
+            #ff0080
+        );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    -webkit-text-fill-color: transparent;
+
+    background-size: 200% auto;
+
+    animation:
+        bitnetBitcoinShine 6s linear infinite;
+}
+
+
+/*==================================================
+    CONTENT GRID
+==================================================*/
+
+.bitnet-bitcoin-grid {
+    width: 90%;
+    max-width: 1600px;
+
+    margin: 0 auto;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 35px;
+
+    position: relative;
+
+    z-index: 2;
+}
+
+
+/*==================================================
+    BITCOIN GLASS CARD
+==================================================*/
+
+.bitnet-bitcoin-card {
+    position: relative;
+
+    overflow: hidden;
+
+    box-sizing: border-box;
+
+    padding: 35px 28px;
+
+    min-height: 100%;
+
+    text-align: center;
+
+    background:
+        rgba(255, 255, 255, .08);
+
+    border:
+        1px solid rgba(255, 255, 255, .12);
+
+    border-radius: 30px;
+
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, .15),
+        0 18px 45px rgba(0, 0, 0, .35);
+
+    transition:
+        transform .45s ease,
+        box-shadow .45s ease,
+        border-color .45s ease;
+}
+
+
+/*==================================================
+    CARD CYAN GLOW
+==================================================*/
+
+.bitnet-bitcoin-card::before {
+    content: "";
+
+    position: absolute;
+
+    width: 220px;
+    height: 220px;
+
+    top: -120px;
+    right: -120px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(0, 216, 239, .28),
+            transparent 70%
+        );
+
+    transition: .6s ease;
+
+    pointer-events: none;
+}
+
+
+/*==================================================
+    CARD PURPLE GLOW
+==================================================*/
+
+.bitnet-bitcoin-card::after {
+    content: "";
+
+    position: absolute;
+
+    width: 170px;
+    height: 170px;
+
+    left: -110px;
+    bottom: -110px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(122, 0, 255, .20),
+            transparent 70%
+        );
+
+    pointer-events: none;
+}
+
+
+/*==================================================
+    CARD HOVER
+==================================================*/
+
+.bitnet-bitcoin-card:hover {
+    transform: translateY(-12px);
+
+    border-color:
+        rgba(0, 216, 239, .30);
+
+    box-shadow:
+        0 30px 70px rgba(0, 0, 0, .45),
+        0 0 40px rgba(0, 216, 239, .18);
+}
+
+
+.bitnet-bitcoin-card:hover::before {
+    transform: scale(1.4);
+}
+
+
+/*==================================================
+    CARD TITLE
+==================================================*/
+
+.bitnet-bitcoin-card-title {
+    position: relative;
+
+    z-index: 1;
+
+    margin: 0 0 18px;
+
+    font-size: 23px;
+
+    font-weight: 800;
+
+    line-height: 1.3;
+
+    color: #fff;
+
+    text-shadow:
+        0 0 8px rgba(0, 216, 239, .35);
+}
+
+
+/*==================================================
+    CARD TEXT
+==================================================*/
+
+.bitnet-bitcoin-card-text {
+    position: relative;
+
+    z-index: 1;
+
+    margin: 0;
+
+    font-size: 15px;
+
+    line-height: 1.65;
+
+    color:
+        rgba(255, 255, 255, .80);
+}
+
+
+/*==================================================
+    LIST
+==================================================*/
+
+.bitnet-bitcoin-list {
+    position: relative;
+
+    z-index: 1;
+
+    margin: 0;
+
+    padding: 0;
+
+    list-style: none;
+
+    text-align: center;
+}
+
+
+.bitnet-bitcoin-list li {
+    position: relative;
+
+    margin: 0 0 13px;
+
+    padding-left: 20px;
+
+    font-size: 15px;
+
+    line-height: 1.6;
+
+    color:
+        rgba(255, 255, 255, .80);
+}
+
+
+.bitnet-bitcoin-list li:last-child {
+    margin-bottom: 0;
+}
+
+
+.bitnet-bitcoin-list li::before {
+    content: "✦";
+
+    position: absolute;
+
+    left: 0;
+
+    top: 0;
+
+    color: #00d8ef;
+
+    text-shadow:
+        0 0 10px #00d8ef;
+}
+
+
+/*==================================================
+    FAQ CONTENT
+==================================================*/
+
+.bitnet-bitcoin-faq {
+    position: relative;
+
+    z-index: 1;
+}
+
+
+.bitnet-bitcoin-faq p {
+    margin: 0 0 18px;
+
+    font-size: 14px;
+
+    line-height: 1.65;
+
+    color:
+        rgba(255, 255, 255, .80);
+}
+
+
+.bitnet-bitcoin-faq p:last-child {
+    margin-bottom: 0;
+}
+
+
+.bitnet-bitcoin-faq strong {
+    display: block;
+
+    margin-bottom: 5px;
+
+    color: #00d8ef;
+
+    font-size: 15px;
+
+    text-shadow:
+        0 0 8px rgba(0, 216, 239, .35);
+}
+
+
+/*==================================================
+    TABLET
+==================================================*/
+
+@media (max-width: 991px) {
+
+    .bitnet-bitcoin-page {
+        padding: 70px 0;
+    }
+
+
+    .bitnet-bitcoin-heading {
+        width: 92%;
+
+        margin-bottom: 45px;
+    }
+
+
+    .bitnet-bitcoin-title {
+        font-size: 30px;
+    }
+
+
+    .bitnet-bitcoin-grid {
+        width: 92%;
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+        gap: 25px;
+    }
+
+
+    .bitnet-bitcoin-card {
+        padding: 30px 22px;
+    }
+
+
+    .bitnet-bitcoin-card-title {
+        font-size: 21px;
+    }
+}
+
+
+/*==================================================
+    MOBILE
+==================================================*/
+
+@media (max-width: 600px) {
+
+    .bitnet-bitcoin-page {
+        padding: 60px 0;
+    }
+
+
+    /*----------------------------------------------
+        HEADING
+    ----------------------------------------------*/
+
+    .bitnet-bitcoin-heading {
+        width: 95%;
+
+        margin-bottom: 40px;
+
+        padding: 25px 18px;
+
+        border-radius: 22px;
+    }
+
+
+    .bitnet-bitcoin-title {
+        font-size: 25px;
+
+        line-height: 1.3;
+
+        text-align: center;
+
+        text-shadow:
+            0 0 15px #00d8ef,
+            0 0 30px #7a00ff,
+            0 0 60px #ff0080;
+    }
+
+
+    .bitnet-bitcoin-tagline {
+        font-size: 16px;
+
+        line-height: 1.5;
+
+        text-align: center;
+    }
+
+
+    /*----------------------------------------------
+        CONTENT GRID
+    ----------------------------------------------*/
+
+    .bitnet-bitcoin-grid {
+        width: 95%;
+
+        grid-template-columns: 1fr;
+
+        gap: 24px;
+
+        justify-items: center;
+    }
+
+
+    /*----------------------------------------------
+        CARDS
+    ----------------------------------------------*/
+
+    .bitnet-bitcoin-card {
+        width: 100%;
+
+        padding: 25px 20px;
+
+        text-align: center;
+
+        border-radius: 25px;
+    }
+
+
+    .bitnet-bitcoin-card-title {
+        font-size: 21px;
+
+        line-height: 1.3;
+
+        text-align: center;
+    }
+
+
+    .bitnet-bitcoin-card-text {
+        font-size: 14px;
+
+        line-height: 1.55;
+
+        text-align: center;
+    }
+
+
+    /*----------------------------------------------
+        LISTS
+    ----------------------------------------------*/
+
+    .bitnet-bitcoin-list {
+        text-align: center;
+    }
+
+
+    .bitnet-bitcoin-list li {
+        padding-left: 0;
+
+        font-size: 14px;
+
+        line-height: 1.55;
+
+        text-align: center;
+    }
+
+
+    .bitnet-bitcoin-list li::before {
+        position: static;
+
+        margin-right: 7px;
+    }
+
+
+    /*----------------------------------------------
+        FAQ
+    ----------------------------------------------*/
+
+    .bitnet-bitcoin-faq p {
+        font-size: 14px;
+
+        line-height: 1.55;
+
+        text-align: center;
+    }
+
+
+    .bitnet-bitcoin-faq strong {
+        font-size: 15px;
+
+        text-align: center;
+    }
+}
+
+
+/*==================================================
+    SMALL PHONES
+==================================================*/
+
+@media (max-width: 380px) {
+
+    .bitnet-bitcoin-page {
+        padding: 50px 0;
+    }
+
+
+    .bitnet-bitcoin-heading {
+        padding: 22px 15px;
+    }
+
+
+    .bitnet-bitcoin-title {
+        font-size: 22px;
+    }
+
+
+    .bitnet-bitcoin-tagline {
+        font-size: 14px;
+    }
+
+
+    .bitnet-bitcoin-card {
+        padding: 22px 16px;
+    }
+
+
+    .bitnet-bitcoin-card-title {
+        font-size: 19px;
+    }
+
+
+    .bitnet-bitcoin-card-text,
+    .bitnet-bitcoin-list li,
+    .bitnet-bitcoin-faq p {
+        font-size: 13px;
+    }
+}
+
+
+/*==================================================
+    ANIMATIONS
+==================================================*/
+
+@keyframes bitnetBitcoinGlow {
+
+    from {
+        text-shadow:
+            0 0 10px #00d8ef,
+            0 0 20px #00d8ef;
+    }
+
+    to {
+        text-shadow:
+            0 0 20px #7a00ff,
+            0 0 40px #ff0080;
+    }
+}
+
+
+@keyframes bitnetBitcoinShine {
+
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+
+/*==================================================
+    ACCESSIBILITY
+==================================================*/
+
+@media (prefers-reduced-motion: reduce) {
+
+    .bitnet-bitcoin-title,
+    .bitnet-bitcoin-tagline {
+        animation: none;
+    }
+
+    .bitnet-bitcoin-card {
+        transition: none;
+    }
+}
+
