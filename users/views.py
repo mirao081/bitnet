@@ -72,95 +72,292 @@ MIN_WITHDRAWAL = Decimal("200.00")
 @login_required
 def dashboard(request):
     user = request.user
-    instruments = MarketInstrument.objects.all()
-    profile = UserProfile.objects.get(user=user)   
-    investments = ActiveInvestment.objects.filter(user=user)
-    referral, _ = Referral.objects.get_or_create(user=user)
-    notifications = Notification.objects.filter(user=user).order_by("-timestamp")[:10]
 
-    # 🔹 Auto-complete matured investments
+    instruments = MarketInstrument.objects.all()
+
+    profile = UserProfile.objects.get(user=user)
+
+    investments = ActiveInvestment.objects.filter(user=user)
+
+    referral, _ = Referral.objects.get_or_create(user=user)
+
+    notifications = Notification.objects.filter(
+        user=user
+    ).order_by("-timestamp")[:10]
+
+
+    # ==================================================
+    # AUTO-COMPLETE MATURED INVESTMENTS
+    # ==================================================
+
     for inv in investments.filter(status="active"):
+
         if timezone.now() >= inv.end_date:
+
             inv.status = "completed"
             inv.save()
 
-    # 🔹 Growth chart data
-    growth_data = []
-    growth_labels = []
-    total = 0
-    for inv in investments.order_by("start_date"):
-        total += float(inv.amount)
-        growth_data.append(total)
-        growth_labels.append(inv.start_date.strftime("%b %d"))
 
-    # 🔹 ROI calculations
-    daily_roi = weekly_roi = monthly_roi = 0
+    # ==================================================
+    # REFRESH INVESTMENTS AFTER STATUS CHANGES
+    # ==================================================
+
+    investments = ActiveInvestment.objects.filter(user=user)
+
+
+    # ==================================================
+    # GROWTH CHART DATA
+    # ==================================================
+
+    growth_data = []
+
+    growth_labels = []
+
+    total = 0
+
+
+    for inv in investments.order_by("start_date"):
+
+        total += float(inv.amount)
+
+        growth_data.append(round(total, 2))
+
+        growth_labels.append(
+            inv.start_date.strftime("%b %d")
+        )
+
+
+    # ==================================================
+    # ROI CALCULATIONS
+    # ==================================================
+
+    daily_roi = 0
+
+    weekly_roi = 0
+
+    monthly_roi = 0
+
+
     for inv in investments:
-        days = (inv.end_date - inv.start_date).days
+
+        days = (
+            inv.end_date - inv.start_date
+        ).days
+
+
         if days > 0:
-            daily_roi += float(inv.amount) / days
-            weekly_roi += (float(inv.amount) / days) * 7
-            monthly_roi += (float(inv.amount) / days) * 30
+
+            daily_roi += (
+                float(inv.amount) / days
+            )
+
+            weekly_roi += (
+                float(inv.amount) / days
+            ) * 7
+
+            monthly_roi += (
+                float(inv.amount) / days
+            ) * 30
+
 
     roi_data = [
+
         round(daily_roi, 2),
+
         round(weekly_roi, 2),
+
         round(monthly_roi, 2),
+
     ]
 
-    # 🔹 External market data
+
+    # ==================================================
+    # EXTERNAL MARKET DATA
+    # ==================================================
+
     try:
-        crypto_url = "https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum&vs_currencies=usd"
-        crypto_data = requests.get(crypto_url).json()
-        btc_price = crypto_data["bitcoin"]["usd"]
-        eth_price = crypto_data["ethereum"]["usd"]
 
-        fmp_url = "https://financialmodelingprep.com/api/v3/quote/%5EGSPC?apikey=ZR8hDHF0vtAETUxVCfT41Du5Wtc9fzEO"
-        sp500_data = requests.get(fmp_url).json()
+        crypto_url = (
+            "https://api.coingecko.com/api/v3/"
+            "simple/price"
+            "?ids=bitcoin,ethereum"
+            "&vs_currencies=usd"
+        )
+
+        crypto_response = requests.get(
+            crypto_url,
+            timeout=10
+        )
+
+        crypto_data = crypto_response.json()
+
+
+        btc_price = crypto_data[
+            "bitcoin"
+        ]["usd"]
+
+
+        eth_price = crypto_data[
+            "ethereum"
+        ]["usd"]
+
+
+        fmp_url = (
+            "https://financialmodelingprep.com/api/v3/"
+            "quote/%5EGSPC"
+            "?apikey=ZR8hDHF0vtAETUxVCfT41Du5Wtc9fzEO"
+        )
+
+
+        fmp_response = requests.get(
+            fmp_url,
+            timeout=10
+        )
+
+        sp500_data = fmp_response.json()
+
+
         sp500_index = sp500_data[0]["price"]
+
+
     except Exception:
-        btc_price = eth_price = sp500_index = "N/A"
 
-    # 🔹 Referral count
-    referred_users = User.objects.filter(referral__referrer=user)
-    referral_count = referred_users.count()
+        btc_price = "N/A"
 
-    # 🔹 Referral bonus (7% commissions)
-    referral_bonus = ReferralCommission.objects.filter(referrer=user).aggregate(
-        total=Sum("commission_amount")
-    )["total"] or 0
+        eth_price = "N/A"
 
-    # 🔹 Completed investments & profit
-    completed_investments = investments.filter(status="completed")
-    total_profit = sum([inv.get_current_value() - inv.amount for inv in completed_investments])
+        sp500_index = "N/A"
 
-    # 🔹 Total balance
-    total_balance = (
-        profile.usd_balance +
-        profile.investment_balance +
-        profile.profit_balance +
-        profile.bonus_balance +
-        sum([inv.get_current_value() for inv in completed_investments])
+
+    # ==================================================
+    # REFERRALS
+    # ==================================================
+
+    referred_users = User.objects.filter(
+        referral__referrer=user
     )
 
-    return render(request, "users/dashboard.html", {
+    referral_count = referred_users.count()
+
+
+    # ==================================================
+    # REFERRAL BONUS
+    # ==================================================
+
+    referral_bonus = (
+        ReferralCommission.objects
+        .filter(referrer=user)
+        .aggregate(
+            total=Sum("commission_amount")
+        )["total"]
+        or 0
+    )
+
+
+    # ==================================================
+    # COMPLETED INVESTMENTS
+    # ==================================================
+
+    completed_investments = (
+        investments.filter(
+            status="completed"
+        )
+    )
+
+
+    total_profit = sum(
+
+        [
+            inv.get_current_value() - inv.amount
+
+            for inv in completed_investments
+        ]
+
+    )
+
+
+    # ==================================================
+    # TOTAL BALANCE
+    # ==================================================
+
+    total_balance = (
+
+        profile.usd_balance
+
+        + profile.investment_balance
+
+        + profile.profit_balance
+
+        + profile.bonus_balance
+
+        + sum(
+            [
+                inv.get_current_value()
+
+                for inv in completed_investments
+            ]
+        )
+
+    )
+
+
+    # ==================================================
+    # DASHBOARD CONTEXT
+    # ==================================================
+
+    context = {
+
         "instruments": instruments,
+
         "profile": profile,
+
         "investments": investments,
+
         "referral": referral,
+
         "referral_count": referral_count,
-        "referral_bonus": referral_bonus,   # ✅ now calculated correctly
-        "growth_data": json.dumps(growth_data),
-        "growth_labels": json.dumps(growth_labels),
-        "roi_data": json.dumps(roi_data),
+
+        "referral_bonus": referral_bonus,
+
+        # IMPORTANT:
+        # Pass Python lists directly.
+        # json_script handles the JSON conversion.
+
+        "growth_data": growth_data,
+
+        "growth_labels": growth_labels,
+
+        "roi_data": roi_data,
+
         "notifications": notifications,
+
         "btc_price": btc_price,
+
         "eth_price": eth_price,
+
         "sp500_index": sp500_index,
-        "total_profit": round(total_profit, 2),   
-        "total_balance": round(total_balance, 2),
-        "investment_balance": profile.investment_balance, 
-    })
+
+        "total_profit": round(
+            total_profit,
+            2
+        ),
+
+        "total_balance": round(
+            total_balance,
+            2
+        ),
+
+        "investment_balance":
+            profile.investment_balance,
+
+    }
+
+
+    return render(
+        request,
+        "users/dashboard.html",
+        context
+    )
 
 @login_required
 def portfolio(request):
