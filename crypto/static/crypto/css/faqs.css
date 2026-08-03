@@ -62,9 +62,10 @@
         GRID LAYOUT
 =========================*/
 .faqs-container {
-    width: 90%;
-    max-width: 1200px;
-    margin: 0 auto; /* ✅ center horizontally */
+    width: 100%;              /* ✅ full width */
+    max-width: 1200px;        /* ✅ limit max width */
+    margin: 0 auto;           /* ✅ center horizontally */
+    padding: 0 30px;          /* ✅ equal left/right padding */
     display: grid;
     grid-template-columns: repeat(auto-fit,minmax(300px,1fr));
     gap: 35px;
@@ -242,8 +243,10 @@
   }
   .faqs-container {
     grid-template-columns: 1fr;
-    width: calc(100% - 60px); /* ✅ push 30px left/right */
+    width: 100%;
+    max-width: 100%;
     margin: 0 auto;
+    padding: 0 30px; /* ✅ push 30px left/right */
     gap: 20px;
   }
   .faqs-heading h1 {
