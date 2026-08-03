@@ -1,6 +1,4 @@
-/*==================================================
-    BITNET CONTACT PAGE
-==================================================*/
+
 
 .bn-contact-page {
     width: 100%;
@@ -337,6 +335,37 @@
     outline: none;
 
     transition: .35s;
+}
+.bn-contact-form-wide select option {
+    background: #111827;
+    color: #ffffff;
+    font-size: 14px;
+}
+
+/* Selected option */
+.bn-contact-form-wide select option:checked {
+    background: #00d8ef;
+    color: #05070d;
+}
+
+/*==================================================
+    SELECT FOCUS
+==================================================*/
+
+.bn-contact-form-wide select:focus {
+    border-color: #00d8ef;
+
+    box-shadow:
+        0 0 10px rgba(0,216,239,.35),
+        0 0 25px rgba(0,216,239,.15);
+}
+
+/*==================================================
+    SELECT ARROW / CURSOR
+==================================================*/
+
+.bn-contact-form-wide select {
+    cursor: pointer;
 }
 
 
