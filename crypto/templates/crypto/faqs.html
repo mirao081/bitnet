@@ -1,134 +1,133 @@
 {% extends "crypto/crypto_base.html" %}
-
 {% load static %}
 {% block content %}
-<section class="faq-section">
-    <div class="faq-heading">
+<link rel="stylesheet" href="{% static 'crypto/css/faqs.css' %}">
+
+<section class="faqs-section">
+    <div class="faqs-heading">
         <h1>Frequently <br><span>Asked Questions</span></h1>
         <p>Everything you need to know about trading and investing on BitnetFX</p>
     </div>
 
-    <div class="faq-container">
-        <div class="faq-card">
+    <div class="faqs-container">
+        <div class="faqs-card">
             <h2>Account & Registration</h2>
-            <div class="faq-item">
+            <div class="faqs-item">
                 <h3>How do I create an account?</h3>
                 <p>Click “Register” at the top right, fill in your details, and verify your email.</p>
             </div>
-            <div class="faq-item">
+            <div class="faqs-item">
                 <h3>Is registration free?</h3>
                 <p>Yes, creating an account on BitnetFX is completely free.</p>
             </div>
-            <div class="faq-item">
+            <div class="faqs-item">
                 <h3>Can I open multiple accounts?</h3>
                 <p>No, each user is allowed only one account to ensure compliance and security.</p>
             </div>
         </div>
 
-        <div class="faq-card">
+        <div class="faqs-card">
             <h2>Deposits & Withdrawals</h2>
-            <div class="faq-item">
+            <div class="faqs-item">
                 <h3>What payment methods are supported?</h3>
                 <p>We support Bitcoin, Ethereum, USDT, and major fiat gateways depending on your region.</p>
             </div>
-            <div class="faq-item">
+            <div class="faqs-item">
                 <h3>How long do withdrawals take?</h3>
                 <p>Crypto withdrawals are processed instantly once approved. Fiat withdrawals may take 1–3 business days.</p>
             </div>
-            <div class="faq-item">
+            <div class="faqs-item">
                 <h3>Is there a minimum deposit?</h3>
                 <p>Yes, the minimum deposit is $50 or equivalent in crypto.</p>
             </div>
         </div>
 
-        <div class="faq-card">
+        <div class="faqs-card">
             <h2>Trading</h2>
-            <div class="faq-item">
+            <div class="faqs-item">
                 <h3>What instruments can I trade?</h3>
                 <p>BitnetFX offers cryptocurrencies, forex pairs, commodities, and indices.</p>
             </div>
-            <div class="faq-item">
+            <div class="faqs-item">
                 <h3>Do you offer demo accounts?</h3>
                 <p>Yes, you can practice trading with a demo account before switching to live trading.</p>
             </div>
-            <div class="faq-item">
+            <div class="faqs-item">
                 <h3>Are there trading fees?</h3>
                 <p>We charge competitive spreads and a small commission depending on the instrument.</p>
             </div>
         </div>
 
-        <div class="faq-card">
+        <div class="faqs-card">
             <h2>Security</h2>
-            <div class="faq-item">
+            <div class="faqs-item">
                 <h3>How secure is BitnetFX?</h3>
                 <p>We use SSL encryption, two‑factor authentication, and cold storage for crypto assets.</p>
             </div>
-            <div class="faq-item">
+            <div class="faqs-item">
                 <h3>What is 2FA?</h3>
                 <p>Two‑Factor Authentication adds an extra layer of security by requiring a code from your mobile device when logging in.</p>
             </div>
         </div>
 
-        <div class="faq-card">
+        <div class="faqs-card">
             <h2>Support</h2>
-            <div class="faq-item">
+            <div class="faqs-item">
                 <h3>How can I contact support?</h3>
                 <p>Email us at <a href="mailto:support@bitnetfx.com">support@bitnetfx.com</a> or use live chat available 24/7.</p>
             </div>
-            <div class="faq-item">
+            <div class="faqs-item">
                 <h3>Do you provide educational resources?</h3>
                 <p>Yes, we offer tutorials, webinars, and trading guides to help you improve your skills.</p>
             </div>
         </div>
 
-        <div class="faq-card">
+        <div class="faqs-card">
             <h2>Compliance & Regulations</h2>
-            <div class="faq-item">
+            <div class="faqs-item">
                 <h3>Is BitnetFX regulated?</h3>
                 <p>Yes, we comply with international KYC/AML standards and operate under financial regulations in our jurisdictions.</p>
             </div>
-            <div class="faq-item">
+            <div class="faqs-item">
                 <h3>Do I need to verify my identity?</h3>
                 <p>Yes, identity verification is required to comply with anti‑money laundering laws and ensure account security.</p>
             </div>
         </div>
     </div>
 
- 
-    <div class="faq-container">
+    <div class="faqs-container">
         {% include "crypto/faqs_content.html" %}
     </div>
 
-  
-    <div class="faq-contact">
-        <h2 class="page-title">Still Need Help?</h2>
-        <p class="page-subtitle">
+    <div class="faqs-contact">
+        <h2 class="faqs-title">Still Need Help?</h2>
+        <p class="faqs-subtitle">
             If you didn’t find the answer you were looking for, our support team is available 24/7.
         </p>
 
-        <div class="support-cards">
-            <div class="support-card">
-                <h3 class="card-title">Live Chat</h3>
-                <p class="card-description">
+        <div class="faqs-support-cards">
+            <div class="faqs-support-card">
+                <h3 class="faqs-card-title">Live Chat</h3>
+                <p class="faqs-card-description">
                     Connect instantly with our team through the chat widget powered by Tawk.to.
                 </p>
-                <p class="contact-info">💬 Available in your dashboard</p>
+                <p class="faqs-contact-info">💬 Available in your dashboard</p>
             </div>
 
-            <div class="support-card">
-                <h3 class="card-title">Email Support</h3>
-                <p class="card-description">
+            <div class="faqs-support-card">
+                <h3 class="faqs-card-title">Email Support</h3>
+                <p class="faqs-card-description">
                     Send us your questions and we’ll reply promptly.
                 </p>
-                <p class="contact-info">📧 support@bitnetfx.com</p>
+                <p class="faqs-contact-info">📧 support@bitnetfx.com</p>
             </div>
 
-            <div class="support-card">
-                <h3 class="card-title">Phone Support</h3>
-                <p class="card-description">
+            <div class="faqs-support-card">
+                <h3 class="faqs-card-title">Phone Support</h3>
+                <p class="faqs-card-description">
                     Speak directly with our support specialists.
                 </p>
-                <p class="contact-info">📞 +234-800-123-4567</p>
+                <p class="faqs-contact-info">📞 +234-800-123-4567</p>
             </div>
         </div>
     </div>
