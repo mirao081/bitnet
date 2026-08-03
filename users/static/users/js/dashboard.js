@@ -34,8 +34,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
         copyHeader.addEventListener("click", function () {
 
-            const referralLink = document.getElementById("referral-link");
-            const status = document.getElementById("copy-status");
+            const referralLink =
+                document.getElementById("referral-link");
+
+            const status =
+                document.getElementById("copy-status");
 
             if (!referralLink) {
                 return;
@@ -43,23 +46,97 @@ document.addEventListener("DOMContentLoaded", function () {
 
             const linkText = referralLink.href;
 
-            navigator.clipboard.writeText(linkText)
-                .then(() => {
+            /*
+             * Modern clipboard API
+             */
+            if (navigator.clipboard) {
+
+                navigator.clipboard.writeText(linkText)
+                    .then(function () {
+
+                        if (status) {
+
+                            status.innerText =
+                                "Referral link copied!";
+
+                            status.style.color =
+                                "#00ff00";
+
+                            setTimeout(function () {
+                                status.innerText = "";
+                            }, 2000);
+                        }
+
+                    })
+                    .catch(function (error) {
+
+                        console.error(
+                            "Clipboard error:",
+                            error
+                        );
+
+                    });
+
+            } else {
+
+                /*
+                 * Fallback for older browsers
+                 */
+                const temporaryInput =
+                    document.createElement("input");
+
+                temporaryInput.value = linkText;
+
+                document.body.appendChild(
+                    temporaryInput
+                );
+
+                temporaryInput.select();
+
+                try {
+
+                    document.execCommand("copy");
 
                     if (status) {
-                        status.innerText = "Referral link copied!";
-                        status.style.color = "#00ff00";
 
-                        setTimeout(() => {
+                        status.innerText =
+                            "Referral link copied!";
+
+                        status.style.color =
+                            "#00ff00";
+
+                        setTimeout(function () {
                             status.innerText = "";
                         }, 2000);
                     }
 
-                })
-                .catch((error) => {
-                    console.error("Could not copy referral link:", error);
-                });
+                } catch (error) {
+
+                    console.error(
+                        "Could not copy referral link:",
+                        error
+                    );
+                }
+
+                document.body.removeChild(
+                    temporaryInput
+                );
+            }
         });
+    }
+
+
+    /* ==================================================
+       CHECK CHART.JS
+    ================================================== */
+
+    if (typeof Chart === "undefined") {
+
+        console.error(
+            "Chart.js has not loaded. Charts cannot render."
+        );
+
+        return;
     }
 
 
@@ -67,7 +144,8 @@ document.addEventListener("DOMContentLoaded", function () {
        GROWTH OF INVESTMENTS CHART
     ================================================== */
 
-    const growthCanvas = document.getElementById("growthChart");
+    const growthCanvas =
+        document.getElementById("growthChart");
 
     if (growthCanvas) {
 
@@ -79,97 +157,165 @@ document.addEventListener("DOMContentLoaded", function () {
             const growthLabelsElement =
                 document.getElementById("growth-labels");
 
-            if (!growthDataElement || !growthLabelsElement) {
-                console.error("Growth chart data elements not found.");
-                return;
-            }
 
-            const growthData =
-                JSON.parse(growthDataElement.textContent);
+            if (
+                !growthDataElement ||
+                !growthLabelsElement
+            ) {
 
-            const growthLabels =
-                JSON.parse(growthLabelsElement.textContent);
+                console.error(
+                    "Growth chart data elements were not found."
+                );
 
-            console.log("Growth labels:", growthLabels);
-            console.log("Growth data:", growthData);
+            } else {
 
-            if (!Array.isArray(growthData) ||
-                !Array.isArray(growthLabels)) {
+                const growthData =
+                    JSON.parse(
+                        growthDataElement.textContent
+                    );
 
-                console.error("Growth chart data is not an array.");
-                return;
-            }
+                const growthLabels =
+                    JSON.parse(
+                        growthLabelsElement.textContent
+                    );
 
-            const growthCtx =
-                growthCanvas.getContext("2d");
 
-            new Chart(growthCtx, {
+                console.log(
+                    "Growth labels:",
+                    growthLabels
+                );
 
-                type: "line",
+                console.log(
+                    "Growth data:",
+                    growthData
+                );
 
-                data: {
-                    labels: growthLabels,
 
-                    datasets: [{
-                        label: "Portfolio Value ($)",
-                        data: growthData,
+                if (
+                    !Array.isArray(growthData) ||
+                    !Array.isArray(growthLabels)
+                ) {
 
-                        borderColor: "#26a17b",
-                        backgroundColor: "rgba(38,161,123,0.2)",
+                    console.error(
+                        "Growth chart data must be arrays."
+                    );
 
-                        borderWidth: 3,
+                } else {
 
-                        fill: true,
+                    const growthCtx =
+                        growthCanvas.getContext("2d");
 
-                        tension: 0.3,
 
-                        pointRadius: 4,
+                    /*
+                     * Destroy an existing chart if one
+                     * already exists on this canvas.
+                     */
+                    const existingGrowthChart =
+                        Chart.getChart(growthCanvas);
 
-                        pointHoverRadius: 6
-                    }]
-                },
+                    if (existingGrowthChart) {
+                        existingGrowthChart.destroy();
+                    }
 
-                options: {
 
-                    responsive: true,
+                    new Chart(growthCtx, {
 
-                    maintainAspectRatio: false,
+                        type: "line",
 
-                    plugins: {
+                        data: {
 
-                        legend: {
-                            labels: {
-                                color: "#ffffff"
-                            }
-                        }
-                    },
+                            labels: growthLabels,
 
-                    scales: {
+                            datasets: [
 
-                        x: {
-                            ticks: {
-                                color: "#ffffff"
-                            },
+                                {
 
-                            grid: {
-                                color: "rgba(255,255,255,0.08)"
-                            }
+                                    label:
+                                        "Portfolio Value ($)",
+
+                                    data:
+                                        growthData,
+
+                                    borderColor:
+                                        "#26a17b",
+
+                                    backgroundColor:
+                                        "rgba(38,161,123,0.2)",
+
+                                    borderWidth: 3,
+
+                                    fill: true,
+
+                                    tension: 0.3,
+
+                                    pointRadius: 4,
+
+                                    pointHoverRadius: 6
+                                }
+
+                            ]
                         },
 
-                        y: {
-                            beginAtZero: false,
 
-                            ticks: {
-                                color: "#ffffff"
+                        options: {
+
+                            responsive: true,
+
+                            maintainAspectRatio: false,
+
+
+                            plugins: {
+
+                                legend: {
+
+                                    labels: {
+
+                                        color:
+                                            "#ffffff"
+                                    }
+                                }
                             },
 
-                            grid: {
-                                color: "rgba(255,255,255,0.08)"
+
+                            scales: {
+
+                                x: {
+
+                                    ticks: {
+
+                                        color:
+                                            "#ffffff"
+                                    },
+
+                                    grid: {
+
+                                        color:
+                                            "rgba(255,255,255,0.08)"
+                                    }
+                                },
+
+
+                                y: {
+
+                                    beginAtZero: false,
+
+                                    ticks: {
+
+                                        color:
+                                            "#ffffff"
+                                    },
+
+                                    grid: {
+
+                                        color:
+                                            "rgba(255,255,255,0.08)"
+                                    }
+                                }
                             }
                         }
-                    }
+                    });
                 }
-            });
+            }
 
         } catch (error) {
 
@@ -195,92 +341,142 @@ document.addEventListener("DOMContentLoaded", function () {
             const roiDataElement =
                 document.getElementById("roi-data");
 
+
             if (!roiDataElement) {
-                console.error("ROI chart data element not found.");
-                return;
-            }
 
-            const roiData =
-                JSON.parse(roiDataElement.textContent);
+                console.error(
+                    "ROI chart data element was not found."
+                );
 
-            console.log("ROI data:", roiData);
+            } else {
 
-            if (!Array.isArray(roiData)) {
-                console.error("ROI data is not an array.");
-                return;
-            }
+                const roiData =
+                    JSON.parse(
+                        roiDataElement.textContent
+                    );
 
-            const roiCtx =
-                roiCanvas.getContext("2d");
 
-            new Chart(roiCtx, {
+                console.log(
+                    "ROI data:",
+                    roiData
+                );
 
-                type: "bar",
 
-                data: {
+                if (!Array.isArray(roiData)) {
 
-                    labels: [
-                        "Daily",
-                        "Weekly",
-                        "Monthly"
-                    ],
+                    console.error(
+                        "ROI chart data must be an array."
+                    );
 
-                    datasets: [{
+                } else {
 
-                        label: "ROI (%)",
+                    const roiCtx =
+                        roiCanvas.getContext("2d");
 
-                        data: roiData,
 
-                        backgroundColor: [
-                            "#f2a900",
-                            "#3c3c3d",
-                            "#26a17b"
-                        ],
+                    /*
+                     * Destroy existing ROI chart if present.
+                     */
+                    const existingRoiChart =
+                        Chart.getChart(roiCanvas);
 
-                        borderWidth: 1
-                    }]
-                },
+                    if (existingRoiChart) {
+                        existingRoiChart.destroy();
+                    }
 
-                options: {
 
-                    responsive: true,
+                    new Chart(roiCtx, {
 
-                    maintainAspectRatio: false,
+                        type: "bar",
 
-                    plugins: {
 
-                        legend: {
-                            display: false
-                        }
-                    },
+                        data: {
 
-                    scales: {
+                            labels: [
+                                "Daily",
+                                "Weekly",
+                                "Monthly"
+                            ],
 
-                        x: {
-                            ticks: {
-                                color: "#ffffff"
-                            },
 
-                            grid: {
-                                color: "rgba(255,255,255,0.08)"
-                            }
+                            datasets: [
+
+                                {
+
+                                    label:
+                                        "ROI (%)",
+
+                                    data:
+                                        roiData,
+
+                                    backgroundColor: [
+                                        "#f2a900",
+                                        "#3c3c3d",
+                                        "#26a17b"
+                                    ],
+
+                                    borderWidth: 1
+                                }
+
+                            ]
                         },
 
-                        y: {
 
-                            beginAtZero: true,
+                        options: {
 
-                            ticks: {
-                                color: "#ffffff"
+                            responsive: true,
+
+                            maintainAspectRatio: false,
+
+
+                            plugins: {
+
+                                legend: {
+
+                                    display: false
+                                }
                             },
 
-                            grid: {
-                                color: "rgba(255,255,255,0.08)"
+
+                            scales: {
+
+                                x: {
+
+                                    ticks: {
+
+                                        color:
+                                            "#ffffff"
+                                    },
+
+                                    grid: {
+
+                                        color:
+                                            "rgba(255,255,255,0.08)"
+                                    }
+                                },
+
+
+                                y: {
+
+                                    beginAtZero: true,
+
+                                    ticks: {
+
+                                        color:
+                                            "#ffffff"
+                                    },
+
+                                    grid: {
+
+                                        color:
+                                            "rgba(255,255,255,0.08)"
+                                    }
+                                }
                             }
                         }
-                    }
+                    });
                 }
-            });
+            }
 
         } catch (error) {
 
@@ -299,28 +495,42 @@ document.addEventListener("DOMContentLoaded", function () {
     const changeButtons =
         document.querySelectorAll(".btn-change");
 
-    changeButtons.forEach(button => {
 
-        button.addEventListener("click", function () {
+    changeButtons.forEach(function (button) {
 
-            const targetId =
-                this.getAttribute("data-target");
+        button.addEventListener(
+            "click",
+            function () {
 
-            const input =
-                document.getElementById(targetId);
+                const targetId =
+                    this.getAttribute(
+                        "data-target"
+                    );
 
-            if (
-                input &&
-                input.hasAttribute("readonly")
-            ) {
 
-                input.removeAttribute("readonly");
+                const input =
+                    document.getElementById(
+                        targetId
+                    );
 
-                input.classList.add("unlocked");
 
-                input.focus();
+                if (
+                    input &&
+                    input.hasAttribute("readonly")
+                ) {
+
+                    input.removeAttribute(
+                        "readonly"
+                    );
+
+                    input.classList.add(
+                        "unlocked"
+                    );
+
+                    input.focus();
+                }
             }
-        });
+        );
     });
 
 });
