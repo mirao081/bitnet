@@ -1,19 +1,18 @@
 {% extends "crypto/crypto_base.html" %}
 {% load static %}
-
 {% block content %}
- <link rel="stylesheet" href="{% static 'crypto/css/contacts.css' %}">
+<link rel="stylesheet" href="{% static 'crypto/css/contacts.css' %}">
 <section class="bn-contact-page">
-
     <div class="bn-contact-heading">
-        <h1 class="bn-contact-title">Contact Us</h1>
 
+        <h1 class="bn-contact-title">
+            Contact Us
+        </h1>
         <p class="bn-contact-subtitle">
             Providing reliable support and expert <br>
             assistance throughout your investment journey.
         </p>
     </div>
-
     <div class="bn-contact-map">
         <iframe
             src="https://www.google.com/maps?q=10+Downing+Street,+Westminster,+London,+SW1A+2AA,+United+Kingdom&output=embed"
@@ -24,161 +23,250 @@
             loading="lazy">
         </iframe>
     </div>
-
     <div class="bn-contact-container">
-
         <div class="bn-contact-form-card">
-
-            <form method="post">
+            <form
+                method="post"
+                action="{% url 'crypto:contact' %}"
+            >
                 {% csrf_token %}
-
+                {% if form.errors %}
+                    <div class="bn-contact-form-errors">
+                        <p>
+                            Please correct the errors below and try again.
+                        </p>
+                        {{ form.non_field_errors }}
+                    </div>
+                {% endif %}
                 <div class="bn-contact-form-row">
-
                     <div class="bn-contact-form-group">
-                        <label for="first_name">First Name</label>
+                        <label for="first_name">
+                            First Name
+                        </label>
                         <input
                             type="text"
                             id="first_name"
                             name="first_name"
-                            placeholder="First Name">
+                            value="{{ form.first_name.value|default:'' }}"
+                            placeholder="First Name"
+                            maxlength="50"
+                            required
+                        >
+                        {% if form.first_name.errors %}
+                            <div class="bn-contact-field-error">
+                                {{ form.first_name.errors }}
+                            </div>
+                        {% endif %}
                     </div>
-
                     <div class="bn-contact-form-group">
-                        <label for="last_name">Last Name</label>
+                        <label for="last_name">
+                            Last Name
+                        </label>
                         <input
                             type="text"
                             id="last_name"
                             name="last_name"
-                            placeholder="Last Name">
+                            value="{{ form.last_name.value|default:'' }}"
+                            placeholder="Last Name"
+                            maxlength="50"
+                            required
+                        >
+                        {% if form.last_name.errors %}
+                            <div class="bn-contact-field-error">
+                                {{ form.last_name.errors }}
+                            </div>
+                        {% endif %}
                     </div>
-
-                </div>
-
+                </div>            
                 <div class="bn-contact-form-row">
-
                     <div class="bn-contact-form-group">
-                        <label for="email">Email</label>
+                        <label for="email">
+                            Email
+                        </label>
                         <input
                             type="email"
                             id="email"
                             name="email"
-                            placeholder="Email">
+                            value="{{ form.email.value|default:'' }}"
+                            placeholder="Email"
+                            required
+                        >
+                        {% if form.email.errors %}
+                            <div class="bn-contact-field-error">
+                                {{ form.email.errors }}
+                            </div>
+                        {% endif %}
                     </div>
-
                     <div class="bn-contact-form-group">
-                        <label for="phone">Phone Number</label>
+                        <label for="phone">
+                            Phone Number
+                        </label>
                         <input
                             type="text"
                             id="phone"
                             name="phone"
-                            placeholder="Phone Number">
+                            value="{{ form.phone.value|default:'' }}"
+                            placeholder="Phone Number"
+                            maxlength="20"
+                            required
+                        >
+                        {% if form.phone.errors %}
+                            <div class="bn-contact-field-error">
+                                {{ form.phone.errors }}
+                            </div>
+                        {% endif %}
                     </div>
-
                 </div>
-
                 <div class="bn-contact-form-wide">
-
-                    <label for="service">Select Service</label>
-
-                    <select id="service" name="service">
-                        <option>--select--</option>
-                        <option>How to make deposit</option>
-                        <option>The best way to benefit from the platform</option>
-                        <option>Advisory on withdrawals</option>
-                        <option>Minimum wait before withdrawal</option>
-                        <option>Crypto market analysis</option>
-                        <option>Blockchain model</option>
-                        <option>Legal advisory (KYC/AML, SEC etc)</option>
+                    <label for="service">
+                        Select Service
+                    </label>
+                    <select
+                        id="service"
+                        name="service"
+                        required
+                    >
+                        <option value="">
+                            -- Select Service --
+                        </option>
+                        <option
+                            value="deposit"
+                            {% if form.service.value == "deposit" %}selected{% endif %}
+                        >
+                            How to make deposit
+                        </option>
+                        <option
+                            value="benefit"
+                            {% if form.service.value == "benefit" %}selected{% endif %}
+                        >
+                            The best way to benefit from the platform
+                        </option>
+                        <option
+                            value="withdrawals"
+                            {% if form.service.value == "withdrawals" %}selected{% endif %}
+                        >
+                            Advisory on withdrawals
+                        </option>
+                        <option
+                            value="wait"
+                            {% if form.service.value == "wait" %}selected{% endif %}
+                        >
+                            Minimum wait before withdrawal
+                        </option>
+                        <option
+                            value="analysis"
+                            {% if form.service.value == "analysis" %}selected{% endif %}
+                        >
+                            Crypto market analysis
+                        </option>
+                        <option
+                            value="blockchain"
+                            {% if form.service.value == "blockchain" %}selected{% endif %}
+                        >
+                            Blockchain model
+                        </option>
+                        <option
+                            value="legal"
+                            {% if form.service.value == "legal" %}selected{% endif %}
+                        >
+                            Legal advisory (KYC/AML, SEC etc)
+                        </option>
                     </select>
-
+                    {% if form.service.errors %}
+                        <div class="bn-contact-field-error">
+                            {{ form.service.errors }}
+                        </div>
+                    {% endif %}
                 </div>
-
+                <!-- ==============================
+                     MESSAGE
+                =============================== -->
                 <div class="bn-contact-form-wide">
-
-                    <label for="message">Message Us</label>
-
+                    <label for="message">
+                        Message Us
+                    </label>
                     <textarea
                         id="message"
                         name="message"
-                        rows="5"
-                        placeholder="Type your message here..."></textarea>
-
+                        rows="6"
+                        placeholder="Type your message here..."
+                        required
+                    >{{ form.message.value|default:'' }}</textarea>
+                    {% if form.message.errors %}
+                        <div class="bn-contact-field-error">
+                            {{ form.message.errors }}
+                        </div>
+                    {% endif %}
                 </div>
-
+                <div class="bn-contact-captcha">
+                    {{ form.captcha }}
+                    {% if form.captcha.errors %}
+                        <div class="bn-contact-field-error">
+                            {{ form.captcha.errors }}
+                        </div>
+                    {% endif %}
+                </div>
                 <div class="bn-contact-buttons">
-
-                    <button type="submit" class="bn-contact-submit">
+                    <button
+                        type="submit"
+                        class="bn-contact-submit"
+                    >
                         Submit
                     </button>
-
-                    <a href="{% url 'crypto:signup' %}" class="bn-contact-signup">
+                    <a
+                        href="{% url 'crypto:signup' %}"
+                        class="bn-contact-signup"
+                    >
                         Sign Up
                     </a>
-
                 </div>
-
             </form>
-
         </div>
-
-
         <div class="bn-contact-info-card">
-
             <h2 class="bn-contact-info-title">
                 Contact Us
             </h2>
-
             <p class="bn-contact-info-subtitle">
                 Connect with our blockchain experts
             </p>
-
-
             <div class="bn-contact-info-item">
-
                 <i class="fas fa-envelope"></i>
-
                 <div>
-                    <h3>Email Address</h3>
-                    <p>Bitnet@support.trade</p>
+                    <h3>
+                        Email Address
+                    </h3>
+                    <p>
+                        Bitnet@support.trade
+                    </p>
                 </div>
-
             </div>
-
-
             <div class="bn-contact-info-item">
-
                 <i class="fab fa-whatsapp"></i>
-
                 <div>
-                    <h3>WhatsApp</h3>
-                    <p>+44 20 7930 4832</p>
+                    <h3>
+                        WhatsApp
+                    </h3>
+                    <p>
+                        +44 20 7930 4832
+                    </p>
                 </div>
-
             </div>
-
-
             <div class="bn-contact-info-item">
-
                 <i class="fas fa-home"></i>
-
                 <div>
-                    <h3>Location</h3>
-
+                    <h3>
+                        Location
+                    </h3>
                     <p>
                         10 Downing Street<br>
                         Westminster<br>
                         London SW1A 2AA<br>
                         United Kingdom
                     </p>
-
                 </div>
-
             </div>
-
         </div>
-
     </div>
-
 </section>
-
 {% endblock %}
+

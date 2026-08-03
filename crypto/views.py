@@ -343,19 +343,21 @@ def features(request):
 def contact_view(request):
     if request.method == "POST":
         form = ContactForm(request.POST)
-        # if form.is_valid():
-        #     subject = "New Contact Form Submission"
-        #     message = f"From: {form.cleaned_data['name']} <{form.cleaned_data['email']}>\n\n{form.cleaned_data['message']}"
-        #     send_mail(
-        #         subject,
-        #         message,
-        #         settings.DEFAULT_FROM_EMAIL,
-        #         ["support@bitnetfx.com"],  
-        #         fail_silently=False,
-        #     )
-        return redirect("crypto/home")  
+        if form.is_valid():
+            # Get the submitted information
+            first_name = form.cleaned_data["first_name"]
+            last_name = form.cleaned_data["last_name"]
+            email = form.cleaned_data["email"]
+            phone = form.cleaned_data["phone"]
+            service = form.cleaned_data["service"]
+            message = form.cleaned_data["message"]
+
+            # For now, simply process the form successfully
+            # You can add email sending later.
+            return redirect("crypto:contact")
     else:
         form = ContactForm()
+
     return render(request, "crypto/contact.html", {"form": form})
 
 def signup_view(request):
