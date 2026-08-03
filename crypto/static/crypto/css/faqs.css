@@ -35,7 +35,7 @@
     text-transform: uppercase;
     letter-spacing: 2px;
     margin-bottom: 15px;
-    color: #fff; /* ✅ force white */
+    color: #fff; /* ✅ enforce white */
     text-shadow:
       0 0 10px #00d8ef,
       0 0 20px #00d8ef,
@@ -64,7 +64,7 @@
 .faqs-container {
     width: 90%;
     max-width: 1200px;
-    margin: 0 auto; /* ✅ center horizontally */
+    margin: 0 auto;
     display: grid;
     grid-template-columns: repeat(auto-fit,minmax(300px,1fr));
     gap: 35px;
@@ -122,7 +122,7 @@
     font-size: 20px;
     font-weight: 700;
     margin-bottom: 10px;
-    color: #fff; /* ✅ force white headings */
+    color: #fff; /* ✅ enforce white headings */
 }
 
 .faqs-item p {
@@ -147,7 +147,7 @@
     font-size: 25px;
     font-weight: 900;
     margin-bottom: 15px;
-    color: #fff; /* ✅ force white */
+    color: #fff; /* ✅ enforce white */
 }
 
 .faqs-subtitle {
@@ -182,7 +182,7 @@
     font-size: 20px;
     font-weight: 700;
     margin-bottom: 10px;
-    color: #fff; /* ✅ force white headings */
+    color: #fff; /* ✅ enforce white headings */
 }
 
 .faqs-card-description {
@@ -242,7 +242,7 @@
   }
   .faqs-container {
     grid-template-columns: 1fr;
-    width: calc(100% - 40px); /* ✅ push 20px left/right */
+    width: calc(100% - 60px); /* ✅ push 30px left/right */
     margin: 0 auto;
     gap: 20px;
   }
