@@ -2,7 +2,6 @@
         FAQ SHOWCASE STYLE
 ==================================================*/
 
-/* Reset FAQ styles to avoid inheritance */
 .faqs-section {
     font-family: Arial, sans-serif;
     padding: 90px 0;
@@ -36,7 +35,7 @@
     text-transform: uppercase;
     letter-spacing: 2px;
     margin-bottom: 15px;
-    color: #fff;
+    color: #fff; /* ✅ force white */
     text-shadow:
       0 0 10px #00d8ef,
       0 0 20px #00d8ef,
@@ -65,7 +64,7 @@
 .faqs-container {
     width: 90%;
     max-width: 1200px;
-    margin: 0 auto;
+    margin: 0 auto; /* ✅ center horizontally */
     display: grid;
     grid-template-columns: repeat(auto-fit,minmax(300px,1fr));
     gap: 35px;
@@ -123,7 +122,7 @@
     font-size: 20px;
     font-weight: 700;
     margin-bottom: 10px;
-    color: #fff;
+    color: #fff; /* ✅ force white headings */
 }
 
 .faqs-item p {
@@ -148,7 +147,7 @@
     font-size: 25px;
     font-weight: 900;
     margin-bottom: 15px;
-    color: #fff;
+    color: #fff; /* ✅ force white */
 }
 
 .faqs-subtitle {
@@ -183,7 +182,7 @@
     font-size: 20px;
     font-weight: 700;
     margin-bottom: 10px;
-    color: #fff;
+    color: #fff; /* ✅ force white headings */
 }
 
 .faqs-card-description {
@@ -243,7 +242,8 @@
   }
   .faqs-container {
     grid-template-columns: 1fr;
-    width: 100%;
+    width: calc(100% - 40px); /* ✅ push 20px left/right */
+    margin: 0 auto;
     gap: 20px;
   }
   .faqs-heading h1 {
@@ -259,6 +259,7 @@
   }
   .faqs-item h3 {
     font-size: 16px;
+    color: #fff; /* ✅ enforce white */
   }
   .faqs-item p {
     font-size: 13px;
@@ -270,6 +271,7 @@
   }
   .faqs-card-title {
     font-size: 18px;
+    color: #fff; /* ✅ enforce white */
   }
   .faqs-card-description {
     font-size: 13px;
