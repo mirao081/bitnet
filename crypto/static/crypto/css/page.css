@@ -1,0 +1,563 @@
+/*==================================================
+        BITNET PAGES — PREMIUM SHOWCASE
+        Fully isolated page styling
+==================================================*/
+
+.bn-pages-wrapper {
+    width: 100%;
+    min-height: 100vh;
+    padding: 90px 0;
+    position: relative;
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at top left,
+            #004aad33,
+            transparent 40%
+        ),
+        radial-gradient(
+            circle at bottom right,
+            #7a00ff22,
+            transparent 35%
+        ),
+        linear-gradient(
+            180deg,
+            #05070d,
+            #0a1020
+        );
+
+    box-sizing: border-box;
+}
+
+
+/*==================================================
+        HERO
+==================================================*/
+
+.bn-pages-hero {
+    width: 90%;
+    max-width: 1500px;
+    margin: 0 auto 60px;
+
+    padding: 35px 30px;
+
+    text-align: center;
+
+    border-radius: 25px;
+
+    background: rgba(255,255,255,.05);
+
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+
+    border: 1px solid rgba(255,255,255,.10);
+
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.12),
+        0 0 30px rgba(0,216,239,.25);
+
+    box-sizing: border-box;
+}
+
+
+/*==================================================
+        HERO TITLE
+==================================================*/
+
+.bn-pages-hero-title {
+    margin: 0 0 18px;
+
+    font-size: 34px;
+    font-weight: 900;
+
+    color: #fff;
+
+    text-transform: uppercase;
+    letter-spacing: 2px;
+
+    line-height: 1.2;
+
+    text-shadow:
+        0 0 10px #00d8ef,
+        0 0 20px #00d8ef,
+        0 0 40px #7a00ff;
+
+    animation: bnPagesGlowPulse 3s infinite alternate;
+}
+
+
+/*==================================================
+        HERO DESCRIPTION
+==================================================*/
+
+.bn-pages-hero-description {
+    max-width: 950px;
+
+    margin: 0 auto;
+
+    font-size: 17px;
+    font-weight: 500;
+
+    line-height: 1.7;
+
+    color: rgba(255,255,255,.82);
+}
+
+
+/*==================================================
+        CARD GRID
+==================================================*/
+
+.bn-pages-grid {
+    width: 90%;
+    max-width: 1600px;
+
+    margin: 0 auto;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 35px;
+
+    position: relative;
+    z-index: 2;
+
+    box-sizing: border-box;
+}
+
+
+/*==================================================
+        PREMIUM GLASS CARD
+==================================================*/
+
+.bn-pages-card {
+    position: relative;
+
+    overflow: hidden;
+
+    padding: 38px 30px;
+
+    min-width: 0;
+
+    border-radius: 30px;
+
+    background: rgba(255,255,255,.08);
+
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+
+    border: 1px solid rgba(255,255,255,.12);
+
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.15),
+        0 18px 45px rgba(0,0,0,.35);
+
+    text-align: center;
+
+    transition:
+        transform .45s ease,
+        box-shadow .45s ease;
+
+    box-sizing: border-box;
+}
+
+
+/*==================================================
+        CARD LIGHT EFFECT
+==================================================*/
+
+.bn-pages-card::before {
+    content: "";
+
+    position: absolute;
+
+    width: 220px;
+    height: 220px;
+
+    top: -120px;
+    right: -120px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(0,216,239,.28),
+            transparent 70%
+        );
+
+    transition: .6s;
+
+    pointer-events: none;
+}
+
+
+/*==================================================
+        CARD HOVER
+==================================================*/
+
+.bn-pages-card:hover {
+    transform: translateY(-12px);
+
+    box-shadow:
+        0 30px 70px rgba(0,0,0,.45),
+        0 0 40px rgba(0,216,239,.18);
+}
+
+
+.bn-pages-card:hover::before {
+    transform: scale(1.4);
+}
+
+
+/*==================================================
+        CARD TITLE
+==================================================*/
+
+.bn-pages-card-title {
+    position: relative;
+    z-index: 2;
+
+    margin: 0 0 18px;
+
+    font-size: 25px;
+    font-weight: 800;
+
+    line-height: 1.25;
+
+    color: #fff;
+
+    text-shadow:
+        0 0 8px rgba(0,216,239,.35);
+}
+
+
+/*==================================================
+        CARD DESCRIPTION
+==================================================*/
+
+.bn-pages-card-description {
+    position: relative;
+    z-index: 2;
+
+    margin: 0;
+
+    font-size: 15px;
+
+    line-height: 1.7;
+
+    color: rgba(255,255,255,.80);
+}
+
+
+/*==================================================
+        CARD LINK
+==================================================*/
+
+.bn-pages-card-link {
+    position: relative;
+    z-index: 3;
+
+    display: inline-block;
+
+    margin-top: 22px;
+
+    padding: 11px 22px;
+
+    border-radius: 22px;
+
+    background: #00d8ef;
+
+    color: #05070d;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    text-decoration: none;
+
+    transition:
+        background .3s ease,
+        color .3s ease,
+        transform .3s ease,
+        box-shadow .3s ease;
+}
+
+
+.bn-pages-card-link:hover {
+    background: #009bb8;
+
+    color: #fff;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 0 20px rgba(0,216,239,.35);
+}
+
+
+/*==================================================
+        AUTH BUTTON AREA
+==================================================*/
+
+.bn-pages-auth {
+    width: 90%;
+    max-width: 1600px;
+
+    margin: 55px auto 0;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    gap: 20px;
+
+    flex-wrap: wrap;
+}
+
+
+/*==================================================
+        AUTH BUTTON
+==================================================*/
+
+.bn-pages-auth-button {
+    display: inline-block;
+
+    min-width: 140px;
+
+    padding: 13px 28px;
+
+    border-radius: 25px;
+
+    background: #00d8ef;
+
+    color: #05070d;
+
+    font-size: 15px;
+    font-weight: 700;
+
+    text-align: center;
+
+    text-decoration: none;
+
+    transition:
+        .3s ease;
+}
+
+
+.bn-pages-auth-button:hover {
+    background: #009bb8;
+
+    color: #fff;
+
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 0 25px rgba(0,216,239,.35);
+}
+
+
+/*==================================================
+        ANIMATIONS
+==================================================*/
+
+@keyframes bnPagesGlowPulse {
+
+    from {
+        text-shadow:
+            0 0 10px #00d8ef,
+            0 0 20px #00d8ef;
+    }
+
+    to {
+        text-shadow:
+            0 0 20px #7a00ff,
+            0 0 40px #ff0080;
+    }
+
+}
+
+
+/*==================================================
+        TABLET
+==================================================*/
+
+@media (max-width: 991px) {
+
+    .bn-pages-wrapper {
+        padding: 70px 0;
+    }
+
+    .bn-pages-hero {
+        width: 92%;
+        margin-bottom: 45px;
+    }
+
+    .bn-pages-grid {
+        width: 92%;
+
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+        gap: 25px;
+    }
+
+    .bn-pages-card {
+        padding: 30px 24px;
+    }
+
+    .bn-pages-card-title {
+        font-size: 22px;
+    }
+
+    .bn-pages-card-description {
+        font-size: 14px;
+        line-height: 1.6;
+    }
+
+}
+
+
+/*==================================================
+        MOBILE
+==================================================*/
+
+@media (max-width: 600px) {
+
+    .bn-pages-wrapper {
+        padding: 60px 0;
+    }
+
+
+    /* HERO */
+
+    .bn-pages-hero {
+        width: 94%;
+
+        margin-bottom: 35px;
+
+        padding: 28px 20px;
+
+        border-radius: 22px;
+    }
+
+
+    .bn-pages-hero-title {
+        font-size: 25px;
+
+        letter-spacing: 1.5px;
+
+        text-shadow:
+            0 0 15px #00d8ef,
+            0 0 30px #7a00ff,
+            0 0 50px #ff0080;
+    }
+
+
+    .bn-pages-hero-description {
+        font-size: 14px;
+
+        line-height: 1.6;
+    }
+
+
+    /* CARDS */
+
+    .bn-pages-grid {
+        width: 94%;
+
+        grid-template-columns: 1fr;
+
+        gap: 24px;
+    }
+
+
+    .bn-pages-card {
+        width: 100%;
+
+        padding: 28px 22px;
+
+        border-radius: 25px;
+
+        text-align: center;
+    }
+
+
+    .bn-pages-card:hover {
+        transform: translateY(-6px);
+    }
+
+
+    .bn-pages-card-title {
+        font-size: 21px;
+
+        margin-bottom: 14px;
+    }
+
+
+    .bn-pages-card-description {
+        font-size: 14px;
+
+        line-height: 1.55;
+    }
+
+
+    .bn-pages-card-link {
+        margin-top: 18px;
+
+        padding: 10px 19px;
+
+        font-size: 13px;
+    }
+
+
+    /* AUTH */
+
+    .bn-pages-auth {
+        width: 94%;
+
+        margin-top: 40px;
+
+        flex-direction: column;
+
+        gap: 14px;
+    }
+
+
+    .bn-pages-auth-button {
+        width: 100%;
+
+        max-width: 280px;
+
+        box-sizing: border-box;
+    }
+
+}
+
+
+/*==================================================
+        SMALL MOBILE
+==================================================*/
+
+@media (max-width: 380px) {
+
+    .bn-pages-hero-title {
+        font-size: 22px;
+    }
+
+    .bn-pages-hero-description {
+        font-size: 13px;
+    }
+
+    .bn-pages-card {
+        padding: 24px 18px;
+    }
+
+    .bn-pages-card-title {
+        font-size: 20px;
+    }
+
+}

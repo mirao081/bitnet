@@ -1,60 +1,137 @@
 {% extends "crypto/crypto_base.html" %}
 
 {% load static %}
+
 {% block content %}
+
 <link rel="stylesheet" href="{% static 'crypto/css/page.css' %}">
 
-<div class="page-wrapper">
+<div class="bn-pages-wrapper">
 
-  <section class="pages-hero">
-    <h1>Information Hub</h1>
-    <p>Explore our legal, affiliate, team, and services pages. Each section provides detailed information to help you understand BitnetFx’s framework and commitments.</p>
-  </section>
+    <!-- HERO -->
+    <section class="bn-pages-hero">
 
-  <section class="pages-grid">
+        <h1 class="bn-pages-hero-title">
+            Information Hub
+        </h1>
+
+        <p class="bn-pages-hero-description">
+            Explore our legal, affiliate, team, and services pages.
+            Each section provides detailed information to help you
+            understand BitnetFx’s framework and commitments.
+        </p>
+
+    </section>
 
 
-    <div class="page-card blurred-container">
-      <h2>Legal</h2>
-      <p>Understand the rules and protections that govern your investments.  
-         Our legal framework ensures transparency and compliance for every investor.  
-         Knowledge is power — and we want you empowered.</p>
-      <a href="{% url 'crypto:legals' %}" class="cta-link">Read Legal Details →</a>
+    <!-- CARDS -->
+    <section class="bn-pages-grid">
+
+        <!-- LEGAL -->
+        <div class="bn-pages-card">
+
+            <h2 class="bn-pages-card-title">
+                Legal
+            </h2>
+
+            <p class="bn-pages-card-description">
+                Understand the rules and protections that govern your
+                investments. Our legal framework ensures transparency
+                and compliance for every investor. Knowledge is power —
+                and we want you empowered.
+            </p>
+
+            <a href="{% url 'crypto:legals' %}"
+               class="bn-pages-card-link">
+                Read Legal Details →
+            </a>
+
+        </div>
+
+
+        <!-- AFFILIATE -->
+        <div class="bn-pages-card">
+
+            <h2 class="bn-pages-card-title">
+                Affiliate Program
+            </h2>
+
+            <p class="bn-pages-card-description">
+                Partner with BitnetFx and earn commissions by inviting
+                new investors. A simple way to grow alongside our
+                expanding global network. Your success story could
+                start with just one referral.
+            </p>
+
+            <a href="{% url 'crypto:affiliate' %}"
+               class="bn-pages-card-link">
+                Join Affiliate Program →
+            </a>
+
+        </div>
+
+
+        <!-- TEAM -->
+        <div class="bn-pages-card">
+
+            <h2 class="bn-pages-card-title">
+                Our Team
+            </h2>
+
+            <p class="bn-pages-card-description">
+                Meet the experts driving our vision. From blockchain
+                strategists to compliance leaders, our team ensures
+                secure and profitable growth. Behind every innovation
+                is a passionate leader ready to guide you.
+            </p>
+
+            <a href="{% url 'crypto:teams' %}"
+               class="bn-pages-card-link">
+                Meet the Team →
+            </a>
+
+        </div>
+
+
+        <!-- SERVICES -->
+        <div class="bn-pages-card">
+
+            <h2 class="bn-pages-card-title">
+                Our Services
+            </h2>
+
+            <p class="bn-pages-card-description">
+                Discover AI-powered trading, portfolio management,
+                and global reach. Learn why investors worldwide trust
+                BitnetFx for secure opportunities. We don’t just offer
+                services — we deliver confidence.
+            </p>
+
+            <a href="{% url 'crypto:services' %}"
+               class="bn-pages-card-link">
+                Explore Services →
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- AUTH BUTTONS -->
+    <div class="bn-pages-auth">
+
+        <a href="{% url 'crypto:login' %}"
+           class="bn-pages-auth-button">
+            Login
+        </a>
+
+        <a href="{% url 'crypto:signup' %}"
+           class="bn-pages-auth-button">
+            Register
+        </a>
+
     </div>
-
- 
-    <div class="page-card blurred-container">
-      <h2>Affiliate Program</h2>
-      <p>Partner with BitnetFx and earn commissions by inviting new investors.  
-         A simple way to grow alongside our expanding global network.  
-         Your success story could start with just one referral.</p>
-      <a href="{% url 'crypto:affiliate' %}" class="cta-link">Join Affiliate Program →</a>
-    </div>
-
- 
-    <div class="page-card blurred-container">
-      <h2>Our Team</h2>
-      <p>Meet the experts driving our vision. From blockchain strategists to compliance leaders, our team ensures secure and profitable growth.  
-         Behind every innovation is a passionate leader ready to guide you.</p>
-      <a href="{% url 'crypto:teams' %}" class="cta-link">Meet the Team →</a>
-    </div>
-
-    
-    <div class="page-card blurred-container">
-      <h2>Our Services</h2>
-      <p>Discover AI‑powered trading, portfolio management, and global reach.  
-         Learn why investors worldwide trust BitnetFx for secure opportunities.  
-         We don’t just offer services — we deliver confidence.</p>
-      <a href="{% url 'crypto:services' %}" class="cta-link">Explore Services →</a>
-    </div>
-
-  </section>
-
-
-  <div class="auth-buttons">
-    <a href="{% url 'crypto:login' %}" class="auth-button">Login</a>
-    <a href="{% url 'crypto:signup' %}" class="auth-button">Register</a>
-  </div>
 
 </div>
+
 {% endblock %}
