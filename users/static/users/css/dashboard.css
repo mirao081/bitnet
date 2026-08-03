@@ -2904,9 +2904,10 @@ input.unlocked {
     width: fit-content;
     margin: 0 auto 35px;
 
-    font-size: 2.8rem;
+    font-size: 2.2rem;
     font-weight: 800;
     letter-spacing: 2px;
+    line-height: 1.4;
     text-transform: uppercase;
     text-align: center;
 
@@ -3063,6 +3064,25 @@ input.unlocked {
         0 12px 30px rgba(0,0,0,.45),
         inset 0 1px 0 rgba(255,255,255,.05),
         0 0 20px rgba(212,175,55,.12);
+}
+
+/* Mobile adjustments */
+@media (max-width: 600px) {
+  .withdraw-request-title {
+    font-size: 1.4rem;   /* ✅ smaller font for mobile */
+    line-height: 1.2;    /* ✅ tighter line-height */
+    font-weight: 700;
+    text-align: center;  /* ✅ keep centered */
+    color: #fff;         /* ✅ ensure white heading */
+    letter-spacing: 0.5px;
+  }
+
+  .withdraw-request-subtitle {
+    font-size: 0.95rem;
+    line-height: 1.4;
+    text-align: center;
+    color: rgba(255,255,255,0.85);
+  }
 }
 @media (max-width:900px){
     .withdraw-request-options{
