@@ -9,26 +9,42 @@
     overflow: hidden;
 
     background:
-        radial-gradient(
-            circle at top left,
-            #004aad33,
-            transparent 40%
-        ),
-        radial-gradient(
-            circle at bottom right,
-            #7a00ff22,
-            transparent 35%
-        ),
-        linear-gradient(
-            180deg,
-            #05070d,
-            #0a1020
-        );
+        radial-gradient(circle at top left, #004aad33, transparent 40%),
+        radial-gradient(circle at bottom right, #7a00ff22, transparent 35%),
+        linear-gradient(180deg, #05070d, #0a1020);
+
+    box-sizing: border-box;
 }
 
 
 /*==================================================
-        HEADING CONTAINER
+        GLOBAL BOX SIZING
+==================================================*/
+
+.legals-showcase *,
+.legals-showcase *::before,
+.legals-showcase *::after {
+    box-sizing: border-box;
+}
+
+
+/*==================================================
+        ALL LEGALS HEADINGS
+        FORCE WHITE
+==================================================*/
+
+.legals-showcase h1,
+.legals-showcase h2,
+.legals-showcase h3,
+.legals-showcase h4,
+.legals-showcase h5,
+.legals-showcase h6 {
+    color: #ffffff !important;
+}
+
+
+/*==================================================
+        MAIN HEADING CONTAINER
 ==================================================*/
 
 .legals-heading-container {
@@ -37,9 +53,7 @@
 
     margin: 0 auto 60px;
 
-    padding: 25px 20px;
-
-    box-sizing: border-box;
+    padding: 30px 25px;
 
     text-align: center;
 
@@ -53,27 +67,27 @@
     border: 1px solid rgba(255,255,255,.08);
 
     box-shadow:
-        0 0 25px rgba(0,216,239,.35),
+        0 0 25px rgba(0,216,239,.25),
         inset 0 1px 0 rgba(255,255,255,.08);
 }
 
 
 /*==================================================
-        HEADING TITLE
+        MAIN HEADING
 ==================================================*/
 
 .legals-heading-title {
+    margin: 0 0 15px;
+
     font-size: 25px;
 
     font-weight: 900;
 
-    color: #fff;
+    color: #ffffff !important;
 
     text-transform: uppercase;
 
     letter-spacing: 2px;
-
-    margin: 0 0 15px;
 
     line-height: 1.25;
 
@@ -106,6 +120,8 @@
         );
 
     -webkit-background-clip: text;
+    background-clip: text;
+
     -webkit-text-fill-color: transparent;
 
     background-size: 200% auto;
@@ -113,31 +129,26 @@
     animation: legalsShineFlow 6s linear infinite;
 
     letter-spacing: 1px;
-
-    line-height: 1.5;
 }
 
 
 /*==================================================
-        MAIN LEGALS GRID
+        OUTER LEGALS GRID
 ==================================================*/
 
 .legals-grid {
-    width: 94%;
-    max-width: 1700px;
+    width: 90%;
+    max-width: 1600px;
 
     margin: 0 auto;
 
     display: grid;
 
     /*
-       Exactly two main panels on desktop.
-       minmax(0,1fr) prevents nested content
-       from forcing the panel to shrink incorrectly.
+       Keep the two main panels side-by-side
+       on desktop.
     */
-    grid-template-columns:
-        minmax(0, 1fr)
-        minmax(0, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
 
     gap: 35px;
 
@@ -145,12 +156,12 @@
 
     z-index: 2;
 
-    box-sizing: border-box;
+    align-items: start;
 }
 
 
 /*==================================================
-        GLASS LEGAL PANEL
+        MAIN GLASS PANEL
 ==================================================*/
 
 .legals-panel {
@@ -160,34 +171,28 @@
 
     min-width: 0;
 
-    box-sizing: border-box;
-
     overflow: hidden;
 
     text-align: center;
 
-    padding: 40px 35px;
+    padding: 35px 28px;
 
     border-radius: 30px;
 
-    background:
-        rgba(255,255,255,.08);
+    background: rgba(255,255,255,.08);
 
     backdrop-filter: blur(24px);
     -webkit-backdrop-filter: blur(24px);
 
-    border:
-        1px solid rgba(255,255,255,.12);
+    border: 1px solid rgba(255,255,255,.12);
 
     box-shadow:
         inset 0 1px 0 rgba(255,255,255,.15),
         0 18px 45px rgba(0,0,0,.35);
 
-    transition:
-        transform .45s ease,
-        box-shadow .45s ease;
+    transition: .45s ease;
 
-    margin: 0;
+    margin-bottom: 40px;
 }
 
 
@@ -226,13 +231,12 @@
 ==================================================*/
 
 .legals-panel:hover {
-    transform: translateY(-10px);
+    transform: translateY(-8px);
 
     box-shadow:
         0 30px 70px rgba(0,0,0,.45),
         0 0 40px rgba(0,216,239,.18);
 }
-
 
 .legals-panel:hover::before {
     transform: scale(1.4);
@@ -248,33 +252,36 @@
 
     z-index: 2;
 
+    margin: 0 0 15px;
+
     font-size: 24px;
 
     font-weight: 800;
 
-    color: #fff;
-
-    margin: 0 0 15px;
+    color: #ffffff !important;
 
     line-height: 1.25;
 }
 
 
+/*==================================================
+        PANEL TITLE LINKS
+==================================================*/
+
 .legals-panel-title a {
-    color: #fff;
+    color: #ffffff !important;
 
     text-decoration: none;
 
     transition: .3s ease;
 }
 
-
 .legals-panel-title a:hover {
-    color: #00d8ef;
+    color: #00d8ef !important;
 
     text-shadow:
         0 0 10px #00d8ef,
-        0 0 20px #7a00ff;
+        0 0 20px #00d8ef;
 }
 
 
@@ -287,181 +294,308 @@
 
     z-index: 2;
 
+    margin: 0 0 25px;
+
     font-size: 15px;
 
     color: rgba(255,255,255,.80);
 
     line-height: 1.6;
-
-    margin: 0 auto 25px;
-
-    max-width: 900px;
 }
 
 
 /*==================================================
-        NESTED CONTENT CONTAINER
+        IMPORTANT:
+        INNER CONTENT CONTAINER
 ==================================================*/
 
 .legals-content {
+    width: 100%;
+
+    max-width: 100%;
+
+    margin: 0 auto;
+
     position: relative;
 
     z-index: 2;
-
-    width: 100%;
-
-    max-width: 100%;
-
-    min-width: 0;
-
-    box-sizing: border-box;
-
-    margin: 25px 0;
-
-    padding: 0;
 }
 
 
 /*==================================================
-        FAQ CONTENT INSIDE LEGALS
-==================================================*/
+        TERMS CONTENT
 
-/*
-   The FAQ template has its own .faqs-container.
+        The three Terms cards should NOT appear
+        as three narrow columns.
 
-   This override only affects .faqs-container
-   when it appears INSIDE .legals-content.
-
-   This prevents the FAQ cards from becoming
-   narrow columns inside the Legals panel.
-*/
-
-.legals-content .faqs-container {
-    width: 100%;
-
-    max-width: 100%;
-
-    min-width: 0;
-
-    margin: 0;
-
-    padding: 0;
-
-    box-sizing: border-box;
-
-    display: grid;
-
-    grid-template-columns: 1fr;
-
-    gap: 24px;
-}
-
-
-/*==================================================
-        FAQ CARDS INSIDE LEGALS
-==================================================*/
-
-.legals-content .faqs-card {
-    width: 100%;
-
-    max-width: 100%;
-
-    min-width: 0;
-
-    box-sizing: border-box;
-
-    margin: 0;
-}
-
-
-/*==================================================
-        TERMS CONTENT INSIDE LEGALS
-==================================================*/
-
-.legals-content .terms-section {
-    width: 100%;
-
-    max-width: 100%;
-
-    min-width: 0;
-
-    box-sizing: border-box;
-
-    margin: 0;
-
-    padding: 0;
-}
-
-
-/*==================================================
-        TERMS GRID INSIDE LEGALS
+        Each card gets its own full row.
 ==================================================*/
 
 .legals-content .terms-grid {
-    width: 100%;
+    width: 100% !important;
 
-    max-width: 100%;
+    max-width: 100% !important;
 
-    min-width: 0;
+    display: grid !important;
 
-    box-sizing: border-box;
+    grid-template-columns: 1fr !important;
 
-    margin: 0;
+    gap: 24px !important;
 
-    padding: 0;
+    margin: 25px 0 0 !important;
 
-    display: grid;
-
-    grid-template-columns: 1fr;
-
-    gap: 24px;
+    padding: 0 !important;
 }
 
 
 /*==================================================
-        TERMS CARDS INSIDE LEGALS
+        TERMS CARDS
 ==================================================*/
 
 .legals-content .terms-card {
+    width: 100% !important;
+
+    max-width: 100% !important;
+
+    min-width: 0 !important;
+
+    margin: 0 !important;
+
+    padding: 30px 28px;
+
+    border-radius: 24px;
+
+    background: rgba(255,255,255,.06);
+
+    border: 1px solid rgba(255,255,255,.12);
+
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.08),
+        0 12px 35px rgba(0,0,0,.25);
+
+    text-align: center;
+
+    overflow: hidden;
+
+    transition: .4s ease;
+}
+
+
+/*==================================================
+        TERMS CARD HOVER
+==================================================*/
+
+.legals-content .terms-card:hover {
+    transform: translateY(-6px);
+
+    background: rgba(255,255,255,.09);
+
+    box-shadow:
+        0 20px 50px rgba(0,0,0,.35),
+        0 0 25px rgba(0,216,239,.12);
+}
+
+
+/*==================================================
+        TERMS CARD HEADINGS
+==================================================*/
+
+.legals-content .terms-card h3 {
+    margin: 0 0 15px;
+
+    font-size: 22px;
+
+    font-weight: 800;
+
+    color: #ffffff !important;
+
+    line-height: 1.3;
+}
+
+
+/*==================================================
+        TERMS CARD TEXT
+==================================================*/
+
+.legals-content .terms-card p {
+    margin: 0;
+
+    color: rgba(255,255,255,.80);
+
+    font-size: 15px;
+
+    line-height: 1.7;
+}
+
+
+/*==================================================
+        FAQ CONTENT
+
+        If faqs_content.html contains a grid,
+        force its cards into ONE COLUMN.
+==================================================*/
+
+.legals-content .faqs-grid,
+.legals-content .faq-grid,
+.legals-content .faqs-container,
+.legals-content .faq-container {
+    width: 100% !important;
+
+    max-width: 100% !important;
+
+    display: grid !important;
+
+    grid-template-columns: 1fr !important;
+
+    gap: 24px !important;
+
+    margin-left: auto !important;
+
+    margin-right: auto !important;
+}
+
+
+/*==================================================
+        FAQ CARDS
+
+        This catches common FAQ card class names
+        without affecting the outer Legals panel.
+==================================================*/
+
+.legals-content .faqs-card,
+.legals-content .faq-card {
+    width: 100% !important;
+
+    max-width: 100% !important;
+
+    min-width: 0 !important;
+
+    margin: 0 !important;
+
+    padding: 30px 28px;
+
+    border-radius: 24px;
+
+    background: rgba(255,255,255,.06);
+
+    border: 1px solid rgba(255,255,255,.12);
+
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.08),
+        0 12px 35px rgba(0,0,0,.25);
+
+    text-align: center;
+
+    overflow: hidden;
+
+    transition: .4s ease;
+}
+
+
+/*==================================================
+        FAQ CARD HOVER
+==================================================*/
+
+.legals-content .faqs-card:hover,
+.legals-content .faq-card:hover {
+    transform: translateY(-6px);
+
+    background: rgba(255,255,255,.09);
+
+    box-shadow:
+        0 20px 50px rgba(0,0,0,.35),
+        0 0 25px rgba(0,216,239,.12);
+}
+
+
+/*==================================================
+        FAQ HEADINGS
+==================================================*/
+
+.legals-content .faqs-card h2,
+.legals-content .faqs-card h3,
+.legals-content .faq-card h2,
+.legals-content .faq-card h3 {
+    color: #ffffff !important;
+
+    line-height: 1.3;
+}
+
+
+/*==================================================
+        FAQ TEXT
+==================================================*/
+
+.legals-content .faqs-card p,
+.legals-content .faq-card p {
+    color: rgba(255,255,255,.80);
+
+    line-height: 1.7;
+
+    font-size: 15px;
+}
+
+
+/*==================================================
+        INNER FAQ ITEMS
+
+        Keep individual questions readable.
+==================================================*/
+
+.legals-content .faqs-item,
+.legals-content .faq-item {
     width: 100%;
 
-    max-width: 100%;
+    margin-bottom: 20px;
 
-    min-width: 0;
+    padding: 22px;
 
-    box-sizing: border-box;
+    border-radius: 18px;
 
+    background: rgba(0,0,0,.18);
+
+    border: 1px solid rgba(255,255,255,.08);
+
+    text-align: center;
+}
+
+.legals-content .faqs-item:last-child,
+.legals-content .faq-item:last-child {
+    margin-bottom: 0;
+}
+
+
+/*==================================================
+        FAQ ITEM HEADINGS
+==================================================*/
+
+.legals-content .faqs-item h3,
+.legals-content .faq-item h3 {
+    margin: 0 0 10px;
+
+    color: #ffffff !important;
+
+    font-size: 19px;
+
+    font-weight: 800;
+
+    line-height: 1.4;
+}
+
+
+/*==================================================
+        FAQ ITEM TEXT
+==================================================*/
+
+.legals-content .faqs-item p,
+.legals-content .faq-item p {
     margin: 0;
-}
 
+    color: rgba(255,255,255,.78);
 
-/*==================================================
-        NESTED CONTENT TEXT
-==================================================*/
+    font-size: 14px;
 
-.legals-content p,
-.legals-content h2,
-.legals-content h3,
-.legals-content li {
-    max-width: 100%;
-
-    overflow-wrap: break-word;
-
-    word-wrap: break-word;
-}
-
-
-/*==================================================
-        LISTS INSIDE LEGALS
-==================================================*/
-
-.legals-content ul,
-.legals-content ol {
-    max-width: 100%;
-
-    box-sizing: border-box;
-
-    overflow-wrap: break-word;
+    line-height: 1.6;
 }
 
 
@@ -476,7 +610,7 @@
 
     display: inline-block;
 
-    margin-top: 20px;
+    margin-top: 25px;
 
     padding: 11px 22px;
 
@@ -484,28 +618,69 @@
 
     background: #00d8ef;
 
-    color: #05070d;
+    color: #05070d !important;
 
     font-weight: 700;
 
     text-decoration: none;
 
     transition: .3s ease;
-
-    box-shadow:
-        0 0 15px rgba(0,216,239,.20);
 }
 
+
+/*==================================================
+        BUTTON HOVER
+==================================================*/
 
 .legals-read-more-btn:hover {
     background: #009bb8;
 
-    color: #fff;
+    color: #ffffff !important;
 
     transform: translateY(-2px);
 
     box-shadow:
-        0 0 25px rgba(0,216,239,.35);
+        0 8px 25px rgba(0,216,239,.25);
+}
+
+
+/*==================================================
+        LISTS INSIDE LEGALS CONTENT
+==================================================*/
+
+.legals-content ul {
+    width: 100%;
+
+    margin: 15px 0;
+
+    padding-left: 20px;
+
+    color: rgba(255,255,255,.80);
+
+    line-height: 1.7;
+}
+
+.legals-content li {
+    margin-bottom: 8px;
+}
+
+
+/*==================================================
+        LINKS INSIDE CONTENT
+==================================================*/
+
+.legals-content a {
+    color: #00d8ef;
+
+    text-decoration: none;
+
+    transition: .3s ease;
+}
+
+.legals-content a:hover {
+    color: #ffffff;
+
+    text-shadow: 0 0 10px #00d8ef;
 }
 
 
@@ -546,64 +721,17 @@
 
 
 /*==================================================
-        LARGE DESKTOP
-==================================================*/
-
-@media (min-width: 1400px) {
-
-    .legals-grid {
-        width: 92%;
-
-        max-width: 1750px;
-
-        grid-template-columns:
-            minmax(0, 1fr)
-            minmax(0, 1fr);
-
-        gap: 40px;
-    }
-
-
-    .legals-panel {
-        padding: 45px 40px;
-    }
-
-
-    .legals-panel-title {
-        font-size: 26px;
-    }
-
-
-    .legals-panel-description {
-        font-size: 16px;
-    }
-
-}
-
-
-/*==================================================
         TABLET
 ==================================================*/
 
-@media (min-width: 601px) and (max-width: 991px) {
+@media (max-width: 991px) {
 
     .legals-showcase {
         padding: 70px 0;
     }
 
 
-    .legals-heading-container {
-        width: 92%;
-
-        margin-bottom: 45px;
-    }
-
-
-    /*
-       On tablet, stack the two main
-       Legals panels vertically.
-    */
-
+    /* Main Terms / FAQ panels become one column */
     .legals-grid {
         width: 92%;
 
@@ -616,7 +744,16 @@
     .legals-panel {
         width: 100%;
 
-        padding: 35px 30px;
+        padding: 32px 25px;
+
+        margin-bottom: 20px;
+    }
+
+
+    .legals-heading-container {
+        width: 92%;
+
+        margin-bottom: 45px;
     }
 
 
@@ -630,18 +767,23 @@
     }
 
 
-    /*
-       Keep FAQ and Terms content
-       vertically stacked.
-    */
-
+    /* Make inner cards full width */
+    .legals-content .terms-grid,
+    .legals-content .faqs-grid,
+    .legals-content .faq-grid,
     .legals-content .faqs-container,
-    .legals-content .terms-grid {
-        grid-template-columns: 1fr;
+    .legals-content .faq-container {
+        grid-template-columns: 1fr !important;
 
-        gap: 24px;
+        width: 100% !important;
     }
 
+
+    .legals-content .terms-card,
+    .legals-content .faqs-card,
+    .legals-content .faq-card {
+        width: 100% !important;
+    }
 }
 
 
@@ -652,31 +794,33 @@
 @media (max-width: 600px) {
 
     .legals-showcase {
+        width: 100%;
+
         padding: 60px 0;
     }
 
 
+    /* Main heading */
     .legals-heading-container {
         width: 95%;
 
         margin-bottom: 35px;
 
-        padding: 20px 15px;
+        padding: 25px 18px;
+
+        border-radius: 18px;
     }
 
 
     .legals-heading-title {
-        font-size: 25px;
+        font-size: 21px;
 
         letter-spacing: 1.5px;
 
         text-shadow:
             0 0 15px #00d8ef,
             0 0 30px #7a00ff,
-            0 0 60px #ff0080;
-
-        animation:
-            legalsGlowPulse 2.5s infinite alternate;
+            0 0 45px #ff0080;
     }
 
 
@@ -687,10 +831,7 @@
     }
 
 
-    /*
-       One main Legals panel per row.
-    */
-
+    /* Main panels */
     .legals-grid {
         width: 95%;
 
@@ -703,88 +844,111 @@
     .legals-panel {
         width: 100%;
 
-        padding: 25px 20px;
+        padding: 25px 18px;
 
-        border-radius: 25px;
+        border-radius: 24px;
 
-        margin: 0;
+        margin-bottom: 0;
     }
 
 
     .legals-panel-title {
         font-size: 21px;
-
-        margin-bottom: 14px;
     }
 
 
     .legals-panel-description {
         font-size: 14px;
 
-        line-height: 1.5;
-
-        margin-bottom: 20px;
+        line-height: 1.6;
     }
 
+
+    /*==================================================
+        MOBILE INNER CONTENT
+    ==================================================*/
 
     .legals-content {
-        width: 100%;
+        width: 100% !important;
 
-        margin: 20px 0;
+        max-width: 100% !important;
     }
 
 
-    /*
-       FAQ cards stack vertically
-       on mobile.
-    */
+    .legals-content .terms-grid,
+    .legals-content .faqs-grid,
+    .legals-content .faq-grid,
+    .legals-content .faqs-container,
+    .legals-content .faq-container {
+        width: 100% !important;
 
-    .legals-content .faqs-container {
-        width: 100%;
+        grid-template-columns: 1fr !important;
 
-        grid-template-columns: 1fr;
-
-        gap: 20px;
+        gap: 18px !important;
     }
 
 
-    /*
-       Terms cards stack vertically
-       on mobile.
-    */
-
-    .legals-content .terms-grid {
-        width: 100%;
-
-        grid-template-columns: 1fr;
-
-        gap: 20px;
-    }
-
-
+    .legals-content .terms-card,
     .legals-content .faqs-card,
-    .legals-content .terms-card {
-        width: 100%;
+    .legals-content .faq-card {
+        width: 100% !important;
 
-        max-width: 100%;
+        padding: 24px 18px;
 
-        box-sizing: border-box;
+        border-radius: 20px;
+    }
+
+
+    .legals-content .terms-card h3,
+    .legals-content .faqs-card h3,
+    .legals-content .faq-card h3 {
+        font-size: 20px;
+
+        color: #ffffff !important;
+    }
+
+
+    .legals-content .terms-card p,
+    .legals-content .faqs-card p,
+    .legals-content .faq-card p {
+        font-size: 14px;
+
+        line-height: 1.6;
+    }
+
+
+    .legals-content .faqs-item,
+    .legals-content .faq-item {
+        padding: 18px 15px;
+
+        margin-bottom: 15px;
+    }
+
+
+    .legals-content .faqs-item h3,
+    .legals-content .faq-item h3 {
+        font-size: 18px;
+    }
+
+
+    .legals-content .faqs-item p,
+    .legals-content .faq-item p {
+        font-size: 14px;
     }
 
 
     .legals-read-more-btn {
-        margin-top: 15px;
+        margin-top: 20px;
 
         padding: 10px 20px;
 
         font-size: 14px;
     }
-
 }
 
 
 /*==================================================
-        VERY SMALL PHONES
+        EXTRA SMALL DEVICES
 ==================================================*/
 
 @media (max-width: 380px) {
@@ -792,33 +956,27 @@
     .legals-heading-container {
         width: 94%;
 
-        padding: 18px 12px;
+        padding: 22px 15px;
     }
 
 
     .legals-heading-title {
-        font-size: 22px;
-
-        letter-spacing: 1px;
+        font-size: 20px;
     }
 
 
     .legals-heading-subtitle {
-        font-size: 14px;
+        font-size: 15px;
     }
 
 
     .legals-grid {
         width: 94%;
-
-        gap: 20px;
     }
 
 
     .legals-panel {
-        padding: 22px 16px;
-
-        border-radius: 22px;
+        padding: 22px 15px;
     }
 
 
@@ -827,8 +985,9 @@
     }
 
 
-    .legals-panel-description {
-        font-size: 13px;
+    .legals-content .terms-card,
+    .legals-content .faqs-card,
+    .legals-content .faq-card {
+        padding: 21px 15px;
     }
-
 }
