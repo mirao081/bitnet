@@ -1,122 +1,166 @@
-.terms-page,
-body {
-    --terms-cyan: #00d8ef;
-    --terms-purple: #7a00ff;
-    --terms-pink: #ff0080;
-    --terms-dark: #05070d;
-    --terms-dark-blue: #0a1020;
+.bitnet-terms-page {
+    width: 100%;
+    min-height: 100vh;
+    box-sizing: border-box;
+
+    padding: 80px 0;
+
+    position: relative;
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at top left,
+            rgba(0, 74, 173, .20),
+            transparent 40%
+        ),
+        radial-gradient(
+            circle at bottom right,
+            rgba(122, 0, 255, .14),
+            transparent 35%
+        ),
+        linear-gradient(
+            180deg,
+            #05070d,
+            #0a1020
+        );
+
+    color: #fff;
 }
 
 
 /*==================================================
-        MAIN GUIDELINES AREA
+    HEADING
 ==================================================*/
 
-.heading {
+.bitnet-terms-heading {
     width: 90%;
     max-width: 1600px;
 
-    margin: 60px auto 25px;
+    margin: 0 auto 30px;
 
     padding: 25px 20px;
 
+    box-sizing: border-box;
+
     text-align: center;
+
+    background:
+        rgba(255, 255, 255, .05);
+
+    border:
+        1px solid rgba(255, 255, 255, .10);
+
+    border-radius: 20px;
+
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+
+    box-shadow:
+        0 0 25px rgba(0, 216, 239, .35);
+}
+
+
+.bitnet-terms-heading-title {
+    margin: 0;
 
     font-size: 30px;
     font-weight: 900;
 
+    line-height: 1.3;
+
     text-transform: uppercase;
+
     letter-spacing: 2px;
 
     color: #fff;
 
-    background: rgba(255,255,255,.05);
-
-    border: 1px solid rgba(255,255,255,.10);
-
-    border-radius: 20px;
-
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-
-    box-shadow:
-        0 0 25px rgba(0,216,239,.30);
-
     text-shadow:
-        0 0 10px var(--terms-cyan),
-        0 0 20px var(--terms-purple);
+        0 0 10px #00d8ef,
+        0 0 20px #00d8ef,
+        0 0 40px #7a00ff;
+
+    animation:
+        bitnetTermsGlow 3s infinite alternate;
 }
 
 
-/*==================================================
-        HEADING COLORS
-==================================================*/
-
-.heading .white {
+.bitnet-terms-heading-white {
     color: #fff;
 }
 
-.heading .orange {
+
+.bitnet-terms-heading-gradient {
     background:
         linear-gradient(
             90deg,
-            var(--terms-cyan),
-            var(--terms-purple),
-            var(--terms-pink)
+            #00d8ef,
+            #7a00ff,
+            #ff0080
         );
 
     -webkit-background-clip: text;
+    background-clip: text;
+
     -webkit-text-fill-color: transparent;
 
     background-size: 200% auto;
 
-    animation: termsShine 6s linear infinite;
+    animation:
+        bitnetTermsShine 6s linear infinite;
 }
 
 
 /*==================================================
-        INTRODUCTION
+    INTRODUCTION
 ==================================================*/
 
-.guidelines-intro {
+.bitnet-terms-intro {
     width: 90%;
-    max-width: 1000px;
+    max-width: 1050px;
 
     margin: 0 auto 60px;
 
-    padding: 25px 30px;
+    padding: 28px 32px;
+
+    box-sizing: border-box;
 
     text-align: center;
 
-    background: rgba(255,255,255,.05);
+    background:
+        rgba(255, 255, 255, .05);
 
-    border: 1px solid rgba(255,255,255,.10);
+    border:
+        1px solid rgba(255, 255, 255, .10);
 
-    border-radius: 20px;
+    border-radius: 22px;
 
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
 
     box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.10),
-        0 15px 40px rgba(0,0,0,.25);
+        inset 0 1px 0 rgba(255, 255, 255, .10),
+        0 15px 40px rgba(0, 0, 0, .25);
 }
 
-.guidelines-intro p {
+
+.bitnet-terms-intro-text {
     margin: 0;
 
-    color: rgba(255,255,255,.80);
-
     font-size: 16px;
+
     line-height: 1.7;
+
+    color:
+        rgba(255, 255, 255, .80);
 }
 
 
 /*==================================================
-        GUIDELINES GRID
+    GUIDELINES GRID
 ==================================================*/
 
-.guidelines-container {
+.bitnet-terms-guidelines-grid {
     width: 90%;
     max-width: 1600px;
 
@@ -130,17 +174,21 @@ body {
     gap: 35px;
 
     position: relative;
+
     z-index: 2;
 }
 
 
 /*==================================================
-        GUIDELINE GLASS CARD
+    GUIDELINE CARD
 ==================================================*/
 
-.guideline-card {
+.bitnet-terms-guideline-card {
     position: relative;
+
     overflow: hidden;
+
+    box-sizing: border-box;
 
     padding: 35px 28px;
 
@@ -148,16 +196,18 @@ body {
 
     border-radius: 30px;
 
-    background: rgba(255,255,255,.08);
+    background:
+        rgba(255, 255, 255, .08);
 
-    border: 1px solid rgba(255,255,255,.12);
+    border:
+        1px solid rgba(255, 255, 255, .12);
 
     backdrop-filter: blur(24px);
     -webkit-backdrop-filter: blur(24px);
 
     box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.15),
-        0 18px 45px rgba(0,0,0,.35);
+        inset 0 1px 0 rgba(255, 255, 255, .15),
+        0 18px 45px rgba(0, 0, 0, .35);
 
     transition:
         transform .45s ease,
@@ -167,10 +217,10 @@ body {
 
 
 /*==================================================
-        CARD GLOW
+    GUIDELINE CARD GLOW
 ==================================================*/
 
-.guideline-card::before {
+.bitnet-terms-guideline-card::before {
     content: "";
 
     position: absolute;
@@ -186,7 +236,7 @@ body {
     background:
         radial-gradient(
             circle,
-            rgba(0,216,239,.28),
+            rgba(0, 216, 239, .28),
             transparent 70%
         );
 
@@ -196,25 +246,23 @@ body {
 }
 
 
-/* Secondary glow */
-
-.guideline-card::after {
+.bitnet-terms-guideline-card::after {
     content: "";
 
     position: absolute;
 
-    width: 150px;
-    height: 150px;
+    width: 160px;
+    height: 160px;
 
-    bottom: -100px;
     left: -100px;
+    bottom: -100px;
 
     border-radius: 50%;
 
     background:
         radial-gradient(
             circle,
-            rgba(122,0,255,.20),
+            rgba(122, 0, 255, .20),
             transparent 70%
         );
 
@@ -223,36 +271,39 @@ body {
 
 
 /*==================================================
-        CARD HOVER
+    GUIDELINE HOVER
 ==================================================*/
 
-.guideline-card:hover {
+.bitnet-terms-guideline-card:hover {
     transform: translateY(-12px);
 
     border-color:
-        rgba(0,216,239,.30);
+        rgba(0, 216, 239, .30);
 
     box-shadow:
-        0 30px 70px rgba(0,0,0,.45),
-        0 0 40px rgba(0,216,239,.18);
+        0 30px 70px rgba(0, 0, 0, .45),
+        0 0 40px rgba(0, 216, 239, .18);
 }
 
-.guideline-card:hover::before {
+
+.bitnet-terms-guideline-card:hover::before {
     transform: scale(1.4);
 }
 
 
 /*==================================================
-        CARD NUMBER / TITLE
+    GUIDELINE TITLE
 ==================================================*/
 
-.guideline-card h3 {
+.bitnet-terms-guideline-title {
     position: relative;
+
     z-index: 1;
 
     margin: 0 0 15px;
 
     font-size: 21px;
+
     font-weight: 800;
 
     line-height: 1.35;
@@ -260,16 +311,17 @@ body {
     color: #fff;
 
     text-shadow:
-        0 0 8px rgba(0,216,239,.30);
+        0 0 8px rgba(0, 216, 239, .30);
 }
 
 
 /*==================================================
-        CARD DESCRIPTION
+    GUIDELINE TEXT
 ==================================================*/
 
-.guideline-card p {
+.bitnet-terms-guideline-text {
     position: relative;
+
     z-index: 1;
 
     margin: 0;
@@ -278,32 +330,36 @@ body {
 
     line-height: 1.65;
 
-    color: rgba(255,255,255,.80);
+    color:
+        rgba(255, 255, 255, .80);
 }
 
 
 /*==================================================
-        TERMS SECTION
+    TERMS DETAILS SECTION
 ==================================================*/
 
-.terms-section {
+.bitnet-terms-details {
     width: 90%;
     max-width: 1600px;
 
-    margin: 0 auto 80px;
+    margin: 0 auto;
 
     padding: 45px 35px;
 
+    box-sizing: border-box;
+
     position: relative;
+
     overflow: hidden;
 
     text-align: center;
 
     background:
-        rgba(255,255,255,.06);
+        rgba(255, 255, 255, .06);
 
     border:
-        1px solid rgba(255,255,255,.12);
+        1px solid rgba(255, 255, 255, .12);
 
     border-radius: 30px;
 
@@ -311,16 +367,16 @@ body {
     -webkit-backdrop-filter: blur(20px);
 
     box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.12),
-        0 20px 50px rgba(0,0,0,.35);
+        inset 0 1px 0 rgba(255, 255, 255, .12),
+        0 20px 50px rgba(0, 0, 0, .35);
 }
 
 
 /*==================================================
-        TERMS SECTION GLOW
+    DETAILS GLOW
 ==================================================*/
 
-.terms-section::before {
+.bitnet-terms-details::before {
     content: "";
 
     position: absolute;
@@ -336,7 +392,7 @@ body {
     background:
         radial-gradient(
             circle,
-            rgba(0,216,239,.20),
+            rgba(0, 216, 239, .20),
             transparent 70%
         );
 
@@ -344,39 +400,44 @@ body {
 }
 
 
+.bitnet-terms-details-inner {
+    position: relative;
+
+    z-index: 1;
+}
+
+
 /*==================================================
-        TERMS TITLE
+    DETAILS TITLE
 ==================================================*/
 
-.terms-section h2 {
-    position: relative;
-    z-index: 1;
-
+.bitnet-terms-details-title {
     margin: 0 0 15px;
 
     font-size: 28px;
+
     font-weight: 900;
 
+    line-height: 1.3;
+
     text-transform: uppercase;
+
     letter-spacing: 2px;
 
     color: #fff;
 
     text-shadow:
-        0 0 10px var(--terms-cyan),
-        0 0 25px var(--terms-purple),
-        0 0 40px rgba(255,0,128,.30);
+        0 0 10px #00d8ef,
+        0 0 25px #7a00ff,
+        0 0 40px rgba(255, 0, 128, .30);
 }
 
 
 /*==================================================
-        TERMS INTRO
+    DETAILS INTRO
 ==================================================*/
 
-.terms-intro {
-    position: relative;
-    z-index: 1;
-
+.bitnet-terms-details-intro {
     max-width: 900px;
 
     margin: 0 auto 40px;
@@ -385,18 +446,16 @@ body {
 
     line-height: 1.7;
 
-    color: rgba(255,255,255,.78);
+    color:
+        rgba(255, 255, 255, .78);
 }
 
 
 /*==================================================
-        TERMS GRID
+    DETAILS GRID
 ==================================================*/
 
-.terms-grid {
-    position: relative;
-    z-index: 1;
-
+.bitnet-terms-details-grid {
     display: grid;
 
     grid-template-columns:
@@ -407,12 +466,15 @@ body {
 
 
 /*==================================================
-        TERMS CARD
+    DETAILS CARD
 ==================================================*/
 
-.terms-card {
+.bitnet-terms-details-card {
     position: relative;
+
     overflow: hidden;
+
+    box-sizing: border-box;
 
     padding: 28px 22px;
 
@@ -421,27 +483,29 @@ body {
     border-radius: 25px;
 
     background:
-        rgba(255,255,255,.08);
+        rgba(255, 255, 255, .08);
 
     border:
-        1px solid rgba(255,255,255,.11);
+        1px solid rgba(255, 255, 255, .11);
 
     backdrop-filter: blur(18px);
     -webkit-backdrop-filter: blur(18px);
 
     box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.12),
-        0 15px 40px rgba(0,0,0,.30);
+        inset 0 1px 0 rgba(255, 255, 255, .12),
+        0 15px 40px rgba(0, 0, 0, .30);
 
-    transition: .4s ease;
+    transition:
+        transform .4s ease,
+        box-shadow .4s ease;
 }
 
 
 /*==================================================
-        TERMS CARD GLOW
+    DETAILS CARD GLOW
 ==================================================*/
 
-.terms-card::before {
+.bitnet-terms-details-card::before {
     content: "";
 
     position: absolute;
@@ -457,54 +521,58 @@ body {
     background:
         radial-gradient(
             circle,
-            rgba(122,0,255,.25),
+            rgba(122, 0, 255, .25),
             transparent 70%
         );
 
     transition: .5s ease;
+
+    pointer-events: none;
 }
 
 
-/*==================================================
-        TERMS CARD HOVER
-==================================================*/
-
-.terms-card:hover {
+.bitnet-terms-details-card:hover {
     transform: translateY(-8px);
 
     box-shadow:
-        0 25px 55px rgba(0,0,0,.40),
-        0 0 30px rgba(122,0,255,.16);
+        0 25px 55px rgba(0, 0, 0, .40),
+        0 0 30px rgba(122, 0, 255, .16);
 }
 
-.terms-card:hover::before {
+
+.bitnet-terms-details-card:hover::before {
     transform: scale(1.4);
 }
 
 
 /*==================================================
-        TERMS CARD TITLE
+    DETAILS CARD TITLE
 ==================================================*/
 
-.terms-card h3 {
+.bitnet-terms-details-card-title {
     position: relative;
+
     z-index: 1;
 
     margin: 0 0 12px;
 
     font-size: 20px;
+
     font-weight: 800;
+
+    line-height: 1.3;
 
     color: #fff;
 }
 
 
 /*==================================================
-        TERMS CARD DESCRIPTION
+    DETAILS CARD TEXT
 ==================================================*/
 
-.terms-card p {
+.bitnet-terms-details-card-text {
     position: relative;
+
     z-index: 1;
 
     margin: 0;
@@ -513,26 +581,38 @@ body {
 
     line-height: 1.6;
 
-    color: rgba(255,255,255,.78);
+    color:
+        rgba(255, 255, 255, .78);
 }
 
 
 /*==================================================
-        TABLET
+    TABLET
 ==================================================*/
 
 @media (max-width: 991px) {
 
-    .heading {
+    .bitnet-terms-page {
+        padding: 65px 0;
+    }
+
+
+    .bitnet-terms-heading {
         width: 92%;
+    }
+
+
+    .bitnet-terms-heading-title {
         font-size: 28px;
     }
 
-    .guidelines-intro {
+
+    .bitnet-terms-intro {
         width: 92%;
     }
 
-    .guidelines-container {
+
+    .bitnet-terms-guidelines-grid {
         width: 92%;
 
         grid-template-columns:
@@ -541,16 +621,20 @@ body {
         gap: 25px;
     }
 
-    .guideline-card {
+
+    .bitnet-terms-guideline-card {
         padding: 30px 22px;
     }
 
-    .terms-section {
+
+    .bitnet-terms-details {
         width: 92%;
+
         padding: 40px 25px;
     }
 
-    .terms-grid {
+
+    .bitnet-terms-details-grid {
         grid-template-columns:
             repeat(2, 1fr);
     }
@@ -558,24 +642,42 @@ body {
 
 
 /*==================================================
-        MOBILE
+    MOBILE
 ==================================================*/
 
 @media (max-width: 600px) {
 
-    .heading {
-        width: 94%;
+    .bitnet-terms-page {
+        padding: 55px 0;
+    }
 
-        margin-top: 40px;
-        margin-bottom: 20px;
+
+    /*----------------------------------------------
+        HEADING
+    ----------------------------------------------*/
+
+    .bitnet-terms-heading {
+        width: 95%;
+
+        margin-bottom: 25px;
 
         padding: 22px 15px;
 
+        border-radius: 20px;
+    }
+
+
+    .bitnet-terms-heading-title {
         font-size: 23px;
 
         line-height: 1.35;
 
         text-align: center;
+
+        text-shadow:
+            0 0 15px #00d8ef,
+            0 0 30px #7a00ff,
+            0 0 60px #ff0080;
     }
 
 
@@ -583,33 +685,36 @@ body {
         INTRO
     ----------------------------------------------*/
 
-    .guidelines-intro {
-        width: 94%;
+    .bitnet-terms-intro {
+        width: 95%;
 
         margin-bottom: 40px;
 
         padding: 22px 18px;
 
-        text-align: center;
+        border-radius: 20px;
     }
 
-    .guidelines-intro p {
+
+    .bitnet-terms-intro-text {
         font-size: 14px;
 
         line-height: 1.6;
+
+        text-align: center;
     }
 
 
     /*----------------------------------------------
-        GUIDELINE GRID
+        GUIDELINES
     ----------------------------------------------*/
 
-    .guidelines-container {
-        width: 94%;
+    .bitnet-terms-guidelines-grid {
+        width: 95%;
 
         grid-template-columns: 1fr;
 
-        gap: 22px;
+        gap: 24px;
 
         justify-items: center;
     }
@@ -619,10 +724,8 @@ body {
         GUIDELINE CARD
     ----------------------------------------------*/
 
-    .guideline-card {
+    .bitnet-terms-guideline-card {
         width: 100%;
-
-        box-sizing: border-box;
 
         padding: 25px 20px;
 
@@ -631,13 +734,15 @@ body {
         border-radius: 25px;
     }
 
-    .guideline-card h3 {
+
+    .bitnet-terms-guideline-title {
         font-size: 19px;
 
         text-align: center;
     }
 
-    .guideline-card p {
+
+    .bitnet-terms-guideline-text {
         font-size: 14px;
 
         line-height: 1.55;
@@ -647,24 +752,19 @@ body {
 
 
     /*----------------------------------------------
-        TERMS SECTION
+        TERMS DETAILS
     ----------------------------------------------*/
 
-    .terms-section {
-        width: 94%;
-
-        box-sizing: border-box;
-
-        margin-bottom: 50px;
+    .bitnet-terms-details {
+        width: 95%;
 
         padding: 30px 18px;
 
         border-radius: 25px;
-
-        text-align: center;
     }
 
-    .terms-section h2 {
+
+    .bitnet-terms-details-title {
         font-size: 22px;
 
         line-height: 1.3;
@@ -672,7 +772,8 @@ body {
         text-align: center;
     }
 
-    .terms-intro {
+
+    .bitnet-terms-details-intro {
         font-size: 14px;
 
         line-height: 1.6;
@@ -684,10 +785,10 @@ body {
 
 
     /*----------------------------------------------
-        TERMS GRID
+        DETAILS GRID
     ----------------------------------------------*/
 
-    .terms-grid {
+    .bitnet-terms-details-grid {
         grid-template-columns: 1fr;
 
         gap: 20px;
@@ -697,26 +798,28 @@ body {
 
 
     /*----------------------------------------------
-        TERMS CARD
+        DETAILS CARD
     ----------------------------------------------*/
 
-    .terms-card {
+    .bitnet-terms-details-card {
         width: 100%;
-
-        box-sizing: border-box;
 
         padding: 25px 18px;
 
         text-align: center;
+
+        border-radius: 23px;
     }
 
-    .terms-card h3 {
+
+    .bitnet-terms-details-card-title {
         font-size: 19px;
 
         text-align: center;
     }
 
-    .terms-card p {
+
+    .bitnet-terms-details-card-text {
         font-size: 14px;
 
         line-height: 1.55;
@@ -727,46 +830,83 @@ body {
 
 
 /*==================================================
-        VERY SMALL PHONES
+    SMALL PHONES
 ==================================================*/
 
 @media (max-width: 380px) {
 
-    .heading {
+    .bitnet-terms-page {
+        padding: 45px 0;
+    }
+
+
+    .bitnet-terms-heading {
+        padding: 20px 12px;
+    }
+
+
+    .bitnet-terms-heading-title {
         font-size: 21px;
     }
 
-    .guideline-card {
+
+    .bitnet-terms-intro {
+        padding: 20px 15px;
+    }
+
+
+    .bitnet-terms-guideline-card {
         padding: 22px 16px;
     }
 
-    .guideline-card h3 {
+
+    .bitnet-terms-guideline-title {
         font-size: 18px;
     }
 
-    .guideline-card p {
+
+    .bitnet-terms-guideline-text {
         font-size: 13px;
     }
 
-    .terms-section {
+
+    .bitnet-terms-details {
         padding: 25px 15px;
     }
 
-    .terms-section h2 {
+
+    .bitnet-terms-details-title {
         font-size: 20px;
     }
 
-    .terms-card {
+
+    .bitnet-terms-details-card {
         padding: 22px 15px;
     }
 }
 
 
 /*==================================================
-        ANIMATION
+    ANIMATIONS
 ==================================================*/
 
-@keyframes termsShine {
+@keyframes bitnetTermsGlow {
+
+    from {
+        text-shadow:
+            0 0 10px #00d8ef,
+            0 0 20px #00d8ef;
+    }
+
+    to {
+        text-shadow:
+            0 0 20px #7a00ff,
+            0 0 40px #ff0080;
+    }
+}
+
+
+@keyframes bitnetTermsShine {
 
     0% {
         background-position: 0% 50%;
@@ -778,6 +918,24 @@ body {
 
     100% {
         background-position: 0% 50%;
+    }
+}
+
+
+/*==================================================
+    REDUCED MOTION
+==================================================*/
+
+@media (prefers-reduced-motion: reduce) {
+
+    .bitnet-terms-heading-title,
+    .bitnet-terms-heading-gradient {
+        animation: none;
+    }
+
+    .bitnet-terms-guideline-card,
+    .bitnet-terms-details-card {
+        transition: none;
     }
 }
 
