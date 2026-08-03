@@ -1,157 +1,400 @@
 {% extends "users/dashboard_base.html" %}
 {% load static %}
+
 {% block content %}
+
 <div>
     <h1 class="super-heading">Your Dashboard</h1>
 </div>
+
+
+<!-- ==================================================
+     DASHBOARD SUMMARY
+================================================== -->
+
 <div class="dashboard-grid">
+
+    <!-- Total Balance -->
     <div class="dashboard-card dashboard-balance">
         <div class="dashboard-card-header">
             <span class="dark-golden-text">Total Balance</span>
         </div>
+
         <div class="dashboard-card-body">
             <h3>${{ total_balance }}</h3>
-            <p class="light-text">Principal + Profit + Bonuses + Investments</p>
-            <p class="light-text">Wallet: ${{ profile.usd_balance }}</p>
+            <p class="light-text">
+                Principal + Profit + Bonuses + Investments
+            </p>
+            <p class="light-text">
+                Wallet: ${{ profile.usd_balance }}
+            </p>
         </div>
     </div>
+
+
+    <!-- Investment -->
     <div class="dashboard-card investment-balance-card">
         <div class="dashboard-card-header">
             <span class="dark-golden-text">Investment</span>
         </div>
+
         <div class="dashboard-card-body">
             <h3>${{ investment_balance }}</h3>
-            <p class="light-text">Funds allocated to investments</p>
+            <p class="light-text">
+                Funds allocated to investments
+            </p>
         </div>
     </div>
+
+
+    <!-- Profit -->
     <div class="dashboard-card profit-card">
         <div class="dashboard-card-header">
             <span class="dark-golden-text">Profit</span>
         </div>
+
         <div class="dashboard-card-body">
             <h3>${{ profile.profit_balance }}</h3>
-            <p class="light-text">Accumulated profits</p>
+            <p class="light-text">
+                Accumulated profits
+            </p>
         </div>
     </div>
+
+
+    <!-- Bonus -->
     <div class="dashboard-card bonus-card">
         <div class="dashboard-card-header">
             <span class="dark-golden-text">Bonus</span>
         </div>
+
         <div class="dashboard-card-body">
             <h3>${{ profile.bonus_balance }}</h3>
-            <p class="light-text">Admin bonuses</p>
+            <p class="light-text">
+                Admin bonuses
+            </p>
         </div>
     </div>
+
+
+    <!-- Referrals -->
     <div class="dashboard-card referral-card">
         <div class="dashboard-card-header">
             <span class="dark-golden-text">Referrals</span>
         </div>
+
         <div class="dashboard-card-body">
             <h3>{{ referral_count }}</h3>
-            <p class="light-text">People registered with your referral link</p>
+            <p class="light-text">
+                People registered with your referral link
+            </p>
+
             <h3>${{ referral_bonus }}</h3>
-            <p class="light-text">Referral bonus earned</p>
+            <p class="light-text">
+                Referral bonus earned
+            </p>
         </div>
     </div>
+
+
+    <!-- Active Investments -->
     <div class="dashboard-card active-investments-card">
         <div class="dashboard-card-header">
-            <span class="dark-golden-text">Active Investments</span>
+            <span class="dark-golden-text">
+                Active Investments
+            </span>
         </div>
+
         <div class="dashboard-card-body">
+
             {% for inv in investments %}
+
                 {% if inv.status == "active" %}
-                    <p>{{ inv.plan_name }} — ${{ inv.amount }}</p>
+
+                    <p>
+                        {{ inv.plan_name }} —
+                        ${{ inv.amount }}
+                    </p>
+
                 {% endif %}
+
             {% empty %}
+
                 <p>No active investments</p>
+
             {% endfor %}
+
         </div>
     </div>
+
+
+    <!-- Total Earned -->
     <div class="dashboard-card earned-card">
         <div class="dashboard-card-header">
-            <span class="dark-golden-text">Total Earned</span>
+            <span class="dark-golden-text">
+                Total Earned
+            </span>
         </div>
+
         <div class="dashboard-card-body">
             <h3>${{ total_profit }}</h3>
-            <p class="light-text">Cumulative profits from all completed investments</p>
+
+            <p class="light-text">
+                Cumulative profits from all completed investments
+            </p>
         </div>
     </div>
 
 </div>
 
+
+
+<!-- ==================================================
+     REFERRAL LINK
+================================================== -->
+
 <div class="referral-section">
-    <h3 id="copy-header">Click to copy referral link</h3>
-    <a id="referral-link"
-    href="{{ request.scheme }}://{{ request.get_host }}/?ref={{ user.username }}"
-    target="_blank">
+
+    <h3 id="copy-header">
+        Click to copy referral link
+    </h3>
+
+    <a
+        id="referral-link"
+        href="{{ request.scheme }}://{{ request.get_host }}/?ref={{ user.username }}"
+        target="_blank"
+        rel="noopener noreferrer"
+    >
         {{ request.scheme }}://{{ request.get_host }}/?ref={{ user.username }}
     </a>
+
     <p id="copy-status"></p>
+
 </div>
+
+
+
+<!-- ==================================================
+     PERFORMANCE ANALYTICS
+================================================== -->
+
 <div class="analytics-section">
-    <h2 class="section-title">Performance Analytics</h2>
+
+    <h2 class="section-title">
+        Performance Analytics
+    </h2>
+
     <p class="section-subtitle">
         Graphs showing growth of investments over time.<br>
         Daily/weekly/monthly ROI trends.<br>
         Builds confidence by visualizing progress.
     </p>
 
+
     <div class="analytics-container">
+
+
+        <!-- =========================
+             GROWTH CHART
+        ========================== -->
+
         <div class="analytics-card">
-            <div class="card-header">📈 Growth of Investments</div>
-            <div class="card-body">
-                <canvas id="growthChart"
-                        data-growth="{{ growth_data|safe }}"
-                        data-labels="{{ growth_labels|safe }}"></canvas>
+
+            <div class="card-header">
+                📈 Growth of Investments
             </div>
+
+            <div class="card-body">
+
+                <canvas id="growthChart"></canvas>
+
+            </div>
+
         </div>
+
+
+
+        <!-- =========================
+             ROI CHART
+        ========================== -->
+
         <div class="analytics-card">
-            <div class="card-header">📊 ROI Trends</div>
-            <div class="card-body">
-                <canvas id="roiChart"
-                        data-roi="{{ roi_data|safe }}"></canvas>
+
+            <div class="card-header">
+                📊 ROI Trends
             </div>
+
+            <div class="card-body">
+
+                <canvas id="roiChart"></canvas>
+
+            </div>
+
         </div>
+
     </div>
-</div>
-<div class="notifications-section">
-    <div class="section-header">
-        <h2 class="section-title">Notifications</h2>
-        <p class="section-subtitle">Alerts for deposits, withdrawals, admin messages, or promotions.</p>
-    </div>
-    <div class="notifications-container">
-        {% for note in notifications %}
-            <p>{{ note.message }}</p>
-        {% empty %}
-            <p>No notifications yet.</p>
-        {% endfor %}
-    </div>
-</div>
-<div class="recent-activity-section">
-    <div class="section-header">
-        <h2 class="section-title">Recent Activity</h2>
-        <p class="section-subtitle">Timeline of your latest account actions.</p>
-    </div>
-    <ul class="activity-list">
-        {% for inv in investments %}
-            <li>{{ inv.plan_name }} — ${{ inv.amount }} ({{ inv.status }})</li>
-        {% empty %}
-            <li>No recent activity</li>
-        {% endfor %}
-    </ul>
-</div>
-<div class="quick-actions-section">
-    <div class="section-header">
-        <h2 class="section-title">Quick Actions</h2>
-        <p class="section-subtitle">One‑click shortcuts to manage your account.</p>
-    </div>
-    <div class="quick-actions-container">
-        <a href="{% url 'users:make_deposit' %}" class="quick-action-btn">💰 Make Deposit</a>
-        <a href="{% url 'users:request_withdrawal' %}" class="quick-action-btn">💸 Request Withdrawal</a>
-        <a href="{% url 'users:start_investment' %}" class="quick-action-btn">📈 Start Investment</a>
-    </div>
+
 </div>
 
+
+
+<!-- ==================================================
+     CHART DATA
+     
+     Django safely converts Python lists into JSON.
+     dashboard.js reads these values.
+================================================== -->
+
+{{ growth_data|json_script:"growth-data" }}
+
+{{ growth_labels|json_script:"growth-labels" }}
+
+{{ roi_data|json_script:"roi-data" }}
+
+
+
+<!-- ==================================================
+     NOTIFICATIONS
+================================================== -->
+
+<div class="notifications-section">
+
+    <div class="section-header">
+
+        <h2 class="section-title">
+            Notifications
+        </h2>
+
+        <p class="section-subtitle">
+            Alerts for deposits, withdrawals, admin messages,
+            or promotions.
+        </p>
+
+    </div>
+
+
+    <div class="notifications-container">
+
+        {% for note in notifications %}
+
+            <p>
+                {{ note.message }}
+            </p>
+
+        {% empty %}
+
+            <p>
+                No notifications yet.
+            </p>
+
+        {% endfor %}
+
+    </div>
+
+</div>
+
+
+
+<!-- ==================================================
+     RECENT ACTIVITY
+================================================== -->
+
+<div class="recent-activity-section">
+
+    <div class="section-header">
+
+        <h2 class="section-title">
+            Recent Activity
+        </h2>
+
+        <p class="section-subtitle">
+            Timeline of your latest account actions.
+        </p>
+
+    </div>
+
+
+    <ul class="activity-list">
+
+        {% for inv in investments %}
+
+            <li>
+                {{ inv.plan_name }} —
+                ${{ inv.amount }}
+                ({{ inv.status }})
+            </li>
+
+        {% empty %}
+
+            <li>
+                No recent activity
+            </li>
+
+        {% endfor %}
+
+    </ul>
+
+</div>
+
+
+
+<!-- ==================================================
+     QUICK ACTIONS
+================================================== -->
+
+<div class="quick-actions-section">
+
+    <div class="section-header">
+
+        <h2 class="section-title">
+            Quick Actions
+        </h2>
+
+        <p class="section-subtitle">
+            One-click shortcuts to manage your account.
+        </p>
+
+    </div>
+
+
+    <div class="quick-actions-container">
+
+        <a
+            href="{% url 'users:make_deposit' %}"
+            class="quick-action-btn"
+        >
+            💰 Make Deposit
+        </a>
+
+
+        <a
+            href="{% url 'users:request_withdrawal' %}"
+            class="quick-action-btn"
+        >
+            💸 Request Withdrawal
+        </a>
+
+
+        <a
+            href="{% url 'users:start_investment' %}"
+            class="quick-action-btn"
+        >
+            📈 Start Investment
+        </a>
+
+    </div>
+
+</div>
+
+
+
+<!-- ==================================================
+     JAVASCRIPT
+================================================== -->
+
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 <script src="{% static 'js/dashboard.js' %}"></script>
+
+
 {% endblock %}
