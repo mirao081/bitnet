@@ -2,87 +2,34 @@
 {% load static %}
 {% block content %}
 
-<section class="glossary-section">
-  <h1 class="glossary-title">Crypto Glossary</h1>
-  <p class="glossary-subtitle">
-    Your complete guide to understanding the language of blockchain, digital assets, 
-    and decentralized finance. Explore key terms every investor should know.
-  </p>
+<link rel="stylesheet" href="{% static 'crypto/css/glossary.css' %}">
 
-  <div class="glossary-list">
-    <article class="glossary-item">
-      <h2>Altcoin</h2>
-      <p>Any cryptocurrency other than Bitcoin. Examples include Ethereum, Cardano, and Solana.</p>
-    </article>
-
-    <article class="glossary-item">
-      <h2>Blockchain</h2>
-      <p>A decentralized digital ledger that records transactions across multiple computers securely and transparently.</p>
-    </article>
-
-    <article class="glossary-item">
-      <h2>Bitcoin (BTC)</h2>
-      <p>The first and most widely recognized cryptocurrency, often referred to as digital gold.</p>
-    </article>
-
-    <article class="glossary-item">
-      <h2>Cold Wallet</h2>
-      <p>Offline storage for cryptocurrencies, typically hardware devices, offering maximum security against hacks.</p>
-    </article>
-
-    <article class="glossary-item">
-      <h2>DeFi (Decentralized Finance)</h2>
-      <p>Blockchain-based financial services that operate without traditional intermediaries like banks.</p>
-    </article>
-
-    <article class="glossary-item">
-      <h2>Ethereum (ETH)</h2>
-      <p>A blockchain platform enabling smart contracts and decentralized applications (dApps).</p>
-    </article>
-
-    <article class="glossary-item">
-      <h2>Gas Fees</h2>
-      <p>Transaction costs paid to miners or validators for processing operations on blockchains like Ethereum.</p>
-    </article>
-
-    <article class="glossary-item">
-      <h2>Mining</h2>
-      <p>The process of validating transactions and securing a blockchain network, often rewarded with new coins.</p>
-    </article>
-
-    <article class="glossary-item">
-      <h2>NFT (Non-Fungible Token)</h2>
-      <p>Unique digital assets stored on a blockchain, often representing art, collectibles, or in-game items.</p>
-    </article>
-
-    <article class="glossary-item">
-      <h2>Private Key</h2>
-      <p>A secret alphanumeric code that allows access to and control of your cryptocurrency holdings.</p>
-    </article>
-
-    <article class="glossary-item">
-      <h2>Stablecoin</h2>
-      <p>A cryptocurrency pegged to a stable asset (like USD) to reduce volatility.</p>
-    </article>
-
-    <article class="glossary-item">
-      <h2>Token</h2>
-      <p>A digital asset issued on a blockchain, representing value, utility, or governance rights.</p>
-    </article>
-
-    <article class="glossary-item">
-      <h2>Wallet</h2>
-      <p>A digital tool (software or hardware) used to store and manage cryptocurrencies securely.</p>
-    </article>
-
-    <article class="glossary-item">
-      <h2>Whale</h2>
-      <p>An investor or entity holding large amounts of cryptocurrency, capable of influencing market prices.</p>
-    </article>
+<section class="glossaryx-showcase">
+  <div class="glossaryx-heading-container">
+    <h1 class="glossaryx-heading-title">Crypto Glossary</h1>
+    <p class="glossaryx-heading-subtitle">
+      Your complete guide to understanding the language of blockchain, digital assets, 
+      and decentralized finance. Explore key terms every investor should know.
+    </p>
   </div>
-  <div class="glossary-cta">
+
+  <div class="glossaryx-grid">
+    <article class="glossaryx-panel">
+      <h2 class="glossaryx-panel-title">Altcoin</h2>
+      <p class="glossaryx-panel-description">Any cryptocurrency other than Bitcoin. Examples include Ethereum, Cardano, and Solana.</p>
+    </article>
+
+    <article class="glossaryx-panel">
+      <h2 class="glossaryx-panel-title">Blockchain</h2>
+      <p class="glossaryx-panel-description">A decentralized digital ledger that records transactions across multiple computers securely and transparently.</p>
+    </article>
+
+    <!-- Repeat glossaryx-panel for each term -->
+  </div>
+
+  <div class="glossaryx-cta">
     <p>Stay ahead in the crypto world by mastering these terms. Knowledge is your strongest investment tool.</p>
-    <a href="{% url 'crypto:resources' %}" class="btn">Back to Resources</a>
+    <a href="{% url 'crypto:resources' %}" class="glossaryx-read-more-btn">Back to Resources</a>
   </div>
 </section>
 
