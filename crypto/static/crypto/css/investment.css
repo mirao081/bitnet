@@ -495,7 +495,6 @@ section.investment-plans-isolated
         0 0 10px #00d8ef,
         0 0 25px #7a00ff !important;
 }
-
 .investment-plans-bitcoin-icon {
     display: block !important;
     margin: 0 auto 20px !important;
@@ -508,6 +507,7 @@ section.investment-plans-isolated
         0 0 10px silver,
         0 0 25px #7a00ff !important;
 }
+
 .bitcoin-icon-rotate {
     animation: spin 3s linear infinite;
 }
