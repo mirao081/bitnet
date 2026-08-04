@@ -39,4 +39,10 @@ urlpatterns = [
     path("twofa-reset/", views.twofa_reset, name="twofa_reset"),
     path("twofa-verify/", views.twofa_verify, name="twofa_verify"),
     path('forex-table-api/', views.forex_table_api, name='forex_table_api'),
-]
+
+    path("charts/", views.charts, name="charts"),
+    path("sentiment-tracker/", views.sentiment_tracker, name="sentiment_tracker"),
+    path("performance-dashboard/", views.performance_dashboard, name="performance_dashboard"),
+    path("ai-insights/", views.ai_insights, name="ai_insights"),
+
+]   

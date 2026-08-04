@@ -473,3 +473,16 @@ def instrument_detail(request, pk):
 def forex_table_api(request):
     data = {"message": "Forex API placeholder"}
     return JsonResponse(data)
+
+
+def charts(request):
+    return render(request, "crypto/charts.html")
+
+def sentiment_tracker(request):
+    return render(request, "crypto/sentiment_tracker.html")
+
+def performance_dashboard(request):
+    return render(request, "crypto/performance_dashboard.html")
+
+def ai_insights(request):
+    return render(request, "crypto/ai_insights.html")
