@@ -496,13 +496,16 @@ section.investment-plans-isolated
         0 0 25px #7a00ff !important;
 }
 .investment-plans-bitcoin-icon {
-    display: block !important;
+    display: inline-block !important;
     margin: 0 auto 20px !important;
-    font-size: 92px !important;   
+    font-size: 92px !important;   /* icon itself increased by 50px */
     color: silver !important;     
     background-color: grey !important; 
-    border-radius: 50%;         
-    padding: 20px;               
+    border-radius: 50%;           /* ensures circular background */
+    width: 132px;                 /* equal width/height for circle */
+    height: 132px;
+    line-height: 132px;           /* centers the icon vertically */
+    text-align: center;           /* centers the icon horizontally */
     text-shadow:
         0 0 10px silver,
         0 0 25px #7a00ff !important;
@@ -516,6 +519,7 @@ section.investment-plans-isolated
     from { transform: rotate(0deg); }
     to { transform: rotate(360deg); }
 }
+
 
 section.investment-plans-isolated
 .investment-plans-card-title,
