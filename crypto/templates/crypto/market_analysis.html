@@ -4,56 +4,58 @@
 <link rel="stylesheet" href="{% static 'crypto/css/market_analysis.css' %}">
 
 {% block content %}
-<section class="analysis-showcase-block">
-  <h1 class="analysis-showcase-title">Market Analysis</h1>
-  <p class="analysis-showcase-subtitle">
-    Welcome to Bitnet’s Market Analysis hub. Here you’ll find expert insights, 
-    trend reports, and performance reviews across Bitcoin, Ethereum, and altcoins.
-  </p>
+<section class="analysisx-showcase">
+  <div class="analysisx-heading-container">
+    <h1 class="analysisx-heading-title">Market Analysis</h1>
+    <p class="analysisx-heading-subtitle">
+      Welcome to Bitnet’s Market Analysis hub. Here you’ll find expert insights, 
+      trend reports, and performance reviews across Bitcoin, Ethereum, and altcoins.
+    </p>
+  </div>
 
-  <article class="analysis-showcase-card">
-    <h2 class="analysis-card-title">Latest Insights</h2>
-    <p class="analysis-card-text">
+  <article class="analysisx-panel">
+    <h2 class="analysisx-panel-title">Latest Insights</h2>
+    <p class="analysisx-panel-description">
       Our analysts highlight trading volumes, investor sentiment, and adoption metrics 
       to help you make smarter investment decisions. Stay informed with weekly updates 
       on price movements, volatility indexes, and institutional activity.
     </p>
   </article>
 
-  <article class="analysis-showcase-card">
-    <h2 class="analysis-card-title">Bitcoin Trends</h2>
-    <p class="analysis-card-text">
+  <article class="analysisx-panel">
+    <h2 class="analysisx-panel-title">Bitcoin Trends</h2>
+    <p class="analysisx-panel-description">
       Bitcoin continues to dominate market capitalization. We track miner activity, 
       global regulatory developments, and macroeconomic factors influencing BTC’s performance.
     </p>
-    <a href="{% url 'crypto:bitcoin_reports' %}" class="analysis-card-btn">Read Bitcoin Reports</a>
+    <a href="{% url 'crypto:bitcoin_reports' %}" class="analysisx-read-more-btn">Read Bitcoin Reports</a>
   </article>
 
-  <article class="analysis-showcase-card">
-    <h2 class="analysis-card-title">Ethereum Insights</h2>
-    <p class="analysis-card-text">
+  <article class="analysisx-panel">
+    <h2 class="analysisx-panel-title">Ethereum Insights</h2>
+    <p class="analysisx-panel-description">
       Ethereum’s ecosystem is evolving with DeFi, NFTs, and staking. Our reports cover 
       gas fees, network upgrades, and developer adoption to give you a full picture.
     </p>
-    <a href="{% url 'crypto:ethereum_analysis' %}" class="analysis-card-btn">Explore Ethereum Analysis</a>
+    <a href="{% url 'crypto:ethereum_analysis' %}" class="analysisx-read-more-btn">Explore Ethereum Analysis</a>
   </article>
 
-  <article class="analysis-showcase-card">
-    <h2 class="analysis-card-title">Altcoin Reports</h2>
-    <p class="analysis-card-text">
+  <article class="analysisx-panel">
+    <h2 class="analysisx-panel-title">Altcoin Reports</h2>
+    <p class="analysisx-panel-description">
       Beyond BTC and ETH, altcoins present unique opportunities. We analyze liquidity, 
       community growth, and project fundamentals to identify promising investments.
     </p>
-    <a href="{% url 'crypto:altcoin_reports' %}" class="analysis-card-btn">View Altcoin Reports</a>
+    <a href="{% url 'crypto:altcoin_reports' %}" class="analysisx-read-more-btn">View Altcoin Reports</a>
   </article>
 
-  <article class="analysis-showcase-card">
-    <h2 class="analysis-card-title">Investor Tools</h2>
-    <p class="analysis-card-text">
+  <article class="analysisx-panel">
+    <h2 class="analysisx-panel-title">Investor Tools</h2>
+    <p class="analysisx-panel-description">
       Access interactive charts, sentiment trackers, and performance dashboards. 
       These tools help you visualize market dynamics and make data-driven decisions.
     </p>
-    <a href="{% url 'crypto:investor_tools' %}" class="analysis-card-btn analysis-launch-btn">Launch Tools</a>
+    <a href="{% url 'crypto:investor_tools' %}" class="analysisx-read-more-btn">Launch Tools</a>
   </article>
 </section>
 {% endblock %}

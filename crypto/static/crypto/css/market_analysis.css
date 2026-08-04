@@ -1,62 +1,59 @@
-.analysis-showcase-block {
+.analysisx-showcase {
     width:100%;
     padding:90px 0;
+    position:relative;
+    overflow:hidden;
     background:
       radial-gradient(circle at top left,#004aad33,transparent 40%),
       radial-gradient(circle at bottom right,#7a00ff22,transparent 35%),
       linear-gradient(180deg,#05070d,#0a1020);
+}
+
+.analysisx-grid {
+    width:90%;
+    max-width:1600px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:35px;
+    position:relative;
+    z-index:2;
+}
+
+.analysisx-panel {
+    position:relative;
+    overflow:hidden;
     text-align:center;
-}
-
-.analysis-showcase-title {
-    font-size:28px;
-    font-weight:800;
-    color:#fff;
-    margin-bottom:20px;
-    text-shadow:0 0 10px #00d8ef,0 0 20px #7a00ff;
-}
-
-.analysis-showcase-subtitle {
-    font-size:16px;
-    color:rgba(255,255,255,.85);
-    line-height:1.6;
+    padding:35px 28px;
+    border-radius:30px;
+    background:rgba(255,255,255,.08);
+    backdrop-filter:blur(24px);
+    -webkit-backdrop-filter:blur(24px);
+    border:1px solid rgba(255,255,255,.12);
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,.15),
+      0 18px 45px rgba(0,0,0,.35);
+    transition:.45s ease;
     margin-bottom:40px;
 }
 
-.analysis-showcase-card {
-    margin:20px auto;
-    max-width:800px;
-    padding:30px;
-    border-radius:25px;
-    background:rgba(255,255,255,.08);
-    backdrop-filter:blur(20px);
-    -webkit-backdrop-filter:blur(20px);
-    border:1px solid rgba(255,255,255,.12);
-    box-shadow:0 15px 40px rgba(0,0,0,.35);
-    transition:.3s ease;
-}
-
-.analysis-showcase-card:hover {
-    transform:translateY(-8px);
-    box-shadow:0 25px 60px rgba(0,0,0,.45);
-}
-
-.analysis-card-title {
-    font-size:22px;
-    font-weight:700;
+.analysisx-panel-title {
+    font-size:24px;
+    font-weight:800;
     color:#fff;
     margin-bottom:15px;
+    line-height:1.25;
 }
 
-.analysis-card-text {
+.analysisx-panel-description {
     font-size:15px;
     color:rgba(255,255,255,.80);
     line-height:1.6;
-    margin-bottom:20px;
 }
 
-.analysis-card-btn {
+.analysisx-read-more-btn {
     display:inline-block;
+    margin-top:15px;
     padding:10px 20px;
     border-radius:20px;
     background:#00d8ef;
@@ -66,32 +63,77 @@
     transition:.3s;
 }
 
-.analysis-card-btn:hover {
+.analysisx-read-more-btn:hover {
     background:#009bb8;
     color:#fff;
 }
 
-.analysis-launch-btn {
-    background:#7a00ff;
+.analysisx-heading-container {
+    text-align:center;
+    margin-bottom:60px;
+    padding:20px;
+    background:rgba(255,255,255,.05);
+    border-radius:20px;
+    backdrop-filter:blur(12px);
+    -webkit-backdrop-filter:blur(12px);
+    box-shadow:0 0 25px rgba(0,216,239,.35);
+}
+
+.analysisx-heading-title {
+    font-size:25px;
+    font-weight:900;
     color:#fff;
+    text-transform:uppercase;
+    letter-spacing:2px;
+    margin-bottom:15px;
+    text-shadow:
+      0 0 10px #00d8ef,
+      0 0 20px #00d8ef,
+      0 0 40px #7a00ff;
+    animation:glowPulse 3s infinite alternate;
 }
 
-.analysis-launch-btn:hover {
-    background:#5500b3;
-}
-
-/* Responsive tweaks */
-@media(max-width:600px){
-  .analysis-showcase-title {
-    font-size:22px;
-  }
-  .analysis-showcase-subtitle {
-    font-size:14px;
-  }
-  .analysis-card-title {
+.analysisx-heading-subtitle {
     font-size:18px;
+    font-weight:600;
+    background:linear-gradient(90deg,#00d8ef,#7a00ff,#ff0080);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    background-size:200% auto;
+    animation:shineFlow 6s linear infinite;
+    letter-spacing:1px;
+}
+
+/* Responsive overrides */
+@media(max-width:991px){
+  .analysisx-grid {
+    grid-template-columns:repeat(2,1fr);
   }
-  .analysis-card-text {
-    font-size:13px;
+}
+
+@media(max-width:600px){
+  .analysisx-showcase {
+    padding:60px 0;
+  }
+  .analysisx-grid {
+    width:95%;
+    grid-template-columns:1fr;
+    gap:24px;
+  }
+  .analysisx-panel {
+    padding:24px;
+  }
+  .analysisx-panel-title {
+    font-size:21px;
+  }
+  .analysisx-panel-description {
+    font-size:14px;
+    line-height:1.5;
+  }
+  .analysisx-heading-title {
+    font-size:21px;
+  }
+  .analysisx-heading-subtitle {
+    font-size:16px;
   }
 }
