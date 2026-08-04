@@ -1,0 +1,26 @@
+{% extends "crypto/crypto_base.html" %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'crypto/css/investor_tools.css' %}">
+{% endblock %}
+
+{% block content %}
+<section class="toolsx-subpage">
+  <div class="toolsx-heading-container">
+    <h1 class="toolsx-heading-title">Sentiment Tracker</h1>
+    <p class="toolsx-heading-subtitle">
+      Monitor investor sentiment and market psychology with AI‑driven indicators 
+      highlighting bullish and bearish trends.
+    </p>
+  </div>
+
+  <article class="toolsx-panel">
+    <h2 class="toolsx-panel-title">Market Mood</h2>
+    <p class="toolsx-panel-description">
+      Track social media buzz, news sentiment, and trading behavior to gauge 
+      overall market confidence.
+    </p>
+  </article>
+</section>
+{% endblock %}

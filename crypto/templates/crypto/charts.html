@@ -1,0 +1,26 @@
+{% extends "crypto/crypto_base.html" %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'crypto/css/investor_tools.css' %}">
+{% endblock %}
+
+{% block content %}
+<section class="toolsx-subpage">
+  <div class="toolsx-heading-container">
+    <h1 class="toolsx-heading-title">Interactive Charts</h1>
+    <p class="toolsx-heading-subtitle">
+      Visualize real‑time price movements, trading volumes, and volatility indexes 
+      across Bitcoin, Ethereum, and altcoins.
+    </p>
+  </div>
+
+  <article class="toolsx-panel">
+    <h2 class="toolsx-panel-title">Real‑Time Analytics</h2>
+    <p class="toolsx-panel-description">
+      Access dynamic charts with live updates on price trends, liquidity, and volatility. 
+      Customize views by timeframe, asset, and trading pair.
+    </p>
+  </article>
+</section>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends "crypto/crypto_base.html" %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'crypto/css/investor_tools.css' %}">
+{% endblock %}
+
+{% block content %}
+<section class="toolsx-subpage">
+  <div class="toolsx-heading-container">
+    <h1 class="toolsx-heading-title">AI Insights</h1>
+    <p class="toolsx-heading-subtitle">
+      Leverage BitnetFX’s AI‑powered insights to identify opportunities, 
+      forecast market trends, and optimize your trading strategies.
+    </p>
+  </div>
+
+  <article class="toolsx-panel">
+    <h2 class="toolsx-panel-title">Predictive Analytics</h2>
+    <p class="toolsx-panel-description">
+      Get AI‑driven forecasts on price movements, volatility, and market cycles. 
+      Use machine learning models to anticipate opportunities and risks.
+    </p>
+  </article>
+</section>
+{% endblock %}

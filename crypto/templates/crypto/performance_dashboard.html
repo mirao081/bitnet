@@ -1,0 +1,26 @@
+{% extends "crypto/crypto_base.html" %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'crypto/css/investor_tools.css' %}">
+{% endblock %}
+
+{% block content %}
+<section class="toolsx-subpage">
+  <div class="toolsx-heading-container">
+    <h1 class="toolsx-heading-title">Performance Dashboard</h1>
+    <p class="toolsx-heading-subtitle">
+      Access comprehensive dashboards with portfolio performance, asset allocation, 
+      and risk metrics tailored to your investment strategy.
+    </p>
+  </div>
+
+  <article class="toolsx-panel">
+    <h2 class="toolsx-panel-title">Portfolio Overview</h2>
+    <p class="toolsx-panel-description">
+      Visualize your holdings, track gains and losses, and monitor diversification 
+      across crypto assets.
+    </p>
+  </article>
+</section>
+{% endblock %}
