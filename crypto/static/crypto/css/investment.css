@@ -5105,3 +5105,107 @@ section.investment-canvas canvas {
         padding:35px 3% !important;
     }
 }
+.investment-education-showcase {
+    width:100%;
+    padding:90px 0;
+    position:relative;
+    overflow:hidden;
+    background:
+      radial-gradient(circle at top left,#004aad33,transparent 40%),
+      radial-gradient(circle at bottom right,#7a00ff22,transparent 35%),
+      linear-gradient(180deg,#05070d,#0a1020);
+    text-align:center;
+}
+
+.investment-education-title {
+    font-size:28px;
+    font-weight:800;
+    color:#fff;
+    margin-bottom:20px;
+    text-shadow:0 0 10px #00d8ef,0 0 20px #7a00ff;
+}
+
+.investment-education-description {
+    font-size:16px;
+    color:rgba(255,255,255,.85);
+    line-height:1.6;
+    margin-bottom:25px;
+}
+
+.investment-education-btn {
+    display:inline-block;
+    padding:12px 24px;
+    border-radius:25px;
+    background:#00d8ef;
+    color:#05070d;
+    font-weight:600;
+    text-decoration:none;
+    transition:.3s;
+}
+
+.investment-education-btn:hover {
+    background:#009bb8;
+    color:#fff;
+}
+
+/* Responsive tweaks */
+@media(max-width:600px){
+  .investment-education-title {
+    font-size:22px;
+  }
+  .investment-education-description {
+    font-size:14px;
+  }
+}
+.edu-showcase-block {
+    width:100%;
+    padding:90px 0;
+    position:relative;
+    overflow:hidden;
+    background:
+      radial-gradient(circle at top left,#004aad33,transparent 40%),
+      radial-gradient(circle at bottom right,#7a00ff22,transparent 35%),
+      linear-gradient(180deg,#05070d,#0a1020);
+    text-align:center;
+}
+
+.edu-showcase-title {
+    font-size:28px;
+    font-weight:800;
+    color:#fff;
+    margin-bottom:20px;
+    text-shadow:0 0 10px #00d8ef,0 0 20px #7a00ff;
+}
+
+.edu-showcase-text {
+    font-size:16px;
+    color:rgba(255,255,255,.85);
+    line-height:1.6;
+    margin-bottom:25px;
+}
+
+.edu-showcase-btn {
+    display:inline-block;
+    padding:12px 24px;
+    border-radius:25px;
+    background:#00d8ef;
+    color:#05070d;
+    font-weight:600;
+    text-decoration:none;
+    transition:.3s;
+}
+
+.edu-showcase-btn:hover {
+    background:#009bb8;
+    color:#fff;
+}
+
+/* Responsive tweaks */
+@media(max-width:600px){
+  .edu-showcase-title {
+    font-size:22px;
+  }
+  .edu-showcase-text {
+    font-size:14px;
+  }
+}
