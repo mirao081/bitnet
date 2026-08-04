@@ -1,10 +1,13 @@
 {% extends "crypto/crypto_base.html" %}
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'crypto/css/deposit_guide.css' %}">
 
 {% block content %}
-<section class="guide">
-  <h1>How to Make a Deposit</h1>
-  <p>To complete your first deposit, please follow these steps:</p>
-  <ol>
+<section class="deposit-showcase-block">
+  <h1 class="deposit-showcase-title">How to Make a Deposit</h1>
+  <p class="deposit-showcase-subtitle">To complete your first deposit, please follow these steps:</p>
+  <ol class="deposit-showcase-list">
     <li>Sign up and create your investor account.</li>
     <li>Upload your wallet address securely to your profile.</li>
     <li>Navigate to the <strong>Make Deposit</strong> option in your dashboard.</li>

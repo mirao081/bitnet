@@ -1,0 +1,54 @@
+.deposit-showcase-block {
+    width:100%;
+    padding:90px 0;
+    position:relative;
+    overflow:hidden;
+    background:
+      radial-gradient(circle at top left,#004aad33,transparent 40%),
+      radial-gradient(circle at bottom right,#7a00ff22,transparent 35%),
+      linear-gradient(180deg,#05070d,#0a1020);
+    text-align:center;
+}
+
+.deposit-showcase-title {
+    font-size:28px;
+    font-weight:800;
+    color:#fff;
+    margin-bottom:20px;
+    text-shadow:0 0 10px #00d8ef,0 0 20px #7a00ff;
+}
+
+.deposit-showcase-subtitle {
+    font-size:16px;
+    color:rgba(255,255,255,.85);
+    line-height:1.6;
+    margin-bottom:25px;
+}
+
+.deposit-showcase-list {
+    display:inline-block;
+    text-align:left;
+    font-size:15px;
+    color:rgba(255,255,255,.85);
+    line-height:1.8;
+    background:rgba(255,255,255,.08);
+    padding:20px 30px;
+    border-radius:20px;
+    backdrop-filter:blur(15px);
+    -webkit-backdrop-filter:blur(15px);
+    box-shadow:0 10px 30px rgba(0,0,0,.35);
+}
+
+/* Responsive tweaks */
+@media(max-width:600px){
+  .deposit-showcase-title {
+    font-size:22px;
+  }
+  .deposit-showcase-subtitle {
+    font-size:14px;
+  }
+  .deposit-showcase-list {
+    font-size:13px;
+    padding:15px 20px;
+  }
+}
