@@ -2435,28 +2435,23 @@ align-items:center;
 
 .elite-calculator-row input,
 .elite-calculator-row select,
-#calcResult{
-
+#calcResult {
     height:54px;
-
     border:none;
-
     outline:none;
-
     border-radius:16px;
-
     padding:0 18px;
-
     background:rgba(255,255,255,.10);
-
     backdrop-filter:blur(15px);
-
     color:#fff;
-
     font-size:16px;
-
     border:1px solid rgba(255,255,255,.12);
+}
 
+
+.elite-calculator-row input#btcAmount {
+    width: 80%;  
+    max-width: 200px;
 }
 
 .elite-calculator-row input{
