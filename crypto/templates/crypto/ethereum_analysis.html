@@ -1,21 +1,32 @@
 {% extends "crypto/crypto_base.html" %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'crypto/css/ethereum_analysis.css' %}">
+{% endblock %}
 
 {% block content %}
-<section class="analysis-page">
-  <h1>Ethereum Analysis</h1>
-  <p>
-    Dive into Ethereum’s evolving ecosystem with reports on DeFi, NFTs, staking, 
-    and network upgrades.
-  </p>
+<section class="ethx-showcase">
+  <div class="ethx-heading-container">
+    <h1 class="ethx-heading-title">Ethereum Analysis</h1>
+    <p class="ethx-heading-subtitle">
+      Dive into Ethereum’s evolving ecosystem with reports on DeFi, NFTs, staking, 
+      and network upgrades.
+    </p>
+  </div>
 
-  <article class="analysis-block">
-    <h2>DeFi & NFTs</h2>
-    <p>Track the growth of decentralized finance and NFT marketplaces powered by Ethereum.</p>
+  <article class="ethx-panel">
+    <h2 class="ethx-panel-title">DeFi & NFTs</h2>
+    <p class="ethx-panel-description">
+      Track the growth of decentralized finance and NFT marketplaces powered by Ethereum.
+    </p>
   </article>
 
-  <article class="analysis-block">
-    <h2>Network Upgrades</h2>
-    <p>Coverage of Ethereum 2.0, gas fees, and developer adoption metrics.</p>
+  <article class="ethx-panel">
+    <h2 class="ethx-panel-title">Network Upgrades</h2>
+    <p class="ethx-panel-description">
+      Coverage of Ethereum 2.0, gas fees, and developer adoption metrics.
+    </p>
   </article>
 </section>
 {% endblock %}
