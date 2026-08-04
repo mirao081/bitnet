@@ -460,7 +460,7 @@ def crypto_glossary(request):
 
 def ticker_bar(request):
     instruments = MarketInstrument.objects.all()
-    return render(request, 'crypto_base.html', {'instruments': instruments})
+    return render(request, 'crypto/crypto_base.html', {'instruments': instruments})
 
 def instrument_detail(request, pk):
     instrument = get_object_or_404(MarketInstrument, pk=pk)
