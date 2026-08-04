@@ -1,20 +1,32 @@
 {% extends "crypto/crypto_base.html" %}
-{% block content %}
-<section class="analysis-page">
-  <h1>Altcoin Reports</h1>
-  <p>
-    Discover opportunities beyond BTC and ETH. Our altcoin reports analyze liquidity, 
-    community growth, and project fundamentals.
-  </p>
+{% load static %}
 
-  <article class="analysis-block">
-    <h2>Emerging Projects</h2>
-    <p>Spotlight on promising altcoins with innovative use cases and strong developer communities.</p>
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'crypto/css/altcoin_reports.css' %}">
+{% endblock %}
+
+{% block content %}
+<section class="altx-showcase">
+  <div class="altx-heading-container">
+    <h1 class="altx-heading-title">Altcoin Reports</h1>
+    <p class="altx-heading-subtitle">
+      Discover opportunities beyond BTC and ETH. Our altcoin reports analyze liquidity, 
+      community growth, and project fundamentals.
+    </p>
+  </div>
+
+  <article class="altx-panel">
+    <h2 class="altx-panel-title">Emerging Projects</h2>
+    <p class="altx-panel-description">
+      Spotlight on promising altcoins with innovative use cases and strong developer communities.
+    </p>
   </article>
 
-  <article class="analysis-block">
-    <h2>Market Performance</h2>
-    <p>Comparisons of altcoin market caps, adoption rates, and trading activity.</p>
+  <article class="altx-panel">
+    <h2 class="altx-panel-title">Market Performance</h2>
+    <p class="altx-panel-description">
+      Comparisons of altcoin market caps, adoption rates, and trading activity.
+    </p>
   </article>
 </section>
 {% endblock %}
