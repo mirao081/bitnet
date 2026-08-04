@@ -1,51 +1,59 @@
 {% extends "crypto/crypto_base.html" %}
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'crypto/css/market_analysis.css' %}">
 
 {% block content %}
-<section class="analysis-page">
-  <h1>Market Analysis</h1>
-  <p>
+<section class="analysis-showcase-block">
+  <h1 class="analysis-showcase-title">Market Analysis</h1>
+  <p class="analysis-showcase-subtitle">
     Welcome to Bitnet’s Market Analysis hub. Here you’ll find expert insights, 
     trend reports, and performance reviews across Bitcoin, Ethereum, and altcoins.
   </p>
-  <article class="analysis-block">
-    <h2>Latest Insights</h2>
-    <p>
+
+  <article class="analysis-showcase-card">
+    <h2 class="analysis-card-title">Latest Insights</h2>
+    <p class="analysis-card-text">
       Our analysts highlight trading volumes, investor sentiment, and adoption metrics 
       to help you make smarter investment decisions. Stay informed with weekly updates 
       on price movements, volatility indexes, and institutional activity.
     </p>
   </article>
-  <article class="analysis-block">
-    <h2>Bitcoin Trends</h2>
-    <p>
+
+  <article class="analysis-showcase-card">
+    <h2 class="analysis-card-title">Bitcoin Trends</h2>
+    <p class="analysis-card-text">
       Bitcoin continues to dominate market capitalization. We track miner activity, 
       global regulatory developments, and macroeconomic factors influencing BTC’s performance.
     </p>
-    <a href="{% url 'crypto:bitcoin_reports' %}" class="btn">Read Bitcoin Reports</a>
+    <a href="{% url 'crypto:bitcoin_reports' %}" class="analysis-card-btn">Read Bitcoin Reports</a>
   </article>
-  <article class="analysis-block">
-    <h2>Ethereum Insights</h2>
-    <p>
+
+  <article class="analysis-showcase-card">
+    <h2 class="analysis-card-title">Ethereum Insights</h2>
+    <p class="analysis-card-text">
       Ethereum’s ecosystem is evolving with DeFi, NFTs, and staking. Our reports cover 
       gas fees, network upgrades, and developer adoption to give you a full picture.
     </p>
-    <a href="{% url 'crypto:ethereum_analysis' %}" class="btn">Explore Ethereum Analysis</a>
+    <a href="{% url 'crypto:ethereum_analysis' %}" class="analysis-card-btn">Explore Ethereum Analysis</a>
   </article>
-  <article class="analysis-block">
-    <h2>Altcoin Reports</h2>
-    <p>
+
+  <article class="analysis-showcase-card">
+    <h2 class="analysis-card-title">Altcoin Reports</h2>
+    <p class="analysis-card-text">
       Beyond BTC and ETH, altcoins present unique opportunities. We analyze liquidity, 
       community growth, and project fundamentals to identify promising investments.
     </p>
-    <a href="{% url 'crypto:altcoin_reports' %}" class="btn">View Altcoin Reports</a>
+    <a href="{% url 'crypto:altcoin_reports' %}" class="analysis-card-btn">View Altcoin Reports</a>
   </article>
-  <article class="analysis-block">
-    <h2>Investor Tools</h2>
-    <p>
+
+  <article class="analysis-showcase-card">
+    <h2 class="analysis-card-title">Investor Tools</h2>
+    <p class="analysis-card-text">
       Access interactive charts, sentiment trackers, and performance dashboards. 
       These tools help you visualize market dynamics and make data-driven decisions.
     </p>
-    <a href="#" class="btn">Launch Tools</a>
+    <a href="{% url 'crypto:investor_tools' %}" class="analysis-card-btn analysis-launch-btn">Launch Tools</a>
   </article>
 </section>
 {% endblock %}
