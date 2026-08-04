@@ -2421,16 +2421,11 @@ align-items:center;
         CALCULATOR
 ==============================*/
 
-.elite-calculator-row{
-
-    display:flex;
-
-    gap:15px;
-
-    flex-wrap:wrap;
-
-    align-items:center;
-
+.elite-calculator-row {
+    display: flex;
+    align-items: center;
+    gap: 8px; /* reduce gap from 15px to 8px */
+    flex-wrap: nowrap; /* prevent wrapping so everything stays on one line */
 }
 
 .elite-calculator-row input,
@@ -2449,9 +2444,9 @@ align-items:center;
 }
 
 
-.elite-calculator-row input#btcAmount {
-    width: 80%;  
-    max-width: 200px;
+elite-calculator-row input#btcAmount {
+    flex: 0 0 50%; /* shrink input width more aggressively (about 30% less) */
+    max-width: 160px; /* optional cap for mobile screens */
 }
 
 .elite-calculator-row input{
@@ -2482,16 +2477,12 @@ align-items:center;
 
 }
 
-#calcResult{
-
-    min-width:120px;
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
+#calcResult {
+    flex: 0 0 25%; /* reserve space for result box */
+    min-width: 100px; /* slightly smaller than before */
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 /*==============================
