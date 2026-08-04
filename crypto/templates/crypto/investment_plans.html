@@ -9,12 +9,6 @@
 {% block content %}
 
 <section class="investment-plans-isolated">
-
-    <!-- ==========================================
-         HERO / CAROUSEL
-         JS CLASSES ARE PRESERVED
-    =========================================== -->
-
     <div class="carousel-container investment-plans-carousel">
 
         {% for slide in slides %}
@@ -31,7 +25,6 @@
                     </p>
                 {% endif %}
 
-                <!-- KEEP THESE CLASSES EXACTLY -->
                 <a href="{% url 'crypto:signup' %}"
                    class="btn btn-primary">
                     Get Started
@@ -45,25 +38,18 @@
             </div>
 
         {% endfor %}
-
-        <!-- KEEP THESE FOR JAVASCRIPT -->
         <span class="carousel-prev">&lt;</span>
         <span class="carousel-next">&gt;</span>
 
     </div>
-
-
-    <!-- ==========================================
-         INVESTMENT CARDS
-    =========================================== -->
-
     <div class="investment-plans-card-grid">
 
         {% for card in cards %}
 
             <div class="investment-plans-card">
 
-                <i class="fa-brands fa-bitcoin investment-plans-bitcoin-icon"></i>
+                <i class="fa-brands fa-bitcoin investment-plans-bitcoin-icon bitcoin-icon-rotate"></i>
+
 
                 <h1 class="investment-plans-card-title">
                     {{ card.title }}
@@ -78,12 +64,6 @@
         {% endfor %}
 
     </div>
-
-
-    <!-- ==========================================
-         ABOUT / MARKET
-    =========================================== -->
-
     <div class="investment-plans-about-grid">
 
         <div class="investment-plans-market-card">
