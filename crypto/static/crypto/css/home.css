@@ -2423,10 +2423,11 @@ align-items:center;
 
 .elite-calculator-row {
     display: flex;
-    align-items: center;
-    gap: 8px; /* reduce gap from 15px to 8px */
-    flex-wrap: nowrap; /* prevent wrapping so everything stays on one line */
+    align-items: center;   /* aligns label and select vertically */
+    gap: 10px;             /* spacing between label and select */
+    margin-top: 20px;      /* pushes the whole row down */
 }
+
 
 .elite-calculator-row input,
 .elite-calculator-row select,
@@ -2488,8 +2489,14 @@ elite-calculator-row input#btcAmount {
     margin-top: 20px; /* creates space above the label and select */
 }
 .elite-calculator-row select {
-    background-color: rgba(0,0,0,0.7); /* dark background so options are visible */
-    color: #fff;                        /* white text */
+    background-color: rgba(0,0,0,0.7);
+    color: #fff;
+    height: 54px;
+    border-radius: 16px;
+    border: 1px solid rgba(255,255,255,.12);
+    padding: 0 18px;
+    appearance: none;        /* removes default styling */
+    overflow: visible;       /* ensures options can expand downward */
 }
 .elite-calculator-row select option {
     background-color: #222; /* dark background for options */
