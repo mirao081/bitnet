@@ -2,45 +2,42 @@
 {% load static %}
 {% block content %}
 
-<section class="resources-showcase">
-  <div class="resources-heading-container">
-    <h1 class="resources-heading-title">Investor Resources</h1>
-    <p class="resources-heading-subtitle">
-      Empowering you with knowledge, insights, and tools for smarter crypto investments.
+<section class="resources-showcase-block">
+  <h1 class="resources-showcase-title">Investor Resources</h1>
+  <p class="resources-showcase-subtitle">
+    Empowering you with knowledge, insights, and tools for smarter crypto investments.
+  </p>
+
+  <div class="resources-showcase-card">
+    <h2 class="resources-card-title">Guides</h2>
+    <ul class="resources-card-list">
+      <li>
+        <a href="{% url 'crypto:deposit_guide' %}" class="resources-card-link">
+            How to Make a Deposit
+        </a>
+        <p class="resources-card-text">
+            Step‑by‑step instructions for completing your first deposit securely.
+        </p>
+      </li>
+    </ul>
+  </div>
+
+  <div class="resources-showcase-card">
+    <h2 class="resources-card-title">Market Analysis</h2>
+    <p class="resources-card-text">
+      Stay updated with expert insights into crypto market trends and performance.
     </p>
+    <a href="{% url 'crypto:market_analysis' %}" class="resources-card-btn">Read Articles</a>
   </div>
 
-  <div class="resources-grid-premium">
-    <div class="resources-panel">
-      <h2 class="resources-panel-title">Guides</h2>
-      <ul class="resources-list">
-        <li>
-          <a href="{% url 'crypto:deposit_guide' %}" class="resources-link">
-              How to Make a Deposit
-          </a>
-          <p class="resources-panel-description">
-              Step‑by‑step instructions for completing your first deposit securely.
-          </p>
-        </li>
-      </ul>
-    </div>
-
-    <div class="resources-panel">
-      <h2 class="resources-panel-title">Market Analysis</h2>
-      <p class="resources-panel-description">
-        Stay updated with expert insights into crypto market trends and performance.
-      </p>
-      <a href="{% url 'crypto:market_analysis' %}" class="resources-btn">Read Articles</a>
-    </div>
-
-    <div class="resources-panel">
-      <h2 class="resources-panel-title">Crypto Glossary</h2>
-      <p class="resources-panel-description">
-        A comprehensive glossary of essential crypto and blockchain terms.
-      </p>
-      <a href="{% url 'crypto:crypto_glossary' %}" class="resources-btn">Explore Glossary</a>
-    </div>
+  <div class="resources-showcase-card">
+    <h2 class="resources-card-title">Crypto Glossary</h2>
+    <p class="resources-card-text">
+      A comprehensive glossary of essential crypto and blockchain terms.
+    </p>
+    <a href="{% url 'crypto:crypto_glossary' %}" class="resources-card-btn">Explore Glossary</a>
   </div>
+
 </section>
 
 {% endblock %}
