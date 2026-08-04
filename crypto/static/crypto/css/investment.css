@@ -495,22 +495,19 @@ section.investment-plans-isolated
         0 0 10px #00d8ef,
         0 0 25px #7a00ff !important;
 }
-/* =========================================================
-   BITCOIN ICON BASE STYLE
-   ========================================================= */
+
 .investment-plans-bitcoin-icon {
     display: block !important;
     margin: 0 auto 20px !important;
-    font-size: 42px !important;
-    color: #00d8ef !important;
+    font-size: 92px !important;   
+    color: silver !important;     
+    background-color: grey !important; 
+    border-radius: 50%;         
+    padding: 20px;               
     text-shadow:
-        0 0 10px #00d8ef,
+        0 0 10px silver,
         0 0 25px #7a00ff !important;
 }
-
-/* =========================================================
-   BITCOIN ICON ROTATION ANIMATION
-   ========================================================= */
 .bitcoin-icon-rotate {
     animation: spin 3s linear infinite;
 }
@@ -519,12 +516,6 @@ section.investment-plans-isolated
     from { transform: rotate(0deg); }
     to { transform: rotate(360deg); }
 }
-
-
-
-/* =========================================================
-   CARD TITLES
-   ========================================================= */
 
 section.investment-plans-isolated
 .investment-plans-card-title,
