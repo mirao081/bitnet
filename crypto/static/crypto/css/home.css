@@ -2484,10 +2484,17 @@ elite-calculator-row input#btcAmount {
     justify-content: center;
     align-items: center;
 }
-
-/*==============================
-        CANVAS
-==============================*/
+.elite-calculator-row label {
+    margin-top: 20px; /* creates space above the label and select */
+}
+.elite-calculator-row select {
+    background-color: rgba(0,0,0,0.7); /* dark background so options are visible */
+    color: #fff;                        /* white text */
+}
+.elite-calculator-row select option {
+    background-color: #222; /* dark background for options */
+    color: #fff;            /* white text */
+}
 
 .elite-calculator-canvas{
 
