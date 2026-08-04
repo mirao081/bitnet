@@ -1,0 +1,50 @@
+{% extends "crypto/crypto_base.html" %}
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'crypto/css/investor_tools.css' %}">
+
+{% block content %}
+<section class="tools-showcase-block">
+  <h1 class="tools-showcase-title">Investor Tools</h1>
+  <p class="tools-showcase-subtitle">
+    Welcome to BitnetFX’s Investor Tools hub — empowering you with advanced analytics, 
+    interactive dashboards, and professional insights to make smarter investment decisions.
+  </p>
+
+  <div class="tools-showcase-card">
+    <h2 class="tools-card-title">Interactive Charts</h2>
+    <p class="tools-card-text">
+      Visualize real‑time price movements, trading volumes, and volatility indexes 
+      across Bitcoin, Ethereum, and altcoins.
+    </p>
+    <a href="#" class="tools-card-btn">Launch Charts</a>
+  </div>
+
+  <div class="tools-showcase-card">
+    <h2 class="tools-card-title">Sentiment Tracker</h2>
+    <p class="tools-card-text">
+      Monitor investor sentiment and market psychology with AI‑driven indicators 
+      that highlight bullish and bearish trends.
+    </p>
+    <a href="#" class="tools-card-btn">View Sentiment</a>
+  </div>
+
+  <div class="tools-showcase-card">
+    <h2 class="tools-card-title">Performance Dashboard</h2>
+    <p class="tools-card-text">
+      Access comprehensive dashboards with portfolio performance, asset allocation, 
+      and risk metrics tailored to your investment strategy.
+    </p>
+    <a href="#" class="tools-card-btn">Open Dashboard</a>
+  </div>
+
+  <div class="tools-showcase-card">
+    <h2 class="tools-card-title">AI Insights</h2>
+    <p class="tools-card-text">
+      Leverage BitnetFX’s AI‑powered insights to identify opportunities, 
+      forecast market trends, and optimize your trading strategies.
+    </p>
+    <a href="#" class="tools-card-btn">Get Insights</a>
+  </div>
+</section>
+{% endblock %}
