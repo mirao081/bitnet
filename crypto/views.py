@@ -422,7 +422,7 @@ def faqs(request):
     return render(request, "crypto/faqs.html")
 
 def faq_detail(request):
-    return render(request, "crypto/faqs-content.html")
+    return render(request, "crypto/faqs_content.html")
 
 def terms(request):
     return render(request, "crypto/terms.html")
