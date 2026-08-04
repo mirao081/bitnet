@@ -428,7 +428,7 @@ def terms(request):
     return render(request, "crypto/terms.html")
 
 def terms_detail(request):
-    return render(request, "terms_content.html")
+    return render(request, "crypto/terms_content.html")
 
 def bitcoin_info(request):
     return render(request, "crypto/bitcoin_info.html")
@@ -464,7 +464,7 @@ def ticker_bar(request):
 
 def instrument_detail(request, pk):
     instrument = get_object_or_404(MarketInstrument, pk=pk)
-    return render(request, 'crypto:instrument_detail.html', {'instrument': instrument})
+    return render(request, 'crypto/instrument_detail.html', {'instrument': instrument})
 
 def forex_table_api(request):
     data = {"message": "Forex API placeholder"}
