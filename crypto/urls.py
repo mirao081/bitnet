@@ -32,7 +32,6 @@ urlpatterns = [
     path('resources/', views.resources, name='resources'),
     path('deposit-guide/', views.deposit_guide, name='deposit_guide'),
     path('market-analysis/', views.market_analysis, name='market_analysis'),
-    path('market-analysis/', views.market_analysis, name='market_analysis'),
     path('bitcoin-reports/', views.bitcoin_reports, name='bitcoin_reports'),
     path('ethereum-analysis/', views.ethereum_analysis, name='ethereum_analysis'),
     path('altcoin-reports/', views.altcoin_reports, name='altcoin_reports'),
