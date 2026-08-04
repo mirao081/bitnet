@@ -439,6 +439,10 @@ def buy_bitcoin(request):
 def resources(request):
     return render(request, 'crypto/resources.html')
 
+def investor_tools(request):
+    return render(request, "crypto/investor_tools.html")
+
+
 def deposit_guide(request):
     return render(request, 'crypto/deposit_guide.html')
 
