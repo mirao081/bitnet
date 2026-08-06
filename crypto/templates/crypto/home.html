@@ -21,54 +21,36 @@
   </div>
 </section>
 
-<!-- LUXURY -->
 <section class="elite-investment-showcase">
-
     <div class="elite-investment-wrapper">
 
         <div class="elite-heading-box">
-
             <div class="elite-badge">
                 ACCESSIBLE FOR EVERYONE
             </div>
-
             <h2 class="elite-main-title">
                 {{ accessible.title }}
             </h2>
-
             <p class="elite-subtitle">
                 Trade Smarter With A Secure Investment Platform Designed For Modern Investors...
             </p>
-
             <p class="elite-description">
                 Discover a powerful ecosystem where innovation meets reliability...
             </p>
-
         </div>
 
-        <div class="elite-heading-box">
-
-            <div class="elite-badge">
-                ACCESSIBLE FOR EVERYONE
-            </div>
-
-            <h2 class="elite-main-title">
-                Global Investment
-            </h2>
-
-            <p class="elite-subtitle">
-                Access world-class financial opportunities from anywhere with cutting-edge technology.
-            </p>
-
-            <p class="elite-description">
-                Build a diversified portfolio using advanced market insights, powerful analytics, and enterprise-grade security.
-            </p>
-
+        <div class="elite-investment-grid">
+            {% for card in accessible_cards %}
+                <div class="elite-investment-card">
+                    <h3>{{ card.title }}</h3>
+                    <p>{{ card.content }}</p>
+                </div>
+            {% endfor %}
         </div>
 
     </div>
-
 </section>
+
 
 <!--==============================
       ELITE FEATURE CARDS

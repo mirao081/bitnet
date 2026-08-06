@@ -14,9 +14,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'crypto',
-    'users',
-    'adminpanel',
+    'crypto.apps.CryptoConfig',
+    'users.apps.UsersConfig',
+    'adminpanel.apps.AdminpanelConfig',
     'django.contrib.humanize',
     'django_recaptcha',
 ]

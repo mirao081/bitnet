@@ -86,6 +86,9 @@ def home(request):
     feature_items = FeatureItem.objects.all()
     instruments = MarketInstrument.objects.all()
 
+    # Split the main title into words for template looping
+    title_words = swing_section.main_title.split() if swing_section and swing_section.main_title else []
+
     context = {
         "settings": settings,
         "nav_links": nav_links,
@@ -94,6 +97,7 @@ def home(request):
         "accessible_cards": accessible_cards,
         "token_sale": token_sale,
         "swing_section": swing_section,
+        "title_words": title_words,
         "exchange_section": exchange_section,
         "plans": plans,
         "calculator": calculator,
