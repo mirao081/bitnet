@@ -1,9 +1,4 @@
 document.addEventListener("DOMContentLoaded", function () {
-
-    /* =========================================================
-       MARKET CHART
-       ========================================================= */
-
     const chartCanvas = document.getElementById("marketChart");
 
     if (chartCanvas && typeof Chart !== "undefined") {
@@ -75,13 +70,6 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         });
     }
-
-
-    /* =========================================================
-       MOVING / ROTATING CANVAS
-       moveableCanvas
-       ========================================================= */
-
     const canvas = document.getElementById("moveableCanvas");
 
     if (canvas) {
@@ -215,7 +203,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
 
-        /* Animation loop */
+   
 
         function animate() {
 
@@ -237,16 +225,11 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
 
-        /* Start animation */
+     
 
         animate();
 
     }
-
-
-    /* =========================================================
-       ROI CHART
-       ========================================================= */
 
     const roiCtx =
         document.getElementById("roiChart");
@@ -292,11 +275,6 @@ document.addEventListener("DOMContentLoaded", function () {
         );
 
     }
-
-
-    /* =========================================================
-       RISK VS REWARD CHART
-       ========================================================= */
 
     const riskCtx =
         document.getElementById("riskRewardChart");
@@ -360,12 +338,6 @@ document.addEventListener("DOMContentLoaded", function () {
         );
 
     }
-
-
-    /* =========================================================
-       PORTFOLIO CHART
-       ========================================================= */
-
     const portfolioCtx =
         document.getElementById("portfolioChart");
 
@@ -413,12 +385,6 @@ document.addEventListener("DOMContentLoaded", function () {
         );
 
     }
-
-
-    /* =========================================================
-       MARKET VOLUME CHART
-       ========================================================= */
-
     const volumeCtx =
         document.getElementById("volumeChart");
 
@@ -454,28 +420,17 @@ document.addEventListener("DOMContentLoaded", function () {
                             1500,
                             2000
                         ],
-
                         backgroundColor:
                             "rgba(192,192,192,0.8)"
                     }]
                 },
-
                 options: {
-
                     responsive: true,
-
                     maintainAspectRatio: false
-
                 }
             }
         );
-
     }
-
-
-    /* =========================================================
-       ROTATING CRYPTO CANVASES
-       ========================================================= */
 
     if (
         window.investmentCanvasImages &&
@@ -517,11 +472,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
 });
 
-
-/* =============================================================
-   ROTATE CANVAS
-   ============================================================= */
-
 function rotateCanvas(id, imageSrc) {
 
     const canvas =
@@ -546,13 +496,6 @@ function rotateCanvas(id, imageSrc) {
 
     let angle = 0;
 
-
-    /*
-     * Important:
-     * crossOrigin is intentionally NOT used here because
-     * these are local Django static files.
-     */
-
     img.onload = function () {
 
         function draw() {
@@ -567,24 +510,13 @@ function rotateCanvas(id, imageSrc) {
 
             ctx.save();
 
-
-            /* Move origin to center */
-
             ctx.translate(
                 canvas.width / 2,
                 canvas.height / 2
             );
 
 
-            /* Rotate image */
-
             ctx.rotate(angle);
-
-
-            /*
-             * Draw image centered.
-             * 100x100 keeps the original appearance.
-             */
 
             ctx.drawImage(
                 img,
@@ -597,30 +529,15 @@ function rotateCanvas(id, imageSrc) {
 
             ctx.restore();
 
-
-            /* Increase rotation */
-
             angle += 0.02;
-
-
-            /* Continue animation */
 
             requestAnimationFrame(draw);
 
         }
 
-
-        /* Start rotation */
-
         draw();
 
     };
-
-
-    /*
-     * If the image cannot be loaded,
-     * report it instead of silently failing.
-     */
 
     img.onerror = function () {
 
@@ -630,11 +547,6 @@ function rotateCanvas(id, imageSrc) {
         );
 
     };
-
-
-    /*
-     * Start loading the image.
-     */
 
     img.src = imageSrc;
 

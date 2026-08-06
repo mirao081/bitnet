@@ -8,59 +8,60 @@
         <p class="funds-subtitle">Securely fund your investment account</p>
     </div>
 
-   
-    <div class="funds-grid">
-        <div class="funds-card">
-            <h2 class="funds-card-title">Deposit with Bitcoin</h2>
-            <form method="post" action="{% url 'users:make_deposit' %}">
-                {% csrf_token %}
-                <label for="btc-amount" class="funds-label">Amount (BTC)</label>
-                <input type="number" id="btc-amount" name="amount" placeholder="Enter BTC amount" class="funds-input" required>
-                <input type="hidden" name="currency" value="BTC">
-                <p class="funds-note">Minimum deposit: $200</p>
-                <button type="submit" class="funds-btn">Deposit BTC</button>
-            </form>
-        </div>
+    {% if request.user.userprofile.verification_status == "verified" %}
+        <div class="funds-grid">
+            <div class="funds-card">
+                <h2 class="funds-card-title">Deposit with Bitcoin</h2>
+                <form method="post" action="{% url 'users:make_deposit' %}">
+                    {% csrf_token %}
+                    <label for="btc-amount" class="funds-label">Amount (BTC)</label>
+                    <input type="number" id="btc-amount" name="amount" placeholder="Enter BTC amount" class="funds-input" required>
+                    <input type="hidden" name="currency" value="BTC">
+                    <p class="funds-note">Minimum deposit: $200</p>
+                    <button type="submit" class="funds-btn">Deposit BTC</button>
+                </form>
+            </div>
 
-   
-        <div class="funds-card">
-            <h2 class="funds-card-title">Deposit with Ethereum</h2>
-            <form method="post" action="{% url 'users:make_deposit' %}">
-                {% csrf_token %}
-                <label for="eth-amount" class="funds-label">Amount (ETH)</label>
-                <input type="number" id="eth-amount" name="amount" placeholder="Enter ETH amount" class="funds-input" required>
-                <input type="hidden" name="currency" value="ETH">
-                <p class="funds-note">Minimum deposit: $200</p>
-                <button type="submit" class="funds-btn">Deposit ETH</button>
-            </form>
-        </div>
+            <div class="funds-card">
+                <h2 class="funds-card-title">Deposit with Ethereum</h2>
+                <form method="post" action="{% url 'users:make_deposit' %}">
+                    {% csrf_token %}
+                    <label for="eth-amount" class="funds-label">Amount (ETH)</label>
+                    <input type="number" id="eth-amount" name="amount" placeholder="Enter ETH amount" class="funds-input" required>
+                    <input type="hidden" name="currency" value="ETH">
+                    <p class="funds-note">Minimum deposit: $200</p>
+                    <button type="submit" class="funds-btn">Deposit ETH</button>
+                </form>
+            </div>
 
-   
-        <div class="funds-card">
-            <h2 class="funds-card-title">Deposit with USDT ERC‑20</h2>
-            <form method="post" action="{% url 'users:make_deposit' %}">
-                {% csrf_token %}
-                <label for="usdt-erc20-amount" class="funds-label">Amount (USDT ERC‑20)</label>
-                <input type="number" id="usdt-erc20-amount" name="amount" placeholder="Enter USDT ERC‑20 amount" class="funds-input" required>
-                <input type="hidden" name="currency" value="USDT ERC20">
-                <p class="funds-note">Minimum deposit: $200</p>
-                <button type="submit" class="funds-btn">Deposit USDT ERC‑20</button>
-            </form>
-        </div>
+            <div class="funds-card">
+                <h2 class="funds-card-title">Deposit with USDT ERC‑20</h2>
+                <form method="post" action="{% url 'users:make_deposit' %}">
+                    {% csrf_token %}
+                    <label for="usdt-erc20-amount" class="funds-label">Amount (USDT ERC‑20)</label>
+                    <input type="number" id="usdt-erc20-amount" name="amount" placeholder="Enter USDT ERC‑20 amount" class="funds-input" required>
+                    <input type="hidden" name="currency" value="USDT ERC20">
+                    <p class="funds-note">Minimum deposit: $200</p>
+                    <button type="submit" class="funds-btn">Deposit USDT ERC‑20</button>
+                </form>
+            </div>
 
-      
-        <div class="funds-card">
-            <h2 class="funds-card-title">Deposit with USDT TRC‑20</h2>
-            <form method="post" action="{% url 'users:make_deposit' %}">
-                {% csrf_token %}
-                <label for="usdt-trc20-amount" class="funds-label">Amount (USDT TRC‑20)</label>
-                <input type="number" id="usdt-trc20-amount" name="amount" placeholder="Enter USDT TRC‑20 amount" class="funds-input" required>
-                <input type="hidden" name="currency" value="USDT TRC20">
-                <p class="funds-note">Minimum deposit: $200</p>
-                <button type="submit" class="funds-btn">Deposit USDT TRC‑20</button>
-            </form>
+            <div class="funds-card">
+                <h2 class="funds-card-title">Deposit with USDT TRC‑20</h2>
+                <form method="post" action="{% url 'users:make_deposit' %}">
+                    {% csrf_token %}
+                    <label for="usdt-trc20-amount" class="funds-label">Amount (USDT TRC‑20)</label>
+                    <input type="number" id="usdt-trc20-amount" name="amount" placeholder="Enter USDT TRC‑20 amount" class="funds-input" required>
+                    <input type="hidden" name="currency" value="USDT TRC20">
+                    <p class="funds-note">Minimum deposit: $200</p>
+                    <button type="submit" class="funds-btn">Deposit USDT TRC‑20</button>
+                </form>
+            </div>
         </div>
-
-    </div>
+    {% else %}
+        <div class="funds-warning">
+            <p>⚠️ Your account is not verified. Please wait for admin approval before making deposits.</p>
+        </div>
+    {% endif %}
 </div>
 {% endblock %}

@@ -116,7 +116,6 @@ class ReferralCommission(models.Model):
     
 
 class Deposit(models.Model):
-
     STATUS_CHOICES = [
         ("pending", "Pending"),
         ("approved", "Approved"),
@@ -130,24 +129,17 @@ class Deposit(models.Model):
     ]
 
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-
     amount = models.DecimalField(max_digits=12, decimal_places=2)
-
-    currency = models.CharField(
-        max_length=20,
-        choices=CURRENCY_CHOICES
-    )
-
-    status = models.CharField(
-        max_length=20,
-        choices=STATUS_CHOICES,
-        default="pending"
-    )
-
-    # Prevents paying the referral bonus more than once
+    currency = models.CharField(max_length=20, choices=CURRENCY_CHOICES)
+    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default="pending")
     bonus_paid = models.BooleanField(default=False)
-
     created_at = models.DateTimeField(auto_now_add=True)
+
+    def save(self, *args, **kwargs):
+        # Restrict deposits unless user is verified
+        if self.user.userprofile.verification_status != "verified":
+            raise PermissionError("Admin must verify your account before deposits.")
+        super().save(*args, **kwargs)
 
     def __str__(self):
         return f"{self.user.username} Deposit {self.amount}"

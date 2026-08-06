@@ -22,6 +22,7 @@ import logging
 from django.urls import reverse
 from django.contrib.auth.models import User
 from django.contrib.admin.views.decorators import staff_member_required
+from django.http import HttpResponseForbidden
 import json
 import requests
 import base64
@@ -2061,4 +2062,15 @@ def company_wallet(request, asset):
 
     return JsonResponse({"error": "Invalid asset."}, status=400)
 
+def create_deposit(request):
+    user = request.user
+    if user.userprofile.verification_status != "verified":
+        return HttpResponseForbidden("Your account is not verified. Please wait for admin approval.")
 
+    if request.method == "POST":
+        amount = request.POST.get("amount")
+        currency = request.POST.get("currency")
+        Deposit.objects.create(user=user, amount=amount, currency=currency)
+        return redirect("deposit_success")
+
+    return render(request, "users/deposit_form.html")
