@@ -118,6 +118,15 @@
 /*==================================================
             ELITE INVESTMENT SHOWCASE
 ==================================================*/
+.home-hero {
+  margin-bottom: 5px; /* desktop gap */
+}
+
+@media (max-width: 768px) {
+  .home-hero {
+    margin-bottom: 0; /* mobile gap */
+  }
+}
 
 .elite-investment-showcase{
 
