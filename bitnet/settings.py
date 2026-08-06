@@ -72,9 +72,13 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 USE_TZ = True
 
-LOGIN_URL = '/users/login/'
+# 🔑 Login settings
+# Regular users log in via crypto app (/login/)
+LOGIN_URL = '/login/'
+# After login, users go to their dashboard
 LOGIN_REDIRECT_URL = '/users/dashboard/'
-LOGOUT_REDIRECT_URL = '/users/login/'
+# After logout, redirect back to login
+LOGOUT_REDIRECT_URL = '/login/'
 
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
@@ -88,10 +92,12 @@ STATICFILES_DIRS = [
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
+# 🔑 reCAPTCHA keys
 RECAPTCHA_PUBLIC_KEY = "6LfYRWotAAAAADZOYTAPexRxP48RWIDrfj7sCAaj"
 RECAPTCHA_PRIVATE_KEY = "6LfYRWotAAAAAAUahZ20rCzW6f9ksHJyMfXsH9WV"
 RECAPTCHA_USE_SSL = True
 
+# 🔑 Email settings
 DEFAULT_FROM_EMAIL = "chineduarize4@gmail.com"
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 EMAIL_HOST = "smtp.gmail.com"
