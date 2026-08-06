@@ -22,7 +22,6 @@ import logging
 from django.urls import reverse
 from django.contrib.auth.models import User
 from django.contrib.admin.views.decorators import staff_member_required
-from django.http import HttpResponseForbidden
 import json
 import requests
 import base64
@@ -1089,13 +1088,21 @@ MIN_DEPOSIT = Decimal("200.00")
 def make_deposit(request):
     profile = UserProfile.objects.get(user=request.user)
 
+    # Restrict immediately if not verified
+    if profile.verification_status != "verified":
+        messages.error(request, "⚠️ Your account is not verified. Please wait for admin approval before making deposits.")
+        return redirect("users:dashboard")  # or wherever you want them redirected
+
     if request.method == "POST":
         amount = Decimal(request.POST.get("amount"))
         currency = request.POST.get("currency")
 
+        # Minimum deposit check
         if amount < MIN_DEPOSIT:
             messages.error(request, f"The minimum deposit is ${MIN_DEPOSIT}. Please enter a valid amount.")
             return redirect("users:make_deposit")
+
+        # Update balances
         if currency == "BTC":
             profile.btc_balance += amount
         elif currency == "ETH":
@@ -1112,6 +1119,7 @@ def make_deposit(request):
 
         profile.save()
 
+        # Create deposit record
         deposit = Deposit.objects.create(
             user=request.user,
             amount=amount,
@@ -1121,8 +1129,7 @@ def make_deposit(request):
 
         return redirect("users:deposit_invoice", deposit_id=deposit.id, currency=currency)
 
-    return render(request, "users/make_deposit.html")
-
+    return render(request, "users/deposit.html")
 
 @login_required
 def deposit_invoice(request, deposit_id, currency):
@@ -2062,15 +2069,3 @@ def company_wallet(request, asset):
 
     return JsonResponse({"error": "Invalid asset."}, status=400)
 
-def create_deposit(request):
-    user = request.user
-    if user.userprofile.verification_status != "verified":
-        return HttpResponseForbidden("Your account is not verified. Please wait for admin approval.")
-
-    if request.method == "POST":
-        amount = request.POST.get("amount")
-        currency = request.POST.get("currency")
-        Deposit.objects.create(user=user, amount=amount, currency=currency)
-        return redirect("deposit_success")
-
-    return render(request, "users/deposit_form.html")
