@@ -17,7 +17,7 @@
 /* Hero Section */
 .home-hero {
     text-align: center;
-    padding: 80px 20px;   /* reduced gap above by more 15px */
+    padding: 80px 20px 5px 20px;   /* top right bottom left → bottom = 5px */
     background: linear-gradient(135deg, #0f0f0f, #1a1a1a);
     color: #fff;
     position: relative;
@@ -114,18 +114,10 @@
         font-size: 0.85rem;
     }
 }
-
-/*==================================================
-            ELITE INVESTMENT SHOWCASE
-==================================================*/
-.home-hero {
-  margin-bottom: 5px; /* desktop gap */
-}
-
 @media (max-width: 768px) {
-  .home-hero {
-    margin-bottom: 0; /* mobile gap */
-  }
+    .home-hero {
+        padding: 50px 15px 0 15px; /* bottom = 0 on mobile */
+    }
 }
 
 .elite-investment-showcase{
