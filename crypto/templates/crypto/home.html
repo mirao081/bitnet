@@ -24,7 +24,6 @@
 <section class="elite-investment-showcase">
     <div class="elite-investment-wrapper">
 
-        <!-- Heading and cards grouped together -->
         <div class="elite-heading-box">
             <div class="elite-badge">
                 ACCESSIBLE FOR EVERYONE
@@ -42,12 +41,20 @@
                 Discover a powerful ecosystem where innovation meets reliability...
             </p>
 
-            <!-- Cards directly under the title -->
+            <!-- Unified cards: image + text together -->
             <div class="elite-investment-grid">
                 {% for card in accessible_cards %}
                     <div class="elite-investment-card">
-                        <h3>{{ card.title }}</h3>
-                        <p>{{ card.content }}</p>
+
+                        <div class="elite-image-wrapper">
+                            <img src="{{ card.image.url }}" alt="{{ card.title }}" class="elite-feature-image">
+                        </div>
+
+                        <div class="elite-feature-content">
+                            <h3 class="elite-feature-title">{{ card.title }}</h3>
+                            <p class="elite-feature-text">{{ card.description }}</p>
+                        </div>
+
                     </div>
                 {% endfor %}
             </div>
@@ -56,48 +63,6 @@
     </div>
 </section>
 
-
-<!--==============================
-      ELITE FEATURE CARDS
-================================-->
-
-
-<section class="elite-feature-gallery">
-
-    <div class="elite-feature-grid">
-
-        {% for card in accessible_cards %}
-
-        <div class="elite-feature-card">
-
-            <div class="elite-image-wrapper">
-
-                <img
-                    src="{{ card.image.url }}"
-                    alt="{{ card.title }}"
-                    class="elite-feature-image">
-
-            </div>
-
-            <div class="elite-feature-content">
-
-                <h3 class="elite-feature-title">
-                    {{ card.title }}
-                </h3>
-
-                <p class="elite-feature-text">
-                    {{ card.description }}
-                </p>
-
-            </div>
-
-        </div>
-
-        {% endfor %}
-
-    </div>
-
-</section>
 <!--==============================
         ELITE TOKEN SALE
 ================================-->
