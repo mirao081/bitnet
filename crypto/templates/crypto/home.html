@@ -21,47 +21,66 @@
   </div>
 </section>
 
-<section class="elite-investment-showcase">
-    <div class="elite-investment-wrapper">
 
-        <div class="elite-heading-box">
-            <div class="elite-badge">
-                ACCESSIBLE FOR EVERYONE
-            </div>
 
-            <h2 class="elite-main-title">
-                {{ accessible.title }}
-            </h2>
+<section class="home-accessible-showcase">
 
-            <p class="elite-subtitle">
-                Trade Smarter With A Secure Investment Platform Designed For Modern Investors...
-            </p>
+    <div class="home-accessible-heading">
 
-            <p class="elite-description">
-                Discover a powerful ecosystem where innovation meets reliability...
-            </p>
-
-            <!-- Unified cards: image + text together -->
-            <div class="elite-investment-grid">
-                {% for card in accessible_cards %}
-                    <div class="elite-investment-card">
-
-                        <div class="elite-image-wrapper">
-                            <img src="{{ card.image.url }}" alt="{{ card.title }}" class="elite-feature-image">
-                        </div>
-
-                        <div class="elite-feature-content">
-                            <h3 class="elite-feature-title">{{ card.title }}</h3>
-                            <p class="elite-feature-text">{{ card.description }}</p>
-                        </div>
-
-                    </div>
-                {% endfor %}
-            </div>
+        <div class="home-accessible-badge">
+            ACCESSIBLE FOR EVERYONE
         </div>
 
+        <h2 class="home-accessible-title">
+            {{ accessible.title }}
+        </h2>
+
+        <p class="home-accessible-subtitle">
+            Trade Smarter With A Secure Investment Platform Designed For Modern Investors...
+        </p>
+
+        <p class="home-accessible-description">
+            Discover a powerful ecosystem where innovation meets reliability...
+        </p>
+
     </div>
+
+
+    <div class="home-accessible-grid">
+
+        {% for card in accessible_cards %}
+
+        <div class="home-accessible-card">
+
+            <div class="home-accessible-image-wrapper">
+                <img
+                    src="{{ card.image.url }}"
+                    alt="{{ card.title }}"
+                    class="home-accessible-image"
+                >
+            </div>
+
+            <div class="home-accessible-content">
+
+                <h3 class="home-accessible-card-title">
+                    {{ card.title }}
+                </h3>
+
+                <p class="home-accessible-card-description">
+                    {{ card.description }}
+                </p>
+
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
 </section>
+
+
 
 <!--==============================
         ELITE TOKEN SALE
