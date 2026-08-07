@@ -3741,9 +3741,13 @@ min-height:300px;
 
 
 /* =========================================================
-   HOME PAGE — ZERO SECTION SPACING
-   Removes vertical spacing between major home sections.
+   HOME PAGE — 5PX SECTION SPACING
+   Keeps sections tight with a small 5px separation.
    ========================================================= */
+
+/* =========================
+   ALL MAJOR HOME SECTIONS
+   ========================= */
 
 .elite-investment-showcase,
 .elite-feature-gallery,
@@ -3754,46 +3758,63 @@ min-height:300px;
 .elite-calculator-showcase,
 .elite-feature-showcase,
 .home-accessible-showcase {
-    padding-top: 0 !important;
-    padding-bottom: 0 !important;
+    padding-top: 5px !important;
+    padding-bottom: 5px !important;
     margin-top: 0 !important;
     margin-bottom: 0 !important;
 }
 
-/* Remove internal spacing that can create visible gaps */
 
+/* =========================
+   INTERNAL SECTION SPACING
+   ========================= */
+
+/* Accessible section heading */
 .home-accessible-heading {
     margin-top: 0 !important;
-    margin-bottom: 0 !important;
+    margin-bottom: 5px !important;
 }
 
+
+/* Swing heading */
 .elite-swing-title {
-    margin-top: 0 !important;
-    margin-bottom: 0 !important;
+    margin-top: 5px !important;
+    margin-bottom: 5px !important;
 }
 
+
+/* Exchange icons */
 .elite-exchange-icons-grid {
-    margin-top: 0 !important;
+    margin-top: 5px !important;
 }
 
+
+/* Investment plans heading */
 .elite-plan-title {
-    margin-top: 0 !important;
+    margin-top: 5px !important;
 }
 
+
+/* Investment plans subtitle */
 .elite-plan-subtitle {
-    margin-bottom: 0 !important;
+    margin-bottom: 5px !important;
 }
 
+
+/* Feature panels */
 .elite-feature-panel {
     margin-bottom: 0 !important;
 }
 
+
+/* Calculator canvas */
 .home-canvas {
-    margin-top: 0 !important;
+    margin-top: 5px !important;
 }
 
+
 /* =========================================================
-   ALL RESPONSIVE BREAKPOINTS — KEEP ZERO SPACING
+   TABLET — 5PX SPACING
    ========================================================= */
 
 @media (max-width: 991px) {
@@ -3807,13 +3828,43 @@ min-height:300px;
     .elite-calculator-showcase,
     .elite-feature-showcase,
     .home-accessible-showcase {
-        padding-top: 0 !important;
-        padding-bottom: 0 !important;
+        padding-top: 5px !important;
+        padding-bottom: 5px !important;
         margin-top: 0 !important;
         margin-bottom: 0 !important;
     }
 
+    .home-accessible-heading {
+        margin-top: 0 !important;
+        margin-bottom: 5px !important;
+    }
+
+    .elite-swing-title {
+        margin-top: 5px !important;
+        margin-bottom: 5px !important;
+    }
+
+    .elite-plan-title {
+        margin-top: 5px !important;
+    }
+
+    .elite-plan-subtitle {
+        margin-bottom: 5px !important;
+    }
+
+    .elite-exchange-icons-grid {
+        margin-top: 5px !important;
+    }
+
+    .home-canvas {
+        margin-top: 5px !important;
+    }
 }
+
+
+/* =========================================================
+   MOBILE — 5PX SPACING
+   ========================================================= */
 
 @media (max-width: 600px) {
 
@@ -3826,13 +3877,43 @@ min-height:300px;
     .elite-calculator-showcase,
     .elite-feature-showcase,
     .home-accessible-showcase {
-        padding-top: 0 !important;
-        padding-bottom: 0 !important;
+        padding-top: 5px !important;
+        padding-bottom: 5px !important;
         margin-top: 0 !important;
         margin-bottom: 0 !important;
     }
 
+    .home-accessible-heading {
+        margin-top: 0 !important;
+        margin-bottom: 5px !important;
+    }
+
+    .elite-swing-title {
+        margin-top: 5px !important;
+        margin-bottom: 5px !important;
+    }
+
+    .elite-plan-title {
+        margin-top: 5px !important;
+    }
+
+    .elite-plan-subtitle {
+        margin-bottom: 5px !important;
+    }
+
+    .elite-exchange-icons-grid {
+        margin-top: 5px !important;
+    }
+
+    .home-canvas {
+        margin-top: 5px !important;
+    }
 }
+
+
+/* =========================================================
+   SMALL PHONES — 5PX SPACING
+   ========================================================= */
 
 @media (max-width: 380px) {
 
@@ -3845,10 +3926,35 @@ min-height:300px;
     .elite-calculator-showcase,
     .elite-feature-showcase,
     .home-accessible-showcase {
-        padding-top: 0 !important;
-        padding-bottom: 0 !important;
+        padding-top: 5px !important;
+        padding-bottom: 5px !important;
         margin-top: 0 !important;
         margin-bottom: 0 !important;
     }
 
+    .home-accessible-heading {
+        margin-top: 0 !important;
+        margin-bottom: 5px !important;
+    }
+
+    .elite-swing-title {
+        margin-top: 5px !important;
+        margin-bottom: 5px !important;
+    }
+
+    .elite-plan-title {
+        margin-top: 5px !important;
+    }
+
+    .elite-plan-subtitle {
+        margin-bottom: 5px !important;
+    }
+
+    .elite-exchange-icons-grid {
+        margin-top: 5px !important;
+    }
+
+    .home-canvas {
+        margin-top: 5px !important;
+    }
 }
