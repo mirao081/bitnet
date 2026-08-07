@@ -13,9 +13,10 @@ from .models import (
     UserKYC,
     ActiveInvestment,
     Referral,
-    ReferralCommission,   # <-- Add this
+    ReferralCommission,
     UserProfile,
     UserBalance,
+    UserVerification,   # ✅ make sure this is imported
 )
 
 
@@ -41,7 +42,6 @@ def notify(user, type, message):
     return note
 
 
-
 @receiver(post_save, sender=User)
 def new_user_setup(sender, instance, created, **kwargs):
     if created:
@@ -50,8 +50,6 @@ def new_user_setup(sender, instance, created, **kwargs):
             "signup",
             f"Welcome {instance.username}, your account has been created!"
         )
-
-      
         UserProfile.objects.get_or_create(user=instance)
         UserBalance.objects.get_or_create(user=instance)
 
@@ -62,12 +60,9 @@ def save_user_profile(sender, instance, **kwargs):
         instance.userprofile.save()
 
 
-
-
 @receiver(post_save, sender=Deposit)
 def deposit_notification(sender, instance, **kwargs):
     if instance.status == "approved":
-
         profile = UserProfile.objects.get(user=instance.user)
         profile.usd_balance += instance.amount
         profile.save()
@@ -79,11 +74,9 @@ def deposit_notification(sender, instance, **kwargs):
         )
 
 
-
 @receiver(post_save, sender=Withdrawal)
 def withdrawal_notification(sender, instance, **kwargs):
     if instance.status == "approved":
-
         notify(
             instance.user,
             "withdrawal",
@@ -91,12 +84,9 @@ def withdrawal_notification(sender, instance, **kwargs):
         )
 
 
-
-
 @receiver(post_save, sender=UserKYC)
 def kyc_notification(sender, instance, **kwargs):
     if instance.status == "approved":
-
         notify(
             instance.user,
             "verification",
@@ -104,12 +94,9 @@ def kyc_notification(sender, instance, **kwargs):
         )
 
 
-
-
 @receiver(post_save, sender=ActiveInvestment)
 def investment_completed(sender, instance, **kwargs):
     if instance.status == "completed":
-
         notify(
             instance.user,
             "investment",
@@ -117,11 +104,9 @@ def investment_completed(sender, instance, **kwargs):
         )
 
 
-
 @receiver(post_save, sender=Referral)
 def referral_signup(sender, instance, created, **kwargs):
     if created and instance.referrer:
-
         notify(
             instance.referrer,
             "referral",
@@ -129,15 +114,10 @@ def referral_signup(sender, instance, created, **kwargs):
         )
 
 
-
 @receiver(post_save, sender=Deposit)
 def referral_bonus(sender, instance, **kwargs):
-
-    # Only process approved deposits
     if instance.status != "approved":
         return
-
-    # Don't pay twice
     if instance.bonus_paid:
         return
 
@@ -152,16 +132,12 @@ def referral_bonus(sender, instance, **kwargs):
         return
 
     referrer = referral.referrer
-
     profile, _ = UserProfile.objects.get_or_create(user=referrer)
 
-    # 7% commission
     bonus = instance.amount * Decimal("0.07")
-
     profile.bonus_balance += bonus
     profile.save()
 
-    # Save commission history
     ReferralCommission.objects.create(
         referrer=referrer,
         referral=instance.user,
@@ -169,7 +145,6 @@ def referral_bonus(sender, instance, **kwargs):
         commission_amount=bonus,
     )
 
-    # Mark this deposit as paid
     instance.bonus_paid = True
     instance.save(update_fields=["bonus_paid"])
 
@@ -179,6 +154,18 @@ def referral_bonus(sender, instance, **kwargs):
         f"You earned ${bonus} (7%) from {instance.user.username}'s deposit."
     )
 
-    print(
-        f"{referrer.username} received ${bonus} referral bonus."
-    )
+    print(f"{referrer.username} received ${bonus} referral bonus.")
+
+
+# ✅ NEW: keep UserProfile.verification_status in sync with UserVerification.is_verified
+@receiver(post_save, sender=UserVerification)
+def sync_verification_status(sender, instance, **kwargs):
+    try:
+        profile = UserProfile.objects.get(user=instance.user)
+        if instance.is_verified:
+            profile.verification_status = "verified"
+        else:
+            profile.verification_status = "pending"
+        profile.save(update_fields=["verification_status"])
+    except UserProfile.DoesNotExist:
+        print(f"No UserProfile found for {instance.user.username}")
