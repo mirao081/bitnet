@@ -3155,7 +3155,7 @@ min-height:300px;
 
 .home-accessible-image-wrapper {
     width: 100%;
-    height: 150px !important;
+    height: 150px;
 
     overflow: hidden;
     position: relative;
@@ -3167,16 +3167,17 @@ min-height:300px;
 
 
 .home-accessible-image {
-    width: 100% !important;
-    height: 150px !important;
+    width: 100%;
+    height: 100%;
 
     display: block;
 
     object-fit: cover;
     object-position: center;
 
-    transition: transform .5s ease;
+    transition: transform 0.5s ease;
 }
+
 .home-accessible-card:hover .home-accessible-image {
     transform: scale(1.05);
 }
@@ -3262,19 +3263,17 @@ min-height:300px;
 }
 @media (max-width: 991px) {
 
-    .home-accessible-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 25px;
-    }
-
     .home-accessible-image-wrapper {
-        width: 100% !important;
-        height: 135px !important;
+        width: 100%;
+        height: 130px;
     }
 
     .home-accessible-image {
-        width: 100% !important;
-        height: 135px !important;
+        width: 100%;
+        height: 100%;
+
+        object-fit: cover;
+        object-position: center;
     }
 
     .home-accessible-card-title {
@@ -3284,53 +3283,34 @@ min-height:300px;
 
 
 /*==================================================
-        MOBILE
+    MOBILE
 ==================================================*/
 
 @media (max-width: 600px) {
 
-    .home-accessible-showcase {
+    .home-accessible-image-wrapper {
         width: 100%;
-        padding: 60px 0;
-        overflow: hidden;
+        height: 105px;
+
+        border-radius: 24px 24px 0 0;
+    }
+
+    .home-accessible-image {
+        width: 100%;
+        height: 100%;
+
+        object-fit: cover;
+        object-position: center;
     }
 
 
-    /*==============================================
-            HEADING
-    ==============================================*/
-
-    .home-accessible-heading {
-        width: 95%;
-        margin: 0 auto 40px;
-        padding: 20px;
-        box-sizing: border-box;
-    }
-
-
-    /*==============================================
-            GRID
-    ==============================================*/
-
-    .home-accessible-grid {
-        width: 95%;
-        margin: 0 auto;
-
-        grid-template-columns: 1fr;
-
-        gap: 24px;
-
-        box-sizing: border-box;
-    }
-
-
-    /*==============================================
-            CARD
-    ==============================================*/
+    /*----------------------------------------------
+        CARD
+    ----------------------------------------------*/
 
     .home-accessible-card {
-        width: 100% !important;
-        max-width: 100% !important;
+        width: 100%;
+        max-width: 100%;
 
         padding-bottom: 24px;
 
@@ -3340,47 +3320,9 @@ min-height:300px;
     }
 
 
-    /*==============================================
-            MOBILE IMAGE
-            THIS IS THE IMPORTANT FIX
-    ==============================================*/
-
-    .home-accessible-image-wrapper {
-        width: 100% !important;
-        max-width: 100% !important;
-
-        height: 115px !important;
-        min-height: 115px !important;
-        max-height: 115px !important;
-
-        overflow: hidden;
-
-        border-radius: 24px 24px 0 0;
-
-        box-sizing: border-box;
-    }
-
-
-    .home-accessible-image {
-        width: 100% !important;
-        max-width: 100% !important;
-
-        height: 115px !important;
-        min-height: 115px !important;
-        max-height: 115px !important;
-
-        display: block;
-
-        object-fit: cover;
-        object-position: center;
-
-        box-sizing: border-box;
-    }
-
-
-    /*==============================================
-            CARD CONTENT
-    ==============================================*/
+    /*----------------------------------------------
+        CONTENT
+    ----------------------------------------------*/
 
     .home-accessible-content {
         width: 100%;
@@ -3390,9 +3332,9 @@ min-height:300px;
     }
 
 
-    /*==============================================
-            MAIN TITLE
-    ==============================================*/
+    /*----------------------------------------------
+        MAIN TITLE
+    ----------------------------------------------*/
 
     .home-accessible-title {
         font-size: 25px;
@@ -3400,9 +3342,9 @@ min-height:300px;
     }
 
 
-    /*==============================================
-            SUBTITLE
-    ==============================================*/
+    /*----------------------------------------------
+        SUBTITLE
+    ----------------------------------------------*/
 
     .home-accessible-subtitle {
         font-size: 16px;
@@ -3410,9 +3352,9 @@ min-height:300px;
     }
 
 
-    /*==============================================
-            DESCRIPTION
-    ==============================================*/
+    /*----------------------------------------------
+        DESCRIPTION
+    ----------------------------------------------*/
 
     .home-accessible-description {
         font-size: 14px;
@@ -3420,9 +3362,9 @@ min-height:300px;
     }
 
 
-    /*==============================================
-            CARD TITLE
-    ==============================================*/
+    /*----------------------------------------------
+        CARD TITLE
+    ----------------------------------------------*/
 
     .home-accessible-card-title {
         font-size: 21px;
@@ -3430,9 +3372,9 @@ min-height:300px;
     }
 
 
-    /*==============================================
-            CARD DESCRIPTION
-    ==============================================*/
+    /*----------------------------------------------
+        CARD DESCRIPTION
+    ----------------------------------------------*/
 
     .home-accessible-card-description {
         font-size: 14px;
