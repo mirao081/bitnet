@@ -9,13 +9,9 @@
    ========================================================= */
 
 .invoice-premium-showcase {
-
     width: 100%;
-
-    padding: 80px 0;
-
+    padding: 70px 0 90px;
     position: relative;
-
     overflow: hidden;
 
     background:
@@ -24,38 +20,66 @@
             #004aad33,
             transparent 40%
         ),
-
         radial-gradient(
             circle at bottom right,
             #7a00ff22,
             transparent 35%
         ),
-
         linear-gradient(
             180deg,
             #05070d,
             #0a1020
         );
-
 }
 
 
 /* =========================================================
-   MAIN CONTAINER
+   BACKGROUND GLOW
    ========================================================= */
 
-.invoice-premium-container {
+.invoice-premium-showcase::before {
+    content: "";
+    position: absolute;
 
-    width: 92%;
+    width: 500px;
+    height: 500px;
 
-    max-width: 1500px;
+    top: -250px;
+    left: -200px;
 
-    margin: auto;
+    border-radius: 50%;
 
-    position: relative;
+    background:
+        radial-gradient(
+            circle,
+            rgba(0, 216, 239, 0.12),
+            transparent 70%
+        );
 
-    z-index: 2;
+    pointer-events: none;
+}
 
+
+.invoice-premium-showcase::after {
+    content: "";
+    position: absolute;
+
+    width: 500px;
+    height: 500px;
+
+    bottom: -300px;
+    right: -200px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(122, 0, 255, 0.12),
+            transparent 70%
+        );
+
+    pointer-events: none;
 }
 
 
@@ -63,59 +87,104 @@
    HEADER
    ========================================================= */
 
-.invoice-premium-header {
+.invoice-premium-heading-container {
+    width: 90%;
+    max-width: 1200px;
+
+    margin: 0 auto 50px;
+
+    padding: 30px 25px;
 
     text-align: center;
 
-    margin-bottom: 45px;
+    position: relative;
+    z-index: 2;
 
-    padding: 25px;
+    background: rgba(255, 255, 255, 0.05);
 
-    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.10);
 
-    background:
-        rgba(
-            255,
-            255,
-            255,
-            0.05
-        );
+    border-radius: 25px;
 
-    backdrop-filter: blur(15px);
-
-    -webkit-backdrop-filter: blur(15px);
-
-    border:
-        1px solid
-        rgba(
-            255,
-            255,
-            255,
-            0.08
-        );
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
 
     box-shadow:
-        0 0 30px
-        rgba(
-            0,
-            216,
-            239,
-            0.15
-        );
+        0 0 25px rgba(0, 216, 239, 0.18),
+        inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+
+
+/* =========================================================
+   STATUS BADGE
+   ========================================================= */
+
+.invoice-premium-status {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 8px;
+
+    padding: 7px 16px;
+
+    margin-bottom: 18px;
+
+    border-radius: 30px;
+
+    background: rgba(255, 193, 7, 0.10);
+
+    border: 1px solid rgba(255, 193, 7, 0.30);
+
+    color: #ffd166;
+
+    font-size: 12px;
+    font-weight: 800;
+
+    letter-spacing: 1.5px;
+}
+
+
+.invoice-premium-status-dot {
+    width: 8px;
+    height: 8px;
+
+    border-radius: 50%;
+
+    background: #ffd166;
+
+    box-shadow:
+        0 0 8px #ffd166,
+        0 0 16px #ffd166;
+
+    animation: invoicePremiumStatusPulse 1.8s infinite alternate;
+}
+
+
+@keyframes invoicePremiumStatusPulse {
+
+    from {
+        opacity: 0.45;
+        transform: scale(0.85);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1.15);
+    }
 
 }
 
 
 /* =========================================================
-   HEADER TITLE
+   MAIN HEADING
    ========================================================= */
 
-.invoice-premium-title {
-
-    margin: 0;
+.invoice-premium-heading-title {
+    margin: 0 0 15px;
 
     font-size: 42px;
-
     font-weight: 900;
 
     text-transform: uppercase;
@@ -125,12 +194,27 @@
     color: #ffffff;
 
     text-shadow:
-
         0 0 10px #00d8ef,
-
         0 0 25px #00d8ef,
-
         0 0 45px #7a00ff;
+
+    animation: invoicePremiumGlow 3s infinite alternate;
+}
+
+
+@keyframes invoicePremiumGlow {
+
+    from {
+        text-shadow:
+            0 0 10px #00d8ef,
+            0 0 20px #00d8ef;
+    }
+
+    to {
+        text-shadow:
+            0 0 20px #7a00ff,
+            0 0 40px #ff0080;
+    }
 
 }
 
@@ -139,354 +223,13 @@
    HEADER SUBTITLE
    ========================================================= */
 
-.invoice-premium-subtitle {
-
-    margin-top: 12px;
-
-    margin-bottom: 0;
+.invoice-premium-heading-subtitle {
+    margin: 0;
 
     font-size: 17px;
-
-    font-weight: 500;
-
-    color:
-        rgba(
-            255,
-            255,
-            255,
-            0.72
-        );
-
-    line-height: 1.6;
-
-}
-
-
-/* =========================================================
-   PAYMENT DETAILS CARD
-   ========================================================= */
-
-.invoice-premium-payment {
-
-    position: relative;
-
-    overflow: hidden;
-
-    padding: 35px;
-
-    margin-bottom: 35px;
-
-    border-radius: 30px;
-
-    background:
-        rgba(
-            255,
-            255,
-            255,
-            0.07
-        );
-
-    backdrop-filter: blur(24px);
-
-    -webkit-backdrop-filter: blur(24px);
-
-    border:
-        1px solid
-        rgba(
-            255,
-            255,
-            255,
-            0.12
-        );
-
-    box-shadow:
-
-        inset 0 1px 0
-        rgba(
-            255,
-            255,
-            255,
-            0.15
-        ),
-
-        0 20px 55px
-        rgba(
-            0,
-            0,
-            0,
-            0.35
-        );
-
-}
-
-
-/* =========================================================
-   PAYMENT CARD GLOW
-   ========================================================= */
-
-.invoice-premium-payment::before {
-
-    content: "";
-
-    position: absolute;
-
-    width: 280px;
-
-    height: 280px;
-
-    top: -160px;
-
-    right: -150px;
-
-    border-radius: 50%;
-
-    background:
-        radial-gradient(
-            circle,
-            rgba(
-                0,
-                216,
-                239,
-                0.22
-            ),
-            transparent 70%
-        );
-
-    pointer-events: none;
-
-}
-
-
-/* =========================================================
-   PAYMENT LABEL
-   ========================================================= */
-
-.invoice-premium-label {
-
-    margin: 0 0 12px;
-
-    text-align: center;
-
-    font-size: 17px;
-
-    font-weight: 700;
-
-    color:
-        rgba(
-            255,
-            255,
-            255,
-            0.82
-        );
-
-}
-
-
-/* =========================================================
-   PAYMENT CURRENCY
-   ========================================================= */
-
-.invoice-premium-currency {
-
-    display: inline-block;
-
-    margin: 0 auto 20px;
-
-    padding: 8px 20px;
-
-    border-radius: 30px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #00d8ef,
-            #7a00ff
-        );
-
-    color: #ffffff;
-
-    font-size: 14px;
-
-    font-weight: 800;
-
-    letter-spacing: 1px;
-
-    text-transform: uppercase;
-
-}
-
-
-/* =========================================================
-   PAYMENT ADDRESS
-   ========================================================= */
-
-.invoice-premium-address {
-
-    width: 100%;
-
-    box-sizing: border-box;
-
-    margin: 0 0 25px;
-
-    padding: 18px 20px;
-
-    border-radius: 15px;
-
-    background:
-        rgba(
-            0,
-            0,
-            0,
-            0.35
-        );
-
-    border:
-        1px solid
-        rgba(
-            0,
-            216,
-            239,
-            0.18
-        );
-
-    color: #ffffff;
-
-    font-size: 15px;
-
     font-weight: 600;
 
     line-height: 1.6;
-
-    text-align: center;
-
-    word-break: break-all;
-
-    overflow-wrap: anywhere;
-
-}
-
-
-/* =========================================================
-   QR CODE AREA
-   ========================================================= */
-
-.invoice-premium-qr {
-
-    display: flex;
-
-    justify-content: center;
-
-    align-items: center;
-
-    margin: 25px auto;
-
-}
-
-
-/* =========================================================
-   QR CODE IMAGE
-   ========================================================= */
-
-.invoice-premium-qr img {
-
-    width: 190px;
-
-    height: 190px;
-
-    max-width: 100%;
-
-    object-fit: contain;
-
-    padding: 10px;
-
-    box-sizing: border-box;
-
-    background: #ffffff;
-
-    border-radius: 18px;
-
-    box-shadow:
-
-        0 10px 30px
-        rgba(
-            0,
-            0,
-            0,
-            0.35
-        ),
-
-        0 0 25px
-        rgba(
-            0,
-            216,
-            239,
-            0.18
-        );
-
-}
-
-
-/* =========================================================
-   AMOUNT INFORMATION
-   ========================================================= */
-
-.invoice-premium-amount {
-
-    display: flex;
-
-    justify-content: center;
-
-    align-items: center;
-
-    flex-wrap: wrap;
-
-    gap: 10px;
-
-    margin-top: 25px;
-
-    padding: 18px;
-
-    border-radius: 18px;
-
-    background:
-        rgba(
-            255,
-            255,
-            255,
-            0.05
-        );
-
-    border:
-        1px solid
-        rgba(
-            255,
-            255,
-            255,
-            0.08
-        );
-
-    color:
-        rgba(
-            255,
-            255,
-            255,
-            0.75
-        );
-
-    font-size: 16px;
-
-}
-
-
-/* =========================================================
-   AMOUNT VALUE
-   ========================================================= */
-
-.invoice-premium-amount strong {
-
-    font-size: 24px;
-
-    font-weight: 900;
 
     background:
         linear-gradient(
@@ -497,650 +240,266 @@
         );
 
     -webkit-background-clip: text;
-
     -webkit-text-fill-color: transparent;
 
     background-size: 200% auto;
 
-    animation:
-        invoicePremiumShine
-        5s linear infinite;
+    animation: invoicePremiumShine 6s linear infinite;
+
+    letter-spacing: 0.7px;
+}
+
+
+@keyframes invoicePremiumShine {
+
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
 
 }
 
 
 /* =========================================================
-   TRANSACTION TIME
+   MAIN GRID
    ========================================================= */
 
-.invoice-premium-time {
+.invoice-premium-grid {
+    width: 90%;
+    max-width: 1500px;
 
-    display: flex;
-
-    justify-content: center;
-
-    align-items: center;
-
-    flex-wrap: wrap;
-
-    gap: 10px;
-
-    margin-top: 15px;
-
-    padding: 14px 18px;
-
-    border-radius: 15px;
-
-    background:
-        rgba(
-            255,
-            255,
-            255,
-            0.035
-        );
-
-    color:
-        rgba(
-            255,
-            255,
-            255,
-            0.65
-        );
-
-    font-size: 14px;
-
-}
-
-
-/* =========================================================
-   TRANSACTION TIME VALUE
-   ========================================================= */
-
-.invoice-premium-time strong {
-
-    color: #ffffff;
-
-    font-weight: 700;
-
-}
-
-
-/* =========================================================
-   IMPORTANT WARNING
-   ========================================================= */
-
-.invoice-premium-warning {
-
-    position: relative;
-
-    overflow: hidden;
-
-    margin-bottom: 35px;
-
-    padding: 28px;
-
-    border-radius: 24px;
-
-    background:
-        linear-gradient(
-            135deg,
-            rgba(
-                255,
-                152,
-                0,
-                0.10
-            ),
-            rgba(
-                255,
-                0,
-                80,
-                0.07
-            )
-        );
-
-    border:
-        1px solid
-        rgba(
-            255,
-            174,
-            0,
-            0.25
-        );
-
-    box-shadow:
-
-        0 15px 40px
-        rgba(
-            0,
-            0,
-            0,
-            0.28
-        );
-
-}
-
-
-/* =========================================================
-   WARNING TITLE
-   ========================================================= */
-
-.invoice-premium-warning h3 {
-
-    margin: 0 0 15px;
-
-    color: #ffffff;
-
-    font-size: 21px;
-
-    font-weight: 900;
-
-    text-align: center;
-
-}
-
-
-/* =========================================================
-   WARNING TEXT
-   ========================================================= */
-
-.invoice-premium-warning p {
-
-    margin: 0 0 12px;
-
-    color:
-        rgba(
-            255,
-            255,
-            255,
-            0.78
-        );
-
-    font-size: 15px;
-
-    line-height: 1.7;
-
-    text-align: center;
-
-}
-
-
-.invoice-premium-warning p:last-child {
-
-    margin-bottom: 0;
-
-}
-
-
-/* =========================================================
-   WARNING STRONG TEXT
-   ========================================================= */
-
-.invoice-premium-warning strong {
-
-    color: #ffffff;
-
-    font-weight: 800;
-
-}
-
-
-/* =========================================================
-   PAYMENT STEPS
-   TWO CARDS PER ROW
-   ========================================================= */
-
-.invoice-premium-steps {
+    margin: 0 auto;
 
     display: grid;
 
     grid-template-columns:
         repeat(
             2,
-            minmax(
-                0,
-                1fr
-            )
+            minmax(0, 1fr)
         );
 
-    gap: 18px;
+    gap: 30px;
 
     position: relative;
-
     z-index: 2;
-
-    width: 100%;
-
-    box-sizing: border-box;
-
 }
 
 
 /* =========================================================
-   INDIVIDUAL PAYMENT STEP
+   GLASS PANEL
    ========================================================= */
 
-.invoice-premium-step {
+.invoice-premium-panel {
+    position: relative;
 
-    display: flex;
+    overflow: hidden;
 
-    gap: 16px;
+    padding: 32px 28px;
 
-    align-items: flex-start;
+    border-radius: 30px;
 
-    min-width: 0;
+    background: rgba(255, 255, 255, 0.08);
 
-    min-height: 112px;
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
 
-    padding: 16px;
-
-    border-radius: 18px;
-
-    background:
-        rgba(
-            255,
-            255,
-            255,
-            0.045
-        );
-
-    border:
-        1px solid
-        rgba(
-            255,
-            255,
-            255,
-            0.07
-        );
-
-    transition:
-        0.3s ease;
-
-    box-sizing: border-box;
-
-}
-
-
-/* =========================================================
-   STEP HOVER
-   ========================================================= */
-
-.invoice-premium-step:hover {
-
-    transform:
-        translateY(-5px);
-
-    border-color:
-        rgba(
-            0,
-            216,
-            239,
-            0.25
-        );
+    border: 1px solid rgba(255, 255, 255, 0.12);
 
     box-shadow:
-        0 15px 35px
-        rgba(
-            0,
-            0,
-            0,
-            0.28
-        ),
+        inset 0 1px 0 rgba(255, 255, 255, 0.15),
+        0 18px 45px rgba(0, 0, 0, 0.35);
 
-        0 0 20px
-        rgba(
-            0,
-            216,
-            239,
-            0.08
-        );
-
+    transition:
+        transform 0.45s ease,
+        box-shadow 0.45s ease;
 }
 
 
-/* =========================================================
-   STEP NUMBER
-   ========================================================= */
+.invoice-premium-panel::before {
+    content: "";
 
-.invoice-premium-step-number {
+    position: absolute;
 
-    flex:
-        0 0 48px;
+    width: 220px;
+    height: 220px;
 
-    width: 48px;
-
-    height: 48px;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
+    top: -120px;
+    right: -120px;
 
     border-radius: 50%;
 
     background:
-        linear-gradient(
-            135deg,
-            #00d8ef,
-            #7a00ff
+        radial-gradient(
+            circle,
+            rgba(0, 216, 239, 0.28),
+            transparent 70%
         );
+
+    transition: 0.6s;
+
+    pointer-events: none;
+}
+
+
+.invoice-premium-panel:hover {
+    transform: translateY(-8px);
+
+    box-shadow:
+        0 30px 70px rgba(0, 0, 0, 0.45),
+        0 0 40px rgba(0, 216, 239, 0.18);
+}
+
+
+.invoice-premium-panel:hover::before {
+    transform: scale(1.4);
+}
+
+
+/* =========================================================
+   PANEL TITLES
+   ========================================================= */
+
+.invoice-premium-panel-title {
+    position: relative;
+    z-index: 2;
+
+    margin: 0 0 10px;
 
     color: #ffffff;
 
+    font-size: 24px;
+    font-weight: 800;
+
+    line-height: 1.3;
+}
+
+
+.invoice-premium-panel-description {
+    position: relative;
+    z-index: 2;
+
+    margin: 0 0 25px;
+
+    color: rgba(255, 255, 255, 0.75);
+
     font-size: 15px;
 
-    font-weight: 900;
+    line-height: 1.65;
+}
 
-    box-shadow:
 
-        0 0 15px
-        rgba(
-            0,
-            216,
-            239,
-            0.20
+/* =========================================================
+   SUMMARY
+   ========================================================= */
+
+.invoice-premium-summary {
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            2,
+            minmax(0, 1fr)
         );
 
+    gap: 15px;
+
+    position: relative;
+    z-index: 2;
 }
 
 
-/* =========================================================
-   STEP CONTENT
-   ========================================================= */
+.invoice-premium-summary-item {
+    padding: 18px;
 
-.invoice-premium-step-content {
+    border-radius: 18px;
 
-    flex: 1;
+    background: rgba(255, 255, 255, 0.055);
 
-    min-width: 0;
-
+    border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 
-/* =========================================================
-   STEP TITLE
-   ========================================================= */
+.invoice-premium-summary-label {
+    display: block;
 
-.invoice-premium-step-title {
+    margin-bottom: 7px;
 
-    margin: 0 0 7px;
+    color: rgba(255, 255, 255, 0.55);
+
+    font-size: 12px;
+    font-weight: 700;
+
+    text-transform: uppercase;
+
+    letter-spacing: 1px;
+}
+
+
+.invoice-premium-summary-value {
+    display: block;
 
     color: #ffffff;
 
     font-size: 16px;
-
     font-weight: 800;
 
-    line-height: 1.3;
-
+    word-break: break-word;
 }
 
 
-/* =========================================================
-   STEP DESCRIPTION
-   ========================================================= */
-
-.invoice-premium-step-description {
-
-    margin: 0;
-
-    color:
-        rgba(
-            255,
-            255,
-            255,
-            0.68
-        );
-
-    font-size: 14px;
-
-    line-height: 1.55;
-
-}
-
-
-/* =========================================================
-   PENDING MESSAGE
-   ========================================================= */
-
-.invoice-premium-pending {
-
-    margin-top: 35px;
-
-    margin-bottom: 35px;
-
-    padding: 28px;
-
-    border-radius: 24px;
-
-    background:
-        linear-gradient(
-            135deg,
-            rgba(
-                0,
-                216,
-                239,
-                0.08
-            ),
-            rgba(
-                122,
-                0,
-                255,
-                0.08
-            )
-        );
-
-    border:
-        1px solid
-        rgba(
-            0,
-            216,
-            239,
-            0.18
-        );
-
-    text-align: center;
-
-    box-shadow:
-        0 15px 40px
-        rgba(
-            0,
-            0,
-            0,
-            0.25
-        );
-
-}
-
-
-/* =========================================================
-   PENDING TITLE
-   ========================================================= */
-
-.invoice-premium-pending h3 {
-
-    margin: 0 0 14px;
-
-    color: #ffffff;
+.invoice-premium-amount {
+    color: #00d8ef;
 
     font-size: 21px;
 
-    font-weight: 900;
+    text-shadow:
+        0 0 10px rgba(0, 216, 239, 0.35);
+}
 
+
+.invoice-premium-status-value {
+    color: #ffd166;
 }
 
 
 /* =========================================================
-   PENDING TEXT
+   NETWORK BADGE
    ========================================================= */
 
-.invoice-premium-pending p {
+.invoice-premium-network-badge {
+    display: inline-block;
 
-    margin: 0 0 10px;
+    margin-bottom: 18px;
 
-    color:
-        rgba(
-            255,
-            255,
-            255,
-            0.72
-        );
-
-    font-size: 15px;
-
-    line-height: 1.65;
-
-}
-
-
-.invoice-premium-pending p:last-child {
-
-    margin-bottom: 0;
-
-}
-
-
-/* =========================================================
-   FINAL WARNING
-   ========================================================= */
-
-.invoice-premium-final-warning {
-
-    padding: 22px 25px;
+    padding: 8px 15px;
 
     border-radius: 20px;
 
     background:
-        rgba(
-            255,
-            255,
-            255,
-            0.045
+        linear-gradient(
+            90deg,
+            rgba(0, 216, 239, 0.15),
+            rgba(122, 0, 255, 0.15)
         );
 
-    border:
-        1px solid
-        rgba(
-            255,
-            255,
-            255,
-            0.08
-        );
+    border: 1px solid rgba(0, 216, 239, 0.25);
 
-    text-align: center;
+    color: #00d8ef;
 
-}
-
-
-/* =========================================================
-   FINAL WARNING TEXT
-   ========================================================= */
-
-.invoice-premium-final-warning p {
-
-    margin: 0;
-
-    color:
-        rgba(
-            255,
-            255,
-            255,
-            0.70
-        );
-
-    font-size: 14px;
-
-    line-height: 1.65;
-
-}
-
-
-/* =========================================================
-   FINAL WARNING STRONG
-   ========================================================= */
-
-.invoice-premium-final-warning strong {
-
-    color: #ffffff;
-
+    font-size: 12px;
     font-weight: 800;
 
+    letter-spacing: 1.2px;
 }
 
 
-/* =========================================================
-   ANIMATIONS
-   ========================================================= */
-
-@keyframes invoicePremiumShine {
-
-    0% {
-
-        background-position:
-            0% 50%;
-
-    }
-
-    50% {
-
-        background-position:
-            100% 50%;
-
-    }
-
-    100% {
-
-        background-position:
-            0% 50%;
-
-    }
-
-}
-
-
-/* =========================================================
-   TABLET
-   ========================================================= */
-
-@media (max-width: 991px) {
-
-    .invoice-premium-steps {
-
-        grid-template-columns:
-            repeat(
-                2,
-                minmax(
-                    0,
-                    1fr
-                )
-            );
-
-        gap: 16px;
-
-    }
-
-
-    .invoice-premium-container {
-
-        width: 94%;
-
-    }
-
-
-    .invoice-premium-title {
-
-        font-size: 34px;
-
-    }
-
-
-    .invoice-premium-payment {
-
-        padding: 30px;
-
-    }
-
-}
 /* =========================================================
    WALLET ADDRESS
    ========================================================= */
@@ -1324,22 +683,17 @@
 
 /* =========================================================
    PAYMENT STEPS
-   TWO CARDS PER ROW
    ========================================================= */
 
 .invoice-premium-steps {
-    display: grid;
+    display: flex;
 
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    flex-direction: column;
 
     gap: 18px;
 
     position: relative;
     z-index: 2;
-
-    width: 100%;
-
-    box-sizing: border-box;
 }
 
 
@@ -1350,9 +704,6 @@
 
     align-items: flex-start;
 
-    min-width: 0;
-    min-height: 112px;
-
     padding: 16px;
 
     border-radius: 18px;
@@ -1362,8 +713,6 @@
     border: 1px solid rgba(255, 255, 255, 0.07);
 
     transition: 0.3s ease;
-
-    box-sizing: border-box;
 }
 
 
@@ -1605,13 +954,6 @@
 
 @media (max-width: 991px) {
 
-    .invoice-premium-steps {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-
-        gap: 16px;
-    }
-
-
     .invoice-premium-showcase {
         padding: 55px 0 70px;
     }
@@ -1641,13 +983,6 @@
    ========================================================= */
 
 @media (max-width: 600px) {
-
-    .invoice-premium-steps {
-        grid-template-columns: 1fr;
-
-        gap: 14px;
-    }
-
 
     .invoice-premium-showcase {
         padding: 35px 0 55px;
