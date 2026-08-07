@@ -1307,64 +1307,153 @@ def request_withdrawal(request):
     profile = UserProfile.objects.get(user=request.user)
     userwallet = UserWallet.objects.filter(user=request.user).first()
 
+    # =========================================================
+    # VERIFICATION CHECK
+    # Only verified users can make withdrawals.
+    # =========================================================
+    if profile.verification_status != "verified":
+        messages.error(
+            request,
+            "⚠️ Your account is not verified. "
+            "Please wait for admin approval before making withdrawals."
+        )
+        return redirect("users:request_withdrawal")
+
+    # =========================================================
+    # POST REQUEST
+    # =========================================================
     if request.method == "POST":
+
         form = WithdrawalForm(request.POST)
 
+        # -----------------------------------------------------
+        # Validate withdrawal form
+        # -----------------------------------------------------
         if not form.is_valid():
-            messages.error(request, "Please complete all required fields.")
+            messages.error(
+                request,
+                "Please complete all required fields."
+            )
             return redirect("users:request_withdrawal")
 
+        # -----------------------------------------------------
+        # Get withdrawal amount
+        # -----------------------------------------------------
         try:
-            amount = Decimal(str(form.cleaned_data["amount"]))
+            amount = Decimal(
+                str(form.cleaned_data["amount"])
+            )
         except InvalidOperation:
-            messages.error(request, "Invalid withdrawal amount.")
+            messages.error(
+                request,
+                "Invalid withdrawal amount."
+            )
             return redirect("users:request_withdrawal")
 
+        # -----------------------------------------------------
+        # Get currency and wallet address
+        # -----------------------------------------------------
         currency = form.cleaned_data["currency"]
         wallet_address = form.cleaned_data["wallet_address"].strip()
 
-        # --- Basic validation ---
+        # =====================================================
+        # BASIC VALIDATION
+        # =====================================================
+
         if amount <= 0:
-            messages.error(request, "Withdrawal amount must be greater than zero.")
+            messages.error(
+                request,
+                "Withdrawal amount must be greater than zero."
+            )
             return redirect("users:request_withdrawal")
 
         if not wallet_address:
-            messages.error(request, "Destination wallet address is required.")
+            messages.error(
+                request,
+                "Destination wallet address is required."
+            )
             return redirect("users:request_withdrawal")
 
-        # --- Balance checks ---
+        # =====================================================
+        # BALANCE CHECKS
+        # =====================================================
+
+        # -----------------------------------------------------
+        # Bitcoin
+        # -----------------------------------------------------
         if currency == "BTC":
+
             if profile.btc_balance < amount:
-                messages.error(request, "Insufficient BTC balance.")
+                messages.error(
+                    request,
+                    "Insufficient BTC balance."
+                )
                 return redirect("users:request_withdrawal")
+
             profile.btc_balance -= amount
 
+        # -----------------------------------------------------
+        # Ethereum
+        # -----------------------------------------------------
         elif currency == "ETH":
+
             if profile.eth_balance < amount:
-                messages.error(request, "Insufficient ETH balance.")
+                messages.error(
+                    request,
+                    "Insufficient ETH balance."
+                )
                 return redirect("users:request_withdrawal")
+
             profile.eth_balance -= amount
 
+        # -----------------------------------------------------
+        # USDT ERC20
+        # -----------------------------------------------------
         elif currency == "USDT_ERC20":
+
             if profile.usdt_erc20_balance < amount:
-                messages.error(request, "Insufficient USDT ERC20 balance.")
+                messages.error(
+                    request,
+                    "Insufficient USDT ERC20 balance."
+                )
                 return redirect("users:request_withdrawal")
+
             profile.usdt_erc20_balance -= amount
 
+        # -----------------------------------------------------
+        # USDT TRC20
+        # -----------------------------------------------------
         elif currency == "USDT_TRC20":
+
             if profile.usdt_trc20_balance < amount:
-                messages.error(request, "Insufficient USDT TRC20 balance.")
+                messages.error(
+                    request,
+                    "Insufficient USDT TRC20 balance."
+                )
                 return redirect("users:request_withdrawal")
+
             profile.usdt_trc20_balance -= amount
 
+        # -----------------------------------------------------
+        # Invalid currency
+        # -----------------------------------------------------
         else:
-            messages.error(request, "Invalid currency selected.")
+
+            messages.error(
+                request,
+                "Invalid currency selected."
+            )
             return redirect("users:request_withdrawal")
 
-        # --- Save atomically ---
+        # =====================================================
+        # SAVE WITHDRAWAL ATOMICALLY
+        # =====================================================
         with transaction.atomic():
+
+            # Save updated balance
             profile.save()
 
+            # Create withdrawal request
             withdrawal = Withdrawal.objects.create(
                 user=request.user,
                 currency=currency,
@@ -1373,6 +1462,7 @@ def request_withdrawal(request):
                 status="pending",
             )
 
+            # Create transaction record
             Transaction.objects.create(
                 user=request.user,
                 asset=currency,
@@ -1381,30 +1471,76 @@ def request_withdrawal(request):
                 status="pending",
             )
 
+        # =====================================================
+        # SUCCESS MESSAGE
+        # =====================================================
         messages.success(
             request,
-            f"Your withdrawal request of {amount} {currency} has been submitted successfully."
+            f"Your withdrawal request of {amount} {currency} "
+            f"has been submitted successfully."
         )
 
-        return redirect("users:withdraw_invoice", withdrawal_id=withdrawal.id, currency=currency)
+        # =====================================================
+        # REDIRECT TO WITHDRAWAL INVOICE
+        # =====================================================
+        return redirect(
+            "users:withdraw_invoice",
+            withdrawal_id=withdrawal.id,
+            currency=currency
+        )
 
-    # --- GET request ---
+    # =========================================================
+    # GET REQUEST
+    # =========================================================
+
     form = WithdrawalForm()
 
-    # Pass wallets to template for autofill
+    # ---------------------------------------------------------
+    # Prepare saved wallet addresses for JavaScript autofill.
+    #
+    # A user does NOT need all four wallets.
+    # Missing wallets simply return an empty string.
+    # ---------------------------------------------------------
     wallets = {
-        "BTC": userwallet.btc_wallet,
-        "ETH": userwallet.eth_wallet,
-        "USDT_ERC20": userwallet.usdt_erc20_wallet,
-        "USDT_TRC20": userwallet.usdt_trc20_wallet,
+        "BTC": (
+            userwallet.btc_wallet
+            if userwallet
+            else ""
+        ),
+
+        "ETH": (
+            userwallet.eth_wallet
+            if userwallet
+            else ""
+        ),
+
+        "USDT_ERC20": (
+            userwallet.usdt_erc20_wallet
+            if userwallet
+            else ""
+        ),
+
+        "USDT_TRC20": (
+            userwallet.usdt_trc20_wallet
+            if userwallet
+            else ""
+        ),
     }
 
-    return render(request, "users/request_withdrawal.html", {
-        "form": form,
-        "profile": profile,
-        "userwallet": userwallet,
-        "wallets": wallets,  
-    })
+    # =========================================================
+    # RENDER WITHDRAWAL PAGE
+    # =========================================================
+
+    return render(
+        request,
+        "users/request_withdrawal.html",
+        {
+            "form": form,
+            "profile": profile,
+            "userwallet": userwallet,
+            "wallets": wallets,
+        }
+    )
 
 @login_required
 def withdraw_invoice(request, withdrawal_id, currency):
