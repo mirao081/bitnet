@@ -3741,8 +3741,8 @@ min-height:300px;
 
 
 /* =========================================================
-   HOME PAGE — 5PX SECTION SPACING
-   Keeps sections tight with a small 5px separation.
+   HOME PAGE — 8PX SECTION SPACING
+   Keeps sections tight with a small 8px separation.
    ========================================================= */
 
 /* =========================
@@ -3758,8 +3758,8 @@ min-height:300px;
 .elite-calculator-showcase,
 .elite-feature-showcase,
 .home-accessible-showcase {
-    padding-top: 5px !important;
-    padding-bottom: 5px !important;
+    padding-top: 8px !important;
+    padding-bottom: 8px !important;
     margin-top: 0 !important;
     margin-bottom: 0 !important;
 }
@@ -3769,52 +3769,39 @@ min-height:300px;
    INTERNAL SECTION SPACING
    ========================= */
 
-/* Accessible section heading */
 .home-accessible-heading {
     margin-top: 0 !important;
-    margin-bottom: 5px !important;
+    margin-bottom: 8px !important;
 }
 
-
-/* Swing heading */
 .elite-swing-title {
-    margin-top: 5px !important;
-    margin-bottom: 5px !important;
+    margin-top: 8px !important;
+    margin-bottom: 8px !important;
 }
 
-
-/* Exchange icons */
 .elite-exchange-icons-grid {
-    margin-top: 5px !important;
+    margin-top: 8px !important;
 }
 
-
-/* Investment plans heading */
 .elite-plan-title {
-    margin-top: 5px !important;
+    margin-top: 8px !important;
 }
 
-
-/* Investment plans subtitle */
 .elite-plan-subtitle {
-    margin-bottom: 5px !important;
+    margin-bottom: 8px !important;
 }
 
-
-/* Feature panels */
 .elite-feature-panel {
     margin-bottom: 0 !important;
 }
 
-
-/* Calculator canvas */
 .home-canvas {
-    margin-top: 5px !important;
+    margin-top: 8px !important;
 }
 
 
 /* =========================================================
-   TABLET — 5PX SPACING
+   TABLET
    ========================================================= */
 
 @media (max-width: 991px) {
@@ -3828,42 +3815,42 @@ min-height:300px;
     .elite-calculator-showcase,
     .elite-feature-showcase,
     .home-accessible-showcase {
-        padding-top: 5px !important;
-        padding-bottom: 5px !important;
+        padding-top: 8px !important;
+        padding-bottom: 8px !important;
         margin-top: 0 !important;
         margin-bottom: 0 !important;
     }
 
     .home-accessible-heading {
         margin-top: 0 !important;
-        margin-bottom: 5px !important;
+        margin-bottom: 8px !important;
     }
 
     .elite-swing-title {
-        margin-top: 5px !important;
-        margin-bottom: 5px !important;
+        margin-top: 8px !important;
+        margin-bottom: 8px !important;
     }
 
     .elite-plan-title {
-        margin-top: 5px !important;
+        margin-top: 8px !important;
     }
 
     .elite-plan-subtitle {
-        margin-bottom: 5px !important;
+        margin-bottom: 8px !important;
     }
 
     .elite-exchange-icons-grid {
-        margin-top: 5px !important;
+        margin-top: 8px !important;
     }
 
     .home-canvas {
-        margin-top: 5px !important;
+        margin-top: 8px !important;
     }
 }
 
 
 /* =========================================================
-   MOBILE — 5PX SPACING
+   MOBILE
    ========================================================= */
 
 @media (max-width: 600px) {
@@ -3877,42 +3864,42 @@ min-height:300px;
     .elite-calculator-showcase,
     .elite-feature-showcase,
     .home-accessible-showcase {
-        padding-top: 5px !important;
-        padding-bottom: 5px !important;
+        padding-top: 8px !important;
+        padding-bottom: 8px !important;
         margin-top: 0 !important;
         margin-bottom: 0 !important;
     }
 
     .home-accessible-heading {
         margin-top: 0 !important;
-        margin-bottom: 5px !important;
+        margin-bottom: 8px !important;
     }
 
     .elite-swing-title {
-        margin-top: 5px !important;
-        margin-bottom: 5px !important;
+        margin-top: 8px !important;
+        margin-bottom: 8px !important;
     }
 
     .elite-plan-title {
-        margin-top: 5px !important;
+        margin-top: 8px !important;
     }
 
     .elite-plan-subtitle {
-        margin-bottom: 5px !important;
+        margin-bottom: 8px !important;
     }
 
     .elite-exchange-icons-grid {
-        margin-top: 5px !important;
+        margin-top: 8px !important;
     }
 
     .home-canvas {
-        margin-top: 5px !important;
+        margin-top: 8px !important;
     }
 }
 
 
 /* =========================================================
-   SMALL PHONES — 5PX SPACING
+   SMALL PHONES
    ========================================================= */
 
 @media (max-width: 380px) {
@@ -3926,35 +3913,35 @@ min-height:300px;
     .elite-calculator-showcase,
     .elite-feature-showcase,
     .home-accessible-showcase {
-        padding-top: 5px !important;
-        padding-bottom: 5px !important;
+        padding-top: 8px !important;
+        padding-bottom: 8px !important;
         margin-top: 0 !important;
         margin-bottom: 0 !important;
     }
 
     .home-accessible-heading {
         margin-top: 0 !important;
-        margin-bottom: 5px !important;
+        margin-bottom: 8px !important;
     }
 
     .elite-swing-title {
-        margin-top: 5px !important;
-        margin-bottom: 5px !important;
+        margin-top: 8px !important;
+        margin-bottom: 8px !important;
     }
 
     .elite-plan-title {
-        margin-top: 5px !important;
+        margin-top: 8px !important;
     }
 
     .elite-plan-subtitle {
-        margin-bottom: 5px !important;
+        margin-bottom: 8px !important;
     }
 
     .elite-exchange-icons-grid {
-        margin-top: 5px !important;
+        margin-top: 8px !important;
     }
 
     .home-canvas {
-        margin-top: 5px !important;
+        margin-top: 8px !important;
     }
 }
