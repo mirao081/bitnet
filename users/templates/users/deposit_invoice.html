@@ -1,25 +1,405 @@
 {% extends "users/dashboard_base.html" %}
+{% load static %}
+
+{% block title %}Deposit Confirmation{% endblock %}
+
 {% block content %}
-<div class="deposit-invoice-container">
-    <h1 class="deposit-invoice-title">Invoice</h1>
-    <h3 class="deposit-invoice-subtitle">{{ currency }} Deposit</h3>
 
-    <div class="deposit-invoice-details">
-        <p class="deposit-invoice-label">Send Exact Payment To This Address:</p>
-        <p class="deposit-invoice-address">{{ wallet_address }}</p>
+<link rel="stylesheet" href="{% static 'users/css/deposit_invoice.css' %}">
 
-        {% if qr_code_url %}
-        <div class="deposit-invoice-qr">
-            <img src="{{ qr_code_url }}" alt="{{ currency }} QR Code" class="deposit-invoice-qr-img">
+<div class="invoice-premium-showcase">
+
+    <!-- ================================================= -->
+    <!-- HEADER -->
+    <!-- ================================================= -->
+
+    <div class="invoice-premium-heading-container">
+
+        <div class="invoice-premium-status">
+            <span class="invoice-premium-status-dot"></span>
+            PAYMENT PENDING
         </div>
-        {% endif %}
 
-        <p class="deposit-invoice-amount">Amount: <strong>${{ deposit.amount }}</strong></p>
+        <h1 class="invoice-premium-heading-title">
+            Deposit Confirmation
+        </h1>
+
+        <p class="invoice-premium-heading-subtitle">
+            Complete your deposit securely using the payment information below.
+        </p>
+
     </div>
 
-    <div class="deposit-invoice-instructions">
-        <h4 class="deposit-invoice-step-title">Next Steps</h4>
-        
+
+    <!-- ================================================= -->
+    <!-- MAIN GRID -->
+    <!-- ================================================= -->
+
+    <div class="invoice-premium-grid">
+
+
+        <!-- ============================================= -->
+        <!-- TRANSACTION SUMMARY -->
+        <!-- ============================================= -->
+
+        <div class="invoice-premium-panel">
+
+            <h2 class="invoice-premium-panel-title">
+                Transaction Summary
+            </h2>
+
+            <p class="invoice-premium-panel-description">
+                Review your deposit details before sending your funds.
+            </p>
+
+
+            <div class="invoice-premium-summary">
+
+
+                <div class="invoice-premium-summary-item">
+
+                    <span class="invoice-premium-summary-label">
+                        Asset
+                    </span>
+
+                    <strong class="invoice-premium-summary-value">
+                        {{ currency }}
+                    </strong>
+
+                </div>
+
+
+                <div class="invoice-premium-summary-item">
+
+                    <span class="invoice-premium-summary-label">
+                        Deposit Amount
+                    </span>
+
+                    <strong class="invoice-premium-summary-value invoice-premium-amount">
+                        ${{ deposit.amount }}
+                    </strong>
+
+                </div>
+
+
+                <div class="invoice-premium-summary-item">
+
+                    <span class="invoice-premium-summary-label">
+                        Status
+                    </span>
+
+                    <strong class="invoice-premium-summary-value invoice-premium-status-value">
+                        Pending Approval
+                    </strong>
+
+                </div>
+
+
+                {% if deposit.created_at %}
+
+                <div class="invoice-premium-summary-item">
+
+                    <span class="invoice-premium-summary-label">
+                        Transaction Time
+                    </span>
+
+                    <strong class="invoice-premium-summary-value">
+                        {{ deposit.created_at|date:"M d, Y • h:i A" }}
+                    </strong>
+
+                </div>
+
+                {% endif %}
+
+
+            </div>
+
+        </div>
+
+
+        <!-- ============================================= -->
+        <!-- PAYMENT DESTINATION -->
+        <!-- ============================================= -->
+
+        <div class="invoice-premium-panel invoice-premium-payment-panel">
+
+            <h2 class="invoice-premium-panel-title">
+                Payment Destination
+            </h2>
+
+            <p class="invoice-premium-panel-description">
+                Send your payment to the company wallet shown below.
+            </p>
+
+
+            <div class="invoice-premium-network-badge">
+                {{ currency }} WALLET
+            </div>
+
+
+            <div class="invoice-premium-wallet-container">
+
+                <span class="invoice-premium-wallet-label">
+                    Destination Wallet
+                </span>
+
+                <div class="invoice-premium-wallet-address">
+                    {{ wallet_address }}
+                </div>
+
+            </div>
+
+
+            {% if qr_code_url %}
+
+            <div class="invoice-premium-qr-container">
+
+                <span class="invoice-premium-qr-label">
+                    Scan to Pay
+                </span>
+
+                <div class="invoice-premium-qr">
+
+                    <img
+                        src="{{ qr_code_url }}"
+                        alt="{{ currency }} payment QR code"
+                        class="invoice-premium-qr-image"
+                    >
+
+                </div>
+
+                <p class="invoice-premium-qr-description">
+                    Scan this QR code using your compatible cryptocurrency wallet.
+                </p>
+
+            </div>
+
+            {% endif %}
+
+        </div>
+
+
+        <!-- ============================================= -->
+        <!-- SECURITY WARNING -->
+        <!-- ============================================= -->
+
+        <div class="invoice-premium-panel invoice-premium-warning-panel">
+
+            <div class="invoice-premium-warning-icon">
+                ⚠
+            </div>
+
+            <div class="invoice-premium-warning-content">
+
+                <h2 class="invoice-premium-panel-title">
+                    Verify Before Sending
+                </h2>
+
+                <p class="invoice-premium-panel-description">
+                    Please carefully check the destination wallet address,
+                    cryptocurrency and network before confirming your payment.
+                </p>
+
+                <p class="invoice-premium-warning-strong">
+                    Sending funds to the wrong wallet address or unsupported
+                    network may result in permanent loss of your funds.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- ============================================= -->
+        <!-- PAYMENT STEPS -->
+        <!-- ============================================= -->
+
+        <div class="invoice-premium-panel">
+
+            <h2 class="invoice-premium-panel-title">
+                How to Complete Your Deposit
+            </h2>
+
+            <p class="invoice-premium-panel-description">
+                Follow these steps to complete your transaction safely.
+            </p>
+
+
+            <div class="invoice-premium-steps">
+
+
+                <div class="invoice-premium-step">
+
+                    <div class="invoice-premium-step-number">
+                        01
+                    </div>
+
+                    <div class="invoice-premium-step-content">
+
+                        <h3>
+                            Confirm Your Amount
+                        </h3>
+
+                        <p>
+                            Make sure you send the exact deposit amount shown
+                            on this confirmation.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="invoice-premium-step">
+
+                    <div class="invoice-premium-step-number">
+                        02
+                    </div>
+
+                    <div class="invoice-premium-step-content">
+
+                        <h3>
+                            Verify the Wallet
+                        </h3>
+
+                        <p>
+                            Carefully compare the destination wallet address
+                            with the address displayed above.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="invoice-premium-step">
+
+                    <div class="invoice-premium-step-number">
+                        03
+                    </div>
+
+                    <div class="invoice-premium-step-content">
+
+                        <h3>
+                            Send Your Payment
+                        </h3>
+
+                        <p>
+                            Send the funds using the correct cryptocurrency
+                            and supported network.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="invoice-premium-step">
+
+                    <div class="invoice-premium-step-number">
+                        04
+                    </div>
+
+                    <div class="invoice-premium-step-content">
+
+                        <h3>
+                            Await Approval
+                        </h3>
+
+                        <p>
+                            Once your payment is received, our administration
+                            team will review and approve the transaction.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+        <!-- ============================================= -->
+        <!-- WHAT HAPPENS NEXT -->
+        <!-- ============================================= -->
+
+        <div class="invoice-premium-panel invoice-premium-approval-panel">
+
+            <div class="invoice-premium-approval-icon">
+                ✓
+            </div>
+
+            <div>
+
+                <h2 class="invoice-premium-panel-title">
+                    What Happens Next?
+                </h2>
+
+                <p class="invoice-premium-panel-description">
+                    After your payment has been received and verified,
+                    an administrator will review your deposit.
+                </p>
+
+                <p class="invoice-premium-approval-text">
+                    Once approved, the funds will be credited to your
+                    trading account.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- ============================================= -->
+        <!-- PENDING NOTICE -->
+        <!-- ============================================= -->
+
+        <div class="invoice-premium-pending">
+
+            <div class="invoice-premium-pending-icon">
+                ⏳
+            </div>
+
+            <div>
+
+                <h3>
+                    Deposit Awaiting Confirmation
+                </h3>
+
+                <p>
+                    Please keep your transaction details until your payment
+                    has been confirmed and approved by the administrator.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- ============================================= -->
+        <!-- FINAL SECURITY REMINDER -->
+        <!-- ============================================= -->
+
+        <div class="invoice-premium-final-notice">
+
+            <span class="invoice-premium-final-icon">
+                🔒
+            </span>
+
+            <p>
+                <strong>Security Reminder:</strong>
+                Always verify the wallet address, cryptocurrency and network
+                before sending your funds. Funds sent to an incorrect address
+                or unsupported network may not be recoverable.
+            </p>
+
+        </div>
+
+
     </div>
+
 </div>
+
 {% endblock %}
