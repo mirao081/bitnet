@@ -1,12 +1,12 @@
 from django import forms
-from .models import UserKYC, UserWallet, UserVerification, APIKey, UserProfile,Withdrawal
+from .models import UserKYC, UserWallet, UserVerification, APIKey, UserProfile, Withdrawal
 from django.contrib.auth.models import User
 from django_recaptcha.fields import ReCaptchaField
-from django_recaptcha.widgets import ReCaptchaV3
+from django_recaptcha.widgets import ReCaptchaV2Checkbox
 
 
 class KYCForm(forms.ModelForm):
-    captcha = ReCaptchaField(widget=ReCaptchaV3)
+    captcha = ReCaptchaField(widget=ReCaptchaV2Checkbox)
 
     class Meta:
         model = UserKYC
@@ -15,8 +15,9 @@ class KYCForm(forms.ModelForm):
             'document': forms.ClearableFileInput(attrs={'class': 'form-control'}),
         }
 
+
 class UserWalletForm(forms.ModelForm):
-    captcha = ReCaptchaField(widget=ReCaptchaV3)
+    captcha = ReCaptchaField(widget=ReCaptchaV2Checkbox)
 
     class Meta:
         model = UserWallet
@@ -28,8 +29,9 @@ class UserWalletForm(forms.ModelForm):
             "captcha"
         ]
 
+
 class ProfileForm(forms.ModelForm):
-    captcha = ReCaptchaField(widget=ReCaptchaV3)
+    captcha = ReCaptchaField(widget=ReCaptchaV2Checkbox)
 
     class Meta:
         model = UserProfile
@@ -38,36 +40,41 @@ class ProfileForm(forms.ModelForm):
             "risk_level", "preferred_assets", "auto_invest", "captcha"
         ]
 
+
 class NotificationsForm(forms.ModelForm):
-    captcha = ReCaptchaField(widget=ReCaptchaV3)
+    captcha = ReCaptchaField(widget=ReCaptchaV2Checkbox)
 
     class Meta:
         model = UserProfile
         fields = ["email_notifications", "sms_notifications", "captcha"]
 
+
 class AccountForm(forms.ModelForm):
-    captcha = ReCaptchaField(widget=ReCaptchaV3)
+    captcha = ReCaptchaField(widget=ReCaptchaV2Checkbox)
 
     class Meta:
         model = UserProfile
         fields = ["is_deactivated", "export_requested", "captcha"]
 
+
 class VerificationForm(forms.ModelForm):
-    captcha = ReCaptchaField(widget=ReCaptchaV3)
+    captcha = ReCaptchaField(widget=ReCaptchaV2Checkbox)
 
     class Meta:
         model = UserVerification
         fields = ["is_verified", "captcha"]
 
+
 class APIForm(forms.ModelForm):
-    captcha = ReCaptchaField(widget=ReCaptchaV3)
+    captcha = ReCaptchaField(widget=ReCaptchaV2Checkbox)
 
     class Meta:
         model = APIKey
         fields = ["status", "captcha"]
 
+
 class SettingsForm(forms.ModelForm):
-    captcha = ReCaptchaField(widget=ReCaptchaV3)
+    captcha = ReCaptchaField(widget=ReCaptchaV2Checkbox)
 
     class Meta:
         model = User
@@ -79,33 +86,18 @@ class SettingsForm(forms.ModelForm):
 
 
 class WithdrawalForm(forms.ModelForm):
+    captcha = ReCaptchaField(widget=ReCaptchaV2Checkbox)
+
     class Meta:
         model = Withdrawal
         fields = [
             "currency",
             "amount",
             "wallet_address",
+            "captcha"
         ]
-
         widgets = {
-            "currency": forms.Select(
-                attrs={
-                    "class": "form-control"
-                }
-            ),
-
-            "amount": forms.NumberInput(
-                attrs={
-                    "class": "form-control",
-                    "placeholder": "Enter withdrawal amount"
-                }
-            ),
-
-            "wallet_address": forms.TextInput(
-                attrs={
-                    "class": "form-control",
-                    "placeholder": "Enter destination wallet address"
-                }
-            ),
+            "currency": forms.Select(attrs={"class": "form-control"}),
+            "amount": forms.NumberInput(attrs={"class": "form-control", "placeholder": "Enter withdrawal amount"}),
+            "wallet_address": forms.TextInput(attrs={"class": "form-control", "placeholder": "Enter destination wallet address"}),
         }
-

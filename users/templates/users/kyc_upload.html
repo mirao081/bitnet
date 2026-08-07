@@ -1,14 +1,22 @@
 {% extends "users/dashboard_base.html" %}
 {% load static %}
+
 {% block content %}
 <div class="card kyc-card">
     <div class="card-header">
         KYC Verification
     </div>
 
-
     <div class="card-body">
         <p>Status: {{ kyc.get_status_display }}</p>
+
+        {% if messages %}
+            <div class="feedback-messages">
+                {% for message in messages %}
+                    <div class="alert {{ message.tags }}">{{ message }}</div>
+                {% endfor %}
+            </div>
+        {% endif %}
 
         <form method="post" enctype="multipart/form-data" class="kyc-form">
             {% csrf_token %}
@@ -16,8 +24,17 @@
             <div class="file-upload">
                 <label for="id_document" class="custom-file-label">Choose File</label>
                 {{ form.document }}
-                <span class="file-chosen">No file chosen</span>
             </div>
+
+            <div class="captcha-field">
+                {{ form.captcha }}
+            </div>
+
+            {% if form.errors %}
+                <div class="form-errors">
+                    {{ form.errors }}
+                </div>
+            {% endif %}
 
             <button type="submit" class="upload-btn">Upload Document</button>
         </form>

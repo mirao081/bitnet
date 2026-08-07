@@ -1067,7 +1067,10 @@ def kyc_upload(request):
             form.save()
             kyc.status = "pending"
             kyc.save()
+            messages.success(request, "Your KYC has been submitted for review.")
             return redirect("users:dashboard")
+        else:
+            messages.error(request, "There was a problem with your submission. Please check the form and try again.")
     else:
         form = KYCForm(instance=kyc)
 
@@ -1075,6 +1078,7 @@ def kyc_upload(request):
         "form": form,
         "kyc": kyc
     })
+
 
 @login_required
 def logout_view(request):
