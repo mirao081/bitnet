@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib.auth import logout as auth_logout
 from django.contrib.auth import authenticate, login
 from django.contrib import messages
+from decimal import Decimal
 from django.utils.timezone import now
 from users.utils import credit_profit
 from django.http import HttpResponse, JsonResponse   # merged HttpResponse + JsonResponse
@@ -1101,18 +1102,11 @@ def deposit(request):
     user = request.user
     profile = UserProfile.objects.get(user=user)
 
-    # Check wallet existence
     wallet_exists = UserWallet.objects.filter(user=user).exists()
-
-    # Check verification status
-    try:
-        verification = UserVerification.objects.get(user=user)
-    except UserVerification.DoesNotExist:
-        verification = None
 
     context = {
         "wallet_exists": wallet_exists,
-        "verification": verification,
+        "profile": profile,
     }
     return render(request, "users/deposit.html", context)
 
@@ -1121,19 +1115,12 @@ def deposit(request):
 def make_deposit(request):
     profile = UserProfile.objects.get(user=request.user)
 
-    # Restrict if no wallet
     wallet_exists = UserWallet.objects.filter(user=request.user).exists()
     if not wallet_exists:
         messages.error(request, "⚠️ Please add a wallet before making deposits.")
         return redirect("users:deposit")
 
-    # Restrict if not verified
-    try:
-        verification = UserVerification.objects.get(user=request.user)
-    except UserVerification.DoesNotExist:
-        verification = None
-
-    if not verification or not verification.is_verified:
+    if profile.verification_status != "verified":
         messages.error(request, "⚠️ Your account is not verified. Please wait for admin approval before making deposits.")
         return redirect("users:deposit")
 
@@ -1141,12 +1128,10 @@ def make_deposit(request):
         amount = Decimal(request.POST.get("amount"))
         currency = request.POST.get("currency")
 
-        # Minimum deposit check
         if amount < MIN_DEPOSIT:
             messages.error(request, f"The minimum deposit is ${MIN_DEPOSIT}. Please enter a valid amount.")
             return redirect("users:deposit")
 
-        # Update balances
         if currency == "BTC":
             profile.btc_balance += amount
         elif currency == "ETH":
@@ -1163,7 +1148,6 @@ def make_deposit(request):
 
         profile.save()
 
-        # Create deposit record
         deposit = Deposit.objects.create(
             user=request.user,
             amount=amount,
@@ -1174,6 +1158,7 @@ def make_deposit(request):
         return redirect("users:deposit_invoice", deposit_id=deposit.id, currency=currency)
 
     return redirect("users:deposit")
+
 
 
 @login_required

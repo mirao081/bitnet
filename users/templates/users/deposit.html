@@ -12,7 +12,7 @@
         <div class="funds-warning">
             <p>⚠️ Please add a wallet before making deposits.</p>
         </div>
-    {% elif verification and not verification.is_verified %}
+    {% elif profile.verification_status != "verified" %}
         <div class="funds-warning">
             <p>⚠️ Your account is not verified. Please wait for admin approval before making deposits.</p>
         </div>
