@@ -3740,15 +3740,10 @@ min-height:300px;
 
 
 
- /* =========================================================
-    HOME PAGE — TIGHTER SECTION SPACING
-    Keeps the existing design but reduces excessive gaps
-    between major sections.
- ========================================================= */
-
-/* =========================
-   DESKTOP
-========================= */
+/* =========================================================
+   HOME PAGE — ZERO SECTION SPACING
+   Removes vertical spacing between major home sections.
+   ========================================================= */
 
 .elite-investment-showcase,
 .elite-feature-gallery,
@@ -3759,50 +3754,47 @@ min-height:300px;
 .elite-calculator-showcase,
 .elite-feature-showcase,
 .home-accessible-showcase {
-    padding-top: 40px;
-    padding-bottom: 40px;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
 }
 
-/* Accessible heading */
+/* Remove internal spacing that can create visible gaps */
+
 .home-accessible-heading {
-    margin-bottom: 25px;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
 }
 
-/* Swing heading */
 .elite-swing-title {
-    margin-top: 15px;
-    margin-bottom: 25px;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
 }
 
-/* Exchange icons */
 .elite-exchange-icons-grid {
-    margin-top: 25px;
+    margin-top: 0 !important;
 }
 
-/* Investment plans heading */
 .elite-plan-title {
-    margin-top: 15px;
+    margin-top: 0 !important;
 }
 
 .elite-plan-subtitle {
-    margin-bottom: 25px;
+    margin-bottom: 0 !important;
 }
 
-/* Feature panels
-   Grid gap already controls spacing. */
 .elite-feature-panel {
-    margin-bottom: 0;
+    margin-bottom: 0 !important;
 }
 
-/* Calculator canvas */
 .home-canvas {
-    margin-top: 25px;
+    margin-top: 0 !important;
 }
 
-
-/* =========================
-   TABLET
-========================= */
+/* =========================================================
+   ALL RESPONSIVE BREAKPOINTS — KEEP ZERO SPACING
+   ========================================================= */
 
 @media (max-width: 991px) {
 
@@ -3815,32 +3807,13 @@ min-height:300px;
     .elite-calculator-showcase,
     .elite-feature-showcase,
     .home-accessible-showcase {
-        padding-top: 35px;
-        padding-bottom: 35px;
+        padding-top: 0 !important;
+        padding-bottom: 0 !important;
+        margin-top: 0 !important;
+        margin-bottom: 0 !important;
     }
 
-    .home-accessible-heading {
-        margin-bottom: 25px;
-    }
-
-    .elite-swing-title {
-        margin-top: 15px;
-        margin-bottom: 22px;
-    }
-
-    .elite-plan-subtitle {
-        margin-bottom: 25px;
-    }
-
-    .elite-exchange-icons-grid {
-        margin-top: 22px;
-    }
 }
-
-
-/* =========================
-   MOBILE
-========================= */
 
 @media (max-width: 600px) {
 
@@ -3853,36 +3826,13 @@ min-height:300px;
     .elite-calculator-showcase,
     .elite-feature-showcase,
     .home-accessible-showcase {
-        padding-top: 30px;
-        padding-bottom: 30px;
+        padding-top: 0 !important;
+        padding-bottom: 0 !important;
+        margin-top: 0 !important;
+        margin-bottom: 0 !important;
     }
 
-    .home-accessible-heading {
-        margin-bottom: 22px;
-    }
-
-    .elite-swing-title {
-        margin-top: 12px;
-        margin-bottom: 20px;
-    }
-
-    .elite-plan-subtitle {
-        margin-bottom: 22px;
-    }
-
-    .elite-exchange-icons-grid {
-        margin-top: 20px;
-    }
-
-    .home-canvas {
-        margin-top: 20px;
-    }
 }
-
-
-/* =========================
-   SMALL PHONES
-========================= */
 
 @media (max-width: 380px) {
 
@@ -3895,19 +3845,10 @@ min-height:300px;
     .elite-calculator-showcase,
     .elite-feature-showcase,
     .home-accessible-showcase {
-        padding-top: 25px;
-        padding-bottom: 25px;
+        padding-top: 0 !important;
+        padding-bottom: 0 !important;
+        margin-top: 0 !important;
+        margin-bottom: 0 !important;
     }
 
-    .home-accessible-heading {
-        margin-bottom: 18px;
-    }
-
-    .elite-swing-title {
-        margin-bottom: 18px;
-    }
-
-    .elite-plan-subtitle {
-        margin-bottom: 18px;
-    }
 }
