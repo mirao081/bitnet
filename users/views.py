@@ -1110,7 +1110,6 @@ def deposit(request):
     }
     return render(request, "users/deposit.html", context)
 
-
 @login_required
 def make_deposit(request):
     profile = UserProfile.objects.get(user=request.user)
@@ -1125,7 +1124,12 @@ def make_deposit(request):
         return redirect("users:deposit")
 
     if request.method == "POST":
-        amount = Decimal(request.POST.get("amount"))
+        try:
+            amount = Decimal(request.POST.get("amount"))
+        except Exception:
+            messages.error(request, "Invalid amount entered.")
+            return redirect("users:deposit")
+
         currency = request.POST.get("currency")
 
         if amount < MIN_DEPOSIT:
@@ -1158,7 +1162,6 @@ def make_deposit(request):
         return redirect("users:deposit_invoice", deposit_id=deposit.id, currency=currency)
 
     return redirect("users:deposit")
-
 
 
 @login_required
@@ -1195,6 +1198,7 @@ def deposit_invoice(request, deposit_id, currency):
         "wallet_address": wallet_address,
         "qr_code_url": qr_code_url,
     })
+
 
 @login_required
 def request_withdrawal(request):
