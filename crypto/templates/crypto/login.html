@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <title>Login - Bitnet</title>
     <link rel="stylesheet" href="{% static 'crypto/css/login.css' %}">
-    <!-- Use your actual public site key -->
-    <script src="https://www.google.com/recaptcha/api.js?render=6LfYRWotAAAAADZOYTAPexRxP48RWIDrfj7sCAaj"></script>
+    <!-- Google reCAPTCHA v2 Checkbox -->
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 <body class="bitnet-login-body">
     <div class="bitnet-login-container">
@@ -27,7 +27,10 @@
                 {{ form.password }}
             </div>
 
-            <input type="hidden" id="id_captcha" name="captcha">
+            <!-- ✅ Render the checkbox captcha -->
+            <div class="form-group">
+                {{ form.captcha }}
+            </div>
 
             <button type="submit" class="bitnet-login-button">Login</button>
         </form>
@@ -36,13 +39,5 @@
             Don’t have an account? <a href="{% url 'crypto:signup' %}">Sign up here</a>
         </p>
     </div>
-
-    <script>
-        grecaptcha.ready(function() {
-            grecaptcha.execute('6LfYRWotAAAAADZOYTAPexRxP48RWIDrfj7sCAaj', {action: 'submit'}).then(function(token) {
-                document.getElementById('id_captcha').value = token;
-            });
-        });
-    </script>
 </body>
 </html>
