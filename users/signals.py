@@ -16,7 +16,7 @@ from .models import (
     ReferralCommission,
     UserProfile,
     UserBalance,
-    UserVerification,   # ✅ make sure this is imported
+    UserVerification,   # make sure this is imported
 )
 
 
@@ -162,10 +162,7 @@ def referral_bonus(sender, instance, **kwargs):
 def sync_verification_status(sender, instance, **kwargs):
     try:
         profile = UserProfile.objects.get(user=instance.user)
-        if instance.is_verified:
-            profile.verification_status = "verified"
-        else:
-            profile.verification_status = "pending"
+        profile.verification_status = "verified" if instance.is_verified else "pending"
         profile.save(update_fields=["verification_status"])
     except UserProfile.DoesNotExist:
         print(f"No UserProfile found for {instance.user.username}")
