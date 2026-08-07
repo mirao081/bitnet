@@ -77,7 +77,7 @@ def home(request):
     nav_links = NavigationLink.objects.all()
     page = PageContent.objects.filter(slug="home").first()
     accessible = AccessibleSection.objects.first()
-    accessible_cards = AccessibleCard.objects.order_by("order")[:5]
+    accessible_cards = AccessibleCard.objects.order_by("order")
     token_sale = TokenSaleSection.objects.first()
     swing_section = SwingSection.objects.first()
     exchange_section = ExchangeSection.objects.first()
