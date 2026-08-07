@@ -25,6 +25,10 @@
 
 <section class="home-accessible-showcase">
 
+    <!-- ==========================================
+         HEADING
+    =========================================== -->
+
     <div class="home-accessible-heading">
 
         <div class="home-accessible-badge">
@@ -36,15 +40,26 @@
         </h2>
 
         <p class="home-accessible-subtitle">
-            Trade Smarter With A Secure Investment Platform Designed For Modern Investors...
+            Trade Smarter With A Secure Investment Platform Designed For Modern Investors,
+            combining advanced technology, intelligent market insights, and a streamlined
+            experience that makes modern digital investing easier, clearer, and more accessible.
         </p>
 
         <p class="home-accessible-description">
-            Discover a powerful ecosystem where innovation meets reliability...
+            Discover a powerful ecosystem where innovation meets reliability, giving investors
+            access to modern tools, transparent information, intelligent portfolio solutions,
+            and a secure environment built around convenience and long-term financial growth.
+            Whether you are exploring digital assets for the first time or looking to enhance
+            an existing investment strategy, our platform is designed to provide a professional
+            experience that helps you make informed decisions with greater confidence.
         </p>
 
     </div>
 
+
+    <!-- ==========================================
+         ACCESSIBLE INVESTMENT CARDS
+    =========================================== -->
 
     <div class="home-accessible-grid">
 
@@ -52,13 +67,24 @@
 
         <div class="home-accessible-card">
 
-            <div class="home-accessible-image-wrapper">
+            <!-- ==========================================
+                 ISOLATED IMAGE CONTAINER
+            =========================================== -->
+
+            <div class="home-card-visual-box">
+
                 <img
                     src="{{ card.image.url }}"
                     alt="{{ card.title }}"
-                    class="home-accessible-image"
+                    class="home-card-visual"
                 >
+
             </div>
+
+
+            <!-- ==========================================
+                 CARD CONTENT
+            =========================================== -->
 
             <div class="home-accessible-content">
 
@@ -74,12 +100,23 @@
 
         </div>
 
+        {% empty %}
+
+        <div class="home-accessible-empty">
+
+            <p>
+                Investment information is currently being updated.
+                Please check back shortly for our latest services,
+                features, and investment opportunities.
+            </p>
+
+        </div>
+
         {% endfor %}
 
     </div>
 
 </section>
-
 
 
 <!--==============================
