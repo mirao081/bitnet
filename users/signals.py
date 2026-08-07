@@ -157,12 +157,18 @@ def referral_bonus(sender, instance, **kwargs):
     print(f"{referrer.username} received ${bonus} referral bonus.")
 
 
-# ✅ NEW: keep UserProfile.verification_status in sync with UserVerification.is_verified
 @receiver(post_save, sender=UserVerification)
 def sync_verification_status(sender, instance, **kwargs):
-    try:
-        profile = UserProfile.objects.get(user=instance.user)
-        profile.verification_status = "verified" if instance.is_verified else "pending"
+    profile, _ = UserProfile.objects.get_or_create(
+        user=instance.user
+    )
+
+    new_status = (
+        "verified"
+        if instance.is_verified
+        else "pending"
+    )
+
+    if profile.verification_status != new_status:
+        profile.verification_status = new_status
         profile.save(update_fields=["verification_status"])
-    except UserProfile.DoesNotExist:
-        print(f"No UserProfile found for {instance.user.username}")

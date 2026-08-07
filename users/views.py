@@ -1089,80 +1089,125 @@ def logout_view(request):
 
 MIN_DEPOSIT = Decimal("200.00")
 
-from decimal import Decimal
-from django.contrib.auth.decorators import login_required
-from django.shortcuts import render, redirect
-from django.contrib import messages
-from .models import UserProfile, UserWallet, UserVerification, Deposit
-
-MIN_DEPOSIT = Decimal("200.00")
-
 @login_required
 def deposit(request):
     user = request.user
-    profile = UserProfile.objects.get(user=user)
 
-    wallet_exists = UserWallet.objects.filter(user=user).exists()
+    profile, _ = UserProfile.objects.get_or_create(
+        user=user
+    )
+
+    wallet_exists = UserWallet.objects.filter(
+        user=user
+    ).exists()
+
+    verification = UserVerification.objects.filter(
+        user=user
+    ).first()
+
+    is_verified = (
+        verification is not None
+        and verification.is_verified
+    )
 
     context = {
         "wallet_exists": wallet_exists,
         "profile": profile,
+        "is_verified": is_verified,
     }
-    return render(request, "users/deposit.html", context)
+
+    return render(
+        request,
+        "users/deposit.html",
+        context
+    )
 
 @login_required
 def make_deposit(request):
-    profile = UserProfile.objects.get(user=request.user)
+    user = request.user
 
-    wallet_exists = UserWallet.objects.filter(user=request.user).exists()
+    profile, _ = UserProfile.objects.get_or_create(
+        user=user
+    )
+
+    wallet_exists = UserWallet.objects.filter(
+        user=user
+    ).exists()
+
     if not wallet_exists:
-        messages.error(request, "⚠️ Please add a wallet before making deposits.")
+        messages.error(
+            request,
+            "⚠️ Please add a wallet before making deposits."
+        )
         return redirect("users:deposit")
 
-    if profile.verification_status != "verified":
-        messages.error(request, "⚠️ Your account is not verified. Please wait for admin approval before making deposits.")
+    verification = UserVerification.objects.filter(
+        user=user
+    ).first()
+
+    is_verified = (
+        verification is not None
+        and verification.is_verified
+    )
+
+    if not is_verified:
+        messages.error(
+            request,
+            "⚠️ Your account is not verified. Please wait for admin approval before making deposits."
+        )
         return redirect("users:deposit")
 
     if request.method == "POST":
+
         try:
-            amount = Decimal(request.POST.get("amount"))
-        except Exception:
-            messages.error(request, "Invalid amount entered.")
+            amount = Decimal(
+                request.POST.get("amount")
+            )
+        except (TypeError, ValueError, ArithmeticError):
+            messages.error(
+                request,
+                "Invalid amount entered."
+            )
             return redirect("users:deposit")
 
         currency = request.POST.get("currency")
 
         if amount < MIN_DEPOSIT:
-            messages.error(request, f"The minimum deposit is ${MIN_DEPOSIT}. Please enter a valid amount.")
+            messages.error(
+                request,
+                f"The minimum deposit is ${MIN_DEPOSIT}. Please enter a valid amount."
+            )
             return redirect("users:deposit")
 
-        if currency == "BTC":
-            profile.btc_balance += amount
-        elif currency == "ETH":
-            profile.eth_balance += amount
-        elif currency == "USDT ERC20":
-            profile.usdt_erc20_balance += amount
-        elif currency == "USDT TRC20":
-            profile.usdt_trc20_balance += amount
-        elif currency == "USD":
-            profile.usd_balance += amount
-        else:
-            messages.error(request, "Invalid currency selected")
-            return redirect("users:deposit")
+        valid_currencies = [
+            "BTC",
+            "ETH",
+            "USDT ERC20",
+            "USDT TRC20",
+            "USD",
+        ]
 
-        profile.save()
+        if currency not in valid_currencies:
+            messages.error(
+                request,
+                "Invalid currency selected."
+            )
+            return redirect("users:deposit")
 
         deposit = Deposit.objects.create(
-            user=request.user,
+            user=user,
             amount=amount,
             currency=currency,
             status="pending"
         )
 
-        return redirect("users:deposit_invoice", deposit_id=deposit.id, currency=currency)
+        return redirect(
+            "users:deposit_invoice",
+            deposit_id=deposit.id,
+            currency=currency
+        )
 
     return redirect("users:deposit")
-
 
 @login_required
 def deposit_invoice(request, deposit_id, currency):
