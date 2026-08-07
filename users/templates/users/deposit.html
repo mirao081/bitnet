@@ -9,20 +9,32 @@
 
     <div class="funds-header">
         <h1 class="funds-title">💰 Deposit</h1>
+
         <p class="funds-subtitle">
             Securely fund your investment account
         </p>
     </div>
 
+
     {% if not wallet_exists %}
 
         <div class="funds-warning">
             <p>
-                ⚠️ Please add a wallet before making deposits.
+                ⚠️ Please update your wallet before making deposits.
             </p>
         </div>
 
-    {% elif not is_verified %}
+
+    {% elif not wallet_has_address %}
+
+        <div class="funds-warning">
+            <p>
+                ⚠️ Please update your wallet before making deposits.
+            </p>
+        </div>
+
+
+    {% elif profile.verification_status != "verified" %}
 
         <div class="funds-warning">
             <p>
@@ -31,11 +43,16 @@
             </p>
         </div>
 
+
     {% else %}
 
         <div class="funds-grid">
 
-            <!-- Bitcoin -->
+
+            <!-- ============================= -->
+            <!-- BITCOIN -->
+            <!-- ============================= -->
+
             <div class="funds-card">
 
                 <h2 class="funds-card-title">
@@ -87,7 +104,10 @@
             </div>
 
 
-            <!-- Ethereum -->
+            <!-- ============================= -->
+            <!-- ETHEREUM -->
+            <!-- ============================= -->
+
             <div class="funds-card">
 
                 <h2 class="funds-card-title">
@@ -139,7 +159,10 @@
             </div>
 
 
-            <!-- USDT ERC-20 -->
+            <!-- ============================= -->
+            <!-- USDT ERC20 -->
+            <!-- ============================= -->
+
             <div class="funds-card">
 
                 <h2 class="funds-card-title">
@@ -191,7 +214,10 @@
             </div>
 
 
-            <!-- USDT TRC-20 -->
+            <!-- ============================= -->
+            <!-- USDT TRC20 -->
+            <!-- ============================= -->
+
             <div class="funds-card">
 
                 <h2 class="funds-card-title">
@@ -241,6 +267,7 @@
                 </form>
 
             </div>
+
 
         </div>
 

@@ -1093,27 +1093,28 @@ MIN_DEPOSIT = Decimal("200.00")
 def deposit(request):
     user = request.user
 
-    profile, _ = UserProfile.objects.get_or_create(
-        user=user
-    )
+    profile = UserProfile.objects.get(user=user)
 
-    wallet_exists = UserWallet.objects.filter(
-        user=user
-    ).exists()
+    wallet = UserWallet.objects.filter(user=user).first()
 
-    verification = UserVerification.objects.filter(
-        user=user
-    ).first()
+    wallet_exists = wallet is not None
 
-    is_verified = (
-        verification is not None
-        and verification.is_verified
-    )
+    # Check whether the user has entered at least one
+    # actual wallet address.
+    wallet_has_address = False
+
+    if wallet:
+        wallet_has_address = any([
+            bool(wallet.btc_wallet),
+            bool(wallet.eth_wallet),
+            bool(wallet.usdt_erc20_wallet),
+            bool(wallet.usdt_trc20_wallet),
+        ])
 
     context = {
         "wallet_exists": wallet_exists,
+        "wallet_has_address": wallet_has_address,
         "profile": profile,
-        "is_verified": is_verified,
     }
 
     return render(
@@ -1124,90 +1125,146 @@ def deposit(request):
 
 @login_required
 def make_deposit(request):
-    user = request.user
+    profile = UserProfile.objects.get(user=request.user)
 
-    profile, _ = UserProfile.objects.get_or_create(
-        user=user
-    )
+    # ---------------------------------------------------------
+    # 1. USER MUST HAVE A USERWALLET RECORD
+    # ---------------------------------------------------------
+    wallet = UserWallet.objects.filter(
+        user=request.user
+    ).first()
 
-    wallet_exists = UserWallet.objects.filter(
-        user=user
-    ).exists()
-
-    if not wallet_exists:
+    if not wallet:
         messages.error(
             request,
-            "⚠️ Please add a wallet before making deposits."
+            "⚠️ Please update your wallet before making deposits."
         )
         return redirect("users:deposit")
 
+    # ---------------------------------------------------------
+    # 2. USER MUST BE VERIFIED
+    # ---------------------------------------------------------
     verification = UserVerification.objects.filter(
-        user=user
+        user=request.user
     ).first()
 
-    is_verified = (
-        verification is not None
-        and verification.is_verified
-    )
-
-    if not is_verified:
+    if not verification or not verification.is_verified:
         messages.error(
             request,
             "⚠️ Your account is not verified. Please wait for admin approval before making deposits."
         )
         return redirect("users:deposit")
 
-    if request.method == "POST":
+    # ---------------------------------------------------------
+    # 3. ONLY ACCEPT POST REQUESTS
+    # ---------------------------------------------------------
+    if request.method != "POST":
+        return redirect("users:deposit")
 
-        try:
-            amount = Decimal(
-                request.POST.get("amount")
-            )
-        except (TypeError, ValueError, ArithmeticError):
-            messages.error(
-                request,
-                "Invalid amount entered."
-            )
-            return redirect("users:deposit")
-
-        currency = request.POST.get("currency")
-
-        if amount < MIN_DEPOSIT:
-            messages.error(
-                request,
-                f"The minimum deposit is ${MIN_DEPOSIT}. Please enter a valid amount."
-            )
-            return redirect("users:deposit")
-
-        valid_currencies = [
-            "BTC",
-            "ETH",
-            "USDT ERC20",
-            "USDT TRC20",
-            "USD",
-        ]
-
-        if currency not in valid_currencies:
-            messages.error(
-                request,
-                "Invalid currency selected."
-            )
-            return redirect("users:deposit")
-
-        deposit = Deposit.objects.create(
-            user=user,
-            amount=amount,
-            currency=currency,
-            status="pending"
+    # ---------------------------------------------------------
+    # 4. GET AMOUNT
+    # ---------------------------------------------------------
+    try:
+        amount = Decimal(request.POST.get("amount"))
+    except (TypeError, ValueError, ArithmeticError):
+        messages.error(
+            request,
+            "Invalid amount entered."
         )
+        return redirect("users:deposit")
 
-        return redirect(
-            "users:deposit_invoice",
-            deposit_id=deposit.id,
-            currency=currency
+    # ---------------------------------------------------------
+    # 5. GET CURRENCY
+    # ---------------------------------------------------------
+    currency = request.POST.get("currency")
+
+    # ---------------------------------------------------------
+    # 6. CHECK THE WALLET FOR THE SPECIFIC CURRENCY
+    # ---------------------------------------------------------
+    wallet_address = None
+
+    if currency == "BTC":
+        wallet_address = wallet.btc_wallet
+
+    elif currency == "ETH":
+        wallet_address = wallet.eth_wallet
+
+    elif currency == "USDT ERC20":
+        wallet_address = wallet.usdt_erc20_wallet
+
+    elif currency == "USDT TRC20":
+        wallet_address = wallet.usdt_trc20_wallet
+
+    elif currency == "USD":
+        # USD is a balance in your system, not one of
+        # the four wallet addresses.
+        wallet_address = "USD"
+
+    else:
+        messages.error(
+            request,
+            "Invalid currency selected."
         )
+        return redirect("users:deposit")
 
-    return redirect("users:deposit")
+    # ---------------------------------------------------------
+    # 7. REQUIRE THE CORRECT WALLET ADDRESS
+    # ---------------------------------------------------------
+    if currency != "USD" and not wallet_address:
+        messages.error(
+            request,
+            f"⚠️ Please update your {currency} wallet before making this deposit."
+        )
+        return redirect("users:deposit")
+
+    # ---------------------------------------------------------
+    # 8. MINIMUM DEPOSIT
+    # ---------------------------------------------------------
+    if amount < MIN_DEPOSIT:
+        messages.error(
+            request,
+            f"The minimum deposit is ${MIN_DEPOSIT}. Please enter a valid amount."
+        )
+        return redirect("users:deposit")
+
+    # ---------------------------------------------------------
+    # 9. KEEP YOUR EXISTING BALANCE BEHAVIOR
+    # ---------------------------------------------------------
+    if currency == "BTC":
+        profile.btc_balance += amount
+
+    elif currency == "ETH":
+        profile.eth_balance += amount
+
+    elif currency == "USDT ERC20":
+        profile.usdt_erc20_balance += amount
+
+    elif currency == "USDT TRC20":
+        profile.usdt_trc20_balance += amount
+
+    elif currency == "USD":
+        profile.usd_balance += amount
+
+    profile.save()
+
+    # ---------------------------------------------------------
+    # 10. CREATE THE PENDING DEPOSIT
+    # ---------------------------------------------------------
+    deposit = Deposit.objects.create(
+        user=request.user,
+        amount=amount,
+        currency=currency,
+        status="pending"
+    )
+
+    # ---------------------------------------------------------
+    # 11. SEND USER TO THE INVOICE
+    # ---------------------------------------------------------
+    return redirect(
+        "users:deposit_invoice",
+        deposit_id=deposit.id,
+        currency=currency
+    )
 
 @login_required
 def deposit_invoice(request, deposit_id, currency):
