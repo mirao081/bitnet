@@ -3737,3 +3737,177 @@ min-height:300px;
         font-size: 13px;
     }
 }
+
+
+
+ /* =========================================================
+    HOME PAGE — TIGHTER SECTION SPACING
+    Keeps the existing design but reduces excessive gaps
+    between major sections.
+ ========================================================= */
+
+/* =========================
+   DESKTOP
+========================= */
+
+.elite-investment-showcase,
+.elite-feature-gallery,
+.elite-sale-showcase,
+.elite-swing-showcase,
+.elite-exchange-showcase,
+.elite-plan-showcase,
+.elite-calculator-showcase,
+.elite-feature-showcase,
+.home-accessible-showcase {
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+/* Accessible heading */
+.home-accessible-heading {
+    margin-bottom: 25px;
+}
+
+/* Swing heading */
+.elite-swing-title {
+    margin-top: 15px;
+    margin-bottom: 25px;
+}
+
+/* Exchange icons */
+.elite-exchange-icons-grid {
+    margin-top: 25px;
+}
+
+/* Investment plans heading */
+.elite-plan-title {
+    margin-top: 15px;
+}
+
+.elite-plan-subtitle {
+    margin-bottom: 25px;
+}
+
+/* Feature panels
+   Grid gap already controls spacing. */
+.elite-feature-panel {
+    margin-bottom: 0;
+}
+
+/* Calculator canvas */
+.home-canvas {
+    margin-top: 25px;
+}
+
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 991px) {
+
+    .elite-investment-showcase,
+    .elite-feature-gallery,
+    .elite-sale-showcase,
+    .elite-swing-showcase,
+    .elite-exchange-showcase,
+    .elite-plan-showcase,
+    .elite-calculator-showcase,
+    .elite-feature-showcase,
+    .home-accessible-showcase {
+        padding-top: 35px;
+        padding-bottom: 35px;
+    }
+
+    .home-accessible-heading {
+        margin-bottom: 25px;
+    }
+
+    .elite-swing-title {
+        margin-top: 15px;
+        margin-bottom: 22px;
+    }
+
+    .elite-plan-subtitle {
+        margin-bottom: 25px;
+    }
+
+    .elite-exchange-icons-grid {
+        margin-top: 22px;
+    }
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 600px) {
+
+    .elite-investment-showcase,
+    .elite-feature-gallery,
+    .elite-sale-showcase,
+    .elite-swing-showcase,
+    .elite-exchange-showcase,
+    .elite-plan-showcase,
+    .elite-calculator-showcase,
+    .elite-feature-showcase,
+    .home-accessible-showcase {
+        padding-top: 30px;
+        padding-bottom: 30px;
+    }
+
+    .home-accessible-heading {
+        margin-bottom: 22px;
+    }
+
+    .elite-swing-title {
+        margin-top: 12px;
+        margin-bottom: 20px;
+    }
+
+    .elite-plan-subtitle {
+        margin-bottom: 22px;
+    }
+
+    .elite-exchange-icons-grid {
+        margin-top: 20px;
+    }
+
+    .home-canvas {
+        margin-top: 20px;
+    }
+}
+
+
+/* =========================
+   SMALL PHONES
+========================= */
+
+@media (max-width: 380px) {
+
+    .elite-investment-showcase,
+    .elite-feature-gallery,
+    .elite-sale-showcase,
+    .elite-swing-showcase,
+    .elite-exchange-showcase,
+    .elite-plan-showcase,
+    .elite-calculator-showcase,
+    .elite-feature-showcase,
+    .home-accessible-showcase {
+        padding-top: 25px;
+        padding-bottom: 25px;
+    }
+
+    .home-accessible-heading {
+        margin-bottom: 18px;
+    }
+
+    .elite-swing-title {
+        margin-bottom: 18px;
+    }
+
+    .elite-plan-subtitle {
+        margin-bottom: 18px;
+    }
+}
