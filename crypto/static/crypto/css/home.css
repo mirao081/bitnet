@@ -2892,20 +2892,15 @@ min-height:300px;
 
 }
 }
-
-
-
-
-
 /*==================================================*
-*HOME ACCESSIBLE SHOWCASE STYLE*
+* HOME ACCESSIBLE SHOWCASE STYLE
 *==================================================*/
 
 .home-accessible-showcase {
-    width:100%;
-    padding:90px 0;
-    position:relative;
-    overflow:hidden;
+    width: 100%;
+    padding: 90px 0;
+    position: relative;
+    overflow: hidden;
 
     background:
         radial-gradient(
@@ -2927,93 +2922,95 @@ min-height:300px;
 
 
 /*==================================================*
-*HEADING CONTAINER*
+* HEADING CONTAINER
 *==================================================*/
 
 .home-accessible-heading {
-    width:90%;
-    max-width:1600px;
-    margin:0 auto 60px;
-    padding:20px;
+    width: 90%;
+    max-width: 1600px;
+    margin: 0 auto 60px;
+    padding: 20px;
 
-    text-align:center;
+    text-align: center;
 
-    background:rgba(255,255,255,.05);
-    border-radius:20px;
+    background: rgba(255, 255, 255, .05);
+    border-radius: 20px;
 
-    backdrop-filter:blur(12px);
-    -webkit-backdrop-filter:blur(12px);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
 
-    border:1px solid rgba(255,255,255,.08);
+    border: 1px solid rgba(255, 255, 255, .08);
 
     box-shadow:
-        0 0 25px rgba(0,216,239,.35);
+        0 0 25px rgba(0, 216, 239, .35);
+
+    box-sizing: border-box;
 }
 
 
 /*==================================================*
-*BADGE*
+* BADGE
 *==================================================*/
 
 .home-accessible-badge {
-    display:inline-block;
+    display: inline-block;
 
-    margin-bottom:15px;
-    padding:8px 18px;
+    margin-bottom: 15px;
+    padding: 8px 18px;
 
-    border-radius:20px;
+    border-radius: 20px;
 
-    background:rgba(0,216,239,.10);
-    border:1px solid rgba(0,216,239,.30);
+    background: rgba(0, 216, 239, .10);
+    border: 1px solid rgba(0, 216, 239, .30);
 
-    color:#00d8ef;
+    color: #00d8ef;
 
-    font-size:13px;
-    font-weight:700;
+    font-size: 13px;
+    font-weight: 700;
 
-    letter-spacing:2px;
-    text-transform:uppercase;
+    letter-spacing: 2px;
+    text-transform: uppercase;
 
     box-shadow:
-        0 0 15px rgba(0,216,239,.15);
+        0 0 15px rgba(0, 216, 239, .15);
 }
 
 
 /*==================================================*
-*MAIN TITLE*
+* MAIN TITLE
 *==================================================*/
 
 .home-accessible-title {
-    margin:0 0 15px;
+    margin: 0 0 15px;
 
-    font-size:25px;
-    font-weight:900;
+    font-size: 25px;
+    font-weight: 900;
 
-    color:#fff;
+    color: #fff;
 
-    text-transform:uppercase;
-    letter-spacing:2px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
 
-    line-height:1.25;
+    line-height: 1.25;
 
     text-shadow:
         0 0 10px #00d8ef,
         0 0 20px #00d8ef,
         0 0 40px #7a00ff;
 
-    animation:homeAccessibleGlow 3s infinite alternate;
+    animation: homeAccessibleGlow 3s infinite alternate;
 }
 
 
 /*==================================================*
-*SUBTITLE*
+* SUBTITLE
 *==================================================*/
 
 .home-accessible-subtitle {
-    margin:0 0 12px;
+    margin: 0 0 12px;
 
-    font-size:18px;
-    font-weight:600;
+    font-size: 18px;
+    font-weight: 600;
 
     background:
         linear-gradient(
@@ -3023,208 +3020,217 @@ min-height:300px;
             #ff0080
         );
 
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 
-    background-size:200% auto;
+    background-size: 200% auto;
 
-    animation:homeAccessibleShine 6s linear infinite;
+    animation: homeAccessibleShine 6s linear infinite;
 
-    letter-spacing:1px;
+    letter-spacing: 1px;
 }
 
 
 /*==================================================*
-*DESCRIPTION*
+* DESCRIPTION
 *==================================================*/
 
 .home-accessible-description {
-    margin:0;
+    margin: 0;
 
-    font-size:15px;
-    line-height:1.6;
+    font-size: 15px;
+    line-height: 1.6;
 
-    color:rgba(255,255,255,.75);
+    color: rgba(255, 255, 255, .75);
 }
 
 
 /*==================================================*
-*CARD GRID*
+* CARD GRID
 *==================================================*/
 
 .home-accessible-grid {
-    width:90%;
-    max-width:1600px;
+    width: 90%;
+    max-width: 1600px;
 
-    margin:auto;
+    margin: auto;
 
-    display:grid;
+    display: grid;
 
-    grid-template-columns:repeat(3,1fr);
+    grid-template-columns: repeat(3, 1fr);
 
-    gap:35px;
+    gap: 35px;
 
-    position:relative;
-    z-index:2;
+    position: relative;
+    z-index: 2;
+
+    box-sizing: border-box;
 }
 
 
 /*==================================================*
-*GLASS CARD*
+* GLASS CARD
 *==================================================*/
 
 .home-accessible-card {
-    position:relative;
-    overflow:hidden;
+    position: relative;
+    overflow: hidden;
 
-    text-align:center;
+    text-align: center;
 
-    padding:0 0 35px;
+    padding: 0 0 35px;
 
-    border-radius:30px;
+    border-radius: 30px;
 
-    background:rgba(255,255,255,.08);
+    background: rgba(255, 255, 255, .08);
 
-    backdrop-filter:blur(24px);
-    -webkit-backdrop-filter:blur(24px);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
 
-    border:1px solid rgba(255,255,255,.12);
+    border: 1px solid rgba(255, 255, 255, .12);
 
     box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.15),
-        0 18px 45px rgba(0,0,0,.35);
+        inset 0 1px 0 rgba(255, 255, 255, .15),
+        0 18px 45px rgba(0, 0, 0, .35);
 
-    transition:.45s ease;
+    transition: .45s ease;
 
-    margin-bottom:5px;
+    margin-bottom: 5px;
+
+    box-sizing: border-box;
 }
 
 
 /*==================================================*
-*CARD GLOW*
+* CARD GLOW
 *==================================================*/
 
 .home-accessible-card::before {
-    content:"";
+    content: "";
 
-    position:absolute;
+    position: absolute;
 
-    width:220px;
-    height:220px;
+    width: 220px;
+    height: 220px;
 
-    top:-120px;
-    right:-120px;
+    top: -120px;
+    right: -120px;
 
-    border-radius:50%;
+    border-radius: 50%;
 
     background:
         radial-gradient(
             circle,
-            rgba(0,216,239,.28),
+            rgba(0, 216, 239, .28),
             transparent 70%
         );
 
-    transition:.6s;
+    transition: .6s;
 
-    pointer-events:none;
+    pointer-events: none;
 }
 
 
 /*==================================================*
-*CARD HOVER*
+* CARD HOVER
 *==================================================*/
 
 .home-accessible-card:hover {
-    transform:translateY(-12px);
+    transform: translateY(-10px);
 
     box-shadow:
-        0 30px 70px rgba(0,0,0,.45),
-        0 0 40px rgba(0,216,239,.18);
+        0 30px 70px rgba(0, 0, 0, .45),
+        0 0 40px rgba(0, 216, 239, .18);
 }
 
+
 .home-accessible-card:hover::before {
-    transform:scale(1.4);
+    transform: scale(1.4);
 }
 
 
 /*==================================================*
-*IMAGE*
+* IMAGE
 *==================================================*/
 
 .home-accessible-image-wrapper {
-    width:100%;
-    height:240px;
+    width: 100%;
+    height: 180px;
 
-    overflow:hidden;
+    overflow: hidden;
 
-    position:relative;
+    position: relative;
 
-    border-radius:30px 30px 0 0;
+    border-radius: 30px 30px 0 0;
+
+    box-sizing: border-box;
 }
 
 
 .home-accessible-image {
-    width:100%;
-    height:100%;
+    width: 100%;
+    height: 100%;
 
-    display:block;
+    display: block;
 
-    object-fit:cover;
+    object-fit: cover;
 
-    transition:.5s ease;
+    transition: transform .5s ease;
 }
 
 
 .home-accessible-card:hover .home-accessible-image {
-    transform:scale(1.08);
+    transform: scale(1.05);
 }
 
 
 /*==================================================*
-*CARD CONTENT*
+* CARD CONTENT
 *==================================================*/
 
 .home-accessible-content {
-    position:relative;
-    z-index:2;
+    position: relative;
+    z-index: 2;
 
-    padding:28px 28px 0;
+    padding: 28px 28px 0;
+
+    box-sizing: border-box;
 }
 
 
 /*==================================================*
-*CARD TITLE*
+* CARD TITLE
 *==================================================*/
 
 .home-accessible-card-title {
-    margin:0 0 15px;
+    margin: 0 0 15px;
 
-    font-size:24px;
-    font-weight:800;
+    font-size: 24px;
+    font-weight: 800;
 
-    color:#fff;
+    color: #fff;
 
-    line-height:1.25;
+    line-height: 1.25;
 }
 
 
 /*==================================================*
-*CARD DESCRIPTION*
+* CARD DESCRIPTION
 *==================================================*/
 
 .home-accessible-card-description {
-    margin:0;
+    margin: 0;
 
-    font-size:15px;
+    font-size: 15px;
 
-    color:rgba(255,255,255,.80);
+    color: rgba(255, 255, 255, .80);
 
-    line-height:1.6;
+    line-height: 1.6;
 }
 
 
 /*==================================================*
-*ANIMATIONS*
+* ANIMATIONS
 *==================================================*/
 
 @keyframes homeAccessibleGlow {
@@ -3240,96 +3246,137 @@ min-height:300px;
             0 0 20px #7a00ff,
             0 0 40px #ff0080;
     }
-
 }
 
 
 @keyframes homeAccessibleShine {
 
     0% {
-        background-position:0% 50%;
+        background-position: 0% 50%;
     }
 
     50% {
-        background-position:100% 50%;
+        background-position: 100% 50%;
     }
 
     100% {
-        background-position:0% 50%;
+        background-position: 0% 50%;
     }
-
 }
 
 
 /*==================================================*
-*TABLET*
+* TABLET
 *==================================================*/
 
-@media(max-width:991px) {
+@media (max-width: 991px) {
 
     .home-accessible-grid {
-        grid-template-columns:repeat(2,1fr);
-    }
-
-}
-
-
-/*==================================================*
-*MOBILE*
-*==================================================*/
-
-@media(max-width:600px) {
-
-    .home-accessible-showcase {
-        padding:60px 0;
-    }
-
-    .home-accessible-heading {
-        width:95%;
-        margin-bottom:40px;
-        padding:20px;
-    }
-
-    .home-accessible-grid {
-        width:95%;
-        grid-template-columns:1fr;
-        gap:24px;
-    }
-
-    .home-accessible-card {
-        padding-bottom:24px;
-        border-radius:24px;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px;
     }
 
     .home-accessible-image-wrapper {
-        height:220px;
-        border-radius:24px 24px 0 0;
-    }
-
-    .home-accessible-content {
-        padding:24px 20px 0;
-    }
-
-    .home-accessible-title {
-        font-size:25px;
-    }
-
-    .home-accessible-subtitle {
-        font-size:16px;
-    }
-
-    .home-accessible-description {
-        font-size:14px;
+        height: 170px;
     }
 
     .home-accessible-card-title {
-        font-size:21px;
-    }
-
-    .home-accessible-card-description {
-        font-size:14px;
-        line-height:1.5;
+        font-size: 22px;
     }
 
 }
 
+
+/*==================================================*
+* MOBILE
+*==================================================*/
+
+@media (max-width: 600px) {
+
+    .home-accessible-showcase {
+        padding: 60px 0;
+    }
+
+
+    /* Heading */
+
+    .home-accessible-heading {
+        width: 95%;
+        margin-bottom: 40px;
+        padding: 20px;
+    }
+
+
+    /* Grid */
+
+    .home-accessible-grid {
+        width: 95%;
+
+        grid-template-columns: 1fr;
+
+        gap: 24px;
+    }
+
+
+    /* Card */
+
+    .home-accessible-card {
+        padding-bottom: 24px;
+
+        border-radius: 24px;
+    }
+
+
+    /* Smaller professional image */
+
+    .home-accessible-image-wrapper {
+        width: 100%;
+        height: 160px;
+
+        border-radius: 24px 24px 0 0;
+    }
+
+
+    /* Content */
+
+    .home-accessible-content {
+        padding: 24px 20px 0;
+    }
+
+
+    /* Main title */
+
+    .home-accessible-title {
+        font-size: 25px;
+    }
+
+
+    /* Subtitle */
+
+    .home-accessible-subtitle {
+        font-size: 16px;
+    }
+
+
+    /* Description */
+
+    .home-accessible-description {
+        font-size: 14px;
+    }
+
+
+    /* Card title */
+
+    .home-accessible-card-title {
+        font-size: 21px;
+    }
+
+
+    /* Card description */
+
+    .home-accessible-card-description {
+        font-size: 14px;
+        line-height: 1.5;
+    }
+
+}
