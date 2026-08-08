@@ -109,7 +109,7 @@
   text-align:center;
 }
 /*=========================
-        BUTTONS
+        EXPORT BUTTONS
 =========================*/
 
 .pf-btn-golden {
@@ -117,23 +117,21 @@
   margin:10px;
   padding:12px 24px;
   border-radius:25px;
-  background:#ffd700;          /* ✅ bright golden background */
-  color:#05070d;               /* ✅ dark text for contrast */
+  background:linear-gradient(90deg,#ffcc00,#ff9900); /* ✅ strong gradient gold */
+  color:#000;                  /* ✅ dark text for contrast */
   font-weight:700;
+  text-transform:uppercase;
   text-decoration:none;
   transition:.3s;
-  box-shadow:0 0 15px rgba(255,215,0,.6); /* ✅ glowing by default */
+  box-shadow:0 0 15px rgba(255,215,0,.7); /* ✅ glowing by default */
 }
 
 .pf-btn-golden:hover {
-  background:#e6c200;          /* ✅ slightly darker gold on hover */
+  background:linear-gradient(90deg,#ffdd33,#ff6600); /* ✅ brighter on hover */
   color:#fff;                  /* ✅ white text on hover */
   box-shadow:0 0 25px rgba(255,215,0,.9);
 }
 
-/*=========================
-   ANIMATIONS
-=========================*/
 @keyframes glowPulse {
   from { text-shadow:0 0 10px #00d8ef,0 0 20px #00d8ef; }
   to   { text-shadow:0 0 20px #7a00ff,0 0 40px #ff0080; }
