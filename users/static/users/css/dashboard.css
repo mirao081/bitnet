@@ -214,12 +214,6 @@ body {
     .hamburger {
         display: block;
     }
-
-
-    /* =========================================
-       MOBILE SIDEBAR
-    ========================================= */
-
     .sidebar {
         position: fixed;
 
@@ -227,6 +221,7 @@ body {
         left: 0;
 
         width: 230px;
+        max-width: 70vw;
 
         height: calc(100vh - 20px);
 
@@ -238,32 +233,27 @@ body {
         overflow-x: hidden;
 
         -webkit-overflow-scrolling: touch;
-
         overscroll-behavior: contain;
 
-        padding-bottom: 20px;
+        padding: 20px 8px 20px 20px;
 
         box-sizing: border-box;
 
         transition: transform .3s ease;
-    }
 
+        scrollbar-gutter: stable;
+    }
     .sidebar.active {
         transform: translateX(0);
     }
-
-
-    /* =========================================
-       SIDEBAR SCROLLBAR
-    ========================================= */
-
     .sidebar::-webkit-scrollbar {
-        width: 6px;
+        width: 5px;
     }
 
     .sidebar::-webkit-scrollbar-track {
-        background: rgba(255, 255, 255, .04);
+        background: rgba(255, 255, 255, .03);
         border-radius: 10px;
+        margin: 8px 0;
     }
 
     .sidebar::-webkit-scrollbar-thumb {
@@ -279,30 +269,14 @@ body {
     .sidebar::-webkit-scrollbar-thumb:hover {
         background: rgba(255, 215, 0, .9);
     }
-
-/* =========================================
-   MOBILE MAIN CONTENT
-   Sidebar overlays the page.
-   Do NOT reserve sidebar width.
-========================================= */
-
     .main-content {
         flex: 1;
-
-        margin-left: 0;
         width: 100%;
-
         min-width: 0;
-
+        margin-left: 0;
         padding: 20px;
-
         box-sizing: border-box;
     }
-
-    /* =========================================
-       CLOSE / HAMBURGER
-    ========================================= */
-
     .close-icon.show {
         display: block;
     }
