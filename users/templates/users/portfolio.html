@@ -1,38 +1,38 @@
 {% extends "users/dashboard_base.html" %}
 {% load static %}
 {% block content %}
-<div class="portfolio-container">
-    <div class="portfolio-card shiny-card">
-        <div class="card-header">📊 Portfolio Overview</div>
-        <div class="card-body">
+<div class="pf-container">
+    <div class="pf-card pf-overview">
+        <div class="pf-card-header">Portfolio Overview</div>
+        <div class="pf-card-body">
            <canvas id="portfolioChart" data-holdings='{{ holdings|safe }}'></canvas>
         </div>
     </div>
-    <div class="allocation-card shiny-card">
-        <div class="card-header">📊 Asset Allocation</div>
-        <div class="card-body">
+    <div class="pf-card pf-allocation">
+        <div class="pf-card-header">Asset Allocation</div>
+        <div class="pf-card-body">
             <canvas id="allocationChart"></canvas>
         </div>
     </div>
-    <div class="performance-card shiny-card">
-        <div class="card-header">📈 Performance Metrics</div>
-        <div class="card-body">
+    <div class="pf-card pf-performance">
+        <div class="pf-card-header">Performance Metrics</div>
+        <div class="pf-card-body">
             <p><strong>Total Invested:</strong> ${{ total_invested }}</p>
             <p><strong>Current Value:</strong> ${{ current_value }}</p>
             <p><strong>ROI:</strong> {{ roi }}%</p>
             <p><strong>Best Performing Asset:</strong> {{ best_asset }}</p>
         </div>
     </div>
-    <div class="history-card shiny-card">
-        <div class="card-header">📉 Profit & Loss History</div>
-        <div class="card-body">
+    <div class="pf-card pf-history">
+        <div class="pf-card-header">Profit & Loss History</div>
+        <div class="pf-card-body">
             <canvas id="historyChart"></canvas>
         </div>
     </div>
-    <div class="transactions-card shiny-card">
-        <div class="card-header">💸 Recent Transactions</div>
-        <div class="card-body">
-            <table class="transaction-table">
+    <div class="pf-card pf-transactions">
+        <div class="pf-card-header">Recent Transactions</div>
+        <div class="pf-card-body">
+            <table class="pf-table">
                 <thead>
                     <tr>
                         <th>Date</th>
@@ -51,16 +51,16 @@
                     </tr>
                     {% empty %}
                     <tr>
-                        <td colspan="4" class="text-center">No recent transactions.</td>
+                        <td colspan="4" class="pf-text-center">No recent transactions.</td>
                     </tr>
                     {% endfor %}
                 </tbody>
             </table>
         </div>
     </div>
-    <div class="market-card shiny-card">
-        <div class="card-header">💹 Live Market Prices</div>
-        <div class="card-body">
+    <div class="pf-card pf-market">
+        <div class="pf-card-header">Live Market Prices</div>
+        <div class="pf-card-body">
             <ul>
                 <li>BTC: ${{ btc_price }}</li>
                 <li>ETH: ${{ eth_price }}</li>
@@ -68,9 +68,9 @@
             </ul>
         </div>
     </div>
-    <div class="maturities-card shiny-card">
-        <div class="card-header">⏳ Upcoming Maturities</div>
-        <div class="card-body">
+    <div class="pf-card pf-maturities">
+        <div class="pf-card-header">Upcoming Maturities</div>
+        <div class="pf-card-body">
             {% for inv in upcoming_investments %}
                 <p>{{ inv.plan_name }} matures on {{ inv.end_date|date:"Y-m-d" }}</p>
             {% empty %}
@@ -78,23 +78,21 @@
             {% endfor %}
         </div>
     </div>
-    <div class="alerts-card shiny-card">
-        <div class="card-header">🔔 Alerts & Notifications</div>
-        <div class="card-body">
+    <div class="pf-card pf-alerts">
+        <div class="pf-card-header">Alerts & Notifications</div>
+        <div class="pf-card-body">
             <p><strong>Risk Level:</strong> {{ risk_level }}</p>
             <p><strong>Diversification Score:</strong> {{ diversification_score }}</p>
             <p><strong>Volatility Index:</strong> {{ volatility_index }}</p>
         </div>
     </div>
-    <div class="export-card shiny-card">
-        <div class="card-header">📂 Download/Export</div>
-        <div class="card-body">
-            <a href="{% url 'users:export_portfolio_csv' %}" class="btn btn-golden">Export CSV</a>
-            <a href="{% url 'users:export_portfolio_pdf' %}" class="btn btn-golden">Export PDF</a>
-
+    <div class="pf-card pf-export">
+        <div class="pf-card-header">Download/Export</div>
+        <div class="pf-card-body">
+            <a href="{% url 'users:export_portfolio_csv' %}" class="pf-btn pf-btn-golden">Export CSV</a>
+            <a href="{% url 'users:export_portfolio_pdf' %}" class="pf-btn pf-btn-golden">Export PDF</a>
         </div>
     </div>
-
 </div>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="{% static 'users/js/portfolio.js' %}"></script>
