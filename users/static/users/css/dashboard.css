@@ -12,7 +12,6 @@ body {
     display: flex;
     min-height: 100vh;
 }
-
 .sidebar {
     width: 230px;
     background: #1e1e1e;
@@ -21,6 +20,10 @@ body {
     display: flex;
     flex-direction: column;
     transition: transform 0.3s ease;
+
+    /* Keep the sidebar exactly 230px wide,
+       including padding */
+    box-sizing: border-box;
 }
 
 .logo {
@@ -277,22 +280,17 @@ body {
         background: rgba(255, 215, 0, .9);
     }
 
-
-    /* =========================================
-       SHOW MAIN CONTENT BESIDE SIDEBAR
-    ========================================= */
+/* =========================================
+   MOBILE MAIN CONTENT
+   Sidebar overlays the page.
+   Do NOT reserve sidebar width.
+========================================= */
 
     .main-content {
         flex: 1;
 
-        /*
-         * Reserve the sidebar's 230px width
-         * so the page content is not hidden
-         * underneath the sidebar.
-         */
-        margin-left: 230px;
-
-        width: calc(100% - 230px);
+        margin-left: 0;
+        width: 100%;
 
         min-width: 0;
 
@@ -300,7 +298,6 @@ body {
 
         box-sizing: border-box;
     }
-
 
     /* =========================================
        CLOSE / HAMBURGER
