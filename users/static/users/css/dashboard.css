@@ -203,11 +203,6 @@ body {
     display: none;
 }
 
-
-/* =========================================
-   MOBILE SIDEBAR
-========================================= */
-
 @media (max-width: 992px) {
 
     .hamburger {
@@ -216,12 +211,10 @@ body {
 
     .sidebar {
         position: fixed;
-
         top: 0;
         left: 0;
 
         height: 100%;
-
         width: 230px;
 
         transform: translateX(-100%);
@@ -252,19 +245,23 @@ body {
     }
 
 
-    /* Mobile menu cards */
+    /* ==============================
+       MOBILE SIDEBAR MENU
+    ============================== */
 
     .sidebar-nav li {
-        width: 78%;
-
+        width: 60%;
         margin: 9px 0;
     }
 
     .sidebar-nav li:hover {
-        width: 82%;
+        width: 64%;
     }
 
     .sidebar-nav a {
+        width: 100%;
+        box-sizing: border-box;
+
         font-size: 14px;
         padding: 10px 14px;
     }
