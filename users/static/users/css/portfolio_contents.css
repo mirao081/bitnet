@@ -3,16 +3,21 @@
 ==================================================*/
 
 .pf-container {
-    width:90%;
-    max-width:1600px;
-    margin:auto;
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-    gap:35px;
-    position:relative;
-    z-index:2;
-    justify-items:center;   /* ✅ center cards */
-    text-align:center;      /* ✅ center all text */
+  width:100%;
+  padding:90px 0;
+  position:relative;
+  overflow:hidden;
+  background:
+    radial-gradient(circle at top left,#004aad33,transparent 40%),
+    radial-gradient(circle at bottom right,#7a00ff22,transparent 35%),
+    linear-gradient(180deg,#05070d,#0a1020);
+  text-align:center; /* ✅ center all contents */
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:35px;
+  max-width:1600px;
+  margin:auto;
+  z-index:2;
 }
 
 /*=========================
@@ -20,28 +25,43 @@
 =========================*/
 
 .pf-card {
-    position:relative;
-    overflow:hidden;
-    text-align:center;
-    padding:35px 28px;
-    border-radius:30px;
-    background:rgba(255,255,255,.08);
-    backdrop-filter:blur(24px);
-    -webkit-backdrop-filter:blur(24px);
-    border:1px solid rgba(255,255,255,.12);
-    box-shadow:
-      inset 0 1px 0 rgba(255,255,255,.15),
-      0 18px 45px rgba(0,0,0,.35);
-    transition:.45s ease;
-    margin-bottom:40px;
-    max-width:400px;
+  position:relative;
+  overflow:hidden;
+  text-align:center;
+  padding:35px 28px;
+  border-radius:30px;
+  background:rgba(255,255,255,.08);
+  backdrop-filter:blur(24px);
+  -webkit-backdrop-filter:blur(24px);
+  border:1px solid rgba(255,255,255,.12);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.15),
+    0 18px 45px rgba(0,0,0,.35);
+  transition:.45s ease;
+  margin-bottom:40px;
+}
+
+.pf-card::before {
+  content:"";
+  position:absolute;
+  width:220px;
+  height:220px;
+  top:-120px;
+  right:-120px;
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(0,216,239,.28),transparent 70%);
+  transition:.6s;
 }
 
 .pf-card:hover {
-    transform:translateY(-12px);
-    box-shadow:
-      0 30px 70px rgba(0,0,0,.45),
-      0 0 40px rgba(0,216,239,.18);
+  transform:translateY(-12px);
+  box-shadow:
+    0 30px 70px rgba(0,0,0,.45),
+    0 0 40px rgba(0,216,239,.18);
+}
+
+.pf-card:hover::before {
+  transform:scale(1.4);
 }
 
 /*=========================
@@ -49,18 +69,28 @@
 =========================*/
 
 .pf-card-header {
-    font-size:24px;
-    font-weight:800;
-    color:#fff;
-    margin-bottom:15px;
-    line-height:1.25;
-    text-transform:uppercase;
-    letter-spacing:1.5px;
-    text-shadow:
-      0 0 12px #00d8ef,
-      0 0 24px #7a00ff,
-      0 0 48px #ff0080;
-    animation:shineFlow 6s linear infinite;
+  font-size:25px;
+  font-weight:900;
+  color:#fff;
+  text-transform:uppercase;
+  letter-spacing:2px;
+  margin-bottom:15px;
+  text-shadow:
+    0 0 10px #00d8ef,
+    0 0 20px #00d8ef,
+    0 0 40px #7a00ff;
+  animation:glowPulse 3s infinite alternate;
+}
+
+.pf-heading-subtitle {
+  font-size:18px;
+  font-weight:600;
+  background:linear-gradient(90deg,#00d8ef,#7a00ff,#ff0080);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-size:200% auto;
+  animation:shineFlow 6s linear infinite;
+  letter-spacing:1px;
 }
 
 /*=========================
@@ -71,12 +101,12 @@
 .pf-card-body li,
 .pf-table th,
 .pf-table td {
-    text-align:center;
-    color:rgba(255,255,255,.85);
+  text-align:center;
+  color:rgba(255,255,255,.85);
 }
 
 .pf-text-center {
-    text-align:center;
+  text-align:center;
 }
 
 /*=========================
@@ -84,31 +114,36 @@
 =========================*/
 
 .pf-btn-golden {
-    display:inline-block;
-    margin:10px;
-    padding:10px 20px;
-    border-radius:20px;
-    background:#ffd700;
-    color:#05070d;
-    font-weight:600;
-    text-decoration:none;
-    transition:.3s;
-    box-shadow:0 0 15px rgba(255,215,0,.5);
+  display:inline-block;
+  margin:10px;
+  padding:10px 20px;
+  border-radius:20px;
+  background:#ffd700;
+  color:#05070d;
+  font-weight:600;
+  text-decoration:none;
+  transition:.3s;
+  box-shadow:0 0 15px rgba(255,215,0,.5);
 }
 
 .pf-btn-golden:hover {
-    background:#e6c200;
-    color:#fff;
-    box-shadow:0 0 25px rgba(255,215,0,.8);
+  background:#e6c200;
+  color:#fff;
+  box-shadow:0 0 25px rgba(255,215,0,.8);
 }
 
 /*=========================
    ANIMATIONS
 =========================*/
+@keyframes glowPulse {
+  from { text-shadow:0 0 10px #00d8ef,0 0 20px #00d8ef; }
+  to   { text-shadow:0 0 20px #7a00ff,0 0 40px #ff0080; }
+}
+
 @keyframes shineFlow {
-    0%   { text-shadow:0 0 12px #00d8ef,0 0 24px #7a00ff; }
-    50%  { text-shadow:0 0 24px #ff0080,0 0 48px #00d8ef; }
-    100% { text-shadow:0 0 12px #00d8ef,0 0 24px #7a00ff; }
+  0%   { background-position:0% 50%; }
+  50%  { background-position:100% 50%; }
+  100% { background-position:0% 50%; }
 }
 
 /*=========================
@@ -125,11 +160,15 @@
     width:95%;
     grid-template-columns:1fr;
     gap:24px;
+    padding:60px 0;
   }
   .pf-card {
     padding:24px;
   }
   .pf-card-header {
     font-size:21px;
+  }
+  .pf-heading-subtitle {
+    font-size:16px;
   }
 }
