@@ -6780,155 +6780,214 @@ p {
    MOBILE
 ========================== */
 
-@media (max-width:992px){
+@media (max-width: 992px) {
 
-    .cryptonav-shell{
-        height:auto;
-        min-height:90px;
+    .cryptonav-shell {
+        height: auto;
+        min-height: 90px;
     }
 
-    .cryptonav-mobile{
-        display:flex;
-        align-items:center;
-        justify-content:center;
-        position:relative;
-        z-index:1400;
-        margin-left:auto;
+    .cryptonav-mobile {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        z-index: 1400;
+        margin-left: auto;
     }
 
-    .cryptonav-hamburger{
-        width:46px;
-        height:46px;
-        display:flex;
-        align-items:center;
-        justify-content:center;
-        background:rgba(255,255,255,.12);
-        border:1px solid rgba(255,255,255,.22);
-        border-radius:10px;
-        cursor:pointer;
-        padding:0;
-        color:#fff;
-        box-shadow:0 6px 14px rgba(0,0,0,.24);
-        position:relative;
-        z-index:1500;
+    .cryptonav-hamburger {
+        width: 46px;
+        height: 46px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(255,255,255,.12);
+        border: 1px solid rgba(255,255,255,.22);
+        border-radius: 10px;
+        cursor: pointer;
+        padding: 0;
+        color: #fff;
+        box-shadow: 0 6px 14px rgba(0,0,0,.24);
+        position: relative;
+        z-index: 1500;
     }
 
     .cryptonav-open-icon,
-    .cryptonav-close-icon{
-        color:#fff;
-        font-size:28px;
-        transition:.25s ease;
+    .cryptonav-close-icon {
+        color: #fff;
+        font-size: 28px;
+        transition: .25s ease;
     }
 
-    .cryptonav-open-icon{
-        display:block;
+    .cryptonav-open-icon {
+        display: block;
     }
 
-    .cryptonav-close-icon{
-        display:none;
+    .cryptonav-close-icon {
+        display: none;
     }
 
-    .cryptonav-hamburger.active .cryptonav-open-icon{
-        display:none;
+    .cryptonav-hamburger.active .cryptonav-open-icon {
+        display: none;
     }
 
-    .cryptonav-hamburger.active .cryptonav-close-icon{
-        display:block;
+    .cryptonav-hamburger.active .cryptonav-close-icon {
+        display: block;
     }
 
-    .cryptonav-menu{
-        display:none;
-        position:absolute;
-        top:100%;
-        left:0;
-        width:100%;
-        background:#111827;
-        flex-direction:column;
-        align-items:flex-start;
-        gap:18px;
-        padding:20px;
-        box-sizing:border-box;
-        border-top:1px solid rgba(255,255,255,.08);
-        box-shadow:0 18px 35px rgba(0,0,0,.35);
-        z-index:3300;
-        overflow:visible;
-        animation:fadeMenu .25s ease;
+
+    /* ==========================
+       MOBILE NAVIGATION
+    ========================== */
+
+    .cryptonav-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+
+        background: #111827;
+
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 18px;
+
+        padding: 20px;
+
+        box-sizing: border-box;
+
+        border-top: 1px solid rgba(255,255,255,.08);
+        box-shadow: 0 18px 35px rgba(0,0,0,.35);
+
+        z-index: 3300;
+
+        /*
+         * Important:
+         * Allow the whole menu to scroll if there
+         * are many menu/submenu items.
+         */
+        max-height: calc(100vh - 90px);
+        overflow-y: auto;
+        overflow-x: hidden;
+
+        animation: fadeMenu .25s ease;
     }
 
-    .cryptonav-menu.active{
-        display:flex;
+    .cryptonav-menu.active {
+        display: flex;
     }
 
-    .cryptonav-list{
-        width:100%;
-        display:flex;
-        flex-direction:column;
-        gap:0;
+
+    /* ==========================
+       MAIN MENU
+    ========================== */
+
+    .cryptonav-list {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+        margin: 0;
+        padding: 0;
+        list-style: none;
     }
 
-    .cryptonav-item{
-        width:100%;
-        border-bottom:1px solid rgba(255,255,255,.06);
+    .cryptonav-item {
+        width: 100%;
+        border-bottom: 1px solid rgba(255,255,255,.06);
     }
 
-    .cryptonav-link{
-        width:100%;
-        display:flex;
-        justify-content:space-between;
-        align-items:center;
-        padding:16px 0;
-        color:#fff;
-        text-shadow:0 1px 2px rgba(0,0,0,.4);
+    .cryptonav-link {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        padding: 16px 0;
+
+        color: #fff;
+        text-shadow: 0 1px 2px rgba(0,0,0,.4);
     }
 
-    .cryptonav-item.submenu-open > .cryptonav-link::after{
-        transform:rotate(180deg);
+
+    /* ==========================
+       SUBMENU
+    ========================== */
+
+    .cryptonav-submenu {
+        display: none;
+
+        position: static;
+
+        width: 100%;
+
+        margin: 0;
+        padding: 10px 0 10px 18px;
+
+        background: #1a2233;
+
+        box-shadow: none;
+        border-radius: 0;
+
+        border: 1px solid rgba(255,255,255,.08);
+
+        /*
+         * Make absolutely sure the submenu
+         * itself isn't clipped.
+         */
+        max-height: none;
+        height: auto;
+        overflow: visible;
+
+        box-sizing: border-box;
     }
 
-    .cryptonav-submenu{
-        display:none;
-        position:static;
-        width:100%;
-        margin:0;
-        padding:10px 0 10px 18px;
-        background:#1a2233;
-        box-shadow:none;
-        border-radius:0;
-        border:1px solid rgba(255,255,255,.08);
+    .cryptonav-item.submenu-open > .cryptonav-submenu {
+        display: block;
+        animation: submenuFade .25s ease;
     }
 
-    .cryptonav-item.submenu-open > .cryptonav-submenu{
-        display:block;
-        animation:submenuFade .25s ease;
+    .cryptonav-subitem {
+        width: 100%;
+        display: block;
     }
 
-    .cryptonav-subitem{
-        width:100%;
+    .cryptonav-sublink {
+        display: block;
+        width: 100%;
+
+        padding: 10px 0;
+
+        color: #fff;
+        background: transparent;
     }
 
-    .cryptonav-sublink{
-        display:block;
-        width:100%;
-        padding:10px 0;
-        color:#fff;
-        background:transparent;
+
+    /* ==========================
+       SUBMENU ARROW
+    ========================== */
+
+    .cryptonav-item.submenu-open > .cryptonav-link::after {
+        transform: rotate(180deg);
     }
 
-    .cryptonav-buy{
-        width:100%;
+
+    /* ==========================
+       BUY BUTTON
+    ========================== */
+
+    .cryptonav-buy {
+        width: 100%;
     }
 
-    .cryptonav-buy-btn{
-        width:100%;
-        text-align:center;
-        justify-content:center;
+    .cryptonav-buy-btn {
+        width: 100%;
+        text-align: center;
+        justify-content: center;
     }
-
 }
-
-/* ==========================
-   ANIMATIONS
-========================== */
 
 @keyframes fadeMenu{
 
