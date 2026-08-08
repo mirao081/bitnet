@@ -1,5 +1,5 @@
 /*==================================================
-        DASHBOARD SHOWCASE STYLE (Enhanced)
+        DASHBOARD SHOWCASE STYLE
 ==================================================*/
 
 .db-showcase {
@@ -11,12 +11,8 @@
       radial-gradient(circle at top left,#004aad33,transparent 40%),
       radial-gradient(circle at bottom right,#7a00ff22,transparent 35%),
       linear-gradient(180deg,#05070d,#0a1020);
-    text-align:center; /* ✅ center all content */
+    text-align:center; /* ✅ center all page contents */
 }
-
-/*=========================
-        GRID & CARDS
-=========================*/
 
 .db-grid {
     width:90%;
@@ -27,13 +23,16 @@
     gap:35px;
     position:relative;
     z-index:2;
-    justify-items:center; /* ✅ center cards inside grid */
 }
+
+/*=========================
+        GLASS CARD
+=========================*/
 
 .db-card {
     position:relative;
     overflow:hidden;
-    text-align:center;
+    text-align:center; /* ✅ center text inside cards */
     padding:35px 28px;
     border-radius:30px;
     background:rgba(255,255,255,.08);
@@ -45,48 +44,77 @@
       0 18px 45px rgba(0,0,0,.35);
     transition:.45s ease;
     margin-bottom:40px;
-    max-width:400px; /* ✅ keep cards neat */
+}
+
+.db-card::before {
+    content:"";
+    position:absolute;
+    width:220px;
+    height:220px;
+    top:-120px;
+    right:-120px;
+    border-radius:50%;
+    background:radial-gradient(circle,rgba(0,216,239,.28),transparent 70%);
+    transition:.6s;
+}
+
+.db-card:hover {
+    transform:translateY(-12px);
+    box-shadow:
+      0 30px 70px rgba(0,0,0,.45),
+      0 0 40px rgba(0,216,239,.18);
+}
+
+.db-card:hover::before {
+    transform:scale(1.4);
 }
 
 /*=========================
-        HEADINGS
+        TITLES & TEXT
 =========================*/
 
 .db-heading {
-    font-size:32px;
+    font-size:28px;
     font-weight:900;
     color:#fff;
     text-transform:uppercase;
     letter-spacing:2px;
-    margin-bottom:25px;
-    text-shadow:
-      0 0 15px #00d8ef,
-      0 0 30px #7a00ff,
-      0 0 60px #ff0080;
-    animation:glowPulse 3s infinite alternate;
+    margin-bottom:20px;
     text-align:center;
-}
-
-.db-section-title {
-    font-size:26px;
-    font-weight:800;
-    color:#fff;
-    margin-bottom:15px;
-    line-height:1.25;
-    text-transform:uppercase;
-    letter-spacing:1.5px;
     text-shadow:
       0 0 12px #00d8ef,
       0 0 24px #7a00ff,
       0 0 48px #ff0080;
+    animation:glowPulse 3s infinite alternate;
+}
+
+.db-section-title {
+    font-size:24px;
+    font-weight:800;
+    color:#fff;
+    margin-bottom:15px;
+    line-height:1.25;
+    text-align:center;
+    text-transform:uppercase;
+    letter-spacing:1.5px;
+    text-shadow:
+      0 0 10px #00d8ef,
+      0 0 20px #7a00ff,
+      0 0 40px #ff0080;
     animation:shineFlow 6s linear infinite;
 }
 
 .db-section-subtitle,
 .db-text-light {
-    font-size:16px;
+    font-size:15px;
     color:rgba(255,255,255,.85);
     line-height:1.6;
+    text-align:center; /* ✅ center all subtitles and light text */
+}
+
+.db-text-golden {
+    color:#ffd700;
+    font-weight:600;
     text-align:center;
 }
 
@@ -97,8 +125,8 @@
 .db-action-btn {
     display:inline-block;
     margin-top:15px;
-    padding:12px 24px;
-    border-radius:25px;
+    padding:10px 20px;
+    border-radius:20px;
     background:#00d8ef;
     color:#05070d;
     font-weight:600;
@@ -131,8 +159,8 @@
    ANIMATIONS
 =========================*/
 @keyframes glowPulse {
-    from { text-shadow:0 0 15px #00d8ef,0 0 30px #7a00ff; }
-    to   { text-shadow:0 0 30px #ff0080,0 0 60px #00d8ef; }
+    from { text-shadow:0 0 12px #00d8ef,0 0 24px #7a00ff; }
+    to   { text-shadow:0 0 24px #ff0080,0 0 48px #00d8ef; }
 }
 
 @keyframes shineFlow {
@@ -163,13 +191,13 @@
     padding:24px;
   }
   .db-section-title {
-    font-size:22px;
+    font-size:21px;
   }
   .db-section-subtitle {
     font-size:14px;
     line-height:1.5;
   }
   .db-heading {
-    font-size:24px;
+    font-size:22px;
   }
 }
