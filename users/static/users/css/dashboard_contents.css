@@ -168,6 +168,17 @@
     50%  { background-position:100% 50%; }
     100% { background-position:0% 50%; }
 }
+/*=========================
+   QUICK ACTIONS CONTAINER
+=========================*/
+.db-quick-actions-container {
+    display: flex;
+    justify-content: center;   /* ✅ centers buttons horizontally */
+    gap: 20px;                 /* ✅ spacing between buttons */
+    flex-wrap: wrap;           /* ✅ keeps them neat on smaller screens */
+    margin-top: 20px;
+    text-align: center;
+}
 
 /*=========================
    RESPONSIVE
