@@ -1,5 +1,6 @@
 {% extends "users/dashboard_base.html" %}
 {% load static %}
+
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'users/css/withdraw.css' %}">
 {% endblock %}
@@ -31,8 +32,11 @@
             <p class="withdrawpage-note">Minimum withdrawal is $200.</p>
 
             <!-- Wallet Address -->
-            <label for="wallet_address" class="withdrawpage-label">Destination Wallet Address</label>
-            <input type="text" id="wallet_address" name="wallet_address" readonly required>
+            <label for="wallet_address_display" class="withdrawpage-label">Destination Wallet Address</label>
+            <!-- Visible field (readonly) -->
+            <input type="text" id="wallet_address_display" class="withdrawpage-input" readonly>
+            <!-- Hidden field (submitted) -->
+            <input type="hidden" id="wallet_address" name="wallet_address">
 
             <div class="withdrawpage-warning">
                 <p>The selected asset will be withdrawn to the wallet address shown above.</p>
@@ -43,30 +47,25 @@
     </div>
 </div>
 
-
 <!-- Pass Django wallet data to JavaScript -->
 {{ wallets|json_script:"wallet-data" }}
 
 <script>
 document.addEventListener("DOMContentLoaded", function () {
-
-    const wallets = JSON.parse(
-        document.getElementById("wallet-data").textContent
-    );
-
+    const wallets = JSON.parse(document.getElementById("wallet-data").textContent);
     const currencySelect = document.getElementById("currency");
-    const walletInput = document.getElementById("wallet_address");
+    const walletInputHidden = document.getElementById("wallet_address");
+    const walletInputDisplay = document.getElementById("wallet_address_display");
 
     function updateWallet() {
-        walletInput.value = wallets[currencySelect.value] || "";
+        const selected = currencySelect.value;
+        const address = wallets[selected] || "";
+        walletInputHidden.value = address;   // submitted
+        walletInputDisplay.value = address;  // displayed
     }
 
-    // Load wallet on page load
     updateWallet();
-
-    // Update wallet when asset changes
     currencySelect.addEventListener("change", updateWallet);
-
 });
 </script>
 
