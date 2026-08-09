@@ -185,13 +185,13 @@
                     KYC Status
                 </span>
 
-                {% if kyc and kyc.status == 'approved' %}
+                {% if kyc_status == 'verified' %}
 
                     <span class="securitypage-status securitypage-status-success">
                         ✅ Approved
                     </span>
 
-                {% elif kyc and kyc.status == 'rejected' %}
+                {% elif kyc_status == 'rejected' %}
 
                     <span class="securitypage-status securitypage-status-danger">
                         ❌ Rejected
