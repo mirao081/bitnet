@@ -45,8 +45,6 @@ urlpatterns = [
     path("profile-settings/", views.profile_settings, name="profile_settings"),
     path("quick-settings/", views.quick_settings, name="quick_settings"),
 
-    path("security-center/", views.security_center, name="security_center"),
-    path("security-overview/", views.security, name="security"),
     path("security/", views.security_center, name="security_center"),
     path("settings/", views.settings, name="settings"),
 

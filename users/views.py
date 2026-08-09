@@ -1027,13 +1027,6 @@ def quick_settings(request):
         "api_form": api_form,
     })
 
-
-
-@login_required
-def security(request):
-    return render(request, "users/security.html")
-
-
 @login_required
 def settings(request):
     if request.method == "POST":
