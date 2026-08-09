@@ -1718,9 +1718,10 @@ def security_center(request):
     verification, _ = UserVerification.objects.get_or_create(user=user)
     recovery_codes = RecoveryCode.objects.filter(user=user, used=False).values_list("code", flat=True)
 
-    # Use UserKYC model for KYC status
+    # Safely get UserKYC record
     try:
-        kyc_status = user.userkyc.status.lower()  # normalize to lowercase
+        kyc = UserKYC.objects.get(user=user)
+        kyc_status = kyc.status.lower()
     except UserKYC.DoesNotExist:
         kyc_status = "pending"
 
