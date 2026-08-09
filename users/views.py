@@ -1727,7 +1727,6 @@ def security_center(request):
     recovery_codes = RecoveryCode.objects.filter(user=user, used=False).values_list("code", flat=True)
 
     # Use the same KYC model as the sidebar
-    kyc_status = None
     if hasattr(user, "userkyc"):
         kyc_status = user.userkyc.status
     else:
@@ -1746,6 +1745,7 @@ def security_center(request):
             "recent_logins": recent_logins,
         }
     )
+
 
 
 @login_required
