@@ -1,0 +1,178 @@
+/*==================================================
+        DEPOSIT SHOWCASE STYLE
+==================================================*/
+
+.depositpage-showcase {
+    width:100%;
+    padding:90px 0;
+    position:relative;
+    overflow:hidden;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:
+      radial-gradient(circle at top left,#004aad33,transparent 40%),
+      radial-gradient(circle at bottom right,#7a00ff22,transparent 35%),
+      linear-gradient(180deg,#05070d,#0a1020);
+}
+
+/*=========================
+   CONTAINER
+=========================*/
+.depositpage-container {
+    max-width:1200px;
+    width:90%;
+    margin:auto;
+    text-align:center;
+}
+
+/*=========================
+   HEADING
+=========================*/
+.depositpage-title {
+    font-size:28px;
+    font-weight:900;
+    color:#fff;
+    text-transform:uppercase;
+    letter-spacing:2px;
+    margin-bottom:15px;
+    text-shadow:0 0 10px #00d8ef,0 0 20px #7a00ff,0 0 40px #ff0080;
+    animation:glowPulse 3s infinite alternate;
+}
+
+.depositpage-subtitle {
+    font-size:18px;
+    font-weight:600;
+    color:rgba(255,255,255,.85);
+    margin-bottom:40px;
+}
+
+/*=========================
+   WARNING BOX
+=========================*/
+.depositpage-warning {
+    margin:20px auto;
+    padding:15px;
+    border-radius:12px;
+    background:rgba(255,0,0,.15);
+    color:#ff8080;
+    font-size:14px;
+    max-width:600px;
+}
+
+/*=========================
+   GRID & CARDS
+=========================*/
+.depositpage-grid {
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:30px;
+    margin-top:30px;
+}
+
+.depositpage-card {
+    padding:30px;
+    border-radius:25px;
+    background:rgba(255,255,255,.08);
+    backdrop-filter:blur(20px);
+    -webkit-backdrop-filter:blur(20px);
+    border:1px solid rgba(255,255,255,.15);
+    box-shadow:0 0 30px rgba(0,216,239,.25), inset 0 1px 0 rgba(255,255,255,.2);
+    text-align:center;
+    transition:.4s ease;
+}
+
+.depositpage-card:hover {
+    transform:translateY(-8px);
+    box-shadow:0 20px 40px rgba(0,0,0,.45),0 0 25px rgba(0,216,239,.18);
+}
+
+.depositpage-card-title {
+    font-size:22px;
+    font-weight:700;
+    color:#fff;
+    margin-bottom:20px;
+}
+
+/*=========================
+   FORM ELEMENTS
+=========================*/
+.depositpage-label {
+    display:block;
+    margin-top:10px;
+    font-weight:600;
+    color:#fff;
+    text-align:left;
+}
+
+.depositpage-input {
+    width:100%;
+    padding:12px;
+    margin-top:8px;
+    border-radius:12px;
+    border:1px solid rgba(255,255,255,.25);
+    background:rgba(0,0,0,.4);
+    color:#fff;
+    font-size:15px;
+    transition:.3s;
+}
+
+.depositpage-input:focus {
+    outline:none;
+    border-color:#00d8ef;
+    box-shadow:0 0 10px #00d8ef;
+}
+
+.depositpage-note {
+    font-size:14px;
+    color:#ffcc00;
+    margin-top:5px;
+}
+
+/*=========================
+   BUTTON
+=========================*/
+.depositpage-btn {
+    display:inline-block;
+    margin-top:20px;
+    padding:12px 25px;
+    border-radius:20px;
+    background:#00d8ef;
+    color:#05070d;
+    font-weight:700;
+    border:none;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.depositpage-btn:hover {
+    background:#009bb8;
+    color:#fff;
+}
+
+/*=========================
+   ANIMATIONS
+=========================*/
+@keyframes glowPulse {
+    from { text-shadow:0 0 10px #00d8ef,0 0 20px #00d8ef; }
+    to   { text-shadow:0 0 20px #7a00ff,0 0 40px #ff0080; }
+}
+
+/*=========================
+   RESPONSIVE
+=========================*/
+@media(max-width:991px){
+  .depositpage-title { font-size:24px; }
+  .depositpage-subtitle { font-size:16px; }
+  .depositpage-card { padding:25px; }
+}
+
+@media(max-width:600px){
+  .depositpage-showcase { padding:60px 0; }
+  .depositpage-title { font-size:23px; } /* reduced by 5px */
+  .depositpage-subtitle { font-size:15px; }
+  .depositpage-card { padding:20px; }
+  .depositpage-card-title { font-size:20px; }
+  .depositpage-input { font-size:14px; padding:10px; }
+  .depositpage-btn { width:100%; font-size:14px; padding:10px; }
+}
