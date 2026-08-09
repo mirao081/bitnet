@@ -1,124 +1,404 @@
 {% extends "users/dashboard_base.html" %}
+{% load static %}
+
 {% block title %}Security Center{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'users/css/security.css' %}">
+{% endblock %}
+
 {% block content %}
-<div class="security-center">
-    <h2>Security Center</h2>
-    <p>Manage your account protection and review security measures.</p>
-    {% if messages %}
-        <div class="feedback-messages">
-            {% for message in messages %}
-                <div class="alert {{ message.tags }}">{{ message }}</div>
-            {% endfor %}
-        </div>
-    {% endif %}
-    <div class="security-card">
-        <h3>Account Protection</h3>
-        <p>
-            Two-Factor Authentication:
-            {% if verification.is_verified %}
-                <span class="status enabled">✅ Enabled</span>
-            {% else %}
-                <span class="status disabled">❌ Disabled</span>
+
+<div class="securitypage-container">
+
+    <!-- =========================================
+         PAGE HEADING
+    ========================================== -->
+
+    <h1 class="securitypage-title">
+        Security Center
+    </h1>
+
+    <p class="securitypage-subtitle">
+        Protect your account with advanced security,
+        verification, and activity controls.
+    </p>
+
+
+    <!-- =========================================
+         TWO-FACTOR AUTHENTICATION
+    ========================================== -->
+
+    <div class="securitypage-grid">
+
+        <div class="securitypage-card">
+
+            <h2 class="securitypage-card-title">
+                Two-Factor Authentication
+            </h2>
+
+            <p class="securitypage-card-text">
+                Add an extra layer of protection to your account
+                using two-factor authentication.
+            </p>
+
+            <div class="securitypage-actions">
+
+                <a
+                    href="{% url 'crypto:twofa_setup' %}"
+                    class="securitypage-btn"
+                >
+                    Enable 2FA
+                </a>
+
+                <a
+                    href="{% url 'crypto:twofa_reset' %}"
+                    class="securitypage-btn securitypage-btn-danger"
+                >
+                    Disable 2FA
+                </a>
+
+            </div>
+
+
+            {% if qr_code %}
+
+            <div class="securitypage-section">
+
+                <h3 class="securitypage-section-title">
+                    Scan QR Code
+                </h3>
+
+                <p class="securitypage-card-text">
+                    Scan this QR code with your authenticator app
+                    to configure two-factor authentication.
+                </p>
+
+                <div class="securitypage-qr">
+
+                    <img
+                        src="data:image/png;base64,{{ qr_code }}"
+                        alt="Two-factor authentication QR Code"
+                    >
+
+                </div>
+
+            </div>
+
             {% endif %}
-        </p>
 
-        <div class="card-actions">
-            <a href="{% url 'crypto:twofa_setup' %}" class="security-btn">Enable 2FA</a>
-            <a href="{% url 'crypto:twofa_reset' %}" class="security-btn">Disable 2FA</a>
-        </div>
 
-        {% if qr_code %}
-            <h4>Scan QR Code</h4>
-            <img src="data:image/png;base64,{{ qr_code }}" alt="QR Code">
-        {% endif %}
+            {% if recovery_codes %}
 
-        {% if recovery_codes %}
-            <h4>Recovery Codes</h4>
-            <p>Save these codes safely. Each can be used once if you lose your phone:</p>
-            <ul>
-                {% for code in recovery_codes %}
-                    <li>{{ code }}</li>
-                {% endfor %}
-            </ul>
-        {% endif %}
+            <div class="securitypage-section">
 
-        <h4>Verify 2FA</h4>
-        <form method="post" action="{% url 'crypto:twofa_verify' %}">
-            {% csrf_token %}
-            <input type="text" name="otp" placeholder="Enter 6-digit code" required>
-            <button type="submit">Verify</button>
-        </form>
-    </div>
-    <div class="security-card">
-        <h3>Compliance & Verification</h3>
-        <p>
-            KYC Status:
-            {% if kyc and kyc.status == 'approved' %}
-                <span class="status enabled">✅ Approved</span>
-            {% elif kyc and kyc.status == 'rejected' %}
-                <span class="status disabled">❌ Rejected</span>
-            {% else %}
-                <span class="status pending">⏳ Pending</span>
+                <h3 class="securitypage-section-title">
+                    Recovery Codes
+                </h3>
+
+                <p class="securitypage-card-text">
+                    Save these codes somewhere safe. Each recovery
+                    code can only be used once if you lose access
+                    to your authenticator device.
+                </p>
+
+                <div class="securitypage-recovery">
+
+                    <ul>
+
+                        {% for code in recovery_codes %}
+
+                        <li>
+                            {{ code }}
+                        </li>
+
+                        {% endfor %}
+
+                    </ul>
+
+                </div>
+
+            </div>
+
             {% endif %}
-        </p>
-        <div class="card-actions">
-            <a href="{% url 'users:verify_identity' %}" class="security-btn">Verify Identity</a>
-        </div>
-    </div>
-    <div class="security-card">
-        <h3>Device & Activity</h3>
-        <p>View recent login history and active sessions.</p>
 
-        <table class="login-history-table">
-            <thead>
-                <tr>
-                    <th>Date</th>
-                    <th>IP Address</th>
-                    <th>Device</th>
-                    <th>Status</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for login in recent_logins %}
-                    <tr>
-                        <td>{{ login.timestamp|date:"Y-m-d H:i" }}</td>
-                        <td>{{ login.ip }}</td>
-                        <td>{{ login.device }}</td>
-                        <td>
-                            {% if login.status == "Successful" %}
-                                <span class="status-success">✅ {{ login.status }}</span>
-                            {% else %}
-                                <span class="status-failed">❌ {{ login.status }}</span>
-                            {% endif %}
-                        </td>
-                    </tr>
-                {% empty %}
-                    <tr>
-                        <td colspan="4">No recent login activity.</td>
-                    </tr>
-                {% endfor %}
-            </tbody>
-        </table>
 
-        <div class="card-actions">
-            <a href="{% url 'users:view_activity' %}" class="security-btn">View Activity</a>
-            <a href="{% url 'users:revoke_sessions' %}" class="security-btn">Revoke Sessions</a>
+            <!-- VERIFY 2FA -->
+
+            <div class="securitypage-section">
+
+                <h3 class="securitypage-section-title">
+                    Verify 2FA
+                </h3>
+
+                <form
+                    method="post"
+                    action="{% url 'crypto:twofa_verify' %}"
+                    class="securitypage-form"
+                >
+
+                    {% csrf_token %}
+
+                    <input
+                        type="text"
+                        name="otp"
+                        class="securitypage-input"
+                        placeholder="Enter 6-digit code"
+                        maxlength="6"
+                        inputmode="numeric"
+                        autocomplete="one-time-code"
+                        required
+                    >
+
+                    <button
+                        type="submit"
+                        class="securitypage-btn"
+                    >
+                        Verify
+                    </button>
+
+                </form>
+
+            </div>
+
         </div>
-    </div>
-    <div class="security-card">
-        <h3>User Controls</h3>
-        <p>Update password, recovery options, and API keys.</p>
-        <div class="card-actions">
-            <a href="{% url 'users:change_password' %}" class="security-btn">Change Password</a>
-            <a href="{% url 'users:manage_api_keys' %}" class="security-btn">Manage API Keys</a>
+
+
+        <!-- =========================================
+             COMPLIANCE & VERIFICATION
+        ========================================== -->
+
+        <div class="securitypage-card">
+
+            <h2 class="securitypage-card-title">
+                Compliance & Verification
+            </h2>
+
+            <p class="securitypage-card-text">
+                Complete identity verification to help keep your
+                account secure and compliant.
+            </p>
+
+            <div class="securitypage-status-box">
+
+                <span class="securitypage-status-label">
+                    KYC Status
+                </span>
+
+                {% if kyc and kyc.status == 'approved' %}
+
+                    <span class="securitypage-status securitypage-status-success">
+                        ✅ Approved
+                    </span>
+
+                {% elif kyc and kyc.status == 'rejected' %}
+
+                    <span class="securitypage-status securitypage-status-danger">
+                        ❌ Rejected
+                    </span>
+
+                {% else %}
+
+                    <span class="securitypage-status securitypage-status-pending">
+                        ⏳ Pending
+                    </span>
+
+                {% endif %}
+
+            </div>
+
+            <div class="securitypage-actions">
+
+                <a
+                    href="{% url 'users:verify_identity' %}"
+                    class="securitypage-btn"
+                >
+                    Verify Identity
+                </a>
+
+            </div>
+
         </div>
-    </div>
-    <div class="security-card">
-        <h3>Security Alerts</h3>
-        <p>Monitor suspicious login attempts or withdrawal requests.</p>
-        <div class="card-actions">
-            <a href="{% url 'users:security_alerts' %}" class="security-btn">View Alerts</a>
+
+
+        <!-- =========================================
+             DEVICE & ACTIVITY
+        ========================================== -->
+
+        <div class="securitypage-card securitypage-wide-card">
+
+            <h2 class="securitypage-card-title">
+                Device & Activity
+            </h2>
+
+            <p class="securitypage-card-text">
+                Review recent login activity and manage active
+                sessions connected to your account.
+            </p>
+
+
+            <div class="securitypage-table-wrapper">
+
+                <table class="securitypage-table">
+
+                    <thead>
+
+                        <tr>
+                            <th>Date</th>
+                            <th>IP Address</th>
+                            <th>Device</th>
+                            <th>Status</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        {% for login in recent_logins %}
+
+                        <tr>
+
+                            <td>
+                                {{ login.timestamp|date:"Y-m-d H:i" }}
+                            </td>
+
+                            <td>
+                                {{ login.ip }}
+                            </td>
+
+                            <td>
+                                {{ login.device }}
+                            </td>
+
+                            <td>
+
+                                {% if login.status == "Successful" %}
+
+                                    <span class="securitypage-login-success">
+                                        ✅ {{ login.status }}
+                                    </span>
+
+                                {% else %}
+
+                                    <span class="securitypage-login-failed">
+                                        ❌ {{ login.status }}
+                                    </span>
+
+                                {% endif %}
+
+                            </td>
+
+                        </tr>
+
+                        {% empty %}
+
+                        <tr>
+
+                            <td
+                                colspan="4"
+                                class="securitypage-empty"
+                            >
+                                No recent login activity.
+                            </td>
+
+                        </tr>
+
+                        {% endfor %}
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+
+            <div class="securitypage-actions">
+
+                <a
+                    href="{% url 'users:view_activity' %}"
+                    class="securitypage-btn"
+                >
+                    View Activity
+                </a>
+
+                <a
+                    href="{% url 'users:revoke_sessions' %}"
+                    class="securitypage-btn securitypage-btn-danger"
+                >
+                    Revoke Sessions
+                </a>
+
+            </div>
+
         </div>
+
+
+        <!-- =========================================
+             USER CONTROLS
+        ========================================== -->
+
+        <div class="securitypage-card">
+
+            <h2 class="securitypage-card-title">
+                User Controls
+            </h2>
+
+            <p class="securitypage-card-text">
+                Manage your password, recovery options,
+                and API access from one secure location.
+            </p>
+
+            <div class="securitypage-actions">
+
+                <a
+                    href="{% url 'users:change_password' %}"
+                    class="securitypage-btn"
+                >
+                    Change Password
+                </a>
+
+                <a
+                    href="{% url 'users:manage_api_keys' %}"
+                    class="securitypage-btn"
+                >
+                    Manage API Keys
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- =========================================
+             SECURITY ALERTS
+        ========================================== -->
+
+        <div class="securitypage-card">
+
+            <h2 class="securitypage-card-title">
+                Security Alerts
+            </h2>
+
+            <p class="securitypage-card-text">
+                Monitor suspicious login attempts, unusual
+                activity, and withdrawal security alerts.
+            </p>
+
+            <div class="securitypage-actions">
+
+                <a
+                    href="{% url 'users:security_alerts' %}"
+                    class="securitypage-btn"
+                >
+                    View Alerts
+                </a>
+
+            </div>
+
+        </div>
+
     </div>
+
 </div>
+
 {% endblock %}
