@@ -1725,10 +1725,13 @@ def security_center(request):
 
     verification, _ = UserVerification.objects.get_or_create(user=user)
     recovery_codes = RecoveryCode.objects.filter(user=user, used=False).values_list("code", flat=True)
-    profile = UserProfile.objects.get(user=user)
 
-    # Normalize verification status
-    kyc_status = profile.verification_status.lower() if profile.verification_status else "pending"
+    # Use the same KYC model as the sidebar
+    kyc_status = None
+    if hasattr(user, "userkyc"):
+        kyc_status = user.userkyc.status
+    else:
+        kyc_status = "pending"
 
     recent_logins = []
 
@@ -1743,6 +1746,7 @@ def security_center(request):
             "recent_logins": recent_logins,
         }
     )
+
 
 @login_required
 def manage_api_keys(request):
