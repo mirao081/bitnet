@@ -1723,27 +1723,26 @@ def verify_identity(request):
 def security_center(request):
     user = request.user
 
-    verification, _ = UserVerification.objects.get_or_create(
-        user=user
-    )
+    verification, _ = UserVerification.objects.get_or_create(user=user)
+    recovery_codes = RecoveryCode.objects.filter(user=user, used=False).values_list("code", flat=True)
+    profile = UserProfile.objects.get(user=user)
 
-    recovery_codes = RecoveryCode.objects.filter(
-        user=user,
-        used=False
-    ).values_list("code", flat=True)
-
-    kyc = getattr(user, "kyc", None)
+    # Normalize verification status
+    kyc_status = profile.verification_status.lower() if profile.verification_status else "pending"
 
     recent_logins = []
 
-    return render(request, "users/security.html", {
-        "verification": verification,
-        "qr_code": None,
-        "recovery_codes": recovery_codes,
-        "kyc": kyc,
-        "recent_logins": recent_logins,
-    })
-
+    return render(
+        request,
+        "users/security.html",
+        {
+            "verification": verification,
+            "qr_code": None,
+            "recovery_codes": recovery_codes,
+            "kyc_status": kyc_status,
+            "recent_logins": recent_logins,
+        }
+    )
 
 @login_required
 def manage_api_keys(request):
