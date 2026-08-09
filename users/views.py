@@ -1491,7 +1491,7 @@ def request_withdrawal(request):
 
     return render(
         request,
-        "users/request_withdrawal.html",
+        "users/withdraw.html",
         {
             "form": form,
             "profile": profile,
@@ -1499,6 +1499,7 @@ def request_withdrawal(request):
             "wallets": wallets,
         }
     )
+
 
 @login_required
 def withdraw_invoice(request, withdrawal_id, currency):
