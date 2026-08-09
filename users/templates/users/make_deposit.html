@@ -3,58 +3,58 @@
 {% block content %}
 <link rel="stylesheet" href="{% static 'users/css/deposit.css' %}">
 
-<div class="deposit-showcase">
-    <div class="deposit-heading-container">
-        <h1 class="deposit-heading-title">Deposit</h1>
-        <p class="deposit-heading-subtitle">Fund your account</p>
+<div class="depositpage-showcase">
+    <div class="depositpage-heading-container">
+        <h1 class="depositpage-heading-title">Deposit</h1>
+        <p class="depositpage-heading-subtitle">Fund your account</p>
     </div>
 
-    <div class="deposit-grid">
-        <div class="deposit-panel">
-            <h2 class="deposit-panel-title">Use Bitcoin Deposit</h2>
+    <div class="depositpage-grid">
+        <div class="depositpage-panel">
+            <h2 class="depositpage-panel-title">Use Bitcoin Deposit</h2>
             <form method="post" action="{% url 'users:make_deposit' %}">
                 {% csrf_token %}
-                <label for="btc-amount" class="deposit-panel-description">Bitcoin</label>
+                <label for="btc-amount" class="depositpage-panel-description">Bitcoin</label>
                 <input type="number" id="btc-amount" name="amount" placeholder="Amount" required>
                 <input type="hidden" name="currency" value="BTC">
-                <p class="deposit-panel-description">The minimum deposit is $200.</p>
-                <button type="submit" class="deposit-btn">Deposit BTC</button>
+                <p class="depositpage-panel-description">The minimum deposit is $200.</p>
+                <button type="submit" class="depositpage-btn">Deposit BTC</button>
             </form>
         </div>
 
-        <div class="deposit-panel">
-            <h2 class="deposit-panel-title">Use Ethereum Deposit</h2>
+        <div class="depositpage-panel">
+            <h2 class="depositpage-panel-title">Use Ethereum Deposit</h2>
             <form method="post" action="{% url 'users:make_deposit' %}">
                 {% csrf_token %}
-                <label for="eth-amount" class="deposit-panel-description">Ethereum</label>
+                <label for="eth-amount" class="depositpage-panel-description">Ethereum</label>
                 <input type="number" id="eth-amount" name="amount" placeholder="Amount" required>
                 <input type="hidden" name="currency" value="ETH">
-                <p class="deposit-panel-description">The minimum deposit is $200.</p>
-                <button type="submit" class="deposit-btn">Deposit ETH</button>
+                <p class="depositpage-panel-description">The minimum deposit is $200.</p>
+                <button type="submit" class="depositpage-btn">Deposit ETH</button>
             </form>
         </div>
 
-        <div class="deposit-panel">
-            <h2 class="deposit-panel-title">Use USDT ERC20 Deposit</h2>
+        <div class="depositpage-panel">
+            <h2 class="depositpage-panel-title">Use USDT ERC20 Deposit</h2>
             <form method="post" action="{% url 'users:make_deposit' %}">
                 {% csrf_token %}
-                <label for="usdt-erc20-amount" class="deposit-panel-description">USDT ERC20</label>
+                <label for="usdt-erc20-amount" class="depositpage-panel-description">USDT ERC20</label>
                 <input type="number" id="usdt-erc20-amount" name="amount" placeholder="Amount" required>
                 <input type="hidden" name="currency" value="USDT ERC20">
-                <p class="deposit-panel-description">The minimum deposit is $200.</p>
-                <button type="submit" class="deposit-btn">Deposit USDT ERC20</button>
+                <p class="depositpage-panel-description">The minimum deposit is $200.</p>
+                <button type="submit" class="depositpage-btn">Deposit USDT ERC20</button>
             </form>
         </div>
 
-        <div class="deposit-panel">
-            <h2 class="deposit-panel-title">Use USDT TRC20 Deposit</h2>
+        <div class="depositpage-panel">
+            <h2 class="depositpage-panel-title">Use USDT TRC20 Deposit</h2>
             <form method="post" action="{% url 'users:make_deposit' %}">
                 {% csrf_token %}
-                <label for="usdt-trc20-amount" class="deposit-panel-description">USDT TRC20</label>
+                <label for="usdt-trc20-amount" class="depositpage-panel-description">USDT TRC20</label>
                 <input type="number" id="usdt-trc20-amount" name="amount" placeholder="Amount" required>
                 <input type="hidden" name="currency" value="USDT TRC20">
-                <p class="deposit-panel-description">The minimum deposit is $200.</p>
-                <button type="submit" class="deposit-btn">Deposit USDT TRC20</button>
+                <p class="depositpage-panel-description">The minimum deposit is $200.</p>
+                <button type="submit" class="depositpage-btn">Deposit USDT TRC20</button>
             </form>
         </div>
     </div>

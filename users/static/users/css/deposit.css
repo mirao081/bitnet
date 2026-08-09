@@ -2,7 +2,7 @@
         DEPOSIT PAGE SHOWCASE STYLE
 ==================================================*/
 
-.deposit-showcase {
+.depositpage-showcase {
     width:100%;
     padding:90px 0;
     position:relative;
@@ -13,7 +13,7 @@
       linear-gradient(180deg,#05070d,#0a1020);
 }
 
-.deposit-grid {
+.depositpage-grid {
     width:90%;
     max-width:1600px;
     margin:auto;
@@ -28,7 +28,7 @@
         GLASS CARD
 =========================*/
 
-.deposit-panel {
+.depositpage-panel {
     position:relative;
     overflow:hidden;
     text-align:center;
@@ -45,7 +45,7 @@
     margin-bottom:40px;
 }
 
-.deposit-panel::before {
+.depositpage-panel::before {
     content:"";
     position:absolute;
     width:220px;
@@ -57,14 +57,14 @@
     transition:.6s;
 }
 
-.deposit-panel:hover {
+.depositpage-panel:hover {
     transform:translateY(-12px);
     box-shadow:
       0 30px 70px rgba(0,0,0,.45),
       0 0 40px rgba(0,216,239,.18);
 }
 
-.deposit-panel:hover::before {
+.depositpage-panel:hover::before {
     transform:scale(1.4);
 }
 
@@ -72,7 +72,7 @@
         TITLE & DESCRIPTION
 =========================*/
 
-.deposit-panel-title {
+.depositpage-panel-title {
     font-size:24px;
     font-weight:800;
     color:#fff;
@@ -80,7 +80,7 @@
     line-height:1.25;
 }
 
-.deposit-panel-description {
+.depositpage-panel-description {
     font-size:15px;
     color:rgba(255,255,255,.80);
     line-height:1.6;
@@ -90,7 +90,7 @@
         BUTTON
 =========================*/
 
-.deposit-btn {
+.depositpage-btn {
     display:inline-block;
     margin-top:15px;
     padding:10px 20px;
@@ -104,7 +104,7 @@
     cursor:pointer;
 }
 
-.deposit-btn:hover {
+.depositpage-btn:hover {
     background:#009bb8;
     color:#fff;
 }
@@ -112,7 +112,7 @@
 /*=========================
    HEADING CONTAINER
 =========================*/
-.deposit-heading-container {
+.depositpage-heading-container {
     text-align:center;
     margin-bottom:60px;
     padding:20px;
@@ -126,7 +126,7 @@
 /*=========================
    HEADING TITLE
 =========================*/
-.deposit-heading-title {
+.depositpage-heading-title {
     font-size:25px;
     font-weight:900;
     color:#fff;
@@ -144,7 +144,7 @@
    MOBILE OVERRIDE
 =========================*/
 @media(max-width:600px){
-  .deposit-heading-title {
+  .depositpage-heading-title {
     font-size:25px;
     text-shadow:
       0 0 15px #00d8ef,
@@ -159,7 +159,7 @@
     to   { text-shadow:0 0 30px #ff0080,0 0 60px #00d8ef; }
 }
 
-.deposit-heading-subtitle {
+.depositpage-heading-subtitle {
     font-size:18px;
     font-weight:600;
     background:linear-gradient(90deg,#00d8ef,#7a00ff,#ff0080);
@@ -188,34 +188,34 @@
    RESPONSIVE
 =========================*/
 @media(max-width:991px){
-  .deposit-grid {
+  .depositpage-grid {
     grid-template-columns:repeat(2,1fr);
   }
 }
 
 @media(max-width:600px){
-  .deposit-showcase {
+  .depositpage-showcase {
     padding:60px 0;
   }
-  .deposit-grid {
+  .depositpage-grid {
     width:95%;
     grid-template-columns:1fr;
     gap:24px;
   }
-  .deposit-panel {
+  .depositpage-panel {
     padding:24px;
   }
-  .deposit-panel-title {
+  .depositpage-panel-title {
     font-size:21px;
   }
-  .deposit-panel-description {
+  .depositpage-panel-description {
     font-size:14px;
     line-height:1.5;
   }
-  .deposit-heading-title {
+  .depositpage-heading-title {
     font-size:21px;
   }
-  .deposit-heading-subtitle {
+  .depositpage-heading-subtitle {
     font-size:16px;
   }
 }
