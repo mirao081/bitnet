@@ -1,228 +1,56 @@
-
 {% extends "users/dashboard_base.html" %}
 {% load static %}
-
-{% block extra_css %}
-<link rel="stylesheet" href="{% static 'users/css/deposit.css' %}">
-{% endblock extra_css %}
-
-
 {% block content %}
+<div class="deposit-page">
+    <h1 class="page-title">Deposit</h1>
+    <p class="page-subtitle">Fund your account</p>
 
-<div class="depositpremium-showcase">
-
-    <div class="depositpremium-grid">
-
-        <!-- Bitcoin -->
-        <div class="depositpremium-card">
-
-            <h2 class="depositpremium-title">
-                Use Bitcoin Deposit
-            </h2>
-
-            <form
-                method="post"
-                action="{% url 'users:make_deposit' %}"
-                class="depositpremium-form"
-            >
+    <div class="deposit-cards">
+        <div class="deposit-card">
+            <h2 class="card-title">Use Bitcoin Deposit</h2>
+            <form method="post" action="{% url 'users:make_deposit' %}">
                 {% csrf_token %}
-
-                <label
-                    for="depositpremium-btc-amount"
-                    class="depositpremium-label"
-                >
-                    Bitcoin
-                </label>
-
-                <input
-                    type="number"
-                    id="depositpremium-btc-amount"
-                    name="amount"
-                    placeholder="Amount"
-                    required
-                    class="depositpremium-input"
-                >
-
-                <input
-                    type="hidden"
-                    name="currency"
-                    value="BTC"
-                >
-
-                <p class="depositpremium-description">
-                    The minimum deposit is $200.
-                </p>
-
-                <button
-                    type="submit"
-                    class="depositpremium-button"
-                >
-                    Deposit BTC
-                </button>
-
+                <label for="btc-amount" class="input-label">Bitcoin</label>
+                <input type="number" id="btc-amount" name="amount" placeholder="Amount" class="amount-input" required>
+                <input type="hidden" name="currency" value="BTC">
+                <p class="min-note">The minimum deposit is $200.</p>
+                <button type="submit" class="deposit-btn">Deposit BTC</button>
             </form>
-
         </div>
-
-
-        <!-- Ethereum -->
-        <div class="depositpremium-card">
-
-            <h2 class="depositpremium-title">
-                Use Ethereum Deposit
-            </h2>
-
-            <form
-                method="post"
-                action="{% url 'users:make_deposit' %}"
-                class="depositpremium-form"
-            >
+        <div class="deposit-card">
+            <h2 class="card-title">Use Ethereum Deposit</h2>
+            <form method="post" action="{% url 'users:make_deposit' %}">
                 {% csrf_token %}
-
-                <label
-                    for="depositpremium-eth-amount"
-                    class="depositpremium-label"
-                >
-                    Ethereum
-                </label>
-
-                <input
-                    type="number"
-                    id="depositpremium-eth-amount"
-                    name="amount"
-                    placeholder="Amount"
-                    required
-                    class="depositpremium-input"
-                >
-
-                <input
-                    type="hidden"
-                    name="currency"
-                    value="ETH"
-                >
-
-                <p class="depositpremium-description">
-                    The minimum deposit is $200.
-                </p>
-
-                <button
-                    type="submit"
-                    class="depositpremium-button"
-                >
-                    Deposit ETH
-                </button>
-
+                <label for="eth-amount" class="input-label">Ethereum</label>
+                <input type="number" id="eth-amount" name="amount" placeholder="Amount" class="amount-input" required>
+                <input type="hidden" name="currency" value="ETH">
+                <p class="min-note">The minimum deposit is $200.</p>
+                <button type="submit" class="deposit-btn">Deposit ETH</button>
             </form>
-
         </div>
-
-
-        <!-- USDT ERC20 -->
-        <div class="depositpremium-card">
-
-            <h2 class="depositpremium-title">
-                Use USDT ERC20 Deposit
-            </h2>
-
-            <form
-                method="post"
-                action="{% url 'users:make_deposit' %}"
-                class="depositpremium-form"
-            >
+        <div class="deposit-card">
+            <h2 class="card-title">Use USDT ERC20 Deposit</h2>
+            <form method="post" action="{% url 'users:make_deposit' %}">
                 {% csrf_token %}
-
-                <label
-                    for="depositpremium-usdt-erc20-amount"
-                    class="depositpremium-label"
-                >
-                    USDT ERC20
-                </label>
-
-                <input
-                    type="number"
-                    id="depositpremium-usdt-erc20-amount"
-                    name="amount"
-                    placeholder="Amount"
-                    required
-                    class="depositpremium-input"
-                >
-
-                <input
-                    type="hidden"
-                    name="currency"
-                    value="USDT ERC20"
-                >
-
-                <p class="depositpremium-description">
-                    The minimum deposit is $200.
-                </p>
-
-                <button
-                    type="submit"
-                    class="depositpremium-button"
-                >
-                    Deposit USDT ERC20
-                </button>
-
+                <label for="usdt-erc20-amount" class="input-label">USDT ERC20</label>
+                <input type="number" id="usdt-erc20-amount" name="amount" placeholder="Amount" class="amount-input" required>
+                <input type="hidden" name="currency" value="USDT ERC20">
+                <p class="min-note">The minimum deposit is $200.</p>
+                <button type="submit" class="deposit-btn">Deposit USDT ERC20</button>
             </form>
-
         </div>
-
-
-        <!-- USDT TRC20 -->
-        <div class="depositpremium-card">
-
-            <h2 class="depositpremium-title">
-                Use USDT TRC20 Deposit
-            </h2>
-
-            <form
-                method="post"
-                action="{% url 'users:make_deposit' %}"
-                class="depositpremium-form"
-            >
+        <div class="deposit-card">
+            <h2 class="card-title">Use USDT TRC20 Deposit</h2>
+            <form method="post" action="{% url 'users:make_deposit' %}">
                 {% csrf_token %}
-
-                <label
-                    for="depositpremium-usdt-trc20-amount"
-                    class="depositpremium-label"
-                >
-                    USDT TRC20
-                </label>
-
-                <input
-                    type="number"
-                    id="depositpremium-usdt-trc20-amount"
-                    name="amount"
-                    placeholder="Amount"
-                    required
-                    class="depositpremium-input"
-                >
-
-                <input
-                    type="hidden"
-                    name="currency"
-                    value="USDT TRC20"
-                >
-
-                <p class="depositpremium-description">
-                    The minimum deposit is $200.
-                </p>
-
-                <button
-                    type="submit"
-                    class="depositpremium-button"
-                >
-                    Deposit USDT TRC20
-                </button>
-
+                <label for="usdt-trc20-amount" class="input-label">USDT TRC20</label>
+                <input type="number" id="usdt-trc20-amount" name="amount" placeholder="Amount" class="amount-input" required>
+                <input type="hidden" name="currency" value="USDT TRC20">
+                <p class="min-note">The minimum deposit is $200.</p>
+                <button type="submit" class="deposit-btn">Deposit USDT TRC20</button>
             </form>
-
         </div>
 
     </div>
-
 </div>
-
-{% endblock content %}
-
+{% endblock %}
