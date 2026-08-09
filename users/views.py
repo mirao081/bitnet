@@ -1720,7 +1720,7 @@ def security_center(request):
 
     # Use UserKYC model for KYC status
     try:
-        kyc_status = user.userkyc.status
+        kyc_status = user.userkyc.status.lower()  # normalize to lowercase
     except UserKYC.DoesNotExist:
         kyc_status = "pending"
 
