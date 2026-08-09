@@ -641,11 +641,11 @@
 
     }
 }
-
-
-/*==================================================*
- * RESPONSIVE
- *==================================================*/
+.withdrawpage-card {
+    box-sizing: border-box;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
 
 @media (max-width: 991px) {
 
@@ -664,37 +664,69 @@
 
 }
 
-
-/*==================================================*
- * MOBILE
- *==================================================*/
-
 @media (max-width: 600px) {
 
     .withdrawpage-showcase {
+        width: 100%;
         padding: 60px 0;
+        margin: 0;
     }
-
     .withdrawpage-container,
     .withdrawpage-card {
-        width: 95%;
+
+        width: calc(100% - 20px);
+
+        max-width: none;
+
+        margin-left: auto !important;
+        margin-right: auto !important;
+
         padding: 24px;
 
+        box-sizing: border-box;
+
         border-radius: 20px;
+
+        position: relative;
+
+        left: auto;
+        right: auto;
+
+        transform: none;
     }
 
-    .withdrawpage-title {
-        font-size: 23px;
-        letter-spacing: 2px;
-    }
+    .withdrawpage-container form,
+    .withdrawpage-card form {
 
-    .withdrawpage-subtitle {
-        font-size: 15px;
-    }
+        width: 100%;
 
+        margin: 0 auto;
+
+        display: flex;
+
+        flex-direction: column;
+
+        align-items: center;
+
+        justify-content: center;
+
+        box-sizing: border-box;
+    }
+    .withdrawpage-card {
+        width: calc(100% - 20px) !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
     .withdrawpage-label {
-        font-size: 14px;
+
+        width: 100%;
+
+        text-align: center;
+
+        margin-left: auto;
+        margin-right: auto;
     }
+
 
     .withdrawpage-select,
     .withdrawpage-container input[type="number"],
@@ -702,26 +734,123 @@
     .withdrawpage-card input[type="number"],
     .withdrawpage-card input[type="text"] {
 
+        width: 100%;
+
+        margin-left: auto;
+        margin-right: auto;
+
+        box-sizing: border-box;
+
         font-size: 14px;
 
         padding: 11px 10px;
 
         border-radius: 12px;
+
+        text-align: center;
     }
 
+
+    /*
+     * Center the minimum withdrawal message.
+     */
+    .withdrawpage-note {
+
+        width: 100%;
+
+        text-align: center;
+
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+
+    /*
+     * Center warning box.
+     */
     .withdrawpage-warning {
-        font-size: 13px;
+
+        width: 100%;
+
+        margin-left: auto;
+        margin-right: auto;
+
+        text-align: center;
+
+        box-sizing: border-box;
     }
 
+
+    /*
+     * Center CAPTCHA.
+     */
+    .withdrawpage-captcha {
+
+        width: 100%;
+
+        display: flex;
+
+        justify-content: center;
+
+        align-items: center;
+
+        margin-left: auto;
+        margin-right: auto;
+
+        text-align: center;
+    }
+
+
+    /*
+     * Center submit button.
+     */
     .withdrawpage-btn {
 
         width: 100%;
 
         min-width: 0;
 
+        margin-left: auto;
+        margin-right: auto;
+
+        display: block;
+
+        text-align: center;
+
         font-size: 14px;
 
         padding: 12px;
+    }
+
+
+    /*
+     * Mobile heading.
+     */
+    .withdrawpage-title {
+
+        width: 100%;
+
+        font-size: 23px;
+
+        letter-spacing: 2px;
+
+        text-align: center;
+
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+
+    .withdrawpage-subtitle {
+
+        width: 100%;
+
+        font-size: 15px;
+
+        text-align: center;
+
+        margin-left: auto;
+        margin-right: auto;
     }
 
 }
