@@ -593,14 +593,27 @@ def download_receipt(request, tx_id):
 @login_required
 def withdraw(request):
     profile = UserProfile.objects.get(user=request.user)
+    userwallet = UserWallet.objects.filter(user=request.user).first()
 
-    message = (
-        f"On confirmation, our system will automatically convert the USD "
-        f"to live value of BTC. The equivalent BTC will be sent to this address: "
-        f"{profile.btc_address or 'Not set'}"
+    wallets = {
+        "BTC": userwallet.btc_wallet if userwallet else "",
+        "ETH": userwallet.eth_wallet if userwallet else "",
+        "USDT_ERC20": userwallet.usdt_erc20_wallet if userwallet else "",
+        "USDT_TRC20": userwallet.usdt_trc20_wallet if userwallet else "",
+    }
+
+    form = WithdrawalForm()
+
+    return render(
+        request,
+        "users/withdraw.html",   # ✅ always use withdraw.html
+        {
+            "form": form,
+            "profile": profile,
+            "userwallet": userwallet,
+            "wallets": wallets,
+        }
     )
-
-    return render(request, "users/withdraw.html", {"message": message})
 
 
 
