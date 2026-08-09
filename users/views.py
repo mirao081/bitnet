@@ -1718,12 +1718,9 @@ def security_center(request):
     verification, _ = UserVerification.objects.get_or_create(user=user)
     recovery_codes = RecoveryCode.objects.filter(user=user, used=False).values_list("code", flat=True)
 
-    # Safely get UserKYC record
-    try:
-        kyc = UserKYC.objects.get(user=user)
-        kyc_status = kyc.status.lower()
-    except UserKYC.DoesNotExist:
-        kyc_status = "pending"
+    # Safely get or create UserKYC record
+    kyc, _ = UserKYC.objects.get_or_create(user=user)
+    kyc_status = kyc.status.lower()
 
     recent_logins = []
 
@@ -1738,6 +1735,7 @@ def security_center(request):
             "recent_logins": recent_logins,
         }
     )
+
 
 @login_required
 def manage_api_keys(request):
