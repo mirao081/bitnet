@@ -577,12 +577,27 @@
         0 0 30px #7a00ff,
         0 0 55px #ff0080;
 }
-
-
 /*==================================================*
- * BUTTON ACTIVE
+ * SELECT DROPDOWN OPTIONS
  *==================================================*/
 
+.withdrawpage-select option {
+    background: #05070d;
+    color: #ffffff;
+}
+
+/* Hover / selected option */
+.withdrawpage-select option:hover,
+.withdrawpage-select option:checked {
+    background: #00d8e9;
+    color: #05070d;
+}
+
+/* Selected option */
+.withdrawpage-select option:checked {
+    background: #00d8e9;
+    color: #05070d;
+}
 .withdrawpage-btn:active {
 
     transform:
