@@ -1,31 +1,136 @@
 {% extends "users/dashboard_base.html" %}
 {% load static %}
 
-{% block content %}
-<div class="deposit-page">
-    <h1 class="page-title">Start Investment</h1>
-    <p class="page-subtitle">Budget-Friendly Plans — Choose your preferable plan</p>
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'users/css/start_investment.css' %}">
+{% endblock %}
 
-    <div class="deposit-cards">
+{% block content %}
+
+<div class="startinvestment-showcase">
+
+    <div class="startinvestment-container">
+
         {% for plan in plans %}
-        <div class="deposit-card">
-            <h2 class="card-title">{{ plan.name }}</h2>
-            <p class="card-description">
-                {{ plan.percentage_text }}<br>
-                {{ plan.duration_text }}<br>
-                {{ plan.maturity_text }}<br>
-                Minimum: ${{ plan.min_amount }} | Maximum: ${{ plan.max_amount }}
+
+        <div class="startinvestment-card">
+
+            <!-- =========================================
+                 PLAN HEADING
+            ========================================== -->
+
+            <h2 class="startinvestment-title">
+                {{ plan.name }}
+            </h2>
+
+
+            <!-- =========================================
+                 PLAN INFORMATION
+            ========================================== -->
+
+            <div class="startinvestment-description">
+
+                <p>
+                    {{ plan.percentage_text }}
+                </p>
+
+                <p>
+                    {{ plan.duration_text }}
+                </p>
+
+                <p>
+                    {{ plan.maturity_text }}
+                </p>
+
+                <p class="startinvestment-range">
+                    Minimum: ${{ plan.min_amount }}
+                    <span>|</span>
+                    Maximum: ${{ plan.max_amount }}
+                </p>
+
+            </div>
+
+
+            <!-- =========================================
+                 INVESTMENT FORM
+            ========================================== -->
+
+            <form
+                method="post"
+                class="startinvestment-form"
+            >
+
+                {% csrf_token %}
+
+                <input
+                    type="hidden"
+                    name="plan_id"
+                    value="{{ plan.id }}"
+                >
+
+
+                <!-- =====================================
+                     AMOUNT LABEL
+                ====================================== -->
+
+                <label
+                    for="startinvestment-amount-{{ plan.id }}"
+                    class="startinvestment-label"
+                >
+                    Amount (USD)
+                </label>
+
+
+                <!-- =====================================
+                     AMOUNT INPUT
+                ====================================== -->
+
+                <input
+                    type="number"
+                    id="startinvestment-amount-{{ plan.id }}"
+                    name="amount"
+                    placeholder="Enter amount"
+                    class="startinvestment-input"
+                    min="{{ plan.min_amount }}"
+                    max="{{ plan.max_amount }}"
+                    step="0.01"
+                    required
+                >
+
+
+                <!-- =====================================
+                     INVEST BUTTON
+                ====================================== -->
+
+                <button
+                    type="submit"
+                    class="startinvestment-btn"
+                >
+                    Invest in {{ plan.name }}
+                </button>
+
+            </form>
+
+        </div>
+
+        {% empty %}
+
+        <div class="startinvestment-empty">
+
+            <h2 class="startinvestment-empty-title">
+                No Investment Plans Available
+            </h2>
+
+            <p class="startinvestment-empty-text">
+                There are currently no investment plans available.
             </p>
 
-            <form method="post">
-                {% csrf_token %}
-                <input type="hidden" name="plan_id" value="{{ plan.id }}">
-                <label for="amount-{{ plan.id }}" class="input-label">Amount (USD)</label>
-                <input type="number" id="amount-{{ plan.id }}" name="amount" placeholder="Enter amount" class="amount-input" min="{{ plan.min_amount }}" max="{{ plan.max_amount }}">
-                <button type="submit" class="deposit-btn">Invest in {{ plan.name }}</button>
-            </form>
         </div>
+
         {% endfor %}
+
     </div>
+
 </div>
+
 {% endblock %}

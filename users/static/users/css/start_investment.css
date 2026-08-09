@@ -1,0 +1,773 @@
+/*==================================================*
+ * START INVESTMENT SHOWCASE
+ *==================================================*/
+
+.startinvestment-showcase {
+
+    width: 100%;
+
+    padding: 70px 0;
+
+    position: relative;
+
+    overflow: hidden;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    background:
+        radial-gradient(
+            circle at top left,
+            #004aad33,
+            transparent 40%
+        ),
+        radial-gradient(
+            circle at bottom right,
+            #7a00ff22,
+            transparent 35%
+        ),
+        linear-gradient(
+            180deg,
+            #05070d,
+            #0a1020
+        );
+
+    box-sizing: border-box;
+}
+
+
+/*==================================================*
+ * MAIN CONTAINER
+ *==================================================*/
+
+.startinvestment-container {
+
+    width: 90%;
+
+    max-width: 1100px;
+
+    margin-left: auto !important;
+    margin-right: auto !important;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 25px;
+
+    box-sizing: border-box;
+}
+
+
+/*==================================================*
+ * INVESTMENT CARD
+ *==================================================*/
+
+.startinvestment-card {
+
+    width: 100%;
+
+    box-sizing: border-box;
+
+    padding: 32px;
+
+    border-radius: 25px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255, 255, 255, 0.10),
+            rgba(255, 255, 255, 0.04)
+        );
+
+    backdrop-filter: blur(20px);
+
+    -webkit-backdrop-filter: blur(20px);
+
+    border:
+        1px solid rgba(255, 255, 255, 0.18);
+
+    box-shadow:
+        0 0 25px rgba(0, 216, 239, 0.20),
+        0 0 55px rgba(122, 0, 255, 0.12),
+        inset 0 1px 0 rgba(255, 255, 255, 0.20);
+
+    text-align: center;
+
+    position: relative;
+
+    transition:
+        transform 0.4s ease,
+        box-shadow 0.4s ease;
+}
+
+
+/*==================================================*
+ * CARD HOVER
+ *==================================================*/
+
+.startinvestment-card:hover {
+
+    transform: translateY(-5px);
+
+    box-shadow:
+        0 0 35px rgba(0, 216, 239, 0.30),
+        0 0 75px rgba(122, 0, 255, 0.18),
+        inset 0 1px 0 rgba(255, 255, 255, 0.25);
+}
+
+
+/*==================================================*
+ * PLAN TITLE
+ *==================================================*/
+
+.startinvestment-title {
+
+    width: 100%;
+
+    margin: 0 auto 18px;
+
+    text-align: center;
+
+    font-size: 27px;
+
+    font-weight: 900;
+
+    color: #ffffff;
+
+    text-transform: uppercase;
+
+    letter-spacing: 2px;
+
+    text-shadow:
+        0 0 8px #00d8ef,
+        0 0 18px #00d8ef,
+        0 0 30px #7a00ff,
+        0 0 50px #ff0080;
+
+    animation:
+        startinvestmentGlowPulse
+        3s
+        infinite
+        alternate;
+}
+
+
+/*==================================================*
+ * TITLE UNDERLINE
+ *==================================================*/
+
+.startinvestment-title::after {
+
+    content: "";
+
+    display: block;
+
+    width: 80px;
+
+    height: 3px;
+
+    margin: 12px auto 0;
+
+    border-radius: 10px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #00d8ef,
+            #7a00ff,
+            #ff0080
+        );
+
+    box-shadow:
+        0 0 8px #00d8ef,
+        0 0 18px #7a00ff,
+        0 0 25px #ff0080;
+
+    animation:
+        startinvestmentLineGlow
+        3s
+        infinite
+        alternate;
+}
+
+
+/*==================================================*
+ * PLAN DESCRIPTION
+ *==================================================*/
+
+.startinvestment-description {
+
+    width: 100%;
+
+    margin: 0 auto 25px;
+
+    text-align: center;
+
+    color:
+        rgba(255, 255, 255, 0.88);
+
+    font-size: 15px;
+
+    line-height: 1.7;
+}
+
+
+/*==================================================*
+ * DESCRIPTION PARAGRAPHS
+ *==================================================*/
+
+.startinvestment-description p {
+
+    margin: 5px 0;
+
+    text-align: center;
+}
+
+
+/*==================================================*
+ * MIN / MAX
+ *==================================================*/
+
+.startinvestment-range {
+
+    margin-top: 14px !important;
+
+    color: #ffcc00;
+
+    font-weight: 700;
+
+    text-shadow:
+        0 0 7px rgba(255, 204, 0, 0.35);
+}
+
+
+.startinvestment-range span {
+
+    margin: 0 8px;
+
+    color:
+        rgba(255, 255, 255, 0.45);
+}
+
+
+/*==================================================*
+ * FORM
+ *==================================================*/
+
+.startinvestment-form {
+
+    width: 100%;
+
+    margin: 0 auto;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    box-sizing: border-box;
+}
+
+
+/*==================================================*
+ * LABEL
+ *==================================================*/
+
+.startinvestment-label {
+
+    display: block;
+
+    width: 100%;
+
+    margin: 10px auto 5px;
+
+    text-align: center;
+
+    font-size: 15px;
+
+    font-weight: 700;
+
+    color: #ffffff;
+
+    letter-spacing: 0.5px;
+
+    text-shadow:
+        0 0 7px rgba(0, 216, 239, 0.55);
+}
+
+
+/*==================================================*
+ * AMOUNT INPUT
+ *==================================================*/
+
+.startinvestment-input {
+
+    width: 100%;
+
+    box-sizing: border-box;
+
+    padding: 13px 15px;
+
+    margin: 8px auto 0;
+
+    border-radius: 14px;
+
+    border:
+        1px solid rgba(255, 255, 255, 0.25);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(0, 0, 0, 0.55),
+            rgba(10, 20, 40, 0.65)
+        );
+
+    color: #ffffff;
+
+    font-size: 15px;
+
+    text-align: center;
+
+    outline: none;
+
+    box-shadow:
+        0 0 8px rgba(0, 216, 239, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08);
+
+    transition:
+        border-color 0.3s ease,
+        box-shadow 0.3s ease,
+        transform 0.3s ease,
+        background 0.3s ease;
+}
+
+
+/*==================================================*
+ * INPUT HOVER
+ *==================================================*/
+
+.startinvestment-input:hover {
+
+    border-color:
+        rgba(0, 216, 239, 0.75);
+
+    box-shadow:
+        0 0 10px rgba(0, 216, 239, 0.30),
+        0 0 22px rgba(122, 0, 255, 0.12),
+        inset 0 1px 0 rgba(255, 255, 255, 0.12);
+
+    transform:
+        translateY(-1px);
+}
+
+
+/*==================================================*
+ * INPUT FOCUS
+ *==================================================*/
+
+.startinvestment-input:focus {
+
+    outline: none;
+
+    border-color:
+        #00d8ef;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(0, 20, 35, 0.80),
+            rgba(20, 5, 50, 0.75)
+        );
+
+    box-shadow:
+        0 0 8px #00d8ef,
+        0 0 18px rgba(0, 216, 239, 0.65),
+        0 0 35px rgba(122, 0, 255, 0.35),
+        inset 0 0 12px rgba(0, 216, 239, 0.08);
+
+    transform:
+        translateY(-2px);
+}
+
+
+/*==================================================*
+ * PLACEHOLDER
+ *==================================================*/
+
+.startinvestment-input::placeholder {
+
+    color:
+        rgba(255, 255, 255, 0.50);
+
+    text-align: center;
+}
+
+
+/*==================================================*
+ * INVEST BUTTON
+ *==================================================*/
+
+.startinvestment-btn {
+
+    display: block;
+
+    width: auto;
+
+    min-width: 220px;
+
+    margin: 25px auto 0;
+
+    padding: 13px 30px;
+
+    border-radius: 25px;
+
+    border:
+        1px solid rgba(255, 255, 255, 0.25);
+
+    background:
+        linear-gradient(
+            90deg,
+            #00d8ef,
+            #7a00ff,
+            #ff0080
+        );
+
+    background-size: 200% 100%;
+
+    color: #ffffff;
+
+    font-weight: 800;
+
+    font-size: 14px;
+
+    letter-spacing: 0.7px;
+
+    text-transform: uppercase;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 0 10px rgba(0, 216, 239, 0.65),
+        0 0 25px rgba(122, 0, 255, 0.40),
+        0 0 40px rgba(255, 0, 128, 0.20);
+
+    text-shadow:
+        0 0 5px rgba(255, 255, 255, 0.80);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        background-position 0.5s ease;
+}
+
+
+/*==================================================*
+ * BUTTON HOVER
+ *==================================================*/
+
+.startinvestment-btn:hover {
+
+    transform:
+        translateY(-3px)
+        scale(1.03);
+
+    background-position:
+        100% 0;
+
+    box-shadow:
+        0 0 15px #00d8ef,
+        0 0 30px #7a00ff,
+        0 0 55px #ff0080;
+}
+
+
+/*==================================================*
+ * BUTTON ACTIVE
+ *==================================================*/
+
+.startinvestment-btn:active {
+
+    transform:
+        translateY(0)
+        scale(0.98);
+
+    box-shadow:
+        0 0 10px #00d8ef,
+        0 0 20px #7a00ff;
+}
+
+
+/*==================================================*
+ * EMPTY STATE
+ *==================================================*/
+
+.startinvestment-empty {
+
+    width: 100%;
+
+    max-width: 700px;
+
+    margin: 0 auto;
+
+    padding: 40px;
+
+    box-sizing: border-box;
+
+    border-radius: 25px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255, 255, 255, 0.10),
+            rgba(255, 255, 255, 0.04)
+        );
+
+    backdrop-filter: blur(20px);
+
+    -webkit-backdrop-filter: blur(20px);
+
+    border:
+        1px solid rgba(255, 255, 255, 0.18);
+
+    box-shadow:
+        0 0 25px rgba(0, 216, 239, 0.20);
+
+    text-align: center;
+}
+
+
+.startinvestment-empty-title {
+
+    margin: 0 auto 15px;
+
+    color: #ffffff;
+
+    font-size: 25px;
+
+    text-shadow:
+        0 0 10px #00d8ef,
+        0 0 25px #7a00ff;
+}
+
+
+.startinvestment-empty-text {
+
+    margin: 0;
+
+    color:
+        rgba(255, 255, 255, 0.80);
+
+    text-align: center;
+}
+
+
+/*==================================================*
+ * ANIMATIONS
+ *==================================================*/
+
+@keyframes startinvestmentGlowPulse {
+
+    from {
+
+        text-shadow:
+            0 0 8px #00d8ef,
+            0 0 18px #00d8ef,
+            0 0 30px #7a00ff;
+
+    }
+
+    to {
+
+        text-shadow:
+            0 0 15px #00d8ef,
+            0 0 30px #7a00ff,
+            0 0 50px #ff0080,
+            0 0 70px #ff0080;
+
+    }
+}
+
+
+@keyframes startinvestmentLineGlow {
+
+    from {
+
+        box-shadow:
+            0 0 6px #00d8ef,
+            0 0 12px #7a00ff;
+
+    }
+
+    to {
+
+        box-shadow:
+            0 0 12px #00d8ef,
+            0 0 25px #7a00ff,
+            0 0 35px #ff0080;
+
+    }
+}
+
+
+/*==================================================*
+ * TABLET
+ *==================================================*/
+
+@media (max-width: 991px) {
+
+    .startinvestment-container {
+
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+        gap: 20px;
+    }
+
+
+    .startinvestment-card {
+
+        padding: 28px;
+    }
+
+
+    .startinvestment-title {
+
+        font-size: 24px;
+    }
+
+}
+
+
+/*==================================================*
+ * MOBILE
+ *==================================================*/
+
+@media (max-width: 600px) {
+
+    .startinvestment-showcase {
+
+        width: 100%;
+
+        padding: 60px 0;
+
+        margin: 0;
+    }
+
+
+    .startinvestment-container {
+
+        width: calc(100% - 20px);
+
+        max-width: none;
+
+        margin-left: auto !important;
+        margin-right: auto !important;
+
+        display: flex;
+
+        flex-direction: column;
+
+        align-items: center;
+
+        gap: 20px;
+
+        box-sizing: border-box;
+    }
+
+
+    .startinvestment-card {
+
+        width: 100%;
+
+        max-width: none;
+
+        margin-left: auto !important;
+        margin-right: auto !important;
+
+        padding: 24px;
+
+        border-radius: 20px;
+
+        box-sizing: border-box;
+
+        transform: none;
+    }
+
+
+    .startinvestment-card:hover {
+
+        transform: none;
+    }
+
+
+    .startinvestment-title {
+
+        width: 100%;
+
+        font-size: 22px;
+
+        letter-spacing: 1.5px;
+
+        text-align: center;
+    }
+
+
+    .startinvestment-description {
+
+        font-size: 14px;
+
+        text-align: center;
+    }
+
+
+    .startinvestment-label {
+
+        font-size: 14px;
+
+        text-align: center;
+    }
+
+
+    .startinvestment-input {
+
+        width: 100%;
+
+        font-size: 14px;
+
+        padding: 11px 10px;
+
+        border-radius: 12px;
+    }
+
+
+    .startinvestment-btn {
+
+        width: 100%;
+
+        min-width: 0;
+
+        font-size: 13px;
+
+        padding: 12px;
+
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+
+    .startinvestment-empty {
+
+        width: calc(100% - 20px);
+
+        padding: 28px 20px;
+    }
+
+}
