@@ -28,7 +28,7 @@
 
 
         <!-- =========================================
-             SUPPORT ARTICLES
+             SUPPORT ARTICLES + QUICK ASSISTANCE
         ========================================== -->
 
         <div class="supportpage-articles">
@@ -53,6 +53,10 @@
 
             {% empty %}
 
+            <!-- =====================================
+                 NO ARTICLES CARD
+            ====================================== -->
+
             <div class="supportpage-card">
 
                 <h2 class="supportpage-card-title">
@@ -68,35 +72,46 @@
 
             {% endfor %}
 
+
+            <!-- =====================================
+                 QUICK ASSISTANCE CARD
+            ====================================== -->
+
+            <div class="supportpage-card supportpage-quick-card">
+
+                <h2 class="supportpage-card-title">
+                    Need Help With Your Account?
+                </h2>
+
+                <p class="supportpage-card-text">
+                    Our support team is here to help you with
+                    deposits, withdrawals, wallet settings,
+                    investments, verification, and other
+                    account-related questions.
+                </p>
+
+                <a
+                    href="mailto:support@bitnet.trade"
+                    class="supportpage-assistance-btn"
+                >
+                    QUICK ASSISTANCE
+                </a>
+
+            </div>
+
         </div>
+
+
         <!-- =========================================
-            QUICK HELP CARD
+             CONTACT SUPPORT
         ========================================== -->
-
-        <div class="supportpage-card">
-
-            <h2 class="supportpage-card-title">
-                Need Help With Your Account?
-            </h2>
-
-            <p class="supportpage-card-text">
-                Our support team is here to help you with
-                deposits, withdrawals, wallet settings,
-                investments, verification, and other
-                account-related questions.
-            </p>
-
-            <span class="supportpage-category">
-                QUICK ASSISTANCE
-            </span>
-
-        </div>
-
 
         <div class="supportpage-contact-grid">
 
 
-            <!-- EMAIL -->
+            <!-- =====================================
+                 EMAIL SUPPORT
+            ====================================== -->
 
             <div class="supportpage-card supportpage-contact-card">
 
@@ -115,7 +130,9 @@
             </div>
 
 
-            <!-- PHONE -->
+            <!-- =====================================
+                 PHONE SUPPORT
+            ====================================== -->
 
             <div class="supportpage-card supportpage-contact-card">
 
@@ -134,7 +151,9 @@
             </div>
 
 
-            <!-- LIVE CHAT -->
+            <!-- =====================================
+                 LIVE CHAT
+            ====================================== -->
 
             <div class="supportpage-card supportpage-contact-card">
 
@@ -151,6 +170,7 @@
                 </div>
 
             </div>
+
 
         </div>
 
