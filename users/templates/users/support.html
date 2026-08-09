@@ -1,97 +1,137 @@
 {% extends "users/dashboard_base.html" %}
+{% load static %}
+
 {% block title %}Support{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'users/css/support.css' %}">
+{% endblock %}
+
 {% block content %}
-<div class="support-center-container">
 
-    <h1 class="support-center-title">Customer Support</h1>
+<div class="supportpage-showcase">
 
-    <p class="support-center-subtitle">
-        Welcome to BitnetFX Support. Find answers to common questions or contact our support team anytime.
-    </p>
-    <div class="support-center-grid">
+    <div class="supportpage-container">
 
-        {% for article in articles %}
-        <div class="support-center-card">
+        <!-- =========================================
+             PAGE HEADING
+        ========================================== -->
 
-            <h2 class="support-center-card-title">
-                {{ article.title }}
-            </h2>
+        <h1 class="supportpage-title">
+            Customer Support
+        </h1>
 
-            <p class="support-center-card-text">
-                {{ article.content }}
-            </p>
+        <p class="supportpage-subtitle">
+            Welcome to BitnetFX Support. Find answers to common
+            questions or contact our support team anytime.
+        </p>
 
-            <span class="support-center-category">
-                {{ article.get_category_display }}
-            </span>
 
-        </div>
-        {% empty %}
+        <!-- =========================================
+             SUPPORT ARTICLES
+        ========================================== -->
 
-        <div class="support-center-card">
+        <div class="supportpage-articles">
 
-            <h2 class="support-center-card-title">
-                No Articles Yet
-            </h2>
+            {% for article in articles %}
 
-            <p class="support-center-card-text">
-                We're currently preparing helpful guides and frequently asked questions. Please check back soon.
-            </p>
+            <div class="supportpage-card">
 
-        </div>
+                <h2 class="supportpage-card-title">
+                    {{ article.title }}
+                </h2>
 
-        {% endfor %}
+                <p class="supportpage-card-text">
+                    {{ article.content }}
+                </p>
 
-    </div>
+                <span class="supportpage-category">
+                    {{ article.get_category_display }}
+                </span>
 
-    <div class="support-center-grid">
-
-        <div class="support-center-card">
-
-            <h2 class="support-center-card-title">
-                Email Support
-            </h2>
-
-            <p class="support-center-card-text">
-                Reach our support team at any time through email.
-            </p>
-
-            <div class="support-center-contact">
-                📧 support@bitnetfx.com
             </div>
 
-        </div>
+            {% empty %}
 
+            <div class="supportpage-card">
 
-        <div class="support-center-card">
+                <h2 class="supportpage-card-title">
+                    No Articles Yet
+                </h2>
 
-            <h2 class="support-center-card-title">
-                Phone Support
-            </h2>
+                <p class="supportpage-card-text">
+                    We're currently preparing helpful guides and
+                    frequently asked questions. Please check back soon.
+                </p>
 
-            <p class="support-center-card-text">
-                Speak directly with our representatives.
-            </p>
-
-            <div class="support-center-contact">
-                📞 +234-800-123-4567
             </div>
 
+            {% endfor %}
+
         </div>
 
 
-        <div class="support-center-card">
+        <!-- =========================================
+             CONTACT SUPPORT
+        ========================================== -->
 
-            <h2 class="support-center-card-title">
-                Live Chat
-            </h2>
+        <div class="supportpage-contact-grid">
 
-            <p class="support-center-card-text">
-                Get instant assistance from within your dashboard.
-            </p>
 
-            <div class="support-center-contact">
-                💬 Available 24/7
+            <!-- EMAIL -->
+
+            <div class="supportpage-card supportpage-contact-card">
+
+                <h2 class="supportpage-card-title">
+                    Email Support
+                </h2>
+
+                <p class="supportpage-card-text">
+                    Reach our support team at any time through email.
+                </p>
+
+                <div class="supportpage-contact">
+                    📧 support@bitnetfx.com
+                </div>
+
+            </div>
+
+
+            <!-- PHONE -->
+
+            <div class="supportpage-card supportpage-contact-card">
+
+                <h2 class="supportpage-card-title">
+                    Phone Support
+                </h2>
+
+                <p class="supportpage-card-text">
+                    Speak directly with our representatives.
+                </p>
+
+                <div class="supportpage-contact">
+                    📞 +234-800-123-4567
+                </div>
+
+            </div>
+
+
+            <!-- LIVE CHAT -->
+
+            <div class="supportpage-card supportpage-contact-card">
+
+                <h2 class="supportpage-card-title">
+                    Live Chat
+                </h2>
+
+                <p class="supportpage-card-text">
+                    Get instant assistance from within your dashboard.
+                </p>
+
+                <div class="supportpage-contact">
+                    💬 Available 24/7
+                </div>
+
             </div>
 
         </div>

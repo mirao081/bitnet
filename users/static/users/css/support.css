@@ -1,0 +1,630 @@
+/*==================================================*
+ * SUPPORT PAGE SHOWCASE
+ *==================================================*/
+
+.supportpage-showcase {
+
+    width: 100%;
+
+    padding: 70px 0;
+
+    position: relative;
+
+    overflow: hidden;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    background:
+        radial-gradient(
+            circle at top left,
+            #004aad33,
+            transparent 40%
+        ),
+        radial-gradient(
+            circle at bottom right,
+            #7a00ff22,
+            transparent 35%
+        ),
+        linear-gradient(
+            180deg,
+            #05070d,
+            #0a1020
+        );
+
+    box-sizing: border-box;
+}
+
+
+/*==================================================*
+ * MAIN CONTAINER
+ *==================================================*/
+
+.supportpage-container {
+
+    width: 90%;
+
+    max-width: 1100px;
+
+    margin-left: auto !important;
+    margin-right: auto !important;
+
+    box-sizing: border-box;
+
+    text-align: center;
+}
+
+
+/*==================================================*
+ * MAIN HEADING
+ *==================================================*/
+
+.supportpage-title {
+
+    width: 100%;
+
+    margin: 0 auto 15px;
+
+    font-size: 32px;
+
+    font-weight: 900;
+
+    color: #ffffff;
+
+    text-transform: uppercase;
+
+    letter-spacing: 2px;
+
+    text-align: center;
+
+    text-shadow:
+        0 0 10px #00d8ef,
+        0 0 20px #00d8ef,
+        0 0 35px #7a00ff,
+        0 0 55px #ff0080;
+
+    animation:
+        supportpageGlowPulse
+        3s
+        infinite
+        alternate;
+}
+
+
+/*==================================================*
+ * SUBTITLE
+ *==================================================*/
+
+.supportpage-subtitle {
+
+    width: 100%;
+
+    max-width: 850px;
+
+    margin: 0 auto 40px;
+
+    color:
+        rgba(255, 255, 255, 0.85);
+
+    font-size: 16px;
+
+    line-height: 1.7;
+
+    text-align: center;
+
+    text-shadow:
+        0 0 8px rgba(0, 216, 239, 0.20);
+}
+
+
+/*==================================================*
+ * ARTICLE GRID
+ *==================================================*/
+
+.supportpage-articles {
+
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 25px;
+
+    margin: 0 auto 25px;
+
+    box-sizing: border-box;
+}
+
+
+/*==================================================*
+ * CONTACT GRID
+ *==================================================*/
+
+.supportpage-contact-grid {
+
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    gap: 25px;
+
+    margin: 0 auto;
+
+    box-sizing: border-box;
+}
+
+
+/*==================================================*
+ * SUPPORT CARD
+ *==================================================*/
+
+.supportpage-card {
+
+    width: 100%;
+
+    box-sizing: border-box;
+
+    padding: 30px;
+
+    border-radius: 25px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255, 255, 255, 0.10),
+            rgba(255, 255, 255, 0.04)
+        );
+
+    backdrop-filter: blur(20px);
+
+    -webkit-backdrop-filter: blur(20px);
+
+    border:
+        1px solid rgba(255, 255, 255, 0.18);
+
+    box-shadow:
+        0 0 25px rgba(0, 216, 239, 0.20),
+        0 0 55px rgba(122, 0, 255, 0.12),
+        inset 0 1px 0 rgba(255, 255, 255, 0.20);
+
+    text-align: center;
+
+    position: relative;
+
+    transition:
+        transform 0.4s ease,
+        box-shadow 0.4s ease;
+}
+
+
+/*==================================================*
+ * CARD HOVER
+ *==================================================*/
+
+.supportpage-card:hover {
+
+    transform: translateY(-5px);
+
+    box-shadow:
+        0 0 35px rgba(0, 216, 239, 0.30),
+        0 0 75px rgba(122, 0, 255, 0.18),
+        inset 0 1px 0 rgba(255, 255, 255, 0.25);
+}
+
+
+/*==================================================*
+ * CARD TITLE
+ *==================================================*/
+
+.supportpage-card-title {
+
+    width: 100%;
+
+    margin: 0 auto 18px;
+
+    font-size: 23px;
+
+    font-weight: 900;
+
+    color: #ffffff;
+
+    text-transform: uppercase;
+
+    letter-spacing: 1.5px;
+
+    text-align: center;
+
+    text-shadow:
+        0 0 8px #00d8ef,
+        0 0 18px #00d8ef,
+        0 0 30px #7a00ff;
+}
+
+
+/*==================================================*
+ * CARD TITLE LINE
+ *==================================================*/
+
+.supportpage-card-title::after {
+
+    content: "";
+
+    display: block;
+
+    width: 65px;
+
+    height: 3px;
+
+    margin: 11px auto 0;
+
+    border-radius: 10px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #00d8ef,
+            #7a00ff,
+            #ff0080
+        );
+
+    box-shadow:
+        0 0 8px #00d8ef,
+        0 0 18px #7a00ff,
+        0 0 25px #ff0080;
+}
+
+
+/*==================================================*
+ * CARD TEXT
+ *==================================================*/
+
+.supportpage-card-text {
+
+    margin: 0 auto 20px;
+
+    color:
+        rgba(255, 255, 255, 0.82);
+
+    font-size: 15px;
+
+    line-height: 1.7;
+
+    text-align: center;
+}
+
+
+/*==================================================*
+ * CATEGORY
+ *==================================================*/
+
+.supportpage-category {
+
+    display: inline-block;
+
+    padding: 7px 16px;
+
+    border-radius: 20px;
+
+    background:
+        rgba(0, 216, 239, 0.12);
+
+    border:
+        1px solid rgba(0, 216, 239, 0.40);
+
+    color: #00d8ef;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.7px;
+
+    box-shadow:
+        0 0 10px rgba(0, 216, 239, 0.20);
+}
+
+
+/*==================================================*
+ * CONTACT CARD
+ *==================================================*/
+
+.supportpage-contact-card {
+
+    min-height: 230px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+}
+
+
+/*==================================================*
+ * CONTACT INFORMATION
+ *==================================================*/
+
+.supportpage-contact {
+
+    width: 100%;
+
+    margin: 10px auto 0;
+
+    padding: 13px 10px;
+
+    box-sizing: border-box;
+
+    border-radius: 14px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(0, 0, 0, 0.45),
+            rgba(10, 20, 40, 0.60)
+        );
+
+    border:
+        1px solid rgba(0, 216, 239, 0.35);
+
+    color: #00d8ef;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    text-align: center;
+
+    box-shadow:
+        0 0 10px rgba(0, 216, 239, 0.18);
+
+    transition:
+        border-color 0.3s ease,
+        box-shadow 0.3s ease,
+        transform 0.3s ease;
+}
+
+
+/*==================================================*
+ * CONTACT HOVER
+ *==================================================*/
+
+.supportpage-contact:hover {
+
+    border-color: #00d8ef;
+
+    box-shadow:
+        0 0 10px #00d8ef,
+        0 0 25px rgba(122, 0, 255, 0.30);
+
+    transform:
+        translateY(-2px);
+}
+
+
+/*==================================================*
+ * GLOW ANIMATION
+ *==================================================*/
+
+@keyframes supportpageGlowPulse {
+
+    from {
+
+        text-shadow:
+            0 0 8px #00d8ef,
+            0 0 18px #00d8ef,
+            0 0 30px #7a00ff;
+
+    }
+
+    to {
+
+        text-shadow:
+            0 0 15px #00d8ef,
+            0 0 30px #7a00ff,
+            0 0 50px #ff0080,
+            0 0 70px #ff0080;
+
+    }
+}
+
+
+/*==================================================*
+ * TABLET
+ *==================================================*/
+
+@media (max-width: 991px) {
+
+    .supportpage-container {
+
+        width: 92%;
+    }
+
+
+    .supportpage-title {
+
+        font-size: 28px;
+    }
+
+
+    .supportpage-articles {
+
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+        gap: 20px;
+    }
+
+
+    .supportpage-contact-grid {
+
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+        gap: 20px;
+    }
+
+
+    .supportpage-card {
+
+        padding: 27px;
+    }
+
+}
+
+
+/*==================================================*
+ * MOBILE
+ *==================================================*/
+
+@media (max-width: 600px) {
+
+    .supportpage-showcase {
+
+        width: 100%;
+
+        padding: 60px 0;
+
+        margin: 0;
+    }
+
+
+    .supportpage-container {
+
+        width: calc(100% - 20px);
+
+        max-width: none;
+
+        margin-left: auto !important;
+        margin-right: auto !important;
+
+        box-sizing: border-box;
+    }
+
+
+    .supportpage-title {
+
+        width: 100%;
+
+        font-size: 23px;
+
+        letter-spacing: 1.5px;
+
+        text-align: center;
+    }
+
+
+    .supportpage-subtitle {
+
+        width: 100%;
+
+        font-size: 14px;
+
+        line-height: 1.6;
+
+        text-align: center;
+
+        margin-bottom: 30px;
+    }
+
+
+    .supportpage-articles {
+
+        width: 100%;
+
+        display: flex;
+
+        flex-direction: column;
+
+        align-items: center;
+
+        gap: 20px;
+    }
+
+
+    .supportpage-contact-grid {
+
+        width: 100%;
+
+        display: flex;
+
+        flex-direction: column;
+
+        align-items: center;
+
+        gap: 20px;
+    }
+
+
+    .supportpage-card {
+
+        width: 100%;
+
+        max-width: none;
+
+        margin-left: auto !important;
+        margin-right: auto !important;
+
+        padding: 24px;
+
+        border-radius: 20px;
+
+        box-sizing: border-box;
+    }
+
+
+    .supportpage-card:hover {
+
+        transform: none;
+    }
+
+
+    .supportpage-card-title {
+
+        font-size: 20px;
+
+        letter-spacing: 1px;
+    }
+
+
+    .supportpage-card-text {
+
+        font-size: 14px;
+
+        line-height: 1.65;
+    }
+
+
+    .supportpage-category {
+
+        font-size: 12px;
+
+        padding: 6px 14px;
+    }
+
+
+    .supportpage-contact-card {
+
+        min-height: 200px;
+    }
+
+
+    .supportpage-contact {
+
+        font-size: 13px;
+
+        padding: 11px 8px;
+    }
+
+}
