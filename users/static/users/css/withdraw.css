@@ -1,161 +1,727 @@
-/*==================================================
-        WITHDRAWAL SHOWCASE STYLE
-==================================================*/
+/*==================================================*
+ * WITHDRAWAL SHOWCASE STYLE
+ *==================================================*/
 
 .withdrawpage-showcase {
-    width:100%;
-    padding:90px 0;
-    position:relative;
-    overflow:hidden;
-    display:flex;
-    justify-content:center;
-    align-items:center;
+    width: 100%;
+    padding: 90px 0;
+    position: relative;
+    overflow: hidden;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
     background:
-      radial-gradient(circle at top left,#004aad33,transparent 40%),
-      radial-gradient(circle at bottom right,#7a00ff22,transparent 35%),
-      linear-gradient(180deg,#05070d,#0a1020);
+        radial-gradient(
+            circle at top left,
+            #004aad33,
+            transparent 40%
+        ),
+        radial-gradient(
+            circle at bottom right,
+            #7a00ff22,
+            transparent 35%
+        ),
+        linear-gradient(
+            180deg,
+            #05070d,
+            #0a1020
+        );
 }
 
-/*=========================
-   CONTAINER CARD
-=========================*/
-.withdrawpage-container {
-    max-width:700px;
-    width:90%;
-    margin:auto;
-    padding:40px;
-    border-radius:25px;
-    background:rgba(255,255,255,.08);
-    backdrop-filter:blur(20px);
-    -webkit-backdrop-filter:blur(20px);
-    border:1px solid rgba(255,255,255,.15);
-    box-shadow:0 0 40px rgba(0,216,239,.25), inset 0 1px 0 rgba(255,255,255,.2);
-    text-align:center;
+
+/*==================================================*
+ * CONTAINER CARD
+ *==================================================*/
+
+.withdrawpage-container,
+.withdrawpage-card {
+    max-width: 700px;
+    width: 90%;
+    margin: 0 auto;
+    padding: 40px;
+
+    border-radius: 25px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255, 255, 255, 0.10),
+            rgba(255, 255, 255, 0.04)
+        );
+
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+
+    border: 1px solid rgba(255, 255, 255, 0.18);
+
+    box-shadow:
+        0 0 25px rgba(0, 216, 239, 0.20),
+        0 0 55px rgba(122, 0, 255, 0.12),
+        inset 0 1px 0 rgba(255, 255, 255, 0.20);
+
+    text-align: center;
+
+    position: relative;
+
+    transition:
+        box-shadow 0.4s ease,
+        transform 0.4s ease;
 }
 
-/*=========================
-   HEADING
-=========================*/
+
+/*==================================================*
+ * CARD HOVER
+ *==================================================*/
+
+.withdrawpage-container:hover,
+.withdrawpage-card:hover {
+    box-shadow:
+        0 0 35px rgba(0, 216, 239, 0.30),
+        0 0 75px rgba(122, 0, 255, 0.18),
+        inset 0 1px 0 rgba(255, 255, 255, 0.25);
+}
+
+
+/*==================================================*
+ * FORM
+ *==================================================*/
+
+.withdrawpage-container form,
+.withdrawpage-card form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+/*==================================================*
+ * HEADING
+ *==================================================*/
+
 .withdrawpage-title {
-    font-size:28px;
-    font-weight:900;
-    color:#fff;
-    text-transform:uppercase;
-    letter-spacing:2px;
-    margin-bottom:15px;
-    text-shadow:0 0 10px #00d8ef,0 0 20px #7a00ff,0 0 40px #ff0080;
-    animation:glowPulse 3s infinite alternate;
+    font-size: 30px;
+    font-weight: 900;
+
+    color: #ffffff;
+
+    text-transform: uppercase;
+    letter-spacing: 3px;
+
+    margin: 0 auto 15px;
+
+    text-align: center;
+
+    text-shadow:
+        0 0 8px #00d8ef,
+        0 0 18px #00d8ef,
+        0 0 30px #7a00ff,
+        0 0 50px #ff0080;
+
+    animation: glowPulse 3s infinite alternate;
+
+    position: relative;
 }
+
+
+/*==================================================*
+ * HEADING UNDERLINE
+ *==================================================*/
+
+.withdrawpage-title::after {
+    content: "";
+
+    display: block;
+
+    width: 90px;
+    height: 3px;
+
+    margin: 12px auto 0;
+
+    border-radius: 10px;
+
+    background: linear-gradient(
+        90deg,
+        #00d8ef,
+        #7a00ff,
+        #ff0080
+    );
+
+    box-shadow:
+        0 0 8px #00d8ef,
+        0 0 18px #7a00ff,
+        0 0 25px #ff0080;
+
+    animation: lineGlow 3s infinite alternate;
+}
+
+
+/*==================================================*
+ * SUBTITLE
+ *==================================================*/
 
 .withdrawpage-subtitle {
-    font-size:18px;
-    font-weight:600;
-    color:rgba(255,255,255,.85);
-    margin-bottom:30px;
+    width: 100%;
+
+    font-size: 18px;
+    font-weight: 600;
+
+    color: rgba(255, 255, 255, 0.88);
+
+    margin: 0 auto 30px;
+
+    text-align: center;
+
+    text-shadow:
+        0 0 8px rgba(255, 255, 255, 0.20);
 }
 
-/*=========================
-   FORM ELEMENTS
-=========================*/
+
+/*==================================================*
+ * LABELS
+ *==================================================*/
+
 .withdrawpage-label {
-    display:block;
-    margin-top:15px;
-    font-weight:600;
-    color:#fff;
-    text-align:left;
+    display: block;
+
+    width: 100%;
+
+    margin-top: 18px;
+    margin-bottom: 5px;
+
+    font-weight: 700;
+    font-size: 15px;
+
+    color: #ffffff;
+
+    text-align: center;
+
+    letter-spacing: 0.5px;
+
+    text-shadow:
+        0 0 7px rgba(0, 216, 239, 0.55);
+
+    transition:
+        color 0.3s ease,
+        text-shadow 0.3s ease;
 }
+
+
+/*==================================================*
+ * FORM ELEMENTS
+ *
+ * Select and ALL visible inputs receive the
+ * same premium neon/glass effect.
+ *==================================================*/
 
 .withdrawpage-select,
 .withdrawpage-container input[type="number"],
-.withdrawpage-container input[type="text"] {
-    width:100%;
-    padding:12px;
-    margin-top:8px;
-    border-radius:12px;
-    border:1px solid rgba(255,255,255,.25);
-    background:rgba(0,0,0,.4);
-    color:#fff;
-    font-size:15px;
-    transition:.3s;
+.withdrawpage-container input[type="text"],
+.withdrawpage-card input[type="number"],
+.withdrawpage-card input[type="text"] {
+
+    width: 100%;
+
+    box-sizing: border-box;
+
+    padding: 13px 15px;
+
+    margin-top: 8px;
+
+    border-radius: 14px;
+
+    border: 1px solid rgba(255, 255, 255, 0.25);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(0, 0, 0, 0.55),
+            rgba(10, 20, 40, 0.65)
+        );
+
+    color: #ffffff;
+
+    font-size: 15px;
+
+    text-align: center;
+
+    outline: none;
+
+    box-shadow:
+        0 0 8px rgba(0, 216, 239, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08);
+
+    transition:
+        border-color 0.3s ease,
+        box-shadow 0.3s ease,
+        transform 0.3s ease,
+        background 0.3s ease;
 }
+
+
+/*==================================================*
+ * SELECT
+ *==================================================*/
+
+.withdrawpage-select {
+    cursor: pointer;
+
+    appearance: none;
+    -webkit-appearance: none;
+
+    background-image:
+        linear-gradient(45deg, transparent 50%, #00d8ef 50%),
+        linear-gradient(135deg, #00d8ef 50%, transparent 50%);
+
+    background-position:
+        calc(100% - 20px) 50%,
+        calc(100% - 14px) 50%;
+
+    background-size:
+        6px 6px,
+        6px 6px;
+
+    background-repeat: no-repeat;
+}
+
+
+/*==================================================*
+ * INPUT / SELECT HOVER
+ *==================================================*/
+
+.withdrawpage-select:hover,
+.withdrawpage-container input[type="number"]:hover,
+.withdrawpage-container input[type="text"]:hover,
+.withdrawpage-card input[type="number"]:hover,
+.withdrawpage-card input[type="text"]:hover {
+
+    border-color: rgba(0, 216, 239, 0.75);
+
+    box-shadow:
+        0 0 10px rgba(0, 216, 239, 0.30),
+        0 0 22px rgba(122, 0, 255, 0.12),
+        inset 0 1px 0 rgba(255, 255, 255, 0.12);
+
+    transform: translateY(-1px);
+}
+
+
+/*==================================================*
+ * INPUT / SELECT FOCUS
+ *==================================================*/
 
 .withdrawpage-select:focus,
-.withdrawpage-container input:focus {
-    outline:none;
-    border-color:#00d8ef;
-    box-shadow:0 0 10px #00d8ef;
+.withdrawpage-container input:focus,
+.withdrawpage-card input:focus {
+
+    outline: none;
+
+    border-color: #00d8ef;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(0, 20, 35, 0.80),
+            rgba(20, 5, 50, 0.75)
+        );
+
+    box-shadow:
+        0 0 8px #00d8ef,
+        0 0 18px rgba(0, 216, 239, 0.65),
+        0 0 35px rgba(122, 0, 255, 0.35),
+        inset 0 0 12px rgba(0, 216, 239, 0.08);
+
+    transform: translateY(-2px);
 }
 
-/*=========================
-   NOTES & WARNINGS
-=========================*/
-.withdrawpage-note {
-    font-size:14px;
-    color:#ffcc00;
-    margin-top:5px;
+
+/*==================================================*
+ * PLACEHOLDER
+ *==================================================*/
+
+.withdrawpage-container input::placeholder,
+.withdrawpage-card input::placeholder {
+
+    color: rgba(255, 255, 255, 0.50);
+
+    text-align: center;
+
+    transition: color 0.3s ease;
 }
+
+
+.withdrawpage-container input:focus::placeholder,
+.withdrawpage-card input:focus::placeholder {
+    color: rgba(255, 255, 255, 0.30);
+}
+
+
+/*==================================================*
+ * READONLY WALLET ADDRESS
+ *==================================================*/
+
+#wallet_address_display {
+    cursor: default;
+
+    color: #00eaff;
+
+    font-weight: 600;
+
+    text-shadow:
+        0 0 8px rgba(0, 216, 239, 0.65);
+
+    border-color:
+        rgba(0, 216, 239, 0.45);
+
+    box-shadow:
+        0 0 10px rgba(0, 216, 239, 0.20),
+        inset 0 0 10px rgba(0, 216, 239, 0.05);
+}
+
+
+/*==================================================*
+ * HIDDEN WALLET INPUT
+ *==================================================*/
+
+#wallet_address {
+    display: none;
+}
+
+
+/*==================================================*
+ * NOTES
+ *==================================================*/
+
+.withdrawpage-note {
+    width: 100%;
+
+    font-size: 14px;
+
+    color: #ffcc00;
+
+    margin: 7px auto 0;
+
+    text-align: center;
+
+    text-shadow:
+        0 0 7px rgba(255, 204, 0, 0.35);
+}
+
+
+/*==================================================*
+ * WARNING
+ *==================================================*/
 
 .withdrawpage-warning {
-    margin-top:20px;
-    padding:15px;
-    border-radius:12px;
-    background:rgba(255,0,0,.15);
-    color:#ff8080;
-    font-size:14px;
+
+    width: 100%;
+
+    box-sizing: border-box;
+
+    margin-top: 22px;
+
+    padding: 15px;
+
+    border-radius: 14px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255, 0, 0, 0.14),
+            rgba(255, 0, 80, 0.08)
+        );
+
+    border:
+        1px solid rgba(255, 80, 80, 0.30);
+
+    color: #ff9a9a;
+
+    font-size: 14px;
+
+    text-align: center;
+
+    box-shadow:
+        0 0 15px rgba(255, 0, 80, 0.10),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08);
+
+    transition:
+        box-shadow 0.3s ease,
+        transform 0.3s ease;
 }
 
-/*=========================
-   BUTTON
-=========================*/
-.withdrawpage-btn {
-    display:inline-block;
-    margin-top:25px;
-    padding:12px 25px;
-    border-radius:20px;
-    background:#00d8ef;
-    color:#05070d;
-    font-weight:700;
-    border:none;
-    cursor:pointer;
-    transition:.3s;
+
+.withdrawpage-warning:hover {
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 0 15px rgba(255, 0, 80, 0.20),
+        0 0 30px rgba(255, 0, 80, 0.10);
 }
+
+
+.withdrawpage-warning p {
+    margin: 0;
+}
+
+
+/*==================================================*
+ * CAPTCHA
+ *==================================================*/
+
+.withdrawpage-captcha {
+
+    width: 100%;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    margin-top: 25px;
+
+    text-align: center;
+}
+
+
+/* CAPTCHA ERROR */
+
+.withdrawpage-error {
+
+    margin-top: 8px;
+
+    color: #ff7070;
+
+    font-size: 13px;
+
+    text-align: center;
+
+    text-shadow:
+        0 0 8px rgba(255, 0, 80, 0.45);
+}
+
+
+/*==================================================*
+ * BUTTON
+ *==================================================*/
+
+.withdrawpage-btn {
+
+    display: block;
+
+    width: auto;
+
+    min-width: 220px;
+
+    margin: 28px auto 0;
+
+    padding: 13px 30px;
+
+    border-radius: 25px;
+
+    border: 1px solid rgba(255, 255, 255, 0.25);
+
+    background:
+        linear-gradient(
+            90deg,
+            #00d8ef,
+            #7a00ff,
+            #ff0080
+        );
+
+    background-size: 200% 100%;
+
+    color: #ffffff;
+
+    font-weight: 800;
+
+    font-size: 15px;
+
+    letter-spacing: 0.7px;
+
+    text-transform: uppercase;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 0 10px rgba(0, 216, 239, 0.65),
+        0 0 25px rgba(122, 0, 255, 0.40),
+        0 0 40px rgba(255, 0, 128, 0.20);
+
+    text-shadow:
+        0 0 5px rgba(255, 255, 255, 0.80);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        background-position 0.5s ease;
+}
+
+
+/*==================================================*
+ * BUTTON HOVER
+ *==================================================*/
 
 .withdrawpage-btn:hover {
-    background:#009bb8;
-    color:#fff;
+
+    transform:
+        translateY(-3px)
+        scale(1.03);
+
+    background-position: 100% 0;
+
+    box-shadow:
+        0 0 15px #00d8ef,
+        0 0 30px #7a00ff,
+        0 0 55px #ff0080;
 }
 
-/*=========================
-   ANIMATIONS
-=========================*/
+
+/*==================================================*
+ * BUTTON ACTIVE
+ *==================================================*/
+
+.withdrawpage-btn:active {
+
+    transform:
+        translateY(0)
+        scale(0.98);
+
+    box-shadow:
+        0 0 10px #00d8ef,
+        0 0 20px #7a00ff;
+}
+
+
+/*==================================================*
+ * ANIMATIONS
+ *==================================================*/
+
 @keyframes glowPulse {
-    from { text-shadow:0 0 10px #00d8ef,0 0 20px #00d8ef; }
-    to   { text-shadow:0 0 20px #7a00ff,0 0 40px #ff0080; }
+
+    from {
+
+        text-shadow:
+            0 0 8px #00d8ef,
+            0 0 18px #00d8ef,
+            0 0 30px #7a00ff;
+
+    }
+
+    to {
+
+        text-shadow:
+            0 0 15px #00d8ef,
+            0 0 30px #7a00ff,
+            0 0 50px #ff0080,
+            0 0 70px #ff0080;
+
+    }
 }
 
-/*=========================
-   RESPONSIVE
-=========================*/
-@media(max-width:991px){
-  .withdrawpage-title { font-size:24px; }
-  .withdrawpage-subtitle { font-size:16px; }
-  .withdrawpage-container { padding:30px; }
+
+@keyframes lineGlow {
+
+    from {
+
+        box-shadow:
+            0 0 6px #00d8ef,
+            0 0 12px #7a00ff;
+
+    }
+
+    to {
+
+        box-shadow:
+            0 0 12px #00d8ef,
+            0 0 25px #7a00ff,
+            0 0 35px #ff0080;
+
+    }
 }
 
-@media(max-width:600px){
-  .withdrawpage-showcase { padding:60px 0; }
-  .withdrawpage-container { width:95%; padding:24px; }
-  .withdrawpage-title { font-size:23px; } /* reduced by 5px */
-  .withdrawpage-subtitle { font-size:15px; }
-  .withdrawpage-select,
-  .withdrawpage-container input[type="number"],
-  .withdrawpage-container input[type="text"] {
-    font-size:14px;
-    padding:10px;
-  }
-  .withdrawpage-btn {
-    width:100%;
-    font-size:14px;
-    padding:10px;
-  }
+
+/*==================================================*
+ * RESPONSIVE
+ *==================================================*/
+
+@media (max-width: 991px) {
+
+    .withdrawpage-title {
+        font-size: 26px;
+    }
+
+    .withdrawpage-subtitle {
+        font-size: 16px;
+    }
+
+    .withdrawpage-container,
+    .withdrawpage-card {
+        padding: 30px;
+    }
+
+}
+
+
+/*==================================================*
+ * MOBILE
+ *==================================================*/
+
+@media (max-width: 600px) {
+
+    .withdrawpage-showcase {
+        padding: 60px 0;
+    }
+
+    .withdrawpage-container,
+    .withdrawpage-card {
+        width: 95%;
+        padding: 24px;
+
+        border-radius: 20px;
+    }
+
+    .withdrawpage-title {
+        font-size: 23px;
+        letter-spacing: 2px;
+    }
+
+    .withdrawpage-subtitle {
+        font-size: 15px;
+    }
+
+    .withdrawpage-label {
+        font-size: 14px;
+    }
+
+    .withdrawpage-select,
+    .withdrawpage-container input[type="number"],
+    .withdrawpage-container input[type="text"],
+    .withdrawpage-card input[type="number"],
+    .withdrawpage-card input[type="text"] {
+
+        font-size: 14px;
+
+        padding: 11px 10px;
+
+        border-radius: 12px;
+    }
+
+    .withdrawpage-warning {
+        font-size: 13px;
+    }
+
+    .withdrawpage-btn {
+
+        width: 100%;
+
+        min-width: 0;
+
+        font-size: 14px;
+
+        padding: 12px;
+    }
+
 }
