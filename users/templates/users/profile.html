@@ -1,18 +1,21 @@
 {% extends "users/dashboard_base.html" %}
 {% load static %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'users/css/profile.css' %}">
+{% endblock %}
 {% block title %}Profile{% endblock %}
 {% block content %}
-<div class="user-profile-page">
-    <div class="user-profile-header">
-        <h1 class="user-profile-title">Your Profile</h1>
-        <p class="user-profile-subtitle">
+<div class="np-page">
+    <div class="np-header">
+        <h1 class="np-title">Your Profile</h1>
+        <p class="np-subtitle">
             Manage your personal information, investments, security settings, and account preferences from one place.
         </p>
     </div>
 
-    <div class="user-profile-grid">
-        <div class="user-profile-card">
-            <h2 class="user-profile-card-title">Personal Information</h2>
+    <div class="np-grid">
+        <div class="np-card">
+            <h2 class="np-card-title">Personal Information</h2>
             <p><strong>Username:</strong> {{ request.user.username }}</p>
             <p><strong>Email:</strong> {{ request.user.email }}</p>
             {% if request.user.userprofile.phone %}
@@ -26,23 +29,23 @@
             {% endif %}
         </div>
 
-        <div class="user-profile-card">
-            <h2 class="user-profile-card-title">Account Balance</h2>
+        <div class="np-card">
+            <h2 class="np-card-title">Account Balance</h2>
             <p><strong>Available Balance:</strong> ${{ request.user.userbalance.balance }}</p>
         </div>
     </div>
 
-    <div class="user-profile-card">
-        <h2 class="user-profile-card-title">Investment Summary</h2>
+    <div class="np-card">
+        <h2 class="np-card-title">Investment Summary</h2>
         <p><strong>Active Investments:</strong> {{ active_investments_count }}</p>
         <p><strong>Total Invested:</strong> ${{ total_invested }}</p>
         <p><strong>Total ROI Earned:</strong> ${{ total_roi }}</p>
     </div>
 
-    <div class="user-profile-card">
-        <h2 class="user-profile-card-title">Recent Investments</h2>
-        <div class="user-profile-table-wrapper">
-            <table class="user-profile-table">
+    <div class="np-card">
+        <h2 class="np-card-title">Recent Investments</h2>
+        <div class="np-table-wrapper">
+            <table class="np-table">
                 <thead>
                     <tr>
                         <th>Plan</th>
@@ -67,50 +70,50 @@
         </div>
     </div>
 
-    <div class="user-profile-card">
-        <h2 class="user-profile-card-title">Investment Performance</h2>
+    <div class="np-card">
+        <h2 class="np-card-title">Investment Performance</h2>
         <canvas id="roiChart"
                 data-labels='{{ chart_labels|safe }}'
                 data-data='{{ chart_data|safe }}'></canvas>
     </div>
 
-    <div class="user-profile-grid">
-        <div class="user-profile-card">
-            <h2 class="user-profile-card-title">Quick Actions</h2>
-            <div class="user-profile-buttons">
-                <a href="{% url 'users:make_deposit' %}" class="user-profile-btn user-profile-btn-success">💰 Deposit Funds</a>
-                <a href="{% url 'users:withdraw' %}" class="user-profile-btn user-profile-btn-danger">💸 Withdraw Funds</a>
+    <div class="np-grid">
+        <div class="np-card">
+            <h2 class="np-card-title">Quick Actions</h2>
+            <div class="np-buttons">
+                <a href="{% url 'users:make_deposit' %}" class="np-btn np-btn-success">💰 Deposit Funds</a>
+                <a href="{% url 'users:withdraw' %}" class="np-btn np-btn-danger">💸 Withdraw Funds</a>
             </div>
         </div>
 
-        <div class="user-profile-card">
-            <h2 class="user-profile-card-title">Security Settings</h2>
+        <div class="np-card">
+            <h2 class="np-card-title">Security Settings</h2>
             <p><strong>Two-Factor Authentication:</strong> {{ request.user.userprofile.two_factor_enabled|yesno:"Enabled,Disabled" }}</p>
             <p><strong>Last Login:</strong> {{ request.user.last_login|date:"Y-m-d H:i" }}</p>
-            <a href="{% url 'users:change_password' %}" class="user-profile-btn user-profile-btn-warning">🔑 Change Password</a>
+            <a href="{% url 'users:change_password' %}" class="np-btn np-btn-warning">🔑 Change Password</a>
         </div>
     </div>
 
-    <div class="user-profile-card">
-        <h2 class="user-profile-card-title">Referral Program</h2>
+    <div class="np-card">
+        <h2 class="np-card-title">Referral Program</h2>
         <p>Invite friends and earn referral commissions.</p>
         <p><strong>Your Referral Link:</strong><br>{{ request.user.userprofile.referral_link }}</p>
         <p><strong>Total Referral Earnings:</strong> ${{ referral_earnings }}</p>
     </div>
 
-    <div class="user-profile-card">
-        <h2 class="user-profile-card-title">Account Settings</h2>
-        <div class="user-profile-buttons">
-            <a href="{% url 'users:profile_settings' %}" class="user-profile-btn user-profile-btn-primary">Full Settings</a>
-            <a href="{% url 'users:quick_settings' %}" class="user-profile-btn user-profile-btn-secondary">Quick Settings</a>
+    <div class="np-card">
+        <h2 class="np-card-title">Account Settings</h2>
+        <div class="np-buttons">
+            <a href="{% url 'users:profile_settings' %}" class="np-btn np-btn-primary">Full Settings</a>
+            <a href="{% url 'users:quick_settings' %}" class="np-btn np-btn-secondary">Quick Settings</a>
         </div>
-        <div class="user-profile-wallets">
+        <div class="np-wallets">
             {% include "users/_wallets_partial.html" %}
         </div>
     </div>
 
-    <div class="user-profile-card" id="wallets">
-        <h2 class="user-profile-card-title">Wallets</h2>
+    <div class="np-card" id="wallets">
+        <h2 class="np-card-title">Wallets</h2>
         <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
 
@@ -154,7 +157,7 @@
                 {{ wallet_form.usdt_trc20_qr }}
             </div>
 
-            <button type="submit" class="user-profile-btn user-profile-btn-primary">Save Wallets</button>
+            <button type="submit" class="np-btn np-btn-primary">Save Wallets</button>
         </form>
     </div>
 

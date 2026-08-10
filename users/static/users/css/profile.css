@@ -1,0 +1,728 @@
+/*==================================================*
+* PROFILE SHOWCASE STYLE
+*==================================================*/
+
+.profilepage-showcase {
+    width: 100%;
+    padding: 90px 0;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background:
+        radial-gradient(circle at top left, #004aad33, transparent 40%),
+        radial-gradient(circle at bottom right, #7a00ff22, transparent 35%),
+        linear-gradient(180deg, #05070d, #0a1020);
+}
+
+
+/*==================================================*
+* CONTAINER
+*==================================================*/
+
+.profilepage-container {
+    max-width: 1200px;
+    width: 90%;
+    margin: auto;
+    text-align: center;
+}
+
+
+/*==================================================*
+* PAGE HEADING
+*==================================================*/
+
+.profilepage-heading-container {
+    margin-bottom: 40px;
+}
+
+.profilepage-heading-title {
+    font-size: 28px;
+    font-weight: 900;
+
+    color: #ffffff;
+
+    text-transform: uppercase;
+    letter-spacing: 2px;
+
+    margin-bottom: 15px;
+
+    text-shadow:
+        0 0 10px #00d8ef,
+        0 0 20px #7a00ff,
+        0 0 40px #ff0080;
+
+    animation: profileGlowPulse 3s infinite alternate;
+}
+
+.profilepage-heading-subtitle {
+    font-size: 18px;
+    font-weight: 600;
+
+    color: rgba(255, 255, 255, 0.85);
+
+    margin-bottom: 40px;
+}
+
+
+/*==================================================*
+* PROFILE GRID
+*==================================================*/
+
+.np-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(280px, 1fr));
+
+    gap: 30px;
+
+    margin-top: 30px;
+}
+
+
+/*==================================================*
+* PROFILE CARDS
+*==================================================*/
+
+.np-card {
+    width: 100%;
+    box-sizing: border-box;
+
+    padding: 30px;
+
+    margin-bottom: 30px;
+
+    border-radius: 25px;
+
+    background: rgba(255, 255, 255, 0.08);
+
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+
+    border: 1px solid #00d8e9;
+
+    box-shadow:
+        0 0 30px rgba(0, 216, 239, 0.25),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+
+    text-align: left;
+
+    color: #ffffff;
+
+    transition:
+        transform 0.4s ease,
+        box-shadow 0.4s ease,
+        border-color 0.4s ease;
+}
+
+
+/*==================================================*
+* CARD HOVER
+*==================================================*/
+
+.np-card:hover {
+    transform: translateY(-8px);
+
+    border: 1px solid #00d8e9;
+
+    box-shadow:
+        0 20px 40px rgba(0, 0, 0, 0.45),
+        0 0 25px rgba(0, 216, 239, 0.35);
+}
+
+
+/*==================================================*
+* CARD TITLE
+*==================================================*/
+
+.np-card-title {
+    font-size: 22px;
+    font-weight: 700;
+
+    color: #ffffff;
+
+    margin: 0 0 20px 0;
+
+    text-shadow:
+        0 0 8px rgba(0, 216, 239, 0.45);
+}
+
+
+/*==================================================*
+* CARD TEXT
+*==================================================*/
+
+.np-card p {
+    margin: 10px 0;
+
+    font-size: 15px;
+
+    line-height: 1.6;
+
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.np-card p strong {
+    color: #ffffff;
+
+    font-weight: 700;
+}
+
+
+/*==================================================*
+* TABLE WRAPPER
+*==================================================*/
+
+.np-table-wrapper {
+    width: 100%;
+
+    overflow-x: auto;
+
+    border-radius: 15px;
+}
+
+
+/*==================================================*
+* TABLE
+*==================================================*/
+
+.np-table {
+    width: 100%;
+
+    min-width: 650px;
+
+    border-collapse: collapse;
+
+    color: #ffffff;
+}
+
+
+/*==================================================*
+* TABLE HEADER
+*==================================================*/
+
+.np-table thead {
+    background: rgba(0, 216, 239, 0.10);
+}
+
+.np-table th {
+    padding: 15px;
+
+    color: #00d8e9;
+
+    font-size: 14px;
+    font-weight: 800;
+
+    text-align: left;
+
+    border-bottom:
+        1px solid rgba(0, 216, 239, 0.35);
+}
+
+
+/*==================================================*
+* TABLE BODY
+*==================================================*/
+
+.np-table td {
+    padding: 14px 15px;
+
+    color: rgba(255, 255, 255, 0.85);
+
+    font-size: 14px;
+
+    border-bottom:
+        1px solid rgba(255, 255, 255, 0.08);
+}
+
+.np-table tbody tr {
+    transition: background 0.3s ease;
+}
+
+.np-table tbody tr:hover {
+    background: rgba(0, 216, 239, 0.06);
+}
+
+.np-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+
+/*==================================================*
+* ROI CHART
+*==================================================*/
+
+#roiChart {
+    width: 100% !important;
+
+    max-width: 100%;
+
+    min-height: 300px;
+
+    display: block;
+}
+
+
+/*==================================================*
+* BUTTON CONTAINER
+*==================================================*/
+
+.np-buttons {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 15px;
+
+    margin-top: 20px;
+}
+
+
+/*==================================================*
+* GENERAL BUTTON
+*==================================================*/
+
+.np-btn {
+    display: inline-block;
+
+    padding: 12px 25px;
+
+    border-radius: 20px;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    text-decoration: none;
+
+    border: none;
+
+    cursor: pointer;
+
+    transition:
+        background 0.3s ease,
+        color 0.3s ease,
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.np-btn:hover {
+    transform: translateY(-2px);
+
+    text-decoration: none;
+}
+
+
+/*==================================================*
+* PRIMARY BUTTON
+*==================================================*/
+
+.np-btn-primary {
+    background: #00d8ef;
+
+    color: #05070d;
+
+    border: 1px solid #00d8ef;
+}
+
+.np-btn-primary:hover {
+    background: #009bb8;
+
+    color: #ffffff;
+
+    box-shadow:
+        0 0 15px rgba(0, 216, 239, 0.45);
+}
+
+
+/*==================================================*
+* SECONDARY BUTTON
+*==================================================*/
+
+.np-btn-secondary {
+    background: rgba(255, 255, 255, 0.08);
+
+    color: #ffffff;
+
+    border: 1px solid #00d8e9;
+}
+
+.np-btn-secondary:hover {
+    background: #00d8e9;
+
+    color: #05070d;
+
+    box-shadow:
+        0 0 15px rgba(0, 216, 239, 0.40);
+}
+
+
+/*==================================================*
+* SUCCESS BUTTON
+*==================================================*/
+
+.np-btn-success {
+    background: #00d8ef;
+
+    color: #05070d;
+
+    border: 1px solid #00d8ef;
+}
+
+.np-btn-success:hover {
+    background: #009bb8;
+
+    color: #ffffff;
+
+    box-shadow:
+        0 0 15px rgba(0, 216, 239, 0.45);
+}
+
+
+/*==================================================*
+* DANGER BUTTON
+*==================================================*/
+
+.np-btn-danger {
+    background: rgba(255, 0, 80, 0.12);
+
+    color: #ff6b8a;
+
+    border: 1px solid #ff426b;
+}
+
+.np-btn-danger:hover {
+    background: #ff426b;
+
+    color: #ffffff;
+
+    box-shadow:
+        0 0 15px rgba(255, 66, 107, 0.40);
+}
+
+
+/*==================================================*
+* WARNING BUTTON
+*==================================================*/
+
+.np-btn-warning {
+    background: rgba(255, 204, 0, 0.12);
+
+    color: #ffcc00;
+
+    border: 1px solid #ffcc00;
+
+    margin-top: 15px;
+}
+
+.np-btn-warning:hover {
+    background: #ffcc00;
+
+    color: #05070d;
+
+    box-shadow:
+        0 0 15px rgba(255, 204, 0, 0.40);
+}
+
+
+/*==================================================*
+* WALLET SECTION
+*==================================================*/
+
+.np-wallets {
+    margin-top: 25px;
+
+    padding-top: 20px;
+
+    border-top:
+        1px solid rgba(255, 255, 255, 0.10);
+}
+
+
+/*==================================================*
+* WALLET FIELDS
+*==================================================*/
+
+.wallet-field {
+    width: 100%;
+
+    box-sizing: border-box;
+
+    padding: 20px;
+
+    margin-bottom: 25px;
+
+    border-radius: 18px;
+
+    background: rgba(0, 0, 0, 0.25);
+
+    border: 1px solid #00d8e9;
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        border-color 0.3s ease;
+}
+
+.wallet-field:hover {
+    transform: translateY(-3px);
+
+    border-color: #00d8e9;
+
+    box-shadow:
+        0 0 20px rgba(0, 216, 239, 0.20);
+}
+
+
+/*==================================================*
+* WALLET LABEL
+*==================================================*/
+
+.wallet-field label {
+    display: block;
+
+    margin-bottom: 10px;
+
+    color: #ffffff;
+
+    font-size: 15px;
+
+    font-weight: 700;
+}
+
+
+/*==================================================*
+* WALLET INPUTS
+*==================================================*/
+
+.wallet-field input[type="text"],
+.wallet-field input[type="url"],
+.wallet-field input[type="file"] {
+    width: 100%;
+
+    box-sizing: border-box;
+
+    padding: 12px;
+
+    border-radius: 12px;
+
+    border: 1px solid rgba(255, 255, 255, 0.25);
+
+    background: rgba(0, 0, 0, 0.40);
+
+    color: #ffffff;
+
+    font-size: 14px;
+
+    transition:
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+
+/*==================================================*
+* WALLET INPUT FOCUS
+*==================================================*/
+
+.wallet-field input:focus {
+    outline: none;
+
+    border-color: #00d8ef;
+
+    box-shadow:
+        0 0 10px #00d8ef;
+}
+
+
+/*==================================================*
+* WALLET FILE INPUT
+*==================================================*/
+
+.wallet-field input[type="file"] {
+    margin-top: 10px;
+
+    padding: 9px;
+}
+
+
+/*==================================================*
+* FILE BUTTON
+*==================================================*/
+
+.wallet-field input[type="file"]::file-selector-button {
+    padding: 8px 14px;
+
+    margin-right: 10px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background: #00d8ef;
+
+    color: #05070d;
+
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+
+/*==================================================*
+* WALLET QR CODE
+*==================================================*/
+
+.wallet-qr {
+    display: block;
+
+    width: 150px;
+    height: 150px;
+
+    object-fit: contain;
+
+    margin: 15px auto;
+
+    padding: 8px;
+
+    border-radius: 12px;
+
+    background: #ffffff;
+
+    border: 1px solid #00d8e9;
+
+    box-shadow:
+        0 0 15px rgba(0, 216, 239, 0.25);
+}
+
+
+/*==================================================*
+* ANIMATIONS
+*==================================================*/
+
+@keyframes profileGlowPulse {
+
+    from {
+        text-shadow:
+            0 0 10px #00d8ef,
+            0 0 20px #00d8ef;
+    }
+
+    to {
+        text-shadow:
+            0 0 20px #7a00ff,
+            0 0 40px #ff0080;
+    }
+}
+
+
+/*==================================================*
+* TABLET RESPONSIVE
+*==================================================*/
+
+@media (max-width: 991px) {
+
+    .profilepage-heading-title {
+        font-size: 24px;
+    }
+
+    .profilepage-heading-subtitle {
+        font-size: 16px;
+    }
+
+    .np-grid {
+        grid-template-columns: 1fr;
+
+        gap: 20px;
+    }
+
+    .np-card {
+        padding: 25px;
+    }
+
+    .np-card-title {
+        font-size: 21px;
+    }
+
+    .wallet-field {
+        padding: 18px;
+    }
+}
+
+
+/*==================================================*
+* MOBILE RESPONSIVE
+*==================================================*/
+
+@media (max-width: 600px) {
+
+    .profilepage-showcase {
+        padding: 60px 0;
+    }
+
+    .profilepage-container {
+        width: 94%;
+    }
+
+    .profilepage-heading-title {
+        font-size: 23px;
+    }
+
+    .profilepage-heading-subtitle {
+        font-size: 15px;
+    }
+
+    .np-grid {
+        grid-template-columns: 1fr;
+
+        gap: 20px;
+    }
+
+    .np-card {
+        padding: 20px;
+
+        border-radius: 20px;
+    }
+
+    .np-card-title {
+        font-size: 20px;
+    }
+
+    .np-card p {
+        font-size: 14px;
+    }
+
+    .np-buttons {
+        flex-direction: column;
+
+        width: 100%;
+    }
+
+    .np-btn {
+        width: 100%;
+
+        box-sizing: border-box;
+
+        text-align: center;
+    }
+
+    .np-table {
+        min-width: 600px;
+    }
+
+    .wallet-field {
+        padding: 15px;
+
+        border-radius: 16px;
+    }
+
+    .wallet-qr {
+        width: 130px;
+        height: 130px;
+    }
+
+    #roiChart {
+        min-height: 240px;
+    }
+}
