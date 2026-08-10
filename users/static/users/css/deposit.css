@@ -70,17 +70,7 @@
     margin-top:30px;
 }
 
-.depositpage-card {
-    padding:30px;
-    border-radius:25px;
-    background:rgba(255,255,255,.08);
-    backdrop-filter:blur(20px);
-    -webkit-backdrop-filter:blur(20px);
-    border:1px solid rgba(255,255,255,.15);
-    box-shadow:0 0 30px rgba(0,216,239,.25), inset 0 1px 0 rgba(255,255,255,.2);
-    text-align:center;
-    transition:.4s ease;
-}
+.depositpage-card { padding: 30px; border-radius: 25px; background: rgba(255, 255, 255, .08); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); /* Cyan border for ALL payment-method cards */ border: 1px solid #00d8e9; box-shadow: 0 0 30px rgba(0, 216, 239, .25), inset 0 1px 0 rgba(255, 255, 255, .2); text-align: center; transition: .4s ease; }
 
 .depositpage-card:hover {
     transform:translateY(-8px);
