@@ -32,43 +32,71 @@
         <h3 class="quick-settings-title">Wallets</h3>
         <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
-            {{ wallet_form.as_p }}
+
+            <!-- BTC Wallet -->
+            <p>
+                {{ wallet_form.btc_wallet.label_tag }}  
+                {{ wallet_form.btc_wallet }}
+            </p>
+            <p>
+                {{ wallet_form.btc_qr.label_tag }}  
+                {{ wallet_form.btc_qr }}
+                {% if wallet_form.instance.btc_qr %}
+                    <div class="qr-code-container">
+                        <img src="{{ wallet_form.instance.btc_qr.url }}" alt="BTC QR Code" class="qr-code-img">
+                    </div>
+                {% endif %}
+            </p>
+
+            <!-- ETH Wallet -->
+            <p>
+                {{ wallet_form.eth_wallet.label_tag }}  
+                {{ wallet_form.eth_wallet }}
+            </p>
+            <p>
+                {{ wallet_form.eth_qr.label_tag }}  
+                {{ wallet_form.eth_qr }}
+                {% if wallet_form.instance.eth_qr %}
+                    <div class="qr-code-container">
+                        <img src="{{ wallet_form.instance.eth_qr.url }}" alt="ETH QR Code" class="qr-code-img">
+                    </div>
+                {% endif %}
+            </p>
+
+            <!-- USDT ERC20 Wallet -->
+            <p>
+                {{ wallet_form.usdt_erc20_wallet.label_tag }}  
+                {{ wallet_form.usdt_erc20_wallet }}
+            </p>
+            <p>
+                {{ wallet_form.usdt_erc20_qr.label_tag }}  
+                {{ wallet_form.usdt_erc20_qr }}
+                {% if wallet_form.instance.usdt_erc20_qr %}
+                    <div class="qr-code-container">
+                        <img src="{{ wallet_form.instance.usdt_erc20_qr.url }}" alt="USDT ERC20 QR Code" class="qr-code-img">
+                    </div>
+                {% endif %}
+            </p>
+
+            <!-- USDT TRC20 Wallet -->
+            <p>
+                {{ wallet_form.usdt_trc20_wallet.label_tag }}  
+                {{ wallet_form.usdt_trc20_wallet }}
+            </p>
+            <p>
+                {{ wallet_form.usdt_trc20_qr.label_tag }}  
+                {{ wallet_form.usdt_trc20_qr }}
+                {% if wallet_form.instance.usdt_trc20_qr %}
+                    <div class="qr-code-container">
+                        <img src="{{ wallet_form.instance.usdt_trc20_qr.url }}" alt="USDT TRC20 QR Code" class="qr-code-img">
+                    </div>
+                {% endif %}
+            </p>
+
             <button type="submit" class="quick-settings-btn">Update Wallets</button>
         </form>
-
-        <!-- BTC Wallet -->
-        {% if wallet_form.instance.btc_qr %}
-        <div class="qr-code-container">
-            <label class="quick-settings-subtitle">BTC Wallet QR</label>
-            <img src="{{ wallet_form.instance.btc_qr.url }}" alt="BTC QR Code" class="qr-code-img">
-        </div>
-        {% endif %}
-
-        <!-- ETH Wallet -->
-        {% if wallet_form.instance.eth_qr %}
-        <div class="qr-code-container">
-            <label class="quick-settings-subtitle">ETH Wallet QR</label>
-            <img src="{{ wallet_form.instance.eth_qr.url }}" alt="ETH QR Code" class="qr-code-img">
-        </div>
-        {% endif %}
-
-        <!-- USDT ERC20 Wallet -->
-        {% if wallet_form.instance.usdt_erc20_qr %}
-        <div class="qr-code-container">
-            <label class="quick-settings-subtitle">USDT ERC20 Wallet QR</label>
-            <img src="{{ wallet_form.instance.usdt_erc20_qr.url }}" alt="USDT ERC20 QR Code" class="qr-code-img">
-        </div>
-        {% endif %}
-
-        <!-- USDT TRC20 Wallet -->
-        {% if wallet_form.instance.usdt_trc20_qr %}
-        <div class="qr-code-container">
-            <label class="quick-settings-subtitle">USDT TRC20 Wallet QR</label>
-            <img src="{{ wallet_form.instance.usdt_trc20_qr.url }}" alt="USDT TRC20 QR Code" class="qr-code-img">
-        </div>
-        {% endif %}
     </div>
-
+        
 
     <div class="quick-settings-panel">
         <h3 class="quick-settings-title">Security Verification</h3>
