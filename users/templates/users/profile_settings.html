@@ -16,13 +16,31 @@
 
         <div class="profilesettings-grid">
             <div class="profilesettings-panel">
-                <h3 class="profilesettings-panel-title">Personal Information</h3>
-                <form method="post" enctype="multipart/form-data">
-                    {% csrf_token %}
-                    {{ profile_form.as_p }}
-                    <button type="submit" name="update_profile" class="profilesettings-btn">Update Profile</button>
-                </form>
-            </div>
+            <h3 class="profilesettings-panel-title">Personal Information</h3>
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ profile_form.phone }}
+                {{ profile_form.country }}
+                {{ profile_form.timezone }}
+                {{ profile_form.risk_level }}
+                {{ profile_form.preferred_assets }}
+                {{ profile_form.auto_invest }}
+
+                <!-- Profile Picture -->
+                <p>
+                    {{ profile_form.profile_picture.label_tag }}
+                    {% if profile_form.instance.profile_picture %}
+                        <div class="profile-img-preview">
+                            <img src="{{ profile_form.instance.profile_picture.url }}" alt="Profile Picture" class="profile-img-small">
+                        </div>
+                    {% endif %}
+                    {{ profile_form.profile_picture }}
+                </p>
+
+                <button type="submit" name="update_profile" class="profilesettings-btn">Update Profile</button>
+            </form>
+        </div>
+
 
             <div class="profilesettings-panel">
                 <h3 class="profilesettings-panel-title">KYC Verification</h3>

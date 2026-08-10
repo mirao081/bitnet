@@ -182,3 +182,21 @@
     .profilesettings-panel-title { font-size: 20px; }
     .profilesettings-btn { width: 100%; font-size: 14px; padding: 10px; }
 }
+/*==================================================
+   PROFILE IMAGE PREVIEW
+==================================================*/
+
+.profile-img-preview {
+    margin-bottom: 8px;
+    text-align: center;
+}
+
+.profile-img-small {
+    width: 90px;
+    height: 90px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid #00d8ef;
+    box-shadow: 0 0 10px rgba(0,216,239,0.5);
+}
+
