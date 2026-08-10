@@ -28,7 +28,6 @@
         </form>
     </div>
 
-    <!-- ✅ Wallets section with QR images -->
     <div class="quick-settings-panel">
         <h3 class="quick-settings-title">Wallets</h3>
         <form method="post" enctype="multipart/form-data">
@@ -37,6 +36,7 @@
             <button type="submit" class="quick-settings-btn">Update Wallets</button>
         </form>
 
+        <!-- BTC Wallet -->
         {% if wallet_form.instance.btc_qr %}
         <div class="qr-code-container">
             <label class="quick-settings-subtitle">BTC Wallet QR</label>
@@ -44,6 +44,7 @@
         </div>
         {% endif %}
 
+        <!-- ETH Wallet -->
         {% if wallet_form.instance.eth_qr %}
         <div class="qr-code-container">
             <label class="quick-settings-subtitle">ETH Wallet QR</label>
@@ -51,20 +52,23 @@
         </div>
         {% endif %}
 
+        <!-- USDT ERC20 Wallet -->
+        {% if wallet_form.instance.usdt_erc20_qr %}
+        <div class="qr-code-container">
+            <label class="quick-settings-subtitle">USDT ERC20 Wallet QR</label>
+            <img src="{{ wallet_form.instance.usdt_erc20_qr.url }}" alt="USDT ERC20 QR Code" class="qr-code-img">
+        </div>
+        {% endif %}
+
+        <!-- USDT TRC20 Wallet -->
         {% if wallet_form.instance.usdt_trc20_qr %}
         <div class="qr-code-container">
             <label class="quick-settings-subtitle">USDT TRC20 Wallet QR</label>
             <img src="{{ wallet_form.instance.usdt_trc20_qr.url }}" alt="USDT TRC20 QR Code" class="qr-code-img">
         </div>
         {% endif %}
-
-        {% if wallet_form.instance.erc20_qr %}
-        <div class="qr-code-container">
-            <label class="quick-settings-subtitle">ERC20 Wallet QR</label>
-            <img src="{{ wallet_form.instance.erc20_qr.url }}" alt="ERC20 QR Code" class="qr-code-img">
-        </div>
-        {% endif %}
     </div>
+
 
     <div class="quick-settings-panel">
         <h3 class="quick-settings-title">Security Verification</h3>
