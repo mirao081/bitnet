@@ -12,13 +12,8 @@ document.addEventListener("DOMContentLoaded", function () {
         return;
     }
 
-    const labelsElement = document.getElementById(
-        "profile-chart-labels"
-    );
-
-    const dataElement = document.getElementById(
-        "profile-chart-data"
-    );
+    const labelsElement = document.getElementById("profile-chart-labels");
+    const dataElement = document.getElementById("profile-chart-data");
 
     if (!labelsElement || !dataElement) {
         console.error("Profile chart data was not found.");
@@ -29,27 +24,15 @@ document.addEventListener("DOMContentLoaded", function () {
     let data = [];
 
     try {
-        labels = JSON.parse(
-            labelsElement.textContent || "[]"
-        );
-
-        data = JSON.parse(
-            dataElement.textContent || "[]"
-        );
+        labels = JSON.parse(labelsElement.textContent || "[]");
+        data = JSON.parse(dataElement.textContent || "[]");
     } catch (error) {
-        console.error(
-            "Unable to parse profile chart data:",
-            error
-        );
-
+        console.error("Unable to parse profile chart data:", error);
         return;
     }
 
     if (!Array.isArray(labels) || !Array.isArray(data)) {
-        console.error(
-            "Profile chart data must be arrays."
-        );
-
+        console.error("Profile chart data must be arrays.");
         return;
     }
 
@@ -60,10 +43,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const ctx = canvas.getContext("2d");
 
     if (!ctx) {
-        console.error(
-            "Unable to get profile chart canvas context."
-        );
-
+        console.error("Unable to get profile chart canvas context.");
         return;
     }
 
@@ -74,120 +54,77 @@ document.addEventListener("DOMContentLoaded", function () {
 
     window.profileROIChart = new Chart(ctx, {
         type: "line",
-
         data: {
             labels: labels,
-
             datasets: [
                 {
                     label: "Investment Value",
-
                     data: data,
-
                     borderColor: "#00d8ef",
-
-                    backgroundColor:
-                        "rgba(0, 216, 239, 0.15)",
-
+                    backgroundColor: "rgba(0, 216, 239, 0.15)",
                     borderWidth: 3,
-
                     pointBackgroundColor: "#00d8ef",
-
                     pointBorderColor: "#ffffff",
-
                     pointBorderWidth: 2,
-
                     pointRadius: 4,
-
                     pointHoverRadius: 7,
-
                     fill: true,
-
                     tension: 0.35
                 }
             ]
         },
-
         options: {
             responsive: true,
-
             maintainAspectRatio: false,
-
             interaction: {
                 intersect: false,
-
                 mode: "index"
             },
-
             plugins: {
                 legend: {
                     display: true,
-
                     labels: {
                         color: "#ffffff",
-
                         font: {
                             size: 14,
-
                             weight: "600"
                         }
                     }
                 },
-
                 tooltip: {
                     enabled: true,
-
                     callbacks: {
                         label: function (context) {
                             return (
                                 " Value: $" +
-                                Number(
-                                    context.parsed.y
-                                ).toLocaleString(
-                                    "en-US",
-                                    {
-                                        minimumFractionDigits: 2,
-                                        maximumFractionDigits: 2
-                                    }
-                                )
+                                Number(context.parsed.y).toLocaleString("en-US", {
+                                    minimumFractionDigits: 2,
+                                    maximumFractionDigits: 2
+                                })
                             );
                         }
                     }
                 }
             },
-
             scales: {
                 x: {
                     ticks: {
-                        color:
-                            "rgba(255,255,255,0.75)"
+                        color: "rgba(255,255,255,0.75)"
                     },
-
                     grid: {
-                        color:
-                            "rgba(255,255,255,0.08)"
+                        color: "rgba(255,255,255,0.08)"
                     }
                 },
-
                 y: {
                     beginAtZero: false,
-
                     ticks: {
-                        color:
-                            "rgba(255,255,255,0.75)",
-
+                        color: "rgba(255,255,255,0.75)",
                         callback: function (value) {
-                            return (
-                                "$" +
-                                Number(value).toLocaleString(
-                                    "en-US"
-                                );
+                            return "$" + Number(value).toLocaleString("en-US");
                         }
                     },
-
                     grid: {
-                        color:
-                            "rgba(255,255,255,0.08)"
+                        color: "rgba(255,255,255,0.08)"
                     }
                 }
             }
