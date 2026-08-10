@@ -45,7 +45,7 @@ urlpatterns = [
     path("profile-settings/", views.profile_settings, name="profile_settings"),
     path("quick-settings/", views.quick_settings, name="quick_settings"),
 
-    path("security/", views.security_center, name="security_center"),
+    path("security/", views.security_center, name="security"),
     path("settings/", views.settings, name="settings"),
 
     path("kyc-upload/", views.kyc_upload, name="kyc_upload"),
