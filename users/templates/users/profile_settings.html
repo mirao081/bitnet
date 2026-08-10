@@ -1,54 +1,74 @@
 {% extends "users/dashboard_base.html" %}
+{% load static %}
+{% block title %}Profile Settings{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'users/css/profile_settings.css' %}">
+{% endblock %}
+
 {% block content %}
-<div class="security-subpage">
-    <h2>User Profile & Settings</h2>
-    <div class="card card-wallets">
-        <h3>Personal Information</h3>
-        <form method="post" enctype="multipart/form-data">
-            {% csrf_token %}
-            {{ profile_form.as_p }}
-            <button type="submit" name="update_profile" class="security-btn">Update Profile</button>
-        </form>
-    </div>
-    <div class="card card-wallets">
-        <h3>KYC Verification</h3>
-        <form method="post" enctype="multipart/form-data">
-            {% csrf_token %}
-            {{ kyc_form.as_p }}
-            <button type="submit" name="update_kyc" class="security-btn">Submit KYC</button>
-        </form>
-    </div>
-    <div class="card card-wallets">
-        <h3>Security Verification</h3>
-        <form method="post">
-            {% csrf_token %}
-            {{ verification_form.as_p }}
-            <button type="submit" name="update_verification" class="security-btn">Update Verification</button>
-        </form>
-    </div>
-    <div class="card card-wallets">
-        <h3>Investment Preferences</h3>
-        <form method="post">
-            {% csrf_token %}
-            {{ account_form.as_p }}
-            <button type="submit" name="update_account" class="security-btn">Update Preferences</button>
-        </form>
-    </div>
-    <div class="card card-wallets">
-        <h3>Notifications & Alerts</h3>
-        <form method="post">
-            {% csrf_token %}
-            {{ notifications_form.as_p }}
-            <button type="submit" name="update_notifications" class="security-btn">Update Notifications</button>
-        </form>
-    </div>
-    <div class="card card-wallets">
-        <h3>API & Integrations</h3>
-        <form method="post">
-            {% csrf_token %}
-            {{ api_form.as_p }}
-            <button type="submit" name="update_api" class="security-btn">Generate API Key</button>
-        </form>
+<div class="profilesettings-showcase">
+    <div class="profilesettings-container">
+        <div class="profilesettings-heading-container">
+            <h2 class="profilesettings-heading-title">User Profile & Settings</h2>
+            <p class="profilesettings-heading-subtitle">Manage your account, security, and preferences</p>
+        </div>
+
+        <div class="profilesettings-grid">
+            <div class="profilesettings-panel">
+                <h3 class="profilesettings-panel-title">Personal Information</h3>
+                <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ profile_form.as_p }}
+                    <button type="submit" name="update_profile" class="profilesettings-btn">Update Profile</button>
+                </form>
+            </div>
+
+            <div class="profilesettings-panel">
+                <h3 class="profilesettings-panel-title">KYC Verification</h3>
+                <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ kyc_form.as_p }}
+                    <button type="submit" name="update_kyc" class="profilesettings-btn">Submit KYC</button>
+                </form>
+            </div>
+
+            <div class="profilesettings-panel">
+                <h3 class="profilesettings-panel-title">Security Verification</h3>
+                <form method="post">
+                    {% csrf_token %}
+                    {{ verification_form.as_p }}
+                    <button type="submit" name="update_verification" class="profilesettings-btn">Update Verification</button>
+                </form>
+            </div>
+
+            <div class="profilesettings-panel">
+                <h3 class="profilesettings-panel-title">Investment Preferences</h3>
+                <form method="post">
+                    {% csrf_token %}
+                    {{ account_form.as_p }}
+                    <button type="submit" name="update_account" class="profilesettings-btn">Update Preferences</button>
+                </form>
+            </div>
+
+            <div class="profilesettings-panel">
+                <h3 class="profilesettings-panel-title">Notifications & Alerts</h3>
+                <form method="post">
+                    {% csrf_token %}
+                    {{ notifications_form.as_p }}
+                    <button type="submit" name="update_notifications" class="profilesettings-btn">Update Notifications</button>
+                </form>
+            </div>
+
+            <div class="profilesettings-panel">
+                <h3 class="profilesettings-panel-title">API & Integrations</h3>
+                <form method="post">
+                    {% csrf_token %}
+                    {{ api_form.as_p }}
+                    <button type="submit" name="update_api" class="profilesettings-btn">Generate API Key</button>
+                </form>
+            </div>
+        </div>
     </div>
 </div>
 {% endblock %}

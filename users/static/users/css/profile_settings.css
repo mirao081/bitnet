@@ -1,0 +1,122 @@
+/*==================================================
+   PROFILE SETTINGS STYLE
+==================================================*/
+
+.profilesettings-showcase {
+    width: 100%;
+    padding: 90px 0;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background:
+        radial-gradient(circle at top left, #004aad33, transparent 40%),
+        radial-gradient(circle at bottom right, #7a00ff22, transparent 35%),
+        linear-gradient(180deg, #05070d, #0a1020);
+}
+
+.profilesettings-container {
+    max-width: 1200px;
+    width: 90%;
+    margin: auto;
+    text-align: center;
+}
+
+.profilesettings-heading-container {
+    margin-bottom: 40px;
+}
+
+.profilesettings-heading-title {
+    font-size: 28px;
+    font-weight: 900;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+    text-shadow: 0 0 10px #00d8ef, 0 0 20px #7a00ff, 0 0 40px #ff0080;
+    animation: glowPulse 3s infinite alternate;
+}
+
+.profilesettings-heading-subtitle {
+    font-size: 18px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.85);
+    margin-bottom: 40px;
+}
+
+.profilesettings-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.profilesettings-panel {
+    padding: 30px;
+    border-radius: 25px;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid #00d8e9;
+    box-shadow: 0 0 30px rgba(0, 216, 239, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    text-align: center;
+    transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+}
+
+.profilesettings-panel:hover {
+    transform: translateY(-8px);
+    border: 1px solid #00d8e9;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.45), 0 0 25px rgba(0, 216, 239, 0.35);
+}
+
+.profilesettings-panel-title {
+    font-size: 22px;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 20px;
+}
+
+.profilesettings-btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 25px;
+    border-radius: 20px;
+    background: #00d8ef;
+    color: #05070d;
+    font-weight: 700;
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.profilesettings-btn:hover {
+    background: #009bb8;
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 0 15px rgba(0, 216, 239, 0.45);
+}
+
+@keyframes glowPulse {
+    from { text-shadow: 0 0 10px #00d8ef, 0 0 20px #00d8ef; }
+    to { text-shadow: 0 0 20px #7a00ff, 0 0 40px #ff0080; }
+}
+
+/* Responsive */
+@media (max-width: 991px) {
+    .profilesettings-heading-title { font-size: 24px; }
+    .profilesettings-heading-subtitle { font-size: 16px; }
+    .profilesettings-panel { padding: 25px; }
+    .profilesettings-panel-title { font-size: 21px; }
+}
+
+@media (max-width: 600px) {
+    .profilesettings-showcase { padding: 60px 0; }
+    .profilesettings-container { width: 94%; }
+    .profilesettings-heading-title { font-size: 23px; }
+    .profilesettings-heading-subtitle { font-size: 15px; }
+    .profilesettings-grid { grid-template-columns: 1fr; gap: 20px; }
+    .profilesettings-panel { padding: 20px; border-radius: 20px; }
+    .profilesettings-panel-title { font-size: 20px; }
+    .profilesettings-btn { width: 100%; font-size: 14px; padding: 10px; }
+}
