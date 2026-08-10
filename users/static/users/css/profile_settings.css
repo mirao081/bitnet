@@ -199,4 +199,21 @@
     border: 2px solid #00d8ef;
     box-shadow: 0 0 10px rgba(0,216,239,0.5);
 }
+/*==================================================
+   KYC DOCUMENT PREVIEW
+==================================================*/
+
+.kyc-img-preview {
+    margin-bottom: 8px;
+    text-align: center;
+}
+
+.kyc-img-small {
+    width: 90px;
+    height: 90px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 2px solid #00d8ef;
+    box-shadow: 0 0 10px rgba(0,216,239,0.5);
+}
 
