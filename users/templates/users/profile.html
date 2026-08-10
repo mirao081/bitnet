@@ -154,7 +154,10 @@
                 <p class="profilepage-panel-description">Invite friends and earn referral commissions.</p>
                 <div class="profilepage-referral-box">
                     <span class="profilepage-info-label">Your Referral Link</span>
-                    <div class="profilepage-referral-link">{{ request.user.userprofile.referral_link }}</div>
+                    <div class="profilepage-referral-link">
+                        https://gloria1231.pythonanywhere.com/?ref={{ request.user.username }}
+                    </div>
+
                 </div>
                 <div class="profilepage-referral-earnings">
                     <span>Total Referral Earnings</span>
