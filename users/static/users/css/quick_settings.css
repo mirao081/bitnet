@@ -110,3 +110,60 @@
     font-size:14px;
   }
 }
+/*==================================================
+   FORM FIELD STYLING
+==================================================*/
+
+.quick-settings-panel form {
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:20px;
+    width:100%;
+}
+
+.quick-settings-panel form p {
+    width:100%;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    margin:0;
+}
+
+.quick-settings-panel form label {
+    font-size:15px;
+    font-weight:600;
+    color:#fff;
+    margin-bottom:8px;
+    text-align:center;
+    text-shadow:0 0 8px rgba(0,216,239,.6);
+}
+
+.quick-settings-panel form input,
+.quick-settings-panel form textarea,
+.quick-settings-panel form select {
+    width:90%;
+    max-width:400px;
+    height:45px;
+    padding:10px 14px;
+    border-radius:12px;
+    border:1px solid rgba(255,255,255,.25);
+    background:rgba(255,255,255,.1);
+    color:#fff;
+    font-size:15px;
+    outline:none;
+    transition:.3s;
+}
+
+.quick-settings-panel form textarea {
+    min-height:100px;
+    resize:vertical;
+}
+
+.quick-settings-panel form input:focus,
+.quick-settings-panel form textarea:focus,
+.quick-settings-panel form select:focus {
+    border-color:#00d8ef;
+    box-shadow:0 0 12px rgba(0,216,239,.6);
+    background:rgba(255,255,255,.15);
+}
