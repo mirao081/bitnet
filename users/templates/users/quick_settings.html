@@ -28,6 +28,7 @@
         </form>
     </div>
 
+    <!-- ✅ Wallets section with QR codes -->
     <div class="quick-settings-panel">
         <h3 class="quick-settings-title">Wallets</h3>
         <form method="post">
@@ -36,11 +37,15 @@
             <button type="submit" class="quick-settings-btn">Update Wallets</button>
         </form>
 
-        <!-- ✅ QR Code shown here -->
         <div class="qr-code-container">
-            <img src="{% static 'wallet_qrcodes/qr2_pscAo14.jpeg' %}" 
-                 alt="USDT TRC20 QR Code" 
-                 class="qr-code-img">
+            <h4 class="quick-settings-subtitle">BTC Wallet QR</h4>
+            <img src="{% static 'wallet_qrcodes/btc_wallet.jpeg' %}" alt="BTC QR Code" class="qr-code-img">
+
+            <h4 class="quick-settings-subtitle">ETH Wallet QR</h4>
+            <img src="{% static 'wallet_qrcodes/eth_wallet.jpeg' %}" alt="ETH QR Code" class="qr-code-img">
+
+            <h4 class="quick-settings-subtitle">USDT TRC20 Wallet QR</h4>
+            <img src="{% static 'wallet_qrcodes/qr2_pscAo14.jpeg' %}" alt="USDT TRC20 QR Code" class="qr-code-img">
         </div>
     </div>
 
