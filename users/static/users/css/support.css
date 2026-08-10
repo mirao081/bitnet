@@ -628,3 +628,168 @@
     }
 
 }
+/*==================================================*
+ * TOP SUPPORT CARDS
+ *==================================================*/
+
+.supportpage-articles {
+
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 25px;
+
+    margin: 0 auto 25px;
+
+    box-sizing: border-box;
+}
+
+
+/* Make both top cards occupy exactly one grid column */
+
+.supportpage-articles > .supportpage-card {
+
+    width: 100%;
+
+    min-width: 0;
+
+    box-sizing: border-box;
+}
+
+
+/*==================================================*
+ * QUICK ASSISTANCE CARD
+ *==================================================*/
+
+.supportpage-quick-card {
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    min-height: 300px;
+}
+
+
+/*==================================================*
+ * QUICK ASSISTANCE BUTTON
+ *==================================================*/
+
+.supportpage-assistance-btn {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    margin-top: 10px;
+
+    padding: 13px 25px;
+
+    border-radius: 25px;
+
+    border: 1px solid #00d8ef;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(0,216,239,.12),
+            rgba(122,0,255,.18)
+        );
+
+    color: #00d8ef;
+
+    font-size: 14px;
+
+    font-weight: 800;
+
+    letter-spacing: 1px;
+
+    text-decoration: none;
+
+    text-transform: uppercase;
+
+    box-shadow:
+        0 0 10px rgba(0,216,239,.35),
+        0 0 25px rgba(122,0,255,.20);
+
+    transition:
+        transform .3s ease,
+        color .3s ease,
+        background .3s ease,
+        box-shadow .3s ease,
+        border-color .3s ease;
+}
+
+
+/*==================================================*
+ * QUICK ASSISTANCE HOVER
+ *==================================================*/
+
+.supportpage-assistance-btn:hover {
+
+    color: #ffffff;
+
+    background:
+        linear-gradient(
+            135deg,
+            #00d8ef,
+            #7a00ff
+        );
+
+    border-color: #00d8ef;
+
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 0 12px #00d8ef,
+        0 0 30px #7a00ff,
+        0 0 50px rgba(255,0,128,.35);
+}
+
+
+/*==================================================*
+ * MOBILE
+ *==================================================*/
+
+@media (max-width: 600px) {
+
+    .supportpage-articles {
+
+        display: flex;
+
+        flex-direction: column;
+
+        align-items: center;
+
+        gap: 20px;
+    }
+
+    .supportpage-articles > .supportpage-card {
+
+        width: 100%;
+    }
+
+    .supportpage-quick-card {
+
+        min-height: 260px;
+    }
+
+    .supportpage-assistance-btn {
+
+        width: auto;
+
+        padding: 12px 22px;
+
+        font-size: 13px;
+    }
+}

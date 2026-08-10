@@ -1,27 +1,16 @@
 {% extends "users/dashboard_base.html" %}
 {% load static %}
-
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'users/css/withdraw.css' %}">
 {% endblock %}
-
-
 {% block content %}
-
 <div class="withdrawpage-card">
 
     <form
         method="post"
         action="{% url 'users:request_withdrawal' %}"
     >
-
         {% csrf_token %}
-
-
-        <!-- =====================================================
-             SELECT ASSET
-        ====================================================== -->
-
         <label
             for="currency"
             class="withdrawpage-label"
@@ -54,11 +43,6 @@
 
         </select>
 
-
-        <!-- =====================================================
-             AMOUNT
-        ====================================================== -->
-
         <label
             for="amount"
             class="withdrawpage-label"
@@ -81,11 +65,6 @@
             Minimum withdrawal is $200.
         </p>
 
-
-        <!-- =====================================================
-             DESTINATION WALLET
-        ====================================================== -->
-
         <label
             for="wallet_address_display"
             class="withdrawpage-label"
@@ -93,28 +72,17 @@
             Destination Wallet Address
         </label>
 
-
-        <!-- Visible wallet address -->
         <input
             type="text"
             id="wallet_address_display"
             class="withdrawpage-input"
             readonly
         >
-
-
-        <!-- Hidden field submitted to Django -->
         <input
             type="hidden"
             id="wallet_address"
             name="wallet_address"
         >
-
-
-        <!-- =====================================================
-             WARNING
-        ====================================================== -->
-
         <div class="withdrawpage-warning">
 
             <p>
@@ -123,12 +91,6 @@
             </p>
 
         </div>
-
-
-        <!-- =====================================================
-             CAPTCHA
-        ====================================================== -->
-
         <div class="withdrawpage-captcha">
 
             {{ form.captcha }}
@@ -143,34 +105,16 @@
 
         </div>
 
-
-        <!-- =====================================================
-             SUBMIT BUTTON
-        ====================================================== -->
-
         <button
             type="submit"
             class="withdrawpage-btn"
         >
             Submit Withdrawal
         </button>
-
-
     </form>
 
 </div>
-
-
-<!-- =========================================================
-     WALLET DATA FROM DJANGO
-========================================================== -->
-
 {{ wallets|json_script:"wallet-data" }}
-
-
-<!-- =========================================================
-     WALLET ADDRESS JAVASCRIPT
-========================================================== -->
 
 <script>
 
@@ -188,11 +132,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const walletDataElement =
         document.getElementById("wallet-data");
 
-
-    /*
-     * Make sure all required elements exist.
-     */
-
     if (
         !currencySelect ||
         !walletDisplay ||
@@ -206,13 +145,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
         return;
     }
-
-
-    /*
-     * Read wallet information supplied
-     * by the Django view.
-     */
-
     let wallets = {};
 
     try {
@@ -220,7 +152,6 @@ document.addEventListener("DOMContentLoaded", function () {
         wallets = JSON.parse(
             walletDataElement.textContent
         );
-
     } catch (error) {
 
         console.error(
@@ -231,12 +162,6 @@ document.addEventListener("DOMContentLoaded", function () {
         return;
     }
 
-
-    /*
-     * Update wallet address according
-     * to selected asset.
-     */
-
     function updateWalletAddress() {
 
         const currency =
@@ -244,55 +169,27 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const walletAddress =
             wallets[currency] || "";
-
-
-        /*
-         * Display wallet address.
-         */
-
+        
         walletDisplay.value =
             walletAddress;
 
-
-        /*
-         * This is the value Django receives.
-         */
-
         walletHidden.value =
             walletAddress;
-
-
         console.log(
             "Selected currency:",
             currency
         );
-
         console.log(
             "Wallet address:",
             walletAddress
         );
     }
-
-
-    /*
-     * Populate wallet when page loads.
-     */
-
     updateWalletAddress();
-
-
-    /*
-     * Update wallet when asset changes.
-     */
-
     currencySelect.addEventListener(
         "change",
         updateWalletAddress
     );
-
 });
-
 </script>
-
 
 {% endblock %}
