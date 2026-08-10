@@ -41,7 +41,7 @@
             </form>
         </div>
 
-            <div class="profilesettings-panel">
+        <div class="profilesettings-panel">
                 <h3 class="profilesettings-panel-title">KYC Verification</h3>
                 <form method="post" enctype="multipart/form-data">
                     {% csrf_token %}
@@ -50,17 +50,20 @@
                         {{ kyc_form.document.label_tag }}
                         {% if kyc_form.instance.document %}
                             <div class="kyc-img-preview">
-                                <img src="{{ kyc_form.instance.document.url }}" alt="KYC Document" class="kyc-img-small">
+                                <a href="{{ kyc_form.instance.document.url }}" target="_blank">
+                                    <img src="{{ kyc_form.instance.document.url }}" alt="KYC Document" class="kyc-img-small">
+                                </a>
                             </div>
                         {% endif %}
                         {{ kyc_form.document }}
                     </p>
 
-                    {{ kyc_form.captcha }}  <!-- if you have reCAPTCHA field -->
+                    {{ kyc_form.captcha }}
 
                     <button type="submit" name="update_kyc" class="profilesettings-btn">Submit KYC</button>
                 </form>
             </div>
+
 
 
             <div class="profilesettings-panel">
