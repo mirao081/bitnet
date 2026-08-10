@@ -77,9 +77,64 @@
     margin-bottom: 20px;
 }
 
+/*==================================================
+   FORM LAYOUT
+==================================================*/
+
+.profilesettings-panel form {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 18px;
+}
+
+.profilesettings-panel form p {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 0;
+}
+
+.profilesettings-panel form label {
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 6px;
+    text-align: left;
+}
+
+.profilesettings-panel form input,
+.profilesettings-panel form select,
+.profilesettings-panel form textarea {
+    width: 100%;
+    padding: 12px;
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.25);
+    background: rgba(0,0,0,0.4);
+    color: #ffffff;
+    font-size: 15px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.profilesettings-panel form input:focus,
+.profilesettings-panel form select:focus,
+.profilesettings-panel form textarea:focus {
+    outline: none;
+    border-color: #00d8ef;
+    box-shadow: 0 0 10px #00d8ef;
+}
+
+.profilesettings-panel form textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+/*==================================================
+   BUTTON
+==================================================*/
+
 .profilesettings-btn {
-    display: inline-block;
-    margin-top: 20px;
+    align-self: center;
+    margin-top: 10px;
     padding: 12px 25px;
     border-radius: 20px;
     background: #00d8ef;
@@ -97,12 +152,19 @@
     box-shadow: 0 0 15px rgba(0, 216, 239, 0.45);
 }
 
+/*==================================================
+   ANIMATIONS
+==================================================*/
+
 @keyframes glowPulse {
     from { text-shadow: 0 0 10px #00d8ef, 0 0 20px #00d8ef; }
     to { text-shadow: 0 0 20px #7a00ff, 0 0 40px #ff0080; }
 }
 
-/* Responsive */
+/*==================================================
+   RESPONSIVE
+==================================================*/
+
 @media (max-width: 991px) {
     .profilesettings-heading-title { font-size: 24px; }
     .profilesettings-heading-subtitle { font-size: 16px; }
