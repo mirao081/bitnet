@@ -920,38 +920,51 @@ def profile(request):
     # USER PROFILE
     # ==================================================
 
-    profile, _ = UserProfile.objects.get_or_create(user=user)
+    profile_obj, _ = UserProfile.objects.get_or_create(
+        user=user
+    )
 
     # ==================================================
     # WALLET
     # ==================================================
 
-    wallet, _ = UserWallet.objects.get_or_create(user=user)
+    wallet, _ = UserWallet.objects.get_or_create(
+        user=user
+    )
 
     wallet_form = UserWalletForm(
         request.POST or None,
+        request.FILES or None,
         instance=wallet
     )
 
+    # Make existing wallet addresses read-only
     for field_name in [
         "btc_wallet",
         "eth_wallet",
         "usdt_erc20_wallet",
         "usdt_trc20_wallet",
     ]:
-
         field = wallet_form.fields[field_name]
 
-        if getattr(wallet, field_name):
+        if getattr(wallet, field_name, None):
             field.widget.attrs["readonly"] = "readonly"
 
         field.widget.attrs["id"] = f"id_{field_name}"
 
-    if request.method == "POST" and wallet_form.is_valid():
+    # ==================================================
+    # SAVE WALLET
+    # ==================================================
 
-        wallet_form.save()
+    if request.method == "POST":
 
-        return redirect("/users/profile#wallets")
+        if wallet_form.is_valid():
+
+            wallet_form.save()
+
+            return redirect(
+                "/users/profile#wallets"
+            )
 
     # ==================================================
     # INVESTMENTS
@@ -969,7 +982,13 @@ def profile(request):
         status="completed"
     )
 
-    active_investments_count = active_investments.count()
+    # ==================================================
+    # ACTIVE INVESTMENT COUNT
+    # ==================================================
+
+    active_investments_count = (
+        active_investments.count()
+    )
 
     # ==================================================
     # TOTAL INVESTED
@@ -978,8 +997,7 @@ def profile(request):
     total_invested = (
         investments.aggregate(
             total=Sum("amount")
-        )["total"]
-        or 0
+        )["total"] or 0
     )
 
     # ==================================================
@@ -995,32 +1013,6 @@ def profile(request):
     )
 
     # ==================================================
-    # TOTAL CURRENT INVESTMENT VALUE
-    # ==================================================
-
-    total_current_investment = sum(
-        (
-            inv.get_current_value()
-            for inv in completed_investments
-        ),
-        0
-    )
-
-    # ==================================================
-    # TOTAL BALANCE
-    #
-    # SAME CALCULATION AS DASHBOARD
-    # ==================================================
-
-    total_balance = (
-        profile.usd_balance
-        + profile.investment_balance
-        + profile.profit_balance
-        + profile.bonus_balance
-        + total_current_investment
-    )
-
-    # ==================================================
     # RECENT INVESTMENTS
     # ==================================================
 
@@ -1029,38 +1021,46 @@ def profile(request):
     )[:5]
 
     # ==================================================
-    # REFERRALS
-    # ==================================================
-
-    referral_earnings = getattr(
-        profile,
-        "referral_earnings",
-        0
-    )
-
-    # ==================================================
-    # PERFORMANCE CHART
+    # INVESTMENT PERFORMANCE CHART
     # ==================================================
 
     chart_labels = []
-
     chart_data = []
-
-    running_value = 0
 
     for inv in investments:
 
-        running_value += float(
-            inv.get_current_value()
-        )
-
+        # Investment start
         chart_labels.append(
             inv.start_date.strftime("%Y-%m-%d")
         )
 
         chart_data.append(
-            round(running_value, 2)
+            round(float(inv.amount), 2)
         )
+
+        # Investment current/end value
+        chart_labels.append(
+            inv.end_date.strftime("%Y-%m-%d")
+        )
+
+        chart_data.append(
+            round(
+                float(inv.get_current_value()),
+                2
+            )
+        )
+
+    # ==================================================
+    # REFERRAL EARNINGS
+    # ==================================================
+
+    referral_earnings = (
+        getattr(
+            profile_obj,
+            "referral_earnings",
+            0
+        ) or 0
+    )
 
     # ==================================================
     # CONTEXT
@@ -1068,10 +1068,13 @@ def profile(request):
 
     context = {
 
-        "profile": profile,
+        # User profile
+        "profile": profile_obj,
 
+        # Wallet
         "wallet_form": wallet_form,
 
+        # Investments
         "active_investments_count":
             active_investments_count,
 
@@ -1081,24 +1084,24 @@ def profile(request):
         "total_roi":
             total_roi,
 
-        "total_balance":
-            total_balance,
-
-        "total_current_investment":
-            total_current_investment,
-
         "recent_investments":
             recent_investments,
 
+        # Referral
         "referral_earnings":
             referral_earnings,
 
+        # Chart
         "chart_labels":
             chart_labels,
 
         "chart_data":
             chart_data,
     }
+
+    # ==================================================
+    # RENDER
+    # ==================================================
 
     return render(
         request,

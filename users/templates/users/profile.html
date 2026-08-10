@@ -5,7 +5,7 @@
 
 
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'css/profile.css' %}">
+<link rel="stylesheet" href="{% static 'users/css/profile.css' %}">
 {% endblock %}
 
 
@@ -131,24 +131,19 @@
 
             <!-- ACCOUNT BALANCE -->
 
-            <div class="profilepage-panel profilepage-balance-panel">
-
+            <div class="profilepage-panel">
                 <h2 class="profilepage-panel-title">
                     Account Balance
                 </h2>
 
                 <div class="profilepage-big-value">
-                    ${{ request.user.userbalance.balance|default:"0.00" }}
+                    ${{ profile.usd_balance|floatformat:2 }}
                 </div>
 
                 <p class="profilepage-panel-description">
                     Available account balance
                 </p>
-
             </div>
-
-        </div>
-
 
         <!-- ================================================== -->
         <!-- INVESTMENT SUMMARY -->
@@ -168,7 +163,7 @@
                 <div class="profilepage-stat-card">
 
                     <div class="profilepage-stat-icon">
-                        📈
+                     
                     </div>
 
                     <span class="profilepage-stat-label">
@@ -187,7 +182,7 @@
                 <div class="profilepage-stat-card">
 
                     <div class="profilepage-stat-icon">
-                        💰
+                      
                     </div>
 
                     <span class="profilepage-stat-label">
@@ -206,7 +201,7 @@
                 <div class="profilepage-stat-card">
 
                     <div class="profilepage-stat-icon">
-                        🚀
+                       
                     </div>
 
                     <span class="profilepage-stat-label">
@@ -315,6 +310,7 @@
         </div>
 
 
+
         <!-- ================================================== -->
         <!-- INVESTMENT PERFORMANCE -->
         <!-- ================================================== -->
@@ -395,59 +391,6 @@
 
 
             <!-- SECURITY SETTINGS -->
-
-            <div class="profilepage-panel">
-
-                <h2 class="profilepage-panel-title">
-                    Security Settings
-                </h2>
-
-                <div class="profilepage-security-info">
-
-                    <div class="profilepage-security-item">
-
-                        <span class="profilepage-info-label">
-                            Two-Factor Authentication
-                        </span>
-
-                        <span class="profilepage-security-status">
-                            {{ request.user.userprofile.two_factor_enabled|yesno:"Enabled,Disabled" }}
-                        </span>
-
-                    </div>
-
-
-                    <div class="profilepage-security-item">
-
-                        <span class="profilepage-info-label">
-                            Last Login
-                        </span>
-
-                        <span class="profilepage-security-value">
-                            {{ request.user.last_login|date:"Y-m-d H:i" }}
-                        </span>
-
-                    </div>
-
-                </div>
-
-
-                <div class="profilepage-buttons">
-
-                    <a
-                        href="{% url 'users:change_password' %}"
-                        class="profilepage-btn profilepage-btn-warning"
-                    >
-                        🔑 Change Password
-                    </a>
-
-                </div>
-
-            </div>
-
-        </div>
-
-
         <!-- ================================================== -->
         <!-- REFERRAL PROGRAM -->
         <!-- ================================================== -->
