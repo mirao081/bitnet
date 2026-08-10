@@ -515,11 +515,7 @@
 
                     {% if request.user.userwallet.btc_qr %}
 
-                        <img
-                            src="{{ request.user.userwallet.btc_qr.url }}"
-                            alt="BTC QR Code"
-                            class="profilepage-wallet-qr"
-                        >
+                       <img src="{{ request.user.userwallet.btc_qr.url }}" alt="BTC QR Code" class="wallet-qr-fixed">
 
                     {% endif %}
 
@@ -544,11 +540,7 @@
 
                     {% if request.user.userwallet.eth_qr %}
 
-                        <img
-                            src="{{ request.user.userwallet.eth_qr.url }}"
-                            alt="ETH QR Code"
-                            class="profilepage-wallet-qr"
-                        >
+                        <img src="{{ request.user.userwallet.eth_qr.url }}" alt="ETH QR Code" class="wallet-qr-fixed">
 
                     {% endif %}
 
@@ -573,11 +565,7 @@
 
                     {% if request.user.userwallet.usdt_erc20_qr %}
 
-                        <img
-                            src="{{ request.user.userwallet.usdt_erc20_qr.url }}"
-                            alt="USDT ERC20 QR Code"
-                            class="profilepage-wallet-qr"
-                        >
+                        <img src="{{ request.user.userwallet.usdt_erc20_qr.url }}" alt="USDT ERC20 QR Code" class="wallet-qr-fixed">
 
                     {% endif %}
 
@@ -602,11 +590,7 @@
 
                     {% if request.user.userwallet.usdt_trc20_qr %}
 
-                        <img
-                            src="{{ request.user.userwallet.usdt_trc20_qr.url }}"
-                            alt="USDT TRC20 QR Code"
-                            class="profilepage-wallet-qr"
-                        >
+                        <img src="{{ request.user.userwallet.usdt_trc20_qr.url }}" alt="USDT TRC20 QR Code" class="wallet-qr-fixed">
 
                     {% endif %}
 

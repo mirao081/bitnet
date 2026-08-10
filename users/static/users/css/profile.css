@@ -752,11 +752,26 @@
 .profilepage-input::placeholder {
     color: rgba(255, 255, 255, 0.55);
 }
+.wallet-qr-fixed {
+    display: block;
+    width: 200px;
+    height: 200px;
+    object-fit: contain;
+    margin: 20px auto;
+    padding: 8px;
+    box-sizing: border-box;
+    border-radius: 15px;
+    background: #ffffff;
+    border: 1px solid #00d8e9;
+    box-shadow: 0 0 15px rgba(0, 216, 239, 0.35);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
 
-
-/*==================================================*
-* GENERAL LINKS
-*==================================================*/
+.wallet-qr-fixed:hover {
+    transform: scale(1.03);
+    box-shadow: 0 0 20px rgba(0, 216, 239, 0.55),
+                0 0 35px rgba(122, 0, 255, 0.25);
+}
 
 .profilepage-panel a {
     transition:
