@@ -238,5 +238,76 @@
 
 {% block extra_js %}
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script src="{% static 'users/js/profile_charts.js' %}"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const canvas = document.getElementById("roiChart");
+    if (!canvas) return;
+    if (typeof Chart === "undefined") return;
+
+    const labelsElement = document.getElementById("profile-chart-labels");
+    const dataElement = document.getElementById("profile-chart-data");
+    if (!labelsElement || !dataElement) return;
+
+    let labels = JSON.parse(labelsElement.textContent || "[]");
+    let data = JSON.parse(dataElement.textContent || "[]");
+    if (!Array.isArray(labels) || !Array.isArray(data)) return;
+    if (labels.length === 0 || data.length === 0) return;
+
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
+
+    if (window.profileROIChart) window.profileROIChart.destroy();
+
+    window.profileROIChart = new Chart(ctx, {
+        type: "line",
+        data: {
+            labels: labels,
+            datasets: [{
+                label: "Investment Value",
+                data: data,
+                borderColor: "#00d8ef",
+                backgroundColor: "rgba(0, 216, 239, 0.15)",
+                borderWidth: 3,
+                pointBackgroundColor: "#00d8ef",
+                pointBorderColor: "#ffffff",
+                pointBorderWidth: 2,
+                pointRadius: 4,
+                pointHoverRadius: 7,
+                fill: true,
+                tension: 0.35
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            interaction: { intersect: false, mode: "index" },
+            plugins: {
+                legend: { labels: { color: "#ffffff" } },
+                tooltip: {
+                    callbacks: {
+                        label: function (context) {
+                            return " Value: $" + Number(context.parsed.y).toLocaleString("en-US", {
+                                minimumFractionDigits: 2,
+                                maximumFractionDigits: 2
+                            });
+                        }
+                    }
+                }
+            },
+            scales: {
+                x: { ticks: { color: "rgba(255,255,255,0.75)" } },
+                y: {
+                    ticks: {
+                        color: "rgba(255,255,255,0.75)",
+                        callback: function (value) {
+                            return "$" + Number(value).toLocaleString("en-US");
+                        }
+                    }
+                }
+            }
+        }
+    });
+});
+</script>
 {% endblock %}
+
