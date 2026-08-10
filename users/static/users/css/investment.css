@@ -1,919 +1,879 @@
 /*==================================================*
-*INVESTMENT SHOWCASE STYLE*
+* INVESTMENT SHOWCASE STYLE
 *==================================================*/
 
 .investment-showcase {
-width: 100%;
-padding: 90px 0;
-position: relative;
-overflow: hidden;
+    width: 100%;
+    padding: 90px 0;
+    position: relative;
+    overflow: hidden;
 
-
-background:
-    radial-gradient(
-        circle at top left,
-        #004aad33,
-        transparent 40%
-    ),
-    radial-gradient(
-        circle at bottom right,
-        #7a00ff22,
-        transparent 35%
-    ),
-    linear-gradient(
-        180deg,
-        #05070d,
-        #0a1020
-    );
-
-
+    background:
+        radial-gradient(
+            circle at top left,
+            #004aad33,
+            transparent 40%
+        ),
+        radial-gradient(
+            circle at bottom right,
+            #7a00ff22,
+            transparent 35%
+        ),
+        linear-gradient(
+            180deg,
+            #05070d,
+            #0a1020
+        );
 }
 
+
 /*==================================================*
-*INVESTMENT GRID*
+* INVESTMENT GRID
 *==================================================*/
 
 .investment-grid {
-width: 90%;
-max-width: 1600px;
-margin: auto;
+    width: 90%;
+    max-width: 1600px;
+    margin: auto;
 
+    display: grid;
 
-display: grid;
+    grid-template-columns:
+        repeat(auto-fit, minmax(300px, 1fr));
 
-grid-template-columns:
-    repeat(auto-fit, minmax(300px, 1fr));
+    gap: 35px;
 
-gap: 35px;
-
-position: relative;
-z-index: 2;
-
-
+    position: relative;
+    z-index: 2;
 }
 
+
 /*==================================================*
-*GLASS PANEL*
+* GLASS CARD
 *==================================================*/
 
 .investment-panel {
-position: relative;
-overflow: hidden;
+    position: relative;
+    overflow: hidden;
 
+    padding: 35px 28px;
 
-padding: 35px 28px;
+    border-radius: 30px;
 
-border-radius: 30px;
+    background: rgba(255, 255, 255, 0.08);
 
-background: rgba(255, 255, 255, .08);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
 
-backdrop-filter: blur(24px);
--webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
 
-border: 1px solid rgba(255, 255, 255, .12);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.15),
+        0 18px 45px rgba(0, 0, 0, 0.35);
 
-box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, .15),
-    0 18px 45px rgba(0, 0, 0, .35);
-
-transition: .45s ease;
-
-margin-bottom: 5px;
-
-
+    transition: 0.45s ease;
 }
 
+
 /*==================================================*
-*CARD GLOW*
+* CARD GLOW
 *==================================================*/
 
 .investment-panel::before {
-content: "";
+    content: "";
 
+    position: absolute;
 
-position: absolute;
+    width: 220px;
+    height: 220px;
 
-width: 220px;
-height: 220px;
+    top: -120px;
+    right: -120px;
 
-top: -120px;
-right: -120px;
+    border-radius: 50%;
 
-border-radius: 50%;
+    background:
+        radial-gradient(
+            circle,
+            rgba(0, 216, 239, 0.28),
+            transparent 70%
+        );
 
-background:
-    radial-gradient(
-        circle,
-        rgba(0, 216, 239, .28),
-        transparent 70%
-    );
+    transition: 0.6s;
 
-transition: .6s;
-
-pointer-events: none;
-
-
+    pointer-events: none;
 }
+
 
 .investment-panel:hover {
-transform: translateY(-10px);
+    transform: translateY(-10px);
 
-
-box-shadow:
-    0 30px 70px rgba(0, 0, 0, .45),
-    0 0 40px rgba(0, 216, 239, .18);
-
-
+    box-shadow:
+        0 30px 70px rgba(0, 0, 0, 0.45),
+        0 0 40px rgba(0, 216, 239, 0.18);
 }
+
 
 .investment-panel:hover::before {
-transform: scale(1.4);
+    transform: scale(1.4);
 }
 
+
 /*==================================================*
-*WIDE PANEL*
+* WIDE CARD
 *==================================================*/
 
 .investment-wide-panel {
-grid-column: span 2;
+    grid-column: span 2;
 }
 
-/*==================================================*
-*CHART PANEL*
-*==================================================*/
-
-.investment-chart-panel {
-min-height: 380px;
-}
 
 /*==================================================*
-*PANEL TITLE*
+* PANEL TITLE
 *==================================================*/
 
 .investment-panel-title {
-position: relative;
-z-index: 2;
+    position: relative;
+    z-index: 2;
 
+    font-size: 24px;
+    font-weight: 800;
 
-font-size: 24px;
-font-weight: 800;
+    color: #ffffff;
 
-color: #fff;
+    margin-bottom: 20px;
 
-margin-bottom: 20px;
-
-line-height: 1.25;
-
-
+    line-height: 1.25;
 }
 
+
 /*==================================================*
-*PANEL DESCRIPTION*
+* PANEL DESCRIPTION
 *==================================================*/
 
 .investment-panel-description {
-position: relative;
-z-index: 2;
+    position: relative;
+    z-index: 2;
 
+    font-size: 15px;
 
-font-size: 15px;
+    color: rgba(255, 255, 255, 0.80);
 
-color: rgba(255, 255, 255, .80);
-
-line-height: 1.6;
-
-
+    line-height: 1.6;
 }
 
+
 /*==================================================*
-*PORTFOLIO VALUE*
+* PORTFOLIO VALUE
 *==================================================*/
 
 .investment-value {
-font-size: 38px;
+    font-size: 38px;
 
+    font-weight: 900;
 
-font-weight: 900;
+    margin: 0 0 22px;
 
-margin: 0 0 22px;
+    background:
+        linear-gradient(
+            90deg,
+            #00d8ef,
+            #7a00ff,
+            #ff0080
+        );
 
-background:
-    linear-gradient(
-        90deg,
-        #00d8ef,
-        #7a00ff,
-        #ff0080
-    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 
--webkit-background-clip: text;
--webkit-text-fill-color: transparent;
+    background-size: 200% auto;
 
-background-size: 200% auto;
-
-animation: investmentShineFlow 6s linear infinite;
-
-
+    animation:
+        investmentShineFlow 6s linear infinite;
 }
 
+
 /*==================================================*
-*SUMMARY TEXT*
+* SUMMARY TEXT
 *==================================================*/
 
 .investment-summary-panel p {
-margin: 0 0 12px;
+    margin: 0 0 12px;
 
-
-color: rgba(255, 255, 255, .78);
-
-
+    color: rgba(255, 255, 255, 0.78);
 }
+
 
 .investment-summary-panel strong {
-color: #fff;
+    color: #ffffff;
 }
 
+
 /*==================================================*
-*ACTION AREA*
+* ACTION AREA
 *==================================================*/
 
 .investment-action-area {
-margin-top: 25px;
+    margin-top: 25px;
 }
 
+
 /*==================================================*
-*BUTTON*
+* BUTTON
 *==================================================*/
 
 .investment-action-btn {
-display: inline-block;
+    display: inline-block;
 
+    padding: 10px 20px;
 
-padding: 10px 20px;
+    border-radius: 20px;
 
-border-radius: 20px;
+    font-weight: 600;
 
-font-weight: 600;
+    text-decoration: none;
 
-text-decoration: none;
+    transition: 0.3s;
 
-transition: .3s;
-
-position: relative;
-z-index: 3;
-
-
+    position: relative;
+    z-index: 3;
 }
 
+
 /*==================================================*
-*PRIMARY BUTTON*
+* PRIMARY BUTTON
 *==================================================*/
 
 .investment-primary-btn {
-background: #00d8ef;
+    background: #00d8ef;
 
+    color: #05070d;
 
-color: #05070d;
-
-box-shadow:
-    0 0 15px rgba(0, 216, 239, .25);
-
-
+    box-shadow:
+        0 0 15px rgba(0, 216, 239, 0.25);
 }
+
 
 .investment-primary-btn:hover {
-background: #009bb8;
+    background: #009bb8;
 
+    color: #ffffff;
 
-color: #fff;
+    transform: translateY(-2px);
 
-transform: translateY(-2px);
-
-box-shadow:
-    0 0 25px rgba(0, 216, 239, .45);
-
-
+    box-shadow:
+        0 0 25px rgba(0, 216, 239, 0.45);
 }
 
+
 /*==================================================*
-*EXPORT BUTTON*
+* EXPORT BUTTON
 *==================================================*/
 
 .investment-export-btn {
-margin: 5px 8px 5px 0;
+    margin: 5px 8px 5px 0;
 
+    background:
+        linear-gradient(
+            90deg,
+            #00d8ef,
+            #7a00ff
+        );
 
-background:
-    linear-gradient(
-        90deg,
-        #00d8ef,
-        #7a00ff
-    );
+    color: #ffffff;
 
-color: #fff;
-
-box-shadow:
-    0 0 15px rgba(122, 0, 255, .2);
-
-
+    box-shadow:
+        0 0 15px rgba(122, 0, 255, 0.20);
 }
+
 
 .investment-export-btn:hover {
-color: #fff;
+    color: #ffffff;
 
+    transform: translateY(-3px);
 
-transform: translateY(-3px);
-
-box-shadow:
-    0 0 25px rgba(0, 216, 239, .35);
-
-
+    box-shadow:
+        0 0 25px rgba(0, 216, 239, 0.35);
 }
 
+
 /*==================================================*
-*PERFORMANCE STATS*
+* PERFORMANCE STATS
 *==================================================*/
 
 .investment-stat {
-display: flex;
+    display: flex;
 
+    justify-content: space-between;
+    align-items: center;
 
-justify-content: space-between;
-align-items: center;
+    gap: 20px;
 
-gap: 20px;
+    padding: 14px 0;
 
-padding: 14px 0;
-
-border-bottom:
-    1px solid rgba(255, 255, 255, .10);
-
-
+    border-bottom:
+        1px solid rgba(255, 255, 255, 0.10);
 }
+
 
 .investment-stat:last-child {
-border-bottom: none;
+    border-bottom: none;
 }
+
 
 .investment-stat span {
-color: rgba(255, 255, 255, .65);
+    color: rgba(255, 255, 255, 0.65);
 }
+
 
 .investment-stat strong {
-color: #00d8ef;
+    color: #00d8ef;
 
+    font-size: 17px;
 
-font-size: 17px;
-
-text-shadow:
-    0 0 10px rgba(0, 216, 239, .45);
-
-
+    text-shadow:
+        0 0 10px rgba(0, 216, 239, 0.45);
 }
 
+
 /*==================================================*
-*MATURITY ITEMS*
+* MATURITY ITEMS
 *==================================================*/
 
 .investment-maturity-item {
-display: flex;
+    display: flex;
 
+    justify-content: space-between;
 
-justify-content: space-between;
+    align-items: center;
 
-align-items: center;
+    gap: 20px;
 
-gap: 20px;
+    padding: 15px 0;
 
-padding: 15px 0;
-
-border-bottom:
-    1px solid rgba(255, 255, 255, .10);
-
-
+    border-bottom:
+        1px solid rgba(255, 255, 255, 0.10);
 }
+
 
 .investment-maturity-item:last-child {
-border-bottom: none;
+    border-bottom: none;
 }
+
 
 .investment-maturity-item span {
-color: rgba(255, 255, 255, .80);
+    color: rgba(255, 255, 255, 0.80);
 }
+
 
 .investment-maturity-item strong {
-color: #ff0080;
+    color: #ff0080;
 
-
-text-shadow:
-    0 0 10px rgba(255, 0, 128, .35);
-
-
+    text-shadow:
+        0 0 10px rgba(255, 0, 128, 0.35);
 }
 
+
 /*==================================================*
-*INVESTMENT TABLE*
+* INVESTMENT TABLE
 *==================================================*/
 
 .investment-table-container {
-width: 100%;
+    width: 100%;
 
+    overflow-x: auto;
 
-overflow-x: auto;
-
-position: relative;
-z-index: 2;
-
-
+    position: relative;
+    z-index: 2;
 }
+
 
 .investment-data-table {
-width: 100%;
+    width: 100%;
 
+    min-width: 700px;
 
-min-width: 700px;
+    border-collapse: collapse;
 
-border-collapse: collapse;
-
-color: rgba(255, 255, 255, .80);
-
-
+    color: rgba(255, 255, 255, 0.80);
 }
+
 
 .investment-data-table th,
 .investment-data-table td {
-padding: 15px 12px;
+    padding: 15px 12px;
 
+    text-align: left;
 
-text-align: left;
-
-border-bottom:
-    1px solid rgba(255, 255, 255, .10);
-
-
+    border-bottom:
+        1px solid rgba(255, 255, 255, 0.10);
 }
+
 
 .investment-data-table th {
-color: #00d8ef;
+    color: #00d8ef;
 
+    font-weight: 800;
 
-font-weight: 800;
+    text-transform: uppercase;
 
-text-transform: uppercase;
+    font-size: 13px;
 
-font-size: 13px;
+    letter-spacing: 0.8px;
 
-letter-spacing: .8px;
-
-background:
-    rgba(0, 216, 239, .05);
-
-
+    background:
+        rgba(0, 216, 239, 0.05);
 }
+
 
 .investment-data-table td {
-color: rgba(255, 255, 255, .78);
+    color: rgba(255, 255, 255, 0.78);
 }
+
 
 .investment-data-table tbody tr {
-transition: .3s ease;
+    transition: 0.3s ease;
 }
+
 
 .investment-data-table tbody tr:hover {
-background:
-rgba(0, 216, 239, .06);
+    background:
+        rgba(0, 216, 239, 0.06);
 }
+
 
 .investment-data-table tbody tr:last-child td {
-border-bottom: none;
+    border-bottom: none;
 }
 
+
 /*==================================================*
-*STATUS*
+* STATUS
 *==================================================*/
 
 .investment-status {
-display: inline-block;
+    display: inline-block;
 
-padding: 5px 12px;
+    padding: 5px 12px;
 
-border-radius: 20px;
+    border-radius: 20px;
 
-background:
-    rgba(0, 216, 239, .12);
+    background:
+        rgba(0, 216, 239, 0.12);
 
-border:
-    1px solid rgba(0, 216, 239, .25);
+    border:
+        1px solid rgba(0, 216, 239, 0.25);
 
-color: #00d8ef;
+    color: #00d8ef;
 
-font-size: 13px;
+    font-size: 13px;
 
-font-weight: 700;
-
-
+    font-weight: 700;
 }
 
+
 /*==================================================*
-*EMPTY STATES*
+* EMPTY STATES
 *==================================================*/
 
 .investment-empty-state,
 .investment-empty-message {
-color: rgba(255, 255, 255, .55);
+    color: rgba(255, 255, 255, 0.55);
 
-
-text-align: center;
-
-
+    text-align: center;
 }
+
 
 .investment-empty-message {
-margin: 0;
+    margin: 0;
 }
 
+
 /*==================================================*
-*CHART CONTAINER*
+* CHART CARD
+*==================================================*/
+
+.investment-chart-panel {
+    min-height: 390px;
+}
+
+
+/*==================================================*
+* CHART CONTAINER
 *==================================================*/
 
 .investment-chart-container {
-width: 100%;
+    position: relative;
 
+    width: 100%;
 
-min-height: 280px;
+    height: 300px;
 
-position: relative;
-
-z-index: 2;
-
-padding-top: 10px;
-
-
+    z-index: 2;
 }
+
 
 /*
+====================================================
+IMPORTANT
 
-* IMPORTANT:
-* These chart IDs are intentionally preserved.
-* Do not rename them because your JavaScript/Chart.js
-* code may depend on them.
-  */
+The following IDs MUST NOT be renamed.
 
-#historyChart,
-#allocationChart {
-width: 100% !important;
+Your JavaScript uses:
 
+    historyChart
+    allocationChart
 
-max-width: 100%;
+====================================================
+*/
 
+.investment-chart-container canvas {
+    display: block;
 
+    width: 100% !important;
+
+    height: 100% !important;
+
+    max-width: 100%;
 }
 
+
 /*==================================================*
-*EXPORT ACTIONS*
+* EXPORT ACTIONS
 *==================================================*/
 
 .investment-export-actions {
-display: flex;
+    display: flex;
 
+    flex-wrap: wrap;
 
-flex-wrap: wrap;
-
-gap: 8px;
-
-
+    gap: 8px;
 }
 
+
 /*==================================================*
-*INVESTMENT TIPS*
+* INVESTMENT TIPS
 *==================================================*/
 
 .investment-tips-panel {
-grid-column: 1 / -1;
-}
-
-.investment-tips-list {
-margin: 0;
-
-
-padding-left: 22px;
-
-
-}
-
-.investment-tips-list li {
-margin-bottom: 14px;
-
-
-color: rgba(255, 255, 255, .80);
-
-line-height: 1.6;
-
-
-}
-
-.investment-tips-list li:last-child {
-margin-bottom: 0;
-}
-
-.investment-tips-list li::marker {
-color: #00d8ef;
-}
-
-/*==================================================*
-*HEADING CONTAINER*
-*==================================================*/
-
-.investment-heading-container {
-width: 90%;
-
-
-max-width: 1600px;
-
-margin: 0 auto 60px;
-
-padding: 20px;
-
-text-align: center;
-
-background:
-    rgba(255, 255, 255, .05);
-
-border-radius: 20px;
-
-backdrop-filter: blur(12px);
--webkit-backdrop-filter: blur(12px);
-
-box-shadow:
-    0 0 25px rgba(0, 216, 239, .35);
-
-
-}
-
-/*==================================================*
-*HEADING TITLE*
-*==================================================*/
-
-.investment-heading-title {
-font-size: 25px;
-
-
-font-weight: 900;
-
-color: #fff;
-
-text-transform: uppercase;
-
-letter-spacing: 2px;
-
-margin: 0 0 15px;
-
-text-shadow:
-    0 0 10px #00d8ef,
-    0 0 20px #00d8ef,
-    0 0 40px #7a00ff;
-
-animation:
-    investmentGlowPulse 3s infinite alternate;
-
-
-}
-
-/*==================================================*
-*HEADING SUBTITLE*
-*==================================================*/
-
-.investment-heading-subtitle {
-font-size: 18px;
-
-
-font-weight: 600;
-
-margin: 0;
-
-background:
-    linear-gradient(
-        90deg,
-        #00d8ef,
-        #7a00ff,
-        #ff0080
-    );
-
--webkit-background-clip: text;
-
--webkit-text-fill-color: transparent;
-
-background-size: 200% auto;
-
-animation:
-    investmentShineFlow 6s linear infinite;
-
-letter-spacing: 1px;
-
-
-}
-
-/*==================================================*
-*ANIMATIONS*
-*==================================================*/
-
-@keyframes investmentGlowPulse {
-
-
-from {
-    text-shadow:
-        0 0 10px #00d8ef,
-        0 0 20px #00d8ef;
-}
-
-to {
-    text-shadow:
-        0 0 20px #7a00ff,
-        0 0 40px #ff0080;
-}
-
-
-}
-
-@keyframes investmentShineFlow {
-
-
-0% {
-    background-position: 0% 50%;
-}
-
-50% {
-    background-position: 100% 50%;
-}
-
-100% {
-    background-position: 0% 50%;
-}
-
-
-}
-
-/*==================================================*
-*RESPONSIVE*
-*==================================================*/
-
-@media(max-width:991px) {
-
-
-.investment-grid {
-    grid-template-columns:
-        repeat(2, 1fr);
-}
-
-.investment-wide-panel {
     grid-column: 1 / -1;
 }
 
 
+.investment-tips-list {
+    margin: 0;
+
+    padding-left: 22px;
 }
+
+
+.investment-tips-list li {
+    margin-bottom: 14px;
+
+    color: rgba(255, 255, 255, 0.80);
+
+    line-height: 1.6;
+}
+
+
+.investment-tips-list li:last-child {
+    margin-bottom: 0;
+}
+
+
+.investment-tips-list li::marker {
+    color: #00d8ef;
+}
+
 
 /*==================================================*
-*MOBILE*
+* HEADING CONTAINER
 *==================================================*/
 
-@media(max-width:600px) {
-
-
-.investment-showcase {
-    padding: 60px 0;
-}
-
-
-.investment-grid {
-    width: 95%;
-
-    grid-template-columns: 1fr;
-
-    gap: 24px;
-}
-
-
 .investment-heading-container {
-    width: 95%;
+    width: 90%;
 
-    margin-bottom: 40px;
+    max-width: 1600px;
 
-    padding: 20px 15px;
+    margin: 0 auto 60px;
+
+    padding: 20px;
+
+    text-align: center;
+
+    background:
+        rgba(255, 255, 255, 0.05);
+
+    border-radius: 20px;
+
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    box-shadow:
+        0 0 25px rgba(0, 216, 239, 0.35);
 }
 
+
+/*==================================================*
+* HEADING TITLE
+*==================================================*/
 
 .investment-heading-title {
     font-size: 25px;
 
+    font-weight: 900;
+
+    color: #ffffff;
+
+    text-transform: uppercase;
+
+    letter-spacing: 2px;
+
+    margin: 0 0 15px;
+
     text-shadow:
-        0 0 15px #00d8ef,
-        0 0 30px #7a00ff,
-        0 0 60px #ff0080;
+        0 0 10px #00d8ef,
+        0 0 20px #00d8ef,
+        0 0 40px #7a00ff;
 
     animation:
-        investmentGlowPulseMobile 2.5s infinite alternate;
+        investmentGlowPulse 3s infinite alternate;
 }
 
-
-.investment-heading-subtitle {
-    font-size: 16px;
-}
-
-
-.investment-panel {
-    padding: 24px;
-
-    border-radius: 25px;
-}
-
-
-.investment-panel-title {
-    font-size: 21px;
-}
-
-
-.investment-panel-description {
-    font-size: 14px;
-
-    line-height: 1.5;
-}
-
-
-.investment-wide-panel {
-    grid-column: auto;
-}
-
-
-.investment-value {
-    font-size: 30px;
-}
-
-
-.investment-chart-panel {
-    min-height: 330px;
-}
-
-
-.investment-stat {
-    align-items: flex-start;
-
-    flex-direction: column;
-
-    gap: 5px;
-}
-
-
-.investment-maturity-item {
-    align-items: flex-start;
-
-    flex-direction: column;
-
-    gap: 5px;
-}
-
-
-.investment-export-actions {
-    flex-direction: column;
-}
-
-
-.investment-export-btn,
-.investment-primary-btn {
-    display: block;
-
-    width: 100%;
-
-    box-sizing: border-box;
-
-    text-align: center;
-
-    margin-right: 0;
-}
-
-
-.investment-tips-panel {
-    grid-column: auto;
-}
-
-
-}
 
 /*==================================================*
-*MOBILE GLOW*
+* HEADING SUBTITLE
+*==================================================*/
+
+.investment-heading-subtitle {
+    font-size: 18px;
+
+    font-weight: 600;
+
+    margin: 0;
+
+    background:
+        linear-gradient(
+            90deg,
+            #00d8ef,
+            #7a00ff,
+            #ff0080
+        );
+
+    -webkit-background-clip: text;
+
+    -webkit-text-fill-color: transparent;
+
+    background-size: 200% auto;
+
+    animation:
+        investmentShineFlow 6s linear infinite;
+
+    letter-spacing: 1px;
+}
+
+
+/*==================================================*
+* ANIMATIONS
+*==================================================*/
+
+@keyframes investmentGlowPulse {
+
+    from {
+        text-shadow:
+            0 0 10px #00d8ef,
+            0 0 20px #00d8ef;
+    }
+
+    to {
+        text-shadow:
+            0 0 20px #7a00ff,
+            0 0 40px #ff0080;
+    }
+
+}
+
+
+@keyframes investmentShineFlow {
+
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+
+}
+
+
+/*==================================================*
+* RESPONSIVE - TABLET
+*==================================================*/
+
+@media (max-width: 991px) {
+
+    .investment-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    .investment-wide-panel {
+        grid-column: 1 / -1;
+    }
+
+}
+
+
+/*==================================================*
+* RESPONSIVE - MOBILE
+*==================================================*/
+
+@media (max-width: 600px) {
+
+    .investment-showcase {
+        padding: 60px 0;
+    }
+
+
+    .investment-grid {
+        width: 95%;
+
+        grid-template-columns: 1fr;
+
+        gap: 24px;
+    }
+
+
+    .investment-heading-container {
+        width: 95%;
+
+        margin-bottom: 40px;
+
+        padding: 20px 15px;
+    }
+
+
+    .investment-heading-title {
+        font-size: 25px;
+
+        text-shadow:
+            0 0 15px #00d8ef,
+            0 0 30px #7a00ff,
+            0 0 60px #ff0080;
+
+        animation:
+            investmentGlowPulseMobile 2.5s infinite alternate;
+    }
+
+
+    .investment-heading-subtitle {
+        font-size: 16px;
+    }
+
+
+    .investment-panel {
+        padding: 24px;
+
+        border-radius: 25px;
+    }
+
+
+    .investment-panel-title {
+        font-size: 21px;
+    }
+
+
+    .investment-panel-description {
+        font-size: 14px;
+
+        line-height: 1.5;
+    }
+
+
+    .investment-wide-panel {
+        grid-column: auto;
+    }
+
+
+    .investment-value {
+        font-size: 30px;
+    }
+
+
+    .investment-chart-panel {
+        min-height: 350px;
+    }
+
+
+    .investment-chart-container {
+        height: 270px;
+    }
+
+
+    .investment-stat {
+        align-items: flex-start;
+
+        flex-direction: column;
+
+        gap: 5px;
+    }
+
+
+    .investment-maturity-item {
+        align-items: flex-start;
+
+        flex-direction: column;
+
+        gap: 5px;
+    }
+
+
+    .investment-export-actions {
+        flex-direction: column;
+    }
+
+
+    .investment-export-btn,
+    .investment-primary-btn {
+        display: block;
+
+        width: 100%;
+
+        box-sizing: border-box;
+
+        text-align: center;
+
+        margin-right: 0;
+    }
+
+
+    .investment-tips-panel {
+        grid-column: auto;
+    }
+
+}
+
+
+/*==================================================*
+* MOBILE GLOW
 *==================================================*/
 
 @keyframes investmentGlowPulseMobile {
 
+    from {
+        text-shadow:
+            0 0 15px #00d8ef,
+            0 0 30px #7a00ff;
+    }
 
-from {
-    text-shadow:
-        0 0 15px #00d8ef,
-        0 0 30px #7a00ff;
-}
-
-to {
-    text-shadow:
-        0 0 30px #ff0080,
-        0 0 60px #00d8ef;
-}
+    to {
+        text-shadow:
+            0 0 30px #ff0080,
+            0 0 60px #00d8ef;
+    }
 
 }
