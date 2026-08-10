@@ -1,32 +1,19 @@
 {% extends "users/dashboard_base.html" %}
 {% load static %}
-
 {% block title %}Profile{% endblock %}
-
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'users/css/profile.css' %}">
 {% endblock %}
-
 {% block content %}
 <div class="profilepage-showcase">
     <div class="profilepage-container">
-
-        <!-- ================================================== -->
-        <!-- PAGE HEADING -->
-        <!-- ================================================== -->
         <div class="profilepage-heading-container">
             <h1 class="profilepage-heading-title">My Profile</h1>
             <p class="profilepage-heading-subtitle">
                 Manage your account, investments, security and wallets
             </p>
         </div>
-
-        <!-- ================================================== -->
-        <!-- PERSONAL INFORMATION + BALANCE -->
-        <!-- ================================================== -->
         <div class="profilepage-grid">
-
-            <!-- PERSONAL INFORMATION -->
             <div class="profilepage-panel">
                 <h2 class="profilepage-panel-title">Personal Information</h2>
                 <div class="profilepage-info-list">
@@ -58,15 +45,11 @@
                     {% endif %}
                 </div>
             </div>
-
-            <!-- ACCOUNT BALANCE -->
             <div class="profilepage-panel">
                 <h2 class="profilepage-panel-title">Account Balance</h2>
                 <div class="profilepage-big-value">${{ profile.usd_balance|floatformat:2 }}</div>
                 <p class="profilepage-panel-description">Available account balance</p>
             </div>
-
-            <!-- INVESTMENT SUMMARY -->
             <div class="profilepage-panel">
                 <h2 class="profilepage-panel-title">Investment Summary</h2>
                 <div class="profilepage-stat-grid">
@@ -84,8 +67,6 @@
                     </div>
                 </div>
             </div>
-
-            <!-- RECENT INVESTMENTS -->
             <div class="profilepage-panel">
                 <h2 class="profilepage-panel-title">Recent Investments</h2>
                 <div class="profilepage-table-wrapper">
@@ -115,31 +96,6 @@
                     </table>
                 </div>
             </div>
-
-            <!-- ================================================== -->
-            <!-- INVESTMENT PERFORMANCE -->
-            <!-- ================================================== -->
-            <div class="profilepage-panel">
-                <h2 class="profilepage-panel-title">Investment Performance</h2>
-                <p class="profilepage-panel-description">
-                    Track the current value of your investments over time.
-                </p>
-                {% if recent_investments %}
-                    <div class="profilepage-chart-wrapper">
-                        <canvas id="roiChart"></canvas>
-                    </div>
-                {% else %}
-                    <div class="profilepage-chart-empty">
-                        No investment performance data available yet.
-                    </div>
-                {% endif %}
-            </div>
-
-            <!-- CHART DATA -->
-            {{ chart_labels|json_script:"profile-chart-labels" }}
-            {{ chart_data|json_script:"profile-chart-data" }}
-
-            <!-- QUICK ACTIONS -->
             <div class="profilepage-panel">
                 <h2 class="profilepage-panel-title">Quick Actions</h2>
                 <div class="profilepage-buttons">
@@ -147,8 +103,6 @@
                     <a href="{% url 'users:withdraw' %}" class="profilepage-btn profilepage-btn-danger">Withdraw Funds</a>
                 </div>
             </div>
-
-            <!-- REFERRAL PROGRAM -->
             <div class="profilepage-panel">
                 <h2 class="profilepage-panel-title">Referral Program</h2>
                 <p class="profilepage-panel-description">Invite friends and earn referral commissions.</p>
@@ -164,8 +118,6 @@
                     <strong>${{ referral_earnings|default:"0.00" }}</strong>
                 </div>
             </div>
-
-            <!-- ACCOUNT SETTINGS -->
             <div class="profilepage-panel">
                 <h2 class="profilepage-panel-title">Account Settings</h2>
                 <div class="profilepage-buttons">
@@ -176,8 +128,6 @@
                     {% include "users/_wallets_partial.html" %}
                 </div>
             </div>
-
-            <!-- WALLETS -->
             <div class="profilepage-panel" id="wallets">
                 <h2 class="profilepage-panel-title">Wallets</h2>
                 <p class="profilepage-panel-description">
@@ -185,7 +135,6 @@
                 </p>
                 <form method="post" enctype="multipart/form-data" class="profilepage-wallet-form">
                     {% csrf_token %}
-                    <!-- BTC WALLET -->
                     <div class="profilepage-wallet-field">
                         <label for="id_btc_wallet">BTC Wallet</label>
                         {{ wallet_form.btc_wallet }}
@@ -194,7 +143,6 @@
                         {% endif %}
                         {{ wallet_form.btc_qr }}
                     </div>
-                    <!-- ETH WALLET -->
                     <div class="profilepage-wallet-field">
                         <label for="id_eth_wallet">ETH Wallet</label>
                         {{ wallet_form.eth_wallet }}
@@ -203,7 +151,6 @@
                         {% endif %}
                         {{ wallet_form.eth_qr }}
                     </div>
-                    <!-- USDT ERC20 -->
                     <div class="profilepage-wallet-field">
                         <label for="id_usdt_erc20_wallet">USDT ERC20 Wallet</label>
                         {{ wallet_form.usdt_erc20_wallet }}
@@ -212,7 +159,7 @@
                         {% endif %}
                         {{ wallet_form.usdt_erc20_qr }}
                     </div>
-                    <!-- USDT TRC20 -->
+                   
                     <div class="profilepage-wallet-field">
                         <label for="id_usdt_trc20_wallet">USDT TRC                    <!-- USDT TRC20 -->
                     <div class="profilepage-wallet-field">
@@ -223,22 +170,18 @@
                         {% endif %}
                         {{ wallet_form.usdt_trc20_qr }}
                     </div>
-
-                    <!-- SAVE -->
                     <button
                         type="submit"
                         class="profilepage-btn profilepage-btn-primary profilepage-save-wallets"
                     >
-                        💾 Save Wallets
+                        Save Wallets
                     </button>
                 </form>
             </div>
         </div>
     </div>
 </div>
-
 {% endblock %}
-
 {% block extra_js %}
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="{% static 'users/js/profile_charts.js' %}"></script>

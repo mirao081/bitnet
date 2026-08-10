@@ -373,6 +373,7 @@ class UserProfile(models.Model):
     referrer = models.ForeignKey(
         User, on_delete=models.SET_NULL, null=True, blank=True, related_name="user_referrals"
     )
+    
 
     risk_level = models.CharField(
         max_length=20,
