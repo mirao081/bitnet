@@ -1,168 +1,702 @@
 {% extends "users/dashboard_base.html" %}
 {% load static %}
-{% block extra_css %}
-<link rel="stylesheet" href="{% static 'users/css/profile.css' %}">
-{% endblock %}
+
 {% block title %}Profile{% endblock %}
+
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/profile.css' %}">
+{% endblock %}
+
+
 {% block content %}
-<div class="np-page">
-    <div class="np-header">
-        <h1 class="np-title">Your Profile</h1>
-        <p class="np-subtitle">
-            Manage your personal information, investments, security settings, and account preferences from one place.
-        </p>
-    </div>
 
-    <div class="np-grid">
-        <div class="np-card">
-            <h2 class="np-card-title">Personal Information</h2>
-            <p><strong>Username:</strong> {{ request.user.username }}</p>
-            <p><strong>Email:</strong> {{ request.user.email }}</p>
-            {% if request.user.userprofile.phone %}
-            <p><strong>Phone:</strong> {{ request.user.userprofile.phone }}</p>
+<div class="profilepage-showcase">
+
+    <div class="profilepage-container">
+
+        <!-- ================================================== -->
+        <!-- PAGE HEADING -->
+        <!-- ================================================== -->
+
+        <div class="profilepage-heading-container">
+
+            <h1 class="profilepage-heading-title">
+                My Profile
+            </h1>
+
+            <p class="profilepage-heading-subtitle">
+                Manage your account, investments, security and wallets
+            </p>
+
+        </div>
+
+
+        <!-- ================================================== -->
+        <!-- PERSONAL INFORMATION + BALANCE -->
+        <!-- ================================================== -->
+
+        <div class="profilepage-grid">
+
+            <!-- PERSONAL INFORMATION -->
+
+            <div class="profilepage-panel">
+
+                <h2 class="profilepage-panel-title">
+                    Personal Information
+                </h2>
+
+                <div class="profilepage-info-list">
+
+                    <div class="profilepage-info-item">
+
+                        <span class="profilepage-info-label">
+                            Username
+                        </span>
+
+                        <span class="profilepage-info-value">
+                            {{ request.user.username }}
+                        </span>
+
+                    </div>
+
+
+                    <div class="profilepage-info-item">
+
+                        <span class="profilepage-info-label">
+                            Email
+                        </span>
+
+                        <span class="profilepage-info-value">
+                            {{ request.user.email }}
+                        </span>
+
+                    </div>
+
+
+                    {% if request.user.userprofile.phone %}
+
+                    <div class="profilepage-info-item">
+
+                        <span class="profilepage-info-label">
+                            Phone
+                        </span>
+
+                        <span class="profilepage-info-value">
+                            {{ request.user.userprofile.phone }}
+                        </span>
+
+                    </div>
+
+                    {% endif %}
+
+
+                    {% if request.user.userprofile.country %}
+
+                    <div class="profilepage-info-item">
+
+                        <span class="profilepage-info-label">
+                            Country
+                        </span>
+
+                        <span class="profilepage-info-value">
+                            {{ request.user.userprofile.country }}
+                        </span>
+
+                    </div>
+
+                    {% endif %}
+
+
+                    {% if request.user.userprofile.timezone %}
+
+                    <div class="profilepage-info-item">
+
+                        <span class="profilepage-info-label">
+                            Timezone
+                        </span>
+
+                        <span class="profilepage-info-value">
+                            {{ request.user.userprofile.timezone }}
+                        </span>
+
+                    </div>
+
+                    {% endif %}
+
+                </div>
+
+            </div>
+
+
+            <!-- ACCOUNT BALANCE -->
+
+            <div class="profilepage-panel profilepage-balance-panel">
+
+                <h2 class="profilepage-panel-title">
+                    Account Balance
+                </h2>
+
+                <div class="profilepage-big-value">
+                    ${{ request.user.userbalance.balance|default:"0.00" }}
+                </div>
+
+                <p class="profilepage-panel-description">
+                    Available account balance
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- ================================================== -->
+        <!-- INVESTMENT SUMMARY -->
+        <!-- ================================================== -->
+
+        <div class="profilepage-panel">
+
+            <h2 class="profilepage-panel-title">
+                Investment Summary
+            </h2>
+
+            <div class="profilepage-stat-grid">
+
+
+                <!-- ACTIVE INVESTMENTS -->
+
+                <div class="profilepage-stat-card">
+
+                    <div class="profilepage-stat-icon">
+                        📈
+                    </div>
+
+                    <span class="profilepage-stat-label">
+                        Active Investments
+                    </span>
+
+                    <strong class="profilepage-stat-value">
+                        {{ active_investments_count }}
+                    </strong>
+
+                </div>
+
+
+                <!-- TOTAL INVESTED -->
+
+                <div class="profilepage-stat-card">
+
+                    <div class="profilepage-stat-icon">
+                        💰
+                    </div>
+
+                    <span class="profilepage-stat-label">
+                        Total Invested
+                    </span>
+
+                    <strong class="profilepage-stat-value">
+                        ${{ total_invested|default:"0.00" }}
+                    </strong>
+
+                </div>
+
+
+                <!-- TOTAL ROI -->
+
+                <div class="profilepage-stat-card">
+
+                    <div class="profilepage-stat-icon">
+                        🚀
+                    </div>
+
+                    <span class="profilepage-stat-label">
+                        Total ROI Earned
+                    </span>
+
+                    <strong class="profilepage-stat-value">
+                        ${{ total_roi|default:"0.00" }}
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ================================================== -->
+        <!-- RECENT INVESTMENTS -->
+        <!-- ================================================== -->
+
+        <div class="profilepage-panel">
+
+            <h2 class="profilepage-panel-title">
+                Recent Investments
+            </h2>
+
+            <div class="profilepage-table-wrapper">
+
+                <table class="profilepage-table">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                Plan
+                            </th>
+
+                            <th>
+                                Amount
+                            </th>
+
+                            <th>
+                                Start Date
+                            </th>
+
+                            <th>
+                                Status
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody>
+
+                        {% for inv in recent_investments %}
+
+                        <tr>
+
+                            <td>
+                                {{ inv.plan_name }}
+                            </td>
+
+                            <td>
+                                ${{ inv.amount }}
+                            </td>
+
+                            <td>
+                                {{ inv.start_date|date:"Y-m-d H:i" }}
+                            </td>
+
+                            <td>
+
+                                <span class="profilepage-status">
+                                    {{ inv.status|title }}
+                                </span>
+
+                            </td>
+
+                        </tr>
+
+                        {% empty %}
+
+                        <tr>
+
+                            <td
+                                colspan="4"
+                                class="profilepage-empty"
+                            >
+                                No recent investments found.
+                            </td>
+
+                        </tr>
+
+                        {% endfor %}
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+
+        <!-- ================================================== -->
+        <!-- INVESTMENT PERFORMANCE -->
+        <!-- ================================================== -->
+
+        <div class="profilepage-panel">
+
+            <h2 class="profilepage-panel-title">
+                Investment Performance
+            </h2>
+
+            <p class="profilepage-panel-description">
+                Track the current value of your investments over time.
+            </p>
+
+
+            {% if recent_investments %}
+
+                <div class="profilepage-chart-wrapper">
+
+                    <canvas id="roiChart"></canvas>
+
+                </div>
+
+            {% else %}
+
+                <div class="profilepage-chart-empty">
+                    No investment performance data available yet.
+                </div>
+
             {% endif %}
-            {% if request.user.userprofile.country %}
-            <p><strong>Country:</strong> {{ request.user.userprofile.country }}</p>
-            {% endif %}
-            {% if request.user.userprofile.timezone %}
-            <p><strong>Timezone:</strong> {{ request.user.userprofile.timezone }}</p>
-            {% endif %}
+
         </div>
 
-        <div class="np-card">
-            <h2 class="np-card-title">Account Balance</h2>
-            <p><strong>Available Balance:</strong> ${{ request.user.userbalance.balance }}</p>
-        </div>
-    </div>
 
-    <div class="np-card">
-        <h2 class="np-card-title">Investment Summary</h2>
-        <p><strong>Active Investments:</strong> {{ active_investments_count }}</p>
-        <p><strong>Total Invested:</strong> ${{ total_invested }}</p>
-        <p><strong>Total ROI Earned:</strong> ${{ total_roi }}</p>
-    </div>
+        <!-- ================================================== -->
+        <!-- CHART DATA -->
+        <!-- ================================================== -->
 
-    <div class="np-card">
-        <h2 class="np-card-title">Recent Investments</h2>
-        <div class="np-table-wrapper">
-            <table class="np-table">
-                <thead>
-                    <tr>
-                        <th>Plan</th>
-                        <th>Amount</th>
-                        <th>Start Date</th>
-                        <th>Status</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for inv in recent_investments %}
-                    <tr>
-                        <td>{{ inv.plan_name }}</td>
-                        <td>${{ inv.amount }}</td>
-                        <td>{{ inv.start_date|date:"Y-m-d H:i" }}</td>
-                        <td>{{ inv.status|title }}</td>
-                    </tr>
-                    {% empty %}
-                    <tr><td colspan="4">No recent investments found.</td></tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-        </div>
-    </div>
+        {{ chart_labels|json_script:"profile-chart-labels" }}
+        {{ chart_data|json_script:"profile-chart-data" }}
 
-    <div class="np-card">
-        <h2 class="np-card-title">Investment Performance</h2>
-        <canvas id="roiChart"
-                data-labels='{{ chart_labels|safe }}'
-                data-data='{{ chart_data|safe }}'></canvas>
-    </div>
 
-    <div class="np-grid">
-        <div class="np-card">
-            <h2 class="np-card-title">Quick Actions</h2>
-            <div class="np-buttons">
-                <a href="{% url 'users:make_deposit' %}" class="np-btn np-btn-success">💰 Deposit Funds</a>
-                <a href="{% url 'users:withdraw' %}" class="np-btn np-btn-danger">💸 Withdraw Funds</a>
-            </div>
-        </div>
+        <!-- ================================================== -->
+        <!-- QUICK ACTIONS + SECURITY -->
+        <!-- ================================================== -->
 
-        <div class="np-card">
-            <h2 class="np-card-title">Security Settings</h2>
-            <p><strong>Two-Factor Authentication:</strong> {{ request.user.userprofile.two_factor_enabled|yesno:"Enabled,Disabled" }}</p>
-            <p><strong>Last Login:</strong> {{ request.user.last_login|date:"Y-m-d H:i" }}</p>
-            <a href="{% url 'users:change_password' %}" class="np-btn np-btn-warning">🔑 Change Password</a>
-        </div>
-    </div>
+        <div class="profilepage-grid">
 
-    <div class="np-card">
-        <h2 class="np-card-title">Referral Program</h2>
-        <p>Invite friends and earn referral commissions.</p>
-        <p><strong>Your Referral Link:</strong><br>{{ request.user.userprofile.referral_link }}</p>
-        <p><strong>Total Referral Earnings:</strong> ${{ referral_earnings }}</p>
-    </div>
 
-    <div class="np-card">
-        <h2 class="np-card-title">Account Settings</h2>
-        <div class="np-buttons">
-            <a href="{% url 'users:profile_settings' %}" class="np-btn np-btn-primary">Full Settings</a>
-            <a href="{% url 'users:quick_settings' %}" class="np-btn np-btn-secondary">Quick Settings</a>
-        </div>
-        <div class="np-wallets">
-            {% include "users/_wallets_partial.html" %}
-        </div>
-    </div>
+            <!-- QUICK ACTIONS -->
 
-    <div class="np-card" id="wallets">
-        <h2 class="np-card-title">Wallets</h2>
-        <form method="post" enctype="multipart/form-data">
-            {% csrf_token %}
+            <div class="profilepage-panel">
 
-            <!-- BTC Wallet -->
-            <div class="wallet-field">
-                <label for="id_btc_wallet">BTC Wallet</label>
-                {{ wallet_form.btc_wallet }}
-                {% if request.user.userwallet.btc_qr %}
-                    <img src="{{ request.user.userwallet.btc_qr.url }}" alt="BTC QR Code" class="wallet-qr">
-                {% endif %}
-                {{ wallet_form.btc_qr }}
+                <h2 class="profilepage-panel-title">
+                    Quick Actions
+                </h2>
+
+                <div class="profilepage-buttons">
+
+                    <a
+                        href="{% url 'users:make_deposit' %}"
+                        class="profilepage-btn profilepage-btn-success"
+                    >
+                        💰 Deposit Funds
+                    </a>
+
+
+                    <a
+                        href="{% url 'users:withdraw' %}"
+                        class="profilepage-btn profilepage-btn-danger"
+                    >
+                        💸 Withdraw Funds
+                    </a>
+
+                </div>
+
             </div>
 
-            <!-- ETH Wallet -->
-            <div class="wallet-field">
-                <label for="id_eth_wallet">ETH Wallet</label>
-                {{ wallet_form.eth_wallet }}
-                {% if request.user.userwallet.eth_qr %}
-                    <img src="{{ request.user.userwallet.eth_qr.url }}" alt="ETH QR Code" class="wallet-qr">
-                {% endif %}
-                {{ wallet_form.eth_qr }}
+
+            <!-- SECURITY SETTINGS -->
+
+            <div class="profilepage-panel">
+
+                <h2 class="profilepage-panel-title">
+                    Security Settings
+                </h2>
+
+                <div class="profilepage-security-info">
+
+                    <div class="profilepage-security-item">
+
+                        <span class="profilepage-info-label">
+                            Two-Factor Authentication
+                        </span>
+
+                        <span class="profilepage-security-status">
+                            {{ request.user.userprofile.two_factor_enabled|yesno:"Enabled,Disabled" }}
+                        </span>
+
+                    </div>
+
+
+                    <div class="profilepage-security-item">
+
+                        <span class="profilepage-info-label">
+                            Last Login
+                        </span>
+
+                        <span class="profilepage-security-value">
+                            {{ request.user.last_login|date:"Y-m-d H:i" }}
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="profilepage-buttons">
+
+                    <a
+                        href="{% url 'users:change_password' %}"
+                        class="profilepage-btn profilepage-btn-warning"
+                    >
+                        🔑 Change Password
+                    </a>
+
+                </div>
+
             </div>
 
-            <!-- USDT ERC20 Wallet -->
-            <div class="wallet-field">
-                <label for="id_usdt_erc20_wallet">USDT ERC20 Wallet</label>
-                {{ wallet_form.usdt_erc20_wallet }}
-                {% if request.user.userwallet.usdt_erc20_qr %}
-                    <img src="{{ request.user.userwallet.usdt_erc20_qr.url }}" alt="USDT ERC20 QR Code" class="wallet-qr">
-                {% endif %}
-                {{ wallet_form.usdt_erc20_qr }}
+        </div>
+
+
+        <!-- ================================================== -->
+        <!-- REFERRAL PROGRAM -->
+        <!-- ================================================== -->
+
+        <div class="profilepage-panel">
+
+            <h2 class="profilepage-panel-title">
+                Referral Program
+            </h2>
+
+            <p class="profilepage-panel-description">
+                Invite friends and earn referral commissions.
+            </p>
+
+
+            <div class="profilepage-referral-box">
+
+                <span class="profilepage-info-label">
+                    Your Referral Link
+                </span>
+
+                <div class="profilepage-referral-link">
+                    {{ request.user.userprofile.referral_link }}
+                </div>
+
             </div>
 
-            <!-- USDT TRC20 Wallet -->
-            <div class="wallet-field">
-                <label for="id_usdt_trc20_wallet">USDT TRC20 Wallet</label>
-                {{ wallet_form.usdt_trc20_wallet }}
-                {% if request.user.userwallet.usdt_trc20_qr %}
-                    <img src="{{ request.user.userwallet.usdt_trc20_qr.url }}" alt="USDT TRC20 QR Code" class="wallet-qr">
-                {% endif %}
-                {{ wallet_form.usdt_trc20_qr }}
+
+            <div class="profilepage-referral-earnings">
+
+                <span>
+                    Total Referral Earnings
+                </span>
+
+                <strong>
+                    ${{ referral_earnings|default:"0.00" }}
+                </strong>
+
             </div>
 
-            <button type="submit" class="np-btn np-btn-primary">Save Wallets</button>
-        </form>
+        </div>
+
+
+        <!-- ================================================== -->
+        <!-- ACCOUNT SETTINGS -->
+        <!-- ================================================== -->
+
+        <div class="profilepage-panel">
+
+            <h2 class="profilepage-panel-title">
+                Account Settings
+            </h2>
+
+            <div class="profilepage-buttons">
+
+                <a
+                    href="{% url 'users:profile_settings' %}"
+                    class="profilepage-btn profilepage-btn-primary"
+                >
+                    ⚙️ Full Settings
+                </a>
+
+
+                <a
+                    href="{% url 'users:quick_settings' %}"
+                    class="profilepage-btn profilepage-btn-secondary"
+                >
+                    ⚡ Quick Settings
+                </a>
+
+            </div>
+
+
+            <div class="profilepage-wallet-preview">
+
+                {% include "users/_wallets_partial.html" %}
+
+            </div>
+
+        </div>
+
+
+        <!-- ================================================== -->
+        <!-- WALLETS -->
+        <!-- ================================================== -->
+
+        <div
+            class="profilepage-panel"
+            id="wallets"
+        >
+
+            <h2 class="profilepage-panel-title">
+                Wallets
+            </h2>
+
+            <p class="profilepage-panel-description">
+                Manage your cryptocurrency wallet addresses and QR codes.
+            </p>
+
+
+            <form
+                method="post"
+                enctype="multipart/form-data"
+                class="profilepage-wallet-form"
+            >
+
+                {% csrf_token %}
+
+
+                <!-- ================================================== -->
+                <!-- BTC WALLET -->
+                <!-- ================================================== -->
+
+                <div class="profilepage-wallet-field">
+
+                    <label for="id_btc_wallet">
+                        BTC Wallet
+                    </label>
+
+                    {{ wallet_form.btc_wallet }}
+
+
+                    {% if request.user.userwallet.btc_qr %}
+
+                        <img
+                            src="{{ request.user.userwallet.btc_qr.url }}"
+                            alt="BTC QR Code"
+                            class="profilepage-wallet-qr"
+                        >
+
+                    {% endif %}
+
+
+                    {{ wallet_form.btc_qr }}
+
+                </div>
+
+
+                <!-- ================================================== -->
+                <!-- ETH WALLET -->
+                <!-- ================================================== -->
+
+                <div class="profilepage-wallet-field">
+
+                    <label for="id_eth_wallet">
+                        ETH Wallet
+                    </label>
+
+                    {{ wallet_form.eth_wallet }}
+
+
+                    {% if request.user.userwallet.eth_qr %}
+
+                        <img
+                            src="{{ request.user.userwallet.eth_qr.url }}"
+                            alt="ETH QR Code"
+                            class="profilepage-wallet-qr"
+                        >
+
+                    {% endif %}
+
+
+                    {{ wallet_form.eth_qr }}
+
+                </div>
+
+
+                <!-- ================================================== -->
+                <!-- USDT ERC20 -->
+                <!-- ================================================== -->
+
+                <div class="profilepage-wallet-field">
+
+                    <label for="id_usdt_erc20_wallet">
+                        USDT ERC20 Wallet
+                    </label>
+
+                    {{ wallet_form.usdt_erc20_wallet }}
+
+
+                    {% if request.user.userwallet.usdt_erc20_qr %}
+
+                        <img
+                            src="{{ request.user.userwallet.usdt_erc20_qr.url }}"
+                            alt="USDT ERC20 QR Code"
+                            class="profilepage-wallet-qr"
+                        >
+
+                    {% endif %}
+
+
+                    {{ wallet_form.usdt_erc20_qr }}
+
+                </div>
+
+
+                <!-- ================================================== -->
+                <!-- USDT TRC20 -->
+                <!-- ================================================== -->
+
+                <div class="profilepage-wallet-field">
+
+                    <label for="id_usdt_trc20_wallet">
+                        USDT TRC20 Wallet
+                    </label>
+
+                    {{ wallet_form.usdt_trc20_wallet }}
+
+
+                    {% if request.user.userwallet.usdt_trc20_qr %}
+
+                        <img
+                            src="{{ request.user.userwallet.usdt_trc20_qr.url }}"
+                            alt="USDT TRC20 QR Code"
+                            class="profilepage-wallet-qr"
+                        >
+
+                    {% endif %}
+
+
+                    {{ wallet_form.usdt_trc20_qr }}
+
+                </div>
+
+
+                <!-- SAVE -->
+
+                <button
+                    type="submit"
+                    class="profilepage-btn profilepage-btn-primary profilepage-save-wallets"
+                >
+                    💾 Save Wallets
+                </button>
+
+            </form>
+
+        </div>
+
     </div>
 
 </div>
 
+{% endblock %}
+
+
+{% block extra_js %}
+
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 <script src="{% static 'js/profile_charts.js' %}"></script>
+
 {% endblock %}

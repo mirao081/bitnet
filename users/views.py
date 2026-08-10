@@ -915,45 +915,196 @@ def support(request):
 @login_required
 def profile(request):
     user = request.user
-    wallet, _ = UserWallet.objects.get_or_create(user=user)
-    wallet_form = UserWalletForm(request.POST or None, instance=wallet)
 
-    for field_name in ['btc_wallet', 'eth_wallet', 'usdt_erc20_wallet', 'usdt_trc20_wallet']:
+    # ==================================================
+    # USER PROFILE
+    # ==================================================
+
+    profile, _ = UserProfile.objects.get_or_create(user=user)
+
+    # ==================================================
+    # WALLET
+    # ==================================================
+
+    wallet, _ = UserWallet.objects.get_or_create(user=user)
+
+    wallet_form = UserWalletForm(
+        request.POST or None,
+        instance=wallet
+    )
+
+    for field_name in [
+        "btc_wallet",
+        "eth_wallet",
+        "usdt_erc20_wallet",
+        "usdt_trc20_wallet",
+    ]:
+
         field = wallet_form.fields[field_name]
+
         if getattr(wallet, field_name):
-            field.widget.attrs['readonly'] = 'readonly'
-        field.widget.attrs['id'] = f'id_{field_name}'
+            field.widget.attrs["readonly"] = "readonly"
+
+        field.widget.attrs["id"] = f"id_{field_name}"
 
     if request.method == "POST" and wallet_form.is_valid():
+
         wallet_form.save()
+
         return redirect("/users/profile#wallets")
 
-    active_investments = ActiveInvestment.objects.filter(user=user, status="active")
-    completed_investments = ActiveInvestment.objects.filter(user=user, status="completed")
+    # ==================================================
+    # INVESTMENTS
+    # ==================================================
+
+    investments = ActiveInvestment.objects.filter(
+        user=user
+    ).order_by("start_date")
+
+    active_investments = investments.filter(
+        status="active"
+    )
+
+    completed_investments = investments.filter(
+        status="completed"
+    )
 
     active_investments_count = active_investments.count()
-    total_invested = ActiveInvestment.objects.filter(user=user).aggregate(total=Sum("amount"))["total"] or 0
-    total_roi = sum(inv.get_current_value() - inv.amount for inv in completed_investments)
 
-  
-    recent_investments = ActiveInvestment.objects.filter(user=user).order_by("-start_date")[:5]
+    # ==================================================
+    # TOTAL INVESTED
+    # ==================================================
 
-    referral_earnings = getattr(user.userprofile, "referral_earnings", 0)
+    total_invested = (
+        investments.aggregate(
+            total=Sum("amount")
+        )["total"]
+        or 0
+    )
 
-  
-    chart_labels = [inv.start_date.strftime("%Y-%m-%d") for inv in recent_investments]
-    chart_data = [float(inv.get_current_value()) for inv in recent_investments]
+    # ==================================================
+    # TOTAL ROI
+    # ==================================================
 
-    return render(request, "users/profile.html", {
+    total_roi = sum(
+        (
+            inv.get_current_value() - inv.amount
+            for inv in completed_investments
+        ),
+        0
+    )
+
+    # ==================================================
+    # TOTAL CURRENT INVESTMENT VALUE
+    # ==================================================
+
+    total_current_investment = sum(
+        (
+            inv.get_current_value()
+            for inv in completed_investments
+        ),
+        0
+    )
+
+    # ==================================================
+    # TOTAL BALANCE
+    #
+    # SAME CALCULATION AS DASHBOARD
+    # ==================================================
+
+    total_balance = (
+        profile.usd_balance
+        + profile.investment_balance
+        + profile.profit_balance
+        + profile.bonus_balance
+        + total_current_investment
+    )
+
+    # ==================================================
+    # RECENT INVESTMENTS
+    # ==================================================
+
+    recent_investments = investments.order_by(
+        "-start_date"
+    )[:5]
+
+    # ==================================================
+    # REFERRALS
+    # ==================================================
+
+    referral_earnings = getattr(
+        profile,
+        "referral_earnings",
+        0
+    )
+
+    # ==================================================
+    # PERFORMANCE CHART
+    # ==================================================
+
+    chart_labels = []
+
+    chart_data = []
+
+    running_value = 0
+
+    for inv in investments:
+
+        running_value += float(
+            inv.get_current_value()
+        )
+
+        chart_labels.append(
+            inv.start_date.strftime("%Y-%m-%d")
+        )
+
+        chart_data.append(
+            round(running_value, 2)
+        )
+
+    # ==================================================
+    # CONTEXT
+    # ==================================================
+
+    context = {
+
+        "profile": profile,
+
         "wallet_form": wallet_form,
-        "active_investments_count": active_investments_count,
-        "total_invested": total_invested,
-        "total_roi": total_roi,
-        "recent_investments": recent_investments,
-        "referral_earnings": referral_earnings,
-        "chart_labels": chart_labels,
-        "chart_data": chart_data,
-    })
+
+        "active_investments_count":
+            active_investments_count,
+
+        "total_invested":
+            total_invested,
+
+        "total_roi":
+            total_roi,
+
+        "total_balance":
+            total_balance,
+
+        "total_current_investment":
+            total_current_investment,
+
+        "recent_investments":
+            recent_investments,
+
+        "referral_earnings":
+            referral_earnings,
+
+        "chart_labels":
+            chart_labels,
+
+        "chart_data":
+            chart_data,
+    }
+
+    return render(
+        request,
+        "users/profile.html",
+        context
+    )
 
 @login_required
 def profile_settings(request):
