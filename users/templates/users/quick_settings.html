@@ -28,7 +28,7 @@
         </form>
     </div>
 
-    <!-- ✅ Wallets section with QR codes -->
+    <!-- ✅ Wallets section with QR images -->
     <div class="quick-settings-panel">
         <h3 class="quick-settings-title">Wallets</h3>
         <form method="post">
@@ -37,15 +37,25 @@
             <button type="submit" class="quick-settings-btn">Update Wallets</button>
         </form>
 
+        <!-- BTC Wallet -->
         <div class="qr-code-container">
-            <h4 class="quick-settings-subtitle">BTC Wallet QR</h4>
-            <img src="{% static 'wallet_qrcodes/btc_wallet.jpeg' %}" alt="BTC QR Code" class="qr-code-img">
+            <label class="quick-settings-subtitle">BTC Wallet QR</label>
+            <img src="{% static 'wallet_qrcodes/btc_wallet.jpeg' %}" 
+                 alt="BTC QR Code" class="qr-code-img">
+        </div>
 
-            <h4 class="quick-settings-subtitle">ETH Wallet QR</h4>
-            <img src="{% static 'wallet_qrcodes/eth_wallet.jpeg' %}" alt="ETH QR Code" class="qr-code-img">
+        <!-- ETH Wallet -->
+        <div class="qr-code-container">
+            <label class="quick-settings-subtitle">ETH Wallet QR</label>
+            <img src="{% static 'wallet_qrcodes/eth_wallet.jpeg' %}" 
+                 alt="ETH QR Code" class="qr-code-img">
+        </div>
 
-            <h4 class="quick-settings-subtitle">USDT TRC20 Wallet QR</h4>
-            <img src="{% static 'wallet_qrcodes/qr2_pscAo14.jpeg' %}" alt="USDT TRC20 QR Code" class="qr-code-img">
+        <!-- USDT TRC20 Wallet -->
+        <div class="qr-code-container">
+            <label class="quick-settings-subtitle">USDT TRC20 Wallet QR</label>
+            <img src="{% static 'wallet_qrcodes/qr2_vUJGGBv.jpeg' %}" 
+                 alt="USDT TRC20 QR Code" class="qr-code-img">
         </div>
     </div>
 

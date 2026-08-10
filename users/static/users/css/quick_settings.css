@@ -54,19 +54,6 @@
     text-shadow:0 0 10px #00d8ef;
 }
 
-.quick-settings-panel form {
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    gap:15px;
-}
-
-.quick-settings-panel form p {
-    width:100%;
-    color:#ddd;
-    text-align:center;
-}
-
 .quick-settings-btn {
     display:inline-block;
     margin-top:10px;
@@ -110,6 +97,7 @@
     font-size:14px;
   }
 }
+
 /*==================================================
    FORM FIELD STYLING
 ==================================================*/
@@ -167,11 +155,25 @@
     box-shadow:0 0 12px rgba(0,216,239,.6);
     background:rgba(255,255,255,.15);
 }
+
+/*==================================================
+   QR CODE STYLING
+==================================================*/
+
+.quick-settings-subtitle {
+    font-size:18px;
+    font-weight:600;
+    color:#fff;
+    margin:15px 0 10px;
+    text-align:center;
+    text-shadow:0 0 8px rgba(0,216,239,.6);
+}
+
 .qr-code-container {
     display:flex;
-    justify-content:center;
+    flex-direction:column;
     align-items:center;
-    margin-top:20px;
+    margin-top:15px;
 }
 
 .qr-code-img {
