@@ -37,7 +37,6 @@
             <button type="submit" class="quick-settings-btn">Update Wallets</button>
         </form>
 
-        <!-- BTC Wallet -->
         {% if wallet_form.instance.btc_qr %}
         <div class="qr-code-container">
             <label class="quick-settings-subtitle">BTC Wallet QR</label>
@@ -45,7 +44,6 @@
         </div>
         {% endif %}
 
-        <!-- ETH Wallet -->
         {% if wallet_form.instance.eth_qr %}
         <div class="qr-code-container">
             <label class="quick-settings-subtitle">ETH Wallet QR</label>
@@ -53,7 +51,6 @@
         </div>
         {% endif %}
 
-        <!-- USDT TRC20 Wallet -->
         {% if wallet_form.instance.usdt_trc20_qr %}
         <div class="qr-code-container">
             <label class="quick-settings-subtitle">USDT TRC20 Wallet QR</label>
@@ -61,7 +58,6 @@
         </div>
         {% endif %}
 
-        <!-- ERC20 Wallet -->
         {% if wallet_form.instance.erc20_qr %}
         <div class="qr-code-container">
             <label class="quick-settings-subtitle">ERC20 Wallet QR</label>
