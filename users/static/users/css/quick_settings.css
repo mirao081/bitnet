@@ -192,3 +192,22 @@
     box-shadow:0 0 40px rgba(255,0,128,.55),
                0 0 70px rgba(0,216,239,.55);
 }
+/*==================================================
+   QUICK SETTINGS IMAGE PREVIEW
+==================================================*/
+
+.quick-img-preview {
+    margin-bottom: 8px;
+    text-align: center;
+}
+
+.quick-img-small {
+    width: 90px;
+    height: 90px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 2px solid #00d8ef;
+    box-shadow: 0 0 10px rgba(0,216,239,0.5);
+    cursor: pointer;
+}
+

@@ -14,19 +14,49 @@
         <h3 class="quick-settings-title">Personal Information</h3>
         <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
-            {{ profile_form.as_p }}
+
+            <p>
+                {{ profile_form.profile_picture.label_tag }}
+                {% if profile_form.instance.profile_picture %}
+                    <div class="quick-img-preview">
+                        <a href="{{ profile_form.instance.profile_picture.url }}" target="_blank">
+                            <img src="{{ profile_form.instance.profile_picture.url }}" alt="Profile Picture" class="quick-img-small">
+                        </a>
+                    </div>
+                {% endif %}
+                {{ profile_form.profile_picture }}
+            </p>
+
+            {{ profile_form.as_p|safe }}  <!-- other fields -->
+
             <button type="submit" class="quick-settings-btn">Update Profile</button>
         </form>
     </div>
+
 
     <div class="quick-settings-panel">
         <h3 class="quick-settings-title">KYC Verification</h3>
         <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
-            {{ kyc_form.as_p }}
+
+            <p>
+                {{ kyc_form.document.label_tag }}
+                {% if kyc_form.instance.document %}
+                    <div class="quick-img-preview">
+                        <a href="{{ kyc_form.instance.document.url }}" target="_blank">
+                            <img src="{{ kyc_form.instance.document.url }}" alt="KYC Document" class="quick-img-small">
+                        </a>
+                    </div>
+                {% endif %}
+                {{ kyc_form.document }}
+            </p>
+
+            {{ kyc_form.as_p|safe }}  <!-- other fields -->
+
             <button type="submit" class="quick-settings-btn">Submit KYC</button>
         </form>
     </div>
+
 
     <div class="quick-settings-panel">
         <h3 class="quick-settings-title">Wallets</h3>
