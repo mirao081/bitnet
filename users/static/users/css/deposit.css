@@ -1,168 +1,377 @@
-/*==================================================
-        DEPOSIT SHOWCASE STYLE
-==================================================*/
+/*==================================================*
+* DEPOSIT SHOWCASE STYLE
+*==================================================*/
 
 .depositpage-showcase {
-    width:100%;
-    padding:90px 0;
-    position:relative;
-    overflow:hidden;
-    display:flex;
-    justify-content:center;
-    align-items:center;
+    width: 100%;
+    padding: 90px 0;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
     background:
-      radial-gradient(circle at top left,#004aad33,transparent 40%),
-      radial-gradient(circle at bottom right,#7a00ff22,transparent 35%),
-      linear-gradient(180deg,#05070d,#0a1020);
+        radial-gradient(circle at top left, #004aad33, transparent 40%),
+        radial-gradient(circle at bottom right, #7a00ff22, transparent 35%),
+        linear-gradient(180deg, #05070d, #0a1020);
 }
 
-/*=========================
-   CONTAINER
-=========================*/
+
+/*==================================================*
+* CONTAINER
+*==================================================*/
+
 .depositpage-container {
-    max-width:1200px;
-    width:90%;
-    margin:auto;
-    text-align:center;
+    max-width: 1200px;
+    width: 90%;
+    margin: auto;
+    text-align: center;
 }
 
-/*=========================
-   HEADING
-=========================*/
-.depositpage-title {
-    font-size:28px;
-    font-weight:900;
-    color:#fff;
-    text-transform:uppercase;
-    letter-spacing:2px;
-    margin-bottom:15px;
-    text-shadow:0 0 10px #00d8ef,0 0 20px #7a00ff,0 0 40px #ff0080;
-    animation:glowPulse 3s infinite alternate;
+
+/*==================================================*
+* HEADING
+*==================================================*/
+
+.depositpage-heading-container {
+    margin-bottom: 40px;
 }
 
-.depositpage-subtitle {
-    font-size:18px;
-    font-weight:600;
-    color:rgba(255,255,255,.85);
-    margin-bottom:40px;
+.depositpage-heading-title {
+    font-size: 28px;
+    font-weight: 900;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+
+    text-shadow:
+        0 0 10px #00d8ef,
+        0 0 20px #7a00ff,
+        0 0 40px #ff0080;
+
+    animation: glowPulse 3s infinite alternate;
 }
 
-/*=========================
-   WARNING BOX
-=========================*/
+.depositpage-heading-subtitle {
+    font-size: 18px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.85);
+    margin-bottom: 40px;
+}
+
+
+/*==================================================*
+* WARNING BOX
+*==================================================*/
+
 .depositpage-warning {
-    margin:20px auto;
-    padding:15px;
-    border-radius:12px;
-    background:rgba(255,0,0,.15);
-    color:#ff8080;
-    font-size:14px;
-    max-width:600px;
+    margin: 20px auto;
+    padding: 15px;
+    border-radius: 12px;
+
+    background: rgba(255, 0, 0, 0.15);
+    color: #ff8080;
+
+    font-size: 14px;
+    max-width: 600px;
 }
 
-/*=========================
-   GRID & CARDS
-=========================*/
+
+/*==================================================*
+* PAYMENT METHOD GRID
+*==================================================*/
+
 .depositpage-grid {
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-    gap:30px;
-    margin-top:30px;
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(280px, 1fr));
+
+    gap: 30px;
+    margin-top: 30px;
 }
 
-.depositpage-card { padding: 30px; border-radius: 25px; background: rgba(255, 255, 255, .08); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); /* Cyan border for ALL payment-method cards */ border: 1px solid #00d8e9; box-shadow: 0 0 30px rgba(0, 216, 239, .25), inset 0 1px 0 rgba(255, 255, 255, .2); text-align: center; transition: .4s ease; }
 
-.depositpage-card:hover {
-    transform:translateY(-8px);
-    box-shadow:0 20px 40px rgba(0,0,0,.45),0 0 25px rgba(0,216,239,.18);
+/*==================================================*
+* PAYMENT METHOD PANELS
+*==================================================*/
+
+.depositpage-panel {
+    padding: 30px;
+
+    border-radius: 25px;
+
+    background: rgba(255, 255, 255, 0.08);
+
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+
+    /* REQUIRED CYAN BORDER */
+    border: 1px solid #00d8e9;
+
+    box-shadow:
+        0 0 30px rgba(0, 216, 239, 0.25),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+
+    text-align: center;
+
+    transition:
+        transform 0.4s ease,
+        box-shadow 0.4s ease,
+        border-color 0.4s ease;
 }
 
-.depositpage-card-title {
-    font-size:22px;
-    font-weight:700;
-    color:#fff;
-    margin-bottom:20px;
+
+/*==================================================*
+* PAYMENT PANEL HOVER
+*==================================================*/
+
+.depositpage-panel:hover {
+    transform: translateY(-8px);
+
+    border: 1px solid #00d8e9;
+
+    box-shadow:
+        0 20px 40px rgba(0, 0, 0, 0.45),
+        0 0 25px rgba(0, 216, 239, 0.35);
 }
 
-/*=========================
-   FORM ELEMENTS
-=========================*/
+
+/*==================================================*
+* PAYMENT PANEL TITLE
+*==================================================*/
+
+.depositpage-panel-title {
+    font-size: 22px;
+    font-weight: 700;
+
+    color: #ffffff;
+
+    margin-bottom: 20px;
+}
+
+
+/*==================================================*
+* FORM ELEMENTS
+*==================================================*/
+
 .depositpage-label {
-    display:block;
-    margin-top:10px;
-    font-weight:600;
-    color:#fff;
-    text-align:left;
+    display: block;
+
+    margin-top: 10px;
+
+    font-weight: 600;
+
+    color: #ffffff;
+
+    text-align: left;
 }
+
+
+/*==================================================*
+* INPUT
+*==================================================*/
 
 .depositpage-input {
-    width:100%;
-    padding:12px;
-    margin-top:8px;
-    border-radius:12px;
-    border:1px solid rgba(255,255,255,.25);
-    background:rgba(0,0,0,.4);
-    color:#fff;
-    font-size:15px;
-    transition:.3s;
+    width: 100%;
+
+    padding: 12px;
+    margin-top: 8px;
+
+    border-radius: 12px;
+
+    border: 1px solid rgba(255, 255, 255, 0.25);
+
+    background: rgba(0, 0, 0, 0.4);
+
+    color: #ffffff;
+
+    font-size: 15px;
+
+    transition:
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
 }
+
+
+/*==================================================*
+* INPUT FOCUS
+*==================================================*/
 
 .depositpage-input:focus {
-    outline:none;
-    border-color:#00d8ef;
-    box-shadow:0 0 10px #00d8ef;
+    outline: none;
+
+    border-color: #00d8ef;
+
+    box-shadow:
+        0 0 10px #00d8ef;
 }
+
+
+/*==================================================*
+* INPUT PLACEHOLDER
+*==================================================*/
+
+.depositpage-input::placeholder {
+    color: rgba(255, 255, 255, 0.55);
+}
+
+
+/*==================================================*
+* NOTE
+*==================================================*/
 
 .depositpage-note {
-    font-size:14px;
-    color:#ffcc00;
-    margin-top:5px;
+    font-size: 14px;
+
+    color: #ffcc00;
+
+    margin-top: 5px;
 }
 
-/*=========================
-   BUTTON
-=========================*/
+
+/*==================================================*
+* BUTTON
+*==================================================*/
+
 .depositpage-btn {
-    display:inline-block;
-    margin-top:20px;
-    padding:12px 25px;
-    border-radius:20px;
-    background:#00d8ef;
-    color:#05070d;
-    font-weight:700;
-    border:none;
-    cursor:pointer;
-    transition:.3s;
+    display: inline-block;
+
+    margin-top: 20px;
+
+    padding: 12px 25px;
+
+    border-radius: 20px;
+
+    background: #00d8ef;
+
+    color: #05070d;
+
+    font-weight: 700;
+
+    border: none;
+
+    cursor: pointer;
+
+    transition:
+        background 0.3s ease,
+        color 0.3s ease,
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
 }
+
+
+/*==================================================*
+* BUTTON HOVER
+*==================================================*/
 
 .depositpage-btn:hover {
-    background:#009bb8;
-    color:#fff;
+    background: #009bb8;
+
+    color: #ffffff;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 0 15px rgba(0, 216, 239, 0.45);
 }
 
-/*=========================
-   ANIMATIONS
-=========================*/
+
+/*==================================================*
+* ANIMATIONS
+*==================================================*/
+
 @keyframes glowPulse {
-    from { text-shadow:0 0 10px #00d8ef,0 0 20px #00d8ef; }
-    to   { text-shadow:0 0 20px #7a00ff,0 0 40px #ff0080; }
+
+    from {
+        text-shadow:
+            0 0 10px #00d8ef,
+            0 0 20px #00d8ef;
+    }
+
+    to {
+        text-shadow:
+            0 0 20px #7a00ff,
+            0 0 40px #ff0080;
+    }
 }
 
-/*=========================
-   RESPONSIVE
-=========================*/
-@media(max-width:991px){
-  .depositpage-title { font-size:24px; }
-  .depositpage-subtitle { font-size:16px; }
-  .depositpage-card { padding:25px; }
+
+/*==================================================*
+* TABLET RESPONSIVE
+*==================================================*/
+
+@media (max-width: 991px) {
+
+    .depositpage-heading-title {
+        font-size: 24px;
+    }
+
+    .depositpage-heading-subtitle {
+        font-size: 16px;
+    }
+
+    .depositpage-panel {
+        padding: 25px;
+    }
+
+    .depositpage-panel-title {
+        font-size: 21px;
+    }
 }
 
-@media(max-width:600px){
-  .depositpage-showcase { padding:60px 0; }
-  .depositpage-title { font-size:23px; } /* reduced by 5px */
-  .depositpage-subtitle { font-size:15px; }
-  .depositpage-card { padding:20px; }
-  .depositpage-card-title { font-size:20px; }
-  .depositpage-input { font-size:14px; padding:10px; }
-  .depositpage-btn { width:100%; font-size:14px; padding:10px; }
+
+/*==================================================*
+* MOBILE RESPONSIVE
+*==================================================*/
+
+@media (max-width: 600px) {
+
+    .depositpage-showcase {
+        padding: 60px 0;
+    }
+
+    .depositpage-container {
+        width: 94%;
+    }
+
+    .depositpage-heading-title {
+        font-size: 23px;
+    }
+
+    .depositpage-heading-subtitle {
+        font-size: 15px;
+    }
+
+    .depositpage-grid {
+        grid-template-columns: 1fr;
+
+        gap: 20px;
+    }
+
+    .depositpage-panel {
+        padding: 20px;
+
+        border-radius: 20px;
+    }
+
+    .depositpage-panel-title {
+        font-size: 20px;
+    }
+
+    .depositpage-input {
+        font-size: 14px;
+
+        padding: 10px;
+    }
+
+    .depositpage-btn {
+        width: 100%;
+
+        font-size: 14px;
+
+        padding: 10px;
+    }
 }
