@@ -35,68 +35,67 @@
 
             <!-- BTC Wallet -->
             <p>
-                {{ wallet_form.btc_wallet.label_tag }}  
+                {{ wallet_form.btc_wallet.label_tag }}
                 {{ wallet_form.btc_wallet }}
             </p>
             <p>
-                {{ wallet_form.btc_qr.label_tag }}  
-                {{ wallet_form.btc_qr }}
+                {{ wallet_form.btc_qr.label_tag }}
                 {% if wallet_form.instance.btc_qr %}
                     <div class="qr-code-container">
                         <img src="{{ wallet_form.instance.btc_qr.url }}" alt="BTC QR Code" class="qr-code-img">
                     </div>
                 {% endif %}
+                {{ wallet_form.btc_qr }}  <!-- file input -->
             </p>
 
             <!-- ETH Wallet -->
             <p>
-                {{ wallet_form.eth_wallet.label_tag }}  
+                {{ wallet_form.eth_wallet.label_tag }}
                 {{ wallet_form.eth_wallet }}
             </p>
             <p>
-                {{ wallet_form.eth_qr.label_tag }}  
-                {{ wallet_form.eth_qr }}
+                {{ wallet_form.eth_qr.label_tag }}
                 {% if wallet_form.instance.eth_qr %}
                     <div class="qr-code-container">
                         <img src="{{ wallet_form.instance.eth_qr.url }}" alt="ETH QR Code" class="qr-code-img">
                     </div>
                 {% endif %}
+                {{ wallet_form.eth_qr }}
             </p>
 
             <!-- USDT ERC20 Wallet -->
             <p>
-                {{ wallet_form.usdt_erc20_wallet.label_tag }}  
+                {{ wallet_form.usdt_erc20_wallet.label_tag }}
                 {{ wallet_form.usdt_erc20_wallet }}
             </p>
             <p>
-                {{ wallet_form.usdt_erc20_qr.label_tag }}  
-                {{ wallet_form.usdt_erc20_qr }}
+                {{ wallet_form.usdt_erc20_qr.label_tag }}
                 {% if wallet_form.instance.usdt_erc20_qr %}
                     <div class="qr-code-container">
                         <img src="{{ wallet_form.instance.usdt_erc20_qr.url }}" alt="USDT ERC20 QR Code" class="qr-code-img">
                     </div>
                 {% endif %}
+                {{ wallet_form.usdt_erc20_qr }}
             </p>
 
             <!-- USDT TRC20 Wallet -->
             <p>
-                {{ wallet_form.usdt_trc20_wallet.label_tag }}  
+                {{ wallet_form.usdt_trc20_wallet.label_tag }}
                 {{ wallet_form.usdt_trc20_wallet }}
             </p>
             <p>
-                {{ wallet_form.usdt_trc20_qr.label_tag }}  
-                {{ wallet_form.usdt_trc20_qr }}
+                {{ wallet_form.usdt_trc20_qr.label_tag }}
                 {% if wallet_form.instance.usdt_trc20_qr %}
                     <div class="qr-code-container">
                         <img src="{{ wallet_form.instance.usdt_trc20_qr.url }}" alt="USDT TRC20 QR Code" class="qr-code-img">
                     </div>
                 {% endif %}
+                {{ wallet_form.usdt_trc20_qr }}
             </p>
 
             <button type="submit" class="quick-settings-btn">Update Wallets</button>
         </form>
     </div>
-        
 
     <div class="quick-settings-panel">
         <h3 class="quick-settings-title">Security Verification</h3>
