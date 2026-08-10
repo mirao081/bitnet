@@ -877,3 +877,36 @@ Your JavaScript uses:
     }
 
 }
+/*==================================================*
+* CHART PANEL
+*==================================================*/
+
+.investment-chart-panel {
+    min-height: 380px;
+}
+
+
+/*==================================================*
+* CHART CONTAINER
+*==================================================*/
+
+.investment-chart-container {
+    position: relative;
+
+    width: 100%;
+
+    min-height: 280px;
+
+    z-index: 2;
+}
+
+
+/*==================================================*
+* CHART CANVAS
+*==================================================*/
+
+.investment-chart-container canvas {
+    display: block;
+
+    max-width: 100%;
+}
