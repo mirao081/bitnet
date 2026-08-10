@@ -4,7 +4,7 @@
 
 .profilepage-showcase {
     width: 100%;
-    padding: 90px 0;
+    padding: 70px 0 90px;
     position: relative;
     overflow: hidden;
     display: flex;
@@ -12,9 +12,21 @@
     align-items: center;
 
     background:
-        radial-gradient(circle at top left, #004aad33, transparent 40%),
-        radial-gradient(circle at bottom right, #7a00ff22, transparent 35%),
-        linear-gradient(180deg, #05070d, #0a1020);
+        radial-gradient(
+            circle at top left,
+            #004aad33,
+            transparent 40%
+        ),
+        radial-gradient(
+            circle at bottom right,
+            #7a00ff22,
+            transparent 35%
+        ),
+        linear-gradient(
+            180deg,
+            #05070d,
+            #0a1020
+        );
 }
 
 
@@ -23,8 +35,8 @@
 *==================================================*/
 
 .profilepage-container {
-    max-width: 1200px;
     width: 90%;
+    max-width: 1200px;
     margin: auto;
     text-align: center;
 }
@@ -35,19 +47,19 @@
 *==================================================*/
 
 .profilepage-heading-container {
-    margin-bottom: 40px;
+    margin-bottom: 45px;
 }
 
 .profilepage-heading-title {
-    font-size: 28px;
+    margin: 0 0 15px;
+
+    font-size: 30px;
     font-weight: 900;
 
     color: #ffffff;
 
     text-transform: uppercase;
     letter-spacing: 2px;
-
-    margin-bottom: 15px;
 
     text-shadow:
         0 0 10px #00d8ef,
@@ -58,12 +70,17 @@
 }
 
 .profilepage-heading-subtitle {
-    font-size: 18px;
+    margin: 0;
+
+    font-size: 17px;
     font-weight: 600;
 
-    color: rgba(255, 255, 255, 0.85);
+    color: rgba(255, 255, 255, 0.82);
 
-    margin-bottom: 40px;
+    letter-spacing: 0.5px;
+
+    text-shadow:
+        0 0 8px rgba(0, 216, 239, 0.35);
 }
 
 
@@ -71,11 +88,14 @@
 * PROFILE GRID
 *==================================================*/
 
-.np-grid {
+.profilepage-grid {
     display: grid;
 
     grid-template-columns:
-        repeat(2, minmax(280px, 1fr));
+        repeat(
+            auto-fit,
+            minmax(280px, 1fr)
+        );
 
     gap: 30px;
 
@@ -84,20 +104,22 @@
 
 
 /*==================================================*
-* PROFILE CARDS
+* PROFILE PANELS
 *==================================================*/
 
-.np-card {
-    width: 100%;
-    box-sizing: border-box;
+.profilepage-panel {
+    position: relative;
 
     padding: 30px;
 
-    margin-bottom: 30px;
-
     border-radius: 25px;
 
-    background: rgba(255, 255, 255, 0.08);
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255, 255, 255, 0.09),
+            rgba(255, 255, 255, 0.035)
+        );
 
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
@@ -105,12 +127,10 @@
     border: 1px solid #00d8e9;
 
     box-shadow:
-        0 0 30px rgba(0, 216, 239, 0.25),
-        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        0 0 30px rgba(0, 216, 239, 0.20),
+        inset 0 1px 0 rgba(255, 255, 255, 0.18);
 
-    text-align: left;
-
-    color: #ffffff;
+    text-align: center;
 
     transition:
         transform 0.4s ease,
@@ -120,68 +140,118 @@
 
 
 /*==================================================*
-* CARD HOVER
+* PANEL HOVER
 *==================================================*/
 
-.np-card:hover {
-    transform: translateY(-8px);
+.profilepage-panel:hover {
+    transform: translateY(-6px);
 
-    border: 1px solid #00d8e9;
+    border-color: #00d8ef;
 
     box-shadow:
         0 20px 40px rgba(0, 0, 0, 0.45),
-        0 0 25px rgba(0, 216, 239, 0.35);
+        0 0 30px rgba(0, 216, 239, 0.35),
+        inset 0 1px 0 rgba(255, 255, 255, 0.22);
 }
 
 
 /*==================================================*
-* CARD TITLE
+* PANEL TITLE
 *==================================================*/
 
-.np-card-title {
+.profilepage-panel-title {
+    margin: 0 0 20px;
+
     font-size: 22px;
-    font-weight: 700;
+    font-weight: 800;
 
     color: #ffffff;
 
-    margin: 0 0 20px 0;
+    letter-spacing: 1px;
+
+    text-align: center;
 
     text-shadow:
-        0 0 8px rgba(0, 216, 239, 0.45);
+        0 0 8px #00d8ef,
+        0 0 18px rgba(0, 216, 239, 0.55);
+
+    animation: profileTitleGlow 3s infinite alternate;
 }
 
 
 /*==================================================*
-* CARD TEXT
+* PANEL DESCRIPTION
 *==================================================*/
 
-.np-card p {
-    margin: 10px 0;
+.profilepage-panel-description {
+    margin: 8px 0;
+
+    color: rgba(255, 255, 255, 0.82);
 
     font-size: 15px;
+    font-weight: 500;
 
-    line-height: 1.6;
+    line-height: 1.7;
 
-    color: rgba(255, 255, 255, 0.85);
-}
+    text-align: center;
 
-.np-card p strong {
-    color: #ffffff;
-
-    font-weight: 700;
+    text-shadow:
+        0 0 6px rgba(255, 255, 255, 0.15);
 }
 
 
 /*==================================================*
-* TABLE WRAPPER
+* PANEL TEXT
 *==================================================*/
 
-.np-table-wrapper {
-    width: 100%;
+.profilepage-panel p {
+    color: rgba(255, 255, 255, 0.85);
 
-    overflow-x: auto;
+    font-size: 15px;
+    font-weight: 500;
 
-    border-radius: 15px;
+    line-height: 1.8;
+
+    text-align: center;
+
+    margin: 10px 0;
+
+    text-shadow:
+        0 0 6px rgba(0, 216, 239, 0.18);
+}
+
+.profilepage-panel strong {
+    color: #ffffff;
+
+    font-weight: 800;
+
+    text-shadow:
+        0 0 7px rgba(0, 216, 239, 0.55);
+}
+
+
+/*==================================================*
+* LARGE BALANCE / VALUE
+*==================================================*/
+
+.profilepage-big-value {
+    margin: 20px 0;
+
+    font-size: 36px;
+    font-weight: 900;
+
+    color: #00d8ef;
+
+    text-align: center;
+
+    letter-spacing: 1px;
+
+    text-shadow:
+        0 0 8px #00d8ef,
+        0 0 20px #00d8ef,
+        0 0 35px rgba(0, 216, 239, 0.65);
+
+    animation: balanceGlow 2.5s infinite alternate;
 }
 
 
@@ -189,80 +259,119 @@
 * TABLE
 *==================================================*/
 
-.np-table {
+.profilepage-table-wrapper {
     width: 100%;
 
-    min-width: 650px;
+    overflow-x: auto;
+
+    margin-top: 20px;
+
+    border-radius: 16px;
+}
+
+.profilepage-table {
+    width: 100%;
 
     border-collapse: collapse;
 
     color: #ffffff;
-}
-
-
-/*==================================================*
-* TABLE HEADER
-*==================================================*/
-
-.np-table thead {
-    background: rgba(0, 216, 239, 0.10);
-}
-
-.np-table th {
-    padding: 15px;
-
-    color: #00d8e9;
 
     font-size: 14px;
+}
+
+.profilepage-table th {
+    padding: 15px 12px;
+
+    background: rgba(0, 216, 239, 0.12);
+
+    color: #00d8ef;
+
     font-weight: 800;
 
-    text-align: left;
+    text-transform: uppercase;
 
-    border-bottom:
-        1px solid rgba(0, 216, 239, 0.35);
+    letter-spacing: 0.7px;
+
+    border-bottom: 1px solid #00d8e9;
+
+    text-shadow:
+        0 0 7px rgba(0, 216, 239, 0.6);
+}
+
+.profilepage-table td {
+    padding: 14px 12px;
+
+    color: rgba(255, 255, 255, 0.82);
+
+    border-bottom: 1px solid
+        rgba(255, 255, 255, 0.08);
+
+    text-align: center;
+}
+
+.profilepage-table tr {
+    transition:
+        background 0.3s ease,
+        transform 0.3s ease;
+}
+
+.profilepage-table tbody tr:hover {
+    background:
+        rgba(0, 216, 239, 0.07);
+}
+
+.profilepage-table tbody tr:hover td {
+    color: #ffffff;
+
+    text-shadow:
+        0 0 6px rgba(0, 216, 239, 0.45);
 }
 
 
 /*==================================================*
-* TABLE BODY
+* CHART
 *==================================================*/
 
-.np-table td {
-    padding: 14px 15px;
+.profilepage-chart-wrapper {
+    position: relative;
 
-    color: rgba(255, 255, 255, 0.85);
+    width: 100%;
+    height: 350px;
 
-    font-size: 14px;
+    margin-top: 25px;
 
-    border-bottom:
-        1px solid rgba(255, 255, 255, 0.08);
+    padding: 15px;
+
+    border-radius: 18px;
+
+    background:
+        rgba(0, 0, 0, 0.18);
+
+    border: 1px solid
+        rgba(0, 216, 239, 0.25);
+
+    box-shadow:
+        inset 0 0 20px
+        rgba(0, 216, 239, 0.05);
 }
 
-.np-table tbody tr {
-    transition: background 0.3s ease;
-}
-
-.np-table tbody tr:hover {
-    background: rgba(0, 216, 239, 0.06);
-}
-
-.np-table tbody tr:last-child td {
-    border-bottom: none;
-}
-
-
-/*==================================================*
-* ROI CHART
-*==================================================*/
-
-#roiChart {
+.profilepage-chart-wrapper canvas {
     width: 100% !important;
+    height: 100% !important;
+}
 
-    max-width: 100%;
+.profilepage-chart-empty {
+    padding: 35px 20px;
 
-    min-height: 300px;
+    color: rgba(255, 255, 255, 0.65);
 
-    display: block;
+    font-size: 15px;
+    font-weight: 600;
+
+    text-align: center;
+
+    text-shadow:
+        0 0 7px rgba(0, 216, 239, 0.2);
 }
 
 
@@ -270,8 +379,11 @@
 * BUTTON CONTAINER
 *==================================================*/
 
-.np-buttons {
+.profilepage-buttons {
     display: flex;
+
+    justify-content: center;
+    align-items: center;
 
     flex-wrap: wrap;
 
@@ -282,148 +394,107 @@
 
 
 /*==================================================*
-* GENERAL BUTTON
+* BUTTONS
 *==================================================*/
 
-.np-btn {
-    display: inline-block;
+.profilepage-btn {
+    display: inline-flex;
 
-    padding: 12px 25px;
+    justify-content: center;
+    align-items: center;
+
+    min-width: 170px;
+
+    padding: 12px 24px;
 
     border-radius: 20px;
 
-    font-size: 14px;
-    font-weight: 700;
+    border: 1px solid #00d8e9;
+
+    background:
+        rgba(0, 216, 239, 0.10);
+
+    color: #ffffff;
+
+    font-weight: 800;
 
     text-decoration: none;
-
-    border: none;
 
     cursor: pointer;
 
     transition:
+        transform 0.3s ease,
         background 0.3s ease,
         color 0.3s ease,
-        transform 0.3s ease,
-        box-shadow 0.3s ease;
+        box-shadow 0.3s ease,
+        border-color 0.3s ease;
+
+    text-shadow:
+        0 0 6px rgba(255, 255, 255, 0.4);
 }
 
-.np-btn:hover {
-    transform: translateY(-2px);
+.profilepage-btn:hover {
+    transform: translateY(-3px);
 
-    text-decoration: none;
-}
-
-
-/*==================================================*
-* PRIMARY BUTTON
-*==================================================*/
-
-.np-btn-primary {
     background: #00d8ef;
 
     color: #05070d;
 
-    border: 1px solid #00d8ef;
-}
-
-.np-btn-primary:hover {
-    background: #009bb8;
-
-    color: #ffffff;
+    border-color: #00d8ef;
 
     box-shadow:
-        0 0 15px rgba(0, 216, 239, 0.45);
+        0 0 15px rgba(0, 216, 239, 0.55),
+        0 0 30px rgba(0, 216, 239, 0.25);
+
+    text-shadow: none;
 }
 
 
 /*==================================================*
-* SECONDARY BUTTON
+* BUTTON VARIANTS
 *==================================================*/
 
-.np-btn-secondary {
-    background: rgba(255, 255, 255, 0.08);
-
-    color: #ffffff;
-
-    border: 1px solid #00d8e9;
+.profilepage-btn-success {
+    border-color: #00d8e9;
 }
 
-.np-btn-secondary:hover {
-    background: #00d8e9;
+.profilepage-btn-danger {
+    border-color: #ff4d6d;
+}
 
-    color: #05070d;
+.profilepage-btn-danger:hover {
+    background: #ff4d6d;
 
     box-shadow:
-        0 0 15px rgba(0, 216, 239, 0.40);
+        0 0 18px rgba(255, 77, 109, 0.55);
 }
 
-
-/*==================================================*
-* SUCCESS BUTTON
-*==================================================*/
-
-.np-btn-success {
-    background: #00d8ef;
-
-    color: #05070d;
-
-    border: 1px solid #00d8ef;
+.profilepage-btn-warning {
+    border-color: #ffcc00;
 }
 
-.np-btn-success:hover {
-    background: #009bb8;
-
-    color: #ffffff;
-
-    box-shadow:
-        0 0 15px rgba(0, 216, 239, 0.45);
-}
-
-
-/*==================================================*
-* DANGER BUTTON
-*==================================================*/
-
-.np-btn-danger {
-    background: rgba(255, 0, 80, 0.12);
-
-    color: #ff6b8a;
-
-    border: 1px solid #ff426b;
-}
-
-.np-btn-danger:hover {
-    background: #ff426b;
-
-    color: #ffffff;
-
-    box-shadow:
-        0 0 15px rgba(255, 66, 107, 0.40);
-}
-
-
-/*==================================================*
-* WARNING BUTTON
-*==================================================*/
-
-.np-btn-warning {
-    background: rgba(255, 204, 0, 0.12);
-
-    color: #ffcc00;
-
-    border: 1px solid #ffcc00;
-
-    margin-top: 15px;
-}
-
-.np-btn-warning:hover {
+.profilepage-btn-warning:hover {
     background: #ffcc00;
 
-    color: #05070d;
+    box-shadow:
+        0 0 18px rgba(255, 204, 0, 0.5);
+}
+
+.profilepage-btn-primary {
+    border-color: #7a00ff;
+}
+
+.profilepage-btn-primary:hover {
+    background: #7a00ff;
+
+    color: #ffffff;
 
     box-shadow:
-        0 0 15px rgba(255, 204, 0, 0.40);
+        0 0 20px rgba(122, 0, 255, 0.55);
+}
+
+.profilepage-btn-secondary {
+    border-color: #00d8ef;
 }
 
 
@@ -431,156 +502,72 @@
 * WALLET SECTION
 *==================================================*/
 
-.np-wallets {
-    margin-top: 25px;
-
-    padding-top: 20px;
-
-    border-top:
-        1px solid rgba(255, 255, 255, 0.10);
+.profilepage-wallets {
+    margin-top: 30px;
 }
 
-
-/*==================================================*
-* WALLET FIELDS
-*==================================================*/
-
-.wallet-field {
-    width: 100%;
-
-    box-sizing: border-box;
-
-    padding: 20px;
-
+.profilepage-wallet-field {
     margin-bottom: 25px;
 
-    border-radius: 18px;
-
-    background: rgba(0, 0, 0, 0.25);
-
-    border: 1px solid #00d8e9;
-
-    transition:
-        transform 0.3s ease,
-        box-shadow 0.3s ease,
-        border-color 0.3s ease;
+    text-align: center;
 }
 
-.wallet-field:hover {
-    transform: translateY(-3px);
-
-    border-color: #00d8e9;
-
-    box-shadow:
-        0 0 20px rgba(0, 216, 239, 0.20);
-}
-
-
-/*==================================================*
-* WALLET LABEL
-*==================================================*/
-
-.wallet-field label {
+.profilepage-wallet-field label {
     display: block;
 
     margin-bottom: 10px;
 
     color: #ffffff;
 
-    font-size: 15px;
-
     font-weight: 700;
+
+    text-shadow:
+        0 0 7px rgba(0, 216, 239, 0.4);
 }
 
-
-/*==================================================*
-* WALLET INPUTS
-*==================================================*/
-
-.wallet-field input[type="text"],
-.wallet-field input[type="url"],
-.wallet-field input[type="file"] {
+.profilepage-wallet-field input {
     width: 100%;
 
-    box-sizing: border-box;
-
-    padding: 12px;
+    padding: 12px 14px;
 
     border-radius: 12px;
 
-    border: 1px solid rgba(255, 255, 255, 0.25);
+    border: 1px solid
+        rgba(0, 216, 239, 0.45);
 
-    background: rgba(0, 0, 0, 0.40);
+    background:
+        rgba(0, 0, 0, 0.35);
 
     color: #ffffff;
 
     font-size: 14px;
+
+    text-align: center;
+
+    outline: none;
 
     transition:
         border-color 0.3s ease,
         box-shadow 0.3s ease;
 }
 
-
-/*==================================================*
-* WALLET INPUT FOCUS
-*==================================================*/
-
-.wallet-field input:focus {
-    outline: none;
-
+.profilepage-wallet-field input:focus {
     border-color: #00d8ef;
 
     box-shadow:
-        0 0 10px #00d8ef;
+        0 0 12px rgba(0, 216, 239, 0.45);
 }
 
 
 /*==================================================*
-* WALLET FILE INPUT
+* WALLET QR
 *==================================================*/
 
-.wallet-field input[type="file"] {
-    margin-top: 10px;
-
-    padding: 9px;
-}
-
-
-/*==================================================*
-* FILE BUTTON
-*==================================================*/
-
-.wallet-field input[type="file"]::file-selector-button {
-    padding: 8px 14px;
-
-    margin-right: 10px;
-
-    border: none;
-
-    border-radius: 8px;
-
-    background: #00d8ef;
-
-    color: #05070d;
-
-    font-weight: 700;
-
-    cursor: pointer;
-}
-
-
-/*==================================================*
-* WALLET QR CODE
-*==================================================*/
-
-.wallet-qr {
+.profilepage-wallet-qr {
     display: block;
 
-    width: 150px;
-    height: 150px;
-
-    object-fit: contain;
+    max-width: 150px;
+    max-height: 150px;
 
     margin: 15px auto;
 
@@ -593,12 +580,62 @@
     border: 1px solid #00d8e9;
 
     box-shadow:
-        0 0 15px rgba(0, 216, 239, 0.25);
+        0 0 20px
+        rgba(0, 216, 239, 0.25);
 }
 
 
 /*==================================================*
-* ANIMATIONS
+* REFERRAL LINK
+*==================================================*/
+
+.profilepage-referral-link {
+    display: block;
+
+    margin: 15px auto;
+
+    padding: 12px;
+
+    max-width: 700px;
+
+    overflow-wrap: anywhere;
+
+    border-radius: 12px;
+
+    background:
+        rgba(0, 0, 0, 0.30);
+
+    border: 1px solid
+        rgba(0, 216, 239, 0.35);
+
+    color: #00d8ef;
+
+    font-weight: 600;
+
+    text-align: center;
+
+    text-shadow:
+        0 0 8px rgba(0, 216, 239, 0.5);
+}
+
+
+/*==================================================*
+* EMPTY STATES
+*==================================================*/
+
+.profilepage-empty {
+    padding: 30px 20px;
+
+    color: rgba(255, 255, 255, 0.65);
+
+    text-align: center;
+
+    font-weight: 600;
+}
+
+
+/*==================================================*
+* GLOW ANIMATIONS
 *==================================================*/
 
 @keyframes profileGlowPulse {
@@ -617,129 +654,149 @@
 }
 
 
+@keyframes profileTitleGlow {
+
+    from {
+        text-shadow:
+            0 0 7px #00d8ef,
+            0 0 15px rgba(0, 216, 239, 0.45);
+    }
+
+    to {
+        text-shadow:
+            0 0 10px #7a00ff,
+            0 0 22px rgba(255, 0, 128, 0.45);
+    }
+}
+
+
+@keyframes balanceGlow {
+
+    from {
+        text-shadow:
+            0 0 8px #00d8ef,
+            0 0 18px #00d8ef;
+    }
+
+    to {
+        text-shadow:
+            0 0 15px #00d8ef,
+            0 0 35px #00d8ef,
+            0 0 50px rgba(0, 216, 239, 0.45);
+    }
+}
+
+
 /*==================================================*
-* TABLET RESPONSIVE
+* TABLET
 *==================================================*/
 
 @media (max-width: 991px) {
 
+    .profilepage-showcase {
+        padding: 60px 0 75px;
+    }
+
     .profilepage-heading-title {
-        font-size: 24px;
+        font-size: 26px;
     }
 
     .profilepage-heading-subtitle {
         font-size: 16px;
     }
 
-    .np-grid {
-        grid-template-columns: 1fr;
-
-        gap: 20px;
-    }
-
-    .np-card {
+    .profilepage-panel {
         padding: 25px;
     }
 
-    .np-card-title {
+    .profilepage-panel-title {
         font-size: 21px;
     }
 
-    .wallet-field {
-        padding: 18px;
+    .profilepage-big-value {
+        font-size: 32px;
+    }
+
+    .profilepage-chart-wrapper {
+        height: 320px;
     }
 }
 
 
 /*==================================================*
-* MOBILE RESPONSIVE
+* MOBILE
 *==================================================*/
 
 @media (max-width: 600px) {
 
     .profilepage-showcase {
-        padding: 60px 0;
+        padding: 50px 0 60px;
     }
 
     .profilepage-container {
         width: 94%;
     }
 
+    .profilepage-heading-container {
+        margin-bottom: 30px;
+    }
+
     .profilepage-heading-title {
         font-size: 23px;
+        letter-spacing: 1.5px;
     }
 
     .profilepage-heading-subtitle {
-        font-size: 15px;
+        font-size: 14px;
     }
 
-    .np-grid {
+    .profilepage-grid {
         grid-template-columns: 1fr;
 
         gap: 20px;
     }
 
-    .np-card {
+    .profilepage-panel {
         padding: 20px;
 
         border-radius: 20px;
     }
 
-    .np-card-title {
+    .profilepage-panel-title {
         font-size: 20px;
     }
 
-    .np-card p {
+    .profilepage-panel-description {
         font-size: 14px;
     }
 
-    .np-buttons {
+    .profilepage-big-value {
+        font-size: 29px;
+    }
+
+    .profilepage-chart-wrapper {
+        height: 280px;
+
+        padding: 10px;
+    }
+
+    .profilepage-buttons {
         flex-direction: column;
 
         width: 100%;
     }
 
-    .np-btn {
+    .profilepage-btn {
         width: 100%;
 
-        box-sizing: border-box;
+        min-width: 0;
 
-        text-align: center;
+        font-size: 14px;
+
+        padding: 11px 15px;
     }
 
-    .np-table {
-        min-width: 600px;
+    .profilepage-table {
+        min-width: 650px;
     }
-
-    .wallet-field {
-        padding: 15px;
-
-        border-radius: 16px;
-    }
-
-    .wallet-qr {
-        width: 130px;
-        height: 130px;
-    }
-
-    #roiChart {
-        min-height: 240px;
-    }
-}
-.profilepage-chart-wrapper {
-    position: relative;
-    width: 100%;
-    height: 350px;
-    margin-top: 25px;
-}
-
-.profilepage-chart-wrapper canvas {
-    width: 100% !important;
-    height: 100% !important;
-}
-
-.profilepage-chart-empty {
-    text-align: center;
-    padding: 30px;
-    color: rgba(255, 255, 255, 0.7);
 }
