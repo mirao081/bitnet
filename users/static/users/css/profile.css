@@ -1,43 +1,33 @@
 /*==================================================*
-* PROFILE SHOWCASE STYLE
+* PROFILE PAGE SHOWCASE STYLE
 *==================================================*/
 
 .profilepage-showcase {
     width: 100%;
-    padding: 70px 0 90px;
+    padding: 90px 0;
     position: relative;
     overflow: hidden;
+
     display: flex;
     justify-content: center;
     align-items: center;
 
     background:
-        radial-gradient(
-            circle at top left,
-            #004aad33,
-            transparent 40%
-        ),
-        radial-gradient(
-            circle at bottom right,
-            #7a00ff22,
-            transparent 35%
-        ),
-        linear-gradient(
-            180deg,
-            #05070d,
-            #0a1020
-        );
+        radial-gradient(circle at top left, #004aad33, transparent 40%),
+        radial-gradient(circle at bottom right, #7a00ff22, transparent 35%),
+        linear-gradient(180deg, #05070d, #0a1020);
 }
 
 
 /*==================================================*
-* CONTAINER
+* PROFILE CONTAINER
 *==================================================*/
 
 .profilepage-container {
     width: 90%;
     max-width: 1200px;
-    margin: auto;
+    margin: 0 auto;
+
     text-align: center;
 }
 
@@ -47,13 +37,15 @@
 *==================================================*/
 
 .profilepage-heading-container {
-    margin-bottom: 45px;
+    width: 100%;
+    margin-bottom: 40px;
+    text-align: center;
 }
 
 .profilepage-heading-title {
     margin: 0 0 15px;
 
-    font-size: 30px;
+    font-size: 32px;
     font-weight: 900;
 
     color: #ffffff;
@@ -70,14 +62,14 @@
 }
 
 .profilepage-heading-subtitle {
-    margin: 0;
+    margin: 0 auto 40px;
 
-    font-size: 17px;
+    font-size: 18px;
     font-weight: 600;
 
-    color: rgba(255, 255, 255, 0.82);
+    color: rgba(255, 255, 255, 0.85);
 
-    letter-spacing: 0.5px;
+    text-align: center;
 
     text-shadow:
         0 0 8px rgba(0, 216, 239, 0.35);
@@ -85,21 +77,35 @@
 
 
 /*==================================================*
-* PROFILE GRID
+* MAIN PROFILE GRID
+*
+* IMPORTANT:
+* Every major section occupies the FULL WIDTH.
 *==================================================*/
 
 .profilepage-grid {
+    width: 100%;
+
     display: grid;
 
-    grid-template-columns:
-        repeat(
-            auto-fit,
-            minmax(280px, 1fr)
-        );
+    grid-template-columns: 1fr;
 
     gap: 30px;
 
-    margin-top: 30px;
+    margin: 0 0 30px;
+}
+
+
+/*==================================================*
+* FORCE EVERY GRID ITEM TO FULL WIDTH
+*==================================================*/
+
+.profilepage-grid > * {
+    width: 100%;
+    min-width: 0;
+    grid-column: 1 / -1;
+
+    box-sizing: border-box;
 }
 
 
@@ -108,18 +114,14 @@
 *==================================================*/
 
 .profilepage-panel {
-    position: relative;
+    width: 100%;
+    box-sizing: border-box;
 
     padding: 30px;
 
     border-radius: 25px;
 
-    background:
-        linear-gradient(
-            145deg,
-            rgba(255, 255, 255, 0.09),
-            rgba(255, 255, 255, 0.035)
-        );
+    background: rgba(255, 255, 255, 0.08);
 
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
@@ -127,8 +129,8 @@
     border: 1px solid #00d8e9;
 
     box-shadow:
-        0 0 30px rgba(0, 216, 239, 0.20),
-        inset 0 1px 0 rgba(255, 255, 255, 0.18);
+        0 0 30px rgba(0, 216, 239, 0.25),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
 
     text-align: center;
 
@@ -146,12 +148,11 @@
 .profilepage-panel:hover {
     transform: translateY(-6px);
 
-    border-color: #00d8ef;
+    border-color: #00d8e9;
 
     box-shadow:
         0 20px 40px rgba(0, 0, 0, 0.45),
-        0 0 30px rgba(0, 216, 239, 0.35),
-        inset 0 1px 0 rgba(255, 255, 255, 0.22);
+        0 0 30px rgba(0, 216, 239, 0.35);
 }
 
 
@@ -160,20 +161,20 @@
 *==================================================*/
 
 .profilepage-panel-title {
-    margin: 0 0 20px;
+    margin: 0 0 18px;
 
-    font-size: 22px;
+    font-size: 23px;
     font-weight: 800;
 
     color: #ffffff;
 
-    letter-spacing: 1px;
-
     text-align: center;
+
+    letter-spacing: 1px;
 
     text-shadow:
         0 0 8px #00d8ef,
-        0 0 18px rgba(0, 216, 239, 0.55);
+        0 0 18px rgba(122, 0, 255, 0.75);
 
     animation: profileTitleGlow 3s infinite alternate;
 }
@@ -184,9 +185,30 @@
 *==================================================*/
 
 .profilepage-panel-description {
-    margin: 8px 0;
+    margin: 0 auto 25px;
+
+    max-width: 850px;
+
+    font-size: 16px;
+    font-weight: 600;
+
+    line-height: 1.7;
 
     color: rgba(255, 255, 255, 0.82);
+
+    text-align: center;
+
+    text-shadow:
+        0 0 7px rgba(0, 216, 239, 0.25);
+}
+
+
+/*==================================================*
+* ALL TEXT INSIDE PANELS
+*==================================================*/
+
+.profilepage-panel p {
+    color: rgba(255, 255, 255, 0.88);
 
     font-size: 15px;
     font-weight: 500;
@@ -196,28 +218,7 @@
     text-align: center;
 
     text-shadow:
-        0 0 6px rgba(255, 255, 255, 0.15);
-}
-
-
-/*==================================================*
-* PANEL TEXT
-*==================================================*/
-
-.profilepage-panel p {
-    color: rgba(255, 255, 255, 0.85);
-
-    font-size: 15px;
-    font-weight: 500;
-
-    line-height: 1.8;
-
-    text-align: center;
-
-    margin: 10px 0;
-
-    text-shadow:
-        0 0 6px rgba(0, 216, 239, 0.18);
+        0 0 6px rgba(255, 255, 255, 0.12);
 }
 
 .profilepage-panel strong {
@@ -226,18 +227,18 @@
     font-weight: 800;
 
     text-shadow:
-        0 0 7px rgba(0, 216, 239, 0.55);
+        0 0 8px rgba(0, 216, 239, 0.5);
 }
 
 
 /*==================================================*
-* LARGE BALANCE / VALUE
+* BIG VALUES
 *==================================================*/
 
 .profilepage-big-value {
-    margin: 20px 0;
+    margin: 15px auto;
 
-    font-size: 36px;
+    font-size: 34px;
     font-weight: 900;
 
     color: #00d8ef;
@@ -248,10 +249,239 @@
 
     text-shadow:
         0 0 8px #00d8ef,
-        0 0 20px #00d8ef,
-        0 0 35px rgba(0, 216, 239, 0.65);
+        0 0 18px #00d8ef,
+        0 0 35px rgba(122, 0, 255, 0.75);
 
-    animation: balanceGlow 2.5s infinite alternate;
+    animation: profileValueGlow 2.5s infinite alternate;
+}
+
+
+/*==================================================*
+* INVESTMENT PERFORMANCE
+*==================================================*/
+
+.profilepage-chart-wrapper {
+    width: 100%;
+
+    min-height: 320px;
+
+    margin: 25px auto 0;
+
+    position: relative;
+
+    box-sizing: border-box;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profilepage-chart-wrapper canvas {
+    display: block;
+
+    width: 100% !important;
+    max-width: 100%;
+
+    min-height: 300px;
+}
+
+
+/*==================================================*
+* EMPTY CHART MESSAGE
+*==================================================*/
+
+.profilepage-chart-empty {
+    width: 100%;
+
+    padding: 35px 20px;
+
+    box-sizing: border-box;
+
+    border-radius: 15px;
+
+    background: rgba(0, 0, 0, 0.25);
+
+    border: 1px solid rgba(0, 216, 239, 0.35);
+
+    color: rgba(255, 255, 255, 0.7);
+
+    font-size: 15px;
+    font-weight: 600;
+
+    text-align: center;
+
+    text-shadow:
+        0 0 8px rgba(0, 216, 239, 0.25);
+}
+
+
+/*==================================================*
+* BUTTON CONTAINER
+*==================================================*/
+
+.profilepage-buttons {
+    width: 100%;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    gap: 20px;
+
+    flex-wrap: wrap;
+
+    margin-top: 20px;
+}
+
+
+/*==================================================*
+* PROFILE BUTTON
+*==================================================*/
+
+.profilepage-btn {
+    display: inline-flex;
+
+    justify-content: center;
+    align-items: center;
+
+    min-width: 180px;
+
+    padding: 13px 25px;
+
+    border-radius: 20px;
+
+    border: 1px solid #00d8e9;
+
+    text-decoration: none;
+
+    font-size: 14px;
+    font-weight: 800;
+
+    color: #ffffff;
+
+    text-align: center;
+
+    cursor: pointer;
+
+    transition:
+        background 0.3s ease,
+        color 0.3s ease,
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        border-color 0.3s ease;
+}
+
+
+/*==================================================*
+* BUTTON HOVER
+*==================================================*/
+
+.profilepage-btn:hover {
+    transform: translateY(-3px);
+
+    color: #ffffff;
+
+    border-color: #00d8e9;
+
+    box-shadow:
+        0 0 15px rgba(0, 216, 239, 0.5),
+        0 0 30px rgba(122, 0, 255, 0.25);
+}
+
+
+/*==================================================*
+* SUCCESS BUTTON
+*==================================================*/
+
+.profilepage-btn-success {
+    background: rgba(0, 216, 239, 0.85);
+
+    color: #05070d;
+}
+
+.profilepage-btn-success:hover {
+    background: #00d8ef;
+
+    color: #05070d;
+}
+
+
+/*==================================================*
+* DANGER BUTTON
+*==================================================*/
+
+.profilepage-btn-danger {
+    background: rgba(255, 0, 90, 0.75);
+
+    border-color: #ff3b81;
+}
+
+.profilepage-btn-danger:hover {
+    background: #ff0066;
+
+    box-shadow:
+        0 0 15px rgba(255, 0, 102, 0.55),
+        0 0 30px rgba(255, 0, 128, 0.25);
+}
+
+
+/*==================================================*
+* WARNING BUTTON
+*==================================================*/
+
+.profilepage-btn-warning {
+    background: rgba(255, 204, 0, 0.85);
+
+    color: #05070d;
+
+    border-color: #ffcc00;
+}
+
+.profilepage-btn-warning:hover {
+    background: #ffcc00;
+
+    color: #05070d;
+
+    box-shadow:
+        0 0 20px rgba(255, 204, 0, 0.5);
+}
+
+
+/*==================================================*
+* PRIMARY BUTTON
+*==================================================*/
+
+.profilepage-btn-primary {
+    background: rgba(0, 216, 239, 0.85);
+
+    color: #05070d;
+}
+
+.profilepage-btn-primary:hover {
+    background: #00d8ef;
+
+    color: #05070d;
+}
+
+
+/*==================================================*
+* SECONDARY BUTTON
+*==================================================*/
+
+.profilepage-btn-secondary {
+    background: rgba(122, 0, 255, 0.75);
+
+    border-color: #8b4dff;
+}
+
+.profilepage-btn-secondary:hover {
+    background: #7a00ff;
+
+    color: #ffffff;
+
+    box-shadow:
+        0 0 20px rgba(122, 0, 255, 0.55);
 }
 
 
@@ -265,8 +495,6 @@
     overflow-x: auto;
 
     margin-top: 20px;
-
-    border-radius: 16px;
 }
 
 .profilepage-table {
@@ -276,225 +504,91 @@
 
     color: #ffffff;
 
-    font-size: 14px;
+    text-align: center;
 }
 
 .profilepage-table th {
-    padding: 15px 12px;
+    padding: 15px;
 
     background: rgba(0, 216, 239, 0.12);
 
-    color: #00d8ef;
-
-    font-weight: 800;
-
-    text-transform: uppercase;
-
-    letter-spacing: 0.7px;
-
     border-bottom: 1px solid #00d8e9;
 
+    color: #00d8ef;
+
+    font-size: 14px;
+    font-weight: 800;
+
     text-shadow:
-        0 0 7px rgba(0, 216, 239, 0.6);
+        0 0 8px rgba(0, 216, 239, 0.6);
 }
 
 .profilepage-table td {
-    padding: 14px 12px;
+    padding: 14px;
 
-    color: rgba(255, 255, 255, 0.82);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 
-    border-bottom: 1px solid
-        rgba(255, 255, 255, 0.08);
+    color: rgba(255, 255, 255, 0.85);
 
-    text-align: center;
+    font-size: 14px;
+    font-weight: 500;
 }
 
-.profilepage-table tr {
-    transition:
-        background 0.3s ease,
-        transform 0.3s ease;
-}
+.profilepage-table tr:hover td {
+    background: rgba(0, 216, 239, 0.06);
 
-.profilepage-table tbody tr:hover {
-    background:
-        rgba(0, 216, 239, 0.07);
-}
-
-.profilepage-table tbody tr:hover td {
     color: #ffffff;
-
-    text-shadow:
-        0 0 6px rgba(0, 216, 239, 0.45);
 }
 
 
 /*==================================================*
-* CHART
+* REFERRAL SECTION
 *==================================================*/
 
-.profilepage-chart-wrapper {
-    position: relative;
+.profilepage-referral {
+    width: 100%;
+
+    text-align: center;
+}
+
+.profilepage-referral-link {
+    display: block;
 
     width: 100%;
-    height: 350px;
 
-    margin-top: 25px;
+    margin: 15px auto;
 
     padding: 15px;
 
-    border-radius: 18px;
+    box-sizing: border-box;
 
-    background:
-        rgba(0, 0, 0, 0.18);
+    border-radius: 12px;
 
-    border: 1px solid
-        rgba(0, 216, 239, 0.25);
+    background: rgba(0, 0, 0, 0.3);
 
-    box-shadow:
-        inset 0 0 20px
-        rgba(0, 216, 239, 0.05);
-}
+    border: 1px solid rgba(0, 216, 239, 0.35);
 
-.profilepage-chart-wrapper canvas {
-    width: 100% !important;
-    height: 100% !important;
-}
+    color: #00d8ef;
 
-.profilepage-chart-empty {
-    padding: 35px 20px;
-
-    color: rgba(255, 255, 255, 0.65);
-
-    font-size: 15px;
-    font-weight: 600;
+    font-weight: 700;
 
     text-align: center;
 
-    text-shadow:
-        0 0 7px rgba(0, 216, 239, 0.2);
-}
-
-
-/*==================================================*
-* BUTTON CONTAINER
-*==================================================*/
-
-.profilepage-buttons {
-    display: flex;
-
-    justify-content: center;
-    align-items: center;
-
-    flex-wrap: wrap;
-
-    gap: 15px;
-
-    margin-top: 20px;
-}
-
-
-/*==================================================*
-* BUTTONS
-*==================================================*/
-
-.profilepage-btn {
-    display: inline-flex;
-
-    justify-content: center;
-    align-items: center;
-
-    min-width: 170px;
-
-    padding: 12px 24px;
-
-    border-radius: 20px;
-
-    border: 1px solid #00d8e9;
-
-    background:
-        rgba(0, 216, 239, 0.10);
-
-    color: #ffffff;
-
-    font-weight: 800;
-
-    text-decoration: none;
-
-    cursor: pointer;
-
-    transition:
-        transform 0.3s ease,
-        background 0.3s ease,
-        color 0.3s ease,
-        box-shadow 0.3s ease,
-        border-color 0.3s ease;
+    word-break: break-word;
 
     text-shadow:
-        0 0 6px rgba(255, 255, 255, 0.4);
-}
-
-.profilepage-btn:hover {
-    transform: translateY(-3px);
-
-    background: #00d8ef;
-
-    color: #05070d;
-
-    border-color: #00d8ef;
-
-    box-shadow:
-        0 0 15px rgba(0, 216, 239, 0.55),
-        0 0 30px rgba(0, 216, 239, 0.25);
-
-    text-shadow: none;
+        0 0 8px rgba(0, 216, 239, 0.5);
 }
 
 
 /*==================================================*
-* BUTTON VARIANTS
+* ACCOUNT SETTINGS
 *==================================================*/
 
-.profilepage-btn-success {
-    border-color: #00d8e9;
-}
+.profilepage-settings {
+    width: 100%;
 
-.profilepage-btn-danger {
-    border-color: #ff4d6d;
-}
-
-.profilepage-btn-danger:hover {
-    background: #ff4d6d;
-
-    box-shadow:
-        0 0 18px rgba(255, 77, 109, 0.55);
-}
-
-.profilepage-btn-warning {
-    border-color: #ffcc00;
-}
-
-.profilepage-btn-warning:hover {
-    background: #ffcc00;
-
-    box-shadow:
-        0 0 18px rgba(255, 204, 0, 0.5);
-}
-
-.profilepage-btn-primary {
-    border-color: #7a00ff;
-}
-
-.profilepage-btn-primary:hover {
-    background: #7a00ff;
-
-    color: #ffffff;
-
-    box-shadow:
-        0 0 20px rgba(122, 0, 255, 0.55);
-}
-
-.profilepage-btn-secondary {
-    border-color: #00d8ef;
+    text-align: center;
 }
 
 
@@ -503,40 +597,63 @@
 *==================================================*/
 
 .profilepage-wallets {
-    margin-top: 30px;
-}
+    width: 100%;
 
-.profilepage-wallet-field {
-    margin-bottom: 25px;
+    margin-top: 30px;
 
     text-align: center;
 }
 
-.profilepage-wallet-field label {
+.profilepage-wallets form {
+    width: 100%;
+}
+
+.profilepage-wallets .wallet-field {
+    width: 100%;
+
+    margin-bottom: 25px;
+
+    padding: 20px;
+
+    box-sizing: border-box;
+
+    border-radius: 18px;
+
+    background: rgba(0, 0, 0, 0.22);
+
+    border: 1px solid rgba(0, 216, 239, 0.35);
+
+    text-align: center;
+}
+
+.profilepage-wallets .wallet-field label {
     display: block;
 
     margin-bottom: 10px;
 
     color: #ffffff;
 
-    font-weight: 700;
+    font-size: 15px;
+    font-weight: 800;
+
+    text-align: center;
 
     text-shadow:
-        0 0 7px rgba(0, 216, 239, 0.4);
+        0 0 7px rgba(0, 216, 239, 0.45);
 }
 
-.profilepage-wallet-field input {
+.profilepage-wallets .wallet-field input {
     width: 100%;
 
-    padding: 12px 14px;
+    box-sizing: border-box;
+
+    padding: 12px;
 
     border-radius: 12px;
 
-    border: 1px solid
-        rgba(0, 216, 239, 0.45);
+    border: 1px solid rgba(255, 255, 255, 0.25);
 
-    background:
-        rgba(0, 0, 0, 0.35);
+    background: rgba(0, 0, 0, 0.4);
 
     color: #ffffff;
 
@@ -551,91 +668,106 @@
         box-shadow 0.3s ease;
 }
 
-.profilepage-wallet-field input:focus {
+.profilepage-wallets .wallet-field input:focus {
     border-color: #00d8ef;
 
     box-shadow:
-        0 0 12px rgba(0, 216, 239, 0.45);
+        0 0 10px rgba(0, 216, 239, 0.6);
 }
 
 
 /*==================================================*
-* WALLET QR
+* WALLET QR CODES
 *==================================================*/
 
-.profilepage-wallet-qr {
+.profilepage-wallets .wallet-qr {
     display: block;
 
-    max-width: 150px;
-    max-height: 150px;
+    width: 140px;
+    height: 140px;
 
-    margin: 15px auto;
+    object-fit: contain;
+
+    margin: 20px auto;
 
     padding: 8px;
 
-    border-radius: 12px;
+    box-sizing: border-box;
+
+    border-radius: 15px;
 
     background: #ffffff;
 
     border: 1px solid #00d8e9;
 
     box-shadow:
-        0 0 20px
-        rgba(0, 216, 239, 0.25);
+        0 0 20px rgba(0, 216, 239, 0.35);
 }
 
 
 /*==================================================*
-* REFERRAL LINK
+* FORM INPUTS
 *==================================================*/
 
-.profilepage-referral-link {
-    display: block;
+.profilepage-input {
+    width: 100%;
 
-    margin: 15px auto;
+    box-sizing: border-box;
 
     padding: 12px;
 
-    max-width: 700px;
-
-    overflow-wrap: anywhere;
+    margin-top: 8px;
 
     border-radius: 12px;
 
-    background:
-        rgba(0, 0, 0, 0.30);
+    border: 1px solid rgba(255, 255, 255, 0.25);
 
-    border: 1px solid
-        rgba(0, 216, 239, 0.35);
+    background: rgba(0, 0, 0, 0.4);
 
-    color: #00d8ef;
+    color: #ffffff;
 
-    font-weight: 600;
+    font-size: 15px;
 
     text-align: center;
 
-    text-shadow:
-        0 0 8px rgba(0, 216, 239, 0.5);
+    outline: none;
+
+    transition:
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.profilepage-input:focus {
+    border-color: #00d8ef;
+
+    box-shadow:
+        0 0 10px #00d8ef;
+}
+
+.profilepage-input::placeholder {
+    color: rgba(255, 255, 255, 0.55);
 }
 
 
 /*==================================================*
-* EMPTY STATES
+* GENERAL LINKS
 *==================================================*/
 
-.profilepage-empty {
-    padding: 30px 20px;
+.profilepage-panel a {
+    transition:
+        color 0.3s ease,
+        text-shadow 0.3s ease;
+}
 
-    color: rgba(255, 255, 255, 0.65);
-
-    text-align: center;
-
-    font-weight: 600;
+.profilepage-panel a:hover {
+    text-shadow:
+        0 0 8px #00d8ef,
+        0 0 15px rgba(122, 0, 255, 0.5);
 }
 
 
 /*==================================================*
-* GLOW ANIMATIONS
+* ANIMATIONS
 *==================================================*/
 
 @keyframes profileGlowPulse {
@@ -658,19 +790,19 @@
 
     from {
         text-shadow:
-            0 0 7px #00d8ef,
-            0 0 15px rgba(0, 216, 239, 0.45);
+            0 0 8px #00d8ef,
+            0 0 16px rgba(0, 216, 239, 0.5);
     }
 
     to {
         text-shadow:
-            0 0 10px #7a00ff,
-            0 0 22px rgba(255, 0, 128, 0.45);
+            0 0 12px #7a00ff,
+            0 0 24px #ff0080;
     }
 }
 
 
-@keyframes balanceGlow {
+@keyframes profileValueGlow {
 
     from {
         text-shadow:
@@ -681,24 +813,27 @@
     to {
         text-shadow:
             0 0 15px #00d8ef,
-            0 0 35px #00d8ef,
-            0 0 50px rgba(0, 216, 239, 0.45);
+            0 0 30px #7a00ff;
     }
 }
 
 
 /*==================================================*
-* TABLET
+* TABLET RESPONSIVE
 *==================================================*/
 
 @media (max-width: 991px) {
 
     .profilepage-showcase {
-        padding: 60px 0 75px;
+        padding: 70px 0;
+    }
+
+    .profilepage-container {
+        width: 92%;
     }
 
     .profilepage-heading-title {
-        font-size: 26px;
+        font-size: 27px;
     }
 
     .profilepage-heading-subtitle {
@@ -714,40 +849,41 @@
     }
 
     .profilepage-big-value {
-        font-size: 32px;
+        font-size: 30px;
     }
 
     .profilepage-chart-wrapper {
-        height: 320px;
+        min-height: 280px;
     }
+
 }
 
 
 /*==================================================*
-* MOBILE
+* MOBILE RESPONSIVE
 *==================================================*/
 
 @media (max-width: 600px) {
 
     .profilepage-showcase {
-        padding: 50px 0 60px;
+        padding: 60px 0;
     }
 
     .profilepage-container {
         width: 94%;
     }
 
-    .profilepage-heading-container {
-        margin-bottom: 30px;
-    }
-
     .profilepage-heading-title {
         font-size: 23px;
-        letter-spacing: 1.5px;
+        letter-spacing: 1px;
     }
 
     .profilepage-heading-subtitle {
-        font-size: 14px;
+        font-size: 15px;
+
+        line-height: 1.6;
+
+        margin-bottom: 30px;
     }
 
     .profilepage-grid {
@@ -756,7 +892,15 @@
         gap: 20px;
     }
 
+    .profilepage-grid > * {
+        width: 100%;
+
+        grid-column: 1 / -1;
+    }
+
     .profilepage-panel {
+        width: 100%;
+
         padding: 20px;
 
         border-radius: 20px;
@@ -764,26 +908,34 @@
 
     .profilepage-panel-title {
         font-size: 20px;
+
+        line-height: 1.4;
     }
 
     .profilepage-panel-description {
         font-size: 14px;
+
+        line-height: 1.6;
     }
 
     .profilepage-big-value {
-        font-size: 29px;
+        font-size: 27px;
     }
 
     .profilepage-chart-wrapper {
-        height: 280px;
+        min-height: 240px;
+    }
 
-        padding: 10px;
+    .profilepage-chart-wrapper canvas {
+        min-height: 220px;
     }
 
     .profilepage-buttons {
+        width: 100%;
+
         flex-direction: column;
 
-        width: 100%;
+        gap: 12px;
     }
 
     .profilepage-btn {
@@ -791,12 +943,24 @@
 
         min-width: 0;
 
-        font-size: 14px;
+        box-sizing: border-box;
+    }
 
-        padding: 11px 15px;
+    .profilepage-table-wrapper {
+        overflow-x: auto;
     }
 
     .profilepage-table {
-        min-width: 650px;
+        min-width: 600px;
     }
+
+    .profilepage-wallets .wallet-field {
+        padding: 15px;
+    }
+
+    .profilepage-wallets .wallet-qr {
+        width: 120px;
+        height: 120px;
+    }
+
 }
