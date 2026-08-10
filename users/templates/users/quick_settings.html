@@ -1,61 +1,68 @@
 {% extends "users/dashboard_base.html" %}
 {% block content %}
-<div class="security-subpage">
-    <h2>Quick Settings</h2>
-    <div class="card card-wallets">
-        <h3>Personal Information</h3>
+<div class="quick-settings-container">
+    <h2 class="quick-settings-heading">Quick Settings</h2>
+
+    <div class="quick-settings-panel">
+        <h3 class="quick-settings-title">Personal Information</h3>
         <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
             {{ profile_form.as_p }}
-            <button type="submit" class="security-btn">Update Profile</button>
+            <button type="submit" class="quick-settings-btn">Update Profile</button>
         </form>
     </div>
-    <div class="card card-wallets">
-        <h3>KYC Verification</h3>
+
+    <div class="quick-settings-panel">
+        <h3 class="quick-settings-title">KYC Verification</h3>
         <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
             {{ kyc_form.as_p }}
-            <button type="submit" class="security-btn">Submit KYC</button>
+            <button type="submit" class="quick-settings-btn">Submit KYC</button>
         </form>
     </div>
-    <div class="card card-wallets">
-        <h3>Wallets</h3>
+
+    <div class="quick-settings-panel">
+        <h3 class="quick-settings-title">Wallets</h3>
         <form method="post">
             {% csrf_token %}
             {{ wallet_form.as_p }}
-            <button type="submit" class="security-btn">Update Wallets</button>
+            <button type="submit" class="quick-settings-btn">Update Wallets</button>
         </form>
     </div>
-    <div class="card card-wallets">
-        <h3>Security Verification</h3>
+
+    <div class="quick-settings-panel">
+        <h3 class="quick-settings-title">Security Verification</h3>
         <form method="post">
             {% csrf_token %}
             {{ verification_form.as_p }}
-            <button type="submit" class="security-btn">Update Verification</button>
+            <button type="submit" class="quick-settings-btn">Update Verification</button>
         </form>
     </div>
-    <div class="card card-wallets">
-        <h3>Notifications</h3>
+
+    <div class="quick-settings-panel">
+        <h3 class="quick-settings-title">Notifications</h3>
         <form method="post">
             {% csrf_token %}
             {{ notifications_form.as_p }}
-            <button type="submit" class="security-btn">Update Notifications</button>
+            <button type="submit" class="quick-settings-btn">Update Notifications</button>
         </form>
     </div>
-    <div class="card card-wallets">
-        <h3>API Keys</h3>
+
+    <div class="quick-settings-panel">
+        <h3 class="quick-settings-title">API Keys</h3>
         <form method="post">
             {% csrf_token %}
             {{ api_form.as_p }}
-            <button type="submit" class="security-btn">Generate API Key</button>
+            <button type="submit" class="quick-settings-btn">Generate API Key</button>
         </form>
     </div>
-    <div class="card card-wallets">
-        <h3>Account Management</h3>
+
+    <div class="quick-settings-panel">
+        <h3 class="quick-settings-title">Account Management</h3>
         <form method="post">
             {% csrf_token %}
             {{ account_form.as_p }}
-            <button type="submit" class="security-btn">Update Account</button>
+            <button type="submit" class="quick-settings-btn">Update Account</button>
         </form>
     </div>
 </div>
