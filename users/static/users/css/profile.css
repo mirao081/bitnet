@@ -675,16 +675,17 @@
         0 0 10px rgba(0, 216, 239, 0.6);
 }
 
-
-/*==================================================*
-* WALLET QR CODES
-*==================================================*/
-
 .profilepage-wallets .wallet-qr {
     display: block;
 
-    width: 140px;
-    height: 140px;
+    width: 200px !important;
+    height: 200px !important;
+
+    max-width: 200px !important;
+    max-height: 200px !important;
+
+    min-width: 200px !important;
+    min-height: 200px !important;
 
     object-fit: contain;
 
@@ -701,13 +702,19 @@
     border: 1px solid #00d8e9;
 
     box-shadow:
-        0 0 20px rgba(0, 216, 239, 0.35);
+        0 0 15px rgba(0, 216, 239, 0.35);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
 }
+.profilepage-wallets .wallet-qr:hover {
+    transform: scale(1.03);
 
-
-/*==================================================*
-* FORM INPUTS
-*==================================================*/
+    box-shadow:
+        0 0 20px rgba(0, 216, 239, 0.55),
+        0 0 35px rgba(122, 0, 255, 0.25);
+}
 
 .profilepage-input {
     width: 100%;
@@ -959,8 +966,14 @@
     }
 
     .profilepage-wallets .wallet-qr {
-        width: 120px;
-        height: 120px;
+        width: 200px !important;
+        height: 200px !important;
+
+        max-width: 200px !important;
+        max-height: 200px !important;
+
+        min-width: 200px !important;
+        min-height: 200px !important;
     }
 
 }
