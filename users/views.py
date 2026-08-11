@@ -405,284 +405,79 @@ def portfolio(request):
         "usdt_price": prices.get("USDT"),
         "upcoming_investments": upcoming_investments,
     })
-
-
+z
 @login_required
 def investments(request):
-    # -----------------------------------------
-    # USER'S ACTIVE INVESTMENTS
-    # -----------------------------------------
-    investments = ActiveInvestment.objects.filter(
-        user=request.user
-    )
-
-    transactions = (
-        Transaction.objects
-        .filter(user=request.user)
-        .order_by("-date")[:10]
-    )
-
-    # -----------------------------------------
-    # TOTAL INVESTED
-    # -----------------------------------------
+    investments = ActiveInvestment.objects.filter(user=request.user)
+    transactions = Transaction.objects.filter(user=request.user).order_by('-date')[:10]
     total_invested = (
-        investments.aggregate(
-            Sum("amount")
-        )["amount__sum"]
+        investments.aggregate(Sum('amount'))['amount__sum']
         or Decimal("0")
     )
-
-    # -----------------------------------------
-    # CURRENT INVESTMENT VALUE
-    # -----------------------------------------
     current_value = sum(
-        (
-            inv.get_current_value()
-            for inv in investments
-        ),
+        (inv.get_current_value() for inv in investments),
         Decimal("0")
     )
 
-    # -----------------------------------------
-    # ROI
-    # -----------------------------------------
     if total_invested > Decimal("0"):
-
         roi = (
             (current_value - total_invested)
             / total_invested
         ) * Decimal("100")
-
     else:
-
         roi = Decimal("0")
 
-    # -----------------------------------------
-    # BEST ASSET
-    # -----------------------------------------
     best_asset = (
         investments.first().plan_name
         if investments.exists()
         else "N/A"
     )
 
-    # -----------------------------------------
-    # UPCOMING MATURITIES
-    # -----------------------------------------
     upcoming_investments = (
         investments
         .filter(end_date__isnull=False)
         .order_by("end_date")[:5]
     )
-
-    # -----------------------------------------
-    # GET USER WALLET
-    # -----------------------------------------
-    wallet = getattr(
-        request.user,
-        "wallet",
-        None
-    )
-
-    if wallet:
-
-        btc_balance = (
-            wallet.btc_balance
-            or Decimal("0")
-        )
-
-        eth_balance = (
-            wallet.eth_balance
-            or Decimal("0")
-        )
-
-        usdt_balance = (
-            wallet.usd_balance
-            or Decimal("0")
-        )
-
-    else:
-
-        btc_balance = Decimal("0")
-        eth_balance = Decimal("0")
-        usdt_balance = Decimal("0")
-
-    # -----------------------------------------
-    # DEFAULT CRYPTO PRICES
-    # -----------------------------------------
     prices = {
         "BTC": 0,
         "ETH": 0,
-        "USDT": 1,
+        "USDT": 0,
     }
 
-    # -----------------------------------------
-    # GET LIVE CRYPTO PRICES
-    # -----------------------------------------
     try:
-
         response = requests.get(
-            "https://api.coingecko.com/api/v3/simple/price",
-            params={
-                "ids": (
-                    "bitcoin,"
-                    "ethereum,"
-                    "tether"
-                ),
-                "vs_currencies": "usd",
-            },
+            "https://api.coingecko.com/api/v3/simple/price"
+            "?ids=bitcoin,ethereum,tether&vs_currencies=usd",
             timeout=10,
         )
 
         if response.status_code == 200:
-
             data = response.json()
 
             prices = {
-                "BTC": (
-                    data
-                    .get("bitcoin", {})
-                    .get("usd", 0)
-                ),
-
-                "ETH": (
-                    data
-                    .get("ethereum", {})
-                    .get("usd", 0)
-                ),
-
-                "USDT": (
-                    data
-                    .get("tether", {})
-                    .get("usd", 1)
-                ),
+                "BTC": data.get("bitcoin", {}).get("usd", 0),
+                "ETH": data.get("ethereum", {}).get("usd", 0),
+                "USDT": data.get("tether", {}).get("usd", 0),
             }
 
-    except (
-        requests.RequestException,
-        ValueError,
-        TypeError,
-    ):
-
-        # Keep the default prices if
-        # CoinGecko is unavailable.
+    except Exception:
         pass
 
-    # -----------------------------------------
-    # CONVERT WALLET BALANCES TO USD VALUES
-    # -----------------------------------------
-    try:
-
-        btc_price = Decimal(
-            str(prices["BTC"] or 0)
-        )
-
-        eth_price = Decimal(
-            str(prices["ETH"] or 0)
-        )
-
-        usdt_price = Decimal(
-            str(prices["USDT"] or 1)
-        )
-
-    except (
-        ValueError,
-        TypeError,
-        ArithmeticError,
-    ):
-
-        btc_price = Decimal("0")
-        eth_price = Decimal("0")
-        usdt_price = Decimal("1")
-
-    btc_value = (
-        btc_balance * btc_price
-    )
-
-    eth_value = (
-        eth_balance * eth_price
-    )
-
-    usdt_value = (
-        usdt_balance * usdt_price
-    )
-
-    # -----------------------------------------
-    # ASSET ALLOCATION DATA
-    # -----------------------------------------
-    holdings = {
-        "BTC": round(float(btc_value), 2),
-        "ETH": round(float(eth_value), 2),
-        "USDT": round(float(usdt_value), 2),
-    }
-
-    # -----------------------------------------
-    # CONTEXT
-    # -----------------------------------------
     context = {
-
         "investments": investments,
-
         "transactions": transactions,
-
-        "total_invested": round(
-            total_invested,
-            2
-        ),
-
-        "current_value": round(
-            current_value,
-            2
-        ),
-
-        "roi": round(
-            roi,
-            2
-        ),
-
+        "total_invested": round(total_invested, 2),
+        "current_value": round(current_value, 2),
+        "roi": round(roi, 2),
         "best_asset": best_asset,
-
-        "upcoming_investments":
-            upcoming_investments,
-
-        # Live prices
+        "upcoming_investments": upcoming_investments,
         "btc_price": prices["BTC"],
         "eth_price": prices["ETH"],
         "usdt_price": prices["USDT"],
-
-        # Wallet balances
-        "btc_balance": btc_balance,
-        "eth_balance": eth_balance,
-        "usdt_balance": usdt_balance,
-
-        # USD allocation values
-        "btc_value": round(
-            btc_value,
-            2
-        ),
-
-        "eth_value": round(
-            eth_value,
-            2
-        ),
-
-        "usdt_value": round(
-            usdt_value,
-            2
-        ),
-
-        # Data used by Chart.js
-        "holdings": json.dumps(
-            holdings
-        ),
+        "holdings": json.dumps(prices),
     }
 
-    return render(
-        request,
-        "users/investments.html",
-        context
-    )
-
+    return render(request, "users/investments.html", context)
 
 @login_required
 def investment_plans(request):
@@ -1215,7 +1010,7 @@ def quick_settings(request):
         if kyc_form.is_valid(): kyc_form.save()
         if wallet_form.is_valid(): wallet_form.save()
         if verification_form.is_valid(): verification_form.save()
-        if api_formde.is_valid():
+        if api_form.is_valid():
             api_instance = api_form.save(commit=False)
             api_instance.user = user
             api_instance.save()
