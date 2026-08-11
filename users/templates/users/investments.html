@@ -7,21 +7,21 @@
 
 {% block content %}
 
-<div class="portfolio-page">
+<div class="investpage-container">
 
     <!-- Portfolio Summary -->
-    <div class="portfolio-summary-card">
-        <div class="portfolio-card-header">
+    <div class="investpage-summary-card">
+        <div class="investpage-card-header">
             💼 Portfolio Summary
         </div>
-        <div class="portfolio-card-body">
+        <div class="investpage-card-body">
             <h2>Total Value: ${{ current_value }}</h2>
             <p><strong>Net ROI:</strong> {{ roi }}%</p>
             <p><strong>Total Invested:</strong> ${{ total_invested }}</p>
             <p><strong>Best Asset:</strong> {{ best_asset }}</p>
-            <div class="portfolio-quick-action">
+            <div class="investpage-quick-action">
                 <a href="{% url 'users:start_investment' %}"
-                   class="portfolio-btn portfolio-btn-primary">
+                   class="investpage-btn investpage-btn-primary">
                     ➕ Start New Investment
                 </a>
             </div>
@@ -29,14 +29,12 @@
     </div>
 
     <!-- Row 1 -->
-    <div class="portfolio-row">
-
-        <!-- Active Investments -->
-        <div class="portfolio-card">
-            <div class="portfolio-card-header">📑 Active Investments</div>
-            <div class="portfolio-card-body">
-                <div class="portfolio-table-wrapper">
-                    <table class="portfolio-table">
+    <div class="investpage-row">
+        <div class="investpage-card">
+            <div class="investpage-card-header">📑 Active Investments</div>
+            <div class="investpage-card-body">
+                <div class="investpage-table-wrapper">
+                    <table class="investpage-table">
                         <thead>
                             <tr>
                                 <th>Plan</th>
@@ -66,10 +64,9 @@
             </div>
         </div>
 
-        <!-- Performance -->
-        <div class="portfolio-card">
-            <div class="portfolio-card-header">📈 Investment Performance</div>
-            <div class="portfolio-card-body">
+        <div class="investpage-card">
+            <div class="investpage-card-header">📈 Investment Performance</div>
+            <div class="investpage-card-body">
                 <p><strong>Total Invested:</strong> ${{ total_invested }}</p>
                 <p><strong>Current Value:</strong> ${{ current_value }}</p>
                 <p><strong>ROI:</strong> {{ roi }}%</p>
@@ -79,10 +76,10 @@
     </div>
 
     <!-- Row 2 -->
-    <div class="portfolio-row">
-        <div class="portfolio-card">
-            <div class="portfolio-card-header">⏳ Upcoming Maturities</div>
-            <div class="portfolio-card-body">
+    <div class="investpage-row">
+        <div class="investpage-card">
+            <div class="investpage-card-header">⏳ Upcoming Maturities</div>
+            <div class="investpage-card-body">
                 {% for inv in upcoming_investments %}
                     <p>{{ inv.plan_name }} matures on {{ inv.end_date|date:"Y-m-d" }}</p>
                 {% empty %}
@@ -91,38 +88,38 @@
             </div>
         </div>
 
-        <div class="portfolio-card">
-            <div class="portfolio-card-header">📉 Profit & Loss History</div>
-            <div class="portfolio-card-body">
+        <div class="investpage-card">
+            <div class="investpage-card-header">📉 Profit & Loss History</div>
+            <div class="investpage-card-body">
                 <canvas id="historyChart"></canvas>
             </div>
         </div>
     </div>
 
     <!-- Row 3 -->
-    <div class="portfolio-row">
-        <div class="portfolio-card">
-            <div class="portfolio-card-header">📊 Asset Allocation</div>
-            <div class="portfolio-card-body">
+    <div class="investpage-row">
+        <div class="investpage-card">
+            <div class="investpage-card-header">📊 Asset Allocation</div>
+            <div class="investpage-card-body">
                 <canvas id="allocationChart" data-holdings='{{ holdings|safe }}'></canvas>
             </div>
         </div>
 
-        <div class="portfolio-card">
-            <div class="portfolio-card-header">📂 Download / Export</div>
-            <div class="portfolio-card-body">
-                <a href="{% url 'users:export_portfolio_csv' %}" class="portfolio-btn portfolio-btn-gold">Export CSV</a>
-                <a href="{% url 'users:export_portfolio_pdf' %}" class="portfolio-btn portfolio-btn-gold">Export PDF</a>
-                <a href="{% url 'users:export_portfolio_excel' %}" class="portfolio-btn portfolio-btn-gold">Export Excel</a>
+        <div class="investpage-card">
+            <div class="investpage-card-header">📂 Download / Export</div>
+            <div class="investpage-card-body">
+                <a href="{% url 'users:export_portfolio_csv' %}" class="investpage-btn investpage-btn-gold">Export CSV</a>
+                <a href="{% url 'users:export_portfolio_pdf' %}" class="investpage-btn investpage-btn-gold">Export PDF</a>
+                <a href="{% url 'users:export_portfolio_excel' %}" class="investpage-btn investpage-btn-gold">Export Excel</a>
             </div>
         </div>
     </div>
 
     <!-- Row 4 -->
-    <div class="portfolio-row">
-        <div class="portfolio-card">
-            <div class="portfolio-card-header">💡 Investment Tips</div>
-            <div class="portfolio-card-body">
+    <div class="investpage-row">
+        <div class="investpage-card">
+            <div class="investpage-card-header">💡 Investment Tips</div>
+            <div class="investpage-card-body">
                 <ul>
                     <li>Diversify across multiple assets to reduce risk.</li>
                     <li>Balance short-term and long-term plans for liquidity.</li>

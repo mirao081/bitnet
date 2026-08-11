@@ -1,8 +1,8 @@
 /*==================================================
-   PORTFOLIO SHOWCASE STYLE
+   INVESTMENT SHOWCASE STYLE
 ==================================================*/
 
-.portfolio-page {
+.investpage-container {
     width: 100%;
     padding: 90px 0;
     position: relative;
@@ -13,7 +13,7 @@
       linear-gradient(180deg, #05070d, #0a1020);
 }
 
-.portfolio-row {
+.investpage-row {
     width: 90%;
     max-width: 1600px;
     margin: auto;
@@ -29,8 +29,8 @@
    GLASS CARD
 =========================*/
 
-.portfolio-card,
-.portfolio-summary-card {
+.investpage-card,
+.investpage-summary-card {
     position: relative;
     overflow: hidden;
     text-align: center;
@@ -46,8 +46,8 @@
     transition: .45s ease;
 }
 
-.portfolio-card::before,
-.portfolio-summary-card::before {
+.investpage-card::before,
+.investpage-summary-card::before {
     content: "";
     position: absolute;
     width: 220px;
@@ -59,24 +59,24 @@
     transition: .6s;
 }
 
-.portfolio-card:hover,
-.portfolio-summary-card:hover {
+.investpage-card:hover,
+.investpage-summary-card:hover {
     transform: translateY(-12px);
     box-shadow:
       0 30px 70px rgba(0, 0, 0, .45),
       0 0 40px rgba(0, 216, 239, .18);
 }
 
-.portfolio-card:hover::before,
-.portfolio-summary-card:hover::before {
+.investpage-card:hover::before,
+.investpage-summary-card:hover::before {
     transform: scale(1.4);
 }
 
 /*=========================
-   TITLE & DESCRIPTION
+   TITLE & BODY
 =========================*/
 
-.portfolio-card-header {
+.investpage-card-header {
     font-size: 24px;
     font-weight: 800;
     color: #fff;
@@ -84,7 +84,7 @@
     line-height: 1.25;
 }
 
-.portfolio-card-body {
+.investpage-card-body {
     font-size: 15px;
     color: rgba(255, 255, 255, .80);
     line-height: 1.6;
@@ -94,7 +94,7 @@
    BUTTONS
 =========================*/
 
-.portfolio-btn {
+.investpage-btn {
     display: inline-block;
     margin-top: 15px;
     padding: 10px 20px;
@@ -106,107 +106,72 @@
     transition: .3s;
 }
 
-.portfolio-btn:hover {
+.investpage-btn:hover {
     background: #009bb8;
     color: #fff;
 }
 
-.portfolio-btn-gold {
+.investpage-btn-gold {
     background: #ffcc00;
     color: #05070d;
 }
 
-.portfolio-btn-gold:hover {
+.investpage-btn-gold:hover {
     background: #e6b800;
     color: #fff;
 }
 
 /*=========================
-   HEADING CONTAINER
+   TABLE
 =========================*/
-.portfolio-heading-container {
-    text-align: center;
-    margin-bottom: 60px;
-    padding: 20px;
-    background: rgba(255, 255, 255, .05);
-    border-radius: 20px;
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    box-shadow: 0 0 25px rgba(0, 216, 239, .35);
-}
 
-.portfolio-heading-title {
-    font-size: 25px;
-    font-weight: 900;
+.investpage-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
     color: #fff;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    margin-bottom: 15px;
-    text-shadow:
-      0 0 10px #00d8ef,
-      0 0 20px #00d8ef,
-      0 0 40px #7a00ff;
-    animation: glowPulse 3s infinite alternate;
 }
 
-.portfolio-heading-subtitle {
-    font-size: 18px;
-    font-weight: 600;
-    background: linear-gradient(90deg, #00d8ef, #7a00ff, #ff0080);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-size: 200% auto;
-    animation: shineFlow 6s linear infinite;
-    letter-spacing: 1px;
+.investpage-table th,
+.investpage-table td {
+    padding: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, .15);
+    text-align: center;
 }
 
-/*=========================
-   ANIMATIONS
-=========================*/
-@keyframes glowPulse {
-    from { text-shadow: 0 0 10px #00d8ef, 0 0 20px #00d8ef; }
-    to   { text-shadow: 0 0 20px #7a00ff, 0 0 40px #ff0080; }
-}
-
-@keyframes shineFlow {
-    0%   { background-position: 0% 50%; }
-    50%  { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
+.investpage-table th {
+    background: rgba(255, 255, 255, .08);
+    font-weight: 700;
 }
 
 /*=========================
    RESPONSIVE
 =========================*/
+
 @media(max-width:991px){
-  .portfolio-row {
+  .investpage-row {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media(max-width:600px){
-  .portfolio-page {
+  .investpage-container {
     padding: 60px 0;
   }
-  .portfolio-row {
+  .investpage-row {
     width: 95%;
     grid-template-columns: 1fr;
     gap: 24px;
   }
-  .portfolio-card,
-  .portfolio-summary-card {
+  .investpage-card,
+  .investpage-summary-card {
     padding: 24px;
   }
-  .portfolio-card-header {
+  .investpage-card-header {
     font-size: 21px;
   }
-  .portfolio-card-body {
+  .investpage-card-body {
     font-size: 14px;
     line-height: 1.5;
-  }
-  .portfolio-heading-title {
-    font-size: 21px;
-  }
-  .portfolio-heading-subtitle {
-    font-size: 16px;
   }
 }
