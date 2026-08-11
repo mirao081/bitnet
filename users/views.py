@@ -409,14 +409,28 @@ def portfolio(request):
 
 @login_required
 def investments(request):
-    investments = ActiveInvestment.objects.filter(user=request.user)
-    transactions = Transaction.objects.filter(user=request.user).order_by('-date')[:10]
+    investments = ActiveInvestment.objects.filter(
+        user=request.user
+    )
+
+    transactions = (
+        Transaction.objects
+        .filter(user=request.user)
+        .order_by("-date")[:10]
+    )
+
     total_invested = (
-        investments.aggregate(Sum('amount'))['amount__sum']
+        investments.aggregate(
+            total=Sum("amount")
+        )["total"]
         or Decimal("0")
     )
+
     current_value = sum(
-        (inv.get_current_value() for inv in investments),
+        (
+            inv.get_current_value()
+            for inv in investments
+        ),
         Decimal("0")
     )
 
@@ -439,6 +453,11 @@ def investments(request):
         .filter(end_date__isnull=False)
         .order_by("end_date")[:5]
     )
+
+    # -------------------------------------------------
+    # Cryptocurrency prices
+    # -------------------------------------------------
+
     prices = {
         "BTC": 0,
         "ETH": 0,
@@ -447,38 +466,91 @@ def investments(request):
 
     try:
         response = requests.get(
-            "https://api.coingecko.com/api/v3/simple/price"
-            "?ids=bitcoin,ethereum,tether&vs_currencies=usd",
+            "https://api.coingecko.com/api/v3/simple/price",
+            params={
+                "ids": "bitcoin,ethereum,tether",
+                "vs_currencies": "usd",
+            },
             timeout=10,
         )
 
-        if response.status_code == 200:
-            data = response.json()
+        response.raise_for_status()
 
-            prices = {
-                "BTC": data.get("bitcoin", {}).get("usd", 0),
-                "ETH": data.get("ethereum", {}).get("usd", 0),
-                "USDT": data.get("tether", {}).get("usd", 0),
-            }
+        data = response.json()
 
-    except Exception:
+        prices = {
+            "BTC": data.get(
+                "bitcoin", {}
+            ).get("usd", 0),
+
+            "ETH": data.get(
+                "ethereum", {}
+            ).get("usd", 0),
+
+            "USDT": data.get(
+                "tether", {}
+            ).get("usd", 0),
+        }
+
+    except (
+        requests.RequestException,
+        ValueError,
+        TypeError,
+    ):
+        # Keep the default values if CoinGecko
+        # is unavailable.
         pass
+
+    # -------------------------------------------------
+    # Chart data
+    #
+    # IMPORTANT:
+    # Do NOT json.dumps() this.
+    # Django's json_script filter handles JSON.
+    # -------------------------------------------------
+
+    holdings = {
+        "BTC": prices["BTC"],
+        "ETH": prices["ETH"],
+        "USDT": prices["USDT"],
+    }
 
     context = {
         "investments": investments,
         "transactions": transactions,
-        "total_invested": round(total_invested, 2),
-        "current_value": round(current_value, 2),
-        "roi": round(roi, 2),
+
+        "total_invested": round(
+            total_invested,
+            2
+        ),
+
+        "current_value": round(
+            current_value,
+            2
+        ),
+
+        "roi": round(
+            roi,
+            2
+        ),
+
         "best_asset": best_asset,
+
         "upcoming_investments": upcoming_investments,
+
         "btc_price": prices["BTC"],
         "eth_price": prices["ETH"],
         "usdt_price": prices["USDT"],
-        "holdings": json.dumps(prices),
+
+        # Pass Python dict, NOT json.dumps()
+        "holdings": holdings,
     }
 
-    return render(request, "users/investments.html", context)
+    return render(
+        request,
+        "users/investments.html",
+        context
+    )
 
 @login_required
 def investment_plans(request):

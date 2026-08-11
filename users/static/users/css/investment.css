@@ -173,3 +173,31 @@
     line-height: 1.5;
   }
 }
+/* =====================================================
+   CHART CONTAINERS
+   ===================================================== */
+
+.allocation-chart-container,
+.history-chart-container {
+    position: relative;
+    width: 100%;
+    height: 320px;
+}
+
+
+/* Asset allocation canvas */
+
+#allocationChart {
+    display: block;
+    width: 100% !important;
+    height: 100% !important;
+}
+
+
+/* History canvas */
+
+#historyChart {
+    display: block;
+    width: 100% !important;
+    height: 100% !important;
+}
