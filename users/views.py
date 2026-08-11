@@ -409,28 +409,14 @@ def portfolio(request):
 
 @login_required
 def investments(request):
-    investments = ActiveInvestment.objects.filter(
-        user=request.user
-    )
-
-    transactions = (
-        Transaction.objects
-        .filter(user=request.user)
-        .order_by("-date")[:10]
-    )
-
+    investments = ActiveInvestment.objects.filter(user=request.user)
+    transactions = Transaction.objects.filter(user=request.user).order_by('-date')[:10]
     total_invested = (
-        investments.aggregate(
-            total=Sum("amount")
-        )["total"]
+        investments.aggregate(Sum('amount'))['amount__sum']
         or Decimal("0")
     )
-
     current_value = sum(
-        (
-            inv.get_current_value()
-            for inv in investments
-        ),
+        (inv.get_current_value() for inv in investments),
         Decimal("0")
     )
 
@@ -453,11 +439,6 @@ def investments(request):
         .filter(end_date__isnull=False)
         .order_by("end_date")[:5]
     )
-
-    # -------------------------------------------------
-    # Cryptocurrency prices
-    # -------------------------------------------------
-
     prices = {
         "BTC": 0,
         "ETH": 0,
@@ -466,91 +447,38 @@ def investments(request):
 
     try:
         response = requests.get(
-            "https://api.coingecko.com/api/v3/simple/price",
-            params={
-                "ids": "bitcoin,ethereum,tether",
-                "vs_currencies": "usd",
-            },
+            "https://api.coingecko.com/api/v3/simple/price"
+            "?ids=bitcoin,ethereum,tether&vs_currencies=usd",
             timeout=10,
         )
 
-        response.raise_for_status()
+        if response.status_code == 200:
+            data = response.json()
 
-        data = response.json()
+            prices = {
+                "BTC": data.get("bitcoin", {}).get("usd", 0),
+                "ETH": data.get("ethereum", {}).get("usd", 0),
+                "USDT": data.get("tether", {}).get("usd", 0),
+            }
 
-        prices = {
-            "BTC": data.get(
-                "bitcoin", {}
-            ).get("usd", 0),
-
-            "ETH": data.get(
-                "ethereum", {}
-            ).get("usd", 0),
-
-            "USDT": data.get(
-                "tether", {}
-            ).get("usd", 0),
-        }
-
-    except (
-        requests.RequestException,
-        ValueError,
-        TypeError,
-    ):
-        # Keep the default values if CoinGecko
-        # is unavailable.
+    except Exception:
         pass
-
-    # -------------------------------------------------
-    # Chart data
-    #
-    # IMPORTANT:
-    # Do NOT json.dumps() this.
-    # Django's json_script filter handles JSON.
-    # -------------------------------------------------
-
-    holdings = {
-        "BTC": prices["BTC"],
-        "ETH": prices["ETH"],
-        "USDT": prices["USDT"],
-    }
 
     context = {
         "investments": investments,
         "transactions": transactions,
-
-        "total_invested": round(
-            total_invested,
-            2
-        ),
-
-        "current_value": round(
-            current_value,
-            2
-        ),
-
-        "roi": round(
-            roi,
-            2
-        ),
-
+        "total_invested": round(total_invested, 2),
+        "current_value": round(current_value, 2),
+        "roi": round(roi, 2),
         "best_asset": best_asset,
-
         "upcoming_investments": upcoming_investments,
-
         "btc_price": prices["BTC"],
         "eth_price": prices["ETH"],
         "usdt_price": prices["USDT"],
-
-        # Pass Python dict, NOT json.dumps()
-        "holdings": holdings,
+        "holdings": json.dumps(prices),
     }
 
-    return render(
-        request,
-        "users/investments.html",
-        context
-    )
+    return render(request, "users/investments.html", context)
 
 @login_required
 def investment_plans(request):
@@ -987,94 +915,45 @@ def support(request):
 @login_required
 def profile(request):
     user = request.user
-
-    # ==================================================
-    # USER PROFILE
-    # ==================================================
-    profile_obj, _ = UserProfile.objects.get_or_create(user=user)
-
-    # ==================================================
-    # WALLET
-    # ==================================================
     wallet, _ = UserWallet.objects.get_or_create(user=user)
+    wallet_form = UserWalletForm(request.POST or None, instance=wallet)
 
-    wallet_form = UserWalletForm(
-        request.POST or None,
-        request.FILES or None,
-        instance=wallet
-    )
-
-    # Make existing wallet addresses read-only
-    for field_name in ["btc_wallet", "eth_wallet", "usdt_erc20_wallet", "usdt_trc20_wallet"]:
+    for field_name in ['btc_wallet', 'eth_wallet', 'usdt_erc20_wallet', 'usdt_trc20_wallet']:
         field = wallet_form.fields[field_name]
-        if getattr(wallet, field_name, None):
-            field.widget.attrs["readonly"] = "readonly"
-        field.widget.attrs["id"] = f"id_{field_name}"
+        if getattr(wallet, field_name):
+            field.widget.attrs['readonly'] = 'readonly'
+        field.widget.attrs['id'] = f'id_{field_name}'
 
-    # ==================================================
-    # SAVE WALLET
-    # ==================================================
-    if request.method == "POST":
-        if wallet_form.is_valid():
-            wallet_form.save()
-            return redirect("/users/profile#wallets")
+    if request.method == "POST" and wallet_form.is_valid():
+        wallet_form.save()
+        return redirect("/users/profile#wallets")
 
-    # ==================================================
-    # INVESTMENTS
-    # ==================================================
-    investments = ActiveInvestment.objects.filter(user=user).order_by("start_date")
-    active_investments = investments.filter(status="active")
-    completed_investments = investments.filter(status="completed")
+    active_investments = ActiveInvestment.objects.filter(user=user, status="active")
+    completed_investments = ActiveInvestment.objects.filter(user=user, status="completed")
 
-    # Counts and totals
     active_investments_count = active_investments.count()
-    total_invested = investments.aggregate(total=Sum("amount"))["total"] or 0
-    total_roi = sum((inv.get_current_value() - inv.amount for inv in completed_investments), 0)
+    total_invested = ActiveInvestment.objects.filter(user=user).aggregate(total=Sum("amount"))["total"] or 0
+    total_roi = sum(inv.get_current_value() - inv.amount for inv in completed_investments)
 
-    # Recent investments
-    recent_investments = investments.order_by("-start_date")[:5]
+  
+    recent_investments = ActiveInvestment.objects.filter(user=user).order_by("-start_date")[:5]
 
-    # ==================================================
-    # INVESTMENT PERFORMANCE CHART
-    # ==================================================
-    chart_labels = []
-    chart_data = []
+    referral_earnings = getattr(user.userprofile, "referral_earnings", 0)
 
-    for inv in investments:
-        # Investment start
-        chart_labels.append(inv.start_date.strftime("%Y-%m-%d"))
-        chart_data.append(round(float(inv.amount), 2))
+  
+    chart_labels = [inv.start_date.strftime("%Y-%m-%d") for inv in recent_investments]
+    chart_data = [float(inv.get_current_value()) for inv in recent_investments]
 
-        # Investment current/end value
-        if inv.end_date:
-            chart_labels.append(inv.end_date.strftime("%Y-%m-%d"))
-            chart_data.append(round(float(inv.get_current_value()), 2))
-
-    # ==================================================
-    # REFERRAL EARNINGS
-    # ==================================================
-    referral_earnings = getattr(profile_obj, "referral_earnings", 0) or 0
-
-    # ==================================================
-    # CONTEXT
-    # ==================================================
-    context = {
-        "profile": profile_obj,
+    return render(request, "users/profile.html", {
         "wallet_form": wallet_form,
         "active_investments_count": active_investments_count,
         "total_invested": total_invested,
         "total_roi": total_roi,
         "recent_investments": recent_investments,
         "referral_earnings": referral_earnings,
-        # Chart data encoded as JSON for json_script
-        "chart_labels": json.dumps(chart_labels),
-        "chart_data": json.dumps(chart_data),
-    }
-
-    # ==================================================
-    # RENDER
-    # ==================================================
-    return render(request, "users/profile.html", context)
+        "chart_labels": chart_labels,
+        "chart_data": chart_data,
+    })
 
 @login_required
 def profile_settings(request):
