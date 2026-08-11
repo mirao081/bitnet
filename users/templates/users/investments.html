@@ -1,3 +1,4 @@
+
 {% extends "users/dashboard_base.html" %}
 {% load static %}
 
@@ -55,21 +56,13 @@
                     <table class="investment-table">
 
                         <thead>
-
                             <tr>
-
                                 <th>Plan</th>
-
                                 <th>Amount</th>
-
                                 <th>Start Date</th>
-
                                 <th>Maturity Date</th>
-
                                 <th>Status</th>
-
                             </tr>
-
                         </thead>
 
                         <tbody>
@@ -82,11 +75,17 @@
 
                                 <td>${{ inv.amount }}</td>
 
-                                <td>{{ inv.start_date|date:"Y-m-d" }}</td>
+                                <td>
+                                    {{ inv.start_date|date:"Y-m-d" }}
+                                </td>
 
-                                <td>{{ inv.end_date|date:"Y-m-d" }}</td>
+                                <td>
+                                    {{ inv.end_date|date:"Y-m-d" }}
+                                </td>
 
-                                <td>{{ inv.status }}</td>
+                                <td>
+                                    {{ inv.status }}
+                                </td>
 
                             </tr>
 
@@ -122,13 +121,25 @@
 
             <div class="investment-card-body">
 
-                <p><strong>Total Invested:</strong> ${{ total_invested }}</p>
+                <p>
+                    <strong>Total Invested:</strong>
+                    ${{ total_invested }}
+                </p>
 
-                <p><strong>Current Value:</strong> ${{ current_value }}</p>
+                <p>
+                    <strong>Current Value:</strong>
+                    ${{ current_value }}
+                </p>
 
-                <p><strong>ROI:</strong> {{ roi }}%</p>
+                <p>
+                    <strong>ROI:</strong>
+                    {{ roi }}%
+                </p>
 
-                <p><strong>Best Asset:</strong> {{ best_asset }}</p>
+                <p>
+                    <strong>Best Asset:</strong>
+                    {{ best_asset }}
+                </p>
 
             </div>
 
@@ -137,11 +148,10 @@
     </div>
 
 
-
     <!-- Row 2 -->
-
     <div class="investment-row">
 
+        <!-- Upcoming Maturities -->
         <div class="investment-card">
 
             <div class="investment-card-header">
@@ -168,13 +178,14 @@
         </div>
 
 
+        <!-- Profit & Loss History -->
         <div class="investment-card">
 
             <div class="investment-card-header">
                 📉 Profit & Loss History
             </div>
 
-            <div class="investment-card-body">
+            <div class="investment-card-body chart-container">
 
                 <canvas id="historyChart"></canvas>
 
@@ -185,22 +196,21 @@
     </div>
 
 
-
     <!-- Row 3 -->
-
     <div class="investment-row">
 
+        <!-- Asset Allocation -->
         <div class="investment-card">
 
             <div class="investment-card-header">
                 📊 Asset Allocation
             </div>
 
-            <div class="investment-card-body">
+            <div class="investment-card-body chart-container">
 
                 <canvas
                     id="allocationChart"
-                    data-holdings='{{ holdings|safe }}'>
+                    data-holdings="{{ holdings|escapejs }}">
                 </canvas>
 
             </div>
@@ -208,6 +218,7 @@
         </div>
 
 
+        <!-- Download / Export -->
         <div class="investment-card">
 
             <div class="investment-card-header">
@@ -218,23 +229,17 @@
 
                 <a href="{% url 'users:export_portfolio_csv' %}"
                    class="investment-btn investment-btn-gold">
-
                     Export CSV
-
                 </a>
 
                 <a href="{% url 'users:export_portfolio_pdf' %}"
                    class="investment-btn investment-btn-gold">
-
                     Export PDF
-
                 </a>
 
                 <a href="{% url 'users:export_portfolio_excel' %}"
                    class="investment-btn investment-btn-gold">
-
                     Export Excel
-
                 </a>
 
             </div>
@@ -244,9 +249,7 @@
     </div>
 
 
-
     <!-- Row 4 -->
-
     <div class="investment-row">
 
         <div class="investment-card">
@@ -259,13 +262,21 @@
 
                 <ul>
 
-                    <li>Diversify across multiple assets to reduce risk.</li>
+                    <li>
+                        Diversify across multiple assets to reduce risk.
+                    </li>
 
-                    <li>Balance short-term and long-term plans for liquidity.</li>
+                    <li>
+                        Balance short-term and long-term plans for liquidity.
+                    </li>
 
-                    <li>Reinvest profits to compound your growth.</li>
+                    <li>
+                        Reinvest profits to compound your growth.
+                    </li>
 
-                    <li>Track volatility indexes before committing large amounts.</li>
+                    <li>
+                        Track volatility indexes before committing large amounts.
+                    </li>
 
                 </ul>
 
@@ -277,7 +288,14 @@
 
 </div>
 
+{% endblock %}
+
+
+{% block extra_js %}
+
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 <script src="{% static 'users/js/investments.js' %}"></script>
 
 {% endblock %}
+
