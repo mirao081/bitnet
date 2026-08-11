@@ -405,7 +405,8 @@ def portfolio(request):
         "usdt_price": prices.get("USDT"),
         "upcoming_investments": upcoming_investments,
     })
-z
+
+
 @login_required
 def investments(request):
     investments = ActiveInvestment.objects.filter(user=request.user)
