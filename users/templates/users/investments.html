@@ -101,12 +101,13 @@
         <div class="investpage-card">
             <div class="investpage-card-header">📊 Asset Allocation</div>
             <div class="investpage-card-body">
-                <canvas id="allocationChart" data-holdings='{{ holdings|safe }}'></canvas>
+                {{ holdings|json_script:"holdings-data" }}
+                <canvas id="allocationChart"></canvas>
             </div>
         </div>
 
         <div class="investpage-card">
-            <div class="investpage-card-header">📂 Download / Export</div>
+            <div class="investpage-card-header">Download / Export</div>
             <div class="investpage-card-body">
                 <a href="{% url 'users:export_portfolio_csv' %}" class="investpage-btn investpage-btn-gold">Export CSV</a>
                 <a href="{% url 'users:export_portfolio_pdf' %}" class="investpage-btn investpage-btn-gold">Export PDF</a>
