@@ -9,3 +9,7 @@ venv/
 
 # Ignore database files
 *.sqlite3
+bitnet/settings.py
+db.sqlite3
+__pycache__/
+*.pyc

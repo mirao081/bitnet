@@ -2,11 +2,12 @@ from django import forms
 from .models import UserKYC, UserWallet, UserVerification, APIKey, UserProfile, Withdrawal
 from django.contrib.auth.models import User
 from django_recaptcha.fields import ReCaptchaField
-from django_recaptcha.widgets import ReCaptchaV2Checkbox
+
 
 
 class KYCForm(forms.ModelForm):
-    captcha = ReCaptchaField(widget=ReCaptchaV2Checkbox)
+    captcha = ReCaptchaField()
+
 
     class Meta:
         model = UserKYC
@@ -17,7 +18,8 @@ class KYCForm(forms.ModelForm):
 
 
 class UserWalletForm(forms.ModelForm):
-    captcha = ReCaptchaField(widget=ReCaptchaV2Checkbox)
+    captcha = ReCaptchaField()
+
 
     class Meta:
         model = UserWallet
@@ -31,7 +33,8 @@ class UserWalletForm(forms.ModelForm):
 
 
 class ProfileForm(forms.ModelForm):
-    captcha = ReCaptchaField(widget=ReCaptchaV2Checkbox)
+    captcha = ReCaptchaField()
+
 
     class Meta:
         model = UserProfile
@@ -42,7 +45,7 @@ class ProfileForm(forms.ModelForm):
 
 
 class NotificationsForm(forms.ModelForm):
-    captcha = ReCaptchaField(widget=ReCaptchaV2Checkbox)
+    captcha = ReCaptchaField()
 
     class Meta:
         model = UserProfile
@@ -50,7 +53,8 @@ class NotificationsForm(forms.ModelForm):
 
 
 class AccountForm(forms.ModelForm):
-    captcha = ReCaptchaField(widget=ReCaptchaV2Checkbox)
+    captcha = ReCaptchaField()
+
 
     class Meta:
         model = UserProfile
@@ -58,7 +62,8 @@ class AccountForm(forms.ModelForm):
 
 
 class VerificationForm(forms.ModelForm):
-    captcha = ReCaptchaField(widget=ReCaptchaV2Checkbox)
+    captcha = ReCaptchaField()
+
 
     class Meta:
         model = UserVerification
@@ -66,7 +71,7 @@ class VerificationForm(forms.ModelForm):
 
 
 class APIForm(forms.ModelForm):
-    captcha = ReCaptchaField(widget=ReCaptchaV2Checkbox)
+    captcha = ReCaptchaField()
 
     class Meta:
         model = APIKey
@@ -74,7 +79,7 @@ class APIForm(forms.ModelForm):
 
 
 class SettingsForm(forms.ModelForm):
-    captcha = ReCaptchaField(widget=ReCaptchaV2Checkbox)
+    captcha = ReCaptchaField()
 
     class Meta:
         model = User
@@ -86,7 +91,8 @@ class SettingsForm(forms.ModelForm):
 
 
 class WithdrawalForm(forms.ModelForm):
-    captcha = ReCaptchaField(widget=ReCaptchaV2Checkbox)
+    captcha = ReCaptchaField()
+
 
     class Meta:
         model = Withdrawal

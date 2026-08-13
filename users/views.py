@@ -73,36 +73,19 @@ MIN_WITHDRAWAL = Decimal("200.00")
 @login_required
 def dashboard(request):
     user = request.user
-
-    # Instruments
     instruments = MarketInstrument.objects.all()
-
-    # Ensure profile exists
     profile, _ = UserProfile.objects.get_or_create(user=user)
-
-    # Investments
     investments = ActiveInvestment.objects.filter(user=user)
-
-    # Referral object
     referral, _ = Referral.objects.get_or_create(user=user)
-
-    # Notifications
     notifications = Notification.objects.filter(user=user).order_by("-timestamp")[:10]
 
-    # ==================================================
-    # AUTO-COMPLETE MATURED INVESTMENTS
-    # ==================================================
     for inv in investments.filter(status="active"):
         if timezone.now() >= inv.end_date:
             inv.status = "completed"
             inv.save()
 
-    # Refresh investments after status changes
     investments = ActiveInvestment.objects.filter(user=user)
 
-    # ==================================================
-    # GROWTH CHART DATA
-    # ==================================================
     growth_data, growth_labels = [], []
     total = 0
     for inv in investments.order_by("start_date"):
@@ -110,9 +93,6 @@ def dashboard(request):
         growth_data.append(round(total, 2))
         growth_labels.append(inv.start_date.strftime("%b %d"))
 
-    # ==================================================
-    # ROI CALCULATIONS (safe division)
-    # ==================================================
     daily_roi = weekly_roi = monthly_roi = 0
     for inv in investments:
         days = (inv.end_date - inv.start_date).days
@@ -123,9 +103,6 @@ def dashboard(request):
 
     roi_data = [round(daily_roi, 2), round(weekly_roi, 2), round(monthly_roi, 2)]
 
-    # ==================================================
-    # EXTERNAL MARKET DATA (safe fallback)
-    # ==================================================
     try:
         crypto_url = (
             "https://api.coingecko.com/api/v3/simple/price"
@@ -146,26 +123,17 @@ def dashboard(request):
     except Exception:
         btc_price = eth_price = sp500_index = "N/A"
 
-    # ==================================================
-    # REFERRALS
-    # ==================================================
     referred_users = User.objects.filter(referral__referrer=user)
     referral_count = referred_users.count()
 
-    # Referral bonus
     referral_bonus = (
         ReferralCommission.objects.filter(referrer=user).aggregate(
             total=Sum("commission_amount")
         )["total"]
         or 0
     )
-
-    # ==================================================
-    # COMPLETED INVESTMENTS
-    # ==================================================
     completed_investments = investments.filter(status="completed")
 
-    # Safe profit calculation
     try:
         total_profit = sum(
             (getattr(inv, "get_current_value", lambda: inv.amount)() - inv.amount)
@@ -174,7 +142,6 @@ def dashboard(request):
     except Exception:
         total_profit = 0
 
-    # Safe total balance calculation
     try:
         total_balance = (
             profile.usd_balance
@@ -188,10 +155,6 @@ def dashboard(request):
         )
     except Exception:
         total_balance = 0
-
-    # ==================================================
-    # DASHBOARD CONTEXT
-    # ==================================================
     context = {
         "instruments": instruments,
         "profile": profile,

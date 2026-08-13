@@ -213,12 +213,16 @@ def get_client_ip(request):
     return ip
 
 def login_view(request):
-    form = AuthenticationForm(request, data=request.POST or None)
+    form = StyledLoginForm(request, data=request.POST or None)
+
     if request.method == 'POST':
         if form.is_valid():
             user = form.get_user()
-            verification, _ = UserVerification.objects.get_or_create(user=user)
+
+            UserVerification.objects.get_or_create(user=user)
+
             login(request, user)
+
             ua_string = request.META.get('HTTP_USER_AGENT', '')
             user_agent = user_agents.parse(ua_string)
             device = f"{user_agent.browser.family} ({user_agent.os.family})"
@@ -231,8 +235,10 @@ def login_view(request):
                 device=device,
                 status="Successful"
             )
+
             if user.is_staff or user.is_superuser:
                 return redirect("adminpanel:dashboard")
+
             return redirect("users:dashboard")
 
         else:
@@ -249,8 +255,9 @@ def login_view(request):
 
             messages.error(request, "Invalid credentials.")
 
-    return render(request, "crypto/login.html", {"form": form})
-
+    return render(request, "crypto/login.html", {
+        "form": form,
+    })
 
 def twofa_verify(request):
     if request.method == "POST":

@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Login - Bitnet</title>
+    <title>Login - Bitnethub</title>
     <link rel="stylesheet" href="{% static 'crypto/css/login.css' %}">
     <!-- Google reCAPTCHA v2 Checkbox -->
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
@@ -11,7 +11,7 @@
 <body class="bitnet-login-body">
     <div class="bitnet-login-container">
         <div class="bitnet-login-logo">
-            <span class="bitnet-site-name">BitnetFx</span>
+            <span class="bitnet-site-name">Bitnethub</span>
         </div>
 
         <h2 class="bitnet-login-title">Login to Your Account</h2>
@@ -27,10 +27,10 @@
                 {{ form.password }}
             </div>
 
-            <!-- ✅ Render the checkbox captcha -->
             <div class="form-group">
-                {{ form.captcha }}
+                <div class="g-recaptcha" data-sitekey="{{ RECAPTCHA_PUBLIC_KEY }}"></div>
             </div>
+
 
             <button type="submit" class="bitnet-login-button">Login</button>
         </form>

@@ -19,26 +19,33 @@ class ContactForm(forms.Form):
         ('legal', 'Legal advisory (KYC/AML, SEC etc)')
     ])
     message = forms.CharField(widget=forms.Textarea)
-    captcha = ReCaptchaField(widget=ReCaptchaV2Checkbox)   # ✅ corrected
+    captcha = ReCaptchaField()
+
 
 class StyledLoginForm(AuthenticationForm):
-    captcha = ReCaptchaField(widget=ReCaptchaV2Checkbox)   # ✅ corrected
+    captcha = ReCaptchaField()
 
     username = forms.CharField(
-        widget=forms.TextInput(attrs={
-            'class': 'form-control',
-            'placeholder': 'Username'
-        })
+        widget=forms.TextInput(
+            attrs={
+                "class": "form-control",
+                "placeholder": "Username",
+            }
+        )
     )
+
     password = forms.CharField(
-        widget=forms.PasswordInput(attrs={
-            'class': 'form-control',
-            'placeholder': 'Password'
-        })
+        widget=forms.PasswordInput(
+            attrs={
+                "class": "form-control",
+                "placeholder": "Password",
+            }
+        )
     )
 
 class StyledSignupForm(UserCreationForm):
-    captcha = ReCaptchaField(widget=ReCaptchaV2Checkbox)   # ✅ corrected
+    captcha = ReCaptchaField()
+
 
     email = forms.EmailField(
         required=True,
