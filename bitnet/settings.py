@@ -5,7 +5,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = '$c_0uv_w&=4$0i_28-g#a15obq1@&7s0t1z&q4yglb1-##n5=7'
 DEBUG = False
-ALLOWED_HOSTS = ['gloria1231.pythonanywhere.com']
+ALLOWED_HOSTS = ['191.215.39.223', 'bitnethub.online', 'www.bitnethub.online']
+
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -46,6 +47,7 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'crypto.context_processors.ticker_instruments',
                 'crypto.context_processors.global_settings',
+                'crypto.context_processors.recaptcha_key',
             ],
         },
     },
@@ -93,15 +95,18 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
 # 🔑 reCAPTCHA keys
-RECAPTCHA_PUBLIC_KEY = "6Lejf3ktAAAAAFOdzKCKGgUU0tarfngQ88Vs6M1Q"
-RECAPTCHA_PRIVATE_KEY = "6Lejf3ktAAAAAInTy8-C6V9DdtC2_oQlMgkHOJjb"
+RECAPTCHA_PUBLIC_KEY = "6LeN2oQtAAAAABzM2BK9G7ezdzOn2uc_7CPb0avJ"
+RECAPTCHA_PRIVATE_KEY = "6LeN2oQtAAAAAJmWW-whEob0H4SVkngxAMqy4m9j"
 RECAPTCHA_USE_SSL = True
 
-# 🔑 Email settings
-DEFAULT_FROM_EMAIL = "chineduarize4@gmail.com"
+# 🔑 Email settings (Hostinger SMTP)
+DEFAULT_FROM_EMAIL = "support@bitnethub.online"
+
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
-EMAIL_HOST = "smtp.gmail.com"
+EMAIL_HOST = "smtp.hostinger.com"
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = "chineduarize4@gmail.com"
-EMAIL_HOST_PASSWORD = "ujoognwjzqnneolo"
+
+EMAIL_HOST_USER = "support@bitnethub.online"
+EMAIL_HOST_PASSWORD = "mirao12908'8"
+
