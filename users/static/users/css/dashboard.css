@@ -7331,6 +7331,136 @@ body.dark-mode .btn-danger {
     }
 
 }
+/* ================================
+   AI PLAN TABLE
+   ================================ */
+
+.ai-plan-section {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+/* Recommended plan text */
+.ai-plan-section > p {
+    margin: 10px 0 16px;
+    line-height: 1.6;
+    text-align: center;
+    overflow-wrap: break-word;
+}
+
+/* Table scroll container */
+.ai-plan-table {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    box-sizing: border-box;
+    scrollbar-width: auto;
+}
+
+/* Make the scrollbar clearly usable */
+.ai-plan-table::-webkit-scrollbar {
+    height: 10px;
+    width: 10px;
+}
+
+.ai-plan-table::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+}
+
+.ai-plan-table table {
+    width: 100%;
+    min-width: 760px;
+    border-collapse: collapse;
+    table-layout: auto;
+}
+
+.ai-plan-table th,
+.ai-plan-table td {
+    padding: 10px 12px;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+}
+
+/* Recommended plan */
+.ai-plan-table tr.ai-highlight td {
+    font-weight: 600;
+}
+
+/* Keep the action form together */
+.ai-plan-table td form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    margin: 0;
+}
+
+.ai-plan-table td input[type="number"] {
+    width: 90px;
+    min-width: 90px;
+    box-sizing: border-box;
+}
+
+/* ================================
+   MOBILE
+   ================================ */
+
+@media (max-width: 600px) {
+
+    .ai-plan-section {
+        width: 100%;
+        padding: 0;
+        overflow: hidden;
+    }
+
+    .ai-plan-section h3 {
+        text-align: center;
+        margin-bottom: 8px;
+    }
+
+    /* Recommended plan stays inside the screen */
+    .ai-plan-section > p {
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+        padding: 0 8px;
+        margin: 8px auto 14px;
+        text-align: center;
+        line-height: 1.5;
+        white-space: normal;
+        overflow-wrap: anywhere;
+    }
+
+    .ai-plan-table {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: auto;
+        overflow-y: auto;
+        max-height: 450px;
+        -webkit-overflow-scrolling: touch;
+        border-radius: 8px;
+    }
+
+    .ai-plan-table table {
+        min-width: 760px;
+        width: 760px;
+    }
+
+    .ai-plan-table th,
+    .ai-plan-table td {
+        padding: 10px 12px;
+        white-space: nowrap;
+    }
+
+    /* Make the recommended row remain one continuous highlighted row */
+    .ai-plan-table tr.ai-highlight td {
+        font-weight: 700;
+    }
+}
 .deposit-content{
 
     margin-top:20px;
