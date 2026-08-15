@@ -5,7 +5,17 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = '$c_0uv_w&=4$0i_28-g#a15obq1@&7s0t1z&q4yglb1-##n5=7'
 DEBUG = False
-ALLOWED_HOSTS = ['191.215.39.223', 'bitnethub.online', 'www.bitnethub.online']
+ALLOWED_HOSTS = [
+    '191.215.39.223',
+    'bitnethub.online',
+    'www.bitnethub.online',
+    'bitnetapp.com',
+    'www.bitnetapp.com',
+]
+CSRF_TRUSTED_ORIGINS = [
+    'https://bitnetapp.com',
+    'https://www.bitnetapp.com',
+]
 
 
 INSTALLED_APPS = [
@@ -95,8 +105,8 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
 # 🔑 reCAPTCHA keys
-RECAPTCHA_PUBLIC_KEY = "6LeN2oQtAAAAABzM2BK9G7ezdzOn2uc_7CPb0avJ"
-RECAPTCHA_PRIVATE_KEY = "6LeN2oQtAAAAAJmWW-whEob0H4SVkngxAMqy4m9j"
+RECAPTCHA_PUBLIC_KEY = "6LebNoctAAAAAAaNs4Ykdrc8yQCZOs2TuDbxbZvu"
+RECAPTCHA_PRIVATE_KEY = "6LebNoctAAAAAJv_88a_-8fUXDiCDX1wvA9t4fjZ"
 RECAPTCHA_USE_SSL = True
 
 # 🔑 Email settings (Hostinger SMTP)
