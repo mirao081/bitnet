@@ -3,14 +3,38 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="A secure digital platform for users and admins to manage assets with ease. Trusted, simple, and user‑friendly.">
+    <meta name="keywords" content="digital platform, secure assets, user management, admin panel, trusted technology">
+    <meta name="author" content="Bitnetapp">
+
+    <!-- Open Graph (Facebook, WhatsApp, LinkedIn) -->
+    <meta property="og:title" content="Bitnetapp - Secure Digital Platform" />
+    <meta property="og:description" content="Manage users and admin panels seamlessly in a trusted environment." />
+    <meta property="og:image" content="https://bitnetapp.com/static/crypto/images/crypto_logo.png" />
+    <meta property="og:url" content="https://bitnetapp.com" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Bitnetapp" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Bitnetapp - Secure Digital Platform" />
+    <meta name="twitter:description" content="A trusted platform for users and admins to manage assets with ease." />
+    <meta name="twitter:image" content="https://bitnetapp.com/static/crypto/images/crypto_logo.png" />
+
     <title>{{ settings.site_name }}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <!-- Fonts & Icons -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <!-- Styles -->
     <link rel="stylesheet" href="{% static 'crypto/css/style.css' %}">
     {% block extra_css %}{% endblock %}
 </head>
+
 <body>
 
     <!-- Market ticker on top -->
@@ -37,7 +61,7 @@
 
                 <a href="{% url 'crypto:home' %}" class="cryptonav-brand">
                     <img
-                        src="{% static 'crypto/images/bitnetlogo.png' %}"
+                        src="{% static 'crypto/images/crypto_logo.png' %}"
                         alt="{{ settings.site_name }}"
                         class="cryptonav-logo-img">
                 </a>
