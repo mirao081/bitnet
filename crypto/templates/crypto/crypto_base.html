@@ -4,127 +4,322 @@
 <head>
     <meta charset="UTF-8">
 
-    <!-- SEO Meta Tags -->
-    <meta name="description" content="A secure digital platform for users and admins to manage assets with ease. Trusted, simple, and user‑friendly.">
-    <meta name="keywords" content="digital platform, secure assets, user management, admin panel, trusted technology">
+    <!-- =========================================================
+         PRIMARY SEO
+         ========================================================= -->
+
+    <title>Bitnetapp — Secure Digital Platform</title>
+
+    <meta name="description"
+          content="Bitnetapp is a modern digital platform designed to provide secure, reliable, and seamless online services. Explore the platform, manage your account, and access trusted digital services from one convenient place.">
+
     <meta name="author" content="Bitnetapp">
 
-    <!-- Open Graph (Facebook, WhatsApp, LinkedIn) -->
-    <meta property="og:title" content="Bitnetapp - Secure Digital Platform" />
-    <meta property="og:description" content="Manage users and admin panels seamlessly in a trusted environment." />
-    <meta property="og:image" content="https://bitnetapp.com/static/crypto/images/crypto_logo.png" />
-    <meta property="og:url" content="https://bitnetapp.com" />
-    <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="Bitnetapp" />
+    <meta name="robots" content="index, follow">
 
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Bitnetapp - Secure Digital Platform" />
-    <meta name="twitter:description" content="A trusted platform for users and admins to manage assets with ease." />
-    <meta name="twitter:image" content="https://bitnetapp.com/static/crypto/images/crypto_logo.png" />
+    <meta name="googlebot" content="index, follow">
 
-    <title>{{ settings.site_name }}</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
-    <!-- Fonts & Icons -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-    <!-- Styles -->
-    <link rel="stylesheet" href="{% static 'crypto/css/style.css' %}">
+    <!-- =========================================================
+         CANONICAL URL
+         ========================================================= -->
+
+    <link rel="canonical"
+          href="https://www.bitnetapp.com/">
+
+
+    <!-- =========================================================
+         OPEN GRAPH
+         Facebook / WhatsApp / LinkedIn / Other Platforms
+         ========================================================= -->
+
+    <meta property="og:title"
+          content="Bitnetapp — Secure Digital Platform">
+
+    <meta property="og:description"
+          content="Bitnetapp is a modern digital platform designed to provide secure, reliable, and seamless online services. Explore the platform, manage your account, and access trusted digital services from one convenient place.">
+
+    <meta property="og:type"
+          content="website">
+
+    <meta property="og:site_name"
+          content="Bitnetapp">
+
+    <meta property="og:url"
+          content="https://www.bitnetapp.com/">
+
+    <meta property="og:image"
+          content="https://www.bitnetapp.com/static/crypto/images/crypto_logo.png">
+
+    <meta property="og:image:alt"
+          content="Bitnetapp — Secure Digital Platform">
+
+    <meta property="og:locale"
+          content="en_US">
+
+
+    <!-- =========================================================
+         TWITTER / X
+         ========================================================= -->
+
+    <meta name="twitter:card"
+          content="summary_large_image">
+
+    <meta name="twitter:title"
+          content="Bitnetapp — Secure Digital Platform">
+
+    <meta name="twitter:description"
+          content="Bitnetapp is a modern digital platform designed to provide secure, reliable, and seamless online services. Explore the platform, manage your account, and access trusted digital services from one convenient place.">
+
+    <meta name="twitter:image"
+          content="https://www.bitnetapp.com/static/crypto/images/crypto_logo.png">
+
+    <meta name="twitter:image:alt"
+          content="Bitnetapp — Secure Digital Platform">
+
+
+    <!-- =========================================================
+         GOOGLE WEBSITE STRUCTURED DATA
+         Helps Google understand the website name.
+         ========================================================= -->
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Bitnetapp",
+        "alternateName": "Bitnet",
+        "url": "https://www.bitnetapp.com/"
+    }
+    </script>
+
+
+    <!-- =========================================================
+         FONTS
+         ========================================================= -->
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+
+    <!-- =========================================================
+         FONT AWESOME
+         ========================================================= -->
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+
+    <!-- =========================================================
+         MAIN STYLESHEET
+         ========================================================= -->
+
+    <link
+        rel="stylesheet"
+        href="{% static 'crypto/css/style.css' %}">
+
+
+    <!-- Page-specific CSS -->
     {% block extra_css %}{% endblock %}
+
 </head>
 
 <body>
 
-    <!-- Market ticker on top -->
+
+    <!-- =========================================================
+         MARKET TICKER
+         ========================================================= -->
+
     <div class="market-ticker">
+
         <div class="ticker-track" id="tickerTrack">
+
             {% for instrument in instruments %}
-                <a href="{% url 'crypto:instrument_detail' instrument.pk %}" class="ticker-item">
-                    <span class="name">{{ instrument.ticker }}</span>
-                    <span class="value">{{ instrument.price }}</span>
-                    <span class="change {% if instrument.change_percent < 0 %}down{% else %}up{% endif %}">
-                        {{ instrument.change_percent }}% ({{ instrument.change_value }})
+
+                <a
+                    href="{% url 'crypto:instrument_detail' instrument.pk %}"
+                    class="ticker-item"
+                >
+
+                    <span class="name">
+                        {{ instrument.ticker }}
                     </span>
+
+                    <span class="value">
+                        {{ instrument.price }}
+                    </span>
+
+                    <span
+                        class="change
+                        {% if instrument.change_percent < 0 %}
+                            down
+                        {% else %}
+                            up
+                        {% endif %}"
+                    >
+                        {{ instrument.change_percent }}%
+                        ({{ instrument.change_value }})
+                    </span>
+
                 </a>
+
             {% endfor %}
+
         </div>
+
     </div>
+
+
+    <!-- =========================================================
+         MAIN NAVIGATION
+         ========================================================= -->
 
     <nav class="cryptonav">
 
         <div class="cryptonav-shell">
 
-            <!-- Logo -->
+
+            <!-- =================================================
+                 LOGO
+                 ================================================= -->
+
             <div class="cryptonav-logo">
 
-                <a href="{% url 'crypto:home' %}" class="cryptonav-brand">
+                <a
+                    href="{% url 'crypto:home' %}"
+                    class="cryptonav-brand"
+                    aria-label="Bitnetapp Home"
+                >
+
                     <img
                         src="{% static 'crypto/images/crypto_logo.png' %}"
-                        alt="{{ settings.site_name }}"
-                        class="cryptonav-logo-img">
+                        alt="Bitnetapp logo"
+                        class="cryptonav-logo-img"
+                    >
+
                 </a>
 
             </div>
 
-            <!-- Navigation -->
-            <div class="cryptonav-menu" id="cryptonavMenu">
+
+            <!-- =================================================
+                 DESKTOP NAVIGATION
+                 ================================================= -->
+
+            <div
+                class="cryptonav-menu"
+                id="cryptonavMenu"
+            >
 
                 <ul class="cryptonav-list">
 
+
                     {% for link in nav_links %}
+
                         {% if not link.parent %}
 
-                            <li class="cryptonav-item {% if link.children.exists %}cryptonav-item--dropdown{% endif %}">
+                            <li
+                                class="
+                                    cryptonav-item
+                                    {% if link.children.exists %}
+                                        cryptonav-item--dropdown
+                                    {% endif %}
+                                "
+                            >
 
-                                <a href="{{ link.url }}"
-                                class="cryptonav-link {% if request.path == link.url %}cryptonav-link--active{% endif %}">
+
+                                <!-- Main navigation link -->
+
+                                <a
+                                    href="{{ link.url }}"
+                                    class="
+                                        cryptonav-link
+                                        {% if request.path == link.url %}
+                                            cryptonav-link--active
+                                        {% endif %}
+                                    "
+                                >
+
                                     {{ link.name }}
+
                                 </a>
+
+
+                                <!-- Dropdown -->
 
                                 {% if link.children.exists %}
 
                                     <ul class="cryptonav-submenu">
 
+
                                         {% for child in link.children.all %}
 
                                             <li class="cryptonav-subitem">
 
-                                                <a href="{{ child.url }}"
-                                                class="cryptonav-sublink {% if request.path == child.url %}cryptonav-sublink--active{% endif %}">
+                                                <a
+                                                    href="{{ child.url }}"
+                                                    class="
+                                                        cryptonav-sublink
+                                                        {% if request.path == child.url %}
+                                                            cryptonav-sublink--active
+                                                        {% endif %}
+                                                    "
+                                                >
+
                                                     {{ child.name }}
+
                                                 </a>
 
                                             </li>
 
                                         {% endfor %}
 
+
                                     </ul>
 
                                 {% endif %}
 
+
                             </li>
 
                         {% endif %}
+
                     {% endfor %}
+
 
                 </ul>
 
+
+                <!-- =================================================
+                     BUY / PRIMARY ACTION BUTTON
+                     ================================================= -->
+
                 <div class="cryptonav-buy">
 
-                    <a href="{{ settings.buy_button_url }}"
-                    class="cryptonav-buy-btn">
+                    <a
+                        href="{{ settings.buy_button_url }}"
+                        class="cryptonav-buy-btn"
+                    >
+
                         {{ settings.buy_button_text }}
+
                     </a>
 
                 </div>
 
+
             </div>
 
-            <!-- Mobile Hamburger -->
 
-            <!-- Mobile Hamburger -->
+            <!-- =================================================
+                 MOBILE HAMBURGER
+                 ================================================= -->
 
             <div class="cryptonav-mobile">
 
@@ -133,117 +328,373 @@
                     class="cryptonav-hamburger"
                     type="button"
                     aria-label="Toggle Navigation"
-                    aria-expanded="false">
+                    aria-expanded="false"
+                >
 
-                    <!-- Hamburger Icon -->
-                    <i class="fas fa-bars cryptonav-open-icon"></i>
+                    <!-- Open menu -->
 
-                    <!-- Close Icon -->
-                    <i class="fas fa-times cryptonav-close-icon"></i>
+                    <i
+                        class="fas fa-bars cryptonav-open-icon"
+                    ></i>
+
+
+                    <!-- Close menu -->
+
+                    <i
+                        class="fas fa-times cryptonav-close-icon"
+                    ></i>
 
                 </button>
 
             </div>
 
+
         </div>
 
     </nav>
 
+
+    <!-- =========================================================
+         VISUAL CANVAS EFFECTS
+         ========================================================= -->
+
     <canvas id="hero-canvas"></canvas>
+
     <canvas id="bitcoinCanvas"></canvas>
 
-    <div class="page-content">
-        {% block content %}
-        {% endblock %}
-    </div>
 
-    <!-- Footer -->
+    <!-- =========================================================
+         PAGE CONTENT
+         ========================================================= -->
+
+    <main class="page-content">
+
+        {% block content %}
+
+        {% endblock %}
+
+    </main>
+
+
+    <!-- =========================================================
+         FOOTER
+         ========================================================= -->
+
     <footer class="site-footer">
+
         <div class="footer-container">
+
+
+            <!-- =================================================
+                 FOOTER ROW
+                 ================================================= -->
+
             <div class="footer-row">
-                <h3>Quick Links</h3>
+
+                <h3>
+                    Quick Links
+                </h3>
+
                 <ul>
-                    <li><a href="{% url 'crypto:home' %}">Home</a></li>
-                    <li><a href="{% url 'crypto:about' %}">About Us</a></li>
-                    <li><a href="{% url 'crypto:faqs' %}">FAQs</a></li>
-                    <li><a href="{% url 'crypto:terms' %}">Terms and Conditions</a></li>
-                    <li><a href="{% url 'crypto:contact' %}">Contact Us</a></li>
+
+                    <li>
+                        <a href="{% url 'crypto:home' %}">
+                            Home
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="{% url 'crypto:about' %}">
+                            About Us
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="{% url 'crypto:faqs' %}">
+                            FAQs
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="{% url 'crypto:terms' %}">
+                            Terms and Conditions
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="{% url 'crypto:contact' %}">
+                            Contact Us
+                        </a>
+                    </li>
+
                 </ul>
-            </div>    
+
+            </div>
+
+
+            <!-- =================================================
+                 HELP & SUPPORT
+                 ================================================= -->
+
             <div class="footer-row">
-                <h3>Help & Support</h3>
+
+                <h3>
+                    Help &amp; Support
+                </h3>
+
                 <ul>
-                    <li><a href="{% url 'crypto:bitcoin_info' %}">What is Bitcoin?</a></li>
-                    <li><a href="{% url 'crypto:buy_bitcoin' %}">Buy Bitcoin</a></li>
-                    <li><a href="{% url 'crypto:bitcoin_reports' %}">Bitcoin Report</a></li>
-                    <li><a href="{% url 'crypto:signup' %}">Register</a></li>
-                    <li><a href="{% url 'crypto:login' %}">Login</a></li>
+
+                    <li>
+                        <a href="{% url 'crypto:bitcoin_info' %}">
+                            What is Bitcoin?
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="{% url 'crypto:buy_bitcoin' %}">
+                            Buy Bitcoin
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="{% url 'crypto:bitcoin_reports' %}">
+                            Bitcoin Report
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="{% url 'crypto:signup' %}">
+                            Register
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="{% url 'crypto:login' %}">
+                            Login
+                        </a>
+                    </li>
+
                 </ul>
-            </div>   
+
+            </div>
+
+
+            <!-- =================================================
+                 CONTACT
+                 ================================================= -->
+
             <div class="footer-row">
-                <h3>Contact Us</h3>
-                <p>Email: <a href="mailto:support@bitnetapp.com">support@bitnetapp.com</a></p>
-                <p>Availability: Mon–Sun 24/7</p>
-            </div> 
-            <div class="footer-row">
-                <h3>Office Address</h3>
-                <p>10 Downing Street<br>
-                   Westminster<br>
-                   London<br>
-                   SW1A 2AA<br>
-                   United Kingdom
+
+                <h3>
+                    Contact Us
+                </h3>
+
+                <p>
+                    Email:
+                    <a href="mailto:support@bitnetapp.com">
+                        support@bitnetapp.com
+                    </a>
                 </p>
-            </div>     
+
+                <p>
+                    Availability: Mon–Sun 24/7
+                </p>
+
+            </div>
+
+
+            <!-- =================================================
+                 OFFICE ADDRESS
+                 ================================================= -->
+
             <div class="footer-row">
-                <h3>Supported Payment Methods</h3>
+
+                <h3>
+                    Office Address
+                </h3>
+
+                <p>
+                    10 Downing Street<br>
+                    Westminster<br>
+                    London<br>
+                    SW1A 2AA<br>
+                    United Kingdom
+                </p>
+
+            </div>
+
+
+            <!-- =================================================
+                 PAYMENT METHODS
+                 ================================================= -->
+
+            <div class="footer-row">
+
+                <h3>
+                    Supported Payment Methods
+                </h3>
+
                 <div class="payment-icons">
-                    <img src="{% static 'crypto/images/btc1.png' %}" alt="Bitcoin" />
-                    <img src="{% static 'crypto/images/ethe.png' %}" alt="Ethereum" />
-                    <img src="{% static 'crypto/images/usdt.png' %}" alt="USDT" />
+
+                    <img
+                        src="{% static 'crypto/images/btc1.png' %}"
+                        alt="Bitcoin"
+                    >
+
+                    <img
+                        src="{% static 'crypto/images/ethe.png' %}"
+                        alt="Ethereum"
+                    >
+
+                    <img
+                        src="{% static 'crypto/images/usdt.png' %}"
+                        alt="USDT"
+                    >
+
                 </div>
-            </div>  
+
+            </div>
+
+
+            <!-- =================================================
+                 COPYRIGHT
+                 ================================================= -->
 
             <div class="footer-bottom">
-                <p>Copyright © 2018 Bitnetapp. All Rights Reserved.</p>
+
+                <p>
+                    Copyright © 2018 Bitnetapp.
+                    All Rights Reserved.
+                </p>
+
             </div>
+
+
         </div>
+
     </footer>
 
-    <button id="scrollBottomBtn" title="Go to bottom">↓</button>
-    <button id="scrollTopBtn" title="Go to top">↑</button>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="{% static 'crypto/js/bitcoin.js' %}"></script>
-    <script src="{% static 'crypto/js/menu.js' %}"></script>
-    <script src="{% static 'crypto/js/ticker.js' %}"></script>
-    <script src="{% static 'crypto/js/script.js' %}"></script>
-    <script src="{% static 'crypto/js/resources.js' %}"></script>
+    <!-- =========================================================
+         SCROLL BUTTONS
+         ========================================================= -->
 
+    <button
+        id="scrollBottomBtn"
+        title="Go to bottom"
+        aria-label="Go to bottom"
+    >
+        ↓
+    </button>
+
+
+    <button
+        id="scrollTopBtn"
+        title="Go to top"
+        aria-label="Go to top"
+    >
+        ↑
+    </button>
+
+
+    <!-- =========================================================
+         THREE.JS
+         ========================================================= -->
+
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js">
+    </script>
+
+
+    <!-- =========================================================
+         BITNET JAVASCRIPT
+         ========================================================= -->
+
+    <script
+        src="{% static 'crypto/js/bitcoin.js' %}">
+    </script>
+
+    <script
+        src="{% static 'crypto/js/menu.js' %}">
+    </script>
+
+    <script
+        src="{% static 'crypto/js/ticker.js' %}">
+    </script>
+
+    <script
+        src="{% static 'crypto/js/script.js' %}">
+    </script>
+
+    <script
+        src="{% static 'crypto/js/resources.js' %}">
+    </script>
+
+
+    <!-- Page-specific JavaScript -->
     {% block extra_js %}{% endblock %}
 
-    <!-- Tawk.to live chat -->
-    <script type="text/javascript">
-    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-    (function(){
-    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-    s1.async=true;
-    s1.src='https://embed.tawk.to/6a553ed1dbb9f41d4608dbc4/1jtefqoue';
-    s1.charset='UTF-8';
-    s1.setAttribute('crossorigin','*');
-    s0.parentNode.insertBefore(s1,s0);
-    })();
-    </script>
+
+    <!-- =========================================================
+         TAWK.TO LIVE CHAT
+         ========================================================= -->
 
     <script type="text/javascript">
-        {% if request.user.is_authenticated %}
-            Tawk_API.onLoad = function() {
-                Tawk_API.setAttributes({
-                    'name' : '{{ request.user.username }}',
-                    'email' : '{{ request.user.email }}'
-                }, function(error){});
-            };
-        {% endif %}
+
+        var Tawk_API = Tawk_API || {};
+        var Tawk_LoadStart = new Date();
+
+        (function () {
+
+            var s1 = document.createElement("script");
+            var s0 = document.getElementsByTagName("script")[0];
+
+            s1.async = true;
+
+            s1.src =
+                'https://embed.tawk.to/6a553ed1dbb9f41d4608dbc4/1jtefqoue';
+
+            s1.charset = 'UTF-8';
+
+            s1.setAttribute(
+                'crossorigin',
+                '*'
+            );
+
+            s0.parentNode.insertBefore(
+                s1,
+                s0
+            );
+
+        })();
+
     </script>
+
+
+    <!-- =========================================================
+         TAWK USER INFORMATION
+         ========================================================= -->
+
+    <script type="text/javascript">
+
+        {% if request.user.is_authenticated %}
+
+            Tawk_API.onLoad = function () {
+
+                Tawk_API.setAttributes(
+                    {
+                        'name': '{{ request.user.username|escapejs }}',
+                        'email': '{{ request.user.email|escapejs }}'
+                    },
+                    function (error) {}
+                );
+
+            };
+
+        {% endif %}
+
+    </script>
+
 
 </body>
 </html>
