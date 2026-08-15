@@ -360,9 +360,11 @@ body{
 
     transition:all .35s ease;
 }
-.sidebar-logo-img {
-    width: 50px;
-    height: 50px;
+.sidebar .logo .sidebar-logo-img {
+    width: 50px !important;
+    height: 50px !important;
+    max-width: 50px !important;
+    max-height: 50px !important;
     border-radius: 50%;
     object-fit: contain;
     display: block;
