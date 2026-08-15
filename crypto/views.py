@@ -17,7 +17,7 @@ from .models import (
     AboutUs, TokenSaleSection, SwingSection, ExchangeSection,
     BitcoinCalculator, FeatureItem, MarketInstrument
 )
-from .forms import ContactForm, StyledSignupForm
+from .forms import ContactForm, StyledSignupForm, StyledLoginForm
 from users.models import (
     ActiveInvestment, UserBalance, Referral,
     UserVerification, SecurityAlert, LoginHistory,UserProfile
