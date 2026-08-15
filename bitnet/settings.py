@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'adminpanel.apps.AdminpanelConfig',
     'django.contrib.humanize',
     'django_recaptcha',
+    'django.contrib.sitemaps',
 ]
 
 MIDDLEWARE = [
