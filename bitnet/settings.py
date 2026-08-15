@@ -6,16 +6,22 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = '$c_0uv_w&=4$0i_28-g#a15obq1@&7s0t1z&q4yglb1-##n5=7'
 DEBUG = False
 ALLOWED_HOSTS = [
-    '191.215.39.223',
-    'bitnethub.online',
-    'www.bitnethub.online',
     'bitnetapp.com',
     'www.bitnetapp.com',
+    'bitnethub.online',
+    'www.bitnethub.online',
+    '191.215.39.223',
+    '127.0.0.1',
+    'localhost',
 ]
+
 CSRF_TRUSTED_ORIGINS = [
     'https://bitnetapp.com',
     'https://www.bitnetapp.com',
+    'https://bitnethub.online',
+    'https://www.bitnethub.online',
 ]
+
 
 
 INSTALLED_APPS = [
