@@ -13,27 +13,45 @@
     <!-- Personal Information -->
     <div class="quick-settings-panel">
         <h3 class="quick-settings-title">Personal Information</h3>
+
         <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
 
             <p>
                 {{ profile_form.profile_picture.label_tag }}
+
                 {% if profile_form.instance.profile_picture %}
                     <div class="quick-img-preview">
                         <a href="{{ profile_form.instance.profile_picture.url }}" target="_blank">
-                            <img src="{{ profile_form.instance.profile_picture.url }}" alt="Profile Picture" class="quick-img-small">
+                            <img
+                                src="{{ profile_form.instance.profile_picture.url }}"
+                                alt="Profile Picture"
+                                class="quick-img-small"
+                            >
                         </a>
                     </div>
                 {% endif %}
+
                 {{ profile_form.profile_picture }}
             </p>
 
-            {{ profile_form.as_p|safe }}  <!-- other fields -->
+            {% for field in profile_form %}
+                {% if field.name != "profile_picture" %}
+                    <p>
+                        {{ field.label_tag }}
+                        {{ field }}
+                        {% if field.errors %}
+                            {{ field.errors }}
+                        {% endif %}
+                    </p>
+                {% endif %}
+            {% endfor %}
 
-            <button type="submit" class="quick-settings-btn">Update Profile</button>
+            <button type="submit" class="quick-settings-btn">
+                Update Profile
+            </button>
         </form>
     </div>
-
     <!-- KYC Verification -->
     <div class="quick-settings-panel">
         <h3 class="quick-settings-title">KYC Verification</h3>
