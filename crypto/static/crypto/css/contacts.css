@@ -856,3 +856,14 @@
     }
 
 }
+/* Contact links */
+.bn-link {
+    color: golden;          /* Change to aliceblue or gray if you prefer */
+    text-decoration: none;  /* Removes underline */
+    font-weight: bold;      /* Makes text stand out */
+}
+
+.bn-link:hover {
+    color: aliceblue;       /* Hover effect */
+    text-decoration: underline;
+}
