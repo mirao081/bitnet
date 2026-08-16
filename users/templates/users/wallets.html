@@ -3,7 +3,7 @@
 {% block content %}
 <div class="wallets-container">
     <div class="wallets-header">
-        <h1 class="wallets-title">💼 Wallets</h1>
+        <h1 class="wallets-title">Wallets</h1>
         <p class="wallets-subtitle">Manage your crypto wallets, view balances, set withdrawal addresses, and create your AI investment wallet.</p>
     </div>
 
@@ -19,7 +19,7 @@
 
     <!-- Notifications -->
     <div class="wallets-card">
-        <h2 class="wallets-card-title">🔔 Notifications</h2>
+        <h2 class="wallets-card-title">Notifications</h2>
         {% for note in notifications %}
             <div class="notification {{ note.type }}">
                 {{ note.message }} — {{ note.timestamp|date:"Y-m-d H:i" }}
@@ -31,7 +31,7 @@
 
     <!-- Recent Activity -->
     <div class="wallets-card">
-        <h2 class="wallets-card-title">🕒 Recent Activity</h2>
+        <h2 class="wallets-card-title">Recent Activity</h2>
         <ul>
             {% for tx in recent_transactions %}
                 <li>
@@ -70,34 +70,8 @@
                     <input type="text" id="usdt_trc20_address" name="usdt_trc20_address" value="{{ usdt_trc20_address }}" placeholder="Enter your USDT TRC‑20 address">
                 </div>
             </div>
-            <button type="submit" class="wallets-btn">💾 Save Addresses</button>
+            <button type="submit" class="wallets-btn">Save Addresses</button>
         </form>
-    </div>
-    
-    <!-- AI Investment Wallet -->
-    <div class="wallets-card">
-        <h2 class="wallets-card-title">🤖 AI Investment Wallet</h2>
-        <form method="post" action="">
-            {% csrf_token %}
-            <label for="plan">Select Investment Plan:</label>
-            <select name="plan" id="plan">
-                {% for plan in plans %}
-                    <option value="{{ plan.id }}">
-                        {{ plan.name }} - ROI: {{ plan.roi_percent }}% - Min: ${{ plan.min_amount }} - Max: ${{ plan.max_amount }}
-                    </option>
-                {% endfor %}
-            </select>
-            <button type="submit" class="wallets-btn">Create Wallet</button>
-        </form>
-
-        {% if wallet %}
-            <h3>Your AI Wallet</h3>
-            <p><strong>Plan:</strong> {{ wallet.plan.name }}</p>
-            <p><strong>Balance:</strong> ${{ wallet.balance }}</p>
-            <p><strong>Gas Fee Paid:</strong> ${{ wallet.gas_fee_paid }}</p>
-        {% else %}
-            <p>No AI wallet created yet.</p>
-        {% endif %}
     </div>
 </div>
 {% endblock %}
