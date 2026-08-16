@@ -3,13 +3,13 @@
 {% block content %}
 <div class="transactions-container">
     <div class="transactions-header">
-        <h1 class="transactions-title">📊 Transactions Overview</h1>
+        <h1 class="transactions-title">Transactions Overview</h1>
         <p class="transactions-subtitle">Track balances, view activity, and export your reports.</p>
     </div>
     <div class="balance-overview">
-        <div class="balance-card">💰 Current Balance: {{ current_balance }}</div>
-        <div class="balance-card">✅ Available Balance: {{ available_balance }}</div>
-        <div class="balance-card">🔒 Locked Funds: {{ locked_balance }}</div>
+        <div class="balance-card">Current Balance: {{ current_balance }}</div>
+        <div class="balance-card"> Available Balance: {{ available_balance }}</div>
+        <div class="balance-card">Locked Funds: {{ locked_balance }}</div>
     </div>
     <div class="notifications">
         {% for note in notifications %}
@@ -21,7 +21,7 @@
         {% endfor %}
     </div>
     <div class="recent-activity">
-        <h2>🕒 Recent Activity</h2>
+        <h2>Recent Activity</h2>
         <ul>
             {% for tx in recent_transactions %}
                 <li>{{ tx.date|date:"Y-m-d H:i" }} — {{ tx.get_type_display }} {{ tx.amount }} {{ tx.asset }} ({{ tx.status|title }})</li>
