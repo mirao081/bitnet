@@ -109,7 +109,7 @@
                 <div class="profilepage-referral-box">
                     <span class="profilepage-info-label">Your Referral Link</span>
                     <div class="profilepage-referral-link">
-                        https://gloria1231.pythonanywhere.com/?ref={{ request.user.username }}
+                        {{ request.scheme }}://{{ request.get_host }}/?ref={{ request.user.username }}
                     </div>
 
                 </div>
