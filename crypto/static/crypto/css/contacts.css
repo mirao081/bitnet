@@ -858,7 +858,7 @@
 }
 /* Contact links */
 .bn-link {
-    color: rgb(194, 193, 193);          /* Change to aliceblue or gray if you prefer */
+    color: #04d2ff;          /* Change to aliceblue or gray if you prefer */
     text-decoration: none;  /* Removes underline */
     font-weight: bold;      /* Makes text stand out */
 }
