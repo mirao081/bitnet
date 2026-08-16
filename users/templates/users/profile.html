@@ -128,56 +128,6 @@
                     {% include "users/_wallets_partial.html" %}
                 </div>
             </div>
-            <div class="profilepage-panel" id="wallets">
-                <h2 class="profilepage-panel-title">Wallets</h2>
-                <p class="profilepage-panel-description">
-                    Manage your cryptocurrency wallet addresses and QR codes.
-                </p>
-                <form method="post" enctype="multipart/form-data" class="profilepage-wallet-form">
-                    {% csrf_token %}
-                    <div class="profilepage-wallet-field">
-                        <label for="id_btc_wallet">BTC Wallet</label>
-                        {{ wallet_form.btc_wallet }}
-                        {% if request.user.userwallet.btc_qr %}
-                            <img src="{{ request.user.userwallet.btc_qr.url }}" alt="BTC QR Code" class="wallet-qr-fixed">
-                        {% endif %}
-                        {{ wallet_form.btc_qr }}
-                    </div>
-                    <div class="profilepage-wallet-field">
-                        <label for="id_eth_wallet">ETH Wallet</label>
-                        {{ wallet_form.eth_wallet }}
-                        {% if request.user.userwallet.eth_qr %}
-                            <img src="{{ request.user.userwallet.eth_qr.url }}" alt="ETH QR Code" class="wallet-qr-fixed">
-                        {% endif %}
-                        {{ wallet_form.eth_qr }}
-                    </div>
-                    <div class="profilepage-wallet-field">
-                        <label for="id_usdt_erc20_wallet">USDT ERC20 Wallet</label>
-                        {{ wallet_form.usdt_erc20_wallet }}
-                        {% if request.user.userwallet.usdt_erc20_qr %}
-                            <img src="{{ request.user.userwallet.usdt_erc20_qr.url }}" alt="USDT ERC20 QR Code" class="wallet-qr-fixed">
-                        {% endif %}
-                        {{ wallet_form.usdt_erc20_qr }}
-                    </div>
-                   
-                    <div class="profilepage-wallet-field">
-                        <label for="id_usdt_trc20_wallet">USDT TRC                    <!-- USDT TRC20 -->
-                    <div class="profilepage-wallet-field">
-                        <label for="id_usdt_trc20_wallet">USDT TRC20 Wallet</label>
-                        {{ wallet_form.usdt_trc20_wallet }}
-                        {% if request.user.userwallet.usdt_trc20_qr %}
-                            <img src="{{ request.user.userwallet.usdt_trc20_qr.url }}" alt="USDT TRC20 QR Code" class="wallet-qr-fixed">
-                        {% endif %}
-                        {{ wallet_form.usdt_trc20_qr }}
-                    </div>
-                    <button
-                        type="submit"
-                        class="profilepage-btn profilepage-btn-primary profilepage-save-wallets"
-                    >
-                        Save Wallets
-                    </button>
-                </form>
-            </div>
         </div>
     </div>
 </div>
