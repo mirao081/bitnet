@@ -3,16 +3,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-
-    <!-- =========================================================
-         PRIMARY SEO
-         ========================================================= -->
-
     <title>Bitnetapp — Secure Digital Platform</title>
-
     <meta name="description"
           content="Bitnetapp is a modern digital platform designed to provide secure, reliable, and seamless online services. Explore the platform, manage your account, and access trusted digital services from one convenient place.">
-
     <meta name="author" content="Bitnetapp">
 
     <meta name="robots" content="index, follow">
@@ -21,33 +14,19 @@
 
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0">
-
-
-    <!-- =========================================================
-         CANONICAL URL
-         ========================================================= -->
-
     <link rel="canonical"
           href="https://www.bitnetapp.com/">
-
-
-    <!-- =========================================================
-         OPEN GRAPH
-         Facebook / WhatsApp / LinkedIn / Other Platforms
-         ========================================================= -->
 
     <meta property="og:title"
           content="Bitnetapp — Secure Digital Platform">
 
     <meta property="og:description"
           content="Bitnetapp is a modern digital platform designed to provide secure, reliable, and seamless online services. Explore the platform, manage your account, and access trusted digital services from one convenient place.">
-
     <meta property="og:type"
           content="website">
 
     <meta property="og:site_name"
           content="Bitnetapp">
-
     <meta property="og:url"
           content="https://www.bitnetapp.com/">
 
@@ -59,11 +38,6 @@
 
     <meta property="og:locale"
           content="en_US">
-
-
-    <!-- =========================================================
-         TWITTER / X
-         ========================================================= -->
 
     <meta name="twitter:card"
           content="summary_large_image">
@@ -80,12 +54,6 @@
     <meta name="twitter:image:alt"
           content="Bitnetapp — Secure Digital Platform">
 
-
-    <!-- =========================================================
-         GOOGLE WEBSITE STRUCTURED DATA
-         Helps Google understand the website name.
-         ========================================================= -->
-
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -96,52 +64,26 @@
     }
     </script>
 
-
-    <!-- =========================================================
-         FONTS
-         ========================================================= -->
-
     <link
         href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
         rel="stylesheet">
-
-
-    <!-- =========================================================
-         FONT AWESOME
-         ========================================================= -->
 
     <link
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-
-    <!-- =========================================================
-         MAIN STYLESHEET
-         ========================================================= -->
-
     <link
         rel="stylesheet"
         href="{% static 'crypto/css/style.css' %}">
-
-
-    <!-- Page-specific CSS -->
     {% block extra_css %}{% endblock %}
 
 </head>
-
 <body>
-
-
-    <!-- =========================================================
-         MARKET TICKER
-         ========================================================= -->
-
     <div class="market-ticker">
 
         <div class="ticker-track" id="tickerTrack">
 
             {% for instrument in instruments %}
-
                 <a
                     href="{% url 'crypto:instrument_detail' instrument.pk %}"
                     class="ticker-item"
@@ -175,19 +117,9 @@
 
     </div>
 
-
-    <!-- =========================================================
-         MAIN NAVIGATION
-         ========================================================= -->
-
     <nav class="cryptonav">
 
         <div class="cryptonav-shell">
-
-
-            <!-- =================================================
-                 LOGO
-                 ================================================= -->
 
             <div class="cryptonav-logo">
 
@@ -206,11 +138,6 @@
                 </a>
 
             </div>
-
-
-            <!-- =================================================
-                 DESKTOP NAVIGATION
-                 ================================================= -->
 
             <div
                 class="cryptonav-menu"
@@ -233,9 +160,6 @@
                                 "
                             >
 
-
-                                <!-- Main navigation link -->
-
                                 <a
                                     href="{{ link.url }}"
                                     class="
@@ -250,8 +174,6 @@
 
                                 </a>
 
-
-                                <!-- Dropdown -->
 
                                 {% if link.children.exists %}
 
@@ -294,12 +216,6 @@
 
 
                 </ul>
-
-
-                <!-- =================================================
-                     BUY / PRIMARY ACTION BUTTON
-                     ================================================= -->
-
                 <div class="cryptonav-buy">
 
                     <a
@@ -316,11 +232,6 @@
 
             </div>
 
-
-            <!-- =================================================
-                 MOBILE HAMBURGER
-                 ================================================= -->
-
             <div class="cryptonav-mobile">
 
                 <button
@@ -331,14 +242,10 @@
                     aria-expanded="false"
                 >
 
-                    <!-- Open menu -->
-
                     <i
                         class="fas fa-bars cryptonav-open-icon"
                     ></i>
-
-
-                    <!-- Close menu -->
+                
 
                     <i
                         class="fas fa-times cryptonav-close-icon"
@@ -348,24 +255,12 @@
 
             </div>
 
-
         </div>
 
     </nav>
-
-
-    <!-- =========================================================
-         VISUAL CANVAS EFFECTS
-         ========================================================= -->
-
     <canvas id="hero-canvas"></canvas>
 
     <canvas id="bitcoinCanvas"></canvas>
-
-
-    <!-- =========================================================
-         PAGE CONTENT
-         ========================================================= -->
 
     <main class="page-content">
 
@@ -375,19 +270,8 @@
 
     </main>
 
-
-    <!-- =========================================================
-         FOOTER
-         ========================================================= -->
-
     <footer class="site-footer">
-
         <div class="footer-container">
-
-
-            <!-- =================================================
-                 FOOTER ROW
-                 ================================================= -->
 
             <div class="footer-row">
 
@@ -396,19 +280,16 @@
                 </h3>
 
                 <ul>
-
                     <li>
                         <a href="{% url 'crypto:home' %}">
                             Home
                         </a>
                     </li>
-
                     <li>
                         <a href="{% url 'crypto:about' %}">
                             About Us
                         </a>
                     </li>
-
                     <li>
                         <a href="{% url 'crypto:faqs' %}">
                             FAQs
@@ -478,11 +359,6 @@
 
             </div>
 
-
-            <!-- =================================================
-                 CONTACT
-                 ================================================= -->
-
             <div class="footer-row">
 
                 <h3>
@@ -503,10 +379,6 @@
             </div>
 
 
-            <!-- =================================================
-                 OFFICE ADDRESS
-                 ================================================= -->
-
             <div class="footer-row">
 
                 <h3>
@@ -522,11 +394,6 @@
                 </p>
 
             </div>
-
-
-            <!-- =================================================
-                 PAYMENT METHODS
-                 ================================================= -->
 
             <div class="footer-row">
 
@@ -555,11 +422,6 @@
 
             </div>
 
-
-            <!-- =================================================
-                 COPYRIGHT
-                 ================================================= -->
-
             <div class="footer-bottom">
 
                 <p>
@@ -573,12 +435,6 @@
         </div>
 
     </footer>
-
-
-    <!-- =========================================================
-         SCROLL BUTTONS
-         ========================================================= -->
-
     <button
         id="scrollBottomBtn"
         title="Go to bottom"
@@ -596,19 +452,9 @@
         ↑
     </button>
 
-
-    <!-- =========================================================
-         THREE.JS
-         ========================================================= -->
-
     <script
         src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js">
     </script>
-
-
-    <!-- =========================================================
-         BITNET JAVASCRIPT
-         ========================================================= -->
 
     <script
         src="{% static 'crypto/js/bitcoin.js' %}">
@@ -636,64 +482,37 @@
 
 
     <!-- =========================================================
-         TAWK.TO LIVE CHAT
-         ========================================================= -->
+     TAWK.TO LIVE CHAT
+     ========================================================= -->
 
-    <script type="text/javascript">
+<!--Start of Tawk.to Script-->
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/6a818ed41d62051d4f680621/default';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
+<!--End of Tawk.to Script-->
 
-        var Tawk_API = Tawk_API || {};
-        var Tawk_LoadStart = new Date();
+<script type="text/javascript">
+{% if request.user.is_authenticated %}
+    Tawk_API.onLoad = function () {
+        Tawk_API.setAttributes(
+            {
+                'name': '{{ request.user.username|escapejs }}',
+                'email': '{{ request.user.email|escapejs }}'
+            },
+            function (error) {}
+        );
+    };
+{% endif %}
+</script>
 
-        (function () {
-
-            var s1 = document.createElement("script");
-            var s0 = document.getElementsByTagName("script")[0];
-
-            s1.async = true;
-
-            s1.src =
-                'https://embed.tawk.to/6a553ed1dbb9f41d4608dbc4/1jtefqoue';
-
-            s1.charset = 'UTF-8';
-
-            s1.setAttribute(
-                'crossorigin',
-                '*'
-            );
-
-            s0.parentNode.insertBefore(
-                s1,
-                s0
-            );
-
-        })();
-
-    </script>
-
-
-    <!-- =========================================================
-         TAWK USER INFORMATION
-         ========================================================= -->
-
-    <script type="text/javascript">
-
-        {% if request.user.is_authenticated %}
-
-            Tawk_API.onLoad = function () {
-
-                Tawk_API.setAttributes(
-                    {
-                        'name': '{{ request.user.username|escapejs }}',
-                        'email': '{{ request.user.email|escapejs }}'
-                    },
-                    function (error) {}
-                );
-
-            };
-
-        {% endif %}
-
-    </script>
 
 
 </body>
