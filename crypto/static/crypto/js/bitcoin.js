@@ -59,7 +59,7 @@ window.onload = function() {
         btcCanvas.height = window.innerHeight;
 
         const logo = new Image();
-        logo.src = "/static/images/btc.jpg";
+        logo.src = "{% static 'crypto/images/btc.jpg' %}";
         let angle = 0;
         let speed = 0.02;
 
