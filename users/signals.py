@@ -1,10 +1,10 @@
 from decimal import Decimal
-
 from django.conf import settings
 from django.contrib.auth.models import User
 from django.core.mail import send_mail
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+from django.contrib.auth.signals import user_logged_in
 
 from .models import (
     Notification,
@@ -16,7 +16,7 @@ from .models import (
     ReferralCommission,
     UserProfile,
     UserBalance,
-    UserVerification,   # make sure this is imported
+    UserVerification,
 )
 
 
@@ -27,6 +27,7 @@ def notify(user, type, message):
         message=message
     )
 
+    # Send notification to the user
     if user.email and not settings.DEBUG:
         try:
             send_mail(
@@ -52,6 +53,33 @@ def new_user_setup(sender, instance, created, **kwargs):
         )
         UserProfile.objects.get_or_create(user=instance)
         UserBalance.objects.get_or_create(user=instance)
+
+        # ✅ Send admin notification to Zoho
+        try:
+            send_mail(
+                subject="New User Registered",
+                message=f"New user signed up: {instance.username} ({instance.email})",
+                from_email=settings.DEFAULT_FROM_EMAIL,
+                recipient_list=["support@bitnetapp.com"],  # your Zoho inbox
+                fail_silently=True,
+            )
+        except Exception as e:
+            print("Admin email failed:", e)
+
+
+@receiver(user_logged_in)
+def notify_admin_login(sender, request, user, **kwargs):
+    # ✅ Send admin notification when a user logs in
+    try:
+        send_mail(
+            subject="User Logged In",
+            message=f"User {user.username} just logged in.",
+            from_email=settings.DEFAULT_FROM_EMAIL,
+            recipient_list=["support@bitnetapp.com"],  # your Zoho inbox
+            fail_silently=True,
+        )
+    except Exception as e:
+        print("Admin login email failed:", e)
 
 
 @receiver(post_save, sender=User)
