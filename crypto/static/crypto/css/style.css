@@ -6835,6 +6835,13 @@ p {
     .cryptonav-hamburger.active .cryptonav-close-icon {
         display: block;
     }
+    .cryptonav-hamburger i {
+      font-size: 28px;       /* make sure it’s large enough */
+      color: #fff;           /* white icon */
+      line-height: 1;        /* avoid vertical clipping */
+      display: inline-block; /* ensure it renders */
+    }
+
 
 
     /* ==========================

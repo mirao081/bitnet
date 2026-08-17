@@ -7,6 +7,7 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.models import User
 # from django.core.mail import send_mail
 # from django.conf import settings
+from django.core.mail import EmailMessage
 from django.utils import timezone
 from datetime import timedelta
 from io import BytesIO
@@ -354,8 +355,8 @@ def features(request):
 def contact_view(request):
     if request.method == "POST":
         form = ContactForm(request.POST)
+
         if form.is_valid():
-            # Get the submitted information
             first_name = form.cleaned_data["first_name"]
             last_name = form.cleaned_data["last_name"]
             email = form.cleaned_data["email"]
@@ -363,13 +364,40 @@ def contact_view(request):
             service = form.cleaned_data["service"]
             message = form.cleaned_data["message"]
 
-            # For now, simply process the form successfully
-            # You can add email sending later.
+            subject = f"Website Contact: {service}"
+
+            email_body = f"""
+New contact form submission
+
+Name: {first_name} {last_name}
+Email: {email}
+Phone: {phone}
+Service: {service}
+
+Message:
+{message}
+"""
+
+            email_message = EmailMessage(
+                subject=subject,
+                body=email_body,
+                from_email="support@bitnetapp.com",
+                to=["support@bitnetapp.com"],
+                reply_to=[email],
+            )
+
+            email_message.send(fail_silently=False)
+
             return redirect("crypto:contact")
+
     else:
         form = ContactForm()
 
-    return render(request, "crypto/contact.html", {"form": form})
+    return render(
+        request,
+        "crypto/contact.html",
+        {"form": form}
+    )
 
 def signup_view(request):
     form = StyledSignupForm(request.POST or None)

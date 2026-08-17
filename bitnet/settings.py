@@ -116,14 +116,13 @@ RECAPTCHA_PUBLIC_KEY = "6LebNoctAAAAAAaNs4Ykdrc8yQCZOs2TuDbxbZvu"
 RECAPTCHA_PRIVATE_KEY = "6LebNoctAAAAAJv_88a_-8fUXDiCDX1wvA9t4fjZ"
 RECAPTCHA_USE_SSL = True
 
-# 🔑 Email settings (Hostinger SMTP)
-DEFAULT_FROM_EMAIL = "support@bitnethub.online"
+# Zoho Mail SMTP
+DEFAULT_FROM_EMAIL = "support@bitnetapp.com"
 
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
-EMAIL_HOST = "smtp.hostinger.com"
+EMAIL_HOST = "smtp.zoho.com"
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
-EMAIL_HOST_USER = "support@bitnethub.online"
-EMAIL_HOST_PASSWORD = "mirao12908'8"
-
+EMAIL_HOST_USER = "support@bitnetapp.com"
+EMAIL_HOST_PASSWORD = "Mirao12908'8"
