@@ -20,7 +20,7 @@ def notify(user, type, message):
     if user.email:
         context = {
             "user": user,
-            "subject": "New Notification from BitnetFx",
+            "subject": "New Notification from Bitnetapp",
             "message": message,
         }
         # Render HTML template
@@ -28,7 +28,7 @@ def notify(user, type, message):
 
         # Create multipart email (plain text + HTML)
         email = EmailMultiAlternatives(
-            subject="New Notification from BitnetFx",
+            subject="New Notification from Bitnetapp",
             body=message,  # plain text fallback
             from_email=settings.DEFAULT_FROM_EMAIL,
             to=[user.email],

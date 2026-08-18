@@ -33,13 +33,13 @@ def notify(user, type, message):
         try:
             context = {
                 "user": user,
-                "subject": "New Notification from BitnetFx",
+                "subject": "New Notification from Bitnetapp",
                 "message": message,
             }
             html_content = render_to_string("users/transaction_email.html", context)
 
             email = EmailMultiAlternatives(
-                subject="New Notification from BitnetFx",
+                subject="New Notification from Bitnetapp",
                 body=message,  # plain text fallback
                 from_email=settings.DEFAULT_FROM_EMAIL,
                 to=[user.email],
@@ -127,7 +127,7 @@ def kyc_notification(sender, instance, **kwargs):
         notify(
             instance.user,
             "verification",
-            f"Dear {instance.user.username}, your identity has been verified. You are now an investor with BitnetFx."
+            f"Dear {instance.user.username}, your identity has been verified. You are now an investor with Bitnetapp."
         )
 
 
