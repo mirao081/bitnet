@@ -1,10 +1,11 @@
 from decimal import Decimal
 from django.conf import settings
 from django.contrib.auth.models import User
-from django.core.mail import send_mail
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.contrib.auth.signals import user_logged_in
+from django.core.mail import EmailMultiAlternatives
+from django.template.loader import render_to_string
 
 from .models import (
     Notification,
@@ -30,13 +31,21 @@ def notify(user, type, message):
     # Send notification to the user
     if user.email and not settings.DEBUG:
         try:
-            send_mail(
+            context = {
+                "user": user,
+                "subject": "New Notification from BitnetFx",
+                "message": message,
+            }
+            html_content = render_to_string("users/transaction_email.html", context)
+
+            email = EmailMultiAlternatives(
                 subject="New Notification from BitnetFx",
-                message=message,
+                body=message,  # plain text fallback
                 from_email=settings.DEFAULT_FROM_EMAIL,
-                recipient_list=[user.email],
-                fail_silently=True,
+                to=[user.email],
             )
+            email.attach_alternative(html_content, "text/html")
+            email.send()
         except Exception as e:
             print("Email sending failed:", e)
 
@@ -54,30 +63,30 @@ def new_user_setup(sender, instance, created, **kwargs):
         UserProfile.objects.get_or_create(user=instance)
         UserBalance.objects.get_or_create(user=instance)
 
-        # ✅ Send admin notification to Zoho
+        # ✅ Admin notification (plain text is fine)
         try:
-            send_mail(
+            email = EmailMultiAlternatives(
                 subject="New User Registered",
-                message=f"New user signed up: {instance.username} ({instance.email})",
+                body=f"New user signed up: {instance.username} ({instance.email})",
                 from_email=settings.DEFAULT_FROM_EMAIL,
-                recipient_list=["support@bitnetapp.com"],  # your Zoho inbox
-                fail_silently=True,
+                to=["support@bitnetapp.com"],
             )
+            email.send()
         except Exception as e:
             print("Admin email failed:", e)
 
 
 @receiver(user_logged_in)
 def notify_admin_login(sender, request, user, **kwargs):
-    # ✅ Send admin notification when a user logs in
+    # ✅ Admin notification (plain text is fine)
     try:
-        send_mail(
+        email = EmailMultiAlternatives(
             subject="User Logged In",
-            message=f"User {user.username} just logged in.",
+            body=f"User {user.username} just logged in.",
             from_email=settings.DEFAULT_FROM_EMAIL,
-            recipient_list=["support@bitnetapp.com"],  # your Zoho inbox
-            fail_silently=True,
+            to=["support@bitnetapp.com"],
         )
+        email.send()
     except Exception as e:
         print("Admin login email failed:", e)
 
