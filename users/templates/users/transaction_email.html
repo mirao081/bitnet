@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>{{ subject }}</title>
+  <style>
+    body { font-family: Arial, sans-serif; background-color: #f4f4f4; margin: 0; padding: 0; }
+    .container { width: 600px; background: #ffffff; border-radius: 8px; overflow: hidden; }
+    .header { background: #1a73e8; color: #ffffff; padding: 20px; text-align: center; }
+    .header img { max-width: 150px; margin-bottom: 10px; }
+    .content { padding: 30px; color: #333333; }
+    .content h2 { margin-top: 0; color: #1a73e8; }
+    .button { background: #1a73e8; color: #ffffff; padding: 12px 24px; text-decoration: none; border-radius: 4px; font-weight: bold; display: inline-block; }
+    .footer { background: #f4f4f4; color: #777777; padding: 20px; text-align: center; font-size: 12px; }
+  </style>
+</head>
+<body>
+  <table width="100%" cellpadding="0" cellspacing="0">
+    <tr>
+      <td align="center" style="padding:20px;">
+        <table class="container" cellpadding="0" cellspacing="0">
+          <tr>
+            <td class="header">
+              <img src="https://bitnetapp.com/static/images/logo.png" alt="Bitnetapp Logo">
+              <h1>Bitnetapp</h1>
+            </td>
+          </tr>
+          <tr>
+            <td class="content">
+              <h2>{{ subject }}</h2>
+              <p>Dear <strong>{{ user.username }}</strong>,</p>
+              <p style="font-size:16px; line-height:1.5;">{{ message }}</p>
+              <p style="margin-top:20px; font-size:14px; color:#555;">
+                Thank you for choosing Bitnetapp. We are committed to secure and reliable financial services.
+              </p>
+              <p style="text-align:center; margin:30px 0;">
+                <a href="https://bitnetapp.com/dashboard" class="button">View Your Account</a>
+              </p>
+              <p>If you have any questions, please contact our support team at 
+                <a href="mailto:support@bitnetapp.com">support@bitnetapp.com</a>.
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td class="footer">
+              © 2026 Bitnetapp. All rights reserved.
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>
