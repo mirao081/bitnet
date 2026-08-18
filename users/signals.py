@@ -4,11 +4,8 @@ from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.contrib.auth.signals import user_logged_in
-from django.core.mail import EmailMultiAlternatives
-from django.template.loader import render_to_string
-
+from django.core.mail import send_mail
 from .models import (
-    Notification,
     Deposit,
     Withdrawal,
     UserKYC,
@@ -18,9 +15,12 @@ from .models import (
     UserProfile,
     UserBalance,
     UserVerification,
+    Notification,
 )
+from .utils import send_html_email
 
 
+# 🔔 General notification
 def notify(user, type, message):
     note = Notification.objects.create(
         user=user,
@@ -28,75 +28,63 @@ def notify(user, type, message):
         message=message
     )
 
-    # Send notification to the user
     if user.email and not settings.DEBUG:
         try:
-            context = {
-                "user": user,
-                "subject": "New Notification from Bitnetapp",
-                "message": message,
-            }
-            html_content = render_to_string("users/transaction_email.html", context)
-
-            email = EmailMultiAlternatives(
-                subject="New Notification from Bitnetapp",
-                body=message,  # plain text fallback
+            send_mail(
+                subject="New Notification from BitnetFx",
+                message=message,
                 from_email=settings.DEFAULT_FROM_EMAIL,
-                to=[user.email],
+                recipient_list=[user.email],
+                fail_silently=True,
             )
-            email.attach_alternative(html_content, "text/html")
-            email.send()
         except Exception as e:
             print("Email sending failed:", e)
 
     return note
 
 
+# 🔔 New user setup
 @receiver(post_save, sender=User)
 def new_user_setup(sender, instance, created, **kwargs):
     if created:
-        notify(
-            instance,
-            "signup",
-            f"Welcome {instance.username}, your account has been created!"
-        )
         UserProfile.objects.get_or_create(user=instance)
         UserBalance.objects.get_or_create(user=instance)
 
-        # ✅ Admin notification (plain text is fine)
         try:
-            email = EmailMultiAlternatives(
+            send_mail(
                 subject="New User Registered",
-                body=f"New user signed up: {instance.username} ({instance.email})",
+                message=f"New user signed up: {instance.username} ({instance.email})",
                 from_email=settings.DEFAULT_FROM_EMAIL,
-                to=["support@bitnetapp.com"],
+                recipient_list=["support@bitnetapp.com"],
+                fail_silently=True,
             )
-            email.send()
         except Exception as e:
             print("Admin email failed:", e)
 
 
+# 🔔 Admin login alert
 @receiver(user_logged_in)
 def notify_admin_login(sender, request, user, **kwargs):
-    # ✅ Admin notification (plain text is fine)
     try:
-        email = EmailMultiAlternatives(
+        send_mail(
             subject="User Logged In",
-            body=f"User {user.username} just logged in.",
+            message=f"User {user.username} just logged in.",
             from_email=settings.DEFAULT_FROM_EMAIL,
-            to=["support@bitnetapp.com"],
+            recipient_list=["support@bitnetapp.com"],
+            fail_silently=True,
         )
-        email.send()
     except Exception as e:
         print("Admin login email failed:", e)
 
 
+# 🔔 Save user profile
 @receiver(post_save, sender=User)
 def save_user_profile(sender, instance, **kwargs):
     if hasattr(instance, "userprofile"):
         instance.userprofile.save()
 
 
+# 🔔 Deposit notification
 @receiver(post_save, sender=Deposit)
 def deposit_notification(sender, instance, **kwargs):
     if instance.status == "approved":
@@ -104,68 +92,73 @@ def deposit_notification(sender, instance, **kwargs):
         profile.usd_balance += instance.amount
         profile.save()
 
-        notify(
-            instance.user,
-            "deposit",
-            f"Your deposit of {instance.amount} has been approved."
+        send_html_email(
+            subject="Deposit Approved",
+            message=f"Your deposit of {instance.amount} has been approved and credited.",
+            user=instance.user,
+            backend_settings=settings.SENDGRID_EMAIL_BACKEND,
         )
 
 
+# 🔔 Withdrawal notification
 @receiver(post_save, sender=Withdrawal)
 def withdrawal_notification(sender, instance, **kwargs):
     if instance.status == "approved":
-        notify(
-            instance.user,
-            "withdrawal",
-            f"Your withdrawal of {instance.amount} has been processed."
+        send_html_email(
+            subject="Withdrawal Processed",
+            message=f"Your withdrawal of {instance.amount} has been processed successfully.",
+            user=instance.user,
+            backend_settings=settings.SENDGRID_EMAIL_BACKEND,
         )
 
 
+# 🔔 KYC notification
 @receiver(post_save, sender=UserKYC)
 def kyc_notification(sender, instance, **kwargs):
     if instance.status == "approved":
         notify(
             instance.user,
             "verification",
-            f"Dear {instance.user.username}, your identity has been verified. You are now an investor with Bitnetapp."
+            f"Dear {instance.user.username}, your identity has been verified. You are now an investor with BitnetFx."
         )
 
 
+# 🔔 Investment completion
 @receiver(post_save, sender=ActiveInvestment)
 def investment_completed(sender, instance, **kwargs):
     if instance.status == "completed":
-        notify(
-            instance.user,
-            "investment",
-            f"Your investment of {instance.amount} in {instance.plan_name} has completed its cycle. Profit has been credited to your account."
+        send_html_email(
+            subject="Investment Completed",
+            message=f"Your investment of {instance.amount} in {instance.plan_name} has completed. Profit credited to your account.",
+            user=instance.user,
+            backend_settings=settings.SENDGRID_EMAIL_BACKEND,
         )
 
 
+# 🔔 Referral signup
 @receiver(post_save, sender=Referral)
 def referral_signup(sender, instance, created, **kwargs):
     if created and instance.referrer:
-        notify(
-            instance.referrer,
-            "referral",
-            f"You got a new referral: {instance.user.username} just signed up with your link!"
+        send_html_email(
+            subject="New Referral Signup",
+            message=f"You got a new referral: {instance.user.username} signed up with your link!",
+            user=instance.referrer,
+            backend_settings=settings.SENDGRID_EMAIL_BACKEND,
         )
 
 
+# 🔔 Referral bonus
 @receiver(post_save, sender=Deposit)
 def referral_bonus(sender, instance, **kwargs):
-    if instance.status != "approved":
-        return
-    if instance.bonus_paid:
+    if instance.status != "approved" or instance.bonus_paid:
         return
 
     try:
         referral = Referral.objects.get(user=instance.user)
     except Referral.DoesNotExist:
-        print(f"No referral record for {instance.user.username}")
         return
 
     if referral.referrer is None:
-        print(f"{instance.user.username} has no referrer.")
         return
 
     referrer = referral.referrer
@@ -185,26 +178,19 @@ def referral_bonus(sender, instance, **kwargs):
     instance.bonus_paid = True
     instance.save(update_fields=["bonus_paid"])
 
-    notify(
-        referrer,
-        "bonus",
-        f"You earned ${bonus} (7%) from {instance.user.username}'s deposit."
+    send_html_email(
+        subject="Referral Bonus Earned",
+        message=f"You earned ${bonus} (7%) from {instance.user.username}'s deposit.",
+        user=referrer,
+        backend_settings=settings.SENDGRID_EMAIL_BACKEND,
     )
 
-    print(f"{referrer.username} received ${bonus} referral bonus.")
 
-
+# 🔔 Sync verification status
 @receiver(post_save, sender=UserVerification)
 def sync_verification_status(sender, instance, **kwargs):
-    profile, _ = UserProfile.objects.get_or_create(
-        user=instance.user
-    )
-
-    new_status = (
-        "verified"
-        if instance.is_verified
-        else "pending"
-    )
+    profile, _ = UserProfile.objects.get_or_create(user=instance.user)
+    new_status = "verified" if instance.is_verified else "pending"
 
     if profile.verification_status != new_status:
         profile.verification_status = new_status

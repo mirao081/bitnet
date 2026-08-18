@@ -1,44 +1,62 @@
-from users.models import ProfitRecord
-from django.utils import timezone
 from decimal import Decimal
-from .models import ActiveInvestment
-from .models import Notification
-from django.core.mail import EmailMultiAlternatives
-from django.template.loader import render_to_string
+from django.utils import timezone
 from django.conf import settings
+from django.core.mail import EmailMultiAlternatives, get_connection
+from django.template.loader import render_to_string
+from django.core.mail import send_mail
+
+from .models import ActiveInvestment, Notification
+from users.models import ProfitRecord
 
 
+# 🔑 Helper to send HTML email with a specific backend
+def send_html_email(subject, message, user, backend_settings):
+    html_content = render_to_string("users/transaction_email.html", {
+        "user": user,
+        "subject": subject,
+        "message": message,
+    })
+    text_content = message  # fallback plain text
+
+    connection = get_connection(
+        backend=backend_settings["EMAIL_BACKEND"],
+        host=backend_settings["EMAIL_HOST"],
+        port=backend_settings["EMAIL_PORT"],
+        username=backend_settings["EMAIL_HOST_USER"],
+        password=backend_settings["EMAIL_HOST_PASSWORD"],
+        use_tls=backend_settings["EMAIL_USE_TLS"],
+    )
+
+    msg = EmailMultiAlternatives(
+        subject=subject,
+        body=text_content,
+        from_email=settings.DEFAULT_FROM_EMAIL,
+        to=[user.email],
+        connection=connection,
+    )
+    msg.attach_alternative(html_content, "text/html")
+    msg.send(fail_silently=True)
+
+
+# 🔔 General notification
 def notify(user, type, message):
-    # Save notification in DB
     note = Notification.objects.create(
         user=user,
         type=type,
         message=message
     )
-
-    # Send email if user has an email address
     if user.email:
-        context = {
-            "user": user,
-            "subject": "New Notification from Bitnetapp",
-            "message": message,
-        }
-        # Render HTML template
-        html_content = render_to_string("users/transaction_email.html", context)
-
-        # Create multipart email (plain text + HTML)
-        email = EmailMultiAlternatives(
-            subject="New Notification from Bitnetapp",
-            body=message,  # plain text fallback
+        send_mail(
+            subject="New Notification from BitnetFx",
+            message=message,
             from_email=settings.DEFAULT_FROM_EMAIL,
-            to=[user.email],
+            recipient_list=[user.email],
+            fail_silently=True,
         )
-        email.attach_alternative(html_content, "text/html")
-        email.send()
-
     return note
 
 
+# 🔑 Credit profit
 def credit_profit(user, investment):
     profit_amount = investment.amount * (investment.roi_percent / 100)
 
@@ -50,6 +68,7 @@ def credit_profit(user, investment):
     )
 
 
+# 🔑 Process matured investments
 def process_matured_investments():
     matured_investments = ActiveInvestment.objects.filter(
         status="active",
