@@ -3,39 +3,52 @@ from django.utils import timezone
 from decimal import Decimal
 from .models import ActiveInvestment
 from .models import Notification
-from django.core.mail import send_mail
+from django.core.mail import EmailMultiAlternatives
+from django.template.loader import render_to_string
 from django.conf import settings
 
 
 def notify(user, type, message):
-
+    # Save notification in DB
     note = Notification.objects.create(
         user=user,
         type=type,
         message=message
     )
-    if user.email:
-        send_mail(
-            subject="New Notification from BitnetFx",
-            message=message,
-            from_email=settings.DEFAULT_FROM_EMAIL,
-            recipient_list=[user.email],
-            fail_silently=False,
-        )
-    return note
 
+    # Send email if user has an email address
+    if user.email:
+        context = {
+            "user": user,
+            "subject": "New Notification from BitnetFx",
+            "message": message,
+        }
+        # Render HTML template
+        html_content = render_to_string("users/transaction_email.html", context)
+
+        # Create multipart email (plain text + HTML)
+        email = EmailMultiAlternatives(
+            subject="New Notification from BitnetFx",
+            body=message,  # plain text fallback
+            from_email=settings.DEFAULT_FROM_EMAIL,
+            to=[user.email],
+        )
+        email.attach_alternative(html_content, "text/html")
+        email.send()
+
+    return note
 
 
 def credit_profit(user, investment):
     profit_amount = investment.amount * (investment.roi_percent / 100)
 
-   
     ProfitRecord.objects.create(
         user=user,
-        investment_name=investment.plan_name,  
+        investment_name=investment.plan_name,
         date=timezone.now(),
         status="Credited"
     )
+
 
 def process_matured_investments():
     matured_investments = ActiveInvestment.objects.filter(
