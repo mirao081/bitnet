@@ -125,7 +125,7 @@ ZOHO_EMAIL_BACKEND = {
     "EMAIL_USE_TLS": True,
 
     "EMAIL_HOST_USER": "support@bitnetapp.com",
-    "EMAIL_HOST_PASSWORD": os.getenv("SENDGRID_API_KEY"),
+    "EMAIL_HOST_PASSWORD": os.getenv("ZOHO_EMAIL_PASSWORD"),
 }
 
 
