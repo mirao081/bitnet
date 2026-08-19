@@ -1,126 +1,500 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Orbitron:wght@600;700&display=swap');
+/* =========================================================
+   ADMIN LOGIN PAGE
+   Responsive desktop + tablet + mobile
+   ========================================================= */
 
-* { margin:0; padding:0; box-sizing:border-box; }
+
+/* =========================================================
+   GOOGLE FONTS
+   ========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Orbitron:wght@600;700&display=swap');
+
+
+/* =========================================================
+   GLOBAL RESET
+   ========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   HTML / BODY
+   ========================================================= */
+
+html {
+    width: 100%;
+    min-height: 100%;
+    overflow-x: hidden;
+}
 
 body {
-  font-family:'Poppins',sans-serif;
-  min-height:100vh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  background:linear-gradient(180deg,#05070d,#0a1020);
+    width: 100%;
+    min-height: 100%;
+    overflow-x: hidden;
 }
 
-/* Showcase background */
+
+/* =========================================================
+   BODY
+   ========================================================= */
+
+body {
+    font-family: 'Poppins', sans-serif;
+
+    min-height: 100vh;
+    min-height: 100dvh;
+
+    background: linear-gradient(
+        180deg,
+        #05070d 0%,
+        #0a1020 100%
+    );
+
+    color: #ffffff;
+}
+
+
+/* =========================================================
+   SHOWCASE
+   ========================================================= */
+
 .login-showcase {
-  width:100%;
-  padding:90px 20px;
-  position:relative;
-  overflow:hidden;
-  background:
-    radial-gradient(circle at top left,#004aad33,transparent 40%),
-    radial-gradient(circle at bottom right,#7a00ff22,transparent 35%),
-    linear-gradient(180deg,#05070d,#0a1020);
+    width: 100%;
+    min-height: 100vh;
+    min-height: 100dvh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 30px 20px;
+
+    position: relative;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at top left,
+            rgba(0, 74, 173, 0.20),
+            transparent 40%
+        ),
+        radial-gradient(
+            circle at bottom right,
+            rgba(122, 0, 255, 0.14),
+            transparent 35%
+        ),
+        linear-gradient(
+            180deg,
+            #05070d 0%,
+            #0a1020 100%
+        );
 }
 
-/* Glass card */
+
+/* =========================================================
+   LOGIN BOX
+   ========================================================= */
+
 .login-box {
-  position:relative;
-  max-width:420px;
-  margin:auto;
-  padding:35px 28px;
-  border-radius:30px;
-  background:rgba(255,255,255,.08);
-  backdrop-filter:blur(24px);
-  -webkit-backdrop-filter:blur(24px);
-  border:1px solid rgba(255,255,255,.12);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.15),0 18px 45px rgba(0,0,0,.35);
-  z-index:2; /* ensures inputs are clickable */
+    position: relative;
+
+    width: 100%;
+    max-width: 420px;
+
+    padding: 35px 28px;
+
+    border-radius: 30px;
+
+    background: rgba(255, 255, 255, 0.08);
+
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+
+    border: 1px solid rgba(255, 255, 255, 0.12);
+
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.15),
+        0 18px 45px rgba(0, 0, 0, 0.35);
+
+    z-index: 2;
+
+    overflow: hidden;
 }
 
-.login-box h2 {
-  text-align:center;
-  margin-bottom:25px;
-  font-size:28px;
-  font-weight:800;
-  font-family:'Orbitron',sans-serif;
-  text-transform:uppercase;
-  letter-spacing:2px;
-  background:linear-gradient(90deg,#00d8ef,#7a00ff,#ff0080);
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-  text-shadow:0 0 20px #00d8ef;
+
+/* =========================================================
+   TITLE
+   ========================================================= */
+
+.login-box h1 {
+    margin-bottom: 25px;
+
+    text-align: center;
+
+    font-size: 28px;
+    font-weight: 800;
+
+    font-family: 'Orbitron', sans-serif;
+
+    text-transform: uppercase;
+
+    letter-spacing: 2px;
+
+    line-height: 1.3;
+
+    background:
+        linear-gradient(
+            90deg,
+            #00d8ef,
+            #7a00ff,
+            #ff0080
+        );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    -webkit-text-fill-color: transparent;
+
+    text-shadow:
+        0 0 20px #00d8ef;
 }
 
-/* Inputs */
+
+/* =========================================================
+   FORM
+   ========================================================= */
+
+.login-box form {
+    width: 100%;
+}
+
+
+/* =========================================================
+   FORM GROUP
+   ========================================================= */
+
+.form-group {
+    width: 100%;
+    margin-bottom: 18px;
+}
+
+
+/* =========================================================
+   LABEL
+   ========================================================= */
+
 .login-box label {
-  display:block;
-  margin:15px 0 8px;
-  font-size:14px;
-  font-weight:600;
-  color:#e0e0e0;
+    display: block;
+
+    margin-bottom: 8px;
+
+    color: #e0e0e0;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    line-height: 1.4;
 }
+
+
+/* =========================================================
+   INPUT
+   ========================================================= */
 
 .login-box input {
-  width:100%;
-  padding:14px;
-  border-radius:12px;
-  border:1px solid rgba(255,255,255,.2);
-  background:rgba(255,255,255,.05);
-  color:#fff;
-  font-size:15px;
-  transition:.3s;
-  position:relative;
-  z-index:3; /* fixes click issue */
+    display: block;
+
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+
+    padding: 14px;
+
+    border-radius: 12px;
+
+    border: 1px solid rgba(255, 255, 255, 0.20);
+
+    outline: none;
+
+    background: rgba(255, 255, 255, 0.05);
+
+    color: #ffffff;
+
+    font-family: 'Poppins', sans-serif;
+
+    font-size: 16px;
+
+    line-height: 1.4;
+
+    position: relative;
+
+    z-index: 3;
+
+    transition:
+        border-color 0.3s ease,
+        box-shadow 0.3s ease,
+        background 0.3s ease;
 }
+
+
+/* =========================================================
+   INPUT PLACEHOLDER
+   ========================================================= */
+
+.login-box input::placeholder {
+    color: rgba(255, 255, 255, 0.45);
+}
+
+
+/* =========================================================
+   INPUT FOCUS
+   ========================================================= */
 
 .login-box input:focus {
-  outline:none;
-  border-color:#00d8ef;
-  box-shadow:0 0 15px rgba(0,216,239,.4);
+    outline: none;
+
+    border-color: #00d8ef;
+
+    background: rgba(255, 255, 255, 0.08);
+
+    box-shadow:
+        0 0 15px rgba(0, 216, 239, 0.40);
 }
 
-/* Button */
+
+/* =========================================================
+   BUTTON
+   ========================================================= */
+
 .login-box button {
-  width:100%;
-  margin-top:25px;
-  padding:14px;
-  border:none;
-  border-radius:20px;
-  cursor:pointer;
-  font-size:16px;
-  font-weight:700;
-  background:#00d8ef;
-  color:#05070d;
-  transition:.3s;
-  box-shadow:0 12px 25px rgba(0,216,239,.35);
+    display: block;
+
+    width: 100%;
+    max-width: 100%;
+
+    margin-top: 25px;
+
+    padding: 14px;
+
+    border: none;
+
+    border-radius: 20px;
+
+    cursor: pointer;
+
+    outline: none;
+
+    font-family: 'Poppins', sans-serif;
+
+    font-size: 16px;
+    font-weight: 700;
+
+    line-height: 1.4;
+
+    background: #00d8ef;
+
+    color: #05070d;
+
+    box-shadow:
+        0 12px 25px rgba(0, 216, 239, 0.35);
+
+    transition:
+        background 0.3s ease,
+        color 0.3s ease,
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
 }
+
+
+/* =========================================================
+   BUTTON HOVER
+   ========================================================= */
 
 .login-box button:hover {
-  background:#7a00ff;
-  color:#fff;
-  box-shadow:0 15px 35px rgba(122,0,255,.45);
+    background: #7a00ff;
+
+    color: #ffffff;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 15px 35px rgba(122, 0, 255, 0.45);
 }
 
-/* Error */
+
+/* =========================================================
+   BUTTON ACTIVE
+   ========================================================= */
+
+.login-box button:active {
+    transform: translateY(0);
+}
+
+
+/* =========================================================
+   ERROR MESSAGE
+   ========================================================= */
+
 .error {
-  background:rgba(220,20,60,.15);
-  color:#ff8e8e;
-  border:1px solid rgba(220,20,60,.35);
-  border-radius:10px;
-  padding:12px;
-  text-align:center;
-  margin-bottom:20px;
+    width: 100%;
+
+    margin-bottom: 20px;
+
+    padding: 12px;
+
+    border-radius: 10px;
+
+    background: rgba(220, 20, 60, 0.15);
+
+    color: #ff8e8e;
+
+    border: 1px solid rgba(220, 20, 60, 0.35);
+
+    text-align: center;
+
+    font-size: 13px;
+
+    line-height: 1.5;
 }
 
-/* Responsive */
-@media(max-width:768px){
-  .login-box { max-width:90%; padding:28px 20px; }
-  .login-box h2 { font-size:24px; }
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media screen and (max-width: 768px) {
+
+    .login-showcase {
+        padding: 25px 20px;
+    }
+
+    .login-box {
+        width: 100%;
+        max-width: 500px;
+
+        padding: 32px 25px;
+    }
+
+    .login-box h1 {
+        font-size: 25px;
+    }
+
 }
 
-@media(max-width:480px){
-  .login-box { max-width:95%; padding:24px 15px; }
-  .login-box h2 { font-size:20px; }
-  .login-box input, .login-box button { font-size:14px; padding:12px; }
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media screen and (max-width: 480px) {
+
+    .login-showcase {
+        width: 100%;
+
+        min-height: 100vh;
+        min-height: 100dvh;
+
+        padding: 15px;
+
+        align-items: center;
+    }
+
+    .login-box {
+        width: 100%;
+        max-width: none;
+
+        padding: 30px 20px;
+
+        border-radius: 22px;
+    }
+
+    .login-box h1 {
+        margin-bottom: 22px;
+
+        font-size: 22px;
+
+        letter-spacing: 1.5px;
+    }
+
+    .form-group {
+        margin-bottom: 16px;
+    }
+
+    .login-box label {
+        font-size: 14px;
+    }
+
+    .login-box input {
+        width: 100%;
+
+        padding: 15px;
+
+        font-size: 16px;
+    }
+
+    .login-box button {
+        width: 100%;
+
+        padding: 15px;
+
+        font-size: 16px;
+    }
+
+}
+
+
+/* =========================================================
+   SMALL PHONES
+   ========================================================= */
+
+@media screen and (max-width: 360px) {
+
+    .login-showcase {
+        padding: 10px;
+    }
+
+    .login-box {
+        padding: 27px 16px;
+
+        border-radius: 18px;
+    }
+
+    .login-box h1 {
+        font-size: 20px;
+
+        letter-spacing: 1px;
+    }
+
+    .login-box input {
+        padding: 14px;
+
+        font-size: 16px;
+    }
+
+    .login-box button {
+        padding: 14px;
+    }
+
+}
+
+
+/* =========================================================
+   SHORT MOBILE SCREENS
+   ========================================================= */
+
+@media screen and (max-height: 650px) {
+
+    .login-showcase {
+        align-items: flex-start;
+
+        padding-top: 15px;
+        padding-bottom: 15px;
+    }
+
 }

@@ -1,31 +1,71 @@
 <!DOCTYPE html>
 {% load static %}
+
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
+
+    <!-- Essential for proper mobile scaling -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Admin Login</title>
+
     <link rel="stylesheet" href="{% static 'adminpanel/css/login.css' %}">
 </head>
+
 <body>
-<div class="login-showcase">
-  <div class="login-box">
-    <h2>Admin Login</h2>
 
-    {% if error %}
-      <p class="error">{{ error }}</p>
-    {% endif %}
+    <main class="login-showcase">
 
-    <form method="POST">
-      {% csrf_token %}
-      <label>Username</label>
-      <input type="text" name="username" placeholder="Enter your username" required>
+        <div class="login-box">
 
-      <label>Password</label>
-      <input type="password" name="password" placeholder="Enter your password" required>
+            <h1>Admin Login</h1>
 
-      <button type="submit">Login</button>
-    </form>
-  </div>
-</div>
+            {% if error %}
+                <p class="error">{{ error }}</p>
+            {% endif %}
+
+            <form method="POST">
+
+                {% csrf_token %}
+
+                <div class="form-group">
+                    <label for="username">Username</label>
+
+                    <input
+                        type="text"
+                        id="username"
+                        name="username"
+                        placeholder="Enter your username"
+                        autocomplete="username"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+
+                    <input
+                        type="password"
+                        id="password"
+                        name="password"
+                        placeholder="Enter your password"
+                        autocomplete="current-password"
+                        required
+                    >
+                </div>
+
+                <button type="submit">
+                    Login
+                </button>
+
+            </form>
+
+        </div>
+
+    </main>
+
 </body>
+
 </html>
