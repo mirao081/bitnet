@@ -3,48 +3,171 @@
 <head>
   <meta charset="UTF-8">
   <title>New Notification from Bitnetapp</title>
+
   <style>
-    body { font-family: Arial, sans-serif; background-color: #f4f4f4; margin: 0; padding: 0; }
-    .container { width: 600px; background: #ffffff; border-radius: 8px; overflow: hidden; }
-    .header { background: #1a73e8; color: #ffffff; padding: 20px; text-align: center; }
-    .header img { max-width: 150px; margin-bottom: 10px; }
-    .content { padding: 30px; color: #333333; }
-    .content h2 { margin-top: 0; color: #1a73e8; }
-    .footer { background: #f4f4f4; color: #777777; padding: 20px; text-align: center; font-size: 12px; }
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      width: 600px;
+      max-width: 600px;
+      background: #ffffff;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .header {
+      background: #1a73e8;
+      color: #ffffff;
+      padding: 25px 20px;
+      text-align: center;
+    }
+
+    /* Logo */
+    .header-logo {
+      width: 50px !important;
+      height: 50px !important;
+      max-width: 50px !important;
+      max-height: 50px !important;
+      border-radius: 50%;
+      object-fit: cover;
+      display: block;
+      margin: 0 auto 12px auto;
+
+      /* Super polished glow */
+      border: 3px solid #ffffff;
+      box-shadow:
+        0 0 0 3px rgba(255, 255, 255, 0.25),
+        0 0 12px rgba(255, 255, 255, 0.75),
+        0 0 25px rgba(255, 255, 255, 0.45);
+    }
+
+    .header h1 {
+      margin: 0;
+      font-size: 28px;
+      letter-spacing: 1px;
+    }
+
+    .content {
+      padding: 30px;
+      color: #333333;
+    }
+
+    .content h2 {
+      margin-top: 0;
+      color: #1a73e8;
+    }
+
+    .footer {
+      background: #f4f4f4;
+      color: #777777;
+      padding: 20px;
+      text-align: center;
+      font-size: 12px;
+    }
+
+    @media screen and (max-width: 600px) {
+      .container {
+        width: 100% !important;
+      }
+
+      .content {
+        padding: 20px !important;
+      }
+    }
   </style>
 </head>
+
 <body>
-  <table width="100%" cellpadding="0" cellspacing="0">
+
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
     <tr>
       <td align="center" style="padding:20px;">
-        <table class="container" cellpadding="0" cellspacing="0">
+
+        <table
+          class="container"
+          cellpadding="0"
+          cellspacing="0"
+          border="0"
+        >
+
+          <!-- HEADER -->
           <tr>
             <td class="header">
-              <img src="https://bitnetapp.com/static/users/images/crypto_logo.png" alt="Bitnetapp Logo">
+
+              <img
+                class="header-logo"
+                src="https://www.bitnetapp.com/static/crypto/images/crypto_logo.png"
+                width="50"
+                height="50"
+                alt="Bitnetapp Logo"
+                style="
+                  width:50px;
+                  height:50px;
+                  max-width:50px;
+                  max-height:50px;
+                  border-radius:50%;
+                  object-fit:cover;
+                  display:block;
+                  margin:0 auto 12px auto;
+                  border:3px solid #ffffff;
+                  box-shadow:
+                    0 0 0 3px rgba(255,255,255,0.25),
+                    0 0 12px rgba(255,255,255,0.75),
+                    0 0 25px rgba(255,255,255,0.45);
+                "
+              >
+
               <h1>Bitnetapp</h1>
+
             </td>
           </tr>
+
+          <!-- CONTENT -->
           <tr>
             <td class="content">
+
               <h2>New Notification from Bitnetapp</h2>
-              <p>Dear <strong>{{ user.username }}</strong>,</p>
-              <p style="font-size:16px; line-height:1.5;">{{ message }}</p>
+
+              <p>
+                Dear <strong>{{ user.username }}</strong>,
+              </p>
+
+              <p style="font-size:16px; line-height:1.5;">
+                {{ message }}
+              </p>
+
               <p style="margin-top:20px; font-size:14px; color:#555;">
-                Thank you for choosing Bitnetapp. We are committed to secure and reliable financial services.
+                Thank you for choosing Bitnetapp. We are committed to
+                secure and reliable financial services.
               </p>
-              <p>If you have any questions, please contact our support team at 
-                <a href="mailto:support@bitnetapp.com">support@bitnetapp.com</a>.
+
+              <p>
+                If you have any questions, please contact our support team at
+                <a href="mailto:support@bitnetapp.com">
+                  support@bitnetapp.com
+                </a>.
               </p>
+
             </td>
           </tr>
+
+          <!-- FOOTER -->
           <tr>
             <td class="footer">
-              © 201 Bitnetapp. All rights reserved.
+              © 2018 Bitnetapp. All rights reserved.
             </td>
           </tr>
+
         </table>
+
       </td>
     </tr>
   </table>
+
 </body>
 </html>
