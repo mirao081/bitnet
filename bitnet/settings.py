@@ -117,6 +117,7 @@ RECAPTCHA_PRIVATE_KEY = "6LebNoctAAAAAJv_88a_-8fUXDiCDX1wvA9t4fjZ"
 RECAPTCHA_USE_SSL = True
 
 
+
 # Zoho Mail SMTP
 DEFAULT_FROM_EMAIL = "support@bitnetapp.com"
 
@@ -129,23 +130,15 @@ ZOHO_EMAIL_BACKEND = {
     "EMAIL_HOST_USER": "support@bitnetapp.com",
     "EMAIL_HOST_PASSWORD": os.getenv("ZOHO_EMAIL_PASSWORD"),
 }
-ZOHO_EMAIL_BACKEND = {
-    "DEFAULT_FROM_EMAIL": "support@bitnetapp.com",
-    "EMAIL_BACKEND": "django.core.mail.backends.smtp.EmailBackend",
-    "EMAIL_HOST": "smtp.zoho.com",
-    "EMAIL_PORT": 587,
-    "EMAIL_USE_TLS": True,
 
-    "EMAIL_HOST_USER": "support@bitnetapp.com",
-    "EMAIL_HOST_PASSWORD": os.getenv("ZOHO_EMAIL_PASSWORD"),
-}
-
-
+# ✅ Helper dict for signals that call send_html_email
 SENDGRID_EMAIL_BACKEND = {
-    "EMAIL_BACKEND": "django.core.mail.backends.smtp.EmailBackend",
-    "EMAIL_HOST": "smtp.sendgrid.net",
-    "EMAIL_PORT": 587,
-    "EMAIL_USE_TLS": True,
-    "EMAIL_HOST_USER": "apikey",
-    "EMAIL_HOST_PASSWORD": os.getenv("SENDGRID_API_KEY"),  # ✅ use env var
+    "EMAIL_BACKEND": EMAIL_BACKEND,
+    "EMAIL_HOST": EMAIL_HOST,
+    "EMAIL_PORT": EMAIL_PORT,
+    "EMAIL_USE_TLS": EMAIL_USE_TLS,
+    "EMAIL_HOST_USER": EMAIL_HOST_USER,
+    "EMAIL_HOST_PASSWORD": EMAIL_HOST_PASSWORD,
 }
+
+
