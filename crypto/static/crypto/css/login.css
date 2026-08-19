@@ -1,146 +1,669 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Orbitron:wght@600;700&display=swap');
+/* =========================================================
+   BITNETAPP LOGIN PAGE
+   Responsive desktop + tablet + mobile design
+   ========================================================= */
 
-* { margin:0; padding:0; box-sizing:border-box; }
+
+/* =========================================================
+   GOOGLE FONTS
+   ========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Orbitron:wght@600;700&display=swap');
+
+
+/* =========================================================
+   GLOBAL RESET
+   ========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   HTML / BODY
+   ========================================================= */
+
+html {
+    width: 100%;
+    min-height: 100%;
+    overflow-x: hidden;
+}
+
+body {
+    width: 100%;
+    min-height: 100%;
+    overflow-x: hidden;
+}
+
+
+/* =========================================================
+   LOGIN BODY
+   ========================================================= */
 
 body.bitnet-login-body {
-  font-family:'Poppins',sans-serif;
-  min-height:100vh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  background:
-    radial-gradient(circle at top left,#ff008033,transparent 40%),
-    radial-gradient(circle at bottom right,#00f0ff22,transparent 35%),
-    linear-gradient(180deg,#05070d,#0a1020);
-  padding:20px;
+    width: 100%;
+    min-height: 100vh;
+    min-height: 100dvh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+
+    font-family: 'Poppins', sans-serif;
+
+    background:
+        radial-gradient(
+            circle at top left,
+            rgba(255, 0, 128, 0.20),
+            transparent 40%
+        ),
+        radial-gradient(
+            circle at bottom right,
+            rgba(0, 240, 255, 0.13),
+            transparent 35%
+        ),
+        linear-gradient(
+            180deg,
+            #05070d 0%,
+            #0a1020 100%
+        );
+
+    color: #ffffff;
 }
 
-/* Main container */
+
+/* =========================================================
+   LOGIN CONTAINER
+   ========================================================= */
+
 .bitnet-login-container {
-  max-width:420px;   /* desktop cap */
-  width:100%;
-  padding:32px 24px;
-  border-radius:25px;
-  background:rgba(255,255,255,.08);
-  backdrop-filter:blur(24px);
-  border:1px solid rgba(255,255,255,.12);
-  box-shadow:0 20px 50px rgba(0,0,0,.55),0 0 50px rgba(255,0,128,.35);
-  animation:fadeIn 1s ease;
+    position: relative;
+
+    width: 100%;
+    max-width: 420px;
+
+    padding: 32px 24px;
+
+    border-radius: 25px;
+
+    background: rgba(255, 255, 255, 0.08);
+
+    border: 1px solid rgba(255, 255, 255, 0.12);
+
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+
+    box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.55),
+        0 0 50px rgba(255, 0, 128, 0.35);
+
+    animation: fadeIn 0.8s ease;
+
+    overflow: hidden;
 }
+
+
+/* =========================================================
+   CONTAINER ANIMATION
+   ========================================================= */
 
 @keyframes fadeIn {
-  from { opacity:0; transform:translateY(40px); }
-  to { opacity:1; transform:translateY(0); }
+
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
 }
 
-/* Logo */
-.bitnet-login-logo .bitnet-site-name {
-  display:block;
-  text-align:center;
-  font-size:30px;
-  font-weight:900;
-  font-family:'Orbitron',sans-serif;
-  background:linear-gradient(90deg,#ff0080,#00f0ff,#FFD700);
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-  text-shadow:0 0 25px rgba(255,0,128,.6);
-  margin-bottom:20px;
-  animation:glowPulse 3s infinite alternate;
+
+/* =========================================================
+   LOGO
+   ========================================================= */
+
+.bitnet-login-logo {
+    width: 100%;
+    text-align: center;
 }
+
+
+.bitnet-site-name {
+    display: block;
+
+    margin-bottom: 20px;
+
+    font-family: 'Orbitron', sans-serif;
+
+    font-size: 30px;
+    font-weight: 700;
+
+    line-height: 1.2;
+
+    text-align: center;
+
+    background:
+        linear-gradient(
+            90deg,
+            #ff0080,
+            #00f0ff,
+            #ffd700
+        );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    -webkit-text-fill-color: transparent;
+
+    text-shadow:
+        0 0 25px rgba(255, 0, 128, 0.6);
+
+    animation: glowPulse 3s infinite alternate;
+}
+
+
+/* =========================================================
+   LOGO GLOW ANIMATION
+   ========================================================= */
 
 @keyframes glowPulse {
-  from { text-shadow:0 0 15px #ff0080,0 0 30px #00f0ff; }
-  to   { text-shadow:0 0 30px #FFD700,0 0 60px #ff0080; }
+
+    from {
+        text-shadow:
+            0 0 15px #ff0080,
+            0 0 30px #00f0ff;
+    }
+
+    to {
+        text-shadow:
+            0 0 30px #ffd700,
+            0 0 60px #ff0080;
+    }
+
 }
 
-/* Title */
+
+/* =========================================================
+   LOGIN TITLE
+   ========================================================= */
+
 .bitnet-login-title {
-  text-align:center;
-  font-size:22px;
-  font-weight:700;
-  color:#fff;
-  margin-bottom:25px;
+    margin-bottom: 25px;
+
+    color: #ffffff;
+
+    font-size: 22px;
+    font-weight: 700;
+
+    line-height: 1.3;
+
+    text-align: center;
 }
 
-/* Inputs */
-.form-group { margin-bottom:18px; }
+
+/* =========================================================
+   LOGIN FORM
+   ========================================================= */
+
+.bitnet-login-form {
+    width: 100%;
+}
+
+
+/* =========================================================
+   FORM GROUP
+   ========================================================= */
+
+.form-group {
+    width: 100%;
+
+    margin-bottom: 18px;
+}
+
+
+/* =========================================================
+   FORM LABELS
+   ========================================================= */
+
+.form-group label {
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: #dddddd;
+
+    font-size: 14px;
+    font-weight: 500;
+}
+
+
+/* =========================================================
+   INPUTS
+   ========================================================= */
 
 .form-group input {
-  width:100%;
-  padding:14px;
-  border-radius:12px;
-  border:1px solid rgba(255,255,255,.2);
-  background:rgba(255,255,255,.05);
-  color:#fff;
-  font-size:15px;
-  transition:.3s;
+    display: block;
+
+    width: 100%;
+    max-width: 100%;
+
+    min-width: 0;
+
+    padding: 14px;
+
+    border: 1px solid rgba(255, 255, 255, 0.20);
+
+    border-radius: 12px;
+
+    outline: none;
+
+    background: rgba(255, 255, 255, 0.05);
+
+    color: #ffffff;
+
+    font-family: 'Poppins', sans-serif;
+
+    font-size: 16px;
+    font-weight: 400;
+
+    line-height: 1.4;
+
+    transition:
+        border-color 0.3s ease,
+        box-shadow 0.3s ease,
+        background 0.3s ease;
 }
+
+
+/* =========================================================
+   INPUT PLACEHOLDER
+   ========================================================= */
+
+.form-group input::placeholder {
+    color: rgba(255, 255, 255, 0.45);
+}
+
+
+/* =========================================================
+   INPUT FOCUS
+   ========================================================= */
 
 .form-group input:focus {
-  outline:none;
-  border-color:#ff0080;
-  box-shadow:0 0 15px rgba(255,0,128,.4);
+    border-color: #ff0080;
+
+    background: rgba(255, 255, 255, 0.08);
+
+    box-shadow:
+        0 0 15px rgba(255, 0, 128, 0.40);
 }
 
-/* Button */
-.bitnet-login-button {
-  width:100%;
-  margin-top:15px;
-  padding:14px;
-  border:none;
-  border-radius:20px;
-  cursor:pointer;
-  font-size:16px;
-  font-weight:700;
-  background:linear-gradient(135deg,#ff0080,#FFD700,#00f0ff);
-  color:#fff;
-  transition:.35s;
-  box-shadow:0 12px 25px rgba(255,0,128,.35);
+
+/* =========================================================
+   FORM ERRORS
+   ========================================================= */
+
+.form-errors {
+    width: 100%;
+
+    margin-bottom: 18px;
+    padding: 12px;
+
+    border-radius: 10px;
+
+    border: 1px solid rgba(255, 70, 70, 0.45);
+
+    background: rgba(255, 0, 0, 0.10);
+
+    color: #ff8a8a;
+
+    font-size: 13px;
+
+    line-height: 1.5;
 }
+
+
+.field-error {
+    margin-top: 6px;
+
+    color: #ff8a8a;
+
+    font-size: 12px;
+
+    line-height: 1.4;
+}
+
+
+/* Remove Django's default error list styling */
+
+.errorlist {
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
+}
+
+
+/* =========================================================
+   CAPTCHA
+   ========================================================= */
+
+.captcha-group {
+    display: flex;
+
+    justify-content: flex-start;
+
+    width: 100%;
+
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   LOGIN BUTTON
+   ========================================================= */
+
+.bitnet-login-button {
+    display: block;
+
+    width: 100%;
+    max-width: 100%;
+
+    margin-top: 15px;
+
+    padding: 14px;
+
+    border: none;
+
+    border-radius: 20px;
+
+    outline: none;
+
+    cursor: pointer;
+
+    font-family: 'Poppins', sans-serif;
+
+    font-size: 16px;
+    font-weight: 700;
+
+    line-height: 1.4;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ff0080,
+            #ffd700,
+            #00f0ff
+        );
+
+    color: #ffffff;
+
+    box-shadow:
+        0 12px 25px rgba(255, 0, 128, 0.35);
+
+    transition:
+        transform 0.35s ease,
+        box-shadow 0.35s ease,
+        background 0.35s ease;
+}
+
+
+/* =========================================================
+   BUTTON HOVER
+   ========================================================= */
 
 .bitnet-login-button:hover {
-  transform:translateY(-3px);
-  background:linear-gradient(135deg,#00f0ff,#ff0080,#FFD700);
-  color:#05070d;
-  box-shadow:0 15px 35px rgba(0,240,255,.45);
+    transform: translateY(-3px);
+
+    background:
+        linear-gradient(
+            135deg,
+            #00f0ff,
+            #ff0080,
+            #ffd700
+        );
+
+    color: #05070d;
+
+    box-shadow:
+        0 15px 35px rgba(0, 240, 255, 0.45);
 }
 
-/* Switch */
-.bitnet-auth-switch {
-  text-align:center;
-  margin-top:20px;
-  font-size:14px;
-  color:#ccc;
+
+/* =========================================================
+   BUTTON ACTIVE
+   ========================================================= */
+
+.bitnet-login-button:active {
+    transform: translateY(0);
 }
+
+
+/* =========================================================
+   SIGNUP SWITCH
+   ========================================================= */
+
+.bitnet-auth-switch {
+    margin-top: 20px;
+
+    color: #cccccc;
+
+    font-size: 14px;
+
+    line-height: 1.6;
+
+    text-align: center;
+}
+
+
+/* =========================================================
+   SIGNUP LINK
+   ========================================================= */
 
 .bitnet-auth-switch a {
-  color:#00f0ff;
-  font-weight:600;
-  text-decoration:none;
+    color: #00f0ff;
+
+    font-weight: 600;
+
+    text-decoration: none;
+
+    transition: color 0.3s ease;
 }
 
-.bitnet-auth-switch a:hover { color:#ff0080; }
 
-/* 📱 Responsive — make BIGGER on mobile */
-@media(max-width:768px){
-  .bitnet-login-container {
-    width:95%;        /* fill most of tablet width */
-    max-width:none;   /* remove cap */
-    padding:45px 32px;
-  }
-  .bitnet-login-logo .bitnet-site-name { font-size:32px; }
+.bitnet-auth-switch a:hover {
+    color: #ff0080;
 }
 
-@media(max-width:480px){
-  .bitnet-login-container {
-    width:100%;       /* full width on mobile */
-    max-width:none;   /* no cap, fills screen */
-    padding:60px 36px; /* extra padding for bold look */
-  }
-  .bitnet-login-logo .bitnet-site-name { font-size:34px; }
-  .bitnet-login-title { font-size:26px; }
-  .form-group input, .bitnet-login-button {
-    font-size:18px;
-    padding:20px;
-  }
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media screen and (max-width: 768px) {
+
+    body.bitnet-login-body {
+        padding: 20px;
+    }
+
+
+    .bitnet-login-container {
+        width: 100%;
+
+        max-width: 500px;
+
+        padding: 40px 28px;
+    }
+
+
+    .bitnet-site-name {
+        font-size: 32px;
+    }
+
+
+    .bitnet-login-title {
+        font-size: 23px;
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media screen and (max-width: 480px) {
+
+    body.bitnet-login-body {
+        width: 100%;
+
+        min-height: 100vh;
+        min-height: 100dvh;
+
+        padding: 15px;
+
+        align-items: center;
+    }
+
+
+    .bitnet-login-container {
+        width: 100%;
+
+        max-width: none;
+
+        padding: 32px 20px;
+
+        border-radius: 20px;
+    }
+
+
+    .bitnet-site-name {
+        margin-bottom: 18px;
+
+        font-size: 30px;
+    }
+
+
+    .bitnet-login-title {
+        margin-bottom: 22px;
+
+        font-size: 21px;
+
+        line-height: 1.35;
+    }
+
+
+    .form-group {
+        margin-bottom: 16px;
+    }
+
+
+    .form-group label {
+        font-size: 14px;
+    }
+
+
+    .form-group input {
+        width: 100%;
+
+        padding: 15px;
+
+        font-size: 16px;
+    }
+
+
+    .bitnet-login-button {
+        width: 100%;
+
+        padding: 15px;
+
+        font-size: 16px;
+    }
+
+
+    .bitnet-auth-switch {
+        margin-top: 18px;
+
+        font-size: 13px;
+
+        line-height: 1.6;
+    }
+
+}
+
+
+/* =========================================================
+   SMALL PHONES
+   ========================================================= */
+
+@media screen and (max-width: 360px) {
+
+    body.bitnet-login-body {
+        padding: 10px;
+    }
+
+
+    .bitnet-login-container {
+        padding: 28px 16px;
+
+        border-radius: 18px;
+    }
+
+
+    .bitnet-site-name {
+        font-size: 27px;
+    }
+
+
+    .bitnet-login-title {
+        font-size: 19px;
+    }
+
+
+    .form-group input {
+        padding: 14px;
+
+        font-size: 16px;
+    }
+
+
+    .bitnet-login-button {
+        padding: 14px;
+    }
+
+
+    .bitnet-auth-switch {
+        font-size: 12px;
+    }
+
+}
+
+
+/* =========================================================
+   VERY SHORT SCREENS
+   Prevent excessive vertical spacing
+   ========================================================= */
+
+@media screen and (max-height: 650px) {
+
+    body.bitnet-login-body {
+        align-items: flex-start;
+
+        padding-top: 15px;
+        padding-bottom: 15px;
+    }
+
+
+    .bitnet-login-container {
+        margin-top: 0;
+    }
+
 }

@@ -1,43 +1,110 @@
 {% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
+
+    <!-- Essential for proper mobile scaling -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Login - Bitnetapp</title>
+
+    <!-- Login CSS -->
     <link rel="stylesheet" href="{% static 'crypto/css/login.css' %}">
+
     <!-- Google reCAPTCHA v2 Checkbox -->
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <script
+        src="https://www.google.com/recaptcha/api.js"
+        async
+        defer>
+    </script>
 </head>
+
 <body class="bitnet-login-body">
-    <div class="bitnet-login-container">
+
+    <main class="bitnet-login-container">
+
+        <!-- Logo / Site Name -->
         <div class="bitnet-login-logo">
             <span class="bitnet-site-name">Bitnetapp</span>
         </div>
 
-        <h2 class="bitnet-login-title">Login to Your Account</h2>
+        <!-- Page Title -->
+        <h1 class="bitnet-login-title">
+            Login to Your Account
+        </h1>
 
+        <!-- Login Form -->
         <form method="post" class="bitnet-login-form">
+
             {% csrf_token %}
-            {{ form.non_field_errors }}
 
+            <!-- Non-field form errors -->
+            {% if form.non_field_errors %}
+                <div class="form-errors">
+                    {{ form.non_field_errors }}
+                </div>
+            {% endif %}
+
+            <!-- Username -->
             <div class="form-group">
+                <label for="{{ form.username.id_for_label }}">
+                    Username
+                </label>
+
                 {{ form.username }}
+
+                {% if form.username.errors %}
+                    <div class="field-error">
+                        {{ form.username.errors }}
+                    </div>
+                {% endif %}
             </div>
+
+            <!-- Password -->
             <div class="form-group">
+                <label for="{{ form.password.id_for_label }}">
+                    Password
+                </label>
+
                 {{ form.password }}
+
+                {% if form.password.errors %}
+                    <div class="field-error">
+                        {{ form.password.errors }}
+                    </div>
+                {% endif %}
             </div>
 
-            <div class="form-group">
-                <div class="g-recaptcha" data-sitekey="{{ RECAPTCHA_PUBLIC_KEY }}"></div>
+            <!-- reCAPTCHA -->
+            <div class="form-group captcha-group">
+                <div
+                    class="g-recaptcha"
+                    data-sitekey="{{ RECAPTCHA_PUBLIC_KEY }}">
+                </div>
             </div>
 
+            <!-- Login Button -->
+            <button
+                type="submit"
+                class="bitnet-login-button">
+                Login
+            </button>
 
-            <button type="submit" class="bitnet-login-button">Login</button>
         </form>
 
+        <!-- Signup Link -->
         <p class="bitnet-auth-switch">
-            Don’t have an account? <a href="{% url 'crypto:signup' %}">Sign up here</a>
+            Don’t have an account?
+            <a href="{% url 'crypto:signup' %}">
+                Sign up here
+            </a>
         </p>
-    </div>
+
+    </main>
+
 </body>
+
 </html>
