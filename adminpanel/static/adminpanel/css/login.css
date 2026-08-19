@@ -148,15 +148,13 @@ body {
 
     line-height: 1.3;
 
-    color: #00d8ef;
+    color: #ffffff;
+
+    -webkit-text-fill-color: #ffffff;
 
     text-shadow:
         0 0 20px #00d8ef;
 }
-
-/* =========================================================
-   FORM
-   ========================================================= */
 
 .login-box form {
     width: 100%;
