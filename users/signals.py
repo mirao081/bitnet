@@ -62,19 +62,16 @@ def new_user_setup(sender, instance, created, **kwargs):
             print("Admin email failed:", e)
 
 
-# 🔔 Admin login alert
 @receiver(user_logged_in)
 def notify_admin_login(sender, request, user, **kwargs):
-    try:
-        send_mail(
-            subject="User Logged In",
-            message=f"User {user.username} just logged in.",
-            from_email=settings.DEFAULT_FROM_EMAIL,
-            recipient_list=["support@bitnetapp.com"],
-            fail_silently=True,
-        )
-    except Exception as e:
-        print("Admin login email failed:", e)
+    print("🔔 Login signal fired for", user.username)
+    send_html_email(
+        subject="User Logged In",
+        message=f"User {user.username} just logged in.",
+        user=user,
+        backend_settings=settings.SENDGRID_EMAIL_BACKEND,
+    )
+
 
 
 # 🔔 Save user profile
