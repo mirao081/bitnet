@@ -26,21 +26,8 @@
       <span class="hamburger">&#9776;</span>
       <span class="close-icon">&times;</span>
     </div>
-
-    <div class="logo">
-      <img src="{% static 'adminpanel/images/crypto_logo.png' %}" alt="Admin Logo">
-    <div class="admin-header-logo">
-      <img class="admin-header-logo-image"
-          src="{% static 'adminpanel/images/crypto_logo.png' %}"
-          alt="Admin Logo">
-
-    </div>
-
-    
-
   </header>
   <aside class="sidebar">
-
     <nav class="sidebar-nav">
       <ul>
         <li><a href="{% url 'adminpanel:dashboard' %}">Dashboard</a></li>
@@ -55,7 +42,6 @@
             <li><a href="{% url 'adminpanel:all_transactions' %}">Transactions</a></li>
           </ul>
         </li>
-
         <li><a href="{% url 'adminpanel:verifications' %}">User Verification (KYC)</a></li>
         <li><a href="{% url 'adminpanel:admin_wallets' %}">User Wallets</a></li>
         <li><a href="{% url 'adminpanel:logout' %}">Logout</a></li>
@@ -64,7 +50,6 @@
   </aside>
   <main class="main-content">
     {% block content %}
-  
     {% endblock %}
   </main>
   <footer class="dashboard-footer">
