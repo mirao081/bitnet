@@ -49,7 +49,6 @@ def new_user_setup(sender, instance, created, **kwargs):
         UserBalance.objects.get_or_create(user=instance)
 
         try:
-            # Admin alert via Zoho
             send_mail(
                 subject="New User Registered",
                 message=f"New user signed up: {instance.username} ({instance.email})",
@@ -58,22 +57,10 @@ def new_user_setup(sender, instance, created, **kwargs):
                 fail_silently=False,
             )
 
-            # Styled welcome email via SendGrid
             if instance.email:
                 send_html_email(
-                    subject="Welcome to BitnetFx",
-                    message=f"""
-                        <div style="font-family:Arial,sans-serif; color:#2c3e50;">
-                            <img src="https://www.bitnetapp.com/static/crypto/images/crypto_logo.png" 
-                                 alt="Bitnetapp Logo" style="height:60px; margin-bottom:20px;">
-                            <h2 style="color:#27ae60;">New Notification from Bitnetapp</h2>
-                            <p>Dear <strong>{instance.username}</strong>,</p>
-                            <p>Thank you for registering with BitnetFx. Your account has been created successfully.</p>
-                            <p>We are committed to secure and reliable financial services.</p>
-                            <p>If you have any questions, please contact our support team at 
-                            <a href="mailto:support@bitnetapp.com">support@bitnetapp.com</a>.</p>
-                        </div>
-                    """,
+                    subject="Welcome to Bitnetapp",
+                    message=f"Dear {instance.username}, thank you for registering with Bitnetapp. Your account has been created successfully.",
                     user=instance,
                     backend_settings=settings.SENDGRID_EMAIL_BACKEND,
                 )
@@ -131,32 +118,18 @@ def withdrawal_notification(sender, instance, **kwargs):
 @receiver(post_save, sender=UserKYC)
 def kyc_notification(sender, instance, **kwargs):
     if instance.status == "approved":
-        # Styled KYC approval email via SendGrid
         if instance.user.email:
             send_html_email(
                 subject="KYC Verification Approved",
-                message=f"""
-                    <div style="font-family:Arial,sans-serif; color:#2c3e50;">
-                        <img src="https://www.bitnetapp.com/static/crypto/images/crypto_logo.png" 
-                             alt="Bitnetapp Logo" style="height:60px; margin-bottom:20px;">
-                        <h2 style="color:#27ae60;">New Notification from Bitnetapp</h2>
-                        <p>Dear <strong>{instance.user.username}</strong>,</p>
-                        <p>Your identity verification has been <strong>approved</strong>.</p>
-                        <p>You are now a verified investor with BitnetFx.</p>
-                        <p>Thank you for choosing Bitnetapp. We are committed to secure and reliable financial services.</p>
-                        <p>If you have any questions, please contact our support team at 
-                        <a href="mailto:support@bitnetapp.com">support@bitnetapp.com</a>.</p>
-                    </div>
-                """,
+                message=f"Dear {instance.user.username}, your identity verification has been approved. You are now a verified investor with Bitnetapp.",
                 user=instance.user,
                 backend_settings=settings.SENDGRID_EMAIL_BACKEND,
             )
 
-        # Keep notification record in DB
         notify(
             instance.user,
             "verification",
-            f"Dear {instance.user.username}, your identity has been verified. You are now an investor with BitnetFx."
+            f"Dear {instance.user.username}, your identity has been verified. You are now an investor with Bitnetapp."
         )
 
 
