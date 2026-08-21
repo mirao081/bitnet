@@ -119,13 +119,13 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = "support@bitnetapp.com"
 EMAIL_HOST_PASSWORD = os.getenv("ZOHO_EMAIL_PASSWORD")
 
-# ✅ Keep SendGrid config for send_html_email helper
+# ✅ SendGrid config for send_html_email helper
 SENDGRID_EMAIL_BACKEND = {
     "DEFAULT_FROM_EMAIL": "support@bitnetapp.com",
     "EMAIL_BACKEND": "django.core.mail.backends.smtp.EmailBackend",
-    "EMAIL_HOST": "smtp.sendgrid.net",
+    "EMAIL_HOST": "smtp.sendgrid.net",   # <-- FIXED
     "EMAIL_PORT": 587,
     "EMAIL_USE_TLS": True,
-    "EMAIL_HOST_USER": os.getenv("SENDGRID_USERNAME"),
-    "EMAIL_HOST_PASSWORD": os.getenv("SENDGRID_PASSWORD"),
+    "EMAIL_HOST_USER": os.getenv("SENDGRID_USERNAME"),  # usually "apikey"
+    "EMAIL_HOST_PASSWORD": os.getenv("SENDGRID_PASSWORD"),  # your API key
 }
