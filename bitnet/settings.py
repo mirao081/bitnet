@@ -22,8 +22,6 @@ CSRF_TRUSTED_ORIGINS = [
     'https://www.bitnethub.online',
 ]
 
-
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -107,29 +105,27 @@ STATICFILES_DIRS = [
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
-
 RECAPTCHA_PUBLIC_KEY = "6LebNoctAAAAAAaNs4Ykdrc8yQCZOs2TuDbxbZvu"
 RECAPTCHA_PRIVATE_KEY = "6LebNoctAAAAAJv_88a_-8fUXDiCDX1wvA9t4fjZ"
 RECAPTCHA_USE_SSL = True
 
 DEFAULT_FROM_EMAIL = "support@bitnetapp.com"
 
-ZOHO_EMAIL_BACKEND = {
-    "DEFAULT_FROM_EMAIL": "support@bitnetapp.com",
-    "EMAIL_BACKEND": "django.core.mail.backends.smtp.EmailBackend",
-    "EMAIL_HOST": "smtp.zoho.com",
-    "EMAIL_PORT": 587,
-    "EMAIL_USE_TLS": True,
-    "EMAIL_HOST_USER": "support@bitnetapp.com",
-    "EMAIL_HOST_PASSWORD": os.getenv("ZOHO_EMAIL_PASSWORD"),
-}
+# ✅ Zoho is the default backend for Django's send_mail
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = "smtp.zoho.com"
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = "support@bitnetapp.com"
+EMAIL_HOST_PASSWORD = os.getenv("ZOHO_EMAIL_PASSWORD")
 
+# ✅ Keep SendGrid config for send_html_email helper
 SENDGRID_EMAIL_BACKEND = {
     "DEFAULT_FROM_EMAIL": "support@bitnetapp.com",
     "EMAIL_BACKEND": "django.core.mail.backends.smtp.EmailBackend",
-    "EMAIL_HOST": "smtp.zoho.com",
+    "EMAIL_HOST": "smtp.sendgrid.net",
     "EMAIL_PORT": 587,
     "EMAIL_USE_TLS": True,
-    "EMAIL_HOST_USER": "support@bitnetapp.com",
-    "EMAIL_HOST_PASSWORD": os.getenv("ZOHO_EMAIL_PASSWORD"),
+    "EMAIL_HOST_USER": os.getenv("SENDGRID_USERNAME"),
+    "EMAIL_HOST_PASSWORD": os.getenv("SENDGRID_PASSWORD"),
 }

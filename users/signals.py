@@ -51,15 +51,26 @@ def new_user_setup(sender, instance, created, **kwargs):
         UserBalance.objects.get_or_create(user=instance)
 
         try:
+            # Notify admin
             send_mail(
                 subject="New User Registered",
                 message=f"New user signed up: {instance.username} ({instance.email})",
                 from_email=settings.DEFAULT_FROM_EMAIL,
                 recipient_list=["support@bitnetapp.com"],
-                fail_silently=True,
+                fail_silently=False,
             )
+            # ✅ Notify user directly
+            if instance.email:
+                send_mail(
+                    subject="Welcome to BitnetFx",
+                    message=f"Dear {instance.username}, thank you for registering with BitnetFx. Your account has been created successfully.",
+                    from_email=settings.DEFAULT_FROM_EMAIL,
+                    recipient_list=[instance.email],
+                    fail_silently=False,
+                )
         except Exception as e:
-            print("Admin email failed:", e)
+            print("Signup email failed:", e)
+
 
 
 @receiver(user_logged_in)
@@ -107,11 +118,22 @@ def withdrawal_notification(sender, instance, **kwargs):
 @receiver(post_save, sender=UserKYC)
 def kyc_notification(sender, instance, **kwargs):
     if instance.status == "approved":
+        # ✅ Notify user directly
+        if instance.user.email:
+            send_mail(
+                subject="KYC Verification Approved",
+                message=f"Dear {instance.user.username}, your identity has been verified. You are now a bonafide investor with BitnetFx.",
+                from_email=settings.DEFAULT_FROM_EMAIL,
+                recipient_list=[instance.user.email],
+                fail_silently=False,
+            )
+        # Keep notification record
         notify(
             instance.user,
             "verification",
             f"Dear {instance.user.username}, your identity has been verified. You are now an investor with BitnetFx."
         )
+
 
 @receiver(post_save, sender=ActiveInvestment)
 def investment_completed(sender, instance, **kwargs):
