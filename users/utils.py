@@ -9,14 +9,14 @@ from .models import ActiveInvestment, Notification
 from users.models import ProfitRecord
 
 
-# 🔑 Helper to send HTML email with a specific backend
+
 def send_html_email(subject, message, user, backend_settings):
     html_content = render_to_string("users/transaction_email.html", {
         "user": user,
         "subject": subject,
         "message": message,
     })
-    text_content = message  # fallback plain text
+    text_content = message 
 
     connection = get_connection(
         backend=backend_settings["EMAIL_BACKEND"],
@@ -38,7 +38,7 @@ def send_html_email(subject, message, user, backend_settings):
     msg.send(fail_silently=True)
 
 
-# 🔔 General notification
+
 def notify(user, type, message):
     note = Notification.objects.create(
         user=user,
@@ -55,8 +55,6 @@ def notify(user, type, message):
         )
     return note
 
-
-# 🔑 Credit profit
 def credit_profit(user, investment):
     profit_amount = investment.amount * (investment.roi_percent / 100)
 
@@ -68,7 +66,6 @@ def credit_profit(user, investment):
     )
 
 
-# 🔑 Process matured investments
 def process_matured_investments():
     matured_investments = ActiveInvestment.objects.filter(
         status="active",

@@ -3,8 +3,6 @@
 
 {% block content %}
 <link rel="stylesheet" href="{% static 'crypto/css/home.css' %}">
-
-<!-- HERO -->
 <section class="home-hero">
   <div class="home-hero-content">
     <span class="home-badge">✦ Built on Web3. Powered by You</span>
@@ -20,13 +18,9 @@
     <a href="{% url 'crypto:signup' %}" class="home-auth-btn">Get Started</a>
   </div>
 </section>
-
-
-
 <section class="home-accessible-showcase">
 
     <div class="home-accessible-heading">
-
         <div class="home-accessible-badge">
             ACCESSIBLE FOR EVERYONE
         </div>
@@ -51,8 +45,6 @@
         </p>
 
     </div>
-
-
     <div class="home-accessible-grid">
 
         {% for card in accessible_cards %}
@@ -394,8 +386,6 @@
 
         <div id="calcResult">0</div>
       </div>
-
-      <!-- Currency selector added -->
       <div class="elite-calculator-row">
         <label for="currencySelect">Currency:</label>
         <select id="currencySelect">

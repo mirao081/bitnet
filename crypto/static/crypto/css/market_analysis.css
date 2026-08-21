@@ -103,8 +103,6 @@
     animation:shineFlow 6s linear infinite;
     letter-spacing:1px;
 }
-
-/* Responsive overrides */
 @media(max-width:991px){
   .analysisx-grid {
     grid-template-columns:repeat(2,1fr);

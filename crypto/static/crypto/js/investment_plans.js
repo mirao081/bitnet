@@ -82,9 +82,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
         let angle = 0;
 
-
-        /* Create stars */
-
         for (let i = 0; i < numStars; i++) {
 
             stars.push({
@@ -94,9 +91,6 @@ document.addEventListener("DOMContentLoaded", function () {
             });
 
         }
-
-
-        /* Draw stars */
 
         function drawStars() {
 
@@ -136,9 +130,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
         }
 
-
-        /* Draw rotating lightning */
-
         function drawLightning() {
 
             ctx2.save();
@@ -151,9 +142,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
             ctx2.rotate(angle);
-
-
-            /* Outer circle */
 
             ctx2.beginPath();
 
@@ -170,9 +158,6 @@ document.addEventListener("DOMContentLoaded", function () {
             ctx2.lineWidth = 2;
 
             ctx2.stroke();
-
-
-            /* Lightning/rays */
 
             for (let i = 0; i < 10; i++) {
 

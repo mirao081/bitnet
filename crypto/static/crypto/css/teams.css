@@ -7,8 +7,6 @@
       linear-gradient(180deg,#05070d,#0a1020);
     color:#fff;
 }
-
-/* Heading */
 .team-heading-container {
     text-align:center;
     margin-bottom:60px;
@@ -45,8 +43,6 @@
     margin:20px auto 0;
     line-height:1.7;
 }
-
-/* Grid */
 .team-grid {
     width:90%;
     max-width:1600px;
@@ -54,10 +50,10 @@
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
     gap:35px;
-    margin-bottom:40px; /* spacing before footer */
+    margin-bottom:40px; 
 }
 
-/* Panel */
+
 .team-panel {
     background:rgba(255,255,255,.08);
     border-radius:30px;
@@ -93,7 +89,6 @@
     line-height:1.5;
 }
 
-/* Global section */
 .team-global {
     text-align:center;
     margin:60px auto;
@@ -119,8 +114,6 @@
     border-radius:20px;
     box-shadow:0 0 25px rgba(0,216,239,.25);
 }
-
-/* Bottom sections */
 .team-bottom {
     margin-top:60px;
     text-align:center;
@@ -149,8 +142,6 @@
     background:linear-gradient(90deg,#7a00ff,#ff0080);
     box-shadow:0 0 20px rgba(0,216,239,.4);
 }
-
-/* Animations */
 @keyframes glowPulse {
     from { text-shadow:0 0 10px #00d8ef,0 0 20px #00d8ef; }
     to   { text-shadow:0 0 20px #7a00ff,0 0 40px #ff0080; }
@@ -162,13 +153,12 @@
     100% { background-position:0% 50%; }
 }
 
-/* Responsive */
+
 @media(max-width:991px){
   .team-grid {
     grid-template-columns:repeat(2,1fr);
   }
 }
-
 @media(max-width:600px){
   .team-showcase {
     padding:60px 0;
@@ -196,17 +186,16 @@
     font-size:20px;
   }
 }
-/* General text color */
+
 .team-showcase, 
 .team-showcase h1, 
 .team-showcase h2, 
 .team-showcase h3, 
 .team-showcase p, 
 .team-showcase span {
-    color: #fff; /* ensures all text is white by default */
+    color: #fff; 
 }
 
-/* Super effect headings */
 .team-heading-title, 
 .team-global-title {
     color: #fff;
@@ -214,7 +203,6 @@
     animation: glowPulse 3s infinite alternate;
 }
 
-/* Gradient subtitle effect */
 .team-heading-subtitle {
     background: linear-gradient(90deg, #00d8ef, #7a00ff, #ff0080);
     -webkit-background-clip: text;
@@ -222,15 +210,11 @@
     background-size: 200% auto;
     animation: shineFlow 6s linear infinite;
 }
-
-/* Panel descriptions */
 .team-panel-description {
     color: rgba(255,255,255,0.85);
     font-size: 14px;
     line-height: 1.6;
 }
-
-/* Testimonials */
 .team-testimonials p {
     color: #fff;
     font-style: italic;
@@ -240,8 +224,6 @@
     color: #00d8ef;
     font-weight: 600;
 }
-
-/* CTA button super effect */
 .team-button {
     display:inline-block;
     margin-top:20px;
@@ -258,8 +240,6 @@
     background:linear-gradient(90deg,#7a00ff,#ff0080);
     box-shadow:0 0 30px rgba(255,0,128,.5);
 }
-
-/* Animations */
 @keyframes glowPulse {
     from { text-shadow:0 0 10px #00d8ef,0 0 20px #00d8ef; }
     to   { text-shadow:0 0 20px #7a00ff,0 0 40px #ff0080; }

@@ -1,8 +1,3 @@
-/* =========================================================
-   INVESTMENT PLANS — HARD ISOLATED STYLE
-   ========================================================= */
-
-/* MAIN CONTAINER */
 section.investment-plans-isolated {
     width:100% !important;
     padding:90px 0 !important;
@@ -16,13 +11,6 @@ section.investment-plans-isolated {
 
     box-sizing:border-box !important;
 }
-
-
-/* =========================================================
-   CAROUSEL
-   JS CLASSES ARE KEPT
-   ========================================================= */
-
 section.investment-plans-isolated
 .carousel-container.investment-plans-carousel {
 
@@ -46,12 +34,6 @@ section.investment-plans-isolated
 
     box-sizing:border-box !important;
 }
-
-
-/* =========================================================
-   CAROUSEL SLIDE
-   ========================================================= */
-
 section.investment-plans-isolated
 .carousel-container
 .carousel-slide.investment-plans-slide {
@@ -85,20 +67,12 @@ section.investment-plans-isolated
 
     overflow:hidden !important;
 }
-
-
-/* Force the first/active slide to remain visible */
 section.investment-plans-isolated
 .carousel-slide.active {
 
     opacity:1 !important;
     visibility:visible !important;
 }
-
-
-/* =========================================================
-   HERO TITLE
-   ========================================================= */
 
 section.investment-plans-isolated
 .investment-plans-slide-title {
@@ -143,12 +117,6 @@ section.investment-plans-isolated
     }
 
 }
-
-
-/* =========================================================
-   HERO SUBTITLE
-   ========================================================= */
-
 section.investment-plans-isolated
 .investment-plans-slide-subtitle {
 
@@ -199,14 +167,6 @@ section.investment-plans-isolated
 
 }
 
-
-/* =========================================================
-   BUTTONS
-   IMPORTANT:
-   btn btn-primary / btn btn-secondary ARE NOT RENAMED
-   ========================================================= */
-
-section.investment-plans-isolated
 .btn.btn-primary,
 section.investment-plans-isolated
 .btn.btn-secondary {
@@ -273,13 +233,6 @@ section.investment-plans-isolated
 
     color:#fff !important;
 }
-
-
-/* =========================================================
-   CAROUSEL ARROWS
-   JS CLASSES PRESERVED
-   ========================================================= */
-
 section.investment-plans-isolated
 .carousel-prev,
 section.investment-plans-isolated
@@ -340,12 +293,6 @@ section.investment-plans-isolated
 
     box-shadow:0 0 25px rgba(0,216,239,.4) !important;
 }
-
-
-/* =========================================================
-   CARD GRID
-   ========================================================= */
-
 section.investment-plans-isolated
 .investment-plans-card-grid {
 
@@ -368,12 +315,6 @@ section.investment-plans-isolated
 
     box-sizing:border-box !important;
 }
-
-
-/* =========================================================
-   GLASS CARDS
-   ========================================================= */
-
 section.investment-plans-isolated
 .investment-plans-card,
 section.investment-plans-isolated
@@ -475,11 +416,6 @@ section.investment-plans-isolated
     transform:scale(1.4) !important;
 }
 
-
-/* =========================================================
-   BITCOIN ICON
-   ========================================================= */
-
 section.investment-plans-isolated
 .investment-plans-bitcoin-icon {
 
@@ -498,14 +434,14 @@ section.investment-plans-isolated
 .investment-plans-bitcoin-icon {
     display: inline-block !important;
     margin: 0 auto 20px !important;
-    font-size: 92px !important;   /* icon itself increased by 50px */
+    font-size: 92px !important;  
     color: silver !important;     
     background-color: grey !important; 
-    border-radius: 50%;           /* ensures circular background */
-    width: 132px;                 /* equal width/height for circle */
+    border-radius: 50%;          
+    width: 132px;                 
     height: 132px;
-    line-height: 132px;           /* centers the icon vertically */
-    text-align: center;           /* centers the icon horizontally */
+    line-height: 132px;          
+    text-align: center;          
     text-shadow:
         0 0 10px silver,
         0 0 25px #7a00ff !important;
@@ -539,11 +475,6 @@ section.investment-plans-isolated
     line-height:1.25 !important;
 }
 
-
-/* =========================================================
-   CARD DESCRIPTION
-   ========================================================= */
-
 section.investment-plans-isolated
 .investment-plans-card-description,
 section.investment-plans-isolated
@@ -559,12 +490,6 @@ section.investment-plans-isolated
 
     padding:0 !important;
 }
-
-
-/* =========================================================
-   ABOUT GRID
-   ========================================================= */
-
 section.investment-plans-isolated
 .investment-plans-about-grid {
 
@@ -582,12 +507,6 @@ section.investment-plans-isolated
 
     box-sizing:border-box !important;
 }
-
-
-/* =========================================================
-   TRADINGVIEW
-   ========================================================= */
-
 section.investment-plans-isolated
 .investment-plans-market-card iframe {
 
@@ -603,11 +522,6 @@ section.investment-plans-isolated
 
     box-sizing:border-box !important;
 }
-
-
-/* =========================================================
-   ABOUT LINKS
-   ========================================================= */
 
 section.investment-plans-isolated
 .investment-plans-navigation-links {
@@ -651,12 +565,6 @@ section.investment-plans-isolated
 
     color:rgba(255,255,255,.35) !important;
 }
-
-
-/* =========================================================
-   READ MORE
-   ========================================================= */
-
 section.investment-plans-isolated
 .investment-plans-read-more {
 
@@ -688,11 +596,6 @@ section.investment-plans-isolated
     color:#fff !important;
 }
 
-
-/* =========================================================
-   CHART
-   ========================================================= */
-
 section.investment-plans-isolated
 .investment-plans-chart-card {
 
@@ -720,12 +623,6 @@ section.investment-plans-isolated
     margin:0 0 20px !important;
 }
 
-
-/* =========================================================
-   CANVAS
-   IDs LEFT UNCHANGED
-   ========================================================= */
-
 section.investment-plans-isolated
 #moveableCanvas {
 
@@ -744,9 +641,6 @@ section.investment-plans-isolated
 
     display:block !important;
 }
-/* =========================================================
-   TABLET
-   ========================================================= */
 
 @media(max-width:991px) {
 
@@ -782,12 +676,6 @@ section.investment-plans-isolated
         width:92% !important;
     }
 }
-
-
-/* =========================================================
-   MOBILE
-   ========================================================= */
-
 @media(max-width:600px) {
 
     section.investment-plans-isolated {
@@ -811,7 +699,6 @@ section.investment-plans-isolated
         padding:35px 20px !important;
     }
 
-    /* ONLY THE SLIDE HEADING */
     section.investment-plans-isolated
     .investment-plans-slide-title {
 
@@ -912,14 +799,7 @@ section.investment-plans-isolated
     }
 }
 
-
-/* =========================================================
-   SMALL PHONES
-   ========================================================= */
-
 @media(max-width:380px) {
-
-    /* Keep the slide heading at 17px */
     section.investment-plans-isolated
     .investment-plans-slide-title {
 
@@ -936,11 +816,6 @@ section.investment-plans-isolated
         padding:22px 18px !important;
     }
 }
- /* =========================================================
-    TRADING OPTIONS
-    ISOLATED PREMIUM STYLE
-    ========================================================= */
-
 section.trading-options-isolated {
 
     width:100% !important;
@@ -968,12 +843,6 @@ section.trading-options-isolated {
             #0a1020
         ) !important;
 }
-
-
-/* =========================================================
-   HEADING
-   ========================================================= */
-
 section.trading-options-isolated
 .trading-options-heading {
 
@@ -998,8 +867,6 @@ section.trading-options-isolated
         0 0 20px #00d8ef,
         0 0 40px #7a00ff !important;
 }
-
-
 section.trading-options-isolated
 .trading-options-heading a {
 
@@ -1009,8 +876,6 @@ section.trading-options-isolated
 
     transition:.3s ease !important;
 }
-
-
 section.trading-options-isolated
 .trading-options-heading a:hover {
 
@@ -1019,8 +884,6 @@ section.trading-options-isolated
         0 0 30px #7a00ff,
         0 0 50px #ff0080 !important;
 }
-
-
 section.trading-options-isolated
 .trading-options-heading-accent {
 
@@ -1040,11 +903,6 @@ section.trading-options-isolated
 
     animation:tradingOptionsShine 6s linear infinite !important;
 }
-
-
-/* =========================================================
-   SUBTITLE
-   ========================================================= */
 
 section.trading-options-isolated
 .trading-options-subheading {
@@ -1093,12 +951,6 @@ section.trading-options-isolated
     box-shadow:
         0 0 10px #00d8ef !important;
 }
-
-
-/* =========================================================
-   CARD GRID
-   ========================================================= */
-
 section.trading-options-isolated
 .trading-options-card-grid {
 
@@ -1119,12 +971,6 @@ section.trading-options-isolated
 
     z-index:2 !important;
 }
-
-
-/* =========================================================
-   GLASS CARD
-   ========================================================= */
-
 section.trading-options-isolated
 .trading-options-card {
 
@@ -1202,12 +1048,6 @@ section.trading-options-isolated
 
     transform:scale(1.4) !important;
 }
-
-
-/* =========================================================
-   CARD TOP
-   ========================================================= */
-
 section.trading-options-isolated
 .trading-options-card-top {
 
@@ -1236,11 +1076,6 @@ section.trading-options-isolated
 
     line-height:1.25 !important;
 }
-
-
-/* =========================================================
-   SEPARATORS
-   ========================================================= */
 
 section.trading-options-isolated
 .trading-options-separator {
@@ -1275,12 +1110,6 @@ section.trading-options-isolated
     box-shadow:
         0 0 12px rgba(0,216,239,.5) !important;
 }
-
-
-/* =========================================================
-   DURATION / MATURITY
-   ========================================================= */
-
 section.trading-options-isolated
 .trading-options-duration {
 
@@ -1307,10 +1136,6 @@ section.trading-options-isolated
 }
 
 
-/* =========================================================
-   MINIMUM / MAXIMUM
-   ========================================================= */
-
 section.trading-options-isolated
 .trading-options-amount-grid {
 
@@ -1331,8 +1156,6 @@ section.trading-options-isolated
 
     text-align:center !important;
 }
-
-
 section.trading-options-isolated
 .trading-options-amount-left h2,
 section.trading-options-isolated
@@ -1360,12 +1183,6 @@ section.trading-options-isolated
     text-shadow:
         0 0 10px rgba(0,216,239,.6) !important;
 }
-
-
-/* =========================================================
-   SIGNUP BUTTON
-   ========================================================= */
-
 section.trading-options-isolated
 .trading-options-signup-button {
 
@@ -1394,8 +1211,6 @@ section.trading-options-isolated
     box-shadow:
         0 8px 25px rgba(0,216,239,.18) !important;
 }
-
-
 section.trading-options-isolated
 .trading-options-signup-button:hover {
 
@@ -1408,11 +1223,6 @@ section.trading-options-isolated
     box-shadow:
         0 12px 30px rgba(0,216,239,.35) !important;
 }
-
-
-/* =========================================================
-   ANIMATION
-   ========================================================= */
 
 @keyframes tradingOptionsShine {
 
@@ -1429,10 +1239,6 @@ section.trading-options-isolated
     }
 }
 
-
-/* =========================================================
-   TABLET
-   ========================================================= */
 
 @media(max-width:991px) {
 
@@ -1460,11 +1266,6 @@ section.trading-options-isolated
         margin-bottom:45px !important;
     }
 }
-
-
-/* =========================================================
-   MOBILE
-   ========================================================= */
 
 @media(max-width:600px) {
 
@@ -1556,11 +1357,6 @@ section.trading-options-isolated
     }
 }
 
-
-/* =========================================================
-   SMALL PHONES
-   ========================================================= */
-
 @media(max-width:380px) {
 
     section.trading-options-isolated
@@ -1587,11 +1383,6 @@ section.trading-options-isolated
         font-size:19px !important;
     }
 }
-/* =========================================================
-   TRADING OPTIONS
-   ISOLATED PREMIUM STYLE
-   ========================================================= */
-
 section.trading-options-isolated {
 
     width:100% !important;
@@ -1619,12 +1410,6 @@ section.trading-options-isolated {
             #0a1020
         ) !important;
 }
-
-
-/* =========================================================
-   MAIN HEADING
-   ========================================================= */
-
 section.trading-options-isolated
 .trading-options-title {
 
@@ -1678,8 +1463,6 @@ section.trading-options-isolated
 
     transition:.3s ease !important;
 }
-
-
 section.trading-options-isolated
 .trading-options-title a:hover {
 
@@ -1688,8 +1471,6 @@ section.trading-options-isolated
         drop-shadow(0 0 20px rgba(122,0,255,.65))
         drop-shadow(0 0 30px rgba(255,0,128,.45)) !important;
 }
-
-
 @keyframes tradingOptionsTitleShine {
 
     0% {
@@ -1704,11 +1485,6 @@ section.trading-options-isolated
         background-position:0% 50%;
     }
 }
-
-
-/* =========================================================
-   SUBTITLE
-   ========================================================= */
 
 section.trading-options-isolated
 .trading-options-subtitle {
@@ -1772,12 +1548,6 @@ section.trading-options-isolated
         background-position:0% 50%;
     }
 }
-
-
-/* =========================================================
-   SUBTITLE LINES
-   ========================================================= */
-
 section.trading-options-isolated
 .trading-options-line {
 
@@ -1803,11 +1573,6 @@ section.trading-options-isolated
         0 0 20px rgba(122,0,255,.45) !important;
 }
 
-
-/* =========================================================
-   INVESTMENT CARDS GRID
-   ========================================================= */
-
 section.trading-options-isolated
 .trading-options-cards {
 
@@ -1828,12 +1593,6 @@ section.trading-options-isolated
 
     z-index:2 !important;
 }
-
-
-/* =========================================================
-   GLASS INVESTMENT CARD
-   ========================================================= */
-
 section.trading-options-isolated
 .trading-options-card {
 
@@ -1863,11 +1622,6 @@ section.trading-options-isolated
 
     min-width:0 !important;
 }
-
-
-/* =========================================================
-   CARD GLOW
-   ========================================================= */
 
 section.trading-options-isolated
 .trading-options-card::before {
@@ -1915,12 +1669,6 @@ section.trading-options-isolated
 
     transform:scale(1.4) !important;
 }
-
-
-/* =========================================================
-   CARD TOP
-   ========================================================= */
-
 section.trading-options-isolated
 .trading-options-card-top {
 
@@ -1928,13 +1676,6 @@ section.trading-options-isolated
 
     z-index:2 !important;
 }
-
-
-/* =========================================================
-   PLAN NAME + PERCENTAGE
-   REPLACES GOLD
-   ========================================================= */
-
 section.trading-options-isolated
 .trading-options-card-top h1 {
 
@@ -1971,12 +1712,6 @@ section.trading-options-isolated
         drop-shadow(0 0 6px rgba(0,216,239,.40))
         drop-shadow(0 0 12px rgba(122,0,255,.25)) !important;
 }
-
-
-/* =========================================================
-   CARD HEADING ANIMATION
-   ========================================================= */
-
 @keyframes tradingCardHeadingShine {
 
     0% {
@@ -1991,12 +1726,6 @@ section.trading-options-isolated
         background-position:0% 50%;
     }
 }
-
-
-/* =========================================================
-   SEPARATORS
-   ========================================================= */
-
 section.trading-options-isolated
 .trading-options-separator {
 
@@ -2021,11 +1750,6 @@ section.trading-options-isolated
     box-shadow:
         0 0 10px rgba(0,216,239,.30) !important;
 }
-
-
-/* =========================================================
-   DURATION / MATURITY
-   ========================================================= */
 
 section.trading-options-isolated
 .trading-options-duration,
@@ -2065,12 +1789,6 @@ section.trading-options-isolated
     animation:
         tradingCardHeadingShine 5s linear infinite !important;
 }
-
-
-/* =========================================================
-   MINIMUM / MAXIMUM HEADERS
-   ========================================================= */
-
 section.trading-options-isolated
 .trading-options-limits {
 
@@ -2103,11 +1821,6 @@ section.trading-options-isolated
 
     letter-spacing:1px !important;
 }
-
-
-/* =========================================================
-   AMOUNTS
-   ========================================================= */
 
 section.trading-options-isolated
 .trading-options-amount {
@@ -2142,11 +1855,6 @@ section.trading-options-isolated
     filter:
         drop-shadow(0 0 6px rgba(0,216,239,.35)) !important;
 }
-
-
-/* =========================================================
-   SIGNUP BUTTON
-   ========================================================= */
 
 section.trading-options-isolated
 .trading-options-signup {
@@ -2206,11 +1914,6 @@ section.trading-options-isolated
     color:#fff !important;
 }
 
-
-/* =========================================================
-   TABLET
-   ========================================================= */
-
 @media(max-width:991px) {
 
     section.trading-options-isolated {
@@ -2236,10 +1939,6 @@ section.trading-options-isolated
     }
 }
 
-
-/* =========================================================
-   MOBILE
-   ========================================================= */
 
 @media(max-width:600px) {
 
@@ -2323,11 +2022,6 @@ section.trading-options-isolated
     }
 }
 
-
-/* =========================================================
-   SMALL PHONES
-   ========================================================= */
-
 @media(max-width:380px) {
 
     section.trading-options-isolated
@@ -2362,11 +2056,6 @@ section.trading-options-isolated
         font-size:17px !important;
     }
 }
-/* =========================================================
-   ANALYTICS SECTION BACKGROUND ONLY
-   DOES NOT TOUCH CHART CLASSES OR CANVAS
-   ========================================================= */
-
 section.analytics-background-only {
 
     width:100% !important;
@@ -2394,9 +2083,6 @@ section.analytics-background-only {
             #0a1020
         ) !important;
 }
-
-
-/* Decorative background glow */
 
 section.analytics-background-only::before {
 
@@ -2451,9 +2137,6 @@ section.analytics-background-only::after {
     pointer-events:none !important;
 }
 
-
-/* Keep existing chart content above background */
-
 section.analytics-background-only
 .charts-grid {
 
@@ -2462,10 +2145,6 @@ section.analytics-background-only
     z-index:2 !important;
 }
 
-
-/* =========================================================
-   TABLET
-   ========================================================= */
 
 @media(max-width:991px) {
 
@@ -2476,10 +2155,6 @@ section.analytics-background-only
 }
 
 
-/* =========================================================
-   MOBILE
-   ========================================================= */
-
 @media(max-width:600px) {
 
     section.analytics-background-only {
@@ -2488,11 +2163,6 @@ section.analytics-background-only
     }
 }
 
-
-/* =========================================================
-   SMALL PHONES
-   ========================================================= */
-
 @media(max-width:380px) {
 
     section.analytics-background-only {
@@ -2500,11 +2170,6 @@ section.analytics-background-only
         padding:50px 0 !important;
     }
 }
-/* =========================================================
-   TRUST & SECURITY
-   ISOLATED PREMIUM STYLE
-   ========================================================= */
-
 section.security-showcase-isolated {
 
     width:100% !important;
@@ -2546,11 +2211,6 @@ section.security-showcase-isolated {
 
     z-index:2 !important;
 }
-
-
-/* =========================================================
-   HEADING
-   ========================================================= */
 
 .security-showcase-heading {
 
@@ -2612,11 +2272,6 @@ section.security-showcase-isolated {
     }
 }
 
-
-/* =========================================================
-   INTRO
-   ========================================================= */
-
 .security-showcase-intro {
 
     width:90% !important;
@@ -2637,10 +2292,6 @@ section.security-showcase-isolated {
 }
 
 
-/* =========================================================
-   SECURITY GRID
-   ========================================================= */
-
 .security-showcase-grid {
 
     width:100% !important;
@@ -2653,10 +2304,6 @@ section.security-showcase-isolated {
     gap:35px !important;
 }
 
-
-/* =========================================================
-   GLASS CARDS
-   ========================================================= */
 
 .security-showcase-card {
 
@@ -2735,10 +2382,6 @@ section.security-showcase-isolated {
 }
 
 
-/* =========================================================
-   SECURITY CARD TITLE
-   ========================================================= */
-
 .security-showcase-card-title {
 
     position:relative !important;
@@ -2807,11 +2450,6 @@ section.security-showcase-isolated {
     color:rgba(255,255,255,.80) !important;
 }
 
-
-/* =========================================================
-   TRUST BADGES
-   ========================================================= */
-
 .security-showcase-badges {
 
     width:100% !important;
@@ -2864,11 +2502,6 @@ section.security-showcase-isolated {
         drop-shadow(0 0 15px rgba(0,216,239,.45)) !important;
 }
 
-
-/* =========================================================
-   DISCLAIMER
-   ========================================================= */
-
 .security-showcase-disclaimer {
 
     width:90% !important;
@@ -2885,11 +2518,6 @@ section.security-showcase-isolated {
 
     color:rgba(255,255,255,.65) !important;
 }
-
-
-/* =========================================================
-   MISSION & GUARANTEES
-   ========================================================= */
 
 section.mission-showcase-isolated {
 
@@ -2932,12 +2560,6 @@ section.mission-showcase-isolated {
 
     z-index:2 !important;
 }
-
-
-/* =========================================================
-   MISSION HEADING
-   ========================================================= */
-
 .mission-showcase-heading {
 
     margin:0 0 20px 0 !important;
@@ -3010,11 +2632,6 @@ section.mission-showcase-isolated {
     color:rgba(255,255,255,.78) !important;
 }
 
-
-/* =========================================================
-   MISSION GRID
-   ========================================================= */
-
 .mission-showcase-grid {
 
     width:100% !important;
@@ -3026,11 +2643,6 @@ section.mission-showcase-isolated {
 
     gap:35px !important;
 }
-
-
-/* =========================================================
-   MISSION CARDS
-   ========================================================= */
 
 .mission-showcase-card {
 
@@ -3106,11 +2718,6 @@ section.mission-showcase-isolated {
     transform:scale(1.4) !important;
 }
 
-
-/* =========================================================
-   MISSION IMAGE
-   ========================================================= */
-
 .mission-showcase-image {
 
     position:relative !important;
@@ -3146,11 +2753,6 @@ section.mission-showcase-isolated {
     filter:
         drop-shadow(0 0 20px rgba(0,216,239,.55)) !important;
 }
-
-
-/* =========================================================
-   MISSION CARD TITLE
-   ========================================================= */
 
 .mission-showcase-card-title {
 
@@ -3220,11 +2822,6 @@ section.mission-showcase-isolated {
     color:rgba(255,255,255,.80) !important;
 }
 
-
-/* =========================================================
-   TABLET
-   ========================================================= */
-
 @media(max-width:991px) {
 
     section.security-showcase-isolated,
@@ -3248,11 +2845,6 @@ section.mission-showcase-isolated {
         padding:30px 24px !important;
     }
 }
-
-
-/* =========================================================
-   MOBILE
-   ========================================================= */
 
 @media(max-width:600px) {
 
@@ -3350,11 +2942,6 @@ section.mission-showcase-isolated {
     }
 }
 
-
-/* =========================================================
-   SMALL PHONES
-   ========================================================= */
-
 @media(max-width:380px) {
 
     .security-showcase-heading,
@@ -3375,11 +2962,6 @@ section.mission-showcase-isolated {
         font-size:19px !important;
     }
 }
-/* =========================================================
-   INVESTOR TESTIMONIALS
-   ISOLATED PREMIUM STYLE
-   ========================================================= */
-
 section.investor-testimonials-isolated {
 
     width:100% !important;
@@ -3421,11 +3003,6 @@ section.investor-testimonials-isolated {
 
     z-index:2 !important;
 }
-
-
-/* =========================================================
-   HEADING
-   ========================================================= */
 
 .investor-testimonials-heading {
 
@@ -3485,11 +3062,6 @@ section.investor-testimonials-isolated {
     }
 }
 
-
-/* =========================================================
-   INTRO
-   ========================================================= */
-
 .investor-testimonials-intro {
 
     width:90% !important;
@@ -3507,11 +3079,6 @@ section.investor-testimonials-isolated {
     color:rgba(255,255,255,.78) !important;
 }
 
-
-/* =========================================================
-   TESTIMONIAL GRID
-   ========================================================= */
-
 .investor-testimonials-grid {
 
     width:100% !important;
@@ -3524,10 +3091,6 @@ section.investor-testimonials-isolated {
     gap:35px !important;
 }
 
-
-/* =========================================================
-   TESTIMONIAL CARD
-   ========================================================= */
 
 .investor-testimonials-card {
 
@@ -3559,8 +3122,6 @@ section.investor-testimonials-isolated {
         transform .45s ease,
         box-shadow .45s ease !important;
 }
-
-
 .investor-testimonials-card::before {
 
     content:"" !important;
@@ -3605,11 +3166,6 @@ section.investor-testimonials-isolated {
     transform:scale(1.4) !important;
 }
 
-
-/* =========================================================
-   TESTIMONIAL TEXT
-   ========================================================= */
-
 .investor-testimonials-text {
 
     position:relative !important;
@@ -3626,11 +3182,6 @@ section.investor-testimonials-isolated {
 
     color:rgba(255,255,255,.82) !important;
 }
-
-
-/* =========================================================
-   INVESTOR NAME
-   ========================================================= */
 
 .investor-testimonials-name {
 
@@ -3683,10 +3234,6 @@ section.investor-testimonials-isolated {
 }
 
 
-/* =========================================================
-   TEAM SECTION
-   ========================================================= */
-
 section.leadership-showcase-isolated {
 
     width:100% !important;
@@ -3729,10 +3276,6 @@ section.leadership-showcase-isolated {
     z-index:2 !important;
 }
 
-
-/* =========================================================
-   TEAM HEADING
-   ========================================================= */
 
 .leadership-showcase-heading {
 
@@ -3788,11 +3331,6 @@ section.leadership-showcase-isolated {
     }
 }
 
-
-/* =========================================================
-   TEAM GRID
-   ========================================================= */
-
 .leadership-showcase-grid {
 
     width:100% !important;
@@ -3805,10 +3343,6 @@ section.leadership-showcase-isolated {
     gap:35px !important;
 }
 
-
-/* =========================================================
-   TEAM CARD
-   ========================================================= */
 
 .leadership-showcase-card {
 
@@ -3840,8 +3374,6 @@ section.leadership-showcase-isolated {
         transform .45s ease,
         box-shadow .45s ease !important;
 }
-
-
 .leadership-showcase-card::before {
 
     content:"" !important;
@@ -3887,10 +3419,6 @@ section.leadership-showcase-isolated {
 }
 
 
-/* =========================================================
-   TEAM IMAGE
-   ========================================================= */
-
 .leadership-showcase-image {
 
     position:relative !important;
@@ -3930,11 +3458,6 @@ section.leadership-showcase-isolated {
         0 0 30px rgba(0,216,239,.45),
         0 0 60px rgba(122,0,255,.25) !important;
 }
-
-
-/* =========================================================
-   TEAM NAME
-   ========================================================= */
 
 .leadership-showcase-name {
 
@@ -3988,11 +3511,6 @@ section.leadership-showcase-isolated {
     }
 }
 
-
-/* =========================================================
-   TEAM ROLE
-   ========================================================= */
-
 .leadership-showcase-role {
 
     position:relative !important;
@@ -4007,11 +3525,6 @@ section.leadership-showcase-isolated {
 
     color:rgba(255,255,255,.78) !important;
 }
-
-
-/* =========================================================
-   TABLET
-   ========================================================= */
 
 @media(max-width:991px) {
 
@@ -4037,10 +3550,6 @@ section.leadership-showcase-isolated {
     }
 }
 
-
-/* =========================================================
-   MOBILE
-   ========================================================= */
 
 @media(max-width:600px) {
 
@@ -4132,10 +3641,6 @@ section.leadership-showcase-isolated {
 }
 
 
-/* =========================================================
-   SMALL PHONES
-   ========================================================= */
-
 @media(max-width:380px) {
 
     .investor-testimonials-heading,
@@ -4162,10 +3667,6 @@ section.leadership-showcase-isolated {
         height:90px !important;
     }
 }
-/* =========================================================
-   EDUCATIONAL RESOURCES
-   ISOLATED INVESTMENT DESIGN
-   ========================================================= */
 
 section.investment-resources-isolated {
 
@@ -4288,11 +3789,6 @@ section.investment-resources-isolated
         0 15px 35px rgba(0,216,239,.35) !important;
 }
 
-
-/* =========================================================
-   LIVE MARKET DATA
-   ========================================================= */
-
 section.investment-live-market-isolated {
 
     width:100% !important;
@@ -4349,14 +3845,6 @@ section.investment-live-market-isolated
         0 0 45px #ff0080 !important;
 }
 
-
-/*
-   CHART / TRADINGVIEW CONTAINER
-
-   The iframe itself is left alone.
-   Only its surrounding background is controlled here.
-*/
-
 section.investment-live-market-isolated
 .investment-live-market-chart {
 
@@ -4403,11 +3891,6 @@ section.investment-live-market-isolated
 
     background:#05070d !important;
 }
-
-
-/* =========================================================
-   FAQ
-   ========================================================= */
 
 section.investment-faq-isolated {
 
@@ -4517,12 +4000,6 @@ section.investment-faq-isolated
     box-shadow:
         0 15px 35px rgba(0,216,239,.35) !important;
 }
-
-
-/* =========================================================
-   CALL TO ACTION
-   ========================================================= */
-
 section.investment-cta-isolated {
 
     width:100% !important;
@@ -4558,8 +4035,6 @@ section.investment-cta-isolated {
 
     border:1px solid rgba(255,255,255,.06) !important;
 }
-
-
 section.investment-cta-isolated
 .investment-cta-heading {
 
@@ -4624,12 +4099,6 @@ section.investment-cta-isolated
     box-shadow:
         0 18px 45px rgba(122,0,255,.4) !important;
 }
-
-
-/* =========================================================
-   DISCLAIMER
-   ========================================================= */
-
 section.investment-disclaimer-isolated {
 
     width:100% !important;
@@ -4668,12 +4137,6 @@ section.investment-disclaimer-isolated
 
     color:rgba(255,255,255,.65) !important;
 }
-
-
-/* =========================================================
-   COMMUNITY
-   ========================================================= */
-
 section.investment-community-isolated {
 
     width:100% !important;
@@ -4811,20 +4274,6 @@ section.investment-community-isolated
     box-shadow:
         0 15px 35px rgba(0,216,239,.3) !important;
 }
-
-
-/* =========================================================
-   CANVAS CONTAINER
-   =========================================================
-
-   IMPORTANT:
-   Canvas IDs are untouched.
-
-   The canvas elements themselves are NOT renamed.
-   This only gives their existing container the same
-   glass/background treatment.
-   ========================================================= */
-
 section.investment-canvas {
 
     width:100% !important;
@@ -4864,8 +4313,6 @@ section.investment-canvas {
 
     border-top:1px solid rgba(255,255,255,.08) !important;
 }
-
-
 section.investment-canvas canvas {
 
     display:block !important;
@@ -4876,12 +4323,6 @@ section.investment-canvas canvas {
 
     background:transparent !important;
 }
-
-
-/* =========================================================
-   TABLET
-   ========================================================= */
-
 @media(max-width:991px) {
 
     section.investment-resources-isolated,
@@ -4929,10 +4370,6 @@ section.investment-canvas canvas {
     }
 }
 
-
-/* =========================================================
-   MOBILE
-   ========================================================= */
 
 @media(max-width:600px) {
 
@@ -5083,11 +4520,6 @@ section.investment-canvas canvas {
     }
 }
 
-
-/* =========================================================
-   SMALL PHONES
-   ========================================================= */
-
 @media(max-width:380px) {
 
     section.investment-resources-isolated
@@ -5167,8 +4599,6 @@ section.investment-canvas canvas {
     background:#009bb8;
     color:#fff;
 }
-
-/* Responsive tweaks */
 @media(max-width:600px){
   .investment-education-title {
     font-size:22px;
@@ -5188,7 +4618,6 @@ section.investment-canvas canvas {
       linear-gradient(180deg,#05070d,#0a1020);
     text-align:center;
 }
-
 .edu-showcase-title {
     font-size:28px;
     font-weight:800;
@@ -5219,8 +4648,6 @@ section.investment-canvas canvas {
     background:#009bb8;
     color:#fff;
 }
-
-/* Responsive tweaks */
 @media(max-width:600px){
   .edu-showcase-title {
     font-size:22px;

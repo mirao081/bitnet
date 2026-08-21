@@ -3,12 +3,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     console.log("Investment charts script loaded.");
 
-    /*
-    ==========================================
-    ASSET ALLOCATION CHART
-    ==========================================
-    */
-
     const allocationCanvas =
         document.getElementById("allocationChart");
 
@@ -108,13 +102,6 @@ document.addEventListener("DOMContentLoaded", function () {
             );
         }
     }
-
-
-    /*
-    ==========================================
-    PROFIT & LOSS HISTORY CHART
-    ==========================================
-    */
 
     const historyCanvas =
         document.getElementById("historyChart");

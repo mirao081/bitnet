@@ -101,10 +101,6 @@
   .toolsx-heading-title { font-size:21px; }
   .toolsx-heading-subtitle { font-size:16px; }
 }
-/*==================================================
-        INVESTOR TOOLS SHOWCASE STYLE
-==================================================*/
-
 .toolsx-showcase, .toolsx-subpage {
     width:100%;
     padding:90px 0;
@@ -115,10 +111,6 @@
       radial-gradient(circle at bottom right,#7a00ff22,transparent 35%),
       linear-gradient(180deg,#05070d,#0a1020);
 }
-
-/*=========================
-   HEADING CONTAINER
-=========================*/
 .toolsx-heading-container {
     text-align:center;
     margin-bottom:60px;
@@ -154,10 +146,6 @@
     animation:shineFlow 6s linear infinite;
     letter-spacing:1px;
 }
-
-/*=========================
-   PANEL CARDS
-=========================*/
 .toolsx-panel {
     position:relative;
     overflow:hidden;
@@ -195,10 +183,6 @@
     color:rgba(255,255,255,.80);
     line-height:1.6;
 }
-
-/*=========================
-   BUTTONS
-=========================*/
 .toolsx-read-more-btn {
     display:inline-block;
     margin-top:15px;
@@ -215,24 +199,15 @@
     background:#009bb8;
     color:#fff;
 }
-
-/*=========================
-   ANIMATIONS
-=========================*/
 @keyframes glowPulse {
     from { text-shadow:0 0 10px #00d8ef,0 0 20px #00d8ef; }
     to   { text-shadow:0 0 20px #7a00ff,0 0 40px #ff0080; }
 }
-
 @keyframes shineFlow {
     0%   { background-position:0% 50%; }
     50%  { background-position:100% 50%; }
     100% { background-position:0% 50%; }
 }
-
-/*=========================
-   RESPONSIVE
-=========================*/
 @media(max-width:600px){
   .toolsx-showcase, .toolsx-subpage { padding:60px 0; }
   .toolsx-panel { padding:24px; }

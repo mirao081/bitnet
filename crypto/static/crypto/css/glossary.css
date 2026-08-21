@@ -1,7 +1,3 @@
-/*==================================================
-        GLOSSARY SHOWCASE STYLE
-==================================================*/
-
 .glossaryx-showcase {
     width:100%;
     padding:90px 0;
@@ -107,8 +103,6 @@
     animation:shineFlow 6s linear infinite;
     letter-spacing:1px;
 }
-
-/* Responsive overrides */
 @media(max-width:991px){
   .glossaryx-grid {
     grid-template-columns:repeat(2,1fr);

@@ -1,5 +1,4 @@
 window.onload = function() {
-    // === THREE.JS HERO CANVAS ===
     const heroCanvas = document.getElementById("hero-canvas");
     const renderer = new THREE.WebGLRenderer({ canvas: heroCanvas, alpha: true, antialias: true });
     renderer.setSize(window.innerWidth, window.innerHeight);
@@ -50,8 +49,6 @@ window.onload = function() {
         camera.aspect = window.innerWidth / window.innerHeight;
         camera.updateProjectionMatrix();
     });
-
-    // === BITCOIN CANVAS ANIMATION ===
     const btcCanvas = document.getElementById("bitcoinCanvas");
     if (btcCanvas) {
         const ctx = btcCanvas.getContext("2d");
@@ -107,8 +104,6 @@ window.onload = function() {
             camera.updateProjectionMatrix();
         };
     }
-
-    // === CAROUSEL ===
     const slides = document.querySelectorAll(".carousel-slide");
     const prev = document.querySelector(".carousel-prev");
     const next = document.querySelector(".carousel-next");
@@ -148,10 +143,8 @@ window.onload = function() {
         });
     }
 };
-
-// === BITCOIN CALCULATOR ===
 document.addEventListener("DOMContentLoaded", () => {
-    const btcInput = document.getElementById("btcAmount"); // user enters BTC amount
+    const btcInput = document.getElementById("btcAmount");
     const resultBox = document.getElementById("calcResult");
     const currencySelect = document.getElementById("currencySelect");
 
@@ -169,7 +162,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     async function updateResult() {
-        const amount = parseFloat(btcInput.value); // BTC amount entered
+        const amount = parseFloat(btcInput.value); 
         const currency = currencySelect ? currencySelect.value : "usd";
 
         if (!amount || amount <= 0) {
@@ -179,7 +172,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const btcPrice = await getBTCPrice(currency);
         if (btcPrice) {
-            // Show BTC amount × current BTC price
             const worth = amount * btcPrice;
             resultBox.textContent = `${worth.toLocaleString()} ${currency.toUpperCase()}`;
         } else {

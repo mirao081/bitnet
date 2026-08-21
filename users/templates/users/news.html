@@ -11,8 +11,6 @@
             Your trusted source for market updates, blockchain breakthroughs, and investment insights.
         </p>
     </div>
-
-    <!-- Market Data -->
     <section class="market-data">
         <h2>Market Data</h2>
         <ul>
@@ -21,52 +19,35 @@
             <li id="cap">Global Market Cap: $...</li>
         </ul>
     </section>
-
-    <!-- Top Movers -->
     <section class="top-movers">
         <h2>Top Movers</h2>
         <ul id="movers-list">
             <li>Loading...</li>
         </ul>
     </section>
-
-    <!-- Regulatory Updates -->
     <section class="regulatory-updates">
         <h2>Regulatory Updates</h2>
         <p>Stay informed about global crypto regulations and compliance news.</p>
     </section>
-
-    <!-- News Feed -->
     <div id="news-list" class="news-grid"></div>
-
-    <!-- Investment Insights -->
     <section class="investment-insights">
         <h2>Investment Insights</h2>
         <p>Expert strategies to help you maximize ROI and manage risk.</p>
     </section>
-
-    <!-- Community Announcements -->
     <section class="community-announcements">
         <h2>Community Announcements</h2>
         <p>Join Bitnetapp webinars, AMAs, and stay updated on new features.</p>
     </section>
-
-    <!-- Education Hub -->
     <section class="education-hub">
         <h2>Education Hub</h2>
         <p>Learn blockchain basics, portfolio diversification, and advanced trading techniques.</p>
     </section>
-
-    <!-- Global Impact -->
     <section class="global-impact">
         <h2>Global Economic Impact</h2>
         <p>Understand how crypto trends connect to global finance and geopolitics.</p>
     </section>
-
 </div>
-
 <script>
-// --- Market Data ---
 async function loadMarketData() {
   try {
     const btc = await fetch("https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd")
@@ -83,8 +64,6 @@ async function loadMarketData() {
     console.error("Market data fetch failed", err);
   }
 }
-
-// --- Top Movers ---
 async function loadTopMovers() {
   try {
     const movers = await fetch("https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=5&page=1&price_change_percentage=24h")
@@ -101,8 +80,6 @@ async function loadTopMovers() {
     console.error("Top movers fetch failed", err);
   }
 }
-
-// --- News Feed ---
 function updateNews(data) {
   const newsList = document.getElementById("news-list");
   newsList.innerHTML = "";
@@ -134,8 +111,6 @@ document.addEventListener("DOMContentLoaded", function () {
     .then(updateNews)
     .catch(err => console.error(err));
 });
-
-// Refresh every 5 minutes
 setInterval(() => {
   loadMarketData();
   loadTopMovers();
@@ -145,5 +120,4 @@ setInterval(() => {
     .catch(err => console.error(err));
 }, 300000);
 </script>
-
 {% endblock %}

@@ -1,60 +1,39 @@
 
 {% extends "crypto/crypto_base.html" %}
 {% load static %}
-
 {% block content %}
-
 <link rel="stylesheet" href="{% static 'crypto/css/bitcoin_reports.css' %}">
-
 <section class="bitnet-bitcoin-reports-page">
-
     <div class="bitnet-bitcoin-reports-heading">
-
         <h1 class="bitnet-bitcoin-reports-title">
             Bitcoin Reports
         </h1>
-
         <p class="bitnet-bitcoin-reports-intro">
             Explore in-depth Bitcoin market reports covering price trends,
             miner activity, institutional adoption, and global regulatory
             developments.
         </p>
-
     </div>
-
-
     <div class="bitnet-bitcoin-reports-grid">
-
         <article class="bitnet-bitcoin-reports-card">
-
             <h2 class="bitnet-bitcoin-reports-card-title">
                 Price Trends
             </h2>
-
             <p class="bitnet-bitcoin-reports-card-text">
                 Weekly updates on BTC price movements, volatility indexes,
                 and trading volumes.
             </p>
-
         </article>
-
-
         <article class="bitnet-bitcoin-reports-card">
-
             <h2 class="bitnet-bitcoin-reports-card-title">
                 Institutional Adoption
             </h2>
-
             <p class="bitnet-bitcoin-reports-card-text">
                 Insights into hedge funds, ETFs, and corporate treasury
                 strategies involving Bitcoin.
             </p>
-
         </article>
-
     </div>
-
 </section>
-
 {% endblock %}
 

@@ -33,8 +33,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     }
 
-    /* Hamburger */
-
     toggle.addEventListener("click",function(e){
 
         e.stopPropagation();
@@ -50,8 +48,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
     });
-
-    /* Mobile Pages submenu */
 
     document.querySelectorAll(".cryptonav-item--dropdown > .cryptonav-link")
         .forEach(function(link){
@@ -80,8 +76,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
         });
 
-    /* Close after clicking submenu link */
-
     document.querySelectorAll(".cryptonav-sublink").forEach(function(link){
 
         link.addEventListener("click",function(){
@@ -95,8 +89,6 @@ document.addEventListener("DOMContentLoaded", function () {
         });
 
     });
-
-    /* Close after clicking normal link */
 
     document.querySelectorAll(".cryptonav-link").forEach(function(link){
 
@@ -114,8 +106,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     });
 
-    /* Click outside */
-
     document.addEventListener("click",function(e){
 
         if(
@@ -129,8 +119,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
     });
-
-    /* Resize */
 
     window.addEventListener("resize",function(){
 

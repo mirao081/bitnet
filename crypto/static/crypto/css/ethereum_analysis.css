@@ -82,8 +82,6 @@
       0 30px 70px rgba(0,0,0,.45),
       0 0 40px rgba(0,216,239,.18);
 }
-
-/* Responsive overrides */
 @media(max-width:600px){
   .ethx-showcase { padding:60px 0; }
   .ethx-panel { padding:24px; }

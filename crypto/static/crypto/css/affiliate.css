@@ -1,7 +1,3 @@
-/*==================================================
-        AFFILIATE SHOWCASE STYLE
-==================================================*/
-
 .affiliate-showcase {
     width:100%;
     padding:90px 0;
@@ -12,10 +8,6 @@
       radial-gradient(circle at bottom right,#7a00ff22,transparent 35%),
       linear-gradient(180deg,#05070d,#0a1020);
 }
-
-/*=========================
-   HEADING CONTAINER
-=========================*/
 .affiliate-heading-container {
     text-align:center;
     margin-bottom:60px;
@@ -56,10 +48,6 @@
     margin:20px auto 0;
     line-height:1.7;
 }
-
-/*=========================
-   GRID LAYOUT
-=========================*/
 .affiliate-grid {
     width:90%;
     max-width:1600px;
@@ -70,10 +58,6 @@
     position:relative;
     z-index:2;
 }
-
-/*=========================
-   GLASS PANEL
-=========================*/
 .affiliate-panel {
     position:relative;
     overflow:hidden;
@@ -108,10 +92,6 @@
 .affiliate-panel:hover::before {
     transform:scale(1.4);
 }
-
-/*=========================
-   NUMBER, TITLE, DESCRIPTION
-=========================*/
 .affiliate-number {
     font-size:32px;
     font-weight:900;
@@ -132,10 +112,6 @@
     color:rgba(255,255,255,.80);
     line-height:1.6;
 }
-
-/*=========================
-   ANIMATIONS
-=========================*/
 @keyframes glowPulse {
     from { text-shadow:0 0 10px #00d8ef,0 0 20px #00d8ef; }
     to   { text-shadow:0 0 20px #7a00ff,0 0 40px #ff0080; }
@@ -146,10 +122,6 @@
     50%  { background-position:100% 50%; }
     100% { background-position:0% 50%; }
 }
-
-/*=========================
-   RESPONSIVE
-=========================*/
 @media(max-width:991px){
   .affiliate-grid {
     grid-template-columns:repeat(2,1fr);

@@ -1,4 +1,3 @@
-/* Apply to all home sections */
 .home-hero,
 .home-luxury,
 .home-cards,
@@ -8,28 +7,24 @@
 .home-investment,
 .home-bitcoin,
 .home-features {
-    max-width: 1200px;   /* keeps content centered */
-    margin: 0 auto;      /* equal gap left/right */
-    padding: 0 20px;     /* breathing room on small screens */
+    max-width: 1200px;  
+    margin: 0 auto;     
+    padding: 0 20px;     
     box-sizing: border-box;
 }
-
-/* Hero Section */
 .home-hero {
     text-align: center;
-    padding: 80px 20px 5px 20px;   /* top right bottom left → bottom = 5px */
+    padding: 80px 20px 5px 20px;  
     background: linear-gradient(135deg, #0f0f0f, #1a1a1a);
     color: #fff;
     position: relative;
     overflow: hidden;
 }
-
-/* Title */
 .home-title {
     font-family: 'Playfair Display', serif;
-    font-size: 3rem;       /* slightly reduced */
-    line-height: 1.1;      /* tighter line height */
-    margin-bottom: 10px;   /* reduced margin-bottom by 15px */
+    font-size: 3rem;       
+    line-height: 1.1;     
+    margin-bottom: 10px;  
     text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
     position: relative;
     z-index: 1;
@@ -43,22 +38,18 @@
     font-style: italic;
     text-shadow: 0 0 12px rgba(212,175,55,0.8);
 }
-
-/* Subtitle */
 .home-subtitle {
-    font-family: 'Lora', serif; /* matured serif font */
+    font-family: 'Lora', serif; 
     font-size: 1.2rem;
     line-height: 1.3;
     color: #e0e0e0;
-    margin-bottom: 10px;   /* reduced margin-bottom */
+    margin-bottom: 10px;   
     letter-spacing: 1px;
     font-style: normal;
     text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
     position: relative;
     z-index: 1;
 }
-
-/* Buttons */
 .home-action-buttons {
     display: flex;
     justify-content: center;
@@ -68,7 +59,7 @@
 }
 
 .home-auth-btn {
-    padding: 12px 28px;   /* desktop size */
+    padding: 12px 28px;   
     font-size: 1rem;
     font-weight: 600;
     border-radius: 30px;
@@ -85,11 +76,9 @@
     transform: translateY(-3px);
     box-shadow: 0 8px 20px rgba(0,0,0,0.5);
 }
-
-/* Mobile adjustments */
 @media (max-width: 768px) {
     .home-hero {
-        padding: 50px 15px; /* reduced gap by 30px on mobile */
+        padding: 50px 15px; 
     }
 
     .home-title {
@@ -110,13 +99,13 @@
     }
 
     .home-auth-btn {
-        padding: 8px 18px; /* reduced by ~10px */
+        padding: 8px 18px; 
         font-size: 0.85rem;
     }
 }
 @media (max-width: 768px) {
     .home-hero {
-        padding: 50px 15px 0 15px; /* bottom = 0 on mobile */
+        padding: 50px 15px 0 15px; 
     }
 }
 
@@ -133,12 +122,6 @@
     linear-gradient(180deg,#05070d,#0a1020);
 
 }
-
-
-/*=========================
-        GRID
-=========================*/
-
 .elite-investment-wrapper{
 
     width:90%;
@@ -153,12 +136,6 @@
     gap:35px;
 
 }
-
-
-/*=========================
-        GLASS CARD
-=========================*/
-
 .elite-heading-box{
 
     position:relative;
@@ -185,10 +162,6 @@
     transition:.45s ease;
 
 }
-
-
-/* Floating Glow */
-
 .elite-heading-box::before{
 
     content:"";
@@ -214,8 +187,6 @@
     transition:.7s;
 
 }
-
-
 .elite-heading-box:hover{
 
     transform:translateY(-12px);
@@ -229,15 +200,11 @@
     0 0 45px rgba(0,216,239,.20);
 
 }
-
-
 .elite-heading-box:hover::before{
 
     transform:scale(1.4);
 
 }
-
-
 .elite-badge{
 
     position:relative;
@@ -354,11 +321,6 @@
 
 }
 
-
-/*=========================
-        TITLE
-=========================*/
-
 .elite-main-title{
 
     font-size:25px;
@@ -380,18 +342,11 @@
     transition:.35s;
 
 }
-
-
 .elite-heading-box:hover .elite-main-title{
 
     letter-spacing:1px;
 
 }
-
-
-/*=========================
-        SUBTITLE
-=========================*/
 
 .elite-subtitle{
 
@@ -408,12 +363,6 @@
     0 0 8px rgba(255,255,255,.10);
 
 }
-
-
-/*=========================
-        DESCRIPTION
-=========================*/
-
 .elite-description{
 
     font-size:16px;
@@ -427,12 +376,6 @@
     0 0 6px rgba(255,255,255,.05);
 
 }
-
-
-/*=========================
-      FADE ANIMATION
-=========================*/
-
 .elite-heading-box{
 
     animation:eliteFadeUp .9s ease both;
@@ -497,11 +440,6 @@
     }
 
 }
-
-/*=========================
-        TABLET
-=========================*/
-
 @media (max-width:991px){
 
 .elite-investment-wrapper{
@@ -513,12 +451,6 @@ width:92%;
 }
 
 }
-
-
-/*=========================
-        MOBILE
-=========================*/
-
 @media (max-width:600px){
 
 .elite-investment-showcase{
@@ -578,10 +510,6 @@ line-height:1.5;
 }
 
 }
-/*=====================================================
-            ELITE FEATURE GALLERY
-=====================================================*/
-
 .elite-feature-gallery{
 
     position:relative;
@@ -596,12 +524,6 @@ line-height:1.5;
     linear-gradient(180deg,#05070d,#0a1020);
 
 }
-
-
-/*==============================
-        GRID
-==============================*/
-
 .elite-feature-grid{
 
     width:90%;
@@ -617,11 +539,6 @@ line-height:1.5;
     gap:35px;
 
 }
-
-
-/*==============================
-        CARD
-==============================*/
 
 .elite-feature-card{
 
@@ -807,8 +724,6 @@ line-height:1.5;
     left:170%;
 
 }
-
-
 .elite-feature-card{
 
     animation:eliteCardRise .9s ease both;
@@ -899,11 +814,6 @@ font-size:15px;
 line-height:1.55;
 
 }
-
-/*==================================================
-            ELITE TOKEN SALE
-==================================================*/
-
 .elite-sale-showcase{
 
     padding:90px 0;
@@ -930,11 +840,6 @@ line-height:1.55;
     gap:35px;
 
 }
-
-
-/*==========================
-        GLASS PANELS
-==========================*/
 
 .elite-sale-left,
 .elite-sale-right{
@@ -1003,11 +908,6 @@ line-height:1.55;
     transform:scale(1.4);
 
 }
-
-/*==========================
-        TITLES
-==========================*/
-
 .elite-sale-small-title{
 
     font-size:18px;
@@ -1063,11 +963,6 @@ line-height:1.55;
 
 }
 
-
-/*==========================
-        BUTTON
-==========================*/
-
 .elite-sale-button{
 
     display:inline-flex;
@@ -1109,11 +1004,6 @@ line-height:1.55;
     0 15px 40px rgba(0,216,239,.5);
 
 }
-
-
-/*==========================
-        COUNTDOWN
-==========================*/
 
 .elite-sale-countdown{
 
@@ -1177,11 +1067,6 @@ line-height:1.55;
 
 }
 
-
-/*==========================
-        TABLET
-==========================*/
-
 @media(max-width:991px){
 
 .elite-sale-wrapper{
@@ -1191,12 +1076,6 @@ grid-template-columns:1fr;
 }
 
 }
-
-
-/*==========================
-        MOBILE
-==========================*/
-
 @media(max-width:600px){
 
 .elite-sale-showcase{
@@ -1276,11 +1155,6 @@ font-size:26px;
     }
 
 }
-
-/*==================================================
-            ELITE SWING SHOWCASE
-==================================================*/
-
 .elite-swing-showcase{
 
     position:relative;
@@ -1297,11 +1171,6 @@ font-size:26px;
     linear-gradient(180deg,#05070d,#0a1020);
 
 }
-
-/*=========================
-        WRAPPER
-=========================*/
-
 .elite-swing-wrapper{
 
     width:90%;
@@ -1312,19 +1181,11 @@ font-size:26px;
 
 }
 
-/*=========================
-        LINK
-=========================*/
-
 .elite-swing-link{
 
     text-decoration:none;
 
 }
-
-/*=========================
-        TITLE
-=========================*/
 
 .elite-swing-title{
 
@@ -1356,9 +1217,6 @@ font-size:26px;
 
 }
 
-/*=========================
-        GRID
-=========================*/
 
 .elite-swing-grid{
 
@@ -1369,10 +1227,6 @@ font-size:26px;
     gap:35px;
 
 }
-
-/*=========================
-        CARD
-=========================*/
 
 .elite-swing-card{
 
@@ -1450,7 +1304,7 @@ font-size:26px;
 
     font-family:'Poppins',sans-serif;
 
-    font-size:22px;      /* Reduced from 24px */
+    font-size:22px;     
 
     font-weight:800;
 
@@ -1550,10 +1404,6 @@ font-size:26px;
 
 }
 
-/*=========================
-        TABLET
-=========================*/
-
 @media(max-width:991px){
 
 .elite-swing-grid{
@@ -1569,10 +1419,6 @@ font-size:34px;
 }
 
 }
-
-/*=========================
-        MOBILE
-=========================*/
 
 @media(max-width:600px){
 
@@ -1620,10 +1466,6 @@ line-height:1.5;
 
 }
 
-/*==================================================
-            ELITE EXCHANGE SHOWCASE
-==================================================*/
-
 .elite-exchange-showcase{
 
     width:100%;
@@ -1646,10 +1488,6 @@ line-height:1.5;
     margin:auto;
 
 }
-
-/*==============================
-        MAIN CARD
-==============================*/
 
 .elite-exchange-card{
 
@@ -1689,10 +1527,6 @@ line-height:1.5;
     0 0 40px rgba(0,216,239,.18);
 
 }
-
-/*==============================
-        IMAGE
-==============================*/
 
 .elite-exchange-image{
 
@@ -1818,10 +1652,6 @@ line-height:1.5;
 
 }
 
-/*==============================
-        TABLET
-==============================*/
-
 @media(max-width:991px){
 
 .elite-exchange-card{
@@ -1839,10 +1669,6 @@ grid-template-columns:repeat(2,1fr);
 }
 
 }
-
-/*==============================
-        MOBILE
-==============================*/
 
 @media(max-width:600px){
 
@@ -1911,9 +1737,6 @@ height:55px;
 }
 
 }
-/*==================================================
-            ELITE INVESTMENT PLANS
-==================================================*/
 
 .elite-plan-showcase{
 
@@ -1939,11 +1762,6 @@ height:55px;
     text-align:center;
 
 }
-
-/*==========================
-        TITLE
-==========================*/
-
 .elite-plan-title{
 
     margin:22px 0 12px;
@@ -1978,11 +1796,6 @@ height:55px;
     letter-spacing:1px;
 
 }
-
-/*==========================
-        GRID
-==========================*/
-
 .elite-plan-grid{
 
     display:grid;
@@ -1993,11 +1806,6 @@ height:55px;
     gap:35px;
 
 }
-
-/*==========================
-        CARD
-==========================*/
-
 .elite-plan-card{
 
     position:relative;
@@ -2069,11 +1877,6 @@ height:55px;
     transform:scale(1.4);
 
 }
-
-/*==========================
-        CONTENT
-==========================*/
-
 .elite-plan-name{
 
     font-size:28px;
@@ -2119,11 +1922,6 @@ height:55px;
     font-weight:600;
 
 }
-
-/*==========================
-        BUTTON
-==========================*/
-
 .elite-plan-button{
 
     display:inline-flex;
@@ -2163,11 +1961,6 @@ height:55px;
     0 15px 40px rgba(0,216,239,.5);
 
 }
-
-/*==========================
-        TABLET
-==========================*/
-
 @media(max-width:991px){
 
 .elite-plan-grid{
@@ -2266,10 +2059,6 @@ align-items:center;
 }
 
 }
-/*==================================================
-            ELITE BITCOIN CALCULATOR
-==================================================*/
-
 .elite-calculator-showcase{
 
     width:100%;
@@ -2378,10 +2167,6 @@ align-items:center;
 
 }
 
-/*==============================
-        TITLE
-==============================*/
-
 .elite-calculator-title{
 
     margin:20px 0 15px;
@@ -2417,16 +2202,11 @@ align-items:center;
     margin-bottom:30px;
 
 }
-
-/*==============================
-        CALCULATOR
-==============================*/
-
 .elite-calculator-row {
     display: flex;
-    align-items: center;   /* aligns label and select vertically */
-    gap: 10px;             /* spacing between label and select */
-    margin-top: 20px;      /* pushes the whole row down */
+    align-items: center;   
+    gap: 10px;            
+    margin-top: 20px;     
 }
 
 
@@ -2447,8 +2227,8 @@ align-items:center;
 
 
 elite-calculator-row input#btcAmount {
-    flex: 0 0 50%; /* shrink input width more aggressively (about 30% less) */
-    max-width: 160px; /* optional cap for mobile screens */
+    flex: 0 0 50%; 
+    max-width: 160px; 
 }
 
 .elite-calculator-row input{
@@ -2480,14 +2260,14 @@ elite-calculator-row input#btcAmount {
 }
 
 #calcResult {
-    flex: 0 0 25%; /* reserve space for result box */
-    min-width: 100px; /* slightly smaller than before */
+    flex: 0 0 25%; 
+    min-width: 100px; 
     display: flex;
     justify-content: center;
     align-items: center;
 }
 .elite-calculator-row label {
-    margin-top: 20px; /* creates space above the label and select */
+    margin-top: 20px; 
 }
 .elite-calculator-row select {
     background-color: rgba(0,0,0,0.7);
@@ -2496,14 +2276,13 @@ elite-calculator-row input#btcAmount {
     border-radius: 16px;
     border: 1px solid rgba(255,255,255,.12);
     padding: 0 18px;
-    appearance: none;        /* removes default styling */
-    overflow: visible;       /* ensures options can expand downward */
+    appearance: none;       
+    overflow: visible;       
 }
 .elite-calculator-row select option {
-    background-color: #222; /* dark background for options */
-    color: #fff;            /* white text */
+    background-color: #222; 
+    color: #fff;           
 }
-
 .elite-calculator-canvas{
 
     display:flex;
@@ -2526,10 +2305,6 @@ elite-calculator-row input#btcAmount {
 
 }
 
-/*==============================
-        TABLET
-==============================*/
-
 @media(max-width:991px){
 
 .elite-calculator-wrapper{
@@ -2540,9 +2315,6 @@ grid-template-columns:1fr;
 
 }
 
-/*==============================
-        MOBILE
-==============================*/
 
 @media(max-width:600px){
 
@@ -2625,11 +2397,6 @@ text-align:center;
 min-height:300px;
 
 }
-
-/*==================================================
-        ELITE FEATURE HIGHLIGHTS
-==================================================*/
-
 .elite-feature-showcase{
 
      width:100%;
@@ -2735,10 +2502,6 @@ min-height:300px;
 
 }
 
-/*=========================
-        IMAGE
-=========================*/
-
 .elite-feature-panel-image{
 
     display:flex;
@@ -2767,10 +2530,6 @@ min-height:300px;
 
 }
 
-/*=========================
-        TITLE
-=========================*/
-
 .elite-feature-panel-title{
 
     font-size:24px;
@@ -2784,11 +2543,6 @@ min-height:300px;
     line-height:1.25;
 
 }
-
-/*=========================
-        DESCRIPTION
-=========================*/
-
 .elite-feature-panel-description{
 
     font-size:15px;
@@ -2892,15 +2646,6 @@ min-height:300px;
 
 }
 }
-/*==================================================*
-* HOME ACCESSIBLE SHOWCASE STYLE
-*==================================================*/
-
-/*==================================================
-        HOME ACCESSIBLE SHOWCASE
-        LANDING PAGE ONLY
-==================================================*/
-
 .home-accessible-showcase {
     width: 100%;
     padding: 90px 0;
@@ -2927,11 +2672,6 @@ min-height:300px;
     box-sizing: border-box;
 }
 
-
-/*==================================================
-        HEADING CONTAINER
-==================================================*/
-
 .home-accessible-heading {
     width: 90%;
     max-width: 1600px;
@@ -2955,12 +2695,6 @@ min-height:300px;
 
     box-sizing: border-box;
 }
-
-
-/*==================================================
-        BADGE
-==================================================*/
-
 .home-accessible-badge {
     display: inline-block;
 
@@ -2987,12 +2721,6 @@ min-height:300px;
 
     box-sizing: border-box;
 }
-
-
-/*==================================================
-        MAIN TITLE
-==================================================*/
-
 .home-accessible-title {
     margin: 0 0 15px;
 
@@ -3015,12 +2743,6 @@ min-height:300px;
     animation:
         homeAccessibleGlow 3s infinite alternate;
 }
-
-
-/*==================================================
-        SUBTITLE
-==================================================*/
-
 .home-accessible-subtitle {
     max-width: 1100px;
 
@@ -3049,12 +2771,6 @@ min-height:300px;
 
     letter-spacing: 1px;
 }
-
-
-/*==================================================
-        DESCRIPTION
-==================================================*/
-
 .home-accessible-description {
     max-width: 1100px;
 
@@ -3066,12 +2782,6 @@ min-height:300px;
 
     color: rgba(255, 255, 255, 0.75);
 }
-
-
-/*==================================================
-        CARD GRID
-==================================================*/
-
 .home-accessible-grid {
     width: 90%;
     max-width: 1600px;
@@ -3091,11 +2801,6 @@ min-height:300px;
 
     box-sizing: border-box;
 }
-
-
-/*==================================================
-        GLASS CARD
-==================================================*/
 
 .home-accessible-card {
     position: relative;
@@ -3129,12 +2834,6 @@ min-height:300px;
 
     box-sizing: border-box;
 }
-
-
-/*==================================================
-        CARD GLOW
-==================================================*/
-
 .home-accessible-card::before {
     content: "";
 
@@ -3162,12 +2861,6 @@ min-height:300px;
 
     z-index: 0;
 }
-
-
-/*==================================================
-        CARD HOVER
-==================================================*/
-
 .home-accessible-card:hover {
     transform: translateY(-10px);
 
@@ -3180,13 +2873,6 @@ min-height:300px;
 .home-accessible-card:hover::before {
     transform: scale(1.4);
 }
-
-
-/*==================================================
-        ISOLATED IMAGE CONTAINER
-        NEW CLASS
-==================================================*/
-
 .home-card-visual-box {
     width: 100%;
 
@@ -3209,12 +2895,6 @@ min-height:300px;
 
     z-index: 1;
 }
-
-
-/*==================================================
-        ISOLATED LANDING PAGE IMAGE
-        NEW CLASS
-==================================================*/
 
 .home-card-visual {
     display: block;
@@ -3239,21 +2919,9 @@ min-height:300px;
     transition:
         transform 0.5s ease;
 }
-
-
-/*==================================================
-        IMAGE HOVER
-==================================================*/
-
 .home-accessible-card:hover .home-card-visual {
     transform: scale(1.05);
 }
-
-
-/*==================================================
-        CARD CONTENT
-==================================================*/
-
 .home-accessible-content {
     position: relative;
 
@@ -3266,11 +2934,6 @@ min-height:300px;
     box-sizing: border-box;
 }
 
-
-/*==================================================
-        CARD TITLE
-==================================================*/
-
 .home-accessible-card-title {
     margin: 0 0 15px;
 
@@ -3282,12 +2945,6 @@ min-height:300px;
 
     line-height: 1.25;
 }
-
-
-/*==================================================
-        CARD DESCRIPTION
-==================================================*/
-
 .home-accessible-card-description {
     margin: 0;
 
@@ -3297,11 +2954,6 @@ min-height:300px;
 
     line-height: 1.7;
 }
-
-
-/*==================================================
-        EMPTY STATE
-==================================================*/
 
 .home-accessible-empty {
     width: 100%;
@@ -3332,11 +2984,6 @@ min-height:300px;
     line-height: 1.7;
 }
 
-
-/*==================================================
-        ANIMATION — TITLE
-==================================================*/
-
 @keyframes homeAccessibleGlow {
 
     from {
@@ -3351,11 +2998,6 @@ min-height:300px;
             0 0 40px #ff0080;
     }
 }
-
-
-/*==================================================
-        ANIMATION — SUBTITLE
-==================================================*/
 
 @keyframes homeAccessibleShine {
 
@@ -3372,22 +3014,11 @@ min-height:300px;
     }
 }
 
-
-/*==================================================
-        TABLET
-==================================================*/
-
 @media (max-width: 991px) {
 
     .home-accessible-showcase {
         padding: 75px 0;
     }
-
-
-    /*----------------------------------------------
-            HEADING
-    ----------------------------------------------*/
-
     .home-accessible-heading {
         width: 92%;
 
@@ -3415,11 +3046,6 @@ min-height:300px;
         line-height: 1.7;
     }
 
-
-    /*----------------------------------------------
-            GRID
-    ----------------------------------------------*/
-
     .home-accessible-grid {
         width: 92%;
 
@@ -3429,22 +3055,11 @@ min-height:300px;
         gap: 25px;
     }
 
-
-    /*----------------------------------------------
-            CARD
-    ----------------------------------------------*/
-
     .home-accessible-card {
         border-radius: 26px;
 
         padding-bottom: 28px;
     }
-
-
-    /*----------------------------------------------
-            ISOLATED IMAGE
-    ----------------------------------------------*/
-
     .home-card-visual-box {
         height: 135px;
 
@@ -3459,12 +3074,6 @@ min-height:300px;
         max-width: 160px !important;
         max-height: 105px !important;
     }
-
-
-    /*----------------------------------------------
-            CONTENT
-    ----------------------------------------------*/
-
     .home-accessible-content {
         padding: 24px 22px 0;
     }
@@ -3483,10 +3092,6 @@ min-height:300px;
 }
 
 
-/*==================================================
-        MOBILE
-==================================================*/
-
 @media (max-width: 600px) {
 
     .home-accessible-showcase {
@@ -3496,11 +3101,6 @@ min-height:300px;
 
         overflow: hidden;
     }
-
-
-    /*----------------------------------------------
-            HEADING
-    ----------------------------------------------*/
 
     .home-accessible-heading {
         width: 94%;
@@ -3550,11 +3150,6 @@ min-height:300px;
         line-height: 1.7;
     }
 
-
-    /*----------------------------------------------
-            GRID
-    ----------------------------------------------*/
-
     .home-accessible-grid {
         width: 94%;
 
@@ -3564,11 +3159,6 @@ min-height:300px;
 
         gap: 24px;
     }
-
-
-    /*----------------------------------------------
-            CARD
-    ----------------------------------------------*/
 
     .home-accessible-card {
         width: 100% !important;
@@ -3581,12 +3171,6 @@ min-height:300px;
 
         border-radius: 24px;
     }
-
-
-    /*----------------------------------------------
-            ISOLATED IMAGE CONTAINER
-    ----------------------------------------------*/
-
     .home-card-visual-box {
         width: 100% !important;
 
@@ -3601,12 +3185,6 @@ min-height:300px;
 
         box-sizing: border-box;
     }
-
-
-    /*----------------------------------------------
-            ISOLATED IMAGE
-    ----------------------------------------------*/
-
     .home-card-visual {
         width: 125px !important;
 
@@ -3624,11 +3202,6 @@ min-height:300px;
 
         border-radius: 10px;
     }
-
-
-    /*----------------------------------------------
-            CARD CONTENT
-    ----------------------------------------------*/
 
     .home-accessible-content {
         width: 100%;
@@ -3652,11 +3225,6 @@ min-height:300px;
         line-height: 1.6;
     }
 
-
-    /*----------------------------------------------
-            EMPTY STATE
-    ----------------------------------------------*/
-
     .home-accessible-empty {
         padding: 30px 18px;
 
@@ -3670,12 +3238,6 @@ min-height:300px;
         line-height: 1.6;
     }
 }
-
-
-/*==================================================
-        SMALL PHONES
-==================================================*/
-
 @media (max-width: 380px) {
 
     .home-accessible-showcase {
@@ -3738,17 +3300,6 @@ min-height:300px;
     }
 }
 
-
-
-/* =========================================================
-   HOME PAGE — 8PX SECTION SPACING
-   Keeps sections tight with a small 8px separation.
-   ========================================================= */
-
-/* =========================
-   ALL MAJOR HOME SECTIONS
-   ========================= */
-
 .elite-investment-showcase,
 .elite-feature-gallery,
 .elite-sale-showcase,
@@ -3763,12 +3314,6 @@ min-height:300px;
     margin-top: 0 !important;
     margin-bottom: 0 !important;
 }
-
-
-/* =========================
-   INTERNAL SECTION SPACING
-   ========================= */
-
 .home-accessible-heading {
     margin-top: 0 !important;
     margin-bottom: 8px !important;
@@ -3798,11 +3343,6 @@ min-height:300px;
 .home-canvas {
     margin-top: 8px !important;
 }
-
-
-/* =========================================================
-   TABLET
-   ========================================================= */
 
 @media (max-width: 991px) {
 
@@ -3848,11 +3388,6 @@ min-height:300px;
     }
 }
 
-
-/* =========================================================
-   MOBILE
-   ========================================================= */
-
 @media (max-width: 600px) {
 
     .elite-investment-showcase,
@@ -3896,11 +3431,6 @@ min-height:300px;
         margin-top: 8px !important;
     }
 }
-
-
-/* =========================================================
-   SMALL PHONES
-   ========================================================= */
 
 @media (max-width: 380px) {
 

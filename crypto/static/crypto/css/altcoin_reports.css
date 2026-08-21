@@ -83,7 +83,6 @@
       0 0 40px rgba(0,216,239,.18);
 }
 
-/* Responsive overrides */
 @media(max-width:600px){
   .altx-showcase { padding:60px 0; }
   .altx-panel { padding:24px; }

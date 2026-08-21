@@ -442,8 +442,8 @@ class Transaction(models.Model):
     type = models.CharField(max_length=20, choices=TYPE_CHOICES)
     asset = models.CharField(max_length=50, blank=True, null=True)
     amount = models.DecimalField(max_digits=12, decimal_places=2)
-    date = models.DateTimeField(auto_now_add=True)   # existing field
-    created_at = models.DateTimeField(auto_now_add=True)  # new field for consistency
+    date = models.DateTimeField(auto_now_add=True) 
+    created_at = models.DateTimeField(auto_now_add=True)  
     status = models.CharField(max_length=20, default="completed")
 
     def __str__(self):

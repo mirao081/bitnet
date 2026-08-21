@@ -1,22 +1,14 @@
 {% extends "users/dashboard_base.html" %}
 {% load static %}
-
 {% block title %}Support{% endblock %}
-
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'users/css/support.css' %}">
 {% endblock %}
-
 {% block content %}
 
 <div class="supportpage-showcase">
 
     <div class="supportpage-container">
-
-        <!-- =========================================
-             PAGE HEADING
-        ========================================== -->
-
         <h1 class="supportpage-title">
             Customer Support
         </h1>
@@ -25,12 +17,6 @@
             Welcome to Bitnetapp Support. Find answers to common
             questions or contact our support team anytime.
         </p>
-
-
-        <!-- =========================================
-             SUPPORT ARTICLES + QUICK ASSISTANCE
-        ========================================== -->
-
         <div class="supportpage-articles">
 
             {% for article in articles %}
@@ -53,10 +39,6 @@
 
             {% empty %}
 
-            <!-- =====================================
-                 NO ARTICLES CARD
-            ====================================== -->
-
             <div class="supportpage-card">
 
                 <h2 class="supportpage-card-title">
@@ -71,11 +53,6 @@
             </div>
 
             {% endfor %}
-
-
-            <!-- =====================================
-                 QUICK ASSISTANCE CARD
-            ====================================== -->
 
             <div class="supportpage-card supportpage-quick-card">
 
@@ -101,16 +78,7 @@
 
         </div>
 
-
-        <!-- =========================================
-            CONTACT SUPPORT
-        ========================================== -->
-
         <div class="supportpage-contact-grid">
-
-            <!-- =====================================
-                EMAIL SUPPORT
-            ====================================== -->
 
             <div class="supportpage-card supportpage-contact-card">
                 <h2 class="supportpage-card-title">
@@ -125,11 +93,6 @@
                     </a>
                 </div>
             </div>
-
-            <!-- =====================================
-                PHONE SUPPORT
-            ====================================== -->
-
             <div class="supportpage-card supportpage-contact-card">
                 <h2 class="supportpage-card-title">
                     Phone Support
@@ -143,11 +106,6 @@
                     </a>
                 </div>
             </div>
-
-            <!-- =====================================
-                LIVE CHAT
-            ====================================== -->
-
             <div class="supportpage-card supportpage-contact-card">
                 <h2 class="supportpage-card-title">
                     Live Chat
@@ -159,11 +117,7 @@
                     Available 24/7
                 </div>
             </div>
-
         </div>
-
     </div>
-
 </div>
-
 {% endblock %}

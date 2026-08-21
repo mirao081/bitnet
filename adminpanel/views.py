@@ -558,7 +558,6 @@ def users_json(request):
                 "username": u.username,
                 "email": u.email,
                 "balance": str(getattr(getattr(u, "userprofile", None), "usd_balance", "0.00")),
-                # If referrer is a User object, convert to username or id
                 "referrer": getattr(getattr(u, "userprofile", None), "referrer", None).username 
                             if getattr(getattr(u, "userprofile", None), "referrer", None) else None,
                 "status": getattr(getattr(u, "userprofile", None), "verification_status", "pending"),
@@ -610,8 +609,8 @@ def referral_dashboard(request):
     if query:
         referrals_qs = referrals_qs.filter(user__username__icontains=query) | referrals_qs.filter(referrer__username__icontains=query)
 
-    # Add pagination
-    paginator = Paginator(referrals_qs, 10)  # show 10 records per page
+  
+    paginator = Paginator(referrals_qs, 10) 
     page_number = request.GET.get("page")
     referrals = paginator.get_page(page_number)
 
@@ -635,7 +634,7 @@ def create_wallet(request):
         if not created:
             wallet.plan = plan
         wallet.deduct_gas_fee()
-        return redirect("wallets")  # redirect to your wallets dashboard
+        return redirect("wallets") 
 
     return render(request, "users/create_wallet.html", {"plans": plans})
 

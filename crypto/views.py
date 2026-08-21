@@ -86,8 +86,6 @@ def home(request):
     calculator = BitcoinCalculator.objects.first()
     feature_items = FeatureItem.objects.all()
     instruments = MarketInstrument.objects.all()
-
-    # Split the main title into words for template looping
     title_words = swing_section.main_title.split() if swing_section and swing_section.main_title else []
 
     context = {
@@ -408,13 +406,8 @@ def signup_view(request):
 
     if request.method == "POST":
         if form.is_valid():
-            # Save the User
             user = form.save()
-
-            # ✅ Create a UserProfile automatically
             UserProfile.objects.get_or_create(user=user)
-
-            # Handle referral logic
             new_referral, created = Referral.objects.get_or_create(user=user)
             referral_code = request.session.get("referral_code")
 

@@ -1,9 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
 
-    /* ==================================================
-       SIDEBAR
-    ================================================== */
-
     const sidebar = document.querySelector(".sidebar");
     const hamburger = document.querySelector(".hamburger");
     const closeIcon = document.querySelector(".close-icon");
@@ -24,10 +20,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
-    /* ==================================================
-       REFERRAL LINK COPY
-    ================================================== */
-
     const copyHeader = document.getElementById("copy-header");
 
     if (copyHeader) {
@@ -46,9 +38,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             const linkText = referralLink.href;
 
-            /*
-             * Modern clipboard API
-             */
+          
             if (navigator.clipboard) {
 
                 navigator.clipboard.writeText(linkText)
@@ -79,9 +69,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
             } else {
 
-                /*
-                 * Fallback for older browsers
-                 */
                 const temporaryInput =
                     document.createElement("input");
 
@@ -125,11 +112,6 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-
-    /* ==================================================
-       CHECK CHART.JS
-    ================================================== */
-
     if (typeof Chart === "undefined") {
 
         console.error(
@@ -138,11 +120,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
         return;
     }
-
-
-    /* ==================================================
-       GROWTH OF INVESTMENTS CHART
-    ================================================== */
 
     const growthCanvas =
         document.getElementById("growthChart");
@@ -206,10 +183,6 @@ document.addEventListener("DOMContentLoaded", function () {
                         growthCanvas.getContext("2d");
 
 
-                    /*
-                     * Destroy an existing chart if one
-                     * already exists on this canvas.
-                     */
                     const existingGrowthChart =
                         Chart.getChart(growthCanvas);
 
@@ -327,10 +300,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
-    /* ==================================================
-       ROI CHART
-    ================================================== */
-
     const roiCanvas =
         document.getElementById("roiChart");
 
@@ -374,9 +343,6 @@ document.addEventListener("DOMContentLoaded", function () {
                         roiCanvas.getContext("2d");
 
 
-                    /*
-                     * Destroy existing ROI chart if present.
-                     */
                     const existingRoiChart =
                         Chart.getChart(roiCanvas);
 
@@ -486,11 +452,6 @@ document.addEventListener("DOMContentLoaded", function () {
             );
         }
     }
-
-
-    /* ==================================================
-       CHANGE BUTTONS
-    ================================================== */
 
     const changeButtons =
         document.querySelectorAll(".btn-change");

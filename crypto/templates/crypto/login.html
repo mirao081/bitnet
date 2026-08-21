@@ -5,16 +5,10 @@
 
 <head>
     <meta charset="UTF-8">
-
-    <!-- Essential for proper mobile scaling -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Login - Bitnetapp</title>
-
-    <!-- Login CSS -->
     <link rel="stylesheet" href="{% static 'crypto/css/login.css' %}">
-
-    <!-- Google reCAPTCHA v2 Checkbox -->
     <script
         src="https://www.google.com/recaptcha/api.js"
         async
@@ -25,30 +19,20 @@
 <body class="bitnet-login-body">
 
     <main class="bitnet-login-container">
-
-        <!-- Logo / Site Name -->
         <div class="bitnet-login-logo">
             <span class="bitnet-site-name">Bitnetapp</span>
         </div>
-
-        <!-- Page Title -->
         <h1 class="bitnet-login-title">
             Login to Your Account
         </h1>
-
-        <!-- Login Form -->
         <form method="post" class="bitnet-login-form">
 
             {% csrf_token %}
-
-            <!-- Non-field form errors -->
             {% if form.non_field_errors %}
                 <div class="form-errors">
                     {{ form.non_field_errors }}
                 </div>
             {% endif %}
-
-            <!-- Username -->
             <div class="form-group">
                 <label for="{{ form.username.id_for_label }}">
                     Username
@@ -62,31 +46,24 @@
                     </div>
                 {% endif %}
             </div>
-
-            <!-- Password -->
             <div class="form-group">
                 <label for="{{ form.password.id_for_label }}">
                     Password
                 </label>
 
                 {{ form.password }}
-
                 {% if form.password.errors %}
                     <div class="field-error">
                         {{ form.password.errors }}
                     </div>
                 {% endif %}
             </div>
-
-            <!-- reCAPTCHA -->
             <div class="form-group captcha-group">
                 <div
                     class="g-recaptcha"
                     data-sitekey="{{ RECAPTCHA_PUBLIC_KEY }}">
                 </div>
             </div>
-
-            <!-- Login Button -->
             <button
                 type="submit"
                 class="bitnet-login-button">
@@ -94,17 +71,12 @@
             </button>
 
         </form>
-
-        <!-- Signup Link -->
         <p class="bitnet-auth-switch">
             Don’t have an account?
             <a href="{% url 'crypto:signup' %}">
                 Sign up here
             </a>
         </p>
-
     </main>
-
 </body>
-
 </html>

@@ -6,8 +6,6 @@
         <h1 class="wallets-title">Wallets</h1>
         <p class="wallets-subtitle">Manage your crypto wallets, view balances, set withdrawal addresses, and create your AI investment wallet.</p>
     </div>
-
-    <!-- Balances -->
     <div class="wallets-grid">
         {% for currency, amount in balances.items %}
         <div class="wallets-card">
@@ -16,8 +14,6 @@
         </div>
         {% endfor %}
     </div>
-
-    <!-- Notifications -->
     <div class="wallets-card">
         <h2 class="wallets-card-title">Notifications</h2>
         {% for note in notifications %}
@@ -28,8 +24,6 @@
             <p>No notifications.</p>
         {% endfor %}
     </div>
-
-    <!-- Recent Activity -->
     <div class="wallets-card">
         <h2 class="wallets-card-title">Recent Activity</h2>
         <ul>
@@ -44,8 +38,6 @@
             {% endfor %}
         </ul>
     </div>
-
-    <!-- Withdrawal Addresses -->
     <div class="wallets-card">
         <h2 class="wallets-card-title">Manage Withdrawal Addresses</h2>
         <form method="post" class="wallets-form">

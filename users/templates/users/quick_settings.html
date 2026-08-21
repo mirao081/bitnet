@@ -9,8 +9,6 @@
 {% block content %}
 <div class="quick-settings-container">
     <h2 class="quick-settings-heading">Quick Settings</h2>
-
-    <!-- Personal Information -->
     <div class="quick-settings-panel">
         <h3 class="quick-settings-title">Personal Information</h3>
 
@@ -52,7 +50,6 @@
             </button>
         </form>
     </div>
-    <!-- KYC Verification -->
     <div class="quick-settings-panel">
         <h3 class="quick-settings-title">KYC Verification</h3>
         <form method="post" enctype="multipart/form-data">
@@ -70,19 +67,17 @@
                 {{ kyc_form.document }}
             </p>
 
-            {{ kyc_form.as_p|safe }}  <!-- other fields -->
+            {{ kyc_form.as_p|safe }} 
 
             <button type="submit" class="quick-settings-btn">Submit KYC</button>
         </form>
     </div>
 
-    <!-- Wallets -->
+  
     <div class="quick-settings-panel">
         <h3 class="quick-settings-title">Wallets</h3>
         <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
-
-            <!-- BTC Wallet -->
             <p>
                 {{ wallet_form.btc_wallet.label_tag }}
                 {{ wallet_form.btc_wallet }}
@@ -96,8 +91,6 @@
                 {% endif %}
                 {{ wallet_form.btc_qr }}
             </p>
-
-            <!-- ETH Wallet -->
             <p>
                 {{ wallet_form.eth_wallet.label_tag }}
                 {{ wallet_form.eth_wallet }}
@@ -111,8 +104,6 @@
                 {% endif %}
                 {{ wallet_form.eth_qr }}
             </p>
-
-            <!-- USDT ERC20 Wallet -->
             <p>
                 {{ wallet_form.usdt_erc20_wallet.label_tag }}
                 {{ wallet_form.usdt_erc20_wallet }}
@@ -126,8 +117,6 @@
                 {% endif %}
                 {{ wallet_form.usdt_erc20_qr }}
             </p>
-
-            <!-- USDT TRC20 Wallet -->
             <p>
                 {{ wallet_form.usdt_trc20_wallet.label_tag }}
                 {{ wallet_form.usdt_trc20_wallet }}
@@ -145,8 +134,6 @@
             <button type="submit" class="quick-settings-btn">Update Wallets</button>
         </form>
     </div>
-
-    <!-- Security Verification -->
     <div class="quick-settings-panel">
         <h3 class="quick-settings-title">Security Verification</h3>
         <form method="post">
@@ -155,8 +142,6 @@
             <button type="submit" class="quick-settings-btn">Update Verification</button>
         </form>
     </div>
-
-    <!-- Notifications -->
     <div class="quick-settings-panel">
         <h3 class="quick-settings-title">Notifications</h3>
         <form method="post">
@@ -165,8 +150,6 @@
             <button type="submit" class="quick-settings-btn">Update Notifications</button>
         </form>
     </div>
-
-    <!-- API Keys -->
     <div class="quick-settings-panel">
         <h3 class="quick-settings-title">API Keys</h3>
         <form method="post">
@@ -175,8 +158,6 @@
             <button type="submit" class="quick-settings-btn">Generate API Key</button>
         </form>
     </div>
-
-    <!-- Account Management -->
     <div class="quick-settings-panel">
         <h3 class="quick-settings-title">Account Management</h3>
         <form method="post">

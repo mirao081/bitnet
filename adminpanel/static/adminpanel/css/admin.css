@@ -1338,13 +1338,12 @@ body{
 }
 
 .users-table-container {
-  max-height: 400px;              /* fixed height for scroll */
-  overflow-y: auto;               /* vertical scrollbar */
+  max-height: 400px;              
+  overflow-y: auto;             
   border: 1px solid #ccc;
   border-radius: 6px;
 }
 
-/* Table styling */
 .users-table {
   width: 100%;
   border-collapse: collapse;
@@ -1373,11 +1372,10 @@ body{
   background: rgba(255, 215, 0, 0.1);
 }
 
-/* Mobile adjustments */
 @media (max-width: 768px) {
   .users-table-container {
     max-height: 300px;
-    overflow-y: scroll;             /* smaller scroll area */
+    overflow-y: scroll;             
   }
 
   .users-table th,
@@ -1651,17 +1649,16 @@ body{
     overflow:hidden;
 
 }
-/* Referral table container with vertical scroll */
 .referrals-table-container {
-  max-height: 400px;          /* fixed height for scroll */
+  max-height: 400px;         
   overflow-y: auto; 
--webkit-overflow-scrolling: touch;         /* vertical scrollbar */
+-webkit-overflow-scrolling: touch;        
   border: 1px solid #ccc;
   border-radius: 6px;
-  margin: 0 auto;             /* center horizontally */
+  margin: 0 auto;            
 }
 
-/* Table styling */
+
 .referrals-table {
   width: 100%;
   border-collapse: collapse;
@@ -1690,11 +1687,11 @@ body{
   background: rgba(255, 215, 0, 0.1);
 }
 
-/* Mobile adjustments */
+
 @media (max-width: 768px) {
   .referrals-table-container {
     max-height: 300px;
-     overflow-y: scroll;         /* smaller scroll area on mobile */
+     overflow-y: scroll;         
   }
 
   .referrals-table th,
@@ -1743,7 +1740,7 @@ body{
   color: #fff;
 }
 
-/* Mobile adjustments */
+
 @media (max-width: 768px) {
   .referrals-pagination button {
     width: 80px;
@@ -1751,16 +1748,16 @@ body{
     padding: 6px;
   }
 }
-/* Scrollable container */
+
 .referrals-table-container {
-  max-height: 400px;          /* fixed height for scroll */
-  overflow-y: auto;           /* vertical scrollbar */
+  max-height: 400px;          
+  overflow-y: auto;          
   border: 1px solid #ccc;
   border-radius: 6px;
-  margin: 0 auto;             /* center horizontally */
+  margin: 0 auto;            
 }
 
-/* Table styling */
+
 .referrals-table {
   width: 100%;
   border-collapse: collapse;
@@ -1789,7 +1786,7 @@ body{
   background: rgba(255, 215, 0, 0.1);
 }
 
-/* Pagination styling */
+
 .referrals-pagination {
   display: flex;
   justify-content: center;
@@ -1819,10 +1816,10 @@ body{
   color: #fff;
 }
 
-/* Mobile adjustments */
+
 @media (max-width: 768px) {
   .referrals-table-container {
-    max-height: 300px;        /* smaller scroll area */
+    max-height: 300px;       
   }
 
   .referrals-table th,
@@ -1907,23 +1904,23 @@ body{
     box-shadow: 0 12px 30px rgba(37,99,235,.45);
 }
 
-/* Mobile & Tablet adjustments */
+
 @media (max-width: 1024px) {
     .users-toolbar {
-        justify-content: center;   /* center buttons on smaller screens */
+        justify-content: center;   
     }
 
     .users-toolbar button {
-        width: 100px;              /* fixed width */
-        padding: 10px;             /* tighter padding */
-        font-size: 13px;           /* slightly smaller text */
-        text-align: center;        /* keep text centered */
+        width: 100px;             
+        padding: 10px;           
+        font-size: 13px;        
+        text-align: center;     
     }
 
     #search-input {
         flex: 1;
         min-width: 180px;
-        margin-top: 10px;          /* drop below buttons if needed */
+        margin-top: 10px;         
     }
 }
 
@@ -2215,7 +2212,7 @@ body{
     flex-direction:column;
 
 }
-/* ===== Tablet screens ===== */
+
 @media (max-width: 1024px) {
     .activity-grid {
         grid-template-columns: 1fr;
@@ -2224,7 +2221,7 @@ body{
 
     .activity-card {
         width: 90%;
-        margin: 0 auto;          /* centers horizontally */
+        margin: 0 auto;         
         text-align: center;
         padding: 22px;
     }
@@ -2259,11 +2256,11 @@ body{
     }
 }
 
-/* ===== Mobile screens ===== */
+
 @media (max-width: 768px) {
     .activity-card {
         width: 95%;
-        margin: 0 auto;          /* centers horizontally */
+        margin: 0 auto;         
         padding: 20px;
         text-align: center;
     }
@@ -2289,8 +2286,6 @@ body{
     .user-info-card { padding: 25px; border-radius: 18px; }
     .update-card { padding: 22px; }
 }
-
-/* ===== Extra small devices ===== */
 @media (max-width: 480px) {
     .activity-card {
         width: 100%;
@@ -6910,7 +6905,6 @@ html{
     }
 
 }
-/* Referral search bar styling */
 .referral-search {
     display: flex;
     align-items: center;
@@ -6947,13 +6941,6 @@ html{
 .referral-search button:hover {
     background-color: #0056b3;
 }
-
-
-/* ===========================================
-   Wallet Overview - Premium UI
-=========================================== */
-
-/* Wrapper */
 .wallets-table-wrapper {
   width: 100%;
   overflow-x: auto;
@@ -6965,8 +6952,6 @@ html{
     0 10px 30px rgba(0, 0, 0, 0.08),
     inset 0 1px 0 rgba(255,255,255,0.8);
 }
-
-/* Card */
 .wallets-overview-card {
   background: linear-gradient(135deg, #ffffff, #f8fbff);
   border-radius: 20px;
@@ -6976,8 +6961,6 @@ html{
     0 15px 35px rgba(0,0,0,0.08),
     0 5px 15px rgba(0,0,0,0.04);
 }
-
-/* Heading */
 .wallets-overview-card h2 {
   font-size: 1.6rem;
   font-weight: 700;
@@ -6985,8 +6968,6 @@ html{
   margin-bottom: 1rem;
   letter-spacing: -.3px;
 }
-
-/* Table */
 .wallets-table-custom {
   width: 100%;
   min-width: 700px;
@@ -6996,8 +6977,6 @@ html{
   border-radius: 14px;
   background: #fff;
 }
-
-/* Header */
 .wallets-table-custom thead {
   background: linear-gradient(135deg, #2563eb, #4f46e5);
 }
@@ -7010,21 +6989,15 @@ html{
   white-space: nowrap;
   letter-spacing: .4px;
 }
-
-/* Body */
 .wallets-table-custom td {
   padding: 14px 16px;
   color: #374151;
   border-bottom: 1px solid #eef2f7;
   transition: all .25s ease;
 }
-
-/* Zebra rows */
 .wallets-table-custom tbody tr:nth-child(even) {
   background: #fafcff;
 }
-
-/* Hover */
 .wallets-table-custom tbody tr {
   transition: all .25s ease;
 }
@@ -7033,8 +7006,6 @@ html{
   background: #eef6ff;
   transform: scale(1.003);
 }
-
-/* Rounded corners */
 .wallets-table-custom th:first-child {
   border-top-left-radius: 14px;
 }
@@ -7050,8 +7021,6 @@ html{
 .wallets-table-custom tbody tr:last-child td:last-child {
   border-bottom-right-radius: 14px;
 }
-
-/* Nice scrollbar */
 .wallets-table-wrapper::-webkit-scrollbar {
   height: 8px;
 }
@@ -7065,8 +7034,6 @@ html{
   background: linear-gradient(90deg, #2563eb, #4f46e5);
   border-radius: 50px;
 }
-
-/* Responsive */
 @media (max-width: 768px) {
 
   .wallets-overview-card {
@@ -7088,8 +7055,6 @@ html{
     font-size: .9rem;
   }
 }
-
-/* Small screens */
 @media (max-width: 480px) {
 
   .wallets-overview-card h2 {
@@ -7102,10 +7067,9 @@ html{
     padding: 8px;
   }
 }
-/* Admin table hover override */
 .users-table-container .users-table tbody tr:hover {
-    background-color: rgba(0, 128, 0, 0.25) !important; /* faded green */
-    color: #fff !important; /* keep text visible */
+    background-color: rgba(0, 128, 0, 0.25) !important; 
+    color: #fff !important; 
     transition: background-color 0.3s ease;
 }
 
@@ -7113,32 +7077,23 @@ html{
     background-color: transparent !important;
     color: #fff !important;
 }
-/* Global dark mode background and text */
 body.dark-mode {
     background-color: #121212;
     color: #e0e0e0;
 }
-
-/* Sidebar and footer */
 body.dark-mode .sidebar,
 body.dark-mode .dashboard-footer {
     background-color: #1e1e1e;
     color: #f5f5f5;
 }
-
-/* Header */
 body.dark-mode .mobile-header {
     background-color: #1e1e1e;
     border-bottom: 1px solid #333;
 }
-
-/* Main content area */
 body.dark-mode .main-content {
     background-color: #181818;
     color: #e0e0e0;
 }
-
-/* Tables */
 body.dark-mode table {
     background-color: #1e1e1e;
     color: #f5f5f5;
@@ -7149,13 +7104,9 @@ body.dark-mode table th,
 body.dark-mode table td {
     border: 1px solid #333;
 }
-
-/* Links */
 body.dark-mode a {
     color: #ffd700;
 }
-
-/* Buttons */
 body.dark-mode .btn-primary,
 body.dark-mode .btn-secondary {
     background: #333;

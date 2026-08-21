@@ -20,9 +20,6 @@ body {
     display: flex;
     flex-direction: column;
     transition: transform 0.3s ease;
-
-    /* Keep the sidebar exactly 230px wide,
-       including padding */
     box-sizing: border-box;
 }
 
@@ -53,9 +50,6 @@ body {
     margin: 0;
     font-weight: 600;
 }
-/* =========================================
-   SIDEBAR NAVIGATION
-========================================= */
 
 .sidebar-nav {
     width: 100%;
@@ -72,8 +66,6 @@ body {
     position: relative;
     border-radius: 10px;
     overflow: hidden;
-
-    /* Dark container */
     background: #0a0a0a;
 
     border: 1px solid rgba(0, 216, 233, .25);
@@ -89,8 +81,6 @@ body {
         border-color .3s ease;
 }
 
-
-/* Gold light sweep */
 .sidebar-nav li::before {
     content: "";
 
@@ -122,7 +112,7 @@ body {
     font-weight: 600;
     text-decoration: none;
 
-    color: #00d8e9; /* cyan text */
+    color: #00d8e9; 
 
     position: relative;
     z-index: 2;
@@ -173,11 +163,6 @@ body {
     display: none;
 }
 @media (max-width: 992px) {
-
-    /* =========================================
-       MOBILE HAMBURGER
-    ========================================= */
-
     .hamburger {
         display: block;
     }
@@ -252,11 +237,6 @@ body {
         display: none;
     }
 
-
-    /* =========================================
-       SIDEBAR NAVIGATION
-    ========================================= */
-
     .sidebar-nav {
         width: 100%;
     }
@@ -283,12 +263,6 @@ body {
         font-size: 14px;
         padding: 10px 14px;
     }
-
-
-    /* =========================================
-       KYC BUTTON
-    ========================================= */
-
     .kyc-status {
         display: flex;
         flex-direction: column;
@@ -2076,11 +2050,11 @@ canvas {
 }
 
 .card-info {
-    background: linear-gradient(135deg, #36036e, #032155); /* purple-blue */
+    background: linear-gradient(135deg, #36036e, #032155);
 }
 
 .card-balance {
-    background: linear-gradient(135deg, #450d01, #360119); /* orange-pink */
+    background: linear-gradient(135deg, #450d01, #360119); 
 }
 .card-wallets {
     max-width: 1000px;     
@@ -3211,11 +3185,11 @@ input.unlocked {
 /* Mobile adjustments */
 @media (max-width: 600px) {
   .withdraw-request-title {
-    font-size: 1.4rem;   /* ✅ smaller font for mobile */
-    line-height: 1.2;    /* ✅ tighter line-height */
+    font-size: 1.4rem;  
+    line-height: 1.2;    
     font-weight: 700;
-    text-align: center;  /* ✅ keep centered */
-    color: #fff;         /* ✅ ensure white heading */
+    text-align: center; 
+    color: #fff;        
     letter-spacing: 0.5px;
   }
 
@@ -5507,8 +5481,6 @@ input.unlocked {
     margin-bottom: 8px;
     font-weight: 600;
 }
-
-/* Top Movers */
 .top-movers, .regulatory-updates, .investment-insights,
 .community-announcements, .education-hub, .global-impact {
     margin: 40px 0;
@@ -5530,8 +5502,6 @@ input.unlocked {
     line-height: 1.7;
     font-size: 1rem;
 }
-
-/* Responsive tweaks */
 @media(max-width:900px){
     .news-grid {
         grid-template-columns: 1fr;
@@ -6282,7 +6252,7 @@ font-size:1.5rem;
     text-align: center;
 }
 .user-profile-btn {
-    cursor: pointer; /* ensures pointer cursor on hover */
+    cursor: pointer; 
 }
 
 .user-profile-btn-primary {
@@ -6305,20 +6275,15 @@ font-size:1.5rem;
     transform: translateY(-3px);
     box-shadow: 0 0 12px rgba(255,215,0,.45);
 }
-/* Global dark mode background and text */
 body.dark-mode {
     background-color: #121212;
     color: #e0e0e0;
 }
-
-/* Sidebar and footer */
 body.dark-mode .sidebar,
 body.dark-mode .dashboard-footer {
     background-color: #1e1e1e;
     color: #f5f5f5;
 }
-
-/* Cards and profile sections */
 body.dark-mode .settings-card,
 body.dark-mode .user-profile-card {
     background-color: #1e1e1e;
@@ -6326,12 +6291,11 @@ body.dark-mode .user-profile-card {
     color: #f5f5f5;
 }
 
-/* Links */
+
 body.dark-mode a {
     color: #ffd700;
 }
 
-/* Buttons */
 body.dark-mode .btn-primary,
 body.dark-mode .btn-secondary {
     background: #333;
@@ -6341,7 +6305,7 @@ body.dark-mode .btn-secondary {
 .wallet-field label {
     display: block;
     font-weight: 600;
-    color: #ddb844; /* gold tone */
+    color: #ddb844; 
     margin-bottom: 6px;
     text-align: center;
 }
@@ -7331,25 +7295,17 @@ body.dark-mode .btn-danger {
     }
 
 }
-/* ================================
-   AI PLAN TABLE
-   ================================ */
-
 .ai-plan-section {
     width: 100%;
     max-width: 100%;
     box-sizing: border-box;
 }
-
-/* Recommended plan text */
 .ai-plan-section > p {
     margin: 10px 0 16px;
     line-height: 1.6;
     text-align: center;
     overflow-wrap: break-word;
 }
-
-/* Table scroll container */
 .ai-plan-table {
     width: 100%;
     max-width: 100%;
@@ -7359,8 +7315,6 @@ body.dark-mode .btn-danger {
     box-sizing: border-box;
     scrollbar-width: auto;
 }
-
-/* Make the scrollbar clearly usable */
 .ai-plan-table::-webkit-scrollbar {
     height: 10px;
     width: 10px;
@@ -7384,13 +7338,9 @@ body.dark-mode .btn-danger {
     white-space: nowrap;
     vertical-align: middle;
 }
-
-/* Recommended plan */
 .ai-plan-table tr.ai-highlight td {
     font-weight: 600;
 }
-
-/* Keep the action form together */
 .ai-plan-table td form {
     display: flex;
     align-items: center;
@@ -7405,9 +7355,6 @@ body.dark-mode .btn-danger {
     box-sizing: border-box;
 }
 
-/* ================================
-   MOBILE
-   ================================ */
 
 @media (max-width: 600px) {
 
@@ -7421,8 +7368,6 @@ body.dark-mode .btn-danger {
         text-align: center;
         margin-bottom: 8px;
     }
-
-    /* Recommended plan stays inside the screen */
     .ai-plan-section > p {
         width: 100%;
         max-width: 100%;
@@ -7455,8 +7400,6 @@ body.dark-mode .btn-danger {
         padding: 10px 12px;
         white-space: nowrap;
     }
-
-    /* Make the recommended row remain one continuous highlighted row */
     .ai-plan-table tr.ai-highlight td {
         font-weight: 700;
     }
@@ -7586,25 +7529,11 @@ body.dark-mode .btn-danger {
     border-radius: 12px;
     box-shadow: 0 4px 12px rgba(0,0,0,.15);
 }
-/* ==========================================
-   INVESTMENT PAGE - ULTRA PREMIUM UI
-   PART 1 (Desktop)
-========================================== */
-
-/* ===========================
-   PAGE
-=========================== */
-
 .investment-page{
     width:min(1400px,95%);
     margin:0 auto;
     padding:30px 20px 50px;
 }
-
-/* ===========================
-   SUMMARY CARD
-=========================== */
-
 .investment-summary-card{
 
     margin:0 auto 30px;
@@ -7624,7 +7553,6 @@ body.dark-mode .btn-danger {
 
     transition:.45s;
 }
-
 .investment-summary-card:hover{
 
     transform:translateY(-6px);
@@ -7632,10 +7560,6 @@ body.dark-mode .btn-danger {
     box-shadow:
         0 30px 65px rgba(0,0,0,.12);
 }
-
-/* ===========================
-   GRID
-=========================== */
 
 .investment-row{
 
@@ -7652,9 +7576,6 @@ body.dark-mode .btn-danger {
     margin-bottom:30px;
 }
 
-/* ===========================
-   CARDS
-=========================== */
 
 .investment-card{
 
@@ -7680,11 +7601,6 @@ body.dark-mode .btn-danger {
     box-shadow:
         0 25px 55px rgba(0,0,0,.13);
 }
-
-/* ======================================
-   WORLD CLASS HEADERS
-====================================== */
-
 .investment-card-header{
 
     position:relative;
@@ -7722,8 +7638,6 @@ body.dark-mode .btn-danger {
     border-bottom:2px solid rgba(255,255,255,.12);
 }
 
-/* Luxury shine */
-
 .investment-card-header::before{
 
     content:"";
@@ -7750,9 +7664,6 @@ body.dark-mode .btn-danger {
 
     animation:headerShine 5s infinite;
 }
-
-/* Golden glow */
-
 .investment-card-header::after{
 
     content:"";
@@ -7767,8 +7678,6 @@ body.dark-mode .btn-danger {
 
     pointer-events:none;
 }
-
-/* Animations */
 
 @keyframes headerFlow{
 
@@ -7785,7 +7694,6 @@ body.dark-mode .btn-danger {
     }
 
 }
-
 @keyframes headerShine{
 
     0%{
@@ -7800,18 +7708,11 @@ body.dark-mode .btn-danger {
 
 }
 
-/* ===========================
-   CARD BODY
-=========================== */
-
 .investment-card-body{
 
     padding:25px;
 }
 
-/* ===========================
-   SUMMARY TITLE
-=========================== */
 
 .investment-summary-card h2{
 
@@ -7834,10 +7735,6 @@ body.dark-mode .btn-danger {
 
     font-size:1rem;
 }
-
-/* ===========================
-   BUTTONS
-=========================== */
 
 .investment-btn{
 
@@ -7872,8 +7769,6 @@ body.dark-mode .btn-danger {
     overflow:hidden;
 }
 
-/* Shine */
-
 .investment-btn::before{
 
     content:"";
@@ -7906,8 +7801,6 @@ body.dark-mode .btn-danger {
     left:160%;
 }
 
-/* Primary */
-
 .investment-btn-primary{
 
     color:#fff;
@@ -7930,9 +7823,6 @@ body.dark-mode .btn-danger {
     box-shadow:
         0 18px 35px rgba(37,99,235,.45);
 }
-
-/* GOLD BUTTONS */
-
 .investment-btn-gold{
 
     color:#fff;
@@ -7957,9 +7847,6 @@ body.dark-mode .btn-danger {
         0 18px 35px rgba(170,120,0,.45);
 }
 
-/* ===========================
-   TABLE
-=========================== */
 
 .investment-table-wrapper{
 
@@ -7971,8 +7858,6 @@ body.dark-mode .btn-danger {
 
     border-radius:16px;
 }
-
-/* Dark luxury gold header */
 
 .investment-table thead{
 
@@ -8060,16 +7945,6 @@ body.dark-mode .btn-danger {
 
     overflow-x:hidden;
 }
-/* ==========================================================
-   BITNET INVESTMENT DASHBOARD
-   PREMIUM CSS
-   PART 1A
-========================================================== */
-
-
-/*==========================================================
-    PAGE
-==========================================================*/
 
 .investment-page{
 
@@ -8083,11 +7958,6 @@ body.dark-mode .btn-danger {
 
     box-sizing:border-box;
 }
-
-
-/*==========================================================
-    ROWS
-==========================================================*/
 
 .investment-row{
 
@@ -8103,11 +7973,6 @@ body.dark-mode .btn-danger {
 
     align-items:stretch;
 }
-
-
-/*==========================================================
-    SUMMARY CARD
-==========================================================*/
 
 .investment-summary-card{
 
@@ -8143,10 +8008,6 @@ body.dark-mode .btn-danger {
 }
 
 
-/*==========================================================
-    NORMAL CARDS
-==========================================================*/
-
 .investment-card{
 
     width:100%;
@@ -8173,11 +8034,6 @@ body.dark-mode .btn-danger {
     box-shadow:
         0 24px 55px rgba(0,0,0,.12);
 }
-
-
-/*==========================================================
-    WORLD CLASS HEADERS
-==========================================================*/
 
 .investment-card-header{
 
@@ -8215,11 +8071,6 @@ body.dark-mode .btn-danger {
 
     border-bottom:2px solid rgba(255,255,255,.12);
 }
-
-
-/*==========================================================
-    HEADER SHINE
-==========================================================*/
 
 .investment-card-header::before{
 
@@ -8262,10 +8113,6 @@ body.dark-mode .btn-danger {
 }
 
 
-/*==========================================================
-    ANIMATIONS
-==========================================================*/
-
 @keyframes goldHeader{
 
     0%{
@@ -8299,22 +8146,12 @@ body.dark-mode .btn-danger {
 
 }
 
-
-/*==========================================================
-    CARD BODY
-==========================================================*/
-
 .investment-card-body{
 
     padding:24px;
 
     background:#ffffff;
 }
-
-
-/*==========================================================
-    TITLES
-==========================================================*/
 
 .investment-summary-card h2{
 
@@ -8328,11 +8165,6 @@ body.dark-mode .btn-danger {
 
     letter-spacing:-.3px;
 }
-
-
-/*==========================================================
-    TEXT COLORS
-==========================================================*/
 
 .investment-card-body,
 
@@ -8376,12 +8208,6 @@ body.dark-mode .btn-danger {
 
     font-weight:500;
 }
-
-
-/*==========================================================
-    LISTS
-==========================================================*/
-
 .investment-card ul{
 
     margin:0;
@@ -8397,12 +8223,6 @@ body.dark-mode .btn-danger {
 
     line-height:1.8;
 }
-
-
-/*==========================================================
-    LINKS
-==========================================================*/
-
 .investment-card a{
 
     color:#8b6500;
@@ -8418,18 +8238,6 @@ body.dark-mode .btn-danger {
 
     color:#b8860b;
 }
-/* ==========================================================
-   BITNET INVESTMENT DASHBOARD
-   PREMIUM CSS
-   PART 2
-   BUTTONS • TABLE • SCROLLBARS • CHARTS
-==========================================================*/
-
-
-/*==========================================================
-    QUICK ACTION
-==========================================================*/
-
 .investment-quick-action{
 
     margin-top:22px;
@@ -8442,11 +8250,6 @@ body.dark-mode .btn-danger {
 
     justify-content:flex-start;
 }
-
-
-/*==========================================================
-    PREMIUM BUTTONS
-==========================================================*/
 
 .investment-btn{
 
@@ -8480,10 +8283,6 @@ body.dark-mode .btn-danger {
 
     transition:.35s;
 }
-
-
-/* Shine */
-
 .investment-btn::before{
 
     content:"";
@@ -8515,9 +8314,6 @@ body.dark-mode .btn-danger {
     left:170%;
 }
 
-
-/* Primary */
-
 .investment-btn-primary{
 
     color:#fff;
@@ -8532,7 +8328,6 @@ body.dark-mode .btn-danger {
     box-shadow:
         0 12px 28px rgba(37,99,235,.35);
 }
-
 .investment-btn-primary:hover{
 
     transform:translateY(-4px);
@@ -8540,10 +8335,6 @@ body.dark-mode .btn-danger {
     box-shadow:
         0 22px 45px rgba(37,99,235,.45);
 }
-
-
-/* Gold */
-
 .investment-btn-gold{
 
     color:#fff;
@@ -8559,7 +8350,6 @@ body.dark-mode .btn-danger {
     box-shadow:
         0 12px 28px rgba(166,115,0,.35);
 }
-
 .investment-btn-gold:hover{
 
     transform:translateY(-4px);
@@ -8567,12 +8357,6 @@ body.dark-mode .btn-danger {
     box-shadow:
         0 22px 45px rgba(166,115,0,.45);
 }
-
-
-/*==========================================================
-    TABLE WRAPPER
-==========================================================*/
-
 .investment-table-wrapper{
 
     width:100%;
@@ -8585,11 +8369,6 @@ body.dark-mode .btn-danger {
 
     -webkit-overflow-scrolling:touch;
 }
-
-
-/*==========================================================
-    CUSTOM SCROLLBAR
-==========================================================*/
 
 .investment-table-wrapper::-webkit-scrollbar{
 
@@ -8613,12 +8392,6 @@ body.dark-mode .btn-danger {
             #5b3d00,
             #b8860b);
 }
-
-
-/*==========================================================
-    TABLE
-==========================================================*/
-
 .investment-table{
 
     width:100%;
@@ -8631,12 +8404,6 @@ body.dark-mode .btn-danger {
 
     background:#ffffff;
 }
-
-
-/*==========================================================
-    TABLE HEADER
-==========================================================*/
-
 .investment-table thead{
 
     background:
@@ -8647,7 +8414,6 @@ body.dark-mode .btn-danger {
             #6a4700,
             #4b3200);
 }
-
 .investment-table th{
 
     color:#ffffff;
@@ -8670,9 +8436,6 @@ body.dark-mode .btn-danger {
         0 2px 5px rgba(0,0,0,.45);
 }
 
-
-/* Rounded Header */
-
 .investment-table th:first-child{
 
     border-top-left-radius:15px;
@@ -8682,11 +8445,6 @@ body.dark-mode .btn-danger {
 
     border-top-right-radius:15px;
 }
-
-
-/*==========================================================
-    TABLE BODY
-==========================================================*/
 
 .investment-table td{
 
@@ -8702,8 +8460,6 @@ body.dark-mode .btn-danger {
 }
 
 
-/* Zebra */
-
 .investment-table tbody tr:nth-child(even){
 
     background:#fafbfc;
@@ -8713,9 +8469,6 @@ body.dark-mode .btn-danger {
 
     background:#ffffff;
 }
-
-
-/* Hover */
 
 .investment-table tbody tr{
 
@@ -8727,9 +8480,6 @@ body.dark-mode .btn-danger {
     background:#fff8e8;
 }
 
-
-/* Empty Row */
-
 .investment-table tbody tr td[colspan]{
 
     text-align:center;
@@ -8740,11 +8490,6 @@ body.dark-mode .btn-danger {
 
     font-weight:600;
 }
-
-
-/*==========================================================
-    CHARTS
-==========================================================*/
 
 .investment-card canvas{
 
@@ -8758,21 +8503,10 @@ body.dark-mode .btn-danger {
 
     margin:auto;
 }
-
-
-/*==========================================================
-    CARD SPACING
-==========================================================*/
-
 .investment-card + .investment-card{
 
     margin-top:6px;
 }
-
-
-/*==========================================================
-    CARD ANIMATION
-==========================================================*/
 
 .investment-card{
 
@@ -8795,18 +8529,6 @@ body.dark-mode .btn-danger {
         transform:translateY(0);
     }
 }
-/* ==========================================================
-   BITNET INVESTMENT DASHBOARD
-   PREMIUM CSS
-   PART 3
-   RESPONSIVE + FINISHING TOUCHES
-==========================================================*/
-
-
-/*==========================================================
-        TABLETS
-==========================================================*/
-
 @media (max-width:992px){
 
     .investment-page{
@@ -8880,12 +8602,6 @@ body.dark-mode .btn-danger {
     }
 
 }
-
-
-/*==========================================================
-        MOBILE
-==========================================================*/
-
 @media (max-width:768px){
 
     .investment-page{
@@ -8983,12 +8699,6 @@ body.dark-mode .btn-danger {
     }
 
 }
-
-
-/*==========================================================
-        SMALL PHONES
-==========================================================*/
-
 @media (max-width:480px){
 
     .investment-page{
@@ -9078,11 +8788,6 @@ body.dark-mode .btn-danger {
 
 }
 
-
-/*==========================================================
-        LARGE DESKTOPS
-==========================================================*/
-
 @media (min-width:1600px){
 
     .investment-page{
@@ -9091,11 +8796,6 @@ body.dark-mode .btn-danger {
     }
 
 }
-
-
-/*==========================================================
-        PREMIUM EMPTY STATES
-==========================================================*/
 
 .investment-empty{
 
@@ -9134,34 +8834,16 @@ body.dark-mode .btn-danger {
 
     color:#6b7280 !important;
 }
-
-
-/*==========================================================
-        SMOOTH SCROLL
-==========================================================*/
-
 html{
 
     scroll-behavior:smooth;
 }
-
-
-/*==========================================================
-        TEXT SELECTION
-==========================================================*/
-
 ::selection{
 
     background:#b8860b;
 
     color:#fff;
 }
-
-
-/*==========================================================
-        BUTTON FOCUS
-==========================================================*/
-
 .investment-btn:focus{
 
     outline:none;
@@ -9171,21 +8853,10 @@ html{
         0 0 0 4px rgba(184,134,11,.25);
 }
 
-
-/*==========================================================
-        CARD GLOW
-==========================================================*/
-
 .investment-card:hover{
 
     border-color:rgba(184,134,11,.35);
 }
-
-
-/*==========================================================
-        PREMIUM DIVIDER
-==========================================================*/
-
 .investment-card-body hr{
 
     border:none;
@@ -9204,11 +8875,6 @@ html{
 
             transparent);
 }
-
-
-/*==========================================================
-        SMOOTH TRANSITIONS
-==========================================================*/
 
 .investment-card,
 

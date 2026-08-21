@@ -1,5 +1,3 @@
-
-
 .bn-contact-page {
     width: 100%;
     padding: 90px 0;
@@ -23,11 +21,6 @@
             #0a1020
         );
 }
-
-
-/*==================================================
-    HEADING
-==================================================*/
 
 .bn-contact-heading {
     width: 90%;
@@ -109,12 +102,6 @@
 
     animation: bnContactSubtitleFlow 6s linear infinite;
 }
-
-
-/*==================================================
-    MAP
-==================================================*/
-
 .bn-contact-map {
     width: 90%;
     max-width: 1090px;
@@ -149,8 +136,6 @@
 
     animation: bnContactMapShine 7s linear infinite;
 }
-
-
 .bn-contact-map iframe {
     display: block;
 
@@ -162,12 +147,6 @@
         contrast(110%)
         brightness(75%);
 }
-
-
-/*==================================================
-    MAIN CONTAINER
-==================================================*/
-
 .bn-contact-container {
     width: 90%;
     max-width: 1400px;
@@ -185,12 +164,6 @@
     position: relative;
     z-index: 2;
 }
-
-
-/*==================================================
-    FORM CARD
-==================================================*/
-
 .bn-contact-form-card,
 .bn-contact-info-card {
 
@@ -220,8 +193,6 @@
 
     transition: .45s ease;
 }
-
-
 .bn-contact-form-card::before,
 .bn-contact-info-card::before {
 
@@ -246,8 +217,6 @@
 
     transition: .6s;
 }
-
-
 .bn-contact-form-card:hover,
 .bn-contact-info-card:hover {
 
@@ -257,19 +226,11 @@
         0 30px 70px rgba(0,0,0,.50),
         0 0 40px rgba(0,216,239,.15);
 }
-
-
 .bn-contact-form-card:hover::before,
 .bn-contact-info-card:hover::before {
 
     transform: scale(1.4);
 }
-
-
-/*==================================================
-    FORM ROW
-==================================================*/
-
 .bn-contact-form-row {
 
     display: grid;
@@ -288,8 +249,6 @@
 
     position: relative;
 }
-
-
 .bn-contact-form-group label,
 .bn-contact-form-wide label {
 
@@ -304,12 +263,6 @@
 
     letter-spacing: .5px;
 }
-
-
-/*==================================================
-    INPUTS
-==================================================*/
-
 .bn-contact-form-group input,
 .bn-contact-form-wide select,
 .bn-contact-form-wide textarea {
@@ -341,17 +294,10 @@
     color: #ffffff;
     font-size: 14px;
 }
-
-/* Selected option */
 .bn-contact-form-wide select option:checked {
     background: #00d8ef;
     color: #05070d;
 }
-
-/*==================================================
-    SELECT FOCUS
-==================================================*/
-
 .bn-contact-form-wide select:focus {
     border-color: #00d8ef;
 
@@ -359,11 +305,6 @@
         0 0 10px rgba(0,216,239,.35),
         0 0 25px rgba(0,216,239,.15);
 }
-
-/*==================================================
-    SELECT ARROW / CURSOR
-==================================================*/
-
 .bn-contact-form-wide select {
     cursor: pointer;
 }
@@ -374,8 +315,6 @@
 
     color: rgba(255,255,255,.45);
 }
-
-
 .bn-contact-form-group input:focus,
 .bn-contact-form-wide select:focus,
 .bn-contact-form-wide textarea:focus {
@@ -388,34 +327,22 @@
         0 0 18px rgba(0,216,239,.18),
         inset 0 0 10px rgba(0,216,239,.04);
 }
-
-
 .bn-contact-form-wide {
 
     margin-bottom: 20px;
 }
-
-
 .bn-contact-form-wide select {
 
     appearance: none;
 
     cursor: pointer;
 }
-
-
 .bn-contact-form-wide textarea {
 
     resize: vertical;
 
     min-height: 130px;
 }
-
-
-/*==================================================
-    BUTTONS
-==================================================*/
-
 .bn-contact-buttons {
 
     display: flex;
@@ -512,11 +439,6 @@
         0 15px 35px rgba(0,216,239,.30);
 }
 
-
-/*==================================================
-    CONTACT INFORMATION
-==================================================*/
-
 .bn-contact-info-card {
 
     text-align: center;
@@ -551,8 +473,6 @@
 
     animation: bnContactSubtitleFlow 5s linear infinite;
 }
-
-
 .bn-contact-info-subtitle {
 
     margin-bottom: 35px;
@@ -561,12 +481,6 @@
 
     font-size: 14px;
 }
-
-
-/*==================================================
-    INFO ITEMS
-==================================================*/
-
 .bn-contact-info-item {
 
     display: flex;
@@ -590,8 +504,6 @@
 
     transition: .35s;
 }
-
-
 .bn-contact-info-item:hover {
 
     transform: translateX(7px);
@@ -606,8 +518,6 @@
         0 10px 30px rgba(0,0,0,.25),
         0 0 20px rgba(0,216,239,.10);
 }
-
-
 .bn-contact-info-item > i {
 
     min-width: 45px;
@@ -632,8 +542,6 @@
     box-shadow:
         0 0 18px rgba(0,216,239,.15);
 }
-
-
 .bn-contact-info-item h3 {
 
     margin: 0 0 5px;
@@ -644,8 +552,6 @@
 
     font-weight: 700;
 }
-
-
 .bn-contact-info-item p {
 
     margin: 0;
@@ -658,12 +564,6 @@
 
     word-break: break-word;
 }
-
-
-/*==================================================
-    ANIMATIONS
-==================================================*/
-
 @keyframes bnContactTitleFlow {
 
     0% {
@@ -679,8 +579,6 @@
     }
 
 }
-
-
 @keyframes bnContactSubtitleFlow {
 
     0% {
@@ -696,8 +594,6 @@
     }
 
 }
-
-
 @keyframes bnContactMapShine {
 
     0% {
@@ -709,12 +605,6 @@
     }
 
 }
-
-
-/*==================================================
-    TABLET
-==================================================*/
-
 @media(max-width:991px) {
 
     .bn-contact-page {
@@ -730,12 +620,6 @@
     }
 
 }
-
-
-/*==================================================
-    MOBILE
-==================================================*/
-
 @media(max-width:600px) {
 
     .bn-contact-page {
@@ -826,11 +710,6 @@
 
 }
 
-
-/*==================================================
-    SMALL PHONES
-==================================================*/
-
 @media(max-width:380px) {
 
     .bn-contact-title {
@@ -856,14 +735,13 @@
     }
 
 }
-/* Contact links */
 .bn-link {
-    color: #04d2ff;          /* Change to aliceblue or gray if you prefer */
-    text-decoration: none;  /* Removes underline */
-    font-weight: bold;      /* Makes text stand out */
+    color: #04d2ff;         
+    text-decoration: none;  
+    font-weight: bold;      
 }
 
 .bn-link:hover {
-    color: aliceblue;       /* Hover effect */
+    color: aliceblue;      
     text-decoration: underline;
 }

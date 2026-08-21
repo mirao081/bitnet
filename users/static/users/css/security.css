@@ -7,12 +7,6 @@
     text-align: center;
     position: relative;
 }
-
-
-/* =========================================================
-   PAGE HEADING
-   ========================================================= */
-
 .securitypage-title {
     margin: 0 0 15px;
     font-size: 34px;
@@ -27,7 +21,6 @@
         0 0 40px #ff0080;
     animation: securitypageGlow 3s infinite alternate;
 }
-
 .securitypage-subtitle {
     max-width: 800px;
     margin: 0 auto 45px;
@@ -37,11 +30,6 @@
     text-align: center;
 }
 
-
-/* =========================================================
-   CARD GRID
-   ========================================================= */
-
 .securitypage-grid {
     width: 100%;
     display: grid;
@@ -49,11 +37,6 @@
     gap: 25px;
     align-items: stretch;
 }
-
-
-/* =========================================================
-   GLASS CARDS
-   ========================================================= */
 
 .securitypage-card {
     width: 100%;
@@ -74,7 +57,6 @@
     text-align: center;
     transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
 }
-
 .securitypage-card:hover {
     transform: translateY(-5px);
     border-color: rgba(0, 216, 239, 0.55);
@@ -87,11 +69,6 @@
 .securitypage-wide-card {
     grid-column: 1 / -1;
 }
-
-
-/* =========================================================
-   CARD HEADINGS
-   ========================================================= */
 
 .securitypage-card-title {
     margin: 0 0 18px;
@@ -119,11 +96,6 @@
         0 0 18px rgba(122, 0, 255, 0.6);
 }
 
-
-/* =========================================================
-   CARD TEXT
-   ========================================================= */
-
 .securitypage-card-text {
     margin: 0 auto 25px;
     max-width: 800px;
@@ -132,11 +104,6 @@
     line-height: 1.7;
     text-align: center;
 }
-
-
-/* =========================================================
-   BUTTONS
-   ========================================================= */
 
 .securitypage-actions {
     display: flex;
@@ -218,11 +185,6 @@
         0 0 28px #7a00ff;
 }
 
-
-/* =========================================================
-   FORM
-   ========================================================= */
-
 .securitypage-form {
     width: 100%;
     max-width: 500px;
@@ -257,12 +219,6 @@
         0 0 10px #00d8ef,
         0 0 25px rgba(122, 0, 255, 0.35);
 }
-
-
-/* =========================================================
-   QR CODE
-   ========================================================= */
-
 .securitypage-qr {
     display: flex;
     justify-content: center;
@@ -276,19 +232,12 @@
         0 0 15px #00d8ef,
         0 0 30px rgba(122, 0, 255, 0.4);
 }
-
 .securitypage-qr img {
     display: block;
     width: 200px;
     height: 200px;
     max-width: 100%;
 }
-
-
-/* =========================================================
-   RECOVERY CODES
-   ========================================================= */
-
 .securitypage-recovery {
     max-width: 500px;
     margin: 20px auto;
@@ -312,11 +261,6 @@
     font-size: 15px;
     letter-spacing: 1px;
 }
-
-
-/* =========================================================
-   KYC STATUS
-   ========================================================= */
 
 .securitypage-status-box {
     display: flex;
@@ -357,11 +301,6 @@
     background: rgba(255, 204, 0, 0.1);
     border: 1px solid rgba(255, 204, 0, 0.35);
 }
-
-
-/* =========================================================
-   LOGIN HISTORY TABLE
-   ========================================================= */
 
 .securitypage-table-wrapper {
     width: 100%;
@@ -412,12 +351,6 @@
     padding: 25px !important;
     color: rgba(255, 255, 255, 0.55) !important;
 }
-
-
-/* =========================================================
-   LOGIN STATUS
-   ========================================================= */
-
 .securitypage-login-success {
     color: #00ff66;
     font-weight: 700;
@@ -429,11 +362,6 @@
     font-weight: 700;
     text-shadow: 0 0 8px rgba(255, 0, 80, 0.4);
 }
-
-
-/* =========================================================
-   ANIMATION
-   ========================================================= */
 
 @keyframes securitypageGlow {
     from {
@@ -449,11 +377,6 @@
             0 0 45px #00d8ef;
     }
 }
-
-
-/* =========================================================
-   TABLET
-   ========================================================= */
 
 @media (max-width: 991px) {
 
@@ -474,11 +397,6 @@
     }
 
 }
-
-
-/* =========================================================
-   MOBILE
-   ========================================================= */
 
 @media (max-width: 600px) {
 

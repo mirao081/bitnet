@@ -1,12 +1,10 @@
 {% extends "users/dashboard_base.html" %}
 {% load static %}
-
 {% block content %}
 <div class="card kyc-card">
     <div class="card-header">
         KYC Verification
     </div>
-
     <div class="card-body">
         <p>Status: {{ kyc.get_status_display }}</p>
 

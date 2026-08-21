@@ -83,8 +83,6 @@
     background:#009bb8;
     color:#fff;
 }
-
-/* Responsive tweaks */
 @media(max-width:600px){
   .resources-showcase-title {
     font-size:22px;

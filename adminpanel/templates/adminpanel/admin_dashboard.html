@@ -86,13 +86,13 @@
 <div class="activity-card" id="referrals">
     <h2>Referral Performance</h2>
 
-    <!-- Search form -->
+  
     <form method="get" action="" class="referral-search">
         <input type="text" name="q" placeholder="Search usernames..." value="{{ query }}">
         <button type="submit">Search</button>
     </form>
 
-    <!-- Scrollable table -->
+  
     <div class="referrals-table-container">
         <table class="referrals-table" id="referrals-table">
             <thead>
@@ -120,7 +120,7 @@
         </table>
     </div>
 
-    <!-- Pagination controls -->
+   
     <div class="referrals-pagination">
         {% if referrals.has_previous %}
             <a href="?page={{ referrals.previous_page_number }}{% if query %}&q={{ query }}{% endif %}">

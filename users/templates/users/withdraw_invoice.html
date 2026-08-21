@@ -3,7 +3,6 @@
 <div class="withdraw-invoice-container card shadow p-4">
     <h1 class="withdraw-invoice-title">Withdrawal Invoice</h1>
     <h3 class="withdraw-invoice-subtitle">{{ withdrawal.currency }} Withdrawal</h3>
-
     <div class="withdraw-invoice-details mt-3">
         <p><strong>Amount:</strong> {{ withdrawal.amount }}</p>
         <p><strong>Destination Address:</strong> {{ withdrawal.wallet_address }}</p>
@@ -18,8 +17,6 @@
             <p><strong>Admin Note:</strong> {{ withdrawal.admin_note }}</p>
         {% endif %}
     </div>
-
-    <!-- ✅ QR Code Integration -->
     <div class="withdraw-invoice-qr mt-4">
         <h4>Wallet QR Code</h4>
         {% if withdrawal.currency == "BTC" and userwallet.btc_qr %}

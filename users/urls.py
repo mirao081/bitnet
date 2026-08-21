@@ -12,14 +12,14 @@ urlpatterns = [
     path("investment-plans/", views.investment_plans, name="investment_plans"),
     path("wallets/", views.wallets, name="wallets"),
 
-    # ✅ Deposit routes
+   
     path("deposit/", views.deposit, name="deposit"),
     path("make-deposit/", views.make_deposit, name="make_deposit"),
     path("deposit-invoice/<int:deposit_id>/<str:currency>/", views.deposit_invoice, name="deposit_invoice"),
 
     path("withdraw/", views.withdraw, name="withdraw"),
 
-    # # ✅ Restored management withdrawals
+    
     # path("management/withdrawals/", views.all_withdrawals, name="all_withdrawals"),
     # path("management/withdrawals/<int:withdrawal_id>/update/", views.update_withdrawal_status, name="update_withdrawal_status"),
 

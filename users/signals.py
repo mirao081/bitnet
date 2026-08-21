@@ -20,7 +20,7 @@ from .models import (
 from .utils import send_html_email
 
 
-# 🔔 General notification
+
 def notify(user, type, message):
     note = Notification.objects.create(
         user=user,
@@ -43,7 +43,7 @@ def notify(user, type, message):
     return note
 
 
-# 🔔 New user setup
+
 @receiver(post_save, sender=User)
 def new_user_setup(sender, instance, created, **kwargs):
     if created:
@@ -74,14 +74,12 @@ def notify_admin_login(sender, request, user, **kwargs):
 
 
 
-# 🔔 Save user profile
+
 @receiver(post_save, sender=User)
 def save_user_profile(sender, instance, **kwargs):
     if hasattr(instance, "userprofile"):
         instance.userprofile.save()
 
-
-# 🔔 Deposit notification
 @receiver(post_save, sender=Deposit)
 def deposit_notification(sender, instance, **kwargs):
     if instance.status == "approved":
@@ -96,8 +94,6 @@ def deposit_notification(sender, instance, **kwargs):
             backend_settings=settings.SENDGRID_EMAIL_BACKEND,
         )
 
-
-# 🔔 Withdrawal notification
 @receiver(post_save, sender=Withdrawal)
 def withdrawal_notification(sender, instance, **kwargs):
     if instance.status == "approved":
@@ -108,8 +104,6 @@ def withdrawal_notification(sender, instance, **kwargs):
             backend_settings=settings.SENDGRID_EMAIL_BACKEND,
         )
 
-
-# 🔔 KYC notification
 @receiver(post_save, sender=UserKYC)
 def kyc_notification(sender, instance, **kwargs):
     if instance.status == "approved":
@@ -119,8 +113,6 @@ def kyc_notification(sender, instance, **kwargs):
             f"Dear {instance.user.username}, your identity has been verified. You are now an investor with BitnetFx."
         )
 
-
-# 🔔 Investment completion
 @receiver(post_save, sender=ActiveInvestment)
 def investment_completed(sender, instance, **kwargs):
     if instance.status == "completed":
@@ -131,8 +123,6 @@ def investment_completed(sender, instance, **kwargs):
             backend_settings=settings.SENDGRID_EMAIL_BACKEND,
         )
 
-
-# 🔔 Referral signup
 @receiver(post_save, sender=Referral)
 def referral_signup(sender, instance, created, **kwargs):
     if created and instance.referrer:
@@ -143,8 +133,6 @@ def referral_signup(sender, instance, created, **kwargs):
             backend_settings=settings.SENDGRID_EMAIL_BACKEND,
         )
 
-
-# 🔔 Referral bonus
 @receiver(post_save, sender=Deposit)
 def referral_bonus(sender, instance, **kwargs):
     if instance.status != "approved" or instance.bonus_paid:
@@ -182,8 +170,6 @@ def referral_bonus(sender, instance, **kwargs):
         backend_settings=settings.SENDGRID_EMAIL_BACKEND,
     )
 
-
-# 🔔 Sync verification status
 @receiver(post_save, sender=UserVerification)
 def sync_verification_status(sender, instance, **kwargs):
     profile, _ = UserProfile.objects.get_or_create(user=instance.user)

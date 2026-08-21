@@ -6,14 +6,14 @@ from django.contrib import messages
 from decimal import Decimal
 from django.utils.timezone import now
 from users.utils import credit_profit
-from django.http import HttpResponse, JsonResponse   # merged HttpResponse + JsonResponse
-from django.db.models import Sum, Count              # merged Sum + Count
+from django.http import HttpResponse, JsonResponse   
+from django.db.models import Sum, Count             
 from datetime import date, timedelta
 from django.utils import timezone
 from decimal import Decimal,InvalidOperation
 from django.core.paginator import Paginator
 from reportlab.lib.pagesizes import letter
-from reportlab.pdfgen import canvas                  # corrected placement with other reportlab imports
+from reportlab.pdfgen import canvas                  
 from crypto.models import Wallet, InvestmentPlan, MarketInstrument
 from django.db import transaction
 import openpyxl
@@ -422,7 +422,7 @@ def withdraw(request):
 
     return render(
         request,
-        "users/withdraw.html",   # ✅ always use withdraw.html
+        "users/withdraw.html",  
         {
             "form": form,
             "profile": profile,
@@ -437,7 +437,6 @@ def withdraw(request):
 def transactions(request):
     qs = Transaction.objects.filter(user=request.user).order_by("-date")
 
-    # Filters
     tx_type = request.GET.get("type")
     status = request.GET.get("status")
     search = request.GET.get("search")
@@ -584,7 +583,6 @@ def market_data(request):
                 "USDT_TRC20": {"price": None, "change": None},
             }
         else:
-            # Map response into assets dict
             assets = {}
             for coin in response:
                 if coin["id"] == "bitcoin":
@@ -594,7 +592,7 @@ def market_data(request):
                 elif coin["id"] == "tether":
                     assets["USDT_ERC20"] = {"price": coin["current_price"], "change": coin["price_change_percentage_24h"]}
                     assets["USDT_TRC20"] = {"price": coin["current_price"], "change": coin["price_change_percentage_24h"]}
-            last_assets.update(assets)  # cache good data
+            last_assets.update(assets)  
     except Exception as e:
         logger.error(f"CoinGecko price API failed: {e}")
         assets = last_assets or {
@@ -604,7 +602,7 @@ def market_data(request):
             "USDT_TRC20": {"price": None, "change": None},
         }
 
-    # --- Trending ---
+  
     try:
         trending_url = "https://api.coingecko.com/api/v3/search/trending"
         trending_data = requests.get(trending_url).json()
@@ -613,7 +611,7 @@ def market_data(request):
         logger.error(f"Trending API failed: {e}")
         trending = []
 
-    # --- Chart (7 days BTC) ---
+
     chart_url = "https://api.coingecko.com/api/v3/coins/bitcoin/market_chart"
     chart_params = {"vs_currency": "usd", "days": "7"}
     try:
@@ -624,8 +622,6 @@ def market_data(request):
         logger.error(f"Chart API failed: {e}")
         labels, prices = [], []
     chart = {"labels": labels, "prices": prices}
-
-    # --- Global overview ---
     try:
         global_url = "https://api.coingecko.com/api/v3/global"
         global_data = requests.get(global_url).json().get("data", {})
@@ -638,8 +634,6 @@ def market_data(request):
     except Exception as e:
         logger.error(f"Global API failed: {e}")
         overview = {"market_cap": None, "volume": None, "btc_dominance": None, "trending": []}
-
-    # --- Movers ---
     try:
         movers_url = "https://api.coingecko.com/api/v3/coins/markets"
         movers_params = {
@@ -660,8 +654,6 @@ def market_data(request):
     except Exception as e:
         logger.error(f"Movers API failed: {e}")
         movers = {"gainers": [], "losers": []}
-
-    # --- News ---
     try:
         feed = feedparser.parse("https://www.coindesk.com/arc/outboundfeeds/rss/")
         news = [{"title": entry.title, "url": entry.link} for entry in feed.entries[:5]]
@@ -681,7 +673,6 @@ def market_data(request):
 @login_required
 def news(request):
     try:
-        # Fetch BTC and ETH prices
         btc_data = requests.get(
             "https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd"
         ).json()
@@ -921,8 +912,6 @@ def deposit(request):
 
     wallet_exists = wallet is not None
 
-    # Check whether the user has entered at least one
-    # actual wallet address.
     wallet_has_address = False
 
     if wallet:
@@ -948,10 +937,6 @@ def deposit(request):
 @login_required
 def make_deposit(request):
     profile = UserProfile.objects.get(user=request.user)
-
-    # ---------------------------------------------------------
-    # 1. USER MUST HAVE A USERWALLET RECORD
-    # ---------------------------------------------------------
     wallet = UserWallet.objects.filter(
         user=request.user
     ).first()
@@ -963,9 +948,6 @@ def make_deposit(request):
         )
         return redirect("users:deposit")
 
-    # ---------------------------------------------------------
-    # 2. USER MUST BE VERIFIED
-    # ---------------------------------------------------------
     verification = UserVerification.objects.filter(
         user=request.user
     ).first()
@@ -977,15 +959,11 @@ def make_deposit(request):
         )
         return redirect("users:deposit")
 
-    # ---------------------------------------------------------
-    # 3. ONLY ACCEPT POST REQUESTS
-    # ---------------------------------------------------------
+   
     if request.method != "POST":
         return redirect("users:deposit")
 
-    # ---------------------------------------------------------
-    # 4. GET AMOUNT
-    # ---------------------------------------------------------
+   
     try:
         amount = Decimal(request.POST.get("amount"))
     except (TypeError, ValueError, ArithmeticError):
@@ -995,14 +973,10 @@ def make_deposit(request):
         )
         return redirect("users:deposit")
 
-    # ---------------------------------------------------------
-    # 5. GET CURRENCY
-    # ---------------------------------------------------------
+    
     currency = request.POST.get("currency")
 
-    # ---------------------------------------------------------
-    # 6. CHECK THE WALLET FOR THE SPECIFIC CURRENCY
-    # ---------------------------------------------------------
+    
     wallet_address = None
 
     if currency == "BTC":
@@ -1018,8 +992,6 @@ def make_deposit(request):
         wallet_address = wallet.usdt_trc20_wallet
 
     elif currency == "USD":
-        # USD is a balance in your system, not one of
-        # the four wallet addresses.
         wallet_address = "USD"
 
     else:
@@ -1028,30 +1000,18 @@ def make_deposit(request):
             "Invalid currency selected."
         )
         return redirect("users:deposit")
-
-    # ---------------------------------------------------------
-    # 7. REQUIRE THE CORRECT WALLET ADDRESS
-    # ---------------------------------------------------------
     if currency != "USD" and not wallet_address:
         messages.error(
             request,
             f"⚠️ Please update your {currency} wallet before making this deposit."
         )
         return redirect("users:deposit")
-
-    # ---------------------------------------------------------
-    # 8. MINIMUM DEPOSIT
-    # ---------------------------------------------------------
     if amount < MIN_DEPOSIT:
         messages.error(
             request,
             f"The minimum deposit is ${MIN_DEPOSIT}. Please enter a valid amount."
         )
         return redirect("users:deposit")
-
-    # ---------------------------------------------------------
-    # 9. KEEP YOUR EXISTING BALANCE BEHAVIOR
-    # ---------------------------------------------------------
     if currency == "BTC":
         profile.btc_balance += amount
 
@@ -1068,20 +1028,12 @@ def make_deposit(request):
         profile.usd_balance += amount
 
     profile.save()
-
-    # ---------------------------------------------------------
-    # 10. CREATE THE PENDING DEPOSIT
-    # ---------------------------------------------------------
     deposit = Deposit.objects.create(
         user=request.user,
         amount=amount,
         currency=currency,
         status="pending"
     )
-
-    # ---------------------------------------------------------
-    # 11. SEND USER TO THE INVOICE
-    # ---------------------------------------------------------
     return redirect(
         "users:deposit_invoice",
         deposit_id=deposit.id,
@@ -1128,20 +1080,8 @@ def deposit_invoice(request, deposit_id, currency):
 def request_withdrawal(request):
     profile = UserProfile.objects.get(user=request.user)
     userwallet = UserWallet.objects.filter(user=request.user).first()
-
-    # =========================================================
-    # POST REQUEST
-    # =========================================================
     if request.method == "POST":
 
-        # =====================================================
-        # VERIFICATION CHECK
-        # Only verified users can make withdrawals.
-        # IMPORTANT:
-        # This check is ONLY performed when the user submits
-        # a withdrawal. It must not redirect GET requests
-        # back to this same URL.
-        # =====================================================
         if profile.verification_status != "verified":
             messages.error(
                 request,
@@ -1159,9 +1099,6 @@ def request_withdrawal(request):
             )
             return redirect("users:request_withdrawal")
 
-        # =====================================================
-        # AMOUNT
-        # =====================================================
         try:
             amount = Decimal(str(form.cleaned_data["amount"]))
         except InvalidOperation:
@@ -1173,10 +1110,6 @@ def request_withdrawal(request):
 
         currency = form.cleaned_data["currency"]
         wallet_address = form.cleaned_data["wallet_address"].strip()
-
-        # =====================================================
-        # BASIC VALIDATION
-        # =====================================================
         if amount <= 0:
             messages.error(
                 request,
@@ -1190,10 +1123,6 @@ def request_withdrawal(request):
                 "Destination wallet address is required."
             )
             return redirect("users:request_withdrawal")
-
-        # =====================================================
-        # BALANCE CHECKS
-        # =====================================================
         if currency == "BTC":
 
             if profile.btc_balance < amount:
@@ -1246,9 +1175,6 @@ def request_withdrawal(request):
             )
             return redirect("users:request_withdrawal")
 
-        # =====================================================
-        # SAVE ATOMICALLY
-        # =====================================================
         with transaction.atomic():
 
             profile.save()
@@ -1268,33 +1194,18 @@ def request_withdrawal(request):
                 type="withdrawal",
                 status="pending",
             )
-
-        # =====================================================
-        # SUCCESS MESSAGE
-        # =====================================================
         messages.success(
             request,
             f"Your withdrawal request of {amount} {currency} "
             f"has been submitted successfully."
         )
-
-        # =====================================================
-        # WITHDRAWAL INVOICE
-        # =====================================================
         return redirect(
             "users:withdraw_invoice",
             withdrawal_id=withdrawal.id,
             currency=currency
         )
 
-    # =========================================================
-    # GET REQUEST
-    # =========================================================
     form = WithdrawalForm()
-
-    # ---------------------------------------------------------
-    # Prevent errors if the user has not created a wallet yet.
-    # ---------------------------------------------------------
     wallets = {
         "BTC": userwallet.btc_wallet if userwallet else "",
 
@@ -1342,9 +1253,6 @@ def withdraw_invoice(request, withdrawal_id, currency):
         "userwallet": userwallet, 
     })
 
-
-
-
 @login_required
 def manage_wallets(request):
     wallet, created = UserWallet.objects.get_or_create(user=request.user)
@@ -1383,32 +1291,22 @@ def start_investment(request):
             messages.error(request, "Please enter a valid investment amount.")
             return redirect("users:investment_plans")
 
-        # Check investment limits
         if amount < plan.min_amount or amount > plan.max_amount:
             messages.error(
                 request,
                 f"Amount must be between ${plan.min_amount} and ${plan.max_amount}."
             )
             return redirect("users:investment_plans")
-
-        # Check wallet balance
         if profile.usd_balance < amount:
             messages.error(request, "Insufficient wallet balance.")
             return redirect("users:investment_plans")
 
-        # Deduct funds from wallet
         profile.usd_balance -= amount
-
-        # Move funds into investment balance
         profile.investment_balance += amount
 
         profile.save()
-
-        # Investment dates
         start_date = timezone.now()
         end_date = start_date + timedelta(hours=plan.duration_hours)
-
-        # Create investment
         ActiveInvestment.objects.create(
             user=request.user,
             plan_name=plan.name,
@@ -1418,8 +1316,6 @@ def start_investment(request):
             end_date=end_date,
             status="active"
         )
-
-        # Friendly duration
         if plan.duration_hours % 24 == 0:
             duration = f"{plan.duration_hours // 24} day(s)"
         else:
@@ -1533,8 +1429,6 @@ def security_center(request):
 
     verification, _ = UserVerification.objects.get_or_create(user=user)
     recovery_codes = RecoveryCode.objects.filter(user=user, used=False).values_list("code", flat=True)
-
-    # Safely get or create UserKYC record
     kyc, _ = UserKYC.objects.get_or_create(user=user)
     kyc_status = kyc.status.lower()
 
@@ -1718,21 +1612,11 @@ def award_referral_commission(deposit):
 @login_required
 def ai_chat(request):
     if request.method == "POST":
-
-        # User wallet
         wallet = Wallet.objects.filter(user=request.user).first()
-
-        # Saved wallet addresses
         user_wallet = UserWallet.objects.filter(user=request.user).first()
-
-        # Company fallback wallets
         company_wallet = CompanyWallet.objects.first()
 
-        ai_response = "🤖 I'm your AI Trading Assistant."
-
-        # ===============================
-        # AI Investment (only if AI invests)
-        # ===============================
+        ai_response = "I'm your AI Trading Assistant."
         if "plan_id" in request.POST:
 
             plan_id = request.POST.get("plan_id")
@@ -1771,15 +1655,7 @@ def ai_chat(request):
                 "response": ai_response
             })
 
-        # ===============================
-        # Chat Messages
-        # ===============================
-
         user_message = request.POST.get("message", "").lower()
-
-        # -------------------------------
-        # Balance
-        # -------------------------------
         if "balance" in user_message:
 
             if wallet:
@@ -1792,10 +1668,6 @@ def ai_chat(request):
                 ai_response = (
                     "You don't have a wallet yet."
                 )
-
-        # -------------------------------
-        # Deposit Instructions
-        # -------------------------------
         elif "deposit" in user_message:
 
             if "btc" in user_message:
@@ -1872,10 +1744,6 @@ def ai_chat(request):
                     "Please specify the asset you want to deposit "
                     "(BTC, ETH, ERC20 or TRC20)."
                 )
-
-        # -------------------------------
-        # Transaction History
-        # -------------------------------
         elif "history" in user_message or "transactions" in user_message:
 
             transactions = Transaction.objects.filter(
@@ -1900,9 +1768,6 @@ def ai_chat(request):
 
                 ai_response = "No transactions found."
 
-        # -------------------------------
-        # Plan Recommendation
-        # -------------------------------
         elif "plan" in user_message or "recommend" in user_message:
 
             if wallet:
@@ -1938,9 +1803,6 @@ def ai_chat(request):
                     "I can recommend a plan."
                 )
 
-        # -------------------------------
-        # Withdraw
-        # -------------------------------
         elif "withdraw" in user_message:
 
             ai_response = (
@@ -1950,9 +1812,6 @@ def ai_chat(request):
                 "will automatically appear."
             )
 
-        # -------------------------------
-        # Future Trading
-        # -------------------------------
         else:
 
             trade_match = re.match(
@@ -1977,10 +1836,6 @@ def ai_chat(request):
         return JsonResponse({
             "response": ai_response
         })
-
-    # ==================================
-    # GET Request
-    # ==================================
 
     wallet = Wallet.objects.filter(user=request.user).first()
 

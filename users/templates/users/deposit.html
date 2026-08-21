@@ -37,7 +37,7 @@
         {% else %}
             <div class="depositpage-grid">
 
-                <!-- BITCOIN -->
+        
                 <div class="depositpage-panel">
                     <h2 class="depositpage-panel-title">Deposit with Bitcoin</h2>
                     <form method="post" action="{% url 'users:make_deposit' %}">
@@ -50,7 +50,6 @@
                     </form>
                 </div>
 
-                <!-- ETHEREUM -->
                 <div class="depositpage-panel">
                     <h2 class="depositpage-panel-title">Deposit with Ethereum</h2>
                     <form method="post" action="{% url 'users:make_deposit' %}">
@@ -62,8 +61,7 @@
                         <button type="submit" class="depositpage-btn">Deposit ETH</button>
                     </form>
                 </div>
-
-                <!-- USDT ERC20 -->
+            
                 <div class="depositpage-panel">
                     <h2 class="depositpage-panel-title">Deposit with USDT ERC-20</h2>
                     <form method="post" action="{% url 'users:make_deposit' %}">
@@ -75,8 +73,6 @@
                         <button type="submit" class="depositpage-btn">Deposit USDT ERC-20</button>
                     </form>
                 </div>
-
-                <!-- USDT TRC20 -->
                 <div class="depositpage-panel">
                     <h2 class="depositpage-panel-title">Deposit with USDT TRC-20</h2>
                     <form method="post" action="{% url 'users:make_deposit' %}">
@@ -88,7 +84,6 @@
                         <button type="submit" class="depositpage-btn">Deposit USDT TRC-20</button>
                     </form>
                 </div>
-
             </div>
         {% endif %}
     </div>

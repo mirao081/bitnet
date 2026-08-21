@@ -5,22 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign Up - Bitnetapp</title>
-
     <link rel="stylesheet" href="{% static 'crypto/css/signup.css' %}">
-
-    <!-- Google reCAPTCHA v2 Checkbox -->
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 <body class="register-body">
 
 <div class="register-container">
-
     <div class="login-logo">
         <span class="site-name">Bitnetapp</span>
     </div>
-
     <h2 class="register-title">Create Your Account</h2>
-
     {% if messages %}
         {% for message in messages %}
             <div class="message {{ message.tags }}">
@@ -28,7 +22,6 @@
             </div>
         {% endfor %}
     {% endif %}
-
     {% if form.errors %}
     <div class="error-box">
         <strong>Please correct the following errors:</strong>
@@ -44,44 +37,33 @@
         </ul>
     </div>
     {% endif %}
-
     <form method="post" class="register-form" novalidate>
         {% csrf_token %}
-
         <div class="form-group">
             {{ form.username.label_tag }}
             {{ form.username }}
         </div>
-
         <div class="form-group">
             {{ form.email.label_tag }}
             {{ form.email }}
         </div>
-
         <div class="form-group">
             {{ form.password1.label_tag }}
             {{ form.password1 }}
         </div>
-
         <div class="form-group">
             {{ form.password2.label_tag }}
             {{ form.password2 }}
         </div>
-
         <div class="form-group">
             {{ form.captcha }}
         </div>
-
-
         <button type="submit" class="register-button">Sign Up</button>
     </form>
-
     <p class="auth-switch">
         Already have an account?
         <a href="{% url 'crypto:login' %}">Login here</a>
     </p>
-
 </div>
-
 </body>
 </html>

@@ -1,7 +1,3 @@
-/*==================================================
-        FEATURES SHOWCASE STYLE
-==================================================*/
-
 .features-showcase,
 .worldclass-features-showcase {
     width:100%;
@@ -24,11 +20,6 @@
     position:relative;
     z-index:2;
 }
-
-/*=========================
-        GLASS CARD
-=========================*/
-
 .features-panel {
     position:relative;
     overflow:hidden;
@@ -43,7 +34,7 @@
       inset 0 1px 0 rgba(255,255,255,.15),
       0 18px 45px rgba(0,0,0,.35);
     transition:.45s ease;
-    margin-bottom:50px; /* ✅ spacing after each row */
+    margin-bottom:50px;
 }
 
 .features-panel::before {
@@ -68,10 +59,6 @@
 .features-panel:hover::before {
     transform:scale(1.4);
 }
-
-/*=========================
-        IMAGE
-=========================*/
 .features-panel-image {
     display:block;
     margin:0 auto 20px;
@@ -86,10 +73,6 @@
     transform:scale(1.08);
 }
 
-/*=========================
-        TITLE & DESCRIPTION
-=========================*/
-
 .features-panel-title {
     font-size:24px;
     font-weight:800;
@@ -103,10 +86,6 @@
     color:rgba(255,255,255,.80);
     line-height:1.6;
 }
-
-/*=========================
-        HEADING CONTAINER
-=========================*/
 .features-heading-container {
     text-align:center;
     margin-bottom:60px;
@@ -117,10 +96,6 @@
     -webkit-backdrop-filter:blur(12px);
     box-shadow:0 0 25px rgba(0,216,239,.35);
 }
-
-/*=========================
-        HEADING TITLE
-=========================*/
 .features-heading-title {
     font-size:25px;
     font-weight:900;
@@ -134,10 +109,6 @@
       0 0 40px #7a00ff;
     animation:featuresGlowPulse 3s infinite alternate;
 }
-
-/*=========================
-        SUBTITLE
-=========================*/
 .features-heading-subtitle {
     font-size:18px;
     font-weight:600;
@@ -148,10 +119,6 @@
     animation:featuresShineFlow 6s linear infinite;
     letter-spacing:1px;
 }
-
-/*=========================
-        ANIMATIONS
-=========================*/
 @keyframes featuresGlowPulse {
     from { text-shadow:0 0 10px #00d8ef,0 0 20px #00d8ef; }
     to   { text-shadow:0 0 20px #7a00ff,0 0 40px #ff0080; }
@@ -162,10 +129,6 @@
     50%  { background-position:100% 50%; }
     100% { background-position:0% 50%; }
 }
-
-/*=========================
-        RESPONSIVE
-=========================*/
 @media(max-width:991px){
   .features-grid-premium {
     grid-template-columns:repeat(2,1fr);
@@ -193,7 +156,7 @@
     line-height:1.5;
   }
   .features-heading-title {
-    font-size:25px; /* stays at 25px on mobile */
+    font-size:25px; 
     text-shadow:
       0 0 15px #00d8ef,
       0 0 30px #7a00ff,

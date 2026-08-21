@@ -4,11 +4,9 @@
 {% block content %}
 <div class="plans-page">
     <div class="plans-header">
-        <h1 class="page-title">📈 Investment Plans</h1>
+        <h1 class="page-title">Investment Plans</h1>
         <p class="page-subtitle">Choose a plan that aligns with your financial goals. Compare ROI, duration, and maturity before investing.</p>
     </div>
-
-    <!-- Deposit Cards -->
     <div class="deposit-cards">
         {% for plan in plans %}
         <div class="deposit-card shiny-card">
@@ -19,8 +17,6 @@
                 Maturity: {{ plan.maturity_text }}<br>
                 Minimum: ${{ plan.min_amount }} | Maximum: ${{ plan.max_amount }}
             </p>
-
-            <!-- ✅ Correct action attribute -->
             <form method="post" action="{% url 'users:start_investment' %}">
                 {% csrf_token %}
                 <input type="hidden" name="plan_id" value="{{ plan.id }}">
@@ -34,10 +30,8 @@
         </div>
         {% endfor %}
     </div>
-
-    <!-- Compare Plans Table -->
     <div class="comparison-card shiny-card">
-        <div class="card-header">📊 Compare Plans</div>
+        <div class="card-header">Compare Plans</div>
         <div class="card-body">
             <table class="comparison-table">
                 <thead>
@@ -61,7 +55,6 @@
                         <td>{{ plan.duration_text }}</td>
                         <td>{{ plan.maturity_text }}</td>
                         <td>
-                            <!-- ✅ Correct action attribute -->
                             <form method="post" action="{% url 'users:ai_chat' %}">
                                 {% csrf_token %}
                                 <input type="hidden" name="plan_id" value="{{ plan.id }}">
@@ -81,10 +74,8 @@
             </table>
         </div>
     </div>
-
-    <!-- FAQs -->
     <div class="faq-card shiny-card">
-        <div class="card-header">❓ Frequently Asked Questions</div>
+        <div class="card-header">Frequently Asked Questions</div>
         <div class="card-body">
             <p><strong>How is ROI calculated?</strong> Based on the plan’s percentage return over its duration.</p>
             <p><strong>When do I get payouts?</strong> At maturity, unless the plan specifies periodic returns.</p>

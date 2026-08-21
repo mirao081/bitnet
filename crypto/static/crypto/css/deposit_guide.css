@@ -38,8 +38,6 @@
     -webkit-backdrop-filter:blur(15px);
     box-shadow:0 10px 30px rgba(0,0,0,.35);
 }
-
-/* Responsive tweaks */
 @media(max-width:600px){
   .deposit-showcase-title {
     font-size:22px;

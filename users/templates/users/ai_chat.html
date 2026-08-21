@@ -145,8 +145,6 @@
             action="{% url 'users:request_withdrawal' %}">
 
             {% csrf_token %}
-
-            <!-- Select Asset -->
             <label for="currency">Select Asset</label>
 
             <select id="currency"
@@ -164,9 +162,7 @@
                 <option value="USDT_TRC20">USDT TRC20</option>
 
             </select>
-
             <label for="amount">Amount</label>
-
             <input
                 type="number"
                 id="amount"
@@ -176,7 +172,6 @@
                 placeholder="Enter withdrawal amount"
                 required
             >
-
             <label for="wallet_address">
                 Destination Wallet Address
             </label>
@@ -188,14 +183,11 @@
                 placeholder="Wallet address will appear automatically"
                 required
             >
-
-
             <input
                 type="hidden"
                 id="btc_wallet"
                 value="{{ user_wallet.btc_wallet|default:'' }}"
             >
-
             <input
                 type="hidden"
                 id="eth_wallet"

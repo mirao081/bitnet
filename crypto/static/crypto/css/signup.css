@@ -14,10 +14,8 @@ body.register-body {
     linear-gradient(180deg,#05070d,#0a1020);
   padding:20px;
 }
-
-/* 🔥 Sleeker container */
 .register-container {
-  max-width:380px; /* reduced from 420px */
+  max-width:380px; 
   width:100%;
   padding:30px 24px;
   border-radius:25px;
@@ -140,7 +138,7 @@ body.register-body {
   margin-bottom:18px;
 }
 
-/* 📱 Responsive */
+
 @media(max-width:768px){
   .register-container { max-width:80%; padding:26px 18px; }
   .login-logo .site-name { font-size:24px; }

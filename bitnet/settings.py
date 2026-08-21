@@ -91,12 +91,8 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 USE_TZ = True
 
-# 🔑 Login settings
-# Regular users log in via crypto app (/login/)
 LOGIN_URL = '/login/'
-# After login, users go to their dashboard
 LOGIN_REDIRECT_URL = '/users/dashboard/'
-# After logout, redirect back to login
 LOGOUT_REDIRECT_URL = '/login/'
 
 STATIC_URL = '/static/'
@@ -111,14 +107,11 @@ STATICFILES_DIRS = [
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
-# 🔑 reCAPTCHA keys
+
 RECAPTCHA_PUBLIC_KEY = "6LebNoctAAAAAAaNs4Ykdrc8yQCZOs2TuDbxbZvu"
 RECAPTCHA_PRIVATE_KEY = "6LebNoctAAAAAJv_88a_-8fUXDiCDX1wvA9t4fjZ"
 RECAPTCHA_USE_SSL = True
 
-
-
-# Zoho Mail SMTP
 DEFAULT_FROM_EMAIL = "support@bitnetapp.com"
 
 ZOHO_EMAIL_BACKEND = {

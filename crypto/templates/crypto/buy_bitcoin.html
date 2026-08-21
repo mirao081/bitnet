@@ -1,55 +1,33 @@
 
 {% extends "crypto/crypto_base.html" %}
 {% load static %}
-
 {% block content %}
-
 <link rel="stylesheet" href="{% static 'crypto/css/buy-bitcoin.css' %}">
-
 <section class="bitnet-buy-bitcoin-page">
-
-    <!-- PAGE HEADING -->
     <div class="bitnet-buy-bitcoin-heading">
-
         <h1 class="bitnet-buy-bitcoin-title">
             How to Buy Bitcoin
         </h1>
-
         <p class="bitnet-buy-bitcoin-tagline">
             Your guide to purchasing Bitcoin safely and securely
         </p>
-
     </div>
-
-
-    <!-- CONTENT GRID -->
     <div class="bitnet-buy-bitcoin-grid">
-
-
-        <!-- STEP 1 -->
         <article class="bitnet-buy-bitcoin-card">
-
             <h2 class="bitnet-buy-bitcoin-card-title">
                 Step 1: Choose an Exchange
             </h2>
-
             <p class="bitnet-buy-bitcoin-card-text">
                 Select a trusted cryptocurrency exchange or broker. Popular
                 platforms provide user-friendly interfaces, secure wallets,
                 and compliance with regulations. Always verify the platform’s
                 reputation before registering.
             </p>
-
         </article>
-
-
-        <!-- STEP 2 -->
         <article class="bitnet-buy-bitcoin-card">
-
             <h2 class="bitnet-buy-bitcoin-card-title">
                 Step 2: Create an Account
             </h2>
-
             <p class="bitnet-buy-bitcoin-card-text">
                 Sign up with your email and complete identity verification
                 (KYC). This ensures compliance with anti-money laundering laws
@@ -57,157 +35,92 @@
             </p>
 
         </article>
-
-
-        <!-- STEP 3 -->
         <article class="bitnet-buy-bitcoin-card">
-
             <h2 class="bitnet-buy-bitcoin-card-title">
                 Step 3: Fund Your Account
             </h2>
-
             <p class="bitnet-buy-bitcoin-card-text">
                 Deposit funds using your preferred payment method: bank
                 transfer, credit/debit card, or stablecoins. Ensure you
                 understand transaction fees and processing times.
             </p>
-
         </article>
-
-
-        <!-- STEP 4 -->
         <article class="bitnet-buy-bitcoin-card">
-
             <h2 class="bitnet-buy-bitcoin-card-title">
                 Step 4: Buy Bitcoin
             </h2>
-
             <p class="bitnet-buy-bitcoin-card-text">
                 Navigate to the trading section and select Bitcoin. Enter the
                 amount you want to purchase and confirm the transaction. You
                 can buy fractions of Bitcoin, starting from as little as $10.
             </p>
-
         </article>
-
-
-        <!-- STEP 5 -->
         <article class="bitnet-buy-bitcoin-card">
-
             <h2 class="bitnet-buy-bitcoin-card-title">
                 Step 5: Secure Your Bitcoin
             </h2>
-
             <p class="bitnet-buy-bitcoin-card-text">
                 Transfer your Bitcoin to a secure wallet. Hardware wallets and
                 cold storage are recommended for long-term holding. Avoid
                 leaving large amounts on exchanges.
             </p>
-
         </article>
-
-
-        <!-- PAYMENT METHODS -->
         <article class="bitnet-buy-bitcoin-card">
-
             <h2 class="bitnet-buy-bitcoin-card-title">
                 Payment Methods
             </h2>
-
             <ul class="bitnet-buy-bitcoin-list">
-
                 <li>Bank Transfer (low fees, slower)</li>
-
                 <li>Credit/Debit Card (fast, higher fees)</li>
-
                 <li>Peer-to-Peer (direct, requires caution)</li>
-
                 <li>Stablecoins (quick conversion, minimal fees)</li>
-
             </ul>
-
         </article>
-
-
-        <!-- SECURITY TIPS -->
         <article class="bitnet-buy-bitcoin-card">
-
             <h2 class="bitnet-buy-bitcoin-card-title">
                 Security Tips
             </h2>
-
             <ul class="bitnet-buy-bitcoin-list">
-
                 <li>Enable two-factor authentication (2FA)</li>
-
                 <li>Use strong, unique passwords</li>
-
                 <li>Withdraw to personal wallets</li>
-
                 <li>Beware of phishing scams</li>
-
             </ul>
-
         </article>
-
-
-        <!-- RISKS -->
         <article class="bitnet-buy-bitcoin-card">
-
             <h2 class="bitnet-buy-bitcoin-card-title">
                 Risks
             </h2>
-
             <ul class="bitnet-buy-bitcoin-list">
-
                 <li>Price volatility</li>
-
                 <li>Exchange hacks</li>
-
                 <li>Regulatory changes</li>
-
                 <li>Irreversible transactions</li>
-
             </ul>
-
         </article>
-
-
-        <!-- FAQ -->
         <article class="bitnet-buy-bitcoin-card">
-
             <h2 class="bitnet-buy-bitcoin-card-title">
                 Frequently Asked Questions
             </h2>
-
             <div class="bitnet-buy-bitcoin-faq">
-
                 <p>
                     <strong>Can I buy less than 1 Bitcoin?</strong>
                     Yes, Bitcoin is divisible into satoshis, allowing
                     fractional purchases.
                 </p>
-
                 <p>
                     <strong>How long does it take?</strong>
                     Bank transfers may take days, while card purchases are
                     instant.
                 </p>
-
                 <p>
                     <strong>Is buying Bitcoin legal?</strong>
                     Legality depends on your country. Always check local
                     regulations.
                 </p>
-
             </div>
-
         </article>
-
-
     </div>
-
 </section>
-
 {% endblock %}
 

@@ -2,10 +2,7 @@
 {% load static %}
 {% block content %}
  <link rel="stylesheet" href="{% static 'crypto/css/services.css' %}">
-
 <div class="crypto-services-container">
-
-  <!-- Hero -->
   <section class="crypto-hero">
     <h1 class="crypto-hero-title">Our Services</h1>
     <p class="crypto-hero-subtitle">
@@ -17,8 +14,6 @@
       We empower investors everywhere with secure, intelligent, and profitable opportunities.
     </p>
   </section>
-
-  <!-- Services Grid -->
   <section class="crypto-grid">
     <div class="crypto-card">
       <img class="crypto-icon" src="{% static 'crypto/images/aiTrading.png' %}" alt="AI Trading">
@@ -28,7 +23,6 @@
         Our AI models are continuously trained on global market data to identify profitable opportunities.
       </p>
     </div>
-
     <div class="crypto-card">
       <img class="crypto-icon" src="{% static 'crypto/images/portfolio.png' %}" alt="Portfolio Management">
       <h2 class="crypto-card-title">Portfolio Management</h2>
@@ -37,7 +31,6 @@
         Our experts tailor strategies to match investor goals, whether conservative or aggressive.
       </p>
     </div>
-
     <div class="crypto-card">
       <img class="crypto-icon" src="{% static 'crypto/images/security.webp' %}" alt="Security & Compliance">
       <h2 class="crypto-card-title">Security & Compliance</h2>
@@ -46,7 +39,6 @@
         Bitnetapp adheres to international financial regulations and undergoes independent audits.
       </p>
     </div>
-
     <div class="crypto-card">
       <img class="crypto-icon" src="{% static 'crypto/images/global.webp' %}" alt="Global Reach">
       <h2 class="crypto-card-title">Global Reach</h2>
@@ -55,8 +47,6 @@
       </p>
     </div>
   </section>
-
-  <!-- Benefits -->
   <section class="crypto-benefits">
     <h2 class="crypto-section-title">Why Invest with Bitnetapp?</h2>
     <ul class="crypto-list">
@@ -67,8 +57,6 @@
       <li>Partnerships with leading exchanges and fintech innovators</li>
     </ul>
   </section>
-
-  <!-- Technology -->
   <section class="crypto-section">
     <h2 class="crypto-section-title">Technology & Expertise</h2>
     <p class="crypto-section-text">
@@ -76,8 +64,6 @@
       Our technology stack adapts instantly to market changes, ensuring investors stay ahead.
     </p>
   </section>
-
-  <!-- Advisory -->
   <section class="crypto-section">
     <h2 class="crypto-section-title">Advisory & Compliance</h2>
     <p class="crypto-section-text">
@@ -85,8 +71,6 @@
       Our advisory board includes fintech leaders and compliance experts who shape our long-term strategy.
     </p>
   </section>
-
-  <!-- Testimonials -->
   <section class="crypto-testimonials">
     <h2 class="crypto-section-title">Investor Testimonials</h2>
     <div class="crypto-grid">
@@ -116,8 +100,6 @@
       </div>
     </div>
   </section>
-
-  <!-- Partnerships -->
   <section class="crypto-partnerships">
     <h2 class="crypto-section-title">Strategic Partnerships</h2>
     <p class="crypto-section-text">
@@ -130,8 +112,6 @@
       <img class="crypto-icon" src="{% static 'crypto/images/fintech.webp' %}" alt="Partner 3">
     </div>
   </section>
-
-  <!-- FAQ -->
   <section class="crypto-faq">
     <h2 class="crypto-section-title">Frequently Asked Questions</h2>
     <div class="crypto-card">
@@ -147,8 +127,6 @@
       <p>Yes, Bitnetapp is available in 50+ countries with multilingual support.</p>
     </div>
   </section>
-
-  <!-- CTA -->
   <section class="crypto-cta">
     <h2 class="crypto-section-title">Start Your Investment Journey</h2>
     <p class="crypto-section-text">
@@ -157,6 +135,5 @@
     </p>
     <a href="{% url 'crypto:signup' %}" class="crypto-button">Get Started</a>
   </section>
-
 </div>
 {% endblock %}

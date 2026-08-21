@@ -125,17 +125,7 @@
 
     </div>
 
-
-    <!-- ==========================================
-         CANVAS — DO NOT TOUCH
-    =========================================== -->
-
     <canvas id="moveableCanvas" width="400" height="400"></canvas>
-
-
-    <!-- ==========================================
-         MARKET CHART
-    =========================================== -->
 
     <div class="investment-plans-chart-card">
 
@@ -180,8 +170,6 @@
                 </h1>
 
             </div>
-
-
             <div class="trading-options-separator trading-options-separator-black"></div>
 
 
@@ -196,8 +184,6 @@
             <h1 class="trading-options-maturity">
                 {{ plan.maturity_text }}
             </h1>
-
-
             <div class="trading-options-amount-grid">
 
                 <div class="trading-options-amount-left">
@@ -276,11 +262,6 @@
     </div>
 
 </section>
-
-<!-- =========================================================
-     TRUST & SECURITY
-     ========================================================= -->
-
 <section class="security-showcase-isolated">
 
     <div class="security-showcase-inner">
@@ -393,7 +374,6 @@
                     alt="Blockchain Transparency"
                     class="mission-showcase-image"
                 >
-
                 <h2 class="mission-showcase-card-title">
                     Transparency
                 </h2>
@@ -404,16 +384,12 @@
                 </p>
 
             </div>
-
-
             <div class="mission-showcase-card">
-
                 <img
                     src="{% static 'crypto/images/investor_guarantee.png' %}"
                     alt="Investor Guarantee"
                     class="mission-showcase-image"
                 >
-
                 <h2 class="mission-showcase-card-title">
                     Investor Guarantee
                 </h2>
@@ -821,6 +797,4 @@
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="{% static 'crypto/js/investment_plans.js' %}"></script>
-
-
 {% endblock %}

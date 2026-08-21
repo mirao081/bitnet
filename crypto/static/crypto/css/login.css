@@ -1,31 +1,10 @@
-/* =========================================================
-   BITNETAPP LOGIN PAGE
-   Responsive desktop + tablet + mobile design
-   ========================================================= */
-
-
-/* =========================================================
-   GOOGLE FONTS
-   ========================================================= */
-
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Orbitron:wght@600;700&display=swap');
-
-
-/* =========================================================
-   GLOBAL RESET
-   ========================================================= */
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-
-
-/* =========================================================
-   HTML / BODY
-   ========================================================= */
-
 html {
     width: 100%;
     min-height: 100%;
@@ -37,12 +16,6 @@ body {
     min-height: 100%;
     overflow-x: hidden;
 }
-
-
-/* =========================================================
-   LOGIN BODY
-   ========================================================= */
-
 body.bitnet-login-body {
     width: 100%;
     min-height: 100vh;
@@ -76,11 +49,6 @@ body.bitnet-login-body {
     color: #ffffff;
 }
 
-
-/* =========================================================
-   LOGIN CONTAINER
-   ========================================================= */
-
 .bitnet-login-container {
     position: relative;
 
@@ -107,11 +75,6 @@ body.bitnet-login-body {
     overflow: hidden;
 }
 
-
-/* =========================================================
-   CONTAINER ANIMATION
-   ========================================================= */
-
 @keyframes fadeIn {
 
     from {
@@ -125,11 +88,6 @@ body.bitnet-login-body {
     }
 
 }
-
-
-/* =========================================================
-   LOGO
-   ========================================================= */
 
 .bitnet-login-logo {
     width: 100%;
@@ -170,11 +128,6 @@ body.bitnet-login-body {
     animation: glowPulse 3s infinite alternate;
 }
 
-
-/* =========================================================
-   LOGO GLOW ANIMATION
-   ========================================================= */
-
 @keyframes glowPulse {
 
     from {
@@ -191,11 +144,6 @@ body.bitnet-login-body {
 
 }
 
-
-/* =========================================================
-   LOGIN TITLE
-   ========================================================= */
-
 .bitnet-login-title {
     margin-bottom: 25px;
 
@@ -209,30 +157,15 @@ body.bitnet-login-body {
     text-align: center;
 }
 
-
-/* =========================================================
-   LOGIN FORM
-   ========================================================= */
-
 .bitnet-login-form {
     width: 100%;
 }
-
-
-/* =========================================================
-   FORM GROUP
-   ========================================================= */
 
 .form-group {
     width: 100%;
 
     margin-bottom: 18px;
 }
-
-
-/* =========================================================
-   FORM LABELS
-   ========================================================= */
 
 .form-group label {
     display: block;
@@ -244,11 +177,6 @@ body.bitnet-login-body {
     font-size: 14px;
     font-weight: 500;
 }
-
-
-/* =========================================================
-   INPUTS
-   ========================================================= */
 
 .form-group input {
     display: block;
@@ -283,19 +211,9 @@ body.bitnet-login-body {
         background 0.3s ease;
 }
 
-
-/* =========================================================
-   INPUT PLACEHOLDER
-   ========================================================= */
-
 .form-group input::placeholder {
     color: rgba(255, 255, 255, 0.45);
 }
-
-
-/* =========================================================
-   INPUT FOCUS
-   ========================================================= */
 
 .form-group input:focus {
     border-color: #ff0080;
@@ -305,11 +223,6 @@ body.bitnet-login-body {
     box-shadow:
         0 0 15px rgba(255, 0, 128, 0.40);
 }
-
-
-/* =========================================================
-   FORM ERRORS
-   ========================================================= */
 
 .form-errors {
     width: 100%;
@@ -341,20 +254,12 @@ body.bitnet-login-body {
     line-height: 1.4;
 }
 
-
-/* Remove Django's default error list styling */
-
 .errorlist {
     margin: 0;
     padding: 0;
 
     list-style: none;
 }
-
-
-/* =========================================================
-   CAPTCHA
-   ========================================================= */
 
 .captcha-group {
     display: flex;
@@ -365,11 +270,6 @@ body.bitnet-login-body {
 
     overflow: hidden;
 }
-
-
-/* =========================================================
-   LOGIN BUTTON
-   ========================================================= */
 
 .bitnet-login-button {
     display: block;
@@ -415,11 +315,6 @@ body.bitnet-login-body {
         background 0.35s ease;
 }
 
-
-/* =========================================================
-   BUTTON HOVER
-   ========================================================= */
-
 .bitnet-login-button:hover {
     transform: translateY(-3px);
 
@@ -437,19 +332,9 @@ body.bitnet-login-body {
         0 15px 35px rgba(0, 240, 255, 0.45);
 }
 
-
-/* =========================================================
-   BUTTON ACTIVE
-   ========================================================= */
-
 .bitnet-login-button:active {
     transform: translateY(0);
 }
-
-
-/* =========================================================
-   SIGNUP SWITCH
-   ========================================================= */
 
 .bitnet-auth-switch {
     margin-top: 20px;
@@ -462,11 +347,6 @@ body.bitnet-login-body {
 
     text-align: center;
 }
-
-
-/* =========================================================
-   SIGNUP LINK
-   ========================================================= */
 
 .bitnet-auth-switch a {
     color: #00f0ff;
@@ -482,11 +362,6 @@ body.bitnet-login-body {
 .bitnet-auth-switch a:hover {
     color: #ff0080;
 }
-
-
-/* =========================================================
-   TABLET
-   ========================================================= */
 
 @media screen and (max-width: 768px) {
 
@@ -514,11 +389,6 @@ body.bitnet-login-body {
     }
 
 }
-
-
-/* =========================================================
-   MOBILE
-   ========================================================= */
 
 @media screen and (max-width: 480px) {
 
@@ -600,10 +470,6 @@ body.bitnet-login-body {
 }
 
 
-/* =========================================================
-   SMALL PHONES
-   ========================================================= */
-
 @media screen and (max-width: 360px) {
 
     body.bitnet-login-body {
@@ -645,13 +511,6 @@ body.bitnet-login-body {
     }
 
 }
-
-
-/* =========================================================
-   VERY SHORT SCREENS
-   Prevent excessive vertical spacing
-   ========================================================= */
-
 @media screen and (max-height: 650px) {
 
     body.bitnet-login-body {
