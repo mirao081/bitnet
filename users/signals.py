@@ -20,7 +20,6 @@ from .models import (
 from .utils import send_html_email
 
 
-
 def notify(user, type, message):
     note = Notification.objects.create(
         user=user,
@@ -41,7 +40,6 @@ def notify(user, type, message):
             print("Email sending failed:", e)
 
     return note
-
 
 
 @receiver(post_save, sender=User)
@@ -83,31 +81,26 @@ def new_user_setup(sender, instance, created, **kwargs):
             print("Signup email failed:", e)
 
 
-
-
-
 @receiver(user_logged_in)
 def notify_admin_login(sender, request, user, **kwargs):
     print("🔔 Login signal fired for", user.username)
     try:
-       
         send_mail(
             subject="User Logged In",
             message=f"User {user.username} just logged in.",
             from_email=settings.DEFAULT_FROM_EMAIL,
-            recipient_list=["support@bitnetapp.com"], 
+            recipient_list=["support@bitnetapp.com"],
             fail_silently=False,
         )
     except Exception as e:
         print("Admin login email failed:", e)
 
 
-
-
 @receiver(post_save, sender=User)
 def save_user_profile(sender, instance, **kwargs):
     if hasattr(instance, "userprofile"):
         instance.userprofile.save()
+
 
 @receiver(post_save, sender=Deposit)
 def deposit_notification(sender, instance, **kwargs):
@@ -123,6 +116,7 @@ def deposit_notification(sender, instance, **kwargs):
             backend_settings=settings.SENDGRID_EMAIL_BACKEND,
         )
 
+
 @receiver(post_save, sender=Withdrawal)
 def withdrawal_notification(sender, instance, **kwargs):
     if instance.status == "approved":
@@ -132,6 +126,7 @@ def withdrawal_notification(sender, instance, **kwargs):
             user=instance.user,
             backend_settings=settings.SENDGRID_EMAIL_BACKEND,
         )
+
 
 @receiver(post_save, sender=UserKYC)
 def kyc_notification(sender, instance, **kwargs):
@@ -175,6 +170,7 @@ def investment_completed(sender, instance, **kwargs):
             backend_settings=settings.SENDGRID_EMAIL_BACKEND,
         )
 
+
 @receiver(post_save, sender=Referral)
 def referral_signup(sender, instance, created, **kwargs):
     if created and instance.referrer:
@@ -184,6 +180,7 @@ def referral_signup(sender, instance, created, **kwargs):
             user=instance.referrer,
             backend_settings=settings.SENDGRID_EMAIL_BACKEND,
         )
+
 
 @receiver(post_save, sender=Deposit)
 def referral_bonus(sender, instance, **kwargs):
@@ -221,6 +218,7 @@ def referral_bonus(sender, instance, **kwargs):
         user=referrer,
         backend_settings=settings.SENDGRID_EMAIL_BACKEND,
     )
+
 
 @receiver(post_save, sender=UserVerification)
 def sync_verification_status(sender, instance, **kwargs):
