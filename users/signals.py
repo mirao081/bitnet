@@ -51,7 +51,7 @@ def new_user_setup(sender, instance, created, **kwargs):
         UserBalance.objects.get_or_create(user=instance)
 
         try:
-            # Notify admin
+          
             send_mail(
                 subject="New User Registered",
                 message=f"New user signed up: {instance.username} ({instance.email})",
@@ -59,7 +59,7 @@ def new_user_setup(sender, instance, created, **kwargs):
                 recipient_list=["support@bitnetapp.com"],
                 fail_silently=False,
             )
-            # ✅ Notify user directly
+          
             if instance.email:
                 send_mail(
                     subject="Welcome to BitnetFx",
@@ -76,12 +76,17 @@ def new_user_setup(sender, instance, created, **kwargs):
 @receiver(user_logged_in)
 def notify_admin_login(sender, request, user, **kwargs):
     print("🔔 Login signal fired for", user.username)
-    send_html_email(
-        subject="User Logged In",
-        message=f"User {user.username} just logged in.",
-        user=user,
-        backend_settings=settings.SENDGRID_EMAIL_BACKEND,
-    )
+    try:
+       
+        send_mail(
+            subject="User Logged In",
+            message=f"User {user.username} just logged in.",
+            from_email=settings.DEFAULT_FROM_EMAIL,
+            recipient_list=["support@bitnetapp.com"], 
+            fail_silently=False,
+        )
+    except Exception as e:
+        print("Admin login email failed:", e)
 
 
 
@@ -118,7 +123,7 @@ def withdrawal_notification(sender, instance, **kwargs):
 @receiver(post_save, sender=UserKYC)
 def kyc_notification(sender, instance, **kwargs):
     if instance.status == "approved":
-        # ✅ Notify user directly
+       
         if instance.user.email:
             send_mail(
                 subject="KYC Verification Approved",
@@ -127,7 +132,7 @@ def kyc_notification(sender, instance, **kwargs):
                 recipient_list=[instance.user.email],
                 fail_silently=False,
             )
-        # Keep notification record
+    
         notify(
             instance.user,
             "verification",
