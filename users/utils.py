@@ -11,12 +11,15 @@ from users.models import ProfitRecord
 
 
 def send_html_email(subject, message, user, backend_settings):
+    # Render your HTML template with logo + styling
     html_content = render_to_string("users/transaction_email.html", {
         "user": user,
         "subject": subject,
         "message": message,
     })
-    text_content = message 
+
+    # Plain text fallback (no HTML tags)
+    text_content = f"{subject}\n\n{message}"
 
     connection = get_connection(
         backend=backend_settings["EMAIL_BACKEND"],
@@ -29,12 +32,12 @@ def send_html_email(subject, message, user, backend_settings):
 
     msg = EmailMultiAlternatives(
         subject=subject,
-        body=text_content,
+        body=text_content,  # ✅ plain text fallback
         from_email=settings.DEFAULT_FROM_EMAIL,
         to=[user.email],
         connection=connection,
     )
-    msg.attach_alternative(html_content, "text/html")
+    msg.attach_alternative(html_content, "text/html")  # ✅ attach HTML properly
     msg.send(fail_silently=True)
 
 
