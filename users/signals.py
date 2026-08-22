@@ -5,6 +5,8 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.contrib.auth.signals import user_logged_in
 from django.core.mail import send_mail
+from .utils import send_html_email, format_currency
+
 from .models import (
     Deposit,
     Withdrawal,
@@ -98,22 +100,20 @@ def deposit_notification(sender, instance, **kwargs):
 
         send_html_email(
             subject="Deposit Approved",
-            message=f"Your deposit of {instance.amount} has been approved and credited.",
+            message=f"Your deposit of {format_currency(instance.amount)} has been approved and credited.",
             user=instance.user,
             backend_settings=settings.SENDGRID_EMAIL_BACKEND,
         )
-
 
 @receiver(post_save, sender=Withdrawal)
 def withdrawal_notification(sender, instance, **kwargs):
     if instance.status == "approved":
         send_html_email(
             subject="Withdrawal Processed",
-            message=f"Your withdrawal of {instance.amount} has been processed successfully.",
+            message=f"Your withdrawal of {format_currency(instance.amount)} has been processed successfully.",
             user=instance.user,
             backend_settings=settings.SENDGRID_EMAIL_BACKEND,
         )
-
 
 @receiver(post_save, sender=UserKYC)
 def kyc_notification(sender, instance, **kwargs):
@@ -187,11 +187,10 @@ def referral_bonus(sender, instance, **kwargs):
 
     send_html_email(
         subject="Referral Bonus Earned",
-        message=f"You earned ${bonus} (7%) from {instance.user.username}'s deposit.",
+        message=f"You earned {format_currency(bonus)} (7%) from {instance.user.username}'s deposit.",
         user=referrer,
         backend_settings=settings.SENDGRID_EMAIL_BACKEND,
     )
-
 
 @receiver(post_save, sender=UserVerification)
 def sync_verification_status(sender, instance, **kwargs):

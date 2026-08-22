@@ -84,3 +84,13 @@ def process_matured_investments():
 
         inv.status = "completed"
         inv.save()
+
+def format_currency(amount):
+    """
+    Format a numeric amount as USD currency with a dollar sign,
+    commas for thousands, and two decimal places.
+    """
+    try:
+        return "${:,.2f}".format(float(amount))
+    except Exception:
+        return f"${amount}"
