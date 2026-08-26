@@ -357,9 +357,14 @@ def update_deposit_status(request, deposit_id):
             deposit.status = status
             deposit.save()
 
-            # Update related Transaction if it exists
+            # Sync with Transaction model
             try:
-                transaction = Transaction.objects.get(user=deposit.user, type="deposit", amount=deposit.amount, date=deposit.created_at)
+                transaction = Transaction.objects.get(
+                    user=deposit.user,
+                    type="deposit",
+                    amount=deposit.amount,
+                    date=deposit.created_at
+                )
                 if status == "approved":
                     transaction.status = "completed"
                 elif status == "pending":
