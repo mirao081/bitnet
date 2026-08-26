@@ -4075,7 +4075,7 @@ input.unlocked {
 /* Default heading style */
 .all-transactions h2 {
     font-size: 1.6rem;   
-    text-align: left;   
+     text-align: center;   
     color: #ffd90e;
 }
 
