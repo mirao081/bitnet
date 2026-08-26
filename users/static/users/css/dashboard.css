@@ -4062,11 +4062,21 @@ input.unlocked {
     font-size: 1rem;
     color: #ddd;
 }
+/* ===========================
+   Transactions Section Styles
+   =========================== */
+
+/* Container */
+.all-transactions {
+    margin-top: 20px;
+}
+
 /* Filters layout */
 .transactions-filters form {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
+    margin-bottom: 15px;
 }
 
 .transactions-filters input,
@@ -4074,12 +4084,25 @@ input.unlocked {
 .transactions-filters button {
     flex: 1 1 150px;
     min-width: 120px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
 }
 
-/* Table responsiveness */
-.transactions-table {
+/* Table wrapper for scroll */
+.transactions-table-wrapper {
     width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch; /* smooth scrolling on iOS */
+    margin-left: 15px;   /* nudge left on mobile */
+    margin-right: 10px;
+}
+
+/* Table styles */
+.transactions-table {
+    min-width: 600px; /* ensures structure is preserved */
     border-collapse: collapse;
+    width: 100%;
 }
 
 .transactions-table th,
@@ -4087,29 +4110,6 @@ input.unlocked {
     padding: 8px;
     text-align: left;
     border-bottom: 1px solid #ddd;
-}
-
-/* Mobile view: make table scrollable */
-@media (max-width: 768px) {
-    .transactions-table {
-        display: block;
-        overflow-x: auto;
-        white-space: nowrap;
-    }
-
-    .transactions-filters form {
-        flex-direction: column;
-    }
-
-    .transactions-filters input,
-    .transactions-filters select,
-    .transactions-filters button {
-        width: 100%;
-    }
-    .all-transactions {
-        padding-left: 15px;
-        padding-right: 10px;
-    }
 }
 
 /* Status badges */
@@ -4121,6 +4121,75 @@ input.unlocked {
 .status.approved { background-color: #4caf50; color: white; }
 .status.pending { background-color: #ff9800; color: white; }
 .status.fail, .status.failed { background-color: #f44336; color: white; }
+
+/* Pagination */
+.pagination {
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+.pagination a {
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    text-decoration: none;
+}
+.pagination span {
+    padding: 6px 12px;
+}
+
+/* Export buttons */
+.transactions-export {
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+}
+.export-btn {
+    padding: 8px 12px;
+    background-color: #333;
+    color: #fff;
+    border-radius: 4px;
+    text-decoration: none;
+}
+
+/* Charts */
+.transactions-chart {
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+.transactions-chart canvas {
+    flex: 1 1 300px;
+    max-width: 100%;
+}
+
+/* ===========================
+   Responsive Adjustments
+   =========================== */
+@media (max-width: 768px) {
+    /* Filters stack vertically */
+    .transactions-filters form {
+        flex-direction: column;
+    }
+
+    .transactions-filters input,
+    .transactions-filters select,
+    .transactions-filters button {
+        width: 100%;
+    }
+
+    /* Table scrollable on mobile */
+    .transactions-table-wrapper {
+        margin-left: 15px;
+        margin-right: 10px;
+    }
+
+    .transactions-table {
+        min-width: 500px; /* keep columns readable */
+    }
+}
 
 .transactions-summary {
     display: flex;
