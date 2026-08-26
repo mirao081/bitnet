@@ -489,16 +489,17 @@ def export_transactions_csv(request):
 
     writer = csv.writer(response)
     writer.writerow(["Date", "Type", "Asset", "Amount", "Status"])
+
     for tx in qs:
         writer.writerow([
             tx.date.strftime("%Y-%m-%d %H:%M"),
             tx.get_type_display(),
             tx.asset,
             tx.amount,
-            tx.status
+            tx.status,
         ])
 
-    return 
+    return response
 
 @login_required
 def export_transactions_pdf(request):
@@ -515,11 +516,22 @@ def export_transactions_pdf(request):
     y -= 30
 
     for tx in qs:
-        line = f"{tx.date} | {tx.type} | {tx.asset} | {tx.amount} | {tx.status}"
-        p.drawString(100, y, line)
+        line = (
+            f"{tx.date.strftime('%Y-%m-%d %H:%M')} | "
+            f"{tx.get_type_display()} | "
+            f"{tx.asset} | "
+            f"{tx.amount} | "
+            f"{tx.status.title()}"
+        )
+
+        p.drawString(50, y, line)
         y -= 20
 
-    p.showPage()
+        if y < 50:
+            p.showPage()
+            p.setFont("Helvetica", 12)
+            y = 750
+
     p.save()
     return response
 
@@ -957,9 +969,7 @@ def deposit(request):
 @login_required
 def make_deposit(request):
     profile = UserProfile.objects.get(user=request.user)
-    wallet = UserWallet.objects.filter(
-        user=request.user
-    ).first()
+    wallet = UserWallet.objects.filter(user=request.user).first()
 
     if not wallet:
         messages.error(
@@ -979,11 +989,9 @@ def make_deposit(request):
         )
         return redirect("users:deposit")
 
-   
     if request.method != "POST":
         return redirect("users:deposit")
 
-   
     try:
         amount = Decimal(request.POST.get("amount"))
     except (TypeError, ValueError, ArithmeticError):
@@ -993,67 +1001,68 @@ def make_deposit(request):
         )
         return redirect("users:deposit")
 
-    
     currency = request.POST.get("currency")
 
-    
     wallet_address = None
 
     if currency == "BTC":
         wallet_address = wallet.btc_wallet
-
     elif currency == "ETH":
         wallet_address = wallet.eth_wallet
-
     elif currency == "USDT ERC20":
         wallet_address = wallet.usdt_erc20_wallet
-
     elif currency == "USDT TRC20":
         wallet_address = wallet.usdt_trc20_wallet
-
     elif currency == "USD":
         wallet_address = "USD"
-
     else:
-        messages.error(
-            request,
-            "Invalid currency selected."
-        )
+        messages.error(request, "Invalid currency selected.")
         return redirect("users:deposit")
+
     if currency != "USD" and not wallet_address:
         messages.error(
             request,
             f"⚠️ Please update your {currency} wallet before making this deposit."
         )
         return redirect("users:deposit")
+
     if amount < MIN_DEPOSIT:
         messages.error(
             request,
             f"The minimum deposit is ${MIN_DEPOSIT}. Please enter a valid amount."
         )
         return redirect("users:deposit")
+
     if currency == "BTC":
         profile.btc_balance += amount
-
     elif currency == "ETH":
         profile.eth_balance += amount
-
     elif currency == "USDT ERC20":
         profile.usdt_erc20_balance += amount
-
     elif currency == "USDT TRC20":
         profile.usdt_trc20_balance += amount
-
     elif currency == "USD":
         profile.usd_balance += amount
 
-    profile.save()
-    deposit = Deposit.objects.create(
-        user=request.user,
-        amount=amount,
-        currency=currency,
-        status="pending"
-    )
+    with transaction.atomic():
+        profile.save()
+
+        deposit = Deposit.objects.create(
+            user=request.user,
+            amount=amount,
+            currency=currency,
+            status="pending"
+        )
+
+        # NEW: Save deposit to Transaction history
+        Transaction.objects.create(
+            user=request.user,
+            type="deposit",
+            asset=currency,
+            amount=amount,
+            status="pending"
+        )
+
     return redirect(
         "users:deposit_invoice",
         deposit_id=deposit.id,
