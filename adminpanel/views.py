@@ -358,13 +358,14 @@ def update_deposit_status(request, deposit_id):
             deposit.save()
 
             # Sync with Transaction model
-            try:
-                transaction = Transaction.objects.get(
-                    user=deposit.user,
-                    type="deposit",
-                    amount=deposit.amount,
-                    date=deposit.created_at
-                )
+            transaction = Transaction.objects.filter(
+                user=deposit.user,
+                type="deposit",
+                amount=deposit.amount,
+                asset=deposit.currency  # ensure asset matches
+            ).order_by("-date").first()
+
+            if transaction:
                 if status == "approved":
                     transaction.status = "completed"
                 elif status == "pending":
@@ -372,8 +373,6 @@ def update_deposit_status(request, deposit_id):
                 elif status == "fail":
                     transaction.status = "failed"
                 transaction.save()
-            except Transaction.DoesNotExist:
-                pass
 
             messages.success(request, "Deposit status updated.")
     return redirect("adminpanel:all_financials")
