@@ -4074,16 +4074,17 @@ input.unlocked {
 }
 /* Default heading style */
 .all-transactions h2 {
-    font-size: 1.6rem;   /* desktop size */
-    text-align: left;    /* keep left aligned on larger screens */
-    margin-bottom: 15px;
+    font-size: 1.6rem;   
+    text-align: left;   
+    color: #ffd90e;
 }
 
 /* Mobile heading adjustments */
 @media (max-width: 768px) {
     .all-transactions h2 {
-        font-size: 1.2rem;   /* smaller heading on mobile */
-        text-align: center;  /* center align only on mobile */
+        font-size: 1.2rem;   
+        text-align: center;
+        
     }
 }
 
