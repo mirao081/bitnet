@@ -433,9 +433,10 @@ def withdraw(request):
 
 @login_required
 def transactions(request):
+    # Base queryset for all transactions by the user
     qs = Transaction.objects.filter(user=request.user).order_by("-date")
 
-    # Only filter if a value is provided
+    # Apply filters only if provided
     tx_type = request.GET.get("type")
     status = request.GET.get("status")
     search = request.GET.get("search")
@@ -450,16 +451,18 @@ def transactions(request):
     if search and search.strip():
         qs = qs.filter(Q(asset__icontains=search) | Q(id__icontains=search))
 
-    # Aggregates
+    # Aggregates based on filtered queryset
     total_deposits = qs.filter(type="deposit").aggregate(Sum("amount"))["amount__sum"] or 0
     total_withdrawals = qs.filter(type="withdrawal").aggregate(Sum("amount"))["amount__sum"] or 0
     net_change = total_deposits - total_withdrawals
     total_transactions = qs.count()
 
+    # Pagination for filtered queryset
     paginator = Paginator(qs, 5)
     page_number = request.GET.get("page")
     page_obj = paginator.get_page(page_number)
 
+    # User profile balances
     profile = get_object_or_404(UserProfile, user=request.user)
 
     context = {
@@ -472,13 +475,12 @@ def transactions(request):
         "available_balance": profile.investment_balance,
         "locked_balance": profile.bonus_balance,
         "notifications": [],
-        "recent_transactions": qs[:5],
+        # Always show the latest 5 transactions regardless of filters
+        "recent_transactions": Transaction.objects.filter(user=request.user).order_by("-date")[:5],
         "assets": Transaction.objects.filter(user=request.user).values_list("asset", flat=True).distinct(),
     }
     return render(request, "users/transactions.html", context)
-
-
-
+e
 
 @login_required
 def export_transactions_csv(request):
