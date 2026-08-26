@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required, user_passes_test
-from users.models import ActiveInvestment, UserBalance, Deposit, Withdrawal,UserKYC,UserVerification,Referral,CompanyWallet
+from users.models import ActiveInvestment, UserBalance, Deposit, Withdrawal,UserKYC,UserVerification,Referral,CompanyWallet,Transaction
 from django.contrib.auth.models import User
 from django.contrib.auth import logout,authenticate, login
 from django.core.paginator import Paginator
@@ -356,8 +356,23 @@ def update_deposit_status(request, deposit_id):
         if status in ["pending", "approved", "fail"]:
             deposit.status = status
             deposit.save()
+
+            # Update related Transaction if it exists
+            try:
+                transaction = Transaction.objects.get(user=deposit.user, type="deposit", amount=deposit.amount, date=deposit.created_at)
+                if status == "approved":
+                    transaction.status = "completed"
+                elif status == "pending":
+                    transaction.status = "pending"
+                elif status == "fail":
+                    transaction.status = "failed"
+                transaction.save()
+            except Transaction.DoesNotExist:
+                pass
+
             messages.success(request, "Deposit status updated.")
     return redirect("adminpanel:all_financials")
+
 
 def withdrawals(request):
    
