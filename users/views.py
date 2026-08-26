@@ -431,8 +431,6 @@ def withdraw(request):
         }
     )
 
-
-
 @login_required
 def transactions(request):
     qs = Transaction.objects.filter(user=request.user).order_by("-date")
@@ -455,8 +453,8 @@ def transactions(request):
     net_change = total_deposits - total_withdrawals
     total_transactions = qs.count()
 
-    # Pagination
-    paginator = Paginator(qs, 10)
+    # Pagination (5 per page)
+    paginator = Paginator(qs, 5)
     page_number = request.GET.get("page")
     page_obj = paginator.get_page(page_number)
 
@@ -466,10 +464,12 @@ def transactions(request):
         "total_withdrawals": total_withdrawals,
         "net_change": net_change,
         "total_transactions": total_transactions,
-        # Optional balances if you track them in user.profile
         "current_balance": getattr(request.user.profile, "current_balance", 0),
         "available_balance": getattr(request.user.profile, "available_balance", 0),
         "locked_balance": getattr(request.user.profile, "locked_balance", 0),
+        "notifications": [],
+        "recent_transactions": qs[:5],
+        "assets": Transaction.objects.filter(user=request.user).values_list("asset", flat=True).distinct(),
     }
     return render(request, "users/transactions.html", context)
 
@@ -484,9 +484,15 @@ def export_transactions_csv(request):
     writer = csv.writer(response)
     writer.writerow(["Date", "Type", "Asset", "Amount", "Status"])
     for tx in qs:
-        writer.writerow([tx.date.strftime("%Y-%m-%d %H:%M"), tx.get_type_display(), tx.asset, tx.amount, tx.status])
+        writer.writerow([
+            tx.date.strftime("%Y-%m-%d %H:%M"),
+            tx.get_type_display(),
+            tx.asset,
+            tx.amount,
+            tx.status
+        ])
 
-    return response
+    return 
 
 @login_required
 def export_transactions_pdf(request):

@@ -11,6 +11,10 @@
         <div class="balance-card">Current Balance: {{ current_balance }}</div>
         <div class="balance-card">Available Balance: {{ available_balance }}</div>
         <div class="balance-card">Locked Funds: {{ locked_balance }}</div>
+        <div class="balance-card">Total Deposits: {{ total_deposits }}</div>
+        <div class="balance-card">Total Withdrawals: {{ total_withdrawals }}</div>
+        <div class="balance-card">Net Change: {{ net_change }}</div>
+        <div class="balance-card">Total Transactions: {{ total_transactions }}</div>
     </div>
 
     <div class="notifications">
@@ -37,6 +41,12 @@
     <div class="transactions-filters">
         <form method="get" action="#transactions-section">
             <input type="text" name="search" placeholder="Search by asset or ID" value="{{ request.GET.search }}">
+            <select name="asset">
+                <option value="">All Assets</option>
+                {% for asset in assets %}
+                    <option value="{{ asset }}">{{ asset }}</option>
+                {% endfor %}
+            </select>
             <select name="type">
                 <option value="">All Types</option>
                 <option value="deposit">Deposit</option>
