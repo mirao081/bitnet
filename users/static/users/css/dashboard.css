@@ -4068,7 +4068,9 @@ input.unlocked {
 
 /* Container */
 .all-transactions {
-    margin-top: 20px;
+    max-width: 900px;   /* keep section compact on desktop */
+    margin: 0 auto;     /* center horizontally */
+    padding: 0 15px;
 }
 
 /* Filters layout */
@@ -4077,13 +4079,14 @@ input.unlocked {
     flex-wrap: wrap;
     gap: 10px;
     margin-bottom: 15px;
+    justify-content: center; /* center filters */
 }
 
 .transactions-filters input,
 .transactions-filters select,
 .transactions-filters button {
-    flex: 1 1 150px;
-    min-width: 120px;
+    flex: 1 1 180px;
+    max-width: 220px;   /* prevent oversized fields */
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 4px;
@@ -4093,14 +4096,12 @@ input.unlocked {
 .transactions-table-wrapper {
     width: 100%;
     overflow-x: auto;
-    -webkit-overflow-scrolling: touch; /* smooth scrolling on iOS */
-    margin-left: 15px;   /* nudge left on mobile */
-    margin-right: 10px;
+    -webkit-overflow-scrolling: touch;
 }
 
 /* Table styles */
 .transactions-table {
-    min-width: 600px; /* ensures structure is preserved */
+    min-width: 600px;
     border-collapse: collapse;
     width: 100%;
 }
@@ -4129,14 +4130,12 @@ input.unlocked {
     justify-content: center;
     gap: 10px;
 }
-.pagination a {
+.pagination a,
+.pagination span {
     padding: 6px 12px;
     border: 1px solid #ccc;
     border-radius: 4px;
     text-decoration: none;
-}
-.pagination span {
-    padding: 6px 12px;
 }
 
 /* Export buttons */
@@ -4144,6 +4143,7 @@ input.unlocked {
     margin-top: 20px;
     display: flex;
     gap: 10px;
+    justify-content: center;
 }
 .export-btn {
     padding: 8px 12px;
@@ -4159,6 +4159,7 @@ input.unlocked {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
+    justify-content: center;
 }
 .transactions-chart canvas {
     flex: 1 1 300px;
@@ -4169,25 +4170,25 @@ input.unlocked {
    Responsive Adjustments
    =========================== */
 @media (max-width: 768px) {
-    /* Filters stack vertically */
+    .all-transactions {
+        max-width: 100%;
+        padding: 0 10px;
+    }
+
     .transactions-filters form {
         flex-direction: column;
+        align-items: center;
     }
 
     .transactions-filters input,
     .transactions-filters select,
     .transactions-filters button {
         width: 100%;
-    }
-
-    /* Table scrollable on mobile */
-    .transactions-table-wrapper {
-        margin-left: 15px;
-        margin-right: 10px;
+        max-width: 280px; /* keep inputs compact on mobile */
     }
 
     .transactions-table {
-        min-width: 500px; /* keep columns readable */
+        min-width: 500px;
     }
 }
 
