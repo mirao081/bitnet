@@ -437,6 +437,7 @@ def withdraw(request):
 def transactions(request):
     qs = Transaction.objects.filter(user=request.user).order_by("-date")
 
+    # Filters
     tx_type = request.GET.get("type")
     status = request.GET.get("status")
     search = request.GET.get("search")
@@ -446,14 +447,16 @@ def transactions(request):
     if status:
         qs = qs.filter(status=status)
     if search:
-        qs = qs.filter(asset__icontains=search) | qs.filter(transaction_id__icontains=search)
+        qs = qs.filter(Q(asset__icontains=search) | Q(id__icontains=search))
 
+    # Aggregates
     total_deposits = qs.filter(type="deposit").aggregate(Sum("amount"))["amount__sum"] or 0
     total_withdrawals = qs.filter(type="withdrawal").aggregate(Sum("amount"))["amount__sum"] or 0
     net_change = total_deposits - total_withdrawals
     total_transactions = qs.count()
 
-    paginator = Paginator(qs, 10)  
+    # Pagination
+    paginator = Paginator(qs, 10)
     page_number = request.GET.get("page")
     page_obj = paginator.get_page(page_number)
 
@@ -463,8 +466,13 @@ def transactions(request):
         "total_withdrawals": total_withdrawals,
         "net_change": net_change,
         "total_transactions": total_transactions,
+        # Optional balances if you track them in user.profile
+        "current_balance": getattr(request.user.profile, "current_balance", 0),
+        "available_balance": getattr(request.user.profile, "available_balance", 0),
+        "locked_balance": getattr(request.user.profile, "locked_balance", 0),
     }
     return render(request, "users/transactions.html", context)
+
 
 @login_required
 def export_transactions_csv(request):
@@ -476,7 +484,7 @@ def export_transactions_csv(request):
     writer = csv.writer(response)
     writer.writerow(["Date", "Type", "Asset", "Amount", "Status"])
     for tx in qs:
-        writer.writerow([tx.date, tx.type, tx.asset, tx.amount, tx.status])
+        writer.writerow([tx.date.strftime("%Y-%m-%d %H:%M"), tx.get_type_display(), tx.asset, tx.amount, tx.status])
 
     return response
 
