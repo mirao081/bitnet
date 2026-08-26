@@ -433,19 +433,21 @@ def withdraw(request):
 
 @login_required
 def transactions(request):
-    # Get all transactions for this user
     qs = Transaction.objects.filter(user=request.user).order_by("-date")
 
-    # Filters
+    # Only filter if a value is provided
     tx_type = request.GET.get("type")
     status = request.GET.get("status")
     search = request.GET.get("search")
+    asset = request.GET.get("asset")
 
-    if tx_type:
+    if tx_type and tx_type.strip():
         qs = qs.filter(type=tx_type)
-    if status:
+    if status and status.strip():
         qs = qs.filter(status=status)
-    if search:
+    if asset and asset.strip():
+        qs = qs.filter(asset=asset)
+    if search and search.strip():
         qs = qs.filter(Q(asset__icontains=search) | Q(id__icontains=search))
 
     # Aggregates
@@ -454,16 +456,14 @@ def transactions(request):
     net_change = total_deposits - total_withdrawals
     total_transactions = qs.count()
 
-    # Pagination (5 per page)
     paginator = Paginator(qs, 5)
     page_number = request.GET.get("page")
     page_obj = paginator.get_page(page_number)
 
-    # User profile balances
     profile = get_object_or_404(UserProfile, user=request.user)
 
     context = {
-        "transactions": page_obj,  # this drives the table
+        "transactions": page_obj,
         "total_deposits": total_deposits,
         "total_withdrawals": total_withdrawals,
         "net_change": net_change,
@@ -472,10 +472,11 @@ def transactions(request):
         "available_balance": profile.investment_balance,
         "locked_balance": profile.bonus_balance,
         "notifications": [],
-        "recent_transactions": qs[:5],  # snapshot list
+        "recent_transactions": qs[:5],
         "assets": Transaction.objects.filter(user=request.user).values_list("asset", flat=True).distinct(),
     }
     return render(request, "users/transactions.html", context)
+
 
 
 
