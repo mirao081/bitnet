@@ -480,7 +480,7 @@ def transactions(request):
         "assets": Transaction.objects.filter(user=request.user).values_list("asset", flat=True).distinct(),
     }
     return render(request, "users/transactions.html", context)
-e
+
 
 @login_required
 def export_transactions_csv(request):
