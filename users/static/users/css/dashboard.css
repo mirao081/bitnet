@@ -4106,6 +4106,10 @@ input.unlocked {
     .transactions-filters button {
         width: 100%;
     }
+    .all-transactions {
+        padding-left: 15px;
+        padding-right: 10px;
+    }
 }
 
 /* Status badges */
