@@ -458,15 +458,18 @@ def transactions(request):
     page_number = request.GET.get("page")
     page_obj = paginator.get_page(page_number)
 
+    # Get user profile safely
+    profile = get_object_or_404(UserProfile, user=request.user)
+
     context = {
         "transactions": page_obj,
         "total_deposits": total_deposits,
         "total_withdrawals": total_withdrawals,
         "net_change": net_change,
         "total_transactions": total_transactions,
-        "current_balance": getattr(request.user.profile, "current_balance", 0),
-        "available_balance": getattr(request.user.profile, "available_balance", 0),
-        "locked_balance": getattr(request.user.profile, "locked_balance", 0),
+        "current_balance": profile.usd_balance,
+        "available_balance": profile.investment_balance,
+        "locked_balance": profile.bonus_balance,
         "notifications": [],
         "recent_transactions": qs[:5],
         "assets": Transaction.objects.filter(user=request.user).values_list("asset", flat=True).distinct(),
