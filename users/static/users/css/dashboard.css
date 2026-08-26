@@ -4062,6 +4062,61 @@ input.unlocked {
     font-size: 1rem;
     color: #ddd;
 }
+/* Filters layout */
+.transactions-filters form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.transactions-filters input,
+.transactions-filters select,
+.transactions-filters button {
+    flex: 1 1 150px;
+    min-width: 120px;
+}
+
+/* Table responsiveness */
+.transactions-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.transactions-table th,
+.transactions-table td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Mobile view: make table scrollable */
+@media (max-width: 768px) {
+    .transactions-table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    .transactions-filters form {
+        flex-direction: column;
+    }
+
+    .transactions-filters input,
+    .transactions-filters select,
+    .transactions-filters button {
+        width: 100%;
+    }
+}
+
+/* Status badges */
+.status {
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-weight: bold;
+}
+.status.approved { background-color: #4caf50; color: white; }
+.status.pending { background-color: #ff9800; color: white; }
+.status.fail, .status.failed { background-color: #f44336; color: white; }
 
 .transactions-summary {
     display: flex;
