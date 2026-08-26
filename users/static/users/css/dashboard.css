@@ -4072,24 +4072,19 @@ input.unlocked {
     margin: 0 auto;     /* center horizontally */
     padding: 0 15px;
 }
-
-/* Filters layout */
-.transactions-filters form {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
+/* Default heading style */
+.all-transactions h2 {
+    font-size: 1.6rem;   /* desktop size */
+    text-align: left;    /* keep left aligned on larger screens */
     margin-bottom: 15px;
-    justify-content: center; /* center filters */
 }
 
-.transactions-filters input,
-.transactions-filters select,
-.transactions-filters button {
-    flex: 1 1 180px;
-    max-width: 220px;   /* prevent oversized fields */
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+/* Mobile heading adjustments */
+@media (max-width: 768px) {
+    .all-transactions h2 {
+        font-size: 1.2rem;   /* smaller heading on mobile */
+        text-align: center;  /* center align only on mobile */
+    }
 }
 
 /* Table wrapper for scroll */
