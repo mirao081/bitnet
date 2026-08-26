@@ -7,6 +7,7 @@
         <p class="transactions-subtitle">Track balances, view activity, and export your reports.</p>
     </div>
 
+    <!-- Balance Overview -->
     <div class="balance-overview">
         <div class="balance-card">USD Balance: {{ current_balance }}</div>
         <div class="balance-card">Investment Balance: {{ available_balance }}</div>
@@ -17,6 +18,7 @@
         <div class="balance-card">Total Transactions: {{ total_transactions }}</div>
     </div>
 
+    <!-- Notifications -->
     <div class="notifications">
         {% for note in notifications %}
             <div class="notification {{ note.type }}">
@@ -27,8 +29,9 @@
         {% endfor %}
     </div>
 
+    <!-- Recent Activity -->
     <div class="recent-activity">
-        <h2>Recent Activity</h2>
+        <h2>Recent Activity (Last 5)</h2>
         <ul>
             {% for tx in recent_transactions %}
                 <li>{{ tx.date|date:"Y-m-d H:i" }} — {{ tx.get_type_display }} {{ tx.amount }} {{ tx.asset }} ({{ tx.status|title }})</li>
@@ -38,76 +41,86 @@
         </ul>
     </div>
 
-    <div class="transactions-filters">
-        <form method="get" action="#transactions-section">
-            <input type="text" name="search" placeholder="Search by asset or ID" value="{{ request.GET.search }}">
-            <select name="asset">
-                <option value="">All Assets</option>
-                {% for asset in assets %}
-                    <option value="{{ asset }}">{{ asset }}</option>
+    <!-- All Transactions -->
+    <div class="all-transactions">
+        <h2>All Transactions</h2>
+
+        <!-- Filters -->
+        <div class="transactions-filters">
+            <form method="get" action="#transactions-section">
+                <input type="text" name="search" placeholder="Search by asset or ID" value="{{ request.GET.search }}">
+                <select name="asset">
+                    <option value="">All Assets</option>
+                    {% for asset in assets %}
+                        <option value="{{ asset }}">{{ asset }}</option>
+                    {% endfor %}
+                </select>
+                <select name="type">
+                    <option value="">All Types</option>
+                    <option value="deposit">Deposit</option>
+                    <option value="withdrawal">Withdrawal</option>
+                    <option value="investment">Investment</option>
+                    <option value="payout">Payout</option>
+                    <option value="bonus">Bonus</option>
+                    <option value="buy">Buy</option>
+                    <option value="sell">Sell</option>
+                </select>
+                <select name="status">
+                    <option value="">All Statuses</option>
+                    <option value="pending">Pending</option>
+                    <option value="completed">Completed</option>
+                    <option value="failed">Failed</option>
+                </select>
+                <button type="submit">Filter</button>
+            </form>
+        </div>
+
+        <!-- Transactions Table -->
+        <table class="transactions-table">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Type</th>
+                    <th>Asset</th>
+                    <th>Amount</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for tx in transactions %}
+                <tr>
+                    <td>{{ tx.date|date:"Y-m-d H:i" }}</td>
+                    <td>{{ tx.get_type_display }}</td>
+                    <td>{{ tx.asset }}</td>
+                    <td>{{ tx.amount }}</td>
+                    <td><span class="status {{ tx.status }}">{{ tx.status|title }}</span></td>
+                </tr>
+                {% empty %}
+                <tr><td colspan="5">No transactions found.</td></tr>
                 {% endfor %}
-            </select>
-            <select name="type">
-                <option value="">All Types</option>
-                <option value="deposit">Deposit</option>
-                <option value="withdrawal">Withdrawal</option>
-                <option value="investment">Investment</option>
-                <option value="payout">Payout</option>
-                <option value="bonus">Bonus</option>
-                <option value="buy">Buy</option>
-                <option value="sell">Sell</option>
-            </select>
-            <select name="status">
-                <option value="">All Statuses</option>
-                <option value="pending">Pending</option>
-                <option value="completed">Completed</option>
-                <option value="failed">Failed</option>
-            </select>
-            <button type="submit">Filter</button>
-        </form>
+            </tbody>
+        </table>
+
+        <!-- Pagination -->
+        <div class="pagination">
+            {% if transactions.has_previous %}
+                <a href="?page={{ transactions.previous_page_number }}#transactions-section">Previous</a>
+            {% endif %}
+            <span>Page {{ transactions.number }} of {{ transactions.paginator.num_pages }}</span>
+            {% if transactions.has_next %}
+                <a href="?page={{ transactions.next_page_number }}#transactions-section">Next</a>
+            {% endif %}
+        </div>
     </div>
 
-    <table class="transactions-table">
-        <thead>
-            <tr>
-                <th>Date</th>
-                <th>Type</th>
-                <th>Asset</th>
-                <th>Amount</th>
-                <th>Status</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for tx in transactions %}
-            <tr>
-                <td>{{ tx.date|date:"Y-m-d H:i" }}</td>
-                <td>{{ tx.get_type_display }}</td>
-                <td>{{ tx.asset }}</td>
-                <td>{{ tx.amount }}</td>
-                <td><span class="status {{ tx.status }}">{{ tx.status|title }}</span></td>
-            </tr>
-            {% empty %}
-            <tr><td colspan="5">No transactions found.</td></tr>
-            {% endfor %}
-        </tbody>
-    </table>
-
-    <div class="pagination">
-        {% if transactions.has_previous %}
-            <a href="?page={{ transactions.previous_page_number }}#transactions-section">Previous</a>
-        {% endif %}
-        <span>Page {{ transactions.number }} of {{ transactions.paginator.num_pages }}</span>
-        {% if transactions.has_next %}
-            <a href="?page={{ transactions.next_page_number }}#transactions-section">Next</a>
-        {% endif %}
-    </div>
-
+    <!-- Export -->
     <div class="transactions-export">
         <a href="{% url 'users:export_transactions_csv' %}" class="export-btn">Export CSV</a>
         <a href="{% url 'users:export_transactions_pdf' %}" class="export-btn">Export PDF</a>
         <a href="{% url 'users:export_transactions_excel' %}" class="export-btn">Export Excel</a>
     </div>
 
+    <!-- Charts -->
     <div class="transactions-chart">
         <canvas id="txChart"></canvas>
         <canvas id="balanceChart"></canvas>
