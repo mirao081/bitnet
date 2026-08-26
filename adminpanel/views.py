@@ -366,17 +366,12 @@ def update_deposit_status(request, deposit_id):
             ).order_by("-date").first()
 
             if transaction:
-                if status == "approved":
-                    transaction.status = "completed"
-                elif status == "pending":
-                    transaction.status = "pending"
-                elif status == "fail":
-                    transaction.status = "failed"
+                # Match Transaction status directly to Deposit status
+                transaction.status = status
                 transaction.save()
 
             messages.success(request, "Deposit status updated.")
     return redirect("adminpanel:all_financials")
-
 
 def withdrawals(request):
    
