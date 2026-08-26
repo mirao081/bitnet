@@ -396,11 +396,25 @@ def update_withdrawal_status(request, withdrawal_id):
     withdrawal = get_object_or_404(Withdrawal, id=withdrawal_id)
     if request.method == "POST":
         status = request.POST.get("status")
-        if status:
+        if status in ["pending", "approved", "fail"]:
             withdrawal.status = status
             withdrawal.save()
-            messages.success(request, "Withdrawal update.")
+
+            # Sync with Transaction model
+            transaction = Transaction.objects.filter(
+                user=withdrawal.user,
+                type="withdrawal",
+                amount=withdrawal.amount,
+                asset=withdrawal.currency  # ensure asset matches
+            ).order_by("-date").first()
+
+            if transaction:
+                transaction.status = status  # mirror the withdrawal status
+                transaction.save()
+
+            messages.success(request, "Withdrawal status updated.")
     return redirect("adminpanel:withdrawals")
+
 
 
 @login_required
