@@ -433,6 +433,7 @@ def withdraw(request):
 
 @login_required
 def transactions(request):
+    # Get all transactions for this user
     qs = Transaction.objects.filter(user=request.user).order_by("-date")
 
     # Filters
@@ -458,11 +459,11 @@ def transactions(request):
     page_number = request.GET.get("page")
     page_obj = paginator.get_page(page_number)
 
-    # Get user profile safely
+    # User profile balances
     profile = get_object_or_404(UserProfile, user=request.user)
 
     context = {
-        "transactions": page_obj,
+        "transactions": page_obj,  # this drives the table
         "total_deposits": total_deposits,
         "total_withdrawals": total_withdrawals,
         "net_change": net_change,
@@ -471,10 +472,11 @@ def transactions(request):
         "available_balance": profile.investment_balance,
         "locked_balance": profile.bonus_balance,
         "notifications": [],
-        "recent_transactions": qs[:5],
+        "recent_transactions": qs[:5],  # snapshot list
         "assets": Transaction.objects.filter(user=request.user).values_list("asset", flat=True).distinct(),
     }
     return render(request, "users/transactions.html", context)
+
 
 
 @login_required
