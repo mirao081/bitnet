@@ -2,7 +2,7 @@ from django.contrib import admin
 from .models import UserVerification, UserKYC, Notification,SupportArticle,UserProfile, UserWallet
 from django.core.mail import send_mail
 from django.conf import settings
-from .models import CompanyWallet,Referral, ReferralCommission
+from .models import CompanyWallet,Referral, ReferralCommission, Transaction
 
 @admin.register(UserVerification)
 class UserVerificationAdmin(admin.ModelAdmin):
@@ -69,3 +69,18 @@ class ReferralCommissionAdmin(admin.ModelAdmin):
     list_display = ("referrer", "referral", "deposit_amount", "commission_amount", "created_at")
     search_fields = ("referrer__username", "referral__username")
     list_filter = ("created_at",)
+
+@admin.action(description="Mark selected transactions as completed")
+def mark_completed(modeladmin, request, queryset):
+    queryset.update(status="completed")
+
+@admin.action(description="Mark selected transactions as pending")
+def mark_pending(modeladmin, request, queryset):
+    queryset.update(status="pending")
+
+@admin.register(Transaction)
+class TransactionAdmin(admin.ModelAdmin):
+    list_display = ("user", "type", "asset", "amount", "status", "date")
+    list_filter = ("type", "status", "date")
+    search_fields = ("user__username", "asset")
+    actions = [mark_completed, mark_pending]
