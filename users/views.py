@@ -74,71 +74,152 @@ MIN_WITHDRAWAL = Decimal("200.00")
 def dashboard(request):
     user = request.user
     instruments = MarketInstrument.objects.all()
-    profile, _ = UserProfile.objects.get_or_create(user=user)
-    investments = ActiveInvestment.objects.filter(user=user)
-    referral, _ = Referral.objects.get_or_create(user=user)
-    notifications = Notification.objects.filter(user=user).order_by("-timestamp")[:10]
 
-    for inv in investments.filter(status="active"):
-        if timezone.now() >= inv.end_date:
-            inv.status = "completed"
-            inv.save()
+    profile, _ = UserProfile.objects.get_or_create(
+        user=user
+    )
 
-    investments = ActiveInvestment.objects.filter(user=user)
+    investments = ActiveInvestment.objects.filter(
+        user=user
+    )
 
-    growth_data, growth_labels = [], []
+    referral, _ = Referral.objects.get_or_create(
+        user=user
+    )
+
+    notifications = Notification.objects.filter(
+        user=user
+    ).order_by("-timestamp")[:10]
+
+    # IMPORTANT:
+    # The dashboard must NOT complete investments.
+    # Investment payouts, principal returns, and completion
+    # are handled exclusively by process_matured_investments().
+
+    growth_data = []
+    growth_labels = []
+
     total = 0
+
     for inv in investments.order_by("start_date"):
         total += float(inv.amount)
-        growth_data.append(round(total, 2))
-        growth_labels.append(inv.start_date.strftime("%b %d"))
 
-    daily_roi = weekly_roi = monthly_roi = 0
+        growth_data.append(
+            round(total, 2)
+        )
+
+        growth_labels.append(
+            inv.start_date.strftime("%b %d")
+        )
+
+    # Dashboard ROI summary.
+    # Use the actual investment ROI rather than dividing
+    # the principal by the number of days.
+
+    daily_roi = 0
+    weekly_roi = 0
+    monthly_roi = 0
+
     for inv in investments:
-        days = (inv.end_date - inv.start_date).days
-        if days > 0:
-            daily_roi += float(inv.amount) / days
-            weekly_roi += (float(inv.amount) / days) * 7
-            monthly_roi += (float(inv.amount) / days) * 30
 
-    roi_data = [round(daily_roi, 2), round(weekly_roi, 2), round(monthly_roi, 2)]
+        profit = (
+            float(inv.amount)
+            * float(inv.roi_percent)
+            / 100
+        )
+
+        daily_roi += profit
+
+        weekly_roi += profit * 7
+
+        monthly_roi += profit * 30
+
+    roi_data = [
+        round(daily_roi, 2),
+        round(weekly_roi, 2),
+        round(monthly_roi, 2),
+    ]
 
     try:
         crypto_url = (
             "https://api.coingecko.com/api/v3/simple/price"
             "?ids=bitcoin,ethereum&vs_currencies=usd"
         )
-        crypto_response = requests.get(crypto_url, timeout=10)
+
+        crypto_response = requests.get(
+            crypto_url,
+            timeout=10
+        )
+
         crypto_data = crypto_response.json()
-        btc_price = crypto_data.get("bitcoin", {}).get("usd", "N/A")
-        eth_price = crypto_data.get("ethereum", {}).get("usd", "N/A")
+
+        btc_price = (
+            crypto_data
+            .get("bitcoin", {})
+            .get("usd", "N/A")
+        )
+
+        eth_price = (
+            crypto_data
+            .get("ethereum", {})
+            .get("usd", "N/A")
+        )
 
         fmp_url = (
             "https://financialmodelingprep.com/api/v3/quote/%5EGSPC"
             "?apikey=ZR8hDHF0vtAETUxVCfT41Du5Wtc9fzEO"
         )
-        fmp_response = requests.get(fmp_url, timeout=10)
-        sp500_data = fmp_response.json()
-        sp500_index = sp500_data[0].get("price", "N/A") if sp500_data else "N/A"
-    except Exception:
-        btc_price = eth_price = sp500_index = "N/A"
 
-    referred_users = User.objects.filter(referral__referrer=user)
+        fmp_response = requests.get(
+            fmp_url,
+            timeout=10
+        )
+
+        sp500_data = fmp_response.json()
+
+        sp500_index = (
+            sp500_data[0].get("price", "N/A")
+            if sp500_data
+            else "N/A"
+        )
+
+    except Exception:
+        btc_price = "N/A"
+        eth_price = "N/A"
+        sp500_index = "N/A"
+
+    referred_users = User.objects.filter(
+        referral__referrer=user
+    )
+
     referral_count = referred_users.count()
 
     referral_bonus = (
-        ReferralCommission.objects.filter(referrer=user).aggregate(
+        ReferralCommission.objects
+        .filter(referrer=user)
+        .aggregate(
             total=Sum("commission_amount")
         )["total"]
         or 0
     )
-    completed_investments = investments.filter(status="completed")
+
+    completed_investments = investments.filter(
+        status="completed"
+    )
 
     try:
         total_profit = sum(
-            (getattr(inv, "get_current_value", lambda: inv.amount)() - inv.amount)
+            (
+                getattr(
+                    inv,
+                    "get_current_value",
+                    lambda: inv.amount
+                )()
+                - inv.amount
+            )
             for inv in completed_investments
         )
+
     except Exception:
         total_profit = 0
 
@@ -148,13 +229,11 @@ def dashboard(request):
             + profile.investment_balance
             + profile.profit_balance
             + profile.bonus_balance
-            + sum(
-                getattr(inv, "get_current_value", lambda: inv.amount)()
-                for inv in completed_investments
-            )
         )
+
     except Exception:
         total_balance = 0
+
     context = {
         "instruments": instruments,
         "profile": profile,
@@ -174,7 +253,12 @@ def dashboard(request):
         "investment_balance": profile.investment_balance,
     }
 
-    return render(request, "users/dashboard.html", context)
+    return render(
+        request,
+        "users/dashboard.html",
+        context
+    )
+
 
 @login_required
 def portfolio(request):

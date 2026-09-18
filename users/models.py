@@ -29,7 +29,7 @@ class ActiveInvestment(models.Model):
     ]
 
     user = models.ForeignKey(
-        "auth.User",
+        User,
         on_delete=models.CASCADE
     )
 
@@ -62,31 +62,15 @@ class ActiveInvestment(models.Model):
         default="active"
     )
 
+    # NEW FIELDS
+    payouts_processed = models.PositiveIntegerField(default=0)
+    last_payout_at = models.DateTimeField(null=True, blank=True)
+    principal_returned = models.BooleanField(default=False)
+
     def __str__(self):
         return f"{self.user.username} - {self.plan_name}"
 
-    def get_current_multiplier(self):
-        now = timezone.now()
-
-        if now >= self.end_date:
-            return Decimal("1") + (self.roi_percent / Decimal("100"))
-
-        total_duration = Decimal(
-            (self.end_date - self.start_date).total_seconds()
-        )
-
-        elapsed = Decimal(
-            (now - self.start_date).total_seconds()
-        )
-
-        progress = elapsed / total_duration
-
-        return Decimal("1") + (
-            self.roi_percent / Decimal("100")
-        ) * progress
-
-    def get_current_value(self):
-        return self.amount * self.get_current_multiplier()
+    
     
 class Referral(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)

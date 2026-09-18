@@ -1,5 +1,7 @@
 from pathlib import Path
 import os
+from dotenv import load_dotenv
+load_dotenv()
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -105,8 +107,8 @@ STATICFILES_DIRS = [
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
-RECAPTCHA_PUBLIC_KEY = "6LebNoctAAAAAAaNs4Ykdrc8yQCZOs2TuDbxbZvu"
-RECAPTCHA_PRIVATE_KEY = "6LebNoctAAAAAJv_88a_-8fUXDiCDX1wvA9t4fjZ"
+RECAPTCHA_PUBLIC_KEY = os.getenv("RECAPTCHA_PUBLIC_KEY")
+RECAPTCHA_PRIVATE_KEY = os.getenv("RECAPTCHA_PRIVATE_KEY")
 RECAPTCHA_USE_SSL = True
 
 DEFAULT_FROM_EMAIL = "support@bitnetapp.com"

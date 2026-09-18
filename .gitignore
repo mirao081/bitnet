@@ -3,14 +3,15 @@ staticfiles/
 
 # Ignore Python cache
 __pycache__/
+*.pyc
 
 # Ignore virtual environment
 venv/
+newenv/
 
 # Ignore database files
 *.sqlite3
-bitnet/settings.py
 db.sqlite3
-__pycache__/
-*.pyc
-newenv/
+
+# Ignore environment variables and secrets
+.env
