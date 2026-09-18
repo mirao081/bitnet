@@ -26,7 +26,6 @@ from users.models import (
 import pyotp
 import base64
 import qrcode
-import qrcode.image.svg
 import user_agents
 
 
