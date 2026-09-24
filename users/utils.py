@@ -3,11 +3,15 @@ from datetime import timedelta
 
 from django.utils import timezone
 from django.conf import settings
+from django.db import transaction
+from django.db import transaction
 from django.core.mail import EmailMultiAlternatives, get_connection
 from django.template.loader import render_to_string
 from django.core.mail import send_mail
 
 from .models import ActiveInvestment, Notification, ProfitRecord
+from .models import UserProfile
+from .models import UserProfile
 from crypto.models import InvestmentPlan
 
 
@@ -96,7 +100,6 @@ def credit_profit(user, investment):
 
     return profit_amount
 
-
 def process_matured_investments():
     """
     Process active investments.
@@ -116,17 +119,21 @@ def process_matured_investments():
 
     principal_returned prevents the same principal from
     being returned more than once.
+
+    User profiles are locked while balances are updated so that
+    multiple investments belonging to the same user cannot
+    overwrite each other's balance changes.
     """
+
+    import logging
 
     now = timezone.now()
 
     investments = (
         ActiveInvestment.objects
         .filter(status="active")
-        .select_related(
-            "user",
-            "user__userprofile",
-        )
+        .select_related("user")
+        .order_by("user_id", "id")
     )
 
     processed_count = 0
@@ -134,7 +141,6 @@ def process_matured_investments():
     for investment in investments:
         try:
             user = investment.user
-            profile = user.userprofile
 
             plan = InvestmentPlan.objects.filter(
                 name=investment.plan_name
@@ -151,27 +157,35 @@ def process_matured_investments():
             )
 
             if not is_daily:
-                if now >= investment.end_date:
+                if now < investment.end_date:
+                    continue
 
-                    if investment.payouts_processed == 0:
-                        credit_profit(
-                            user,
-                            investment,
+                if investment.payouts_processed == 0:
+                    credit_profit(
+                        user,
+                        investment,
+                    )
+
+                    investment.payouts_processed = 1
+                    investment.last_payout_at = now
+
+                    investment.save(
+                        update_fields=[
+                            "payouts_processed",
+                            "last_payout_at",
+                        ]
+                    )
+
+                    processed_count += 1
+
+                if not investment.principal_returned:
+                    with transaction.atomic():
+                        profile = (
+                            UserProfile.objects
+                            .select_for_update()
+                            .get(user=user)
                         )
 
-                        investment.payouts_processed = 1
-                        investment.last_payout_at = now
-
-                        investment.save(
-                            update_fields=[
-                                "payouts_processed",
-                                "last_payout_at",
-                            ]
-                        )
-
-                        processed_count += 1
-
-                    if not investment.principal_returned:
                         profile.investment_balance -= investment.amount
 
                         if profile.investment_balance < Decimal("0.00"):
@@ -196,7 +210,7 @@ def process_matured_investments():
                             ]
                         )
 
-                        processed_count += 1
+                    processed_count += 1
 
                 continue
 
@@ -213,10 +227,7 @@ def process_matured_investments():
                 total_payouts,
             )
 
-            while (
-                investment.payouts_processed
-                < due_payouts
-            ):
+            while investment.payouts_processed < due_payouts:
                 credit_profit(
                     user,
                     investment,
@@ -245,37 +256,47 @@ def process_matured_investments():
                 and investment.payouts_processed >= total_payouts
                 and not investment.principal_returned
             ):
-                profile.investment_balance -= investment.amount
+                with transaction.atomic():
+                    profile = (
+                        UserProfile.objects
+                        .select_for_update()
+                        .get(user=user)
+                    )
 
-                if profile.investment_balance < Decimal("0.00"):
-                    profile.investment_balance = Decimal("0.00")
+                    profile.investment_balance -= investment.amount
 
-                profile.usd_balance += investment.amount
+                    if profile.investment_balance < Decimal("0.00"):
+                        profile.investment_balance = Decimal("0.00")
 
-                profile.save(
-                    update_fields=[
-                        "investment_balance",
-                        "usd_balance",
-                    ]
-                )
+                    profile.usd_balance += investment.amount
 
-                investment.principal_returned = True
-                investment.status = "completed"
+                    profile.save(
+                        update_fields=[
+                            "investment_balance",
+                            "usd_balance",
+                        ]
+                    )
 
-                investment.save(
-                    update_fields=[
-                        "principal_returned",
-                        "status",
-                    ]
-                )
+                    investment.principal_returned = True
+                    investment.status = "completed"
+
+                    investment.save(
+                        update_fields=[
+                            "principal_returned",
+                            "status",
+                        ]
+                    )
 
                 processed_count += 1
 
         except Exception:
+            logging.getLogger(__name__).exception(
+                "Investment processing failed for investment ID %s",
+                investment.id,
+            )
             continue
 
     return processed_count
-
 
 def format_currency(amount):
     """
