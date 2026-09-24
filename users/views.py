@@ -70,9 +70,11 @@ logger = logging.getLogger(__name__)
 MIN_WITHDRAWAL = Decimal("200.00") 
 
 
+
 @login_required
 def dashboard(request):
     user = request.user
+
     instruments = MarketInstrument.objects.all()
 
     profile, _ = UserProfile.objects.get_or_create(
@@ -91,14 +93,8 @@ def dashboard(request):
         user=user
     ).order_by("-timestamp")[:10]
 
-    # IMPORTANT:
-    # The dashboard must NOT complete investments.
-    # Investment payouts, principal returns, and completion
-    # are handled exclusively by process_matured_investments().
-
     growth_data = []
     growth_labels = []
-
     total = 0
 
     for inv in investments.order_by("start_date"):
@@ -112,16 +108,11 @@ def dashboard(request):
             inv.start_date.strftime("%b %d")
         )
 
-    # Dashboard ROI summary.
-    # Use the actual investment ROI rather than dividing
-    # the principal by the number of days.
-
     daily_roi = 0
     weekly_roi = 0
     monthly_roi = 0
 
     for inv in investments:
-
         profit = (
             float(inv.amount)
             * float(inv.roi_percent)
@@ -129,9 +120,7 @@ def dashboard(request):
         )
 
         daily_roi += profit
-
         weekly_roi += profit * 7
-
         monthly_roi += profit * 30
 
     roi_data = [
@@ -203,25 +192,17 @@ def dashboard(request):
         or 0
     )
 
-    completed_investments = investments.filter(
-        status="completed"
-    )
-
-    try:
-        total_profit = sum(
-            (
-                getattr(
-                    inv,
-                    "get_current_value",
-                    lambda: inv.amount
-                )()
-                - inv.amount
-            )
-            for inv in completed_investments
+    total_profit = (
+        ProfitRecord.objects
+        .filter(
+            user=user,
+            status="Credited",
         )
-
-    except Exception:
-        total_profit = 0
+        .aggregate(
+            total=Sum("amount")
+        )["total"]
+        or 0
+    )
 
     try:
         total_balance = (
@@ -258,6 +239,8 @@ def dashboard(request):
         "users/dashboard.html",
         context
     )
+
+
 
 
 @login_required
