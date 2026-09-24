@@ -1426,6 +1426,7 @@ def start_investment(request):
             user=request.user,
             plan_name=plan.name,
             roi_percent=plan.roi_percent,
+            payout_type=plan.payout_type,
             amount=amount,
             start_date=start_date,
             end_date=end_date,

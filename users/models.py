@@ -52,6 +52,15 @@ class ActiveInvestment(models.Model):
         default=0.00
     )
 
+    payout_type = models.CharField(
+        max_length=10,
+        choices=[
+            ("once", "One Time"),
+            ("daily", "Daily"),
+        ],
+        default="once"
+    )
+
     start_date = models.DateTimeField()
 
     end_date = models.DateTimeField()

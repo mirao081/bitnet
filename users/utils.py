@@ -12,7 +12,6 @@ from crypto.models import InvestmentPlan
 
 
 def send_html_email(subject, message, user, backend_settings):
-    # Render your HTML template with logo + styling
     html_content = render_to_string(
         "users/transaction_email.html",
         {
@@ -22,7 +21,6 @@ def send_html_email(subject, message, user, backend_settings):
         },
     )
 
-    # Plain text fallback
     text_content = f"{subject}\n\n{message}"
 
     connection = get_connection(
@@ -69,9 +67,10 @@ def credit_profit(user, investment):
     """
     Credit one investment profit payout.
 
-    The profit is added to the user's profit balance and recorded
-    in ProfitRecord.
+    The profit is added to the user's profit balance
+    and recorded in ProfitRecord.
     """
+
     profit_amount = (
         investment.amount
         * (investment.roi_percent / Decimal("100"))
@@ -106,11 +105,17 @@ def process_matured_investments():
         Pay one full ROI at maturity, then return the principal.
 
     Daily plans:
-        Pay one full ROI every 24 hours for the duration of the plan,
-        then return the principal on final maturity.
+        Pay one full ROI after every completed 24-hour period
+        for the duration of the plan, then return the principal
+        when the investment reaches final maturity.
 
-    The processor is idempotent because payouts_processed and
-    principal_returned record what has already been completed.
+    The processor is designed to be idempotent.
+
+    payouts_processed prevents the same ROI payout from
+    being processed more than once.
+
+    principal_returned prevents the same principal from
+    being returned more than once.
     """
 
     now = timezone.now()
@@ -118,7 +123,10 @@ def process_matured_investments():
     investments = (
         ActiveInvestment.objects
         .filter(status="active")
-        .select_related("user", "user__userprofile")
+        .select_related(
+            "user",
+            "user__userprofile",
+        )
     )
 
     processed_count = 0
@@ -128,7 +136,6 @@ def process_matured_investments():
             user = investment.user
             profile = user.userprofile
 
-            # Find the original investment plan.
             plan = InvestmentPlan.objects.filter(
                 name=investment.plan_name
             ).first()
@@ -136,23 +143,16 @@ def process_matured_investments():
             if not plan:
                 continue
 
-            # Daily plans explicitly contain "EVERY DAY".
-            is_daily = "EVERY DAY" in plan.duration_text.upper()
+            is_daily = investment.payout_type == "daily"
 
-            # Number of payout periods.
             total_payouts = max(
                 1,
                 plan.duration_hours // 24,
             )
 
-            # =========================================================
-            # ONE-TIME PLAN
-            # =========================================================
             if not is_daily:
-
                 if now >= investment.end_date:
 
-                    # Pay the ROI exactly once.
                     if investment.payouts_processed == 0:
                         credit_profit(
                             user,
@@ -169,9 +169,9 @@ def process_matured_investments():
                             ]
                         )
 
-                    # Return the original principal exactly once.
-                    if not investment.principal_returned:
+                        processed_count += 1
 
+                    if not investment.principal_returned:
                         profile.investment_balance -= investment.amount
 
                         if profile.investment_balance < Decimal("0.00"):
@@ -196,30 +196,23 @@ def process_matured_investments():
                             ]
                         )
 
-                    processed_count += 1
+                        processed_count += 1
 
                 continue
-
-            # =========================================================
-            # DAILY PLAN
-            # =========================================================
 
             elapsed_seconds = (
                 now - investment.start_date
             ).total_seconds()
 
-            # One payout becomes due after each complete 24-hour period.
             due_payouts = int(
                 elapsed_seconds // (24 * 60 * 60)
             )
 
-            # Never process more payouts than the plan allows.
             due_payouts = min(
                 due_payouts,
                 total_payouts,
             )
 
-            # Catch up missed daily payouts.
             while (
                 investment.payouts_processed
                 < due_payouts
@@ -247,23 +240,16 @@ def process_matured_investments():
 
                 processed_count += 1
 
-            # =========================================================
-            # FINAL MATURITY
-            # =========================================================
-
             if (
                 now >= investment.end_date
                 and investment.payouts_processed >= total_payouts
                 and not investment.principal_returned
             ):
-
-                # Remove the principal from the investment balance.
                 profile.investment_balance -= investment.amount
 
                 if profile.investment_balance < Decimal("0.00"):
                     profile.investment_balance = Decimal("0.00")
 
-                # Return the original principal to USD balance.
                 profile.usd_balance += investment.amount
 
                 profile.save(
@@ -283,9 +269,9 @@ def process_matured_investments():
                     ]
                 )
 
+                processed_count += 1
+
         except Exception:
-            # One problematic investment must not stop the processor
-            # from processing other users' investments.
             continue
 
     return processed_count
@@ -296,6 +282,7 @@ def format_currency(amount):
     Format a numeric amount as USD currency with a dollar sign,
     commas for thousands, and two decimal places.
     """
+
     try:
         return "${:,.2f}".format(float(amount))
     except Exception:

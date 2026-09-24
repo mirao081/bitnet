@@ -135,19 +135,60 @@ class InvestmentPlanSlide(models.Model):
 
 
 class InvestmentPlan(models.Model):
+
+    PAYOUT_CHOICES = [
+        ("once", "One Time"),
+        ("daily", "Daily"),
+    ]
+
     name = models.CharField(max_length=100)
-    percentage_text = models.CharField(max_length=100)  
-    roi_percent = models.DecimalField(max_digits=5, decimal_places=2, default=0.00)
-    duration_text = models.CharField(max_length=100)    
-    duration_hours = models.PositiveIntegerField(default=24)  
+
+    percentage_text = models.CharField(max_length=100)
+
+    roi_percent = models.DecimalField(
+        max_digits=5,
+        decimal_places=2,
+        default=0.00
+    )
+
+    duration_text = models.CharField(max_length=100)
+
+    duration_hours = models.PositiveIntegerField(
+        default=24
+    )
+
+    payout_type = models.CharField(
+        max_length=10,
+        choices=PAYOUT_CHOICES,
+        default="once"
+    )
+
     maturity_text = models.CharField(
         max_length=200,
         default="Capital is returned on maturity"
     )
-    min_amount = models.DecimalField(max_digits=12, decimal_places=2, default=0.00)
-    max_amount = models.DecimalField(max_digits=12, decimal_places=2, default=0.00)
-    button_text = models.CharField(max_length=50, default="Sign Up")
-    button_url = models.CharField(max_length=200, default="/signup/")
+
+    min_amount = models.DecimalField(
+        max_digits=12,
+        decimal_places=2,
+        default=0.00
+    )
+
+    max_amount = models.DecimalField(
+        max_digits=12,
+        decimal_places=2,
+        default=0.00
+    )
+
+    button_text = models.CharField(
+        max_length=50,
+        default="Sign Up"
+    )
+
+    button_url = models.CharField(
+        max_length=200,
+        default="/signup/"
+    )
 
     class Meta:
         verbose_name = "Investment Plan"
@@ -155,7 +196,7 @@ class InvestmentPlan(models.Model):
 
     def __str__(self):
         return self.name
-
+        
 
 class Wallet(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
