@@ -245,50 +245,114 @@ def dashboard(request):
 
 @login_required
 def portfolio(request):
-    investments = ActiveInvestment.objects.filter(user=request.user)
-    transactions = Transaction.objects.filter(user=request.user).order_by('-date')[:5]
-    total_invested = investments.aggregate(Sum('amount'))['amount__sum'] or Decimal("0")
-    current_value = sum(inv.get_current_value() for inv in investments)
-    roi = ((current_value - total_invested) / total_invested * Decimal("100")) if total_invested else Decimal("0")
+    user = request.user
 
-    best_asset = None
+    investments = ActiveInvestment.objects.filter(
+        user=user
+    ).order_by("-start_date")
+
+    transactions = (
+        Transaction.objects
+        .filter(user=user)
+        .order_by("-date")[:5]
+    )
+
+    total_invested = (
+        investments
+        .aggregate(total=Sum("amount"))["total"]
+        or Decimal("0")
+    )
+
+    current_value = Decimal("0")
+
+    for investment in investments:
+        processed_profit = (
+            investment.amount
+            * investment.roi_percent
+            / Decimal("100")
+            * investment.payouts_processed
+        )
+
+        current_value += (
+            investment.amount
+            + processed_profit
+        )
+
+    if total_invested > Decimal("0"):
+        roi = (
+            (current_value - total_invested)
+            / total_invested
+        ) * Decimal("100")
+    else:
+        roi = Decimal("0")
+
+    best_asset = "N/A"
+
     if investments.exists():
-        best_asset = max(investments, key=lambda inv: inv.get_current_multiplier()).plan_name
-    upcoming_investments = investments.filter(end_date__isnull=False).order_by('end_date')[:5]
-    prices = {}
+        best_investment = max(
+            investments,
+            key=lambda investment: investment.roi_percent
+        )
+        best_asset = best_investment.plan_name
+
+    upcoming_investments = (
+        investments
+        .filter(
+            status="active",
+            end_date__isnull=False
+        )
+        .order_by("end_date")[:5]
+    )
+
+    prices = {
+        "BTC": 0,
+        "ETH": 0,
+        "USDT": 0,
+    }
+
     try:
-        response = requests.get("https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,tether&vs_currencies=usd")
+        response = requests.get(
+            "https://api.coingecko.com/api/v3/simple/price"
+            "?ids=bitcoin,ethereum,tether&vs_currencies=usd",
+            timeout=10
+        )
+
         if response.status_code == 200:
             data = response.json()
+
             prices = {
-                "BTC": data["bitcoin"]["usd"],
-                "ETH": data["ethereum"]["usd"],
-                "USDT": data["tether"]["usd"],
+                "BTC": data.get("bitcoin", {}).get("usd", 0),
+                "ETH": data.get("ethereum", {}).get("usd", 0),
+                "USDT": data.get("tether", {}).get("usd", 0),
             }
+
     except Exception:
-        prices = {"BTC": 0, "ETH": 0, "USDT": 0}
+        pass
 
     risk_level = "Moderate"
     diversification_score = 75
     volatility_index = 12.5
 
-    return render(request, "users/portfolio.html", {
-        "holdings": json.dumps({k: v for k, v in prices.items()}),
-        "investments": investments,
-        "transactions": transactions,
-        "total_invested": round(total_invested, 2),
-        "current_value": round(current_value, 2),
-        "roi": round(roi, 2),
-        "best_asset": best_asset or "N/A",
-        "risk_level": risk_level,
-        "diversification_score": diversification_score,
-        "volatility_index": volatility_index,
-        "btc_price": prices.get("BTC"),
-        "eth_price": prices.get("ETH"),
-        "usdt_price": prices.get("USDT"),
-        "upcoming_investments": upcoming_investments,
-    })
-
+    return render(
+        request,
+        "users/portfolio.html",
+        {
+            "holdings": json.dumps(prices),
+            "investments": investments,
+            "transactions": transactions,
+            "total_invested": round(total_invested, 2),
+            "current_value": round(current_value, 2),
+            "roi": round(roi, 2),
+            "best_asset": best_asset,
+            "risk_level": risk_level,
+            "diversification_score": diversification_score,
+            "volatility_index": volatility_index,
+            "btc_price": prices.get("BTC", 0),
+            "eth_price": prices.get("ETH", 0),
+            "usdt_price": prices.get("USDT", 0),
+            "upcoming_investments": upcoming_investments,
+        }
+    )
 
 @login_required
 def investments(request):
@@ -298,10 +362,19 @@ def investments(request):
         investments.aggregate(Sum('amount'))['amount__sum']
         or Decimal("0")
     )
-    current_value = sum(
-        (inv.get_current_value() for inv in investments),
-        Decimal("0")
+    credited_profits = (
+        ProfitRecord.objects
+        .filter(
+            user=request.user,
+            status="Credited"
+        )
+        .aggregate(
+            total=Sum("amount")
+        )["total"]
+        or Decimal("0")
     )
+
+    current_value = total_invested + credited_profits
 
     if total_invested > Decimal("0"):
         roi = (
@@ -823,45 +896,113 @@ def support(request):
 @login_required
 def profile(request):
     user = request.user
-    wallet, _ = UserWallet.objects.get_or_create(user=user)
-    wallet_form = UserWalletForm(request.POST or None, instance=wallet)
 
-    for field_name in ['btc_wallet', 'eth_wallet', 'usdt_erc20_wallet', 'usdt_trc20_wallet']:
+    wallet, _ = UserWallet.objects.get_or_create(
+        user=user
+    )
+
+    wallet_form = UserWalletForm(
+        request.POST or None,
+        instance=wallet
+    )
+
+    for field_name in [
+        "btc_wallet",
+        "eth_wallet",
+        "usdt_erc20_wallet",
+        "usdt_trc20_wallet",
+    ]:
         field = wallet_form.fields[field_name]
+
         if getattr(wallet, field_name):
-            field.widget.attrs['readonly'] = 'readonly'
-        field.widget.attrs['id'] = f'id_{field_name}'
+            field.widget.attrs["readonly"] = "readonly"
+
+        field.widget.attrs["id"] = f"id_{field_name}"
 
     if request.method == "POST" and wallet_form.is_valid():
         wallet_form.save()
         return redirect("/users/profile#wallets")
 
-    active_investments = ActiveInvestment.objects.filter(user=user, status="active")
-    completed_investments = ActiveInvestment.objects.filter(user=user, status="completed")
+    active_investments = ActiveInvestment.objects.filter(
+        user=user,
+        status="active"
+    )
 
     active_investments_count = active_investments.count()
-    total_invested = ActiveInvestment.objects.filter(user=user).aggregate(total=Sum("amount"))["total"] or 0
-    total_roi = sum(inv.get_current_value() - inv.amount for inv in completed_investments)
 
-  
-    recent_investments = ActiveInvestment.objects.filter(user=user).order_by("-start_date")[:5]
+    total_invested = (
+        ActiveInvestment.objects
+        .filter(user=user)
+        .aggregate(
+            total=Sum("amount")
+        )["total"]
+        or Decimal("0")
+    )
 
-    referral_earnings = getattr(user.userprofile, "referral_earnings", 0)
+    total_roi = (
+        ProfitRecord.objects
+        .filter(
+            user=user,
+            status="Credited"
+        )
+        .aggregate(
+            total=Sum("amount")
+        )["total"]
+        or Decimal("0")
+    )
 
-  
-    chart_labels = [inv.start_date.strftime("%Y-%m-%d") for inv in recent_investments]
-    chart_data = [float(inv.get_current_value()) for inv in recent_investments]
+    recent_investments = (
+        ActiveInvestment.objects
+        .filter(user=user)
+        .order_by("-start_date")[:5]
+    )
 
-    return render(request, "users/profile.html", {
-        "wallet_form": wallet_form,
-        "active_investments_count": active_investments_count,
-        "total_invested": total_invested,
-        "total_roi": total_roi,
-        "recent_investments": recent_investments,
-        "referral_earnings": referral_earnings,
-        "chart_labels": chart_labels,
-        "chart_data": chart_data,
-    })
+    referral_earnings = getattr(
+        user.userprofile,
+        "referral_earnings",
+        Decimal("0")
+    )
+
+    chart_labels = [
+        inv.start_date.strftime("%Y-%m-%d")
+        for inv in recent_investments
+    ]
+
+    chart_data = []
+
+    for inv in recent_investments:
+        investment_profit = (
+            ProfitRecord.objects
+            .filter(
+                user=user,
+                investment_name=inv.plan_name,
+                status="Credited",
+                date__gte=inv.start_date
+            )
+            .aggregate(
+                total=Sum("amount")
+            )["total"]
+            or Decimal("0")
+        )
+
+        chart_data.append(
+            float(inv.amount + investment_profit)
+        )
+
+    return render(
+        request,
+        "users/profile.html",
+        {
+            "wallet_form": wallet_form,
+            "active_investments_count": active_investments_count,
+            "total_invested": total_invested,
+            "total_roi": total_roi,
+            "recent_investments": recent_investments,
+            "referral_earnings": referral_earnings,
+            "chart_labels": chart_labels,
+            "chart_data": chart_data,
+        }
+    )
 
 @login_required
 def profile_settings(request):
