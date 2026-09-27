@@ -136,14 +136,20 @@ def kyc_notification(sender, instance, **kwargs):
 @receiver(post_save, sender=ActiveInvestment)
 def investment_completed(sender, instance, **kwargs):
     if instance.status == "completed":
-        send_html_email(
-            subject="Investment Completed",
-            message=f"Your investment of {instance.amount} in {instance.plan_name} has completed. Profit credited to your account.",
-            user=instance.user,
-            backend_settings=settings.SENDGRID_EMAIL_BACKEND,
-        )
+        try:
+            send_html_email(
+                subject="Investment Completed",
+                message=f"Your investment of {instance.amount} in {instance.plan_name} has completed. Profit credited to your account.",
+                user=instance.user,
+                backend_settings=settings.SENDGRID_EMAIL_BACKEND,
+            )
+        except Exception as e:
+            print(
+                f"Investment completion email failed for investment "
+                f"{instance.id}: {e}"
+            )
 
-
+            
 @receiver(post_save, sender=Referral)
 def referral_signup(sender, instance, created, **kwargs):
     if created and instance.referrer:
